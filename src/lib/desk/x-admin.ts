@@ -7,13 +7,12 @@ export const ADMIN_X_LABEL = `${ADMIN_X_NAME} (${ADMIN_X_HANDLE})`;
 
 /**
  * Brand / company account — sub of @_Mr_R0b0t0_. Never admin.
- * Display keeps $. X handles cannot contain $, so the handle is @_S1R1USS_.
- * Do not use @_S1R1US_ (taken, not this desk).
+ * Display: S1R1U$S. Handle: @S1R1US (operator-picked). Not @_S1R1US_.
  */
 export const COMPANY_X_NAME = "S1R1U$S";
-export const COMPANY_X_HANDLE = "@_S1R1USS_";
-export const COMPANY_X_HANDLE_CORE = "_S1R1USS_";
-export const COMPANY_X_URL = "https://x.com/_S1R1USS_";
+export const COMPANY_X_HANDLE = "@S1R1US";
+export const COMPANY_X_HANDLE_CORE = "S1R1US";
+export const COMPANY_X_URL = "https://x.com/S1R1US";
 export const COMPANY_X_LABEL = `${COMPANY_X_NAME} (${COMPANY_X_HANDLE})`;
 export const COMPANY_X_BIO =
   "Company desk of @_Mr_R0b0t0_ · [ S1R1U$ <<L@B$>> ] bitcoin accumulator · not financial advice";
@@ -22,6 +21,10 @@ const HANDLE = ADMIN_X_HANDLE_CORE.toLowerCase();
 const COMPANY = COMPANY_X_HANDLE_CORE.toLowerCase();
 const COMPANY_DISPLAY = "s1r1u$s";
 const COMPANY_DISPLAY_US = "_s1r1u$s_";
+
+export function companyHandleSet() {
+  return COMPANY_X_HANDLE_CORE.length > 0;
+}
 
 /**
  * True only for the live @_Mr_R0b0t0_ account:
