@@ -11,7 +11,7 @@ import { APP_NAME, TAB_DESK, TAB_LAB } from "@/lib/brand";
 import { LIVE_UNLOCKED } from "@/lib/desk/practice";
 import { useOperator } from "@/lib/desk/operator";
 import { BUDGET, CHECKLIST, COIN_CHAIN_REC, COIN_DISPLAY, COIN_DOMAIN, COIN_NAME_NOTE, COIN_STANDARD, COIN_TICKER, COMPANY_X_STEPS, DNS_STEPS, DOMAINS, FUND_INTEGRATION, FUND_LANES, GODADDY_IO, HOWEY_POSTURE, ICP_NOTE, LIQ_BANDS, MINT_STEPS, PLATFORM_ROWS, RH_NOTE, TIERS, TOKEN_LAUNCHED, TOKEN_UTILITY, type LaunchCheck } from "@/lib/launch/model";
-import { ADMIN_X_HANDLE, ADMIN_X_LABEL, COMPANY_X_ART, COMPANY_X_AVATAR, COMPANY_X_BANNER, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_NAME, COMPANY_X_URL } from "@/lib/desk/x-admin";
+import { ADMIN_X_HANDLE, ADMIN_X_LABEL, COMPANY_X_ART, COMPANY_X_AVATAR, COMPANY_X_BANNER, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { CompanyAvatar } from "@/components/company-x";
 import { probeLaunch, type DomainProbe } from "@/lib/launch/probes";
 import { probeSiteHealth, type SiteHealth } from "@/lib/launch/site-health";
@@ -403,7 +403,7 @@ export function LaunchDesk() {
         </Link>
       </Panel>
 
-      <Panel className="mt-4" kicker="X" title={`${COMPANY_X_LABEL} company account`}>
+      <Panel className="mt-4" kicker="X" title={`${COMPANY_X_LABEL} account`}>
         <div className="flex flex-wrap items-start gap-4">
           <div className="flex flex-col items-center gap-2">
             <CompanyAvatar size={96} className="h-24 w-24 ring-1 ring-rule" />
@@ -411,20 +411,19 @@ export function LaunchDesk() {
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-sm text-muted">
-              New company account under {ADMIN_X_LABEL}. Display{" "}
-              <span className="text-fg">{COMPANY_X_NAME}</span>
+              New company account under {ADMIN_X_LABEL}. You pick display and handle. Do not use{" "}
+              <span className="font-mono text-fg">@S1R1US</span> (blocked) or{" "}
+              <span className="font-mono text-fg">@_S1R1US_</span>
               {COMPANY_X_HANDLE ? (
                 <>
-                  , handle <span className="font-mono text-fg">{COMPANY_X_HANDLE}</span>
+                  . Live handle <span className="font-mono text-fg">{COMPANY_X_HANDLE}</span>
                 </>
-              ) : (
-                <>. You pick the handle ($ is not allowed on X)</>
-              )}
+              ) : null}
               . This login cannot open Admin, Wallet, or copy outgoing BTC/USDC. Operator stays {ADMIN_X_HANDLE}.
             </p>
             <img
               src={COMPANY_X_BANNER}
-              alt={`${COMPANY_X_NAME} X header`}
+              alt="company X header"
               className="mt-3 w-full max-w-xl rounded-md border border-rule object-cover"
             />
             <div className="mt-3 flex flex-wrap gap-2">
