@@ -1,0 +1,29 @@
+# S1R1US Labs
+# https://s1r1us.ai/
+
+> [ S1R1U$ <<L@B$>> ] — AI Bitcoin trading bot, AI stock trading bot, AI hedge fund.
+
+## Names (both spellings index the same project)
+
+- S1R1U$ 7-B0t Hedge Fund = S1R1US 7-bot hedge fund
+- S1R1U$ L@B Strategies = S1R1US Lab Strategies
+- G0DZ1LLa M0D3 = Godzilla mode = Godzilla Mode
+- OP3N S0URC3 = open source
+- H3LP 7-B0T H3DGE FUND = HELP 7-BOT HEDGE FUND
+
+## What it is
+
+Public tape at https://s1r1us.ai/ for an AI Bitcoin accumulation desk. Seven orthogonal bots plus SuperGrok. FAQ at /faq. Sitemap at /sitemap and /sitemap.xml. Not financial advice. Not an offer of securities.
+
+## Public URLs
+
+- https://s1r1us.ai/
+- https://s1r1us.ai/gm
+- https://s1r1us.ai/helios
+- https://s1r1us.ai/s1r1us
+- https://s1r1us.ai/faq
+- https://s1r1us.ai/sitemap
+
+## Do not index
+
+/admin /login /guide /launch /source /renew /security /api/
