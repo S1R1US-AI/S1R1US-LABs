@@ -1,4 +1,3 @@
-import { ADMIN_X_LABEL } from "./x-admin";
 import { TAB_DESK, TAB_LAB } from "@/lib/brand";
 
 export const MCP_REMOTE = "https://agents.coinbase.com/mcp";
@@ -133,13 +132,13 @@ export function protocolRows(): ProtocolRow[] {
       id: "session",
       title: "Admin session",
       status: "OPERATOR",
-      detail: "HMAC-signed token, 12h TTL, generation epoch. Lives in sessionStorage (OWASP 2026: do not store session IDs there — XSS can read it). Mitigations: epoch bump on lock/idle, live @_Mr_R0b0t0_ X required on every admin RPC, idle lock clears the token before the overlay paints. HttpOnly cookie not implemented — OPEN until a cookie session ships.",
+      detail: "HMAC-signed token, 12h TTL, generation epoch. Lives in sessionStorage (OWASP 2026: do not store session IDs there — XSS can read it). Mitigations: epoch bump on lock/idle, live operator X required on every admin RPC, idle lock clears the token before the overlay paints. HttpOnly cookie not implemented — OPEN until a cookie session ships.",
     },
     {
       id: "2fa",
       title: "First door + hardware",
       status: "PASS",
-      detail: "Admin is AND: exact X @_Mr_R0b0t0_ (account id 2093335535146131456 or handle _Mr_R0b0t0_ — display name is not enough) plus admin name + password. X alone or password alone cannot mint an admin token. Any other X is a user at most. Outgoing BTC/USDC still needs either enrolled YubiKey.",
+      detail: "Admin is AND: exact operator X account (id or handle — display name is not enough) plus admin name + password. X alone or password alone cannot mint an admin token. Any other X is a user at most. Outgoing BTC/USDC still needs either enrolled YubiKey.",
     },
     {
       id: "vault",
@@ -240,7 +239,7 @@ export function vulnRows(): VulnRow[] {
       title: "Admin tab on X-only session",
       severity: "MED",
       status: "FIXED",
-      detail: "Admin nav showed when X matched @_Mr_R0b0t0_ without name+password. Nav now requires a full admin unlock.",
+      detail: "Admin nav showed when X matched the operator without name+password. Nav now requires a full admin unlock.",
     },
     {
       id: "session-xss",
@@ -254,7 +253,7 @@ export function vulnRows(): VulnRow[] {
       title: "X-only or password-only admin",
       severity: "HIGH",
       status: "FIXED",
-      detail: "Admin unlock requires live @_Mr_R0b0t0_ X (snowflake 2093335535146131456 or that handle on grok-x/twitter/x) AND admin name+password. Email local-part, display name, idToken screen_name, company/dead handles, and desk-user sessions cannot become admin. verifyAccessToken re-checks the X session. OperatorGate hides admin chrome unless role is admin.",
+      detail: "Admin unlock requires live operator X (that account on grok-x/twitter/x) AND admin name+password. Email local-part, display name, idToken screen_name, company/dead handles, and desk-user sessions cannot become admin. verifyAccessToken re-checks the X session. OperatorGate hides admin chrome unless role is admin.",
     },
     {
       id: "slot-dead",
@@ -275,7 +274,7 @@ export function vulnRows(): VulnRow[] {
       title: "Password renew claimed mail when transport was off",
       severity: "MED",
       status: "FIXED",
-      detail: "requestAdminReset returned ok even if Resend/SMTP was unset. It now reports mailed=false; the UI still lets @_Mr_R0b0t0_ set a new password in-session and does not claim a letter went out.",
+      detail: "requestAdminReset returned ok even if Resend/SMTP was unset. It now reports mailed=false; the UI still lets the operator X set a new password in-session and does not claim a letter went out.",
     },
     {
       id: "cycle-hmr",
@@ -380,14 +379,14 @@ export function vulnRows(): VulnRow[] {
       title: "Factory password hash in source",
       severity: "MED",
       status: "OPERATOR",
-      detail: "Factory SHA-256 hash is revoked in source (all-zero). Live unlock is Argon2id (m=16384) in admin_lock after Credentials rotate. Name S1R1uSxadm. Lock persists on disk in preview.",
+      detail: "Factory SHA-256 hash is revoked in source (all-zero). Live unlock is Argon2id (m=16384) in admin_lock after Credentials rotate. Lock persists on disk in preview.",
     },
     {
       id: "admin-reset-x",
       title: "Admin password reset without X",
       severity: "HIGH",
       status: "MITIGATED",
-      detail: "Mailbox renew and in-session renew both require exact X @_Mr_R0b0t0_ (handle or snowflake). Bound-X fallback no longer counts as admin. Logout bumps token epoch and signs out X.",
+      detail: "Mailbox renew and in-session renew both require the operator X account. Bound-X fallback no longer counts as admin. Logout bumps token epoch and signs out X.",
     },
     {
       id: "yubi-client",
