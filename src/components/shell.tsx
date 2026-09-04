@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { UserButton } from "@/lib/auth/gates";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
 import { secondFactorStatus } from "@/lib/desk/access";
-import { ADMIN_X_HANDLE, ADMIN_X_NAME, looksLikeCompanyX, COMPANY_X_HANDLE, COMPANY_X_NAME } from "@/lib/desk/x-admin";
+import { looksLikeCompanyX, COMPANY_X_HANDLE, COMPANY_X_NAME } from "@/lib/desk/x-admin";
 import { CompanyAvatar, CompanyXChip } from "@/components/company-x";
 import { AdminAuthControl } from "@/components/operator-lock";
 import { useOperator } from "@/lib/desk/operator";
@@ -217,10 +217,7 @@ function AuthSlot() {
         </p>
       ) : xVerified ? (
         <span className="x-admin-name max-w-[11rem] truncate text-sm sm:max-w-none">
-          {ADMIN_X_NAME}
-          <span className="ml-1.5 hidden font-mono text-[11px] font-medium sm:inline">
-            {ADMIN_X_HANDLE}
-          </span>
+          operator
         </span>
       ) : null}
       <UserButton hideLabel={xVerified || looksLikeCompanyX(user.displayName)} />
