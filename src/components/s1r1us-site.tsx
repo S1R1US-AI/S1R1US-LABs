@@ -8,7 +8,7 @@ import { LiqHeatmap, TapeChart } from "@/components/tape-charts";
 import { WhaleTape } from "@/components/whale-tape";
 import { APP_NAME, BOT7_NAME, LABS_NAME, TAB_DESK, TAB_GM } from "@/lib/brand";
 import { SeoCopy } from "@/components/seo-copy";
-import { COMPANY_X_HANDLE, COMPANY_X_URL, ADMIN_X_HANDLE } from "@/lib/desk/x-admin";
+import { COMPANY_X_HANDLE, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { CompanyXChip } from "@/components/company-x";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { useDeskTape } from "@/lib/desk/tape-client";
@@ -159,8 +159,8 @@ export function S1r1usSite() {
                   {COMPANY_X_HANDLE}
                 </a>
               </>
-            ) : null}{" "}
-            under {ADMIN_X_HANDLE}. Public data only. Not an offer of securities. Do not send seeds or funds to anyone
+            ) : null}
+            . Operator identity is not published. Public data only. Not an offer of securities. Do not send seeds or funds to anyone
             claiming to be this page.
           </p>
         </Panel>
