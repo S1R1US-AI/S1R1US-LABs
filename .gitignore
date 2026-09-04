@@ -1,0 +1,17 @@
+node_modules
+.output
+.vercel
+dist
+.env
+.env.*
+*.log
+data/pglite
+data/*.json
+artifacts/*.pass.txt
+artifacts/*.gpg
+artifacts/*.enc
+artifacts/*.zip
+.grok/preview.pid
+.grok/preview.log
+screenshots
+coverage
