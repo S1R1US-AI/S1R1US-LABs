@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /gm
+Allow: /helios
+Allow: /s1r1us
+Allow: /faq
+Allow: /sitemap
+Allow: /sitemap.xml
+Disallow: /admin
+Disallow: /login
+Disallow: /renew
+Disallow: /launch
+Disallow: /security
+Disallow: /source
+Disallow: /guide
+
+Sitemap: https://s1r1us.ai/sitemap.xml
