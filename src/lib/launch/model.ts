@@ -1,5 +1,5 @@
 import { APP_NAME, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
-import { ADMIN_X_HANDLE, COMPANY_X_BIO, COMPANY_X_HANDLE, COMPANY_X_NAME } from "@/lib/desk/x-admin";
+import { ADMIN_X_HANDLE, COMPANY_X_BIO, companyHandleSet, COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
 
 /** Token is s1r1us. Project/desk stays [ S1R1U$ <<L@B$>> ]. $ is not DNS or ticker. Domain is s1r1us.ai */
 export const COIN_NAME = "s1r1us";
@@ -493,10 +493,10 @@ export const COIN_NAME_NOTE =
 
 export const COMPANY_X_STEPS = [
   `On X, stay logged in as ${ADMIN_X_HANDLE}. Open Accounts → Add an existing account → Sign up (new). Do not give the company account admin on this desk.`,
-  `Display name: ${COMPANY_X_NAME} (same as the handle, no $). Handle: ${COMPANY_X_HANDLE}. Profile pic: laser-ape from this desk. Do not use @_S1R1US_.`,
+  "You pick display and handle. $ is not allowed in an X handle. Do not use @S1R1US (blocked) or @_S1R1US_.",
   `Bio: ${COMPANY_X_BIO}`,
   `Location / website: s1r1us.ai once registered. Pin a post: “Company account of ${ADMIN_X_HANDLE}. Token / desk updates only. No seed, no DMs for keys.”`,
-  `On ${ADMIN_X_HANDLE}: pin “Company: ${COMPANY_X_HANDLE}”. Follow each other. Optional: X Organizations affiliate (needs org verification on the parent).`,
+  `On ${ADMIN_X_HANDLE}: pin the new company handle. Follow each other. Optional: X Organizations affiliate (needs org verification on the parent).`,
   "This account is marketing only. Continue-with-X admin remains @_Mr_R0b0t0_. Company login is a desk user at most.",
 ] as const;
 
@@ -735,7 +735,9 @@ export const CHECKLIST: LaunchCheck[] = [
   {
     id: "x",
     phase: "1 · Identity",
-    label: `Create ${COMPANY_X_HANDLE} as the ${COMPANY_X_NAME} company account`,
+    label: companyHandleSet()
+      ? `Create ${COMPANY_X_HANDLE} as the company X account`
+      : "Create a new company X account (not @S1R1US)",
     detail: `Under ${ADMIN_X_HANDLE}. Bio must name the parent. Company X never unlocks Admin / Wallet / Coinbase send.`,
     kind: "manual",
     required: true,
