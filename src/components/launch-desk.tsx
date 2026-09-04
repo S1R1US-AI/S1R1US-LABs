@@ -430,7 +430,7 @@ export function LaunchDesk() {
             <div className="mt-3 flex flex-wrap gap-2">
               <a
                 href={COMPANY_X_AVATAR}
-                download="S1R1US-avatar.png"
+                download="S1R1US-avatar.jpg"
                 className="inline-flex h-10 min-h-10 items-center rounded-md border border-rule px-3 text-sm hover:bg-fg/6"
               >
                 Download avatar
