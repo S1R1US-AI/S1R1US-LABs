@@ -497,7 +497,7 @@ export const COMPANY_X_STEPS = [
   `Bio: ${COMPANY_X_BIO}`,
   `Location / website: s1r1us.ai once registered. Pin a post: “Company account of ${ADMIN_X_HANDLE}. Token / desk updates only. No seed, no DMs for keys.”`,
   `On ${ADMIN_X_HANDLE}: pin the new company handle. Follow each other. Optional: X Organizations affiliate (needs org verification on the parent).`,
-  "This account is marketing only. Continue-with-X admin remains @_Mr_R0b0t0_. Company login is a desk user at most.",
+  "This account is marketing only. Continue-with-X admin remains the operator account. Company login is a desk user at most.",
 ] as const;
 
 export const DNS_STEPS = [
@@ -607,7 +607,7 @@ export const BUDGET: BudgetLine[] = [
     surviveUsd: [0, 1500],
     fundUsd: [5000, 25000],
     tgeUsd: [25000, 200000],
-    note: `Organic from @_Mr_R0b0t0_ and ${APP_NAME}. Paid KOLs usually extract LP.`,
+    note: `Organic from the operator X account and ${APP_NAME}. Paid KOLs usually extract LP.`,
     recoverable: false,
   },
   {
