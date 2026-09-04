@@ -5,18 +5,23 @@ export const ADMIN_X_HANDLE_CORE = "_Mr_R0b0t0_";
 export const ADMIN_X_ID = "2093335535146131456";
 export const ADMIN_X_LABEL = `${ADMIN_X_NAME} (${ADMIN_X_HANDLE})`;
 
-/** Brand / coin company account. Never admin. */
-export const COMPANY_X_NAME = "S1R1U$";
-export const COMPANY_X_HANDLE = "@_S1R1US_";
-export const COMPANY_X_FALLBACK = "@_S1R1US_LAB_";
-export const COMPANY_X_URL = "https://x.com/_S1R1US_";
+/**
+ * Brand / company account — sub of @_Mr_R0b0t0_. Never admin.
+ * Display keeps $. X handles cannot contain $, so the handle is @_S1R1USS_.
+ * Do not use @_S1R1US_ (taken, not this desk).
+ */
+export const COMPANY_X_NAME = "S1R1U$S";
+export const COMPANY_X_HANDLE = "@_S1R1USS_";
+export const COMPANY_X_HANDLE_CORE = "_S1R1USS_";
+export const COMPANY_X_URL = "https://x.com/_S1R1USS_";
 export const COMPANY_X_LABEL = `${COMPANY_X_NAME} (${COMPANY_X_HANDLE})`;
 export const COMPANY_X_BIO =
   "Company desk of @_Mr_R0b0t0_ · [ S1R1U$ <<L@B$>> ] bitcoin accumulator · not financial advice";
 
 const HANDLE = ADMIN_X_HANDLE_CORE.toLowerCase();
-const COMPANY = "_s1r1us_";
-const COMPANY_LAB = "_s1r1us_lab_";
+const COMPANY = COMPANY_X_HANDLE_CORE.toLowerCase();
+const COMPANY_DISPLAY = "s1r1u$s";
+const COMPANY_DISPLAY_US = "_s1r1u$s_";
 
 /**
  * True only for the live @_Mr_R0b0t0_ account:
@@ -39,5 +44,5 @@ export function looksLikeCompanyX(s: string | null | undefined) {
   if (!raw) return false;
   const core = (raw.startsWith("@") ? raw.slice(1) : raw).toLowerCase();
   if (/[*?/\s]/.test(core) || core.includes("@")) return false;
-  return core === COMPANY || core === COMPANY_LAB;
+  return core === COMPANY || core === COMPANY_DISPLAY || core === COMPANY_DISPLAY_US;
 }
