@@ -25,7 +25,7 @@ export const COMPANY_X_HANDLE_CORE = "";
 export const COMPANY_X_URL = "";
 export const COMPANY_X_LABEL = "company X";
 export const COMPANY_X_BIO =
-  "Company desk of @_Mr_R0b0t0_ · [ S1R1U$ <<L@B$>> ] bitcoin accumulator · not financial advice";
+  "Company desk of S1R1US Labs · [ S1R1U$ <<L@B$>> ] bitcoin accumulator · not financial advice";
 /** Square 400×400 laser-ape — desk mark / future X profile pic. */
 export const COMPANY_X_AVATAR = "/s1r1us-avatar.jpg";
 /** 1500×500 G0DZ1LLa vs bear header. */
