@@ -9,8 +9,6 @@ import { XRenewWhenAdmin } from "@/components/renew-password";
 import { secondFactorStatus } from "@/lib/desk/access";
 import { useOperator } from "@/lib/desk/operator";
 import { looksLikeSecret } from "@/lib/desk/security";
-import { ADMIN_X_HANDLE } from "@/lib/desk/x-admin";
-import { ADMIN_LOGIN_NAME } from "@/lib/desk/admin-name";
 import { APP_NAME } from "@/lib/brand";
 
 export const Route = createFileRoute("/login")({ component: Login });
@@ -22,7 +20,7 @@ function Login() {
   const idleLocked = useOperator((s) => s.idleLocked);
   const role = useOperator((s) => s.role);
   const unlock = useOperator((s) => s.unlock);
-  const [name, setName] = useState(ADMIN_LOGIN_NAME);
+  const [name, setName] = useState("");
   const [pass, setPass] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -106,11 +104,11 @@ function Login() {
               type="button"
               onClick={() => void signIn(p.providerId, { callbackURL: "/login" })}
             >
-              Continue with X as <span className="x-admin-name">{ADMIN_X_HANDLE}</span>
+              Continue with X
             </Button>
           ))}
           <p className="text-xs leading-relaxed text-muted">
-            Admin is both: exact X {ADMIN_X_HANDLE}, then admin name + password. Other X accounts stay users. They cannot open Admin.
+            Admin needs the operator X account, then name and password. Other X accounts stay users. They cannot open Admin.
           </p>
         </div>
       ) : user ? (
@@ -118,11 +116,11 @@ function Login() {
           <UserButton />
           {xAdmin ? (
             <p className="text-sm text-high">
-              X {ADMIN_X_HANDLE} verified. Enter admin name and password to finish.
+              Operator X verified. Enter name and password to finish.
             </p>
           ) : (
             <p className="text-sm text-muted">
-              This X account is not {ADMIN_X_HANDLE}. Name + password opens a user session only.
+              This X account is not the operator. Name + password opens a user session only.
             </p>
           )}
           <XRenewWhenAdmin />
