@@ -29,7 +29,7 @@ export const AUTO_ANALYSIS = {
   tape: "Client AUTO ticks are off (they were refreshing the desk). 24h paper fills, if any, record on the server after each live tape fill — no extra pull.",
   fills: "Morning report 5 Sep 08:00 ET uses the server 24h book. Live Coinbase stays off. 7-bot stack never sells.",
   errors: "Do not green OPEN feed errors. Yahoo/Stooq classified. SuperGrok is the only paid service.",
-  security: "Admin still X @_Mr_R0b0t0_ then name+password. Dual Yubi for outgoing. Practice fills are paper.",
+  security: "Admin is operator X then name+password. Dual Yubi for outgoing. Practice fills are paper.",
   action: "Practice AUTO is disabled. Do not arm live. Desk and website stay on the live tape only.",
 };
 
