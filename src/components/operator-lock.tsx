@@ -8,8 +8,6 @@ import { Button } from "@/components/ui/button";
 import { secondFactorStatus } from "@/lib/desk/access";
 import { looksLikeSecret } from "@/lib/desk/security";
 import { useOperator } from "@/lib/desk/operator";
-import { ADMIN_X_HANDLE } from "@/lib/desk/x-admin";
-import { ADMIN_LOGIN_NAME } from "@/lib/desk/admin-name";
 import { APP_NAME } from "@/lib/brand";
 import { XRenewWhenAdmin } from "@/components/renew-password";
 
@@ -31,7 +29,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
   const user = useCurrentUser();
   const unlock = useOperator((s) => s.unlock);
   const idleLocked = useOperator((s) => s.idleLocked);
-  const [name, setName] = useState(ADMIN_LOGIN_NAME);
+  const [name, setName] = useState("");
   const [pass, setPass] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -92,7 +90,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
       <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
       {userOnly ? (
         <p className="mt-3 text-sm leading-relaxed text-down">
-          This login is a desk user. Admin is only {ADMIN_X_HANDLE} plus name and password.
+          This login is a desk user. Admin is only the operator X account plus name and password.
         </p>
       ) : null}
       {idleLocked || user ? (
@@ -117,11 +115,11 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
               disabled={pending}
               onClick={() => void signIn(p.providerId, { callbackURL: "/admin" })}
             >
-              Continue with X as <span className="x-admin-name">{ADMIN_X_HANDLE}</span>
+              Continue with X
             </Button>
           ))}
           <p className="text-xs leading-relaxed text-muted">
-            Admin is both: exact X {ADMIN_X_HANDLE}, then {ADMIN_LOGIN_NAME} + password.
+            Admin needs the operator X account, then name and password.
             Other X accounts and desk users stay users — they cannot open Admin, Wallet, or send.
           </p>
         </div>
@@ -131,11 +129,11 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
           <UserButton />
           {xAdmin ? (
             <p className="text-sm text-high">
-              X {ADMIN_X_HANDLE} verified. Enter {ADMIN_LOGIN_NAME} and password to finish.
+              Operator X verified. Enter name and password to finish.
             </p>
           ) : (
             <p className="text-sm text-muted">
-              This X account is not {ADMIN_X_HANDLE}. Name + password opens a user session only.
+              This X account is not the operator. Name + password opens a user session only.
             </p>
           )}
         </div>
