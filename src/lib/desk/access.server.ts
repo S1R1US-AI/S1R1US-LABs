@@ -3,7 +3,7 @@ import { AsyncLocalStorage } from "node:async_hooks";
 import { argon2id } from "@noble/hashes/argon2.js";
 import { getSql } from "@/lib/db";
 import { ADMIN_LOGIN_NAME } from "./admin-name";
-import { ADMIN_X_ID, ADMIN_X_LABEL, isAdminXProvider, looksLikeAdminX } from "./x-admin";
+import { ADMIN_X_ID, isAdminXProvider, looksLikeAdminX } from "./x-admin";
 import { looksLikeSecret } from "./security";
 
 export const DEFAULT_ADMIN = ADMIN_LOGIN_NAME;
@@ -447,13 +447,13 @@ export async function assert2fa(userId: string): Promise<string | null> {
   if (x) return x;
   const enrolled = await enrolled2fa();
   if (!enrolled) return "Complete 2FA enrollment: X, then admin password.";
-  if (enrolled !== userId) return `This X account is not the bound ${ADMIN_X_LABEL} admin.`;
+  if (enrolled !== userId) return "This X account is not the bound operator.";
   return null;
 }
 
 export async function assertAdminX(userId: string): Promise<string | null> {
   if (await sessionIsAdminX(userId)) return null;
-  return `Only ${ADMIN_X_LABEL} can access admin. Sign out and Continue with X as that account.`;
+  return "Only the operator X account can access admin. Sign out and Continue with X as that account.";
 }
 
 export async function sessionIsAdminX(userId: string): Promise<boolean> {
