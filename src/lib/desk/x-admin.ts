@@ -6,30 +6,47 @@ export const ADMIN_X_ID = "2093335535146131456";
 export const ADMIN_X_LABEL = `${ADMIN_X_NAME} (${ADMIN_X_HANDLE})`;
 
 /**
- * Brand / company account — sub of @_Mr_R0b0t0_. Never admin.
- * Display and handle both S1R1US. Not @_S1R1US_. Not S1R1U$S as the X display.
+ * Handles that must never be company X.
+ * @S1R1US — blocked for breaking rules.
+ * @_S1R1US_ — operator rejected.
  */
-export const COMPANY_X_NAME = "S1R1US";
-export const COMPANY_X_HANDLE = "@S1R1US";
-export const COMPANY_X_HANDLE_CORE = "S1R1US";
-export const COMPANY_X_URL = "https://x.com/S1R1US";
-export const COMPANY_X_LABEL = `${COMPANY_X_NAME} (${COMPANY_X_HANDLE})`;
+const DEAD_COMPANY_HANDLES = new Set(["s1r1us", "_s1r1us_"]);
+
+/**
+ * Brand / company account — sub of @_Mr_R0b0t0_. Never admin.
+ * Handle is unset until the operator picks a live one. Do not wire @S1R1US.
+ */
+export const COMPANY_X_NAME = "";
+export const COMPANY_X_HANDLE = "";
+export const COMPANY_X_HANDLE_CORE = "";
+export const COMPANY_X_URL = "";
+export const COMPANY_X_LABEL = "company X";
 export const COMPANY_X_BIO =
   "Company desk of @_Mr_R0b0t0_ · [ S1R1U$ <<L@B$>> ] bitcoin accumulator · not financial advice";
-/** Square 400×400 laser-ape — X profile pic for @S1R1US. */
+/** Square 400×400 laser-ape — desk mark / future X profile pic. */
 export const COMPANY_X_AVATAR = "/s1r1us-avatar.jpg";
-/** 1500×500 header from the same art. */
+/** 1500×500 G0DZ1LLa vs bear header. */
 export const COMPANY_X_BANNER = "/s1r1us-x-banner.jpg";
-/** Full attached frame, for download / header source. */
+/** Full G0DZ1LLa vs bear frame. */
 export const COMPANY_X_ART = "/s1r1us-x-art.png";
 
 const HANDLE = ADMIN_X_HANDLE_CORE.toLowerCase();
-const COMPANY = COMPANY_X_HANDLE_CORE.toLowerCase();
-const COMPANY_DISPLAY_LEGACY = "s1r1u$s";
-const COMPANY_DISPLAY_US = "_s1r1u$s_";
+
+function handleCore(s: string | null | undefined) {
+  const raw = (s ?? "").trim();
+  if (!raw) return "";
+  const core = (raw.startsWith("@") ? raw.slice(1) : raw).toLowerCase();
+  if (!core || /[*?/\s]/.test(core) || core.includes("@")) return "";
+  return core;
+}
+
+export function isDeadCompanyHandle(s: string | null | undefined) {
+  const core = handleCore(s);
+  return core.length > 0 && DEAD_COMPANY_HANDLES.has(core);
+}
 
 export function companyHandleSet() {
-  return COMPANY_X_HANDLE_CORE.length > 0;
+  return COMPANY_X_HANDLE_CORE.length > 0 && !isDeadCompanyHandle(COMPANY_X_HANDLE_CORE);
 }
 
 /**
@@ -48,10 +65,10 @@ export function looksLikeAdminX(s: string | null | undefined) {
   return core.toLowerCase() === HANDLE;
 }
 
+/** Live company handle only. Blocked @S1R1US / @_S1R1US_ never match. */
 export function looksLikeCompanyX(s: string | null | undefined) {
-  const raw = (s ?? "").trim();
-  if (!raw) return false;
-  const core = (raw.startsWith("@") ? raw.slice(1) : raw).toLowerCase();
-  if (/[*?/\s]/.test(core) || core.includes("@")) return false;
-  return core === COMPANY || core === COMPANY_DISPLAY_LEGACY || core === COMPANY_DISPLAY_US;
+  if (!companyHandleSet()) return false;
+  const core = handleCore(s);
+  if (!core || isDeadCompanyHandle(core)) return false;
+  return core === COMPANY_X_HANDLE_CORE.toLowerCase();
 }
