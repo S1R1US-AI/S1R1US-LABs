@@ -9,7 +9,7 @@ import {
   TAB_GM,
   TAB_LAB,
 } from "@/lib/brand";
-import { ADMIN_X_HANDLE, COMPANY_X_HANDLE, companyHandleSet } from "@/lib/desk/x-admin";
+import { COMPANY_X_HANDLE, companyHandleSet } from "@/lib/desk/x-admin";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
 
@@ -94,8 +94,8 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: `Who operates ${APP_NAME}?`,
     a: companyHandleSet()
-      ? `${LABS_NAME} on s1r1us.ai. Public company desk is ${COMPANY_X_HANDLE} under ${ADMIN_X_HANDLE}. Display names and lookalikes are not admin. Not an offer of securities.`
-      : `${LABS_NAME} on s1r1us.ai. Public operator is ${ADMIN_X_HANDLE}. Company X handle is unset (@S1R1US is not used). Display names and lookalikes are not admin. Not an offer of securities.`,
+      ? `${LABS_NAME} on s1r1us.ai. Public company desk is ${COMPANY_X_HANDLE}. Operator identity is not published. Display names and lookalikes are not admin. Not an offer of securities.`
+      : `${LABS_NAME} on s1r1us.ai. Operator identity is not published. Display names and lookalikes are not admin. Not an offer of securities.`,
   },
   {
     q: "Is this financial advice?",
