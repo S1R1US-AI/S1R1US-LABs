@@ -493,7 +493,7 @@ export const COIN_NAME_NOTE =
 
 export const COMPANY_X_STEPS = [
   `On X, stay logged in as ${ADMIN_X_HANDLE}. Open Accounts → Add an existing account → Sign up (new). Do not give the company account admin on this desk.`,
-  `Display name: ${COMPANY_X_NAME} (same as the handle, no $). Handle: ${COMPANY_X_HANDLE}. Profile pic: G0DZ1LLa vs bear tape from this desk. Do not use @_S1R1US_.`,
+  `Display name: ${COMPANY_X_NAME} (same as the handle, no $). Handle: ${COMPANY_X_HANDLE}. Profile pic: laser-ape from this desk. Do not use @_S1R1US_.`,
   `Bio: ${COMPANY_X_BIO}`,
   `Location / website: s1r1us.ai once registered. Pin a post: “Company account of ${ADMIN_X_HANDLE}. Token / desk updates only. No seed, no DMs for keys.”`,
   `On ${ADMIN_X_HANDLE}: pin “Company: ${COMPANY_X_HANDLE}”. Follow each other. Optional: X Organizations affiliate (needs org verification on the parent).`,
