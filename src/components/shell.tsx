@@ -1,0 +1,264 @@
+import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { UserButton } from "@/lib/auth/gates";
+import { useCurrentUserState } from "@/lib/auth/use-current-user";
+import { secondFactorStatus } from "@/lib/desk/access";
+import { ADMIN_X_HANDLE, ADMIN_X_NAME, looksLikeCompanyX, COMPANY_X_HANDLE, COMPANY_X_NAME } from "@/lib/desk/x-admin";
+import { CompanyAvatar, CompanyXChip } from "@/components/company-x";
+import { AdminAuthControl } from "@/components/operator-lock";
+import { useOperator } from "@/lib/desk/operator";
+import { APP_NAME, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
+import { GodzillaMark, GmRainbow } from "@/components/godzilla-mark";
+import { rainGmBurst } from "@/components/matrix-saver";
+import { cn } from "@/lib/utils";
+
+const LINKS = [
+  { to: "/", label: TAB_DESK },
+  { to: "/helios", label: TAB_LAB },
+] as const;
+
+
+export function Shell({
+  children,
+  right,
+}: {
+  children: ReactNode;
+  right?: ReactNode;
+}) {
+  return (
+    <div className="flex min-h-dvh flex-col bg-bg text-fg">
+      <header className="no-print sticky top-0 z-30 border-b border-rule bg-bg/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
+          <Link to="/" className="flex min-w-0 items-center gap-2.5">
+            <CompanyAvatar size={36} className="h-9 w-9 ring-1 ring-rule" />
+            <span className="min-w-0">
+              <p className="text-xs font-medium tracking-[0.08em] text-high uppercase">7-B0T H3DGE FUND</p>
+              <p className="truncate text-sm font-bold tracking-tight text-medium sm:text-base">{APP_NAME}</p>
+            </span>
+          </Link>
+          <nav className="desk-tabs flex flex-wrap gap-1">
+            {LINKS.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="inline-flex min-h-10 max-w-[11.5rem] items-center rounded-md px-2.5 py-1.5 text-left text-xs font-medium leading-tight sm:max-w-none sm:px-3 sm:text-sm"
+                activeProps={{
+                  className:
+                    "is-on inline-flex min-h-10 max-w-[11.5rem] items-center rounded-md px-2.5 py-1.5 text-left text-xs font-medium leading-tight sm:max-w-none sm:px-3 sm:text-sm",
+                }}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              to="/gm"
+              className="gm-tab inline-flex min-h-12 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold tracking-tight"
+              onClick={() => rainGmBurst(3000)}
+              activeProps={{
+                className:
+                  "gm-tab is-on inline-flex min-h-12 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold tracking-tight",
+              }}
+            >
+              <GodzillaMark className="h-5 w-8 shrink-0" />
+              <GmRainbow text={TAB_GM} />
+            </Link>
+            <AdminNavLink />
+          </nav>
+          <div className="ml-auto flex flex-wrap items-center gap-2">
+            <CompanyXChip className="hidden sm:inline-flex" />
+            {right}
+          </div>
+        </div>
+      </header>
+      <div className="flex-1">{children}</div>
+      <footer className="no-print mt-auto border-t border-rule/60">
+        <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Link to="/s1r1us" className="font-mono text-[11px] tracking-[0.12em] text-muted/45 hover:text-muted">
+              s1r1us.ai
+            </Link>
+            <p className="flex max-w-3xl flex-wrap items-center justify-end gap-x-2 font-mono text-[11px] leading-relaxed tracking-[0.04em] text-oss">
+              <Link to="/sitemap" className="text-oss hover:underline">
+                Sitemap
+              </Link>
+              <span aria-hidden>|</span>
+              <Link to="/faq" className="text-oss hover:underline">
+                FAQ
+              </Link>
+              <span aria-hidden>|</span>
+              <a
+                href="/s1r1us-labs-github.zip"
+                download="s1r1us-labs-github.zip"
+                className="text-oss hover:underline"
+              >
+                source pack
+              </a>
+              <span aria-hidden>|</span>
+              <a
+                href={OSS_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="text-oss hover:underline"
+                aria-label="HELP 7-BOT HEDGE FUND S1R1US LABS GO OPEN SOURCE. OP3N S0URC3 is open source."
+              >
+                {OSS_LINK_LABEL}
+                <span className="seo-copy">
+                  HELP 7-BOT HEDGE FUND [ S1R1US LABS ] GO OPEN SOURCE. OP3N S0URC3 means open source.
+                  S1R1U$ 7-B0t Hedge Fund is S1R1US 7-bot hedge fund. G0DZ1LLa M0D3 is Godzilla mode.
+                  S1R1U$ L@B Strategies is S1R1US Lab Strategies.
+                </span>
+              </a>
+            </p>
+          </div>
+          <DisclaimerBlock />
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function DisclaimerBlock() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="mt-3">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className={cn(
+          "text-[11px] font-bold tracking-[0.16em] uppercase",
+          open ? "text-sell" : "text-muted",
+        )}
+      >
+        DISCLAIMER
+      </button>
+      {open ? (
+        <p className="mt-2 max-w-4xl font-mono text-[10px] leading-relaxed text-muted">
+          {TAB_LAB} is NOT considered financial advice or a financial recommendation. S1R1US.ai
+          and the 7-B0T H3DG3 Fund and any related systems are NOT LICENSED for financial advice.
+          If you need real financial advice seek a licensed professional. {TAB_LAB} and all related
+          entities such as Desk, Lab, website or systems are for EDUCATION purpose ONLY. Invest at
+          your own risk and only upon the advice of your licensed advisor.
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function useBoundXAdmin() {
+  const { user, isPending } = useCurrentUserState();
+  const [xVerified, setXVerified] = useState(false);
+  useEffect(() => {
+    if (!user) {
+      setXVerified(false);
+      return;
+    }
+    let gone = false;
+    void secondFactorStatus()
+      .then((st) => {
+        if (!gone) setXVerified(Boolean(st.allowed));
+      })
+      .catch(() => {
+        if (!gone) setXVerified(false);
+      });
+    return () => {
+      gone = true;
+    };
+  }, [user]);
+  return {
+    user,
+    isPending,
+    xVerified: Boolean(user) && xVerified,
+  };
+}
+
+function AdminNavLink() {
+  const unlocked = useOperator((s) => s.unlocked);
+  const role = useOperator((s) => s.role);
+  if (role !== "admin" || !unlocked) return null;
+  return (
+    <Link
+      to="/admin"
+      className="inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium"
+      activeProps={{
+        className:
+          "is-on inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium",
+      }}
+    >
+      Admin
+    </Link>
+  );
+}
+
+export function LoginCluster() {
+  return (
+    <div className="flex flex-wrap items-center justify-end gap-2">
+      <AuthSlot />
+      <AdminAuthControl />
+    </div>
+  );
+}
+
+function AuthSlot() {
+  const { user, isPending, xVerified } = useBoundXAdmin();
+  if (isPending) return <div className="h-10 w-24 animate-pulse rounded-md bg-fg/8" />;
+  if (!user) return null;
+  return (
+    <div className="flex items-center gap-2">
+      {looksLikeCompanyX(user.displayName) ? (
+        <p className="flex items-center gap-2 text-sm font-medium text-medium">
+          <CompanyAvatar size={28} className="h-7 w-7" />
+          {COMPANY_X_NAME}
+          {COMPANY_X_HANDLE ? (
+            <span className="ml-1 font-mono text-xs text-muted">{COMPANY_X_HANDLE}</span>
+          ) : null}
+        </p>
+      ) : xVerified ? (
+        <span className="x-admin-name max-w-[11rem] truncate text-sm sm:max-w-none">
+          {ADMIN_X_NAME}
+          <span className="ml-1.5 hidden font-mono text-[11px] font-medium sm:inline">
+            {ADMIN_X_HANDLE}
+          </span>
+        </span>
+      ) : null}
+      <UserButton hideLabel={xVerified || looksLikeCompanyX(user.displayName)} />
+    </div>
+  );
+}
+
+export function Panel({
+  title,
+  kicker,
+  className,
+  titleClass,
+  kickerClass,
+  children,
+}: {
+  title: ReactNode;
+  kicker?: string;
+  className?: string;
+  titleClass?: string;
+  kickerClass?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      className={cn(
+        "rounded-lg border border-rule bg-surface p-4 shadow-[var(--shadow-border)] sm:p-5",
+        className,
+      )}
+    >
+      <header className="mb-3">
+        {kicker ? (
+          <p className={cn("text-xs font-medium tracking-[0.08em] uppercase", kickerClass || "text-muted")}>
+            {kicker}
+          </p>
+        ) : null}
+        <h2 className={cn("text-sm font-semibold tracking-tight sm:text-base", titleClass || "text-fg")}>{title}</h2>
+      </header>
+      {children}
+    </section>
+  );
+}
