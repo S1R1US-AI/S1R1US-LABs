@@ -6,6 +6,8 @@
 
 Site (live): https://s1r1us.ai
 
+Official company X: [@S1R1US_AI](https://x.com/S1R1US_AI) — brand account, not admin. @S1R1S_AI is not the official desk.
+
 Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 
 License: Apache License 2.0
@@ -46,7 +48,7 @@ Hover titles use the leet name plus the plain alias.
 
 Public URLs: https://s1r1us.ai/ · `/gm` · `/owl` · `/b3ars` · `/f33d` · `/helios` · `/faq` · `/terms` · `/privacy` · `/sitemap` · `/agent` · `/compute` · `/llms.txt` · `/sitemap.xml`
 
-Company desk on X: [@S1R1S_AI](https://x.com/S1R1S_AI) — brand account, not admin.
+Company desk on X: [@S1R1US_AI](https://x.com/S1R1US_AI) — brand account, not admin. @S1R1S_AI is not the official desk.
 
 ## T0K3N L@UNCH (Token launch)
 
