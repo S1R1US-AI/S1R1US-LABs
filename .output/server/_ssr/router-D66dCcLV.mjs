@@ -749,9 +749,9 @@ var Route$16 = createFileRoute("/renew")({
 	component: lazyRouteComponent($$splitComponentImporter$12, "component")
 });
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DVNYqur9.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-AaVDRjD-.js
 var isMarketingHost = createServerFn({ method: "GET" }).handler(createSsrRpc("b78068c75690078e5a681d6804197292c06c5c9a8df7947d062d4d2a7ebd9393"));
-var $$splitComponentImporter$11 = () => import("./routes-BZ70dNlh.mjs");
+var $$splitComponentImporter$11 = () => import("./routes-BcQxE3iK.mjs");
 var Route$15 = createFileRoute("/")({
 	beforeLoad: async () => isMarketingHost(),
 	head: () => ({
@@ -778,8 +778,8 @@ var Route$15 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$11, "component")
 });
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BM5_sWnr.js
-var router_BM5_sWnr_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+//#region node_modules/.nitro/vite/services/ssr/assets/router-D66dCcLV.js
+var router_D66dCcLV_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 function AppErrorComponent({ error }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 		className: "flex min-h-screen flex-col items-center justify-center gap-3 px-6 text-center bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50",
@@ -1076,7 +1076,7 @@ function PreviewHostBridge() {
 	}, [router]);
 	return null;
 }
-var styles_default = "/assets/styles-DcgVplvh.css";
+var styles_default = "/assets/styles-De7I_6sG.css";
 /** Hostname suitable for absolute og / x-banner URLs. Skip Vercel system hosts. */
 function publicAppHost(hostHeader) {
 	const host = String(hostHeader ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
@@ -1312,7 +1312,7 @@ var Route$6 = createFileRoute("/login")({
 		content: "noindex,nofollow"
 	}] })
 });
-var $$splitComponentImporter$3 = () => import("./s1r1us-CkXRvB9f.mjs");
+var $$splitComponentImporter$3 = () => import("./s1r1us-GGhCFDT3.mjs");
 var Route$5 = createFileRoute("/s1r1us")({
 	component: lazyRouteComponent($$splitComponentImporter$3, "component"),
 	head: () => ({
@@ -1494,4 +1494,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { LEGAL_NFA as a, TERMS_PATH as c, TERMS_UPDATED as d, rainGmBurst as f, getRouter, usePractice as h, LEGAL_HOWEY as i, TERMS_SECTIONS as l, PRACTICE_MS as m, Route$15 as n, LEGAL_USE_IS_AGREEMENT as o, useGm as p, Route$16 as r, TERMS_HOVER as s, router_BM5_sWnr_exports as t, TERMS_TITLE as u };
+export { LEGAL_NFA as a, TERMS_PATH as c, TERMS_UPDATED as d, rainGmBurst as f, getRouter, usePractice as h, LEGAL_HOWEY as i, TERMS_SECTIONS as l, PRACTICE_MS as m, Route$15 as n, LEGAL_USE_IS_AGREEMENT as o, useGm as p, Route$16 as r, TERMS_HOVER as s, router_D66dCcLV_exports as t, TERMS_TITLE as u };

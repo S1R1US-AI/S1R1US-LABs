@@ -9,7 +9,7 @@ import { i as signOut, r as signIn } from "./client-CVqXY6bk.mjs";
 import { a as XRenewWhenAdmin, m as useCurrentUserState, n as Button, p as useCurrentUser, s as cn } from "./renew-password-CkoXvjlb.mjs";
 import { i as GROK_PROVIDERS } from "./server-BXTHZoU1.mjs";
 import { d as Lock, l as LogOut, u as LogIn } from "../_libs/lucide-react.mjs";
-import { a as LEGAL_NFA, c as TERMS_PATH, f as rainGmBurst, o as LEGAL_USE_IS_AGREEMENT, s as TERMS_HOVER, u as TERMS_TITLE } from "./router-BM5_sWnr.mjs";
+import { a as LEGAL_NFA, c as TERMS_PATH, f as rainGmBurst, o as LEGAL_USE_IS_AGREEMENT, s as TERMS_HOVER, u as TERMS_TITLE } from "./router-D66dCcLV.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/shell-ORcVF3D4.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

@@ -1,7 +1,7 @@
 import { o as __toESM } from "../_runtime.mjs";
-import { H as require_react, x as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
+import { H as require_react, v as Link, x as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { s as COMPANY_X_HANDLE, u as COMPANY_X_URL } from "./x-admin-Dt29NgIk.mjs";
-import { T as TAB_DESK, i as LABS_NAME, k as TAB_GM, n as APP_NAME, r as BOT7_NAME } from "./brand-iv-XZ0o2.mjs";
+import { M as TAB_HOVER_FEED, N as TAB_HOVER_GM, T as TAB_DESK, i as LABS_NAME, k as TAB_GM, n as APP_NAME, r as BOT7_NAME } from "./brand-iv-XZ0o2.mjs";
 import { S as overlayBars } from "./proxy-book-Jkuj-VKA.mjs";
 import { n as runBots, t as heliosCall } from "./signal-BqWu6ECB.mjs";
 import { t as DESK_POLL_MS } from "./poll-ByA4PSVX.mjs";
@@ -15,7 +15,7 @@ import { t as rollBots } from "./roll-bots-oeAzwiGo.mjs";
 import { t as SeoCopy } from "./seo-copy-BYIzP5_n.mjs";
 import { t as LiveTracks } from "./live-tracks-Cgs4VDpT.mjs";
 import { a as YAxis, c as Line, d as Bar, g as Tooltip, h as ResponsiveContainer, i as LineChart, l as CartesianGrid, m as Cell, o as XAxis, p as Customized, t as ComposedChart, u as ReferenceLine } from "../_libs/recharts+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/s1r1us-site-DcbWeDsq.js
+//#region node_modules/.nitro/vite/services/ssr/assets/s1r1us-site-CfH0uQik.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function HelloWorld() {
@@ -130,8 +130,11 @@ function HelloWorld() {
 					className: "text-muted",
 					children: "(load full access); return; run="
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-medium",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+					to: "/gm",
+					title: TAB_HOVER_GM,
+					"aria-label": TAB_HOVER_GM,
+					className: "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2",
 					children: "[MaX1UM G@1Ns]"
 				}),
 				"\n",
@@ -143,8 +146,11 @@ function HelloWorld() {
 					className: "text-muted",
 					children: "(send max profits); return; run="
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-medium",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+					to: "/f33d",
+					title: TAB_HOVER_FEED,
+					"aria-label": TAB_HOVER_FEED,
+					className: "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2",
 					children: "[S3Nd 2 BTC Wall3t]"
 				}),
 				"\n",

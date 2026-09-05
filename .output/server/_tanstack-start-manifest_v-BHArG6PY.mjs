@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-D11j2dFy.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BHArG6PY.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspace/src/routes/__root.tsx",
@@ -21,7 +21,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/api/auth/$"
 		],
 		preloads: [
-			"/assets/index-BlRz4EdH.js",
+			"/assets/index-BsWBMy9q.js",
 			"/assets/rolldown-runtime-hePW80VL.js",
 			"/assets/client-B0yiJabO.js",
 			"/assets/brand-DAz020Da.js",
@@ -34,35 +34,35 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-BlRz4EdH.js"
+			src: "/assets/index-BsWBMy9q.js"
 		} }]
 	},
 	"/": {
 		filePath: "/workspace/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-DFkjJ5eq.js",
+			"/assets/routes-DFHPYOPE.js",
 			"/assets/helios-card-CPPeFIV_.js",
 			"/assets/shell-scYADPuR.js",
 			"/assets/renew-password-CuHlfnGQ.js",
-			"/assets/roll-bots-B57fl2Eb.js",
+			"/assets/roll-bots-BSCoj6Ca.js",
 			"/assets/grok-s5c0xvSB.js",
 			"/assets/seo-copy-BfaNl058.js",
 			"/assets/live-tracks-hT0ecJh1.js",
-			"/assets/s1r1us-site-1WxFAYPO.js"
+			"/assets/s1r1us-site-D3d5B4-h.js"
 		]
 	},
 	"/admin": {
 		filePath: "/workspace/src/routes/admin.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/admin-zXxWhHJB.js",
+			"/assets/admin-DKucYtJy.js",
 			"/assets/helios-card-CPPeFIV_.js",
 			"/assets/shell-scYADPuR.js",
 			"/assets/renew-password-CuHlfnGQ.js",
 			"/assets/launch-desk-B6aU6pEF.js",
 			"/assets/system-overview-jm2q1QES.js",
-			"/assets/roll-bots-B57fl2Eb.js",
+			"/assets/roll-bots-BSCoj6Ca.js",
 			"/assets/grok-s5c0xvSB.js"
 		]
 	},
@@ -91,11 +91,11 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspace/src/routes/gm.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/gm-BwY89LCK.js",
+			"/assets/gm-CbTHyrJD.js",
 			"/assets/helios-card-CPPeFIV_.js",
 			"/assets/shell-scYADPuR.js",
 			"/assets/renew-password-CuHlfnGQ.js",
-			"/assets/roll-bots-B57fl2Eb.js",
+			"/assets/roll-bots-BSCoj6Ca.js",
 			"/assets/seo-copy-BfaNl058.js",
 			"/assets/live-tracks-hT0ecJh1.js"
 		]
@@ -131,12 +131,12 @@ var tsrStartManifest = () => ({ routes: {
 	"/renew": {
 		filePath: "/workspace/src/routes/renew.tsx",
 		children: void 0,
-		preloads: ["/assets/renew-CqaWxwvj.js", "/assets/renew-password-CuHlfnGQ.js"]
+		preloads: ["/assets/renew-CmuJo94A.js", "/assets/renew-password-CuHlfnGQ.js"]
 	},
 	"/s1r1us": {
 		filePath: "/workspace/src/routes/s1r1us.tsx",
 		children: void 0,
-		preloads: ["/assets/s1r1us-BjyUztQm.js", "/assets/s1r1us-site-1WxFAYPO.js"]
+		preloads: ["/assets/s1r1us-CaKkDmwD.js", "/assets/s1r1us-site-D3d5B4-h.js"]
 	},
 	"/sitemap": {
 		filePath: "/workspace/src/routes/sitemap.tsx",

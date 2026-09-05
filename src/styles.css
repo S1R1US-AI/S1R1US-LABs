@@ -144,6 +144,7 @@
   }
 }
 
+/* RSI vs tape average — unlayered so they beat body color. */
 .rsi-below {
   color: #ff1f1f !important;
 }
@@ -163,6 +164,15 @@
 }
 .coinbase-orange {
   color: #ff8a1f !important;
+}
+a.coinbase-orange,
+a.coinbase-orange:link,
+a.coinbase-orange:visited,
+a.coinbase-orange:hover,
+a.coinbase-orange:active,
+a.coinbase-orange:focus {
+  color: #ff8a1f !important;
+  text-decoration-color: #ff8a1f;
 }
 .asia-hashkey {
   color: #c77dff !important;
