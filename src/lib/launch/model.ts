@@ -501,11 +501,11 @@ export const COMPANY_X_STEPS = [
 ] as const;
 
 export const DNS_STEPS = [
-  "Do this today: GoDaddy → s1r1us.ai → lock the domain, turn on auto-renew, enable GoDaddy 2FA (not Google Authenticator if you can use a Yubi / app you already trust). Do not transfer nameservers yet.",
-  "Do not use GoDaddy Airo / AI website builder. It is a generic WordPress stack — wrong for a token + bitcoin desk (plugins, shared login, no Yubi on this host).",
-  "Leave nameservers on GoDaddy until the public s1r1us.ai page is ready. Optional: one A record to a parked “coming soon” only if you want the name to resolve.",
-  "When the token site is built: preview path /s1r1us. After publish, CNAME s1r1us.ai (and www) to the live host. Apex A/AAAA if the host requires it. No MX until you have a mailbox you control.",
-  `Never put admin, Wallet, seeds, Yubi, Coinbase keys, or the trading book behind this hostname. s1r1us.ai is public marketing + disclaimer only. ${TAB_DESK} and ${TAB_LAB} stay gated.`,
+  "Nameservers stay on GoDaddy. Do not transfer them to DigitalOcean.",
+  "Apex and www A records: 162.159.140.98 and 172.66.0.96 (both). TTL ½ hour is fine.",
+  "Delete any leftover Vercel A (76.76.21.21) or cname.vercel-dns.com.",
+  "DigitalOcean app: Settings → Domains → add s1r1us.ai (and www). TLS issues only after a green deploy + domain attach.",
+  `Never put Wallet, seeds, Yubi, or Coinbase keys on the public hostname. s1r1us.ai is the public tape. ${TAB_DESK} and ${TAB_LAB} stay gated.`,
 ] as const;
 
 export const DOMAINS = [
