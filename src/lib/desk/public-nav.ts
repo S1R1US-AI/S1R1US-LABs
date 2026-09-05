@@ -10,6 +10,7 @@ import {
   TAB_LAB,
 } from "@/lib/brand";
 import { COMPANY_X_HANDLE, companyHandleSet } from "@/lib/desk/x-admin";
+import { SUPPORT_BLURB, SUPPORT_BTC, SUPPORT_USDC } from "@/lib/desk/support";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
 
@@ -108,5 +109,9 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "What data does the 7-bot tape use?",
     a: "Free public sources only (Coinbase, FRED, mempool, public perps, ETF/DAT pages, and similar). SuperGrok is the only paid service. No CoinGlass key is required for the public long/short heatmap.",
+  },
+  {
+    q: "How can I support hosting and the apps?",
+    a: `${SUPPORT_BLURB} Bitcoin (BTC): ${SUPPORT_BTC}. USDC on Ethereum (ERC-20): ${SUPPORT_USDC}. Send only those assets to those addresses.`,
   },
 ];
