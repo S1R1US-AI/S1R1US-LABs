@@ -1,58 +1,50 @@
 # Publish [ S1R1U$ <<L@B$>> ] — GitHub + DigitalOcean
 
 Repo: https://github.com/S1R1US-AI/S1R1US-LABs  
-Site: https://s1r1us.ai (attach the domain after the first green deploy)
+Site: https://s1r1us.ai
 
 ## What this repo is
 
 Node 22 web desk. Docker build uses `NITRO_PRESET=node-server` and listens on **8080**.  
 Do **not** commit wallets, CDP secrets, Yubi seeds, `.env`, or `*.pass.txt`.
 
-## 1. Put this tree on `main`
+## DigitalOcean App Platform
 
-GitHub → **Add file** → **Upload files** (or GitHub Desktop).  
-Need at the **root** of `main`:
+1. GitHub `S1R1US-AI/S1R1US-LABs` branch **`main`**
+2. Source directory **blank** (never `/`)
+3. Dockerfile at repo root, HTTP **8080**
+4. Autodeploy **off**
+5. Size: **1 vCPU / 1 GB**
+6. App spec: use `.do/app.yaml` (service name `web`, no buildpack stack)
+7. `NODE_ENV=production` **run time only**. No `NODE_OPTIONS`. No database.
+8. Deploy until logs show `[s1r1us] npm install ok` then `[s1r1us] vite build ok`
 
-- `package.json`
-- `package-lock.json`
-- `Dockerfile`
-- `src/`
-- `public/`
-- `scripts/`
-- `server/`
-- `migrations/`
-- `vite.config.ts`
+## GoDaddy DNS (already set)
 
-Replace the stub `package.json` (`echo skip`) with this one.
+Nameservers stay on GoDaddy. Do not change them.
 
-## 2. DigitalOcean App Platform
+| Type | Name | Value | TTL |
+|---|---|---|---|
+| A | `@` | `162.159.140.98` | ½ hour |
+| A | `@` | `172.66.0.96` | ½ hour |
+| A | `www` | `162.159.140.98` | ½ hour |
+| A | `www` | `172.66.0.96` | ½ hour |
 
-1. Create app from **GitHub** → `S1R1US-AI/S1R1US-LABs` → branch **`main`**
-2. Source directory **blank**
-3. Autodeploy **off**
-4. Resource: **Dockerfile** (not a guessed Node build)
-5. HTTP port **8080**
-6. Size: **1 vCPU / 1 GB / 1 container** to start
-7. Create. Wait for a green deploy before DNS.
+Delete leftover Vercel A `76.76.21.21` and `cname.vercel-dns.com`.
 
-If a deploy dies in under a minute: a 1.5 GB Node heap was set on the 1 GB box and V8 exits immediately. That is removed. Also skip Playwright and native install scripts. Click **Deploy** again. You should see `[s1r1us] npm install ok` then `[s1r1us] vite build ok`. Do **not** add a `NODE_OPTIONS` env var in the dashboard.
+Then DigitalOcean **Settings → Domains → add s1r1us.ai** (and www). TLS issues only after a **green** deploy + that attach.
 
-## 3. Domain (wait for the exact DNS)
+## Env on DigitalOcean (dashboard, not GitHub)
 
-After the app is live, DigitalOcean shows a hostname like `s1r1us-labs-xxxxx.ondigitalocean.app`.  
-Then in GoDaddy, point `s1r1us.ai` at **that** hostname (not the old Vercel values).  
-Paste the DigitalOcean DNS rows here when you have them — do not guess A/CNAME.
-
-## 4. Env on DigitalOcean (dashboard, not GitHub)
-
-| Key | Value |
-|---|---|
-| `NODE_ENV` | `production` |
-| `VITE_AUTH_ENABLED` | `true` |
-| `XAI_API_KEY` | only if Ask Grok should work in prod — never commit it |
+| Key | Value | Scope |
+|---|---|---|
+| `NODE_ENV` | `production` | run time |
+| `VITE_AUTH_ENABLED` | `true` | build + run |
+| `BETTER_AUTH_URL` | `https://s1r1us.ai` | run time |
+| `XAI_API_KEY` | only if Ask Grok should work in prod | run time — never commit |
 
 No `DATABASE_URL` is required at start. PGLite migrates itself.
 
-## 5. iOS
+## iOS
 
-Same URL. Safari → Share → Add to Home Screen. No extra RAM plan.
+Same URL. Safari → Share → Add to Home Screen.
