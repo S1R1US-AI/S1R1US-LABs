@@ -12,7 +12,11 @@ export function SitemapPage() {
         <p className="font-mono text-xs tracking-[0.12em] text-oss uppercase">Sitemap</p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Public pages for {LABS_NAME}. Machine sitemap:{" "}
+          Public pages for {LABS_NAME}. Home is{" "}
+          <a className="text-oss hover:underline" href="https://s1r1us.ai/">
+            https://s1r1us.ai/
+          </a>
+          — not /heliosbot. Machine sitemap:{" "}
           <a className="text-oss hover:underline" href="/sitemap.xml">
             sitemap.xml
           </a>

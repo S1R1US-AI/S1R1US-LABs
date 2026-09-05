@@ -1,5 +1,23 @@
 String.fromCharCode;
+var HASH_RE = /#/g;
+var AMPERSAND_RE = /&/g;
+var SLASH_RE = /\//g;
+var EQUAL_RE = /=/g;
+var PLUS_RE = /\+/g;
+var ENC_CARET_RE = /%5e/gi;
+var ENC_BACKTICK_RE = /%60/gi;
+var ENC_PIPE_RE = /%7c/gi;
+var ENC_SPACE_RE = /%20/gi;
 var ENC_SLASH_RE = /%2f/gi;
+function encode(text) {
+	return encodeURI("" + text).replace(ENC_PIPE_RE, "|");
+}
+function encodeQueryValue(input) {
+	return encode(typeof input === "string" ? input : JSON.stringify(input)).replace(PLUS_RE, "%2B").replace(ENC_SPACE_RE, "+").replace(HASH_RE, "%23").replace(AMPERSAND_RE, "%26").replace(ENC_BACKTICK_RE, "`").replace(ENC_CARET_RE, "^").replace(SLASH_RE, "%2F");
+}
+function encodeQueryKey(text) {
+	return encodeQueryValue(text).replace(EQUAL_RE, "%3D");
+}
 function decode(text = "") {
 	try {
 		return decodeURIComponent("" + text);
@@ -10,8 +28,46 @@ function decode(text = "") {
 function decodePath(text) {
 	return decode(text.replace(ENC_SLASH_RE, "%252F"));
 }
+function decodeQueryKey(text) {
+	return decode(text.replace(PLUS_RE, " "));
+}
+function decodeQueryValue(text) {
+	return decode(text.replace(PLUS_RE, " "));
+}
+function parseQuery(parametersString = "") {
+	const object = /* @__PURE__ */ Object.create(null);
+	if (parametersString[0] === "?") parametersString = parametersString.slice(1);
+	for (const parameter of parametersString.split("&")) {
+		const s = parameter.match(/([^=]+)=?(.*)/) || [];
+		if (s.length < 2) continue;
+		const key = decodeQueryKey(s[1]);
+		if (key === "__proto__" || key === "constructor") continue;
+		const value = decodeQueryValue(s[2] || "");
+		if (object[key] === void 0) object[key] = value;
+		else if (Array.isArray(object[key])) object[key].push(value);
+		else object[key] = [object[key], value];
+	}
+	return object;
+}
+function encodeQueryItem(key, value) {
+	if (typeof value === "number" || typeof value === "boolean") value = String(value);
+	if (!value) return encodeQueryKey(key);
+	if (Array.isArray(value)) return value.map((_value) => `${encodeQueryKey(key)}=${encodeQueryValue(_value)}`).join("&");
+	return `${encodeQueryKey(key)}=${encodeQueryValue(value)}`;
+}
+function stringifyQuery(query) {
+	return Object.keys(query).filter((k) => query[k] !== void 0).map((k) => encodeQueryItem(k, query[k])).filter(Boolean).join("&");
+}
+var PROTOCOL_STRICT_REGEX = /^[\s\w\0+.-]{2,}:([/\\]{1,2})/;
+var PROTOCOL_REGEX = /^[\s\w\0+.-]{2,}:([/\\]{2})?/;
+var PROTOCOL_RELATIVE_REGEX = /^([/\\]\s*){2,}[^/\\]/;
 var TRAILING_SLASH_RE = /\/$|\/\?|\/#/;
 var JOIN_LEADING_SLASH_RE = /^\.?\//;
+function hasProtocol(inputString, opts = {}) {
+	if (typeof opts === "boolean") opts = { acceptRelative: opts };
+	if (opts.strict) return PROTOCOL_STRICT_REGEX.test(inputString);
+	return PROTOCOL_REGEX.test(inputString) || (opts.acceptRelative ? PROTOCOL_RELATIVE_REGEX.test(inputString) : false);
+}
 function hasTrailingSlash(input = "", respectQueryAndFragment) {
 	if (!respectQueryAndFragment) return input.endsWith("/");
 	return TRAILING_SLASH_RE.test(input);
@@ -49,6 +105,25 @@ function hasLeadingSlash(input = "") {
 function withLeadingSlash(input = "") {
 	return hasLeadingSlash(input) ? input : "/" + input;
 }
+function withoutBase(input, base) {
+	if (isEmptyURL(base)) return input;
+	const _base = withoutTrailingSlash(base);
+	if (!input.startsWith(_base)) return input;
+	const nextChar = input[_base.length];
+	if (nextChar && nextChar !== "/" && nextChar !== "?") return input;
+	return "/" + input.slice(_base.length).replace(/^\/+/, "");
+}
+function withQuery(input, query) {
+	const parsed = parseURL(input);
+	parsed.search = stringifyQuery({
+		...parseQuery(parsed.search),
+		...query
+	});
+	return stringifyParsedURL(parsed);
+}
+function isEmptyURL(url) {
+	return !url || url === "/";
+}
 function isNonEmptyURL(url) {
 	return url && url !== "/";
 }
@@ -60,5 +135,51 @@ function joinURL(base, ...input) {
 	} else url = segment;
 	return url;
 }
+var protocolRelative = Symbol.for("ufo:protocolRelative");
+function parseURL(input = "", defaultProto) {
+	const _specialProtoMatch = input.match(/^[\s\0]*(blob:|data:|javascript:|vbscript:)(.*)/i);
+	if (_specialProtoMatch) {
+		const [, _proto, _pathname = ""] = _specialProtoMatch;
+		return {
+			protocol: _proto.toLowerCase(),
+			pathname: _pathname,
+			href: _proto + _pathname,
+			auth: "",
+			host: "",
+			search: "",
+			hash: ""
+		};
+	}
+	if (!hasProtocol(input, { acceptRelative: true })) return defaultProto ? parseURL(defaultProto + input) : parsePath(input);
+	const [, protocol = "", auth, hostAndPath = ""] = input.replace(/\\/g, "/").match(/^[\s\0]*([\w+.-]{2,}:)?\/\/([^/@]+@)?(.*)/) || [];
+	let [, host = "", path = ""] = hostAndPath.match(/([^#/?]*)(.*)?/) || [];
+	if (protocol === "file:") path = path.replace(/\/(?=[A-Za-z]:)/, "");
+	const { pathname, search, hash } = parsePath(path);
+	return {
+		protocol: protocol.toLowerCase(),
+		auth: auth ? auth.slice(0, Math.max(0, auth.length - 1)) : "",
+		host,
+		pathname,
+		search,
+		hash,
+		[protocolRelative]: !protocol
+	};
+}
+function parsePath(input = "") {
+	const [pathname = "", search = "", hash = ""] = (input.match(/([^#?]*)(\?[^#]*)?(#.*)?/) || []).splice(1);
+	return {
+		pathname,
+		search,
+		hash
+	};
+}
+function stringifyParsedURL(parsed) {
+	const pathname = parsed.pathname || "";
+	const search = parsed.search ? (parsed.search.startsWith("?") ? "" : "?") + parsed.search : "";
+	const hash = parsed.hash || "";
+	const auth = parsed.auth ? parsed.auth + "@" : "";
+	const host = parsed.host || "";
+	return (parsed.protocol || parsed[protocolRelative] ? (parsed.protocol || "") + "//" : "") + auth + host + pathname + search + hash;
+}
 //#endregion
-export { withoutTrailingSlash as i, joinURL as n, withLeadingSlash as r, decodePath as t };
+export { withoutBase as a, withQuery as i, joinURL as n, withoutTrailingSlash as o, withLeadingSlash as r, decodePath as t };

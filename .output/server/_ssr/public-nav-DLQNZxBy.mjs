@@ -1,7 +1,7 @@
 import { d as companyHandleSet, s as COMPANY_X_HANDLE } from "./x-admin-CatUfmqE.mjs";
 import { C as SEO_TAB_TOKEN, E as TAB_FEED, S as SEO_TAB_LAB, T as TAB_DESK, V as TAB_LAB, W as TAB_TOKEN, b as SEO_TAB_FEED, d as PAGE_TITLE_FEED, f as PAGE_TITLE_GM, g as SEO_CANONICAL, i as LABS_NAME, k as TAB_GM, m as PAGE_TITLE_SITEMAP, n as APP_NAME, p as PAGE_TITLE_LAB, u as PAGE_TITLE_FAQ, x as SEO_TAB_GM, y as SEO_TAB_DESK } from "./brand-CZvw9Xkc.mjs";
 import { a as SUPPORT_USDC, c as SUPPORT_USDC_LABEL, i as SUPPORT_GIFT_RECEIPT, n as SUPPORT_BTC, t as SUPPORT_BLURB } from "./support-BaXNoFIA.mjs";
-import { c as TERMS_PATH, u as TERMS_TITLE } from "./router-DjJwDK72.mjs";
+import { c as TERMS_PATH, u as TERMS_TITLE } from "./router-B1ha_hGn.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/public-nav-DLQNZxBy.js
 var origin = SEO_CANONICAL.replace(/\/$/, "");
 var PUBLIC_PAGES = [

@@ -3,7 +3,7 @@ import { T as TAB_DESK, g as SEO_CANONICAL, i as LABS_NAME, n as APP_NAME } from
 import { c as Shell, s as Panel } from "./shell-DTaa_kk7.mjs";
 import { t as SeoCopy } from "./seo-copy-XtQl8wFq.mjs";
 import { n as PUBLIC_PAGES } from "./public-nav-DLQNZxBy.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/sitemap-CbyFl58f.js
+//#region node_modules/.nitro/vite/services/ssr/assets/sitemap-D_84UQNt.js
 var import_jsx_runtime = require_jsx_runtime();
 function SitemapPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Shell, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SeoCopy, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
@@ -22,7 +22,14 @@ function SitemapPage() {
 				children: [
 					"Public pages for ",
 					LABS_NAME,
-					". Machine sitemap:",
+					". Home is",
+					" ",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+						className: "text-oss hover:underline",
+						href: "https://s1r1us.ai/",
+						children: "https://s1r1us.ai/"
+					}),
+					"— not /heliosbot. Machine sitemap:",
 					" ",
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 						className: "text-oss hover:underline",

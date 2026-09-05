@@ -14,7 +14,7 @@ import { a as bannerTone, o as money, t as CallWords } from "./helios-card-H7au5
 import { t as rollBots } from "./roll-bots-CY-U9Qjm.mjs";
 import { t as SeoCopy } from "./seo-copy-XtQl8wFq.mjs";
 import { t as LiveTracks } from "./live-tracks-2odalT_J.mjs";
-import { p as useGm } from "./router-DjJwDK72.mjs";
+import { p as useGm } from "./router-B1ha_hGn.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/gm-BLKyj7qm.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

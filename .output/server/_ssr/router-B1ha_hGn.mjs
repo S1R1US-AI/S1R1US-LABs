@@ -467,7 +467,7 @@ var TERMS_SECTIONS = [
 //#endregion
 //#region node_modules/.nitro/vite/services/ssr/assets/renew-DU18IE5S.js
 var $$splitComponentImporter$12 = () => import("./renew-CltxDT8Z.mjs");
-var Route$16 = createFileRoute("/renew")({
+var Route$17 = createFileRoute("/renew")({
 	validateSearch: (s) => ({ t: typeof s.t === "string" ? s.t : "" }),
 	head: () => ({ meta: [{ title: `${APP_NAME} renew` }, {
 		name: "robots",
@@ -479,7 +479,7 @@ var Route$16 = createFileRoute("/renew")({
 //#region node_modules/.nitro/vite/services/ssr/assets/routes-DRx-7nVy.js
 var isMarketingHost = createServerFn({ method: "GET" }).handler(createSsrRpc("b78068c75690078e5a681d6804197292c06c5c9a8df7947d062d4d2a7ebd9393"));
 var $$splitComponentImporter$11 = () => import("./routes-suYI32l0.mjs");
-var Route$15 = createFileRoute("/")({
+var Route$16 = createFileRoute("/")({
 	beforeLoad: async () => isMarketingHost(),
 	head: () => ({
 		meta: [
@@ -505,8 +505,8 @@ var Route$15 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$11, "component")
 });
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-DjJwDK72.js
-var router_DjJwDK72_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+//#region node_modules/.nitro/vite/services/ssr/assets/router-B1ha_hGn.js
+var router_B1ha_hGn_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 function AppErrorComponent({ error }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 		className: "flex min-h-screen flex-col items-center justify-center gap-3 px-6 text-center bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50",
@@ -803,7 +803,7 @@ function PreviewHostBridge() {
 	}, [router]);
 	return null;
 }
-var styles_default = "/assets/styles-b0HeCQqT.css";
+var styles_default = "/assets/styles-aCvS0O_X.css";
 /** Hostname suitable for absolute og / x-banner URLs. Skip Vercel system hosts. */
 function publicAppHost(hostHeader) {
 	const host = String(hostHeader ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
@@ -821,7 +821,7 @@ function xBannerAbsUrl(hostHeader) {
 	if (!host) return void 0;
 	return `https://${host}/x-banner.jpg`;
 }
-var Route$14 = createRootRoute({
+var Route$15 = createRootRoute({
 	head: () => {
 		const xBanner = xBannerAbsUrl();
 		return {
@@ -919,7 +919,7 @@ function DeskChrome() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MatrixSaver, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PracticeEngine, {})] });
 }
 var $$splitComponentImporter$10 = () => import("./admin-Dg88Hb-Z.mjs");
-var Route$13 = createFileRoute("/admin")({
+var Route$14 = createFileRoute("/admin")({
 	component: lazyRouteComponent($$splitComponentImporter$10, "component"),
 	head: () => ({ meta: [{ title: `Admin · ${APP_NAME}` }, {
 		name: "robots",
@@ -927,7 +927,7 @@ var Route$13 = createFileRoute("/admin")({
 	}] })
 });
 var $$splitComponentImporter$9 = () => import("./f33d-CX00WuIZ.mjs");
-var Route$12 = createFileRoute("/f33d")({
+var Route$13 = createFileRoute("/f33d")({
 	component: lazyRouteComponent($$splitComponentImporter$9, "component"),
 	head: () => ({
 		meta: [
@@ -952,7 +952,7 @@ var Route$12 = createFileRoute("/f33d")({
 	})
 });
 var $$splitComponentImporter$8 = () => import("./faq-BF1lTVPS.mjs");
-var Route$11 = createFileRoute("/faq")({
+var Route$12 = createFileRoute("/faq")({
 	component: lazyRouteComponent($$splitComponentImporter$8, "component"),
 	head: () => ({
 		meta: [
@@ -977,7 +977,7 @@ var Route$11 = createFileRoute("/faq")({
 	})
 });
 var $$splitComponentImporter$7 = () => import("./gm-BLKyj7qm.mjs");
-var Route$10 = createFileRoute("/gm")({
+var Route$11 = createFileRoute("/gm")({
 	component: lazyRouteComponent($$splitComponentImporter$7, "component"),
 	head: () => ({
 		meta: [
@@ -1001,11 +1001,11 @@ var Route$10 = createFileRoute("/gm")({
 		}]
 	})
 });
-var Route$9 = createFileRoute("/guide")({ beforeLoad: () => {
+var Route$10 = createFileRoute("/guide")({ beforeLoad: () => {
 	throw redirect({ to: "/admin" });
 } });
 var $$splitComponentImporter$6 = () => import("./helios-CzwGDD0M.mjs");
-var Route$8 = createFileRoute("/helios")({
+var Route$9 = createFileRoute("/helios")({
 	component: lazyRouteComponent($$splitComponentImporter$6, "component"),
 	head: () => ({
 		meta: [
@@ -1029,6 +1029,13 @@ var Route$8 = createFileRoute("/helios")({
 		}]
 	})
 });
+/** Old / mistaken path. Apex home is https://s1r1us.ai/ — not /heliosbot. */
+var Route$8 = createFileRoute("/heliosbot")({ beforeLoad: () => {
+	throw redirect({
+		to: "/",
+		replace: true
+	});
+} });
 var $$splitComponentImporter$5 = () => import("./launch-BphYstUg.mjs");
 var Route$7 = createFileRoute("/launch")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
 var $$splitComponentImporter$4 = () => import("./login-Ddvot1Tk.mjs");
@@ -1070,7 +1077,7 @@ var Route$4 = createFileRoute("/security")({ beforeLoad: () => {
 		hash: "access"
 	});
 } });
-var $$splitComponentImporter$2 = () => import("./sitemap-CbyFl58f.mjs");
+var $$splitComponentImporter$2 = () => import("./sitemap-D_84UQNt.mjs");
 var Route$3 = createFileRoute("/sitemap")({
 	component: lazyRouteComponent($$splitComponentImporter$2, "component"),
 	head: () => ({
@@ -1148,88 +1155,93 @@ var Route = createFileRoute("/api/auth/$")({ server: { handlers: {
 	POST: ({ request }) => handleAuth(request)
 } } });
 var rootRouteChildren = {
-	IndexRoute: Route$15.update({
+	IndexRoute: Route$16.update({
 		id: "/",
 		path: "/",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
-	AdminRoute: Route$13.update({
+	AdminRoute: Route$14.update({
 		id: "/admin",
 		path: "/admin",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
-	F33dRoute: Route$12.update({
+	F33dRoute: Route$13.update({
 		id: "/f33d",
 		path: "/f33d",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
-	FaqRoute: Route$11.update({
+	FaqRoute: Route$12.update({
 		id: "/faq",
 		path: "/faq",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
-	GmRoute: Route$10.update({
+	GmRoute: Route$11.update({
 		id: "/gm",
 		path: "/gm",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
-	GuideRoute: Route$9.update({
+	GuideRoute: Route$10.update({
 		id: "/guide",
 		path: "/guide",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
-	HeliosRoute: Route$8.update({
+	HeliosRoute: Route$9.update({
 		id: "/helios",
 		path: "/helios",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
+	}),
+	HeliosbotRoute: Route$8.update({
+		id: "/heliosbot",
+		path: "/heliosbot",
+		getParentRoute: () => Route$15
 	}),
 	LaunchRoute: Route$7.update({
 		id: "/launch",
 		path: "/launch",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
 	LoginRoute: Route$6.update({
 		id: "/login",
 		path: "/login",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
-	RenewRoute: Route$16.update({
+	RenewRoute: Route$17.update({
 		id: "/renew",
 		path: "/renew",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
 	S1r1usRoute: Route$5.update({
 		id: "/s1r1us",
 		path: "/s1r1us",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
 	SecurityRoute: Route$4.update({
 		id: "/security",
 		path: "/security",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
 	SitemapRoute: Route$3.update({
 		id: "/sitemap",
 		path: "/sitemap",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
 	SourceRoute: Route$2.update({
 		id: "/source",
 		path: "/source",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
 	TermsRoute: Route$1.update({
 		id: "/terms",
 		path: "/terms",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	}),
 	ApiAuthSplatRoute: Route.update({
 		id: "/api/auth/$",
 		path: "/api/auth/$",
-		getParentRoute: () => Route$14
+		getParentRoute: () => Route$15
 	})
 };
-var routeTree = Route$14._addFileChildren(rootRouteChildren)._addFileTypes();
+var routeTree = Route$15._addFileChildren(rootRouteChildren)._addFileTypes();
 function getRouter() {
 	return createRouter({
 		routeTree,
@@ -1237,4 +1249,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { LEGAL_NFA as a, TERMS_PATH as c, TERMS_UPDATED as d, rainGmBurst as f, getRouter, LEGAL_HOWEY as i, TERMS_SECTIONS as l, Route$15 as n, LEGAL_USE_IS_AGREEMENT as o, useGm as p, Route$16 as r, TERMS_HOVER as s, router_DjJwDK72_exports as t, TERMS_TITLE as u };
+export { LEGAL_NFA as a, TERMS_PATH as c, TERMS_UPDATED as d, rainGmBurst as f, getRouter, LEGAL_HOWEY as i, TERMS_SECTIONS as l, Route$16 as n, LEGAL_USE_IS_AGREEMENT as o, useGm as p, Route$17 as r, TERMS_HOVER as s, router_B1ha_hGn_exports as t, TERMS_TITLE as u };

@@ -11,7 +11,7 @@ const FEEDS = [
   ["fng", "https://api.alternative.me/fng/?limit=1"],
 ];
 
-const PAGES = ["/", "/login", "/gm", "/f33d", "/faq", "/terms", "/helios", "/sitemap"];
+const PAGES = ["/", "/login", "/gm", "/f33d", "/faq", "/terms", "/helios", "/sitemap", "/heliosbot"];
 
 function ok(name, pass, extra = "") {
   console.log(`${pass ? "OK " : "FAIL"} ${name}${extra ? " " + extra : ""}`);

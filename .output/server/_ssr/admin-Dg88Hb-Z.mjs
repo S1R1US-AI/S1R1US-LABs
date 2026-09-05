@@ -20,7 +20,7 @@ import { t as MANDATE } from "./system-overview-CF4Nrzx0.mjs";
 import { r as probeSiteHealth, t as LaunchDesk } from "./launch-desk-D7F-38r0.mjs";
 import { t as rollBots } from "./roll-bots-CY-U9Qjm.mjs";
 import { n as TapeFreezePanel, r as adminStatus } from "./grok-fWGF5zxB.mjs";
-import { p as useGm } from "./router-DjJwDK72.mjs";
+import { p as useGm } from "./router-B1ha_hGn.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/admin-Dg88Hb-Z.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

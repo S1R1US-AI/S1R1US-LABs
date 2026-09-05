@@ -16,6 +16,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GmRouteImport } from './routes/gm'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as HeliosRouteImport } from './routes/helios'
+import { Route as HeliosbotRouteImport } from './routes/heliosbot'
 import { Route as LaunchRouteImport } from './routes/launch'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RenewRouteImport } from './routes/renew'
@@ -59,6 +60,11 @@ const GuideRoute = GuideRouteImport.update({
 const HeliosRoute = HeliosRouteImport.update({
   id: '/helios',
   path: '/helios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeliosbotRoute = HeliosbotRouteImport.update({
+  id: '/heliosbot',
+  path: '/heliosbot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaunchRoute = LaunchRouteImport.update({
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
   '/helios': typeof HeliosRoute
+  '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
   '/renew': typeof RenewRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
   '/helios': typeof HeliosRoute
+  '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
   '/renew': typeof RenewRoute
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
   '/helios': typeof HeliosRoute
+  '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
   '/renew': typeof RenewRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/gm'
     | '/guide'
     | '/helios'
+    | '/heliosbot'
     | '/launch'
     | '/login'
     | '/renew'
@@ -190,6 +200,7 @@ export interface FileRouteTypes {
     | '/gm'
     | '/guide'
     | '/helios'
+    | '/heliosbot'
     | '/launch'
     | '/login'
     | '/renew'
@@ -208,6 +219,7 @@ export interface FileRouteTypes {
     | '/gm'
     | '/guide'
     | '/helios'
+    | '/heliosbot'
     | '/launch'
     | '/login'
     | '/renew'
@@ -227,6 +239,7 @@ export interface RootRouteChildren {
   GmRoute: typeof GmRoute
   GuideRoute: typeof GuideRoute
   HeliosRoute: typeof HeliosRoute
+  HeliosbotRoute: typeof HeliosbotRoute
   LaunchRoute: typeof LaunchRoute
   LoginRoute: typeof LoginRoute
   RenewRoute: typeof RenewRoute
@@ -287,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/helios'
       fullPath: '/helios'
       preLoaderRoute: typeof HeliosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/heliosbot': {
+      id: '/heliosbot'
+      path: '/heliosbot'
+      fullPath: '/heliosbot'
+      preLoaderRoute: typeof HeliosbotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch': {
@@ -363,6 +383,7 @@ const rootRouteChildren: RootRouteChildren = {
   GmRoute: GmRoute,
   GuideRoute: GuideRoute,
   HeliosRoute: HeliosRoute,
+  HeliosbotRoute: HeliosbotRoute,
   LaunchRoute: LaunchRoute,
   LoginRoute: LoginRoute,
   RenewRoute: RenewRoute,
