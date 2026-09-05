@@ -1,7 +1,7 @@
 import { v as Link, x as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as APP_NAME } from "./brand-iv-XZ0o2.mjs";
 import { r as MailboxRenewForm } from "./renew-password-D361i6FW.mjs";
-import { r as Route } from "./router-Bx9rYVEP.mjs";
+import { r as Route } from "./router-BZMVlr7V.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/renew-BzqQs6Qq.js
 var import_jsx_runtime = require_jsx_runtime();
 function RenewPage() {

@@ -6,7 +6,11 @@ import { isMarketingHost } from "@/lib/launch/host";
 import { SEO_CANONICAL, SEO_DESCRIPTION, SEO_KEYWORDS, SEO_TITLE } from "@/lib/brand";
 
 export const Route = createFileRoute("/")({
-  beforeLoad: async () => isMarketingHost(),
+  beforeLoad: async () => {
+    const { loadSnapshot } = await import("@/lib/desk/sources");
+    void loadSnapshot(true);
+    return isMarketingHost();
+  },
   head: () => ({
     meta: [
       { title: SEO_TITLE },

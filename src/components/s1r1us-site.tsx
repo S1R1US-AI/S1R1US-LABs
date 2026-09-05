@@ -1,4 +1,4 @@
-import { useMemo, type ReactNode } from "react";
+import { useEffect, useMemo, type ReactNode } from "react";
 import { HeliosCard, money } from "@/components/helios-card";
 import { LiveTracks } from "@/components/live-tracks";
 import { HelloWorld } from "@/components/hello-world";
@@ -12,11 +12,17 @@ import { COMPANY_X_HANDLE, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { CompanyXChip } from "@/components/company-x";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { useDeskTape } from "@/lib/desk/tape-client";
+import { rollBots, DESK_POLL_MS } from "@/lib/desk/roll-bots";
 import { COIN_DOMAIN } from "@/lib/launch/model";
 import { cn, BTC_TONE, USD_TONE, fgTone, kimchiTone, rsiTone } from "@/lib/utils";
 
 export function S1r1usSite() {
   const { snap, err } = useDeskTape();
+  useEffect(() => {
+    void rollBots({ force: true });
+    const id = window.setInterval(() => void rollBots(), DESK_POLL_MS);
+    return () => window.clearInterval(id);
+  }, []);
   const briefs = useMemo(() => (snap ? runBots(snap) : []), [snap]);
   const call = useMemo(
     () => (snap ? heliosCall(snap, briefs, 1000) : null),
