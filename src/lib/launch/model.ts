@@ -1,4 +1,4 @@
-import { APP_NAME, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { APP_NAME, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
 import { ADMIN_X_HANDLE, COMPANY_X_BIO, companyHandleSet, COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
 
 /** Token is s1r1us. Project/desk stays [ S1R1U$ <<L@B$>> ]. $ is not DNS or ticker. Domain is s1r1us.ai */
@@ -104,11 +104,11 @@ export const ROADMAP: Milestone[] = [
     n: 0,
     name: "Stealth / Coin tab",
     when: "Now — pre-mint",
-    goal: `Admin-only Coin tab, ${TAB_DESK} + ${TAB_LAB} + ${TAB_GM} practice live, banners staged. No pump.fun name on s1r1us.ai. No Publish.`,
+    goal: `Admin-only Coin tab, ${TAB_DESK} + ${TAB_LAB} + ${TAB_GM} + ${TAB_FEED} on the live tape, banners staged. No pump.fun name on s1r1us.ai. No Publish of mint steps.`,
     minUsd: 0,
     maxUsd: 400,
     publicAfterMint: false,
-    hold: "Domain already bought. SOL dust later. Do not tweet ticker.",
+    hold: "s1r1us.ai is attached and serving the public tape. F33D is hosting/domain donate, not the token. SOL dust later. Do not tweet ticker.",
   },
   {
     id: "m1",
@@ -147,12 +147,12 @@ export const ROADMAP: Milestone[] = [
     id: "m4",
     n: 4,
     name: "Publish s1r1us.ai + X",
-    when: "Only after mint tx confirmed",
-    goal: `Attach domain, ship og/x-banner, company X. Public ${TAB_DESK} tape + FAQ + sitemap + post-mint milestone list. No mint how-to on those pages.`,
+    when: "Domain attached — public tape live. Mint still gated.",
+    goal: `s1r1us.ai + www on App Platform. Public ${TAB_DESK} tape + ${TAB_GM} + ${TAB_FEED} + ${TAB_LAB} + FAQ + sitemap. Hover titles use leet + plain SEO aliases. No mint how-to on those pages.`,
     minUsd: 0,
     maxUsd: 2000,
     publicAfterMint: true,
-    hold: "Site is already built. Max = polish / organic X. Do not Publish before M1.",
+    hold: "Site is live. F33D / FAQ wallets are hosting + app-store fees only — not the trading book and not the token. Max = polish / organic X. Do not put pump.fun on the tape.",
   },
   {
     id: "m5",
@@ -192,11 +192,11 @@ export const ROADMAP: Milestone[] = [
     n: 8,
     name: "Open source the desk",
     when: "STARTED 2026-09-04 — GitHub repository live",
-    goal: `Public https://github.com/S1R1US-AI/S1R1US-LABs for ${TAB_DESK} + ${TAB_LAB} + ${TAB_GM} practice: Apache-2.0, SECURITY.md, GitHub README PDF. Public Sitemap | FAQ | OP3N S0URC3 footer. No mint recipe until TOKEN_LAUNCHED. Operator vault/Yubi stay private.`,
+    goal: `Public https://github.com/S1R1US-AI/S1R1US-LABs for ${TAB_DESK} + ${TAB_LAB} + ${TAB_GM} + ${TAB_FEED} practice: Apache-2.0, SECURITY.md, GitHub README PDF. Public Sitemap | FAQ | OP3N S0URC3 footer. No mint recipe until TOKEN_LAUNCHED. Operator vault/Yubi stay private.`,
     minUsd: 0,
     maxUsd: 2500,
     publicAfterMint: true,
-    hold: "Repo started. Footer: Sitemap | FAQ | H3LP … OP3N S0URC3. Crawler sitemap.xml lists /, /gm, /helios, /s1r1us, /faq, /sitemap. Upload README.md + LICENSE Apache-2.0. PDF: /S1R1US-GitHub-README.pdf. Do not commit admin name/password, Yubi, CDP, or mint steps.",
+    hold: "Repo started. Footer: Sitemap | FAQ | H3LP … OP3N S0URC3. Crawler sitemap.xml lists /, /gm, /f33d, /helios, /s1r1us, /faq, /sitemap. Upload README.md + LICENSE Apache-2.0. PDF: /S1R1US-GitHub-README.pdf. Do not commit admin name/password, Yubi, CDP, or mint steps.",
     started: true,
     artifact: { label: "GitHub README.pdf", href: "/S1R1US-GitHub-README.pdf" },
   },
@@ -208,7 +208,7 @@ export const ROADMAP_TOTAL: [number, number] = ROADMAP.reduce<[number, number]>(
 );
 
 export const ROADMAP_STEALTH =
-  `Do not Publish, do not attach s1r1us.ai, do not put pump.fun / ticker / mint steps on ${TAB_DESK} until M1 mint tx is confirmed. Coin tab is admin-only. Snipe risk is the ticker, not the ${APP_NAME} brand.`;
+  `Do not put pump.fun / ticker / mint steps on the public ${TAB_DESK} tape. Coin tab stays admin-only. s1r1us.ai is the desk host. Snipe risk is the ticker, not the ${APP_NAME} brand.`;
 
 /** Tight list for the Coin tab header — order is launch order. */
 export const MINT_FLOOR = {

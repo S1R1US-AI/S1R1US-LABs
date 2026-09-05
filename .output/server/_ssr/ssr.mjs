@@ -123,7 +123,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-BgNOiY_f.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-DE_vKtwk.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -197,7 +197,7 @@ var manifest = {
 	},
 	"5e1297c3c46a34d5383344d4744427836346a714cac56b3c8b95fc2b8e31450d": {
 		functionName: "probeLaunch_createServerFn_handler",
-		importer: () => import("./probes-78mZz0KS.mjs")
+		importer: () => import("./probes-C-rHZ0ZA.mjs")
 	},
 	"61219593192ece2914d98974b32d3ecf6190fe2d923e9dac9abd63fcdd198b09": {
 		functionName: "disconnectXAdmin_createServerFn_handler",
@@ -265,7 +265,7 @@ var manifest = {
 	},
 	"bd29d0b6bb34b0f97cb375088f5253f65373a39cffb50760d3afefd56a5a4669": {
 		functionName: "probeSiteHealth_createServerFn_handler",
-		importer: () => import("./site-health-DGw7OJWH.mjs")
+		importer: () => import("./site-health-BgV2AA3I.mjs")
 	},
 	"c07cac131e869252f1c8f5a7d6921698ad393b5d17f3b98af547969e3722495a": {
 		functionName: "requestAdminReset_createServerFn_handler",
@@ -1575,7 +1575,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-ClwPY4a6.mjs").then((n) => n.t),
+		import("./router-B9W6sa7H.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);
