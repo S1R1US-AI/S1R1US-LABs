@@ -19,6 +19,8 @@ export const SEO_TAB_FEED = "Feed Hosting";
 
 export const TAB_HELLO = "H3LL0 W0RLD";
 export const SEO_TAB_HELLO = "Hello World";
+export const TAB_CALLING_BOTS = "Call1ng All B0Ts";
+export const SEO_TAB_CALLING_BOTS = "Calling All Bots";
 export const TAB_MAX_GAINS = "MaX1UM G@1Ns";
 export const SEO_TAB_MAX_GAINS = "Maximum Gains";
 export const TAB_SEND_BTC = "S3Nd 2 BTC Wall3t";
@@ -108,6 +110,7 @@ export const PAGE_TITLE_LAB = `${TAB_LAB} (${SEO_TAB_LAB}) | ${TAB_DESK} | OP3N 
 export const PAGE_TITLE_FEED = `${TAB_FEED} (${SEO_TAB_FEED}) | ${TAB_GM} | OP3N S0URC3`;
 export const PAGE_TITLE_FAQ = `FAQ · ${TAB_DESK} · ${TAB_GM} · ${TAB_FEED} · ${TAB_LAB} · ${TAB_TOKEN} · OP3N S0URC3`;
 export const PAGE_TITLE_SITEMAP = `Sitemap · ${TAB_DESK} · ${TAB_GM} · ${TAB_FEED} · ${TAB_HELLO} · OP3N S0URC3`;
+export const PAGE_TITLE_AGENT = `Agent feed · ${TAB_DESK} · Bot 7 read-only · OP3N S0URC3`;
 
 export const PAGE_DESC_GM = `${TAB_GM} (${SEO_TAB_GM} / Godzilla Mode) is the aggressive sleeve of ${TAB_DESK} (${SEO_TAB_DESK}). AI Bitcoin trading bot. OP3N S0URC3 (open source). Not financial advice.`;
 export const PAGE_DESC_LAB = `${TAB_LAB} (${SEO_TAB_LAB}) is the what-if lab on the 7-bot tape. ${TAB_DESK} (${SEO_TAB_DESK}). OP3N S0URC3 (open source). AI Bitcoin trading bot. Not financial advice.`;
@@ -116,4 +119,6 @@ export const PAGE_DESC_FAQ =
   "FAQ for S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla mode), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), T0K3N L@UNCH (Token launch), OP3N S0URC3 (open source). Not financial advice. Seek a licensed professional. Not an offer of securities.";
 export const PAGE_DESC_SITEMAP =
   "Sitemap for S1R1US Labs: S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla mode), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), H3LL0 W0RLD (Hello World), FAQ, OP3N S0URC3 (open source).";
+export const PAGE_DESC_AGENT =
+  "Read-only Bot 7 JSON feed for other AI agents. MEDIUM ACCUMULATE, clip, and tape. This host never places Coinbase orders. Run the preview CLI on your Coinbase for Agents. Not financial advice.";
 

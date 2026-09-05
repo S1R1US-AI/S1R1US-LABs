@@ -121,6 +121,10 @@ export function Shell({
                 FAQ
               </Link>
               <span aria-hidden>|</span>
+              <Link to="/agent" className="text-oss hover:underline" title="Agent feed · Bot 7 read-only">
+                agent
+              </Link>
+              <span aria-hidden>|</span>
               <Link to={TERMS_PATH} className="text-oss hover:underline" title={TERMS_HOVER}>
                 {TERMS_TITLE}
               </Link>

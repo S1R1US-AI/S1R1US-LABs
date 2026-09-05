@@ -69,6 +69,13 @@ export function classifyFail(msg: string): { resolved: boolean; attention: boole
       verdict: "OPEN — G0DZ1LLa M0D3 sleeve. Report in the GM morning block. Do not green without a live tape.",
     };
   }
+  if (/agent-ping|\/api\/agent\/ping|calling all bots/.test(m)) {
+    return {
+      resolved: true,
+      attention: true,
+      verdict: "FLAG — AI agent connection test. Counted on the daily morning AGENT block. PoC, not LIVE. No trade.",
+    };
+  }
   return {
     resolved: false,
     attention: true,

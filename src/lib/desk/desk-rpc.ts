@@ -59,6 +59,11 @@ export const fetchDeskErrors = createServerFn({ method: "GET" }).handler(async (
   return listDeskErrors();
 });
 
+export const fetchAgentFlags = createServerFn({ method: "GET" }).handler(async () => {
+  const { peekAgentFlags } = await import("./agent-ping");
+  return peekAgentFlags();
+});
+
 export const fetchMorningLib = createServerFn({ method: "POST" })
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {

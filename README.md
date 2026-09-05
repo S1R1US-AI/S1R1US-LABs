@@ -1,6 +1,6 @@
 # S1R1US-LABs
 
-**LAUNCH BUILD DEPLOY #57** — frozen production save. Tag `launch-build-deploy-57`. Live data pulls on. Live trades off. Practice/test runs paused. See [LAUNCH.md](LAUNCH.md).
+**LAUNCH BUILD DEPLOY #58** — frozen production save. Tag `launch-build-deploy-58`. Live data pulls on. Live trades off. Practice/test runs paused. Read-only agent feed on. See [LAUNCH.md](LAUNCH.md).
 
 **[ S1R1U$ <<L@B$>> ]** — S1R1US Labs. Open-source AI Bitcoin hedge fund desk.
 

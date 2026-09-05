@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { money, CallWords, bannerTone } from "@/components/helios-card";
+import { money, CallWords, bannerTone, callStanceClass, CallInk } from "@/components/helios-card";
 import { GodzillaMark, GmRainbow } from "@/components/godzilla-mark";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell, LoginCluster } from "@/components/shell";
@@ -586,10 +586,10 @@ function AutoLiveFeed({
               <GmRainbow text={`${call.conviction} ${call.stance}`} />
             ) : (
               <p className="uppercase">
-                <span className="text-tab">{call.conviction}</span>{" "}
-                <span className={call.stance === "ACCUMULATE" || call.stance === "BUY" ? "text-high" : "text-sell"}>
-                  {call.stance}
-                </span>
+                <span className={call.conviction === "MEDIUM" ? "call-medium" : call.conviction === "HIGH" ? "text-high" : "text-sell"}>
+                  {call.conviction}
+                </span>{" "}
+                <span className={callStanceClass(call.stance)}>{call.stance}</span>
               </p>
             )
           ) : (
@@ -629,7 +629,7 @@ function TickList({
                 {/HIGH(\s+CONVICTION)?\s+ACCUMULATE/.test(r.text) ? (
                   <GmRainbow text={r.text} />
                 ) : (
-                  r.text
+                  <CallInk text={r.text} />
                 )}
               </span>
               <span className="text-muted">

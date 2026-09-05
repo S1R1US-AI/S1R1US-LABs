@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   APP_NAME,
+  TAB_CALLING_BOTS,
   TAB_HELLO,
   TAB_HOVER_HELLO,
   TAB_HOVER_MAX_GAINS,
@@ -13,6 +14,8 @@ import { GITHUB_URL } from "@/lib/launch/model";
 
 const ORANGE =
   "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2";
+const BLUE =
+  "welcome-blue font-semibold tracking-tight underline decoration-tab underline-offset-2";
 
 export function HelloWorld() {
   const [open, setOpen] = useState(false);
@@ -76,10 +79,22 @@ export function HelloWorld() {
             rel="noopener noreferrer"
             title={TAB_HOVER_HELLO}
             aria-label={TAB_HOVER_HELLO}
-            className={ORANGE}
+            className={BLUE}
           >
             {greet}
           </a>
+          <span className="text-muted">);</span>
+          {"\n"}
+          <span className="text-muted">{"  run executable ("}</span>
+          <Link
+            to="/faq"
+            hash="calling-all-bots"
+            title={`${TAB_CALLING_BOTS} · AI agent FAQ`}
+            aria-label={`${TAB_CALLING_BOTS} · how AI agents interact`}
+            className="call1ng-bots font-semibold tracking-tight underline decoration-sell underline-offset-2"
+          >
+            "{TAB_CALLING_BOTS}"
+          </Link>
           <span className="text-muted">);</span>
           {"\n"}
           <span className="text-muted">{"}"}</span>

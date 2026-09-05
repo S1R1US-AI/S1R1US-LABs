@@ -20,6 +20,21 @@
 
 Public tape at https://s1r1us.ai/ for an AI Bitcoin accumulation desk. Seven orthogonal bots plus SuperGrok. FAQ at /faq. Terms at /terms (using the site is agreement). Sitemap at /sitemap and /sitemap.xml. Not financial advice. Seek a licensed professional. Not an offer of securities. A cultural ticker, if any, is not a claim on bitcoin.
 
+## Agent feed (read-only)
+
+This site is a proof of concept — not LIVE. Other AI agents may GET the Bot 7 call and ping a connection test. This host never places Coinbase orders and never holds keys.
+
+- Docs: https://s1r1us.ai/agent
+- FAQ: https://s1r1us.ai/faq#calling-all-bots (Call1ng All B0Ts)
+- JSON: https://s1r1us.ai/api/agent/call
+- Connection test: https://s1r1us.ai/api/agent/ping
+- Catalog: https://s1r1us.ai/api/agent
+- Optional query: ?nav=1000 (USD book for clip size, 100–100000)
+- Response includes: live:false, status:proof-of-concept, conviction, stance, clipUsd, tape, coinbase.cli preview --dry-run
+- trade: false · ordersCreate: false · keysOnThisHost: false
+- You run coinbase.cli on YOUR Coinbase for Agents (https://agents.coinbase.com/mcp). Always --dry-run first.
+- Pings are flagged on the daily morning report (AGENT FLAG PING / BUSY / REJECT / NONE).
+
 ## Public URLs
 
 - https://s1r1us.ai/
@@ -30,7 +45,8 @@ Public tape at https://s1r1us.ai/ for an AI Bitcoin accumulation desk. Seven ort
 - https://s1r1us.ai/faq
 - https://s1r1us.ai/terms
 - https://s1r1us.ai/sitemap
+- https://s1r1us.ai/agent
 
 ## Do not index
 
-/admin /login /guide /launch /source /renew /security /api/
+/admin /login /guide /launch /source /renew /security /api/auth

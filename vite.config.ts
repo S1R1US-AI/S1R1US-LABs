@@ -160,6 +160,28 @@ export default defineConfig(({ command, isPreview }) => ({
     strictPort: true,
   },
   resolve: { tsconfigPaths: true },
+  // Vite 8 / rolldown otherwise crawls start-server-core and dies on the
+  // virtual `#tanstack-router-entry` / `#tanstack-start-entry` imports.
+  optimizeDeps: {
+    exclude: [
+      "@tanstack/start-server-core",
+      "@tanstack/start-client-core",
+      "@tanstack/react-start",
+      "@tanstack/react-router",
+      "@tanstack/react-router-devtools",
+      "@tanstack/start-static-server-functions",
+    ],
+  },
+  ssr: {
+    optimizeDeps: {
+      exclude: [
+        "@tanstack/start-server-core",
+        "@tanstack/start-client-core",
+        "@tanstack/react-start",
+        "@tanstack/react-router",
+      ],
+    },
+  },
   plugins: [
     pgliteBootstrapPlugin(),
     // Before tanstackStart so /auth/popup never falls through to the SPA.

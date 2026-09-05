@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
@@ -19,6 +20,12 @@ export function FaqPage() {
     description: PAGE_DESC_FAQ,
   };
 
+  useEffect(() => {
+    const id = window.location.hash.replace(/^#/, "");
+    if (!id) return;
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+
   return (
     <Shell>
       <SeoCopy />
@@ -33,9 +40,11 @@ export function FaqPage() {
         </p>
         <div className="mt-6 space-y-3">
           {FAQ_ITEMS.map((item) => (
-            <Panel key={item.q} kicker="FAQ" title={item.q} kickerClass="text-oss" titleClass="text-fg text-base">
-              <p className="text-sm leading-relaxed text-muted">{item.a}</p>
-            </Panel>
+            <div key={item.q} id={item.id} className={item.id ? "scroll-mt-24" : undefined}>
+              <Panel kicker="FAQ" title={item.q} kickerClass="text-oss" titleClass="text-fg text-base">
+                <p className="text-sm leading-relaxed text-muted">{item.a}</p>
+              </Panel>
+            </div>
           ))}
         </div>
         <SupportDonate />

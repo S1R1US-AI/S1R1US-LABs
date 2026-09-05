@@ -1,6 +1,6 @@
 # Publish [ S1R1U$ <<L@B$>> ] — GitHub + DigitalOcean
 
-**LAUNCH BUILD DEPLOY #57** — frozen save. Tag `launch-build-deploy-57`. Live tape on. Live trades off. Practice paused.
+**LAUNCH BUILD DEPLOY #58** — frozen save. Tag `launch-build-deploy-58`. Live tape on. Live trades off. Practice paused. Read-only agent feed on.
 
 Repo: https://github.com/S1R1US-AI/S1R1US-LABs  
 Site: https://s1r1us.ai
@@ -41,10 +41,20 @@ Then DigitalOcean **Settings → Domains → add s1r1us.ai** (and www). TLS issu
 
 ## Env on DigitalOcean (dashboard, not GitHub)
 
+**Add from .env:** Settings → **web** → Environment Variables → Edit → **Add from .env**. Paste the filled `.env` (never GitHub). After import:
+
+1. Encrypt **`BETTER_AUTH_SECRET`** and **`GROK_AUTH_CLIENT_SECRET`**.
+2. Replace `PASTE_GROK_APP_SETTINGS_CLIENT_SECRET` with the real secret from **Grok App Settings → Auth**.
+3. Confirm `GROK_AUTH_CLIENT_ID` is the full `grok_a3389f926a0c42b3b1c95fec1287e3ef` (no ellipsis). Do not encrypt the client id so you can read it.
+4. If `BETTER_AUTH_SECRET` is already encrypted on the host, keep that row — do not overwrite it.
+5. Save, then Deploy tag `launch-build-deploy-58`.
+
+Template in git: [`.env.example`](.env.example). Filled `.env` is gitignored.
+
 | Key | Value | Scope |
 |---|---|---|
 | `NODE_ENV` | `production` | run time |
-| `VITE_AUTH_ENABLED` | `true` | already baked in the image |
+| `VITE_AUTH_ENABLED` | `true` | run time (also baked in the image) |
 | `BETTER_AUTH_URL` | `https://s1r1us.ai` | run time |
 | `BETTER_AUTH_SECRET` | long random hex (32+ bytes) | run time — **encrypted** |
 | `GROK_AUTH_ISSUER` | `https://auth.grok.me` | run time |

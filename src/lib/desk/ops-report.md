@@ -12,6 +12,7 @@ Do not skip a section. Do not auto-green. If unsure, keep it OPEN and say so.
 ## Always include
 
 - Last 24h unique errors from `/tmp/desk-errors.json` and `/tmp/desk-cycle.json`
+- AGENT flags from `/tmp/agent-pings.json` (PING / BUSY / REJECT / NONE). Connection tests only. PoC — not LIVE. No trades.
 - What was actually fixed (verified with live tape, not a story)
 - What still needs the operator before **green**
 - Architecture (two-phase cycle, 7 bots, practice autonomy, live Coinbase locked)

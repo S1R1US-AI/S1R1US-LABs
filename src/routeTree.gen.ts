@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AgentRouteImport } from './routes/agent'
 import { Route as F33dRouteImport } from './routes/f33d'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GmRouteImport } from './routes/gm'
@@ -25,6 +26,9 @@ import { Route as SecurityRouteImport } from './routes/security'
 import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as SourceRouteImport } from './routes/source'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ApiAgentRouteImport } from './routes/api.agent'
+import { Route as ApiAgentCallRouteImport } from './routes/api/agent/call'
+import { Route as ApiAgentPingRouteImport } from './routes/api/agent.ping'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +39,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentRoute = AgentRouteImport.update({
+  id: '/agent',
+  path: '/agent',
   getParentRoute: () => rootRouteImport,
 } as any)
 const F33dRoute = F33dRouteImport.update({
@@ -107,6 +116,21 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAgentRoute = ApiAgentRouteImport.update({
+  id: '/api/agent',
+  path: '/api/agent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAgentCallRoute = ApiAgentCallRouteImport.update({
+  id: '/call',
+  path: '/call',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentPingRoute = ApiAgentPingRouteImport.update({
+  id: '/ping',
+  path: '/ping',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
@@ -116,6 +140,7 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/agent': typeof AgentRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/gm': typeof GmRoute
@@ -130,11 +155,15 @@ export interface FileRoutesByFullPath {
   '/sitemap': typeof SitemapRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
+  '/api/agent': typeof ApiAgentRouteWithChildren
+  '/api/agent/call': typeof ApiAgentCallRoute
+  '/api/agent/ping': typeof ApiAgentPingRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/agent': typeof AgentRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/gm': typeof GmRoute
@@ -149,12 +178,16 @@ export interface FileRoutesByTo {
   '/sitemap': typeof SitemapRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
+  '/api/agent': typeof ApiAgentRouteWithChildren
+  '/api/agent/call': typeof ApiAgentCallRoute
+  '/api/agent/ping': typeof ApiAgentPingRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/agent': typeof AgentRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/gm': typeof GmRoute
@@ -169,6 +202,9 @@ export interface FileRoutesById {
   '/sitemap': typeof SitemapRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
+  '/api/agent': typeof ApiAgentRouteWithChildren
+  '/api/agent/call': typeof ApiAgentCallRoute
+  '/api/agent/ping': typeof ApiAgentPingRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
@@ -176,6 +212,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/agent'
     | '/f33d'
     | '/faq'
     | '/gm'
@@ -190,11 +227,15 @@ export interface FileRouteTypes {
     | '/sitemap'
     | '/source'
     | '/terms'
+    | '/api/agent'
+    | '/api/agent/call'
+    | '/api/agent/ping'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin'
+    | '/agent'
     | '/f33d'
     | '/faq'
     | '/gm'
@@ -209,11 +250,15 @@ export interface FileRouteTypes {
     | '/sitemap'
     | '/source'
     | '/terms'
+    | '/api/agent'
+    | '/api/agent/call'
+    | '/api/agent/ping'
     | '/api/auth/$'
   id:
     | '__root__'
     | '/'
     | '/admin'
+    | '/agent'
     | '/f33d'
     | '/faq'
     | '/gm'
@@ -228,12 +273,16 @@ export interface FileRouteTypes {
     | '/sitemap'
     | '/source'
     | '/terms'
+    | '/api/agent'
+    | '/api/agent/call'
+    | '/api/agent/ping'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  AgentRoute: typeof AgentRoute
   F33dRoute: typeof F33dRoute
   FaqRoute: typeof FaqRoute
   GmRoute: typeof GmRoute
@@ -248,6 +297,7 @@ export interface RootRouteChildren {
   SitemapRoute: typeof SitemapRoute
   SourceRoute: typeof SourceRoute
   TermsRoute: typeof TermsRoute
+  ApiAgentRoute: typeof ApiAgentRouteWithChildren
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -265,6 +315,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agent': {
+      id: '/agent'
+      path: '/agent'
+      fullPath: '/agent'
+      preLoaderRoute: typeof AgentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/f33d': {
@@ -365,6 +422,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/agent': {
+      id: '/api/agent'
+      path: '/api/agent'
+      fullPath: '/api/agent'
+      preLoaderRoute: typeof ApiAgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/agent/call': {
+      id: '/api/agent/call'
+      path: '/call'
+      fullPath: '/api/agent/call'
+      preLoaderRoute: typeof ApiAgentCallRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/ping': {
+      id: '/api/agent/ping'
+      path: '/ping'
+      fullPath: '/api/agent/ping'
+      preLoaderRoute: typeof ApiAgentPingRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
@@ -375,9 +453,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ApiAgentRouteChildren {
+  ApiAgentCallRoute: typeof ApiAgentCallRoute
+  ApiAgentPingRoute: typeof ApiAgentPingRoute
+}
+
+const ApiAgentRouteChildren: ApiAgentRouteChildren = {
+  ApiAgentCallRoute: ApiAgentCallRoute,
+  ApiAgentPingRoute: ApiAgentPingRoute,
+}
+
+const ApiAgentRouteWithChildren = ApiAgentRoute._addFileChildren(
+  ApiAgentRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  AgentRoute: AgentRoute,
   F33dRoute: F33dRoute,
   FaqRoute: FaqRoute,
   GmRoute: GmRoute,
@@ -392,6 +485,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapRoute: SitemapRoute,
   SourceRoute: SourceRoute,
   TermsRoute: TermsRoute,
+  ApiAgentRoute: ApiAgentRouteWithChildren,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

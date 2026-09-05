@@ -33,6 +33,33 @@ export const AUTO_ANALYSIS = {
   action: "Practice AUTO is disabled. Do not arm live. Desk and website stay on the live tape only.",
 };
 
+export function morningAgent(flags: {
+  dayEt: string;
+  pings: number;
+  rejects: number;
+  lastAt: string | null;
+  flags: string[];
+  note: string;
+  live: false;
+  status: string;
+}) {
+  return {
+    asOf: new Date().toISOString(),
+    dayEt: flags.dayEt,
+    pings: flags.pings,
+    rejects: flags.rejects,
+    lastAt: flags.lastAt,
+    live: false as const,
+    status: flags.status,
+    flags: flags.flags,
+    note: flags.note,
+    headline:
+      flags.pings === 0
+        ? "AGENT FLAG NONE — no connection tests today (ET). PoC, not LIVE."
+        : `AGENT FLAG ${flags.flags.join("+")} — ${flags.pings} ping(s), ${flags.rejects} reject(s). PoC, not LIVE. No trades.`,
+  };
+}
+
 export function morningFeeds(snap: DeskSnapshot | null) {
   const pullMs = snap?.pullMs ?? null;
   const ageMs = snap?.fetchedAt ? Date.now() - Date.parse(snap.fetchedAt) : null;

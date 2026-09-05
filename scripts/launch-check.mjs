@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** One system check for LAUNCH BUILD DEPLOY #57. Tape only — no practice fills, no live trades. */
+/** One system check for LAUNCH BUILD DEPLOY #58. Tape only — no practice fills, no live trades. */
 import { readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 
@@ -11,7 +11,7 @@ const FEEDS = [
   ["fng", "https://api.alternative.me/fng/?limit=1"],
 ];
 
-const PAGES = ["/", "/login", "/gm", "/f33d", "/faq", "/terms", "/helios", "/sitemap", "/heliosbot"];
+const PAGES = ["/", "/login", "/gm", "/f33d", "/faq", "/terms", "/helios", "/sitemap", "/heliosbot", "/agent", "/api/agent", "/api/agent/call"];
 
 function ok(name, pass, extra = "") {
   console.log(`${pass ? "OK " : "FAIL"} ${name}${extra ? " " + extra : ""}`);
@@ -21,7 +21,7 @@ function ok(name, pass, extra = "") {
 async function probe(name, url) {
   const t0 = Date.now();
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(12000), headers: { "user-agent": "s1r1us-launch-57" } });
+    const res = await fetch(url, { signal: AbortSignal.timeout(12000), headers: { "user-agent": "s1r1us-launch-58" } });
     return ok(name, res.ok, `${res.status} ${Date.now() - t0}ms`);
   } catch (e) {
     return ok(name, false, e instanceof Error ? e.message : "err");
@@ -65,7 +65,7 @@ const freezeSrc = read("src/lib/launch/build.ts");
 const practiceSrc = read("src/lib/desk/practice.ts");
 const results = [];
 results.push(secretScan());
-results.push(ok("launch-name", freezeSrc.includes('LAUNCH_BUILD = "LAUNCH BUILD DEPLOY #57"')));
+results.push(ok("launch-name", freezeSrc.includes('LAUNCH_BUILD = "LAUNCH BUILD DEPLOY #58"')));
 results.push(ok("freeze", /export const LAUNCH_FREEZE = true/.test(freezeSrc)));
 results.push(ok("live-trades", /export const LIVE_UNLOCKED = false/.test(practiceSrc), "LIVE_UNLOCKED=false"));
 results.push(ok("no-live-flag", /export const LAUNCH_LIVE_TRADES = false/.test(freezeSrc)));
@@ -76,5 +76,5 @@ for (const [name, url] of FEEDS) results.push(await probe(name, url));
 for (const path of PAGES) results.push(await probe(`page ${path}`, `http://127.0.0.1:8080${path}`));
 
 const fail = results.filter((x) => !x).length;
-console.log(fail ? `\nLAUNCH #57 CHECK FAIL ${fail}` : "\nLAUNCH #57 CHECK PASS");
+console.log(fail ? `\nLAUNCH #58 CHECK FAIL ${fail}` : "\nLAUNCH #58 CHECK PASS");
 process.exit(fail ? 1 : 0);

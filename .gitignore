@@ -18,3 +18,4 @@ coverage
 .project_id
 .tanstack
 # .output is committed for DigitalOcean runtime image
+artifacts/*.env

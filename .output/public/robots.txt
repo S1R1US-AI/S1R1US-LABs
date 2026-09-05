@@ -8,6 +8,8 @@ Allow: /faq
 Allow: /terms
 Allow: /sitemap
 Allow: /sitemap.xml
+Allow: /agent
+Allow: /api/agent
 Disallow: /admin
 Disallow: /login
 Disallow: /renew
@@ -15,5 +17,6 @@ Disallow: /launch
 Disallow: /security
 Disallow: /source
 Disallow: /guide
+Disallow: /api/auth
 
 Sitemap: https://s1r1us.ai/sitemap.xml

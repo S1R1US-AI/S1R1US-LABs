@@ -34,7 +34,7 @@ export function money(n: number, d = 0) {
 
 export function stanceClass(s: Stance) {
   if (s === "BUY") return "text-high";
-  if (s === "ACCUMULATE") return "text-high";
+  if (s === "ACCUMULATE") return "call-accumulate";
   if (s === "HOLD" || s === "TRIM") return "text-sell";
   if (s === "WAIT") return "text-wait";
   return "text-muted";
@@ -42,7 +42,8 @@ export function stanceClass(s: Stance) {
 
 /** Bot-7 / GM: green only on an announced BUY/ACCUMULATE. HOLD/TRIM stay red. */
 export function callStanceClass(s: string) {
-  if (s === "BUY" || s === "ACCUMULATE") return "text-high";
+  if (s === "BUY") return "text-high";
+  if (s === "ACCUMULATE") return "call-accumulate";
   if (s === "HOLD" || s === "TRIM" || s === "SHORT") return "text-sell";
   if (s === "WAIT") return "text-wait";
   if (s === "HEDGE") return "text-tbill";
@@ -51,7 +52,7 @@ export function callStanceClass(s: string) {
 
 export function convictionClass(conviction: string, stance?: string) {
   if (conviction === "LOW") return "text-sell";
-  if (conviction === "MEDIUM") return "text-tab";
+  if (conviction === "MEDIUM") return "call-medium";
   if (conviction === "HIGH" && (stance === "BUY" || stance === "ACCUMULATE")) return "text-high";
   return "text-muted";
 }
@@ -93,6 +94,37 @@ export function CallWords({
       {" "}
       <span className={callStanceClass(call.stance)}>{stanceWord}</span>
     </p>
+  );
+}
+
+const CALL_INK: Record<string, string> = {
+  MEDIUM: "call-medium",
+  ACCUMULATE: "call-accumulate",
+  BUY: "text-high",
+  HIGH: "text-high",
+  LOW: "text-sell",
+  HOLD: "text-sell",
+  TRIM: "text-sell",
+  SELL: "text-sell",
+  WAIT: "text-wait",
+};
+
+/** Color MEDIUM (blue) and ACCUMULATE (green) inside a free-text scan line. */
+export function CallInk({ text }: { text: string }) {
+  const parts = text.split(/(\bMEDIUM\b|\bACCUMULATE\b|\bHIGH\b|\bLOW\b|\bBUY\b|\bHOLD\b|\bTRIM\b|\bSELL\b|\bWAIT\b)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const cls = CALL_INK[part];
+        return cls ? (
+          <span key={i} className={cls}>
+            {part}
+          </span>
+        ) : (
+          <span key={i}>{part}</span>
+        );
+      })}
+    </>
   );
 }
 

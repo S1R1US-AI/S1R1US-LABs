@@ -97,9 +97,18 @@ export const PUBLIC_PAGES = [
     changefreq: "weekly",
     priority: "0.4",
   },
+  {
+    path: "/agent",
+    loc: `${origin}/agent`,
+    label: "Agent feed",
+    title: "Agent feed · Bot 7 read-only JSON",
+    hint: "Other AI agents read Bot 7 (conviction, stance, clip, tape). This host never trades. Coinbase preview CLI for your own keys.",
+    changefreq: "hourly",
+    priority: "0.7",
+  },
 ] as const;
 
-export const FAQ_ITEMS: { q: string; a: string }[] = [
+export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     q: `What is ${TAB_DESK} (S1R1US 7-bot hedge fund)?`,
     a: `${TAB_DESK} is also searched as ${SEO_TAB_DESK} and 7-B0T H3DGE FUND. It is an AI Bitcoin trading bot and AI hedge fund on s1r1us.ai. Seven orthogonal bots read free public tape. Bot 7 (${APP_NAME} Analyst) issues the accumulation call. SuperGrok is the only paid service. Education only — not financial advice.`,
@@ -136,7 +145,7 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: `What is H3LL0 W0RLD (Hello World)?`,
-    a: `H3LL0 W0RLD is also searched as Hello World. It is the expand greeting on the public tape. It links to OP3N S0URC3 (open source) on GitHub. MaX1UM G@1Ns (Maximum Gains) opens G0DZ1LLa M0D3 (Godzilla mode). S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens ${TAB_FEED} (${SEO_TAB_FEED}).`,
+    a: `H3LL0 W0RLD is also searched as Hello World. It is the expand greeting on the public tape. It links to OP3N S0URC3 (open source) on GitHub. MaX1UM G@1Ns (Maximum Gains) opens G0DZ1LLa M0D3 (Godzilla mode). S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens ${TAB_FEED} (${SEO_TAB_FEED}). Call1ng All B0Ts (Calling All Bots) is the red executable line — it opens this FAQ on how AI agents can ping and read Bot 7.`,
   },
   {
     q: "Is this financial advice?",
@@ -149,6 +158,19 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
   {
     q: "Does the desk place live Coinbase orders by default?",
     a: "No. Practice and paper fills use the live Coinbase last price. Live Coinbase execution stays off until the operator unlocks it. You are responsible for any trade you authorize.",
+  },
+  {
+    id: "calling-all-bots",
+    q: "Call1ng All B0Ts (Calling All Bots) — how can AI agents interact?",
+    a: "This site is a proof of concept — not LIVE. Other AI agents may: (1) GET /api/agent/ping for a brief connection test, (2) GET /api/agent/call for the Bot 7 call (conviction, stance, clip, tape), (3) run the Coinbase preview CLI on their own Coinbase for Agents. This host never places orders and never holds keys. Docs: /agent. Pings are flagged on the daily morning report.",
+  },
+  {
+    q: "What could AI agents do once the desk is LIVE?",
+    a: "Once LIVE (operator unlock, not this PoC): a signed agent token, size clips to a declared NAV, subscribe to Bot 7 stance changes, and run Coinbase for Agents --dry-run then create on an account they control. Still no keys on this host. Still never a sell/short of the 7-bot stack. Paper and dry-run stay the default until the operator arms live. Not financial advice.",
+  },
+  {
+    q: "Can other AI agents use Bot 7 to trade bitcoin?",
+    a: "Not on this host. They can read the public Agent feed at /agent and GET /api/agent/call. Connection test: GET /api/agent/ping. This host never places orders and never holds Coinbase keys. Other agents run the preview CLI on their own Coinbase for Agents. Education only. Not financial advice.",
   },
   {
     q: "What data does the 7-bot tape use?",

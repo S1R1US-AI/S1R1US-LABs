@@ -1,14 +1,14 @@
 import { Download, Pause, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Panel } from "@/components/shell";
-import { fetchDeskErrors, fetchMorningLib, setMorningReportPaused } from "@/lib/desk/desk-rpc";
+import { fetchDeskErrors, fetchMorningLib, fetchAgentFlags, setMorningReportPaused } from "@/lib/desk/desk-rpc";
 import { useGm } from "@/lib/desk/gm-store";
 import { GM_NAME } from "@/lib/desk/gm";
 import type { DeskError } from "@/lib/desk/error-log";
 import { MORNING_PDF_BASE64, MORNING_PDF_NAME, MORNING_PDF_PAGES } from "@/lib/desk/morning-pdf";
 import { useOperator } from "@/lib/desk/operator";
 import { useDeskTape } from "@/lib/desk/tape-client";
-import { morningFeeds, morningSecurity } from "@/lib/desk/morning-ops";
+import { morningAgent, morningFeeds, morningSecurity } from "@/lib/desk/morning-ops";
 import { ANALYSIS_AS_OF } from "@/lib/desk/security";
 import { cn } from "@/lib/utils";
 
@@ -204,6 +204,7 @@ export function MorningReportPdf() {
       </div>
     </Panel>
     <GmMorningSection />
+    <AgentMorningSection />
     <SecurityMorningSection />
     <FeedsMorningSection />
     </>
@@ -266,6 +267,33 @@ function GmMorningSection() {
         </ul>
       ) : (
         <p className="mt-2 text-xs text-muted">No GM-tagged cycle errors in the last 100.</p>
+      )}
+    </Panel>
+  );
+}
+
+function AgentMorningSection() {
+  const [brief, setBrief] = useState<ReturnType<typeof morningAgent> | null>(null);
+  useEffect(() => {
+    void fetchAgentFlags().then((flags) => {
+      setBrief(morningAgent(flags));
+    });
+  }, []);
+  return (
+    <Panel className="mt-4" kicker="AGENT" title="Call1ng All B0Ts">
+      <p className="font-mono text-xs text-muted">Daily flags · America/New_York · proof of concept — not LIVE</p>
+      {brief ? (
+        <>
+          <p className={brief.pings > 0 ? "mt-2 font-mono text-sm text-sell" : "mt-2 font-mono text-sm text-muted"}>
+            {brief.headline}
+          </p>
+          <p className="mt-2 text-sm text-muted">{brief.note}</p>
+          <p className="mt-2 font-mono text-xs text-muted">
+            {brief.dayEt} · pings {brief.pings} · rejects {brief.rejects} · flags {brief.flags.join(", ")}
+          </p>
+        </>
+      ) : (
+        <p className="mt-2 text-sm text-muted">Loading agent flags…</p>
       )}
     </Panel>
   );

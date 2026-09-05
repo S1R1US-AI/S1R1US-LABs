@@ -173,10 +173,15 @@ export function HeliosLab() {
   return (
     <Shell
       right={
-        <Button variant="primary" onClick={() => void loadLive()} disabled={loadingLive}>
+        <Button
+          variant="primary"
+          onClick={() => void loadLive()}
+          disabled={loadingLive}
+          aria-label="Refresh data"
+          title="Refresh data"
+          className="px-2.5"
+        >
           <Radio className="size-4" />
-          <span className="hidden sm:inline">refresh data</span>
-          <span className="sm:hidden">refresh</span>
         </Button>
       }
     >

@@ -159,6 +159,16 @@
   color: var(--color-tab) !important;
 }
 
+/* Call words site-wide: MEDIUM = blue, ACCUMULATE = green. */
+.call-medium,
+.call-medium * {
+  color: var(--color-tab) !important;
+}
+.call-accumulate,
+.call-accumulate * {
+  color: var(--color-high) !important;
+}
+
 .upbit-blue {
   color: #3d7ee8 !important;
 }
@@ -173,6 +183,30 @@ a.coinbase-orange:active,
 a.coinbase-orange:focus {
   color: #ff8a1f !important;
   text-decoration-color: #ff8a1f;
+}
+.welcome-blue {
+  color: var(--color-tab) !important;
+}
+a.welcome-blue,
+a.welcome-blue:link,
+a.welcome-blue:visited,
+a.welcome-blue:hover,
+a.welcome-blue:active,
+a.welcome-blue:focus {
+  color: var(--color-tab) !important;
+  text-decoration-color: var(--color-tab);
+}
+.call1ng-bots {
+  color: var(--color-sell) !important;
+}
+a.call1ng-bots,
+a.call1ng-bots:link,
+a.call1ng-bots:visited,
+a.call1ng-bots:hover,
+a.call1ng-bots:active,
+a.call1ng-bots:focus {
+  color: var(--color-sell) !important;
+  text-decoration-color: var(--color-sell);
 }
 .asia-hashkey {
   color: #c77dff !important;
