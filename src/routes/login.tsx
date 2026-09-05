@@ -78,7 +78,12 @@ function Login() {
     }
     setBusy(true);
     setErr(null);
-    const fail = await unlock(name, pass);
+    const fail = await Promise.race([
+      unlock(name, pass),
+      new Promise<string>((resolve) =>
+        setTimeout(() => resolve("Login timed out. Refresh and try again."), 20_000),
+      ),
+    ]);
     setBusy(false);
     if (fail && fail !== "yubi") {
       setErr(fail);

@@ -1,5 +1,5 @@
 import { m as pullDeskTape } from "./store-CmU31tUT.mjs";
-import { h as usePractice, p as useGm } from "./router-yEUjCJmo.mjs";
+import { h as usePractice, p as useGm } from "./router-uu4GbqyK.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/roll-bots-BXPd6JId.js
 /** Force a live Coinbase cycle, then re-vote Bot 7 and bots 1–6 (scan only unless fills are armed). */
 async function rollBots(opts) {
