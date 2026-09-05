@@ -16,16 +16,16 @@ export const ADMIN_X_PROVIDERS = ["grok-x", "twitter", "x"] as const;
 const DEAD_COMPANY_HANDLES = new Set(["s1r1us", "_s1r1us_"]);
 
 /**
- * Brand / company account — sub of @_Mr_R0b0t0_. Never admin.
- * Handle is unset until the operator picks a live one. Do not wire @S1R1US.
+ * Brand / company account — sub of the operator. Never admin.
+ * Live: @S1R1S_AI. Do not wire blocked @S1R1US / @_S1R1US_.
  */
-export const COMPANY_X_NAME = "";
-export const COMPANY_X_HANDLE = "";
-export const COMPANY_X_HANDLE_CORE = "";
-export const COMPANY_X_URL = "";
-export const COMPANY_X_LABEL = "company X";
+export const COMPANY_X_NAME = "S1R1S AI";
+export const COMPANY_X_HANDLE = "@S1R1S_AI";
+export const COMPANY_X_HANDLE_CORE = "S1R1S_AI";
+export const COMPANY_X_URL = "https://x.com/S1R1S_AI";
+export const COMPANY_X_LABEL = `${COMPANY_X_NAME} (${COMPANY_X_HANDLE})`;
 export const COMPANY_X_BIO =
-  "Company desk of S1R1US Labs · [ S1R1U$ <<L@B$>> ] bitcoin accumulator · not financial advice";
+  "Company desk of S1R1US Labs · [ S1R1U$ <<L@B$>> ] · education only · not financial advice · not an offer of securities";
 /** Square 400×400 laser-ape — desk mark / future X profile pic. */
 export const COMPANY_X_AVATAR = "/s1r1us-avatar.jpg";
 /** 1500×500 G0DZ1LLa vs bear header. */

@@ -81,7 +81,7 @@ export const ICP_NOTE =
 export const RH_NOTE =
   "Robinhood Chain mainnet July 1, 2026 is not 'too early.' hood.fun clones pump.fun (bonding curve, ~6.5 ETH graduation, LP lock). PONS printed thousands of tokens/day and has posted billion-dollar weeks; $PONS ran as the chain's largest ticker. Uniswap Labs pools.trade is $0 launchpad fee into locked Uniswap v4. Noxa (CASHCAT) went dark in days — pad risk is real. Chain gas is ETH; native stable is USDG (USDC bridges in via Across). Stock tokens are geo-restricted (not US); permissionless memes are not the same product. pump.fun's own app now routes some RH tokens in SOL with no bridge. For s1r1us, RH is the viral runner-up. Primary stays pump.fun because donations are USDC/BTC and the USDC curve needs no ETH/USDG hop.";
 
-export const TOKEN_LAUNCHED = false;
+export const TOKEN_LAUNCHED = true;
 
 export type Milestone = {
   id: string;
@@ -103,23 +103,25 @@ export const ROADMAP: Milestone[] = [
     id: "m0",
     n: 0,
     name: "Stealth / Coin tab",
-    when: "Now — pre-mint",
-    goal: `Admin-only Coin tab, ${TAB_DESK} + ${TAB_LAB} + ${TAB_GM} + ${TAB_FEED} on the live tape, banners staged. No pump.fun name on s1r1us.ai. No Publish of mint steps.`,
+    when: "Pre-mint — done",
+    goal: `Admin-only Coin tab, ${TAB_DESK} + ${TAB_LAB} + ${TAB_GM} + ${TAB_FEED} on the live tape. Mint how-to stays off the public tape.`,
     minUsd: 0,
     maxUsd: 400,
     publicAfterMint: false,
-    hold: "s1r1us.ai is attached and serving the public tape. F33D is hosting/domain donate, not the token. SOL dust later. Do not tweet ticker.",
+    hold: "s1r1us.ai is live. F33D is hosting/domain donate, not the token. Company X is @S1R1S_AI — never admin.",
+    started: true,
   },
   {
     id: "m1",
     n: 1,
-    name: "Mint on pump.fun",
-    when: "Operator Yubi + fresh Phantom",
-    goal: "Create s1r1us / s1r1us, site field s1r1us.ai, USDC curve. Create fee $0.",
+    name: "T0K3N L@UNCH / Token launch",
+    when: "Company X @S1R1S_AI — pad screenshot posted",
+    goal: "Cultural ticker s1r1us on a public pad (pump.fun). Not a sale of the desk. Not a claim on BTC. No buy CTA on s1r1us.ai.",
     minUsd: 5,
     maxUsd: 80,
-    publicAfterMint: false,
-    hold: "SOL for tx only. Optional tiny first buy is not required to exist.",
+    publicAfterMint: true,
+    hold: "Path A firewall. This site does not sell tokens. Mint recipe stays admin-only. Do not pitch bots or BTC as the reason to buy.",
+    started: true,
   },
   {
     id: "m2",

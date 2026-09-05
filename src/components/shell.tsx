@@ -25,6 +25,8 @@ import {
 import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
 import { GodzillaMark, GmRainbow } from "@/components/godzilla-mark";
 import { rainGmBurst } from "@/components/matrix-saver";
+import { LegalBar } from "@/components/legal-bar";
+import { TERMS_HOVER, TERMS_PATH, TERMS_TITLE } from "@/lib/legal";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
@@ -119,6 +121,10 @@ export function Shell({
                 FAQ
               </Link>
               <span aria-hidden>|</span>
+              <Link to={TERMS_PATH} className="text-oss hover:underline" title={TERMS_HOVER}>
+                {TERMS_TITLE}
+              </Link>
+              <span aria-hidden>|</span>
               <Link to="/login" className="text-oss hover:underline" title="login">
                 login
               </Link>
@@ -148,6 +154,7 @@ export function Shell({
             </p>
           </div>
           <DisclaimerBlock />
+          <LegalBar />
         </div>
       </footer>
     </div>
@@ -175,7 +182,9 @@ function DisclaimerBlock() {
           and the 7-B0T H3DG3 Fund and any related systems are NOT LICENSED for financial advice.
           If you need real financial advice seek a licensed professional. {TAB_LAB} and all related
           entities such as Desk, Lab, website or systems are for EDUCATION purpose ONLY. Invest at
-          your own risk and only upon the advice of your licensed advisor.
+          your own risk and only upon the advice of your licensed advisor. Using this website is
+          agreement to the Terms and Agreements. Nothing here is an offer of securities. A cultural
+          ticker, if one exists, is not a claim on bitcoin and is not how the desk is funded.
         </p>
       ) : null}
     </div>

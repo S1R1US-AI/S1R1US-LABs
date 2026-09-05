@@ -11,13 +11,16 @@ import {
   PAGE_TITLE_GM,
   PAGE_TITLE_LAB,
   PAGE_TITLE_SITEMAP,
+  SEO_TAB_TOKEN,
   TAB_DESK,
   TAB_FEED,
   TAB_GM,
   TAB_LAB,
+  TAB_TOKEN,
 } from "@/lib/brand";
 import { COMPANY_X_HANDLE, companyHandleSet } from "@/lib/desk/x-admin";
 import { SUPPORT_BLURB, SUPPORT_BTC, SUPPORT_USDC } from "@/lib/desk/support";
+import { TERMS_PATH, TERMS_TITLE } from "@/lib/legal";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
 
@@ -72,9 +75,18 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/faq`,
     label: "FAQ",
     title: PAGE_TITLE_FAQ,
-    hint: `${SEO_TAB_GM}, ${SEO_TAB_DESK}, ${SEO_TAB_LAB}, ${SEO_TAB_FEED}, open source`,
+    hint: `${SEO_TAB_GM}, ${SEO_TAB_DESK}, ${SEO_TAB_LAB}, ${SEO_TAB_FEED}, ${SEO_TAB_TOKEN}, open source`,
     changefreq: "weekly",
     priority: "0.7",
+  },
+  {
+    path: TERMS_PATH,
+    loc: `${origin}${TERMS_PATH}`,
+    label: TERMS_TITLE,
+    title: `${TERMS_TITLE} · ${TAB_TOKEN} (${SEO_TAB_TOKEN})`,
+    hint: "Using this website is agreement. Not financial advice. Not an offer of securities.",
+    changefreq: "weekly",
+    priority: "0.6",
   },
   {
     path: "/sitemap",
@@ -115,8 +127,16 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
       : `${LABS_NAME} on s1r1us.ai. Operator identity is not published. Display names and lookalikes are not admin. Not an offer of securities.`,
   },
   {
+    q: `What is ${TAB_TOKEN} (Token launch)?`,
+    a: `${TAB_TOKEN} is also searched as ${SEO_TAB_TOKEN}. A cultural ticker named s1r1us may exist on a public pad such as pump.fun. Company desk on X is ${COMPANY_X_HANDLE}. This website does not sell tokens and does not take orders. The ticker is not shares of ${LABS_NAME}, not a claim on bitcoin, not a profit share, and not how the 7-bot book is funded. Do not buy any ticker because bots or a bitcoin stack exist. Not an offer of securities. Not financial advice. Seek a licensed professional. See Terms and Agreements.`,
+  },
+  {
     q: "Is this financial advice?",
-    a: "No. S1R1US.ai, the 7-B0T H3DG3 Fund, Desk, Lab, G0DZ1LLa M0D3, and related systems are not licensed for financial advice. Education only. Invest at your own risk and only on the advice of a licensed advisor.",
+    a: "No. s1r1us.ai, the desk, lab, G0DZ1LLa M0D3, F33D G0dZiLLa M0D3, T0K3N L@UNCH, and related systems are not licensed for financial advice and are not a broker or investment adviser. Education only. Seek a licensed professional. Invest at your own risk and only on the advice of a licensed advisor. Using this website is agreement to the Terms.",
+  },
+  {
+    q: "What are the Terms and Agreements?",
+    a: "The Terms and Agreements are at /terms. By accessing or using this website you agree to them. They state: not financial advice; seek a licensed professional; not an offer of securities; optional donations are gifts; software as-is. If you do not agree, do not use the site.",
   },
   {
     q: "Does the desk place live Coinbase orders by default?",

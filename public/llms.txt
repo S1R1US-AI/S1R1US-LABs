@@ -9,12 +9,13 @@
 - S1R1U$ L@B Strategies = S1R1US Lab Strategies
 - G0DZ1LLa M0D3 = Godzilla mode = Godzilla Mode
 - F33D G0dZiLLa M0D3 = Feed Godzilla mode
+- T0K3N L@UNCH = Token launch
 - OP3N S0URC3 = open source
 - H3LP 7-B0T H3DGE FUND = HELP 7-BOT HEDGE FUND
 
 ## What it is
 
-Public tape at https://s1r1us.ai/ for an AI Bitcoin accumulation desk. Seven orthogonal bots plus SuperGrok. FAQ at /faq. Sitemap at /sitemap and /sitemap.xml. Not financial advice. Not an offer of securities.
+Public tape at https://s1r1us.ai/ for an AI Bitcoin accumulation desk. Seven orthogonal bots plus SuperGrok. FAQ at /faq. Terms at /terms (using the site is agreement). Sitemap at /sitemap and /sitemap.xml. Not financial advice. Seek a licensed professional. Not an offer of securities. A cultural ticker, if any, is not a claim on bitcoin.
 
 ## Public URLs
 
@@ -24,6 +25,7 @@ Public tape at https://s1r1us.ai/ for an AI Bitcoin accumulation desk. Seven ort
 - https://s1r1us.ai/helios
 - https://s1r1us.ai/s1r1us
 - https://s1r1us.ai/faq
+- https://s1r1us.ai/terms
 - https://s1r1us.ai/sitemap
 
 ## Do not index

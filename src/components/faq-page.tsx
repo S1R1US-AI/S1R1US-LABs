@@ -47,6 +47,10 @@ export function FaqPage() {
           tab.
         </p>
         <p className="mt-6 font-mono text-xs text-oss">
+          <Link to="/terms" className="hover:underline">
+            Terms and Agreements
+          </Link>
+          <span className="px-2">|</span>
           <Link to="/sitemap" className="hover:underline">
             Sitemap
           </Link>

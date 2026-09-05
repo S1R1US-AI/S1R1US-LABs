@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-CvAfKSsb.js";var t=e;export{t as component};

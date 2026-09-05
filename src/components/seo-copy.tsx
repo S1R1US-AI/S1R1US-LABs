@@ -85,7 +85,13 @@ export function SeoCopy() {
         "@type": "FAQPage",
         name: `FAQ · ${TAB_DESK} · ${TAB_GM} · ${TAB_FEED} · ${TAB_LAB}`,
         url: `${SEO_CANONICAL}faq`,
-        description: "FAQ for S1R1US 7-bot hedge fund, Godzilla mode, S1R1US Lab Strategies, open source, AI Bitcoin trading bot, AI stock trading bot, AI Hedge Fund.",
+        description: "FAQ for S1R1US 7-bot hedge fund, Godzilla mode, S1R1US Lab Strategies, Token launch, open source. Not financial advice. Not an offer of securities.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Terms and Agreements",
+        url: `${SEO_CANONICAL}terms`,
+        description: "Using this website constitutes agreement. Not financial advice. Seek a licensed professional. Not an offer of securities.",
       },
       {
         "@type": "WebPage",

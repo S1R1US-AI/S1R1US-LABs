@@ -13,11 +13,12 @@ Search names (both spellings index this project):
 - S1R1U$ 7-B0t Hedge Fund = S1R1US 7-bot hedge fund
 - G0DZ1LLa M0D3 = Godzilla mode = Godzilla Mode
 - F33D G0dZiLLa M0D3 = Feed Godzilla mode
+- T0K3N L@UNCH = Token launch
 - S1R1U$ L@B Strategies = S1R1US Lab Strategies
 - OP3N S0URC3 = open source
 - AI Bitcoin trading bot · AI stock trading bot · AI Hedge Fund
 
-Not financial advice. Not licensed. Not a broker. Not a token sale. Education only. Invest at your own risk and only on the advice of a licensed advisor.
+Not financial advice. Not licensed. Not a broker. Not an investment adviser. Not an offer of securities. Education only. Seek a licensed professional. Invest at your own risk and only on the advice of a licensed advisor. Using https://s1r1us.ai is agreement to the Terms and Agreements.
 
 ## Mandate
 
@@ -38,7 +39,13 @@ Hover titles use the leet name plus the plain alias.
 | G0DZ1LLa M0D3 | Godzilla mode | Isolated sleeve. Practice for everyone. Live only if an operator unlocks it. AUTO may day-trade the sleeve only, never the 7-bot stack. |
 | F33D G0dZiLLa M0D3 | Feed Godzilla mode | Hosting / domain / iOS / Play app fees. Same wallets as FAQ. Not the trading book. Not a token. |
 
-Public URLs: https://s1r1us.ai/ · `/gm` · `/f33d` · `/helios` · `/faq` · `/sitemap`
+Public URLs: https://s1r1us.ai/ · `/gm` · `/f33d` · `/helios` · `/faq` · `/terms` · `/sitemap`
+
+Company desk on X: [@S1R1S_AI](https://x.com/S1R1S_AI) — brand account, not admin.
+
+## T0K3N L@UNCH (Token launch)
+
+A cultural ticker named s1r1us may exist on a public pad such as pump.fun. This repo and s1r1us.ai do not sell it, do not take orders for it, and do not promise profit from the 7-bot's work. It is not shares of the desk, not a claim on bitcoin, and not how the book is funded. Do not buy any ticker because bots or a bitcoin stack exist.
 
 ## Support (optional)
 
@@ -65,4 +72,4 @@ Coinbase for Agents is dry-run in this repo. Never commit CDP JSON, seeds, admin
 
 ## Disclaimer
 
-s1r1us.ai and this desk are not licensed for financial advice and are not a recommendation to buy or sell bitcoin. Education only.
+s1r1us.ai and this desk are not licensed for financial advice and are not a recommendation to buy or sell bitcoin or any token. Education only. Seek a licensed professional. Using the website is agreement to /terms.

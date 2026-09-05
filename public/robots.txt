@@ -5,6 +5,7 @@ Allow: /f33d
 Allow: /helios
 Allow: /s1r1us
 Allow: /faq
+Allow: /terms
 Allow: /sitemap
 Allow: /sitemap.xml
 Disallow: /admin
