@@ -15,7 +15,7 @@ import { t as rollBots } from "./roll-bots-oeAzwiGo.mjs";
 import { t as SeoCopy } from "./seo-copy-BYIzP5_n.mjs";
 import { t as LiveTracks } from "./live-tracks-Cgs4VDpT.mjs";
 import { a as YAxis, c as Line, d as Bar, g as Tooltip, h as ResponsiveContainer, i as LineChart, l as CartesianGrid, m as Cell, o as XAxis, p as Customized, t as ComposedChart, u as ReferenceLine } from "../_libs/recharts+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/s1r1us-site-CfH0uQik.js
+//#region node_modules/.nitro/vite/services/ssr/assets/s1r1us-site-CCl0ZtSM.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function HelloWorld() {
@@ -23,147 +23,159 @@ function HelloWorld() {
 	const greet = `"welcome to ${APP_NAME}"`;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "mt-4",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-			type: "button",
-			onClick: () => setOpen((o) => !o),
-			"aria-expanded": open,
-			className: "block w-full rounded-md text-left hover:bg-fg/4",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-				className: "text-sm text-tab",
-				children: ["welcome to ", APP_NAME]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "mt-0.5 text-sm text-muted",
-				children: "H3LL0 W0RLD"
-			})]
-		}), open ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("pre", {
-			className: "mt-2 overflow-x-auto rounded-md border border-rule bg-black px-4 py-3 font-mono text-[12px] leading-[1.65] sm:text-sm",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "root@s1r1us-labz:~# "
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-high",
-					children: "./stage --rwx 0x7f8a1c00"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-medium",
-					children: "[*]"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: " attaching console.exploit  pid=1337  prot=rwx"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-high",
-					children: "[+]"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: " hook H@CK4U2K  ret=0x0040f00d"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "00000000  48 33 4c 4c 30 20 57 30  52 4c 44              |H3LL0 W0RLD|"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-sell",
-					children: "--[ payload / greeting only / not a shell ]--"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "function "
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-high",
-					children: "main"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "() {"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "  console.exploit ("
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-medium",
-					children: "\"H3LL0 W0RLD\""
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: ");"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "  console.H@CK4U2K.$("
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-					href: GITHUB_URL,
-					target: "_blank",
-					rel: "noopener noreferrer",
-					className: "text-tab font-semibold tracking-tight underline decoration-tab/70 underline-offset-2 hover:text-high",
-					children: greet
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: ");"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "}"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-high",
-					children: "variable"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "(load full access); return; run="
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-					to: "/gm",
-					title: TAB_HOVER_GM,
-					"aria-label": TAB_HOVER_GM,
-					className: "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2",
-					children: "[MaX1UM G@1Ns]"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-high",
-					children: "variable"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: "(send max profits); return; run="
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-					to: "/f33d",
-					title: TAB_HOVER_FEED,
-					"aria-label": TAB_HOVER_FEED,
-					className: "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2",
-					children: "[S3Nd 2 BTC Wall3t]"
-				}),
-				"\n",
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-high",
-					children: "[+]"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "text-muted",
-					children: " staged  exit=0  no bind / no reverse"
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				onClick: () => setOpen((o) => !o),
+				"aria-expanded": open,
+				className: "block w-full rounded-md text-left hover:bg-fg/4",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "text-sm text-tab",
+					children: ["welcome to ", APP_NAME]
 				})
-			]
-		}) : null]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+				href: GITHUB_URL,
+				target: "_blank",
+				rel: "noopener noreferrer",
+				title: "OP3N S0URC3 on GitHub",
+				className: "coinbase-orange mt-0.5 inline-block text-sm font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2",
+				children: "H3LL0 W0RLD"
+			}),
+			open ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("pre", {
+				className: "mt-2 overflow-x-auto rounded-md border border-rule bg-black px-4 py-3 font-mono text-[12px] leading-[1.65] sm:text-sm",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "root@s1r1us-labz:~# "
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-high",
+						children: "./stage --rwx 0x7f8a1c00"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-medium",
+						children: "[*]"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: " attaching console.exploit  pid=1337  prot=rwx"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-high",
+						children: "[+]"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: " hook H@CK4U2K  ret=0x0040f00d"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "00000000  48 33 4c 4c 30 20 57 30  52 4c 44              |H3LL0 W0RLD|"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-sell",
+						children: "--[ payload / greeting only / not a shell ]--"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "function "
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-high",
+						children: "main"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "() {"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "  console.exploit ("
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+						href: GITHUB_URL,
+						target: "_blank",
+						rel: "noopener noreferrer",
+						title: "OP3N S0URC3 on GitHub",
+						className: "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2",
+						children: "\"H3LL0 W0RLD\""
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: ");"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "  console.H@CK4U2K.$("
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+						href: GITHUB_URL,
+						target: "_blank",
+						rel: "noopener noreferrer",
+						className: "text-tab font-semibold tracking-tight underline decoration-tab/70 underline-offset-2 hover:text-high",
+						children: greet
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: ");"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "}"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-high",
+						children: "variable"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "(load full access); return; run="
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						to: "/gm",
+						title: TAB_HOVER_GM,
+						"aria-label": TAB_HOVER_GM,
+						className: "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2",
+						children: "[MaX1UM G@1Ns]"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-high",
+						children: "variable"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: "(send max profits); return; run="
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						to: "/f33d",
+						title: TAB_HOVER_FEED,
+						"aria-label": TAB_HOVER_FEED,
+						className: "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2",
+						children: "[S3Nd 2 BTC Wall3t]"
+					}),
+					"\n",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-high",
+						children: "[+]"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-muted",
+						children: " staged  exit=0  no bind / no reverse"
+					})
+				]
+			}) : null
+		]
 	});
 }
 var UP = "var(--color-high)";

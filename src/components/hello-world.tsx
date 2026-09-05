@@ -15,8 +15,16 @@ export function HelloWorld() {
         className="block w-full rounded-md text-left hover:bg-fg/4"
       >
         <p className="text-sm text-tab">welcome to {APP_NAME}</p>
-        <p className="mt-0.5 text-sm text-muted">H3LL0 W0RLD</p>
       </button>
+      <a
+        href={GITHUB_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="OP3N S0URC3 on GitHub"
+        className="coinbase-orange mt-0.5 inline-block text-sm font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2"
+      >
+        H3LL0 W0RLD
+      </a>
       {open ? (
         <pre className="mt-2 overflow-x-auto rounded-md border border-rule bg-black px-4 py-3 font-mono text-[12px] leading-[1.65] sm:text-sm">
           <span className="text-muted">root@s1r1us-labz:~# </span>
@@ -37,7 +45,15 @@ export function HelloWorld() {
           <span className="text-muted">{"() {"}</span>
           {"\n"}
           <span className="text-muted">{"  console.exploit ("}</span>
-          <span className="text-medium">"H3LL0 W0RLD"</span>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="OP3N S0URC3 on GitHub"
+            className="coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2"
+          >
+            "H3LL0 W0RLD"
+          </a>
           <span className="text-muted">);</span>
           {"\n"}
           <span className="text-muted">{"  console.H@CK4U2K.$("}</span>
