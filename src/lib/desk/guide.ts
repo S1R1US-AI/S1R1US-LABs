@@ -271,7 +271,7 @@ export const GUIDE: GuideSection[] = [
       "Leetspeak stays on the visible tabs. English aliases are sr-only + JSON-LD + title/description/FAQ. Do not print long English aliases as desk chrome.",
       "Do not index /admin /login /guide /launch /source /renew /security /api. Coin/mint how-to stays off FAQ, sitemap, and s1r1us.ai until TOKEN_LAUNCHED.",
       "Search Console + Bing: add https://s1r1us.ai/ and submit https://s1r1us.ai/sitemap.xml. robots.txt Allow / /gm /helios /s1r1us /faq /sitemap. llms.txt is for AI crawlers and matches this allow list.",
-      "Attach s1r1us.ai in Grok Publish. Confirm https://s1r1us.ai/ returns the public tape, not DEPLOYMENT_NOT_FOUND. Share company X with existing og/x-banner — do not change og:* in root (injector owns those).",
+      "Attach s1r1us.ai on DigitalOcean App Settings → Domains. Confirm https://s1r1us.ai/ returns the public tape. Share company X with existing og/x-banner — do not change og:* in root (injector owns those).",
     ],
   },
 ];
