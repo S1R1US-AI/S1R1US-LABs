@@ -342,16 +342,16 @@ export function LaunchDesk() {
           <div className="mt-4 rounded-md border border-rule p-3 font-mono text-xs">
             <p className="text-fg">{health.verdict}</p>
             <p className="mt-2 text-muted">A {health.apexA.join(" ") || "—"}</p>
-            <p className="text-muted">www {health.wwwCname.join(" ") || "—"}</p>
+            <p className="text-muted">www A {health.wwwA?.join(" ") || "—"}</p>
+            <p className="text-muted">www CNAME {health.wwwCname.join(" ") || "—"}</p>
             <p className="text-muted">HTTP {health.http.status} {health.http.body.slice(0, 80)}</p>
             <p className="text-muted">TLS {health.tls}</p>
           </div>
         ) : null}
         <p className="mt-4 text-sm text-fg">
-          To put this tape on s1r1us.ai: in Grok use <span className="font-medium">Publish</span>{" "}
-          (you get a grok.me link), then <span className="font-medium">custom domain</span> → add
-          s1r1us.ai. Copy the records Grok shows. Leave the current A/CNAME until then — they
-          already reach Vercel; SSL stays invalid until the domain is attached.
+          GoDaddy A records already point at DigitalOcean. HTTPS stays down until the app
+          deploy is green and s1r1us.ai is added under App Settings → Domains (that is what
+          issues TLS). Do not change nameservers.
         </p>
         <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm">
           {DNS_STEPS.map((s) => (
