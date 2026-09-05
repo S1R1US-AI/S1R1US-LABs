@@ -17,7 +17,8 @@ Do **not** commit wallets, CDP secrets, Yubi seeds, `.env`, or `*.pass.txt`.
 5. Size: **1 vCPU / 1 GB**
 6. App spec: use `.do/app.yaml` (service name `web`, no buildpack stack)
 7. `NODE_ENV=production` **run time only**. No `NODE_OPTIONS`. No database.
-8. Deploy until logs show `[s1r1us] npm install ok` then `[s1r1us] vite build ok`
+The Docker image is **runtime-only** (copies `.output`, no `npm install` on DigitalOcean). A 1 GB App Platform box was killing the compile in ~1 minute. After a source change, the desk must be rebuilt here and `.output` pushed before you click Deploy.
+
 
 ## GoDaddy DNS (already set)
 

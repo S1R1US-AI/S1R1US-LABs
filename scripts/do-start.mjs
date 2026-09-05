@@ -2,6 +2,7 @@
 /**
  * DigitalOcean App Platform / Docker entry.
  * Serves the Nitro node-server build on 0.0.0.0:$PORT (default 8080).
+ * Does not touch Grok live preview (:8080 dev) or :8081 QA preview.
  */
 import { existsSync } from "node:fs";
 import { spawn } from "node:child_process";

@@ -3,8 +3,7 @@ node_modules
 .grok
 artifacts
 screenshots
-data/pglite
-data/*.json
+data
 attachments
 *.pass.txt
 *.gpg
@@ -12,7 +11,6 @@ attachments
 .env
 .env.*
 dist
-.output
 .vercel
 coverage
 *.log
@@ -21,3 +19,5 @@ coverage
 playwright.config.*
 docs
 *.md
+public/*.zip
+public/*.tar.gz

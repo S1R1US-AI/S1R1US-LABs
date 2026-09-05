@@ -1,5 +1,4 @@
 node_modules
-.output
 .vercel
 dist
 .env
@@ -15,3 +14,4 @@ artifacts/*.zip
 .grok/preview.log
 screenshots
 coverage
+# .output is committed for DigitalOcean runtime image

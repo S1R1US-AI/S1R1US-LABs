@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#070908"/>
+  <!-- dorsal fins -->
+  <path fill="#146c18" d="M8 6l2 5H8zm4-2l2 7h-3zm4 1l2 6h-3zm4 1l3 5h-4z"/>
+  <!-- helmet / plates -->
+  <path fill="#3dff1a" d="M7 12h18l-1 3H8z"/>
+  <path fill="#146c18" d="M6 15h20v8H6z"/>
+  <path fill="#3dff1a" d="M8 15h16v2H8z"/>
+  <!-- visor -->
+  <rect x="8" y="17" width="16" height="4" fill="#0a120c"/>
+  <!-- laser eyes -->
+  <rect x="10" y="18" width="4" height="2" fill="#ff1f1f"/>
+  <rect x="18" y="18" width="4" height="2" fill="#ff1f1f"/>
+  <rect x="11" y="18" width="2" height="2" fill="#ffd24a"/>
+  <rect x="19" y="18" width="2" height="2" fill="#ffd24a"/>
+  <!-- beams -->
+  <rect x="24" y="18" width="8" height="1" fill="#ff1f1f" opacity="0.9"/>
+  <rect x="24" y="19" width="6" height="1" fill="#ff7a18" opacity="0.7"/>
+  <!-- jaw -->
+  <path fill="#1f8a28" d="M9 23h14l-2 4H11z"/>
+  <rect x="11" y="24" width="2" height="2" fill="#070908"/>
+  <rect x="15" y="24" width="2" height="2" fill="#070908"/>
+  <rect x="19" y="24" width="2" height="2" fill="#070908"/>
+  <!-- shoulders -->
+  <path fill="#146c18" d="M4 22h4v6H4zm20 0h4v6h-4z"/>
+</svg>
