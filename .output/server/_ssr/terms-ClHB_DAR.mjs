@@ -2,7 +2,7 @@ import { v as Link, x as require_jsx_runtime } from "../_libs/@tanstack/react-ro
 import { T as TAB_DESK, n as APP_NAME } from "./brand-uNMMM_l-.mjs";
 import { c as Shell, s as Panel } from "./shell-DoP-cDtR.mjs";
 import { t as SeoCopy } from "./seo-copy-DJd0ETA0.mjs";
-import { a as LEGAL_NFA, d as TERMS_UPDATED, i as LEGAL_HOWEY, l as TERMS_SECTIONS, u as TERMS_TITLE } from "./router-DhkYDt1q.mjs";
+import { a as LEGAL_NFA, d as TERMS_UPDATED, i as LEGAL_HOWEY, l as TERMS_SECTIONS, u as TERMS_TITLE } from "./router-DHmQ4-E9.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/terms-ClHB_DAR.js
 var import_jsx_runtime = require_jsx_runtime();
 function TermsPage() {

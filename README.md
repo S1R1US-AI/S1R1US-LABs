@@ -1,5 +1,7 @@
 # S1R1US-LABs
 
+**LAUNCH BUILD DEPLOY #39** — frozen production save. Tag `launch-build-deploy-39`. Live data pulls on. Live trades off. Practice/test runs paused. See [LAUNCH.md](LAUNCH.md).
+
 **[ S1R1U$ <<L@B$>> ]** — S1R1US Labs. Open-source AI Bitcoin hedge fund desk.
 
 Site (live): https://s1r1us.ai

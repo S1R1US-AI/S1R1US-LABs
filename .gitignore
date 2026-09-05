@@ -14,4 +14,7 @@ artifacts/*.zip
 .grok/preview.log
 screenshots
 coverage
+.node_modules.lock
+.project_id
+.tanstack
 # .output is committed for DigitalOcean runtime image

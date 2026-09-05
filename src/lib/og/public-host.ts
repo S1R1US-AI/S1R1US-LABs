@@ -6,7 +6,7 @@ export function publicAppHost(hostHeader?: string): string {
     .split(":")[0]
     .toLowerCase();
   if (!host || !/^[a-z0-9.-]+$/.test(host) || !host.includes(".")) return "";
-  if (/^\\d{1,3}(?:\\.\\d{1,3}){3}$/.test(host)) return "";
+  if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)) return "";
   if (
     host === "vercel.app" ||
     host.endsWith(".vercel.app") ||

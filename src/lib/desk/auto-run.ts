@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { LAUNCH_FREEZE } from "@/lib/launch/build";
 import { DEFAULT_GM_VARS, type GmVars } from "./gm";
 import {
   AUTO_RUN_CASH,
@@ -72,7 +73,7 @@ export const useAutoRun = create<AutoState>()(
       cash: AUTO_RUN_CASH,
       days: [],
       windowOpen: () => false,
-      fillsAllowed: () => false,
+      fillsAllowed: () => !LAUNCH_FREEZE && false,
       markArmed: () =>
         set({
           id: AUTO_RUN_ID,

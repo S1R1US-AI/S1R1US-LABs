@@ -1,3 +1,4 @@
+import { LAUNCH_BUILD } from "@/lib/launch/build";
 import { ROADMAP, ROADMAP_TOTAL } from "@/lib/launch/model";
 import { BOT_ROSTER, CYCLE_ARCH, RISK_RULES, SYSTEM_REVIEWED } from "./policy";
 import { heliosCall, runBots } from "./signal";
@@ -13,6 +14,7 @@ export const MANDATE = [
 /** One object for the fund tape, Coin tab, and s1r1us.ai — rebuilt on every live tape pull. */
 export function systemView(snap: DeskSnapshot | null, navUsd = 1000): {
   reviewed: string;
+  launch: string;
   fetchedAt: string | null;
   briefs: BotBrief[];
   call: HeliosCall | null;
@@ -26,6 +28,7 @@ export function systemView(snap: DeskSnapshot | null, navUsd = 1000): {
   const call = snap ? heliosCall(snap, briefs, navUsd) : null;
   return {
     reviewed: SYSTEM_REVIEWED,
+    launch: LAUNCH_BUILD,
     fetchedAt: snap?.fetchedAt ?? null,
     briefs,
     call,
