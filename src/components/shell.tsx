@@ -8,15 +8,28 @@ import { looksLikeCompanyX, COMPANY_X_HANDLE, COMPANY_X_NAME } from "@/lib/desk/
 import { CompanyAvatar, CompanyXChip } from "@/components/company-x";
 import { AdminAuthControl } from "@/components/operator-lock";
 import { useOperator } from "@/lib/desk/operator";
-import { APP_NAME, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
+import {
+  APP_NAME,
+  TAB_DESK,
+  TAB_FEED,
+  TAB_GM,
+  TAB_HOVER_DESK,
+  TAB_HOVER_FAQ,
+  TAB_HOVER_FEED,
+  TAB_HOVER_GM,
+  TAB_HOVER_HOME,
+  TAB_HOVER_LAB,
+  TAB_HOVER_SITEMAP,
+  TAB_LAB,
+} from "@/lib/brand";
 import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
 import { GodzillaMark, GmRainbow } from "@/components/godzilla-mark";
 import { rainGmBurst } from "@/components/matrix-saver";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { to: "/", label: TAB_DESK },
-  { to: "/helios", label: TAB_LAB },
+  { to: "/", label: TAB_DESK, title: TAB_HOVER_DESK },
+  { to: "/helios", label: TAB_LAB, title: TAB_HOVER_LAB },
 ] as const;
 
 
@@ -31,7 +44,7 @@ export function Shell({
     <div className="flex min-h-dvh flex-col bg-bg text-fg">
       <header className="no-print sticky top-0 z-30 border-b border-rule bg-bg/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
-          <Link to="/" className="flex min-w-0 items-center gap-2.5">
+          <Link to="/" className="flex min-w-0 items-center gap-2.5" title={TAB_HOVER_HOME} aria-label={TAB_HOVER_HOME}>
             <CompanyAvatar size={36} className="h-9 w-9 ring-1 ring-rule" />
             <span className="min-w-0">
               <p className="text-xs font-medium tracking-[0.08em] text-high uppercase">7-B0T H3DGE FUND</p>
@@ -43,6 +56,8 @@ export function Shell({
               <Link
                 key={l.to}
                 to={l.to}
+                title={l.title}
+                aria-label={l.title}
                 className="inline-flex min-h-10 max-w-[11.5rem] items-center rounded-md px-2.5 py-1.5 text-left text-xs font-medium leading-tight sm:max-w-none sm:px-3 sm:text-sm"
                 activeProps={{
                   className:
@@ -54,7 +69,8 @@ export function Shell({
             ))}
             <Link
               to="/gm"
-              title={TAB_GM}
+              title={TAB_HOVER_GM}
+              aria-label={TAB_HOVER_GM}
               className="gm-tab inline-flex min-h-12 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold tracking-tight"
               onClick={() => rainGmBurst(3000)}
               activeProps={{
@@ -68,7 +84,8 @@ export function Shell({
             <Link
               to="/f33d"
               hash="donate"
-              title={TAB_FEED}
+              title={TAB_HOVER_FEED}
+              aria-label={TAB_HOVER_FEED}
               className="gm-tab inline-flex min-h-12 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold tracking-tight"
               activeProps={{
                 className:
@@ -90,15 +107,15 @@ export function Shell({
       <footer className="no-print mt-auto border-t border-rule/60">
         <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <Link to="/s1r1us" className="font-mono text-[11px] tracking-[0.12em] text-muted/45 hover:text-muted">
+            <Link to="/s1r1us" className="font-mono text-[11px] tracking-[0.12em] text-muted/45 hover:text-muted" title={TAB_HOVER_HOME} aria-label={TAB_HOVER_HOME}>
               s1r1us.ai
             </Link>
             <p className="flex max-w-3xl flex-wrap items-center justify-end gap-x-2 font-mono text-[11px] leading-relaxed tracking-[0.04em] text-oss">
-              <Link to="/sitemap" className="text-oss hover:underline">
+              <Link to="/sitemap" className="text-oss hover:underline" title={TAB_HOVER_SITEMAP}>
                 Sitemap
               </Link>
               <span aria-hidden>|</span>
-              <Link to="/faq" className="text-oss hover:underline">
+              <Link to="/faq" className="text-oss hover:underline" title={TAB_HOVER_FAQ}>
                 FAQ
               </Link>
               <span aria-hidden>|</span>
@@ -195,6 +212,7 @@ function AdminNavLink() {
   return (
     <Link
       to="/admin"
+      title={`Admin · ${APP_NAME}`}
       className="inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium"
       activeProps={{
         className:

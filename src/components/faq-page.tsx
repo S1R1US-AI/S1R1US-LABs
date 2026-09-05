@@ -3,7 +3,7 @@ import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { SupportDonate } from "@/components/support-donate";
 import { FAQ_ITEMS } from "@/lib/desk/public-nav";
-import { APP_NAME, LABS_NAME, SEO_CANONICAL, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { APP_NAME, LABS_NAME, PAGE_DESC_FAQ, PAGE_TITLE_FAQ, SEO_CANONICAL, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
 
 export function FaqPage() {
   const data = {
@@ -15,8 +15,8 @@ export function FaqPage() {
       acceptedAnswer: { "@type": "Answer", text: item.a },
     })),
     url: `${SEO_CANONICAL.replace(/\/$/, "")}/faq`,
-    name: `FAQ · ${TAB_DESK} · ${TAB_GM} · ${TAB_LAB} · OP3N S0URC3`,
-    description: `${LABS_NAME} FAQ: S1R1US 7-bot hedge fund, Godzilla mode, S1R1US Lab Strategies, open source, AI Bitcoin trading bot, AI stock trading bot, AI Hedge Fund. Not financial advice.`,
+    name: PAGE_TITLE_FAQ,
+    description: PAGE_DESC_FAQ,
   };
 
   return (

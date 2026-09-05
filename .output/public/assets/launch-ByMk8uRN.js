@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-JkgmOp75.js";var t=e;export{t as component};

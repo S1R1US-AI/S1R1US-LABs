@@ -11,7 +11,15 @@ import { useOperator } from "@/lib/desk/operator";
 import { looksLikeSecret } from "@/lib/desk/security";
 import { APP_NAME } from "@/lib/brand";
 
-export const Route = createFileRoute("/login")({ component: Login });
+export const Route = createFileRoute("/login")({
+  component: Login,
+  head: () => ({
+    meta: [
+      { title: `Sign in · ${APP_NAME}` },
+      { name: "robots", content: "noindex,nofollow" },
+    ],
+  }),
+});
 
 function Login() {
   const { user, isPending } = useCurrentUserState();
