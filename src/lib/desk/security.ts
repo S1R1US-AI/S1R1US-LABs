@@ -223,7 +223,7 @@ export type VulnRow = {
   detail: string;
 };
 
-export const ANALYSIS_AS_OF = "3 September 2026 · 21:20 ET · v12";
+export const ANALYSIS_AS_OF = "4 September 2026 · 22:45 ET · v13";
 
 export function vulnRows(): VulnRow[] {
   return [

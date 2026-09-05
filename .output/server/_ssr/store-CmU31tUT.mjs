@@ -2,7 +2,7 @@ import { o as __toESM } from "../_runtime.mjs";
 import { H as require_react } from "../_libs/@tanstack/react-router+[...].mjs";
 import { r as createServerFn } from "./ssr.mjs";
 import { t as DESK_POLL_MS } from "./poll-ByA4PSVX.mjs";
-import { g as createSsrRpc } from "./operator-BWqe-TjH.mjs";
+import { g as createSsrRpc } from "./operator-Mf8Bhxch.mjs";
 import { n as create, t as persist } from "../_libs/zustand.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/store-CmU31tUT.js
 var import_react = /* @__PURE__ */ __toESM(require_react());

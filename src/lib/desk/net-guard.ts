@@ -70,6 +70,7 @@ const HOST_SUFFIXES = [
   "mercadobitcoin.net",
   "buda.com",
   "stlouisfed.org",
+  "stooq.com",
   "frankfurter.app",
   "frankfurter.dev",
   "llama.fi",
