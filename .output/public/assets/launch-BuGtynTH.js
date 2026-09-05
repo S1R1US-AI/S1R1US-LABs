@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-BrOcF1g0.js";var t=e;export{t as component};

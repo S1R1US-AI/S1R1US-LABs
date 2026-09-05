@@ -3,7 +3,7 @@ import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { SupportDonate } from "@/components/support-donate";
 import { FAQ_ITEMS } from "@/lib/desk/public-nav";
-import { APP_NAME, LABS_NAME, SEO_CANONICAL, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { APP_NAME, LABS_NAME, SEO_CANONICAL, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
 
 export function FaqPage() {
   const data = {
@@ -39,6 +39,13 @@ export function FaqPage() {
           ))}
         </div>
         <SupportDonate />
+        <p className="mt-3 font-mono text-xs text-oss">
+          Same wallets as the{" "}
+          <Link to="/f33d" hash="donate" className="hover:underline">
+            {TAB_FEED}
+          </Link>{" "}
+          tab.
+        </p>
         <p className="mt-6 font-mono text-xs text-oss">
           <Link to="/sitemap" className="hover:underline">
             Sitemap

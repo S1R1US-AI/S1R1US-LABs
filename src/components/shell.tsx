@@ -67,6 +67,7 @@ export function Shell({
             </Link>
             <Link
               to="/f33d"
+              hash="donate"
               title={TAB_FEED}
               className="gm-tab inline-flex min-h-12 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold tracking-tight"
               activeProps={{
@@ -244,6 +245,7 @@ export function Panel({
   className,
   titleClass,
   kickerClass,
+  id,
   children,
 }: {
   title: ReactNode;
@@ -251,10 +253,12 @@ export function Panel({
   className?: string;
   titleClass?: string;
   kickerClass?: string;
+  id?: string;
   children: ReactNode;
 }) {
   return (
     <section
+      id={id}
       className={cn(
         "rounded-lg border border-rule bg-surface p-4 shadow-[var(--shadow-border)] sm:p-5",
         className,
