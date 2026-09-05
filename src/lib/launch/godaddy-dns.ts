@@ -1,26 +1,41 @@
-/** GoDaddy DNS for s1r1us.ai → published Vercel host. Do not CNAME the Grok preview. */
+/** GoDaddy DNS for s1r1us.ai → DigitalOcean App Platform ingress. Leave nameservers on GoDaddy. */
+export const DO_INGRESS_A = ["162.159.140.98", "172.66.0.96"] as const;
+
 export const GODADDY_DNS_ROWS = [
   {
     type: "A",
     name: "@",
-    value: "76.76.21.21",
-    ttl: "600",
-    why: "s1r1us.ai (the root). Only after the domain is attached on the published host.",
+    value: "162.159.140.98",
+    ttl: "½ hour",
+    why: "s1r1us.ai apex — DigitalOcean shared ingress (first of two).",
   },
   {
-    type: "CNAME",
+    type: "A",
+    name: "@",
+    value: "172.66.0.96",
+    ttl: "½ hour",
+    why: "s1r1us.ai apex — DigitalOcean shared ingress (second of two).",
+  },
+  {
+    type: "A",
     name: "www",
-    value: "cname.vercel-dns.com",
-    ttl: "600",
-    why: "www.s1r1us.ai. If Vercel shows a unique *.vercel-dns-017.com, paste that instead of this value.",
+    value: "162.159.140.98",
+    ttl: "½ hour",
+    why: "www.s1r1us.ai — same ingress. Do not CNAME www to Vercel.",
+  },
+  {
+    type: "A",
+    name: "www",
+    value: "172.66.0.96",
+    ttl: "½ hour",
+    why: "www.s1r1us.ai — second address.",
   },
 ] as const;
 
 export const GODADDY_DNS_SKIP = [
-  "Publish this app in Grok first (grok.me). Then add s1r1us.ai as the custom domain there. SSL is issued only after that attach.",
-  "If Grok shows different A/CNAME values than this table, use Grok’s values — not both.",
+  "Do not change nameservers. Keep GoDaddy ns*.domaincontrol.com.",
+  "Do not keep any Vercel A (76.76.21.21) or cname.vercel-dns.com.",
+  "Add s1r1us.ai under DigitalOcean App Settings → Domains so TLS can issue.",
   "Do not create MX until you have a mailbox you control.",
   "Do not point A/CNAME at a GoDaddy Airo / parked AI site.",
-  "Do not point at the in-chat preview — it is not a stable host.",
-  "Delete old A/AAAA/CNAME on @ and www before saving these.",
-];
+] as const;
