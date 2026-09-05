@@ -313,10 +313,10 @@ export function vulnRows(): VulnRow[] {
     },
     {
       id: "dns-orphan",
-      title: "s1r1us.ai pointed at Vercel with no app",
+      title: "s1r1us.ai TLS until DigitalOcean domain attach",
       severity: "MED",
       status: "OPERATOR",
-      detail: "DNS A 76.76.21.21 is correct but unattached: DEPLOYMENT_NOT_FOUND, TLS EOF, browser “invalid security”. Publish in Grok and add the custom domain. Do not click through the cert warning. Do not log in on that host until HTTPS is real.",
+      detail: "Apex A is DigitalOcean 162.159.140.98 / 172.66.0.96. Handshake fails until the domain is added on the App Platform app and a deploy is green. Do not click through a cert warning. Do not log in on that host until HTTPS is real.",
     },
     {
       id: "revoke-unauth",
