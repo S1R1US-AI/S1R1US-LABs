@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { APP_NAME, TAB_HOVER_FEED, TAB_HOVER_GM } from "@/lib/brand";
+import {
+  APP_NAME,
+  TAB_HELLO,
+  TAB_HOVER_HELLO,
+  TAB_HOVER_MAX_GAINS,
+  TAB_HOVER_SEND_BTC,
+  TAB_MAX_GAINS,
+  TAB_SEND_BTC,
+} from "@/lib/brand";
 import { GITHUB_URL } from "@/lib/launch/model";
+
+const ORANGE =
+  "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2";
 
 export function HelloWorld() {
   const [open, setOpen] = useState(false);
@@ -20,10 +31,11 @@ export function HelloWorld() {
         href={GITHUB_URL}
         target="_blank"
         rel="noopener noreferrer"
-        title="OP3N S0URC3 on GitHub"
-        className="coinbase-orange mt-0.5 inline-block text-sm font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2"
+        title={TAB_HOVER_HELLO}
+        aria-label={TAB_HOVER_HELLO}
+        className={`${ORANGE} mt-0.5 inline-block text-sm`}
       >
-        H3LL0 W0RLD
+        {TAB_HELLO}
       </a>
       {open ? (
         <pre className="mt-2 overflow-x-auto rounded-md border border-rule bg-black px-4 py-3 font-mono text-[12px] leading-[1.65] sm:text-sm">
@@ -36,7 +48,7 @@ export function HelloWorld() {
           <span className="text-high">[+]</span>
           <span className="text-muted">{" hook H@CK4U2K  ret=0x0040f00d"}</span>
           {"\n"}
-          <span className="text-muted">{"00000000  48 33 4c 4c 30 20 57 30  52 4c 44              |H3LL0 W0RLD|"}</span>
+          <span className="text-muted">{`00000000  48 33 4c 4c 30 20 57 30  52 4c 44              |${TAB_HELLO}|`}</span>
           {"\n"}
           <span className="text-sell">--[ payload / greeting only / not a shell ]--</span>
           {"\n"}
@@ -49,10 +61,11 @@ export function HelloWorld() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            title="OP3N S0URC3 on GitHub"
-            className="coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2"
+            title={TAB_HOVER_HELLO}
+            aria-label={TAB_HOVER_HELLO}
+            className={ORANGE}
           >
-            "H3LL0 W0RLD"
+            "{TAB_HELLO}"
           </a>
           <span className="text-muted">);</span>
           {"\n"}
@@ -61,7 +74,9 @@ export function HelloWorld() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-tab font-semibold tracking-tight underline decoration-tab/70 underline-offset-2 hover:text-high"
+            title={TAB_HOVER_HELLO}
+            aria-label={TAB_HOVER_HELLO}
+            className={ORANGE}
           >
             {greet}
           </a>
@@ -71,24 +86,14 @@ export function HelloWorld() {
           {"\n"}
           <span className="text-high">variable</span>
           <span className="text-muted">(load full access); return; run=</span>
-          <Link
-            to="/gm"
-            title={TAB_HOVER_GM}
-            aria-label={TAB_HOVER_GM}
-            className="coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2"
-          >
-            [MaX1UM G@1Ns]
+          <Link to="/gm" title={TAB_HOVER_MAX_GAINS} aria-label={TAB_HOVER_MAX_GAINS} className={ORANGE}>
+            [{TAB_MAX_GAINS}]
           </Link>
           {"\n"}
           <span className="text-high">variable</span>
           <span className="text-muted">(send max profits); return; run=</span>
-          <Link
-            to="/f33d"
-            title={TAB_HOVER_FEED}
-            aria-label={TAB_HOVER_FEED}
-            className="coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2"
-          >
-            [S3Nd 2 BTC Wall3t]
+          <Link to="/f33d" title={TAB_HOVER_SEND_BTC} aria-label={TAB_HOVER_SEND_BTC} className={ORANGE}>
+            [{TAB_SEND_BTC}]
           </Link>
           {"\n"}
           <span className="text-high">[+]</span>

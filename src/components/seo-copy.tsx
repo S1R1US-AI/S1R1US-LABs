@@ -11,6 +11,7 @@ import {
   TAB_DESK,
   TAB_FEED,
   TAB_GM,
+  TAB_HELLO,
   TAB_LAB,
 } from "@/lib/brand";
 import { COMPANY_X_URL } from "@/lib/desk/x-admin";
@@ -30,7 +31,7 @@ export function SeoCopy() {
       {
         "@type": "WebSite",
         name: LABS_NAME,
-        alternateName: [APP_NAME, "AI Bitcoin trading bot", "AI Hedge Fund", TAB_DESK, TAB_GM, TAB_LAB],
+        alternateName: [APP_NAME, "AI Bitcoin trading bot", "AI Hedge Fund", TAB_DESK, TAB_GM, TAB_LAB, TAB_HELLO],
         url: SEO_CANONICAL,
         description: SEO_DESCRIPTION,
         potentialAction: {
@@ -63,6 +64,13 @@ export function SeoCopy() {
         alternateName: [SEO_TAB_FEED, "F33D N0W"],
         description: `${TAB_FEED} is ${SEO_TAB_FEED}. Optional donations for hosting, domain, and open-source apps.`,
         url: `${SEO_CANONICAL}f33d`,
+      },
+      {
+        "@type": "WebPage",
+        name: TAB_HELLO,
+        alternateName: ["Hello World", "H3LL0 W0RLD"],
+        description: `${TAB_HELLO} is Hello World. Expand greeting on the public tape. Links to OP3N S0URC3 (open source). MaX1UM G@1Ns (Maximum Gains) opens Godzilla mode. S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens Feed Godzilla mode.`,
+        url: SEO_CANONICAL,
       },
       {
         "@type": "SoftwareApplication",

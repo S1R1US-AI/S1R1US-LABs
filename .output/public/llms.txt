@@ -9,6 +9,9 @@
 - S1R1U$ L@B Strategies = S1R1US Lab Strategies
 - G0DZ1LLa M0D3 = Godzilla mode = Godzilla Mode
 - F33D G0dZiLLa M0D3 = Feed Godzilla mode
+- H3LL0 W0RLD = Hello World
+- MaX1UM G@1Ns = Maximum Gains
+- S3Nd 2 BTC Wall3t = Send to BTC Wallet
 - T0K3N L@UNCH = Token launch
 - OP3N S0URC3 = open source
 - H3LP 7-B0T H3DGE FUND = HELP 7-BOT HEDGE FUND
