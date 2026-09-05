@@ -1,5 +1,20 @@
 name: s1r1us-labs
 region: nyc
+alerts:
+  - rule: DEPLOYMENT_FAILED
+  - rule: DOMAIN_FAILED
+domains:
+  - domain: s1r1us.ai
+    type: PRIMARY
+  - domain: www.s1r1us.ai
+    type: ALIAS
+ingress:
+  rules:
+    - component:
+        name: web
+      match:
+        path:
+          prefix: /
 services:
   - name: web
     dockerfile_path: Dockerfile
@@ -9,7 +24,7 @@ services:
       deploy_on_push: false
     http_port: 8080
     instance_count: 1
-    instance_size_slug: apps-s-1vcpu-1gb
+    instance_size_slug: apps-s-1vcpu-1gb-fixed
     health_check:
       http_path: /
     envs:
@@ -27,4 +42,7 @@ services:
         scope: RUN_TIME
       - key: PORT
         value: "8080"
+        scope: RUN_TIME
+      - key: BETTER_AUTH_URL
+        value: "https://s1r1us.ai"
         scope: RUN_TIME
