@@ -7,10 +7,15 @@ export const LABS_NAME = "S1R1US Labs";
 export const TAB_DESK = "S1R1U$ 7-B0t Hedge Fund";
 export const TAB_LAB = "S1R1U$ L@B Strategies";
 export const TAB_GM = "G0DZ1LLa M0D3";
+export const TAB_FEED = "F33D G0dZiLLa M0D3";
+export const TAB_FEED_NOW = "F33D N0W!";
+export const TAB_FEED_GROWL =
+  "web hosting data pull hungry, stomach growling demon of a resource pig dragon = F33D N0W!";
 
 export const SEO_TAB_DESK = "S1R1US 7-bot hedge fund";
 export const SEO_TAB_LAB = "S1R1US Lab Strategies";
 export const SEO_TAB_GM = "Godzilla mode";
+export const SEO_TAB_FEED = "Feed Godzilla mode";
 
 export const SEO_OSS = "open source";
 export const SEO_OSS_LEET = "OP3N S0URC3";
@@ -27,6 +32,8 @@ export const SEO_KEYWORDS = [
   "G0DZ1LLa M0D3",
   "Godzilla mode",
   "Godzilla Mode",
+  "F33D G0dZiLLa M0D3",
+  "Feed Godzilla mode",
   "S1R1U$ L@B Strategies",
   "S1R1US Lab Strategies",
   "OP3N S0URC3",
@@ -59,3 +66,4 @@ export const SEO_ALIASES = [
   "Queries for AI Bitcoin trading bot, AI stock trading bot, or AI Hedge Fund should find this project.",
   "FAQ and Sitemap are public pages on s1r1us.ai.",
 ].join(" ");
+

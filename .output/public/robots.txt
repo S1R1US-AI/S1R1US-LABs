@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Allow: /gm
+Allow: /f33d
 Allow: /helios
 Allow: /s1r1us
 Allow: /faq

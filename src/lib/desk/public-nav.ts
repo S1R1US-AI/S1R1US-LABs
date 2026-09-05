@@ -6,6 +6,7 @@ import {
   SEO_TAB_GM,
   SEO_TAB_LAB,
   TAB_DESK,
+  TAB_FEED,
   TAB_GM,
   TAB_LAB,
 } from "@/lib/brand";
@@ -32,6 +33,15 @@ export const PUBLIC_PAGES = [
     hint: "Aggressive AI bitcoin sleeve · AI Bitcoin trading bot",
     changefreq: "hourly",
     priority: "0.9",
+  },
+  {
+    path: "/f33d",
+    loc: `${origin}/f33d`,
+    label: TAB_FEED,
+    title: TAB_FEED,
+    hint: "Feed hosting · domain · iOS / Play apps",
+    changefreq: "weekly",
+    priority: "0.7",
   },
   {
     path: "/helios",
@@ -112,6 +122,6 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "How can I support hosting and the apps?",
-    a: `${SUPPORT_BLURB} Bitcoin (BTC): ${SUPPORT_BTC}. USDC on Ethereum (ERC-20): ${SUPPORT_USDC}. Send only those assets to those addresses.`,
+    a: `${SUPPORT_BLURB} Bitcoin (BTC): ${SUPPORT_BTC}. USDC on Ethereum (ERC-20): ${SUPPORT_USDC}. Send only those assets to those addresses. Tab: F33D G0dZiLLa M0D3.`,
   },
 ];

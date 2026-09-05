@@ -1,5 +1,8 @@
-/** Robotic Godzilla — laser visor. Body follows currentColor; beams stay red. */
-export function GodzillaMark({ className }: { className?: string }) {
+/** Robotic Godzilla — laser visor. Body follows currentColor; beams stay red unless `beam="green"`. */
+export function GodzillaMark({ className, beam = "red" }: { className?: string; beam?: "red" | "green" }) {
+  const laser = beam === "green" ? "#3dff1a" : "#ff1f1f";
+  const hot = beam === "green" ? "#b7ff7a" : "#ffd24a";
+  const trail = beam === "green" ? "#6fbf63" : "#ff7a18";
   return (
     <svg viewBox="0 0 72 40" className={className} aria-hidden fill="currentColor">
       {/* dorsal fins */}
@@ -12,13 +15,13 @@ export function GodzillaMark({ className }: { className?: string }) {
       {/* visor slot */}
       <rect x="14" y="23" width="28" height="6" fill="#070908" />
       {/* laser eyes */}
-      <rect x="17" y="24.5" width="8" height="3" fill="#ff1f1f" />
-      <rect x="31" y="24.5" width="8" height="3" fill="#ff1f1f" />
-      <rect x="19" y="24.5" width="3" height="3" fill="#ffd24a" />
-      <rect x="33" y="24.5" width="3" height="3" fill="#ffd24a" />
+      <rect x="17" y="24.5" width="8" height="3" fill={laser} />
+      <rect x="31" y="24.5" width="8" height="3" fill={laser} />
+      <rect x="19" y="24.5" width="3" height="3" fill={hot} />
+      <rect x="33" y="24.5" width="3" height="3" fill={hot} />
       {/* beams */}
-      <rect x="48" y="25" width="24" height="1.6" fill="#ff1f1f" />
-      <rect x="48" y="26.7" width="18" height="1.1" fill="#ff7a18" opacity="0.85" />
+      <rect x="48" y="25" width="24" height="1.6" fill={laser} />
+      <rect x="48" y="26.7" width="18" height="1.1" fill={trail} opacity="0.85" />
       {/* jaw + teeth */}
       <path d="M14 31h28l-3 6H17z" opacity="0.9" />
       <rect x="18" y="32.5" width="3" height="3" fill="#070908" />
@@ -28,7 +31,7 @@ export function GodzillaMark({ className }: { className?: string }) {
       {/* shoulders / arms */}
       <path d="M2 28h8v10H2zM46 28h8v10h-8z" />
       {/* chest reactor */}
-      <rect x="24" y="29" width="8" height="2" fill="#ff1f1f" opacity="0.7" />
+      <rect x="24" y="29" width="8" height="2" fill={laser} opacity="0.7" />
     </svg>
   );
 }

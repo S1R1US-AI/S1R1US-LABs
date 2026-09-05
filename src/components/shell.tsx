@@ -8,7 +8,7 @@ import { looksLikeCompanyX, COMPANY_X_HANDLE, COMPANY_X_NAME } from "@/lib/desk/
 import { CompanyAvatar, CompanyXChip } from "@/components/company-x";
 import { AdminAuthControl } from "@/components/operator-lock";
 import { useOperator } from "@/lib/desk/operator";
-import { APP_NAME, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { APP_NAME, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
 import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
 import { GodzillaMark, GmRainbow } from "@/components/godzilla-mark";
 import { rainGmBurst } from "@/components/matrix-saver";
@@ -54,6 +54,7 @@ export function Shell({
             ))}
             <Link
               to="/gm"
+              title={TAB_GM}
               className="gm-tab inline-flex min-h-12 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold tracking-tight"
               onClick={() => rainGmBurst(3000)}
               activeProps={{
@@ -63,6 +64,18 @@ export function Shell({
             >
               <GodzillaMark className="h-5 w-8 shrink-0" />
               <GmRainbow text={TAB_GM} />
+            </Link>
+            <Link
+              to="/f33d"
+              title={TAB_FEED}
+              className="gm-tab inline-flex min-h-12 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold tracking-tight"
+              activeProps={{
+                className:
+                  "gm-tab is-on inline-flex min-h-12 items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold tracking-tight",
+              }}
+            >
+              <GodzillaMark className="h-5 w-8 shrink-0" beam="green" />
+              <GmRainbow text={TAB_FEED} />
             </Link>
             <AdminNavLink />
           </nav>
