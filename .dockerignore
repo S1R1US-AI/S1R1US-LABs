@@ -16,3 +16,8 @@ dist
 .vercel
 coverage
 *.log
+**/*.test.ts
+**/*.test.mjs
+playwright.config.*
+docs
+*.md
