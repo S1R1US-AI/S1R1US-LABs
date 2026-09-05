@@ -1,16 +1,23 @@
 # S1R1US-LABs
 
-S1R1US Labs. Open-source AI Bitcoin hedge fund desk.
+**[ S1R1U$ <<L@B$>> ]** — S1R1US Labs. Open-source AI Bitcoin hedge fund desk.
 
-Brand: `S1R1U$ <<L@B$>>`
-
-Site: https://s1r1us.ai
+Site (live): https://s1r1us.ai
 
 Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 
 License: Apache License 2.0
 
-Not financial advice. Not licensed. Not a broker. Not a token sale. Education only.
+Search names (both spellings index this project):
+
+- S1R1U$ 7-B0t Hedge Fund = S1R1US 7-bot hedge fund
+- G0DZ1LLa M0D3 = Godzilla mode = Godzilla Mode
+- F33D G0dZiLLa M0D3 = Feed Godzilla mode
+- S1R1U$ L@B Strategies = S1R1US Lab Strategies
+- OP3N S0URC3 = open source
+- AI Bitcoin trading bot · AI stock trading bot · AI Hedge Fund
+
+Not financial advice. Not licensed. Not a broker. Not a token sale. Education only. Invest at your own risk and only on the advice of a licensed advisor.
 
 ## Mandate
 
@@ -20,13 +27,42 @@ Not financial advice. Not licensed. Not a broker. Not a token sale. Education on
 
 SuperGrok is the only paid service. All market tape is free/public.
 
+## Tabs
+
+Hover titles use the leet name plus the plain alias.
+
+| Tab | Also searched as | What it is |
+|---|---|---|
+| S1R1U$ 7-B0t Hedge Fund | S1R1US 7-bot hedge fund | Live tape. Bots 1-6 vote orthogonal lanes. Bot 7 (S1R1U$ Analyst) issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. |
+| S1R1U$ L@B Strategies | S1R1US Lab Strategies | What-if lab. Sliders overlay the last validated pull. They never write a live feed. |
+| G0DZ1LLa M0D3 | Godzilla mode | Isolated sleeve. Practice for everyone. Live only if an operator unlocks it. AUTO may day-trade the sleeve only, never the 7-bot stack. |
+| F33D G0dZiLLa M0D3 | Feed Godzilla mode | Hosting / domain / iOS / Play app fees. Same wallets as FAQ. Not the trading book. Not a token. |
+
+Public URLs: https://s1r1us.ai/ · `/gm` · `/f33d` · `/helios` · `/faq` · `/sitemap`
+
+## Support (optional)
+
+Donations cover web hosting, s1r1us.ai registration, and operation of the open-source web app, iOS app, and Google Play app. Not an investment.
+
+- BTC: `33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8`
+- USDC (Ethereum ERC-20): `0x551163f5d4c0361155d16131459afa5c936a60ad`
+
 ## Publish (GitHub + DigitalOcean)
 
-See [DEPLOY.md](DEPLOY.md). App Platform: **Dockerfile**, HTTP **8080**, **1 GB RAM**, autodeploy **off**.
+See [DEPLOY.md](DEPLOY.md). App Platform: **Dockerfile**, HTTP **8080**, **1 GB RAM**, autodeploy **off**. Custom domain **s1r1us.ai** is attached. Keep GoDaddy nameservers; A records to DigitalOcean ingress IPs.
 
-```
-npm install
-npm run dev
-```
+Node 22. Host: DigitalOcean App Platform. No Google DNS.
+
+    npm install
+    npm run dev
 
 Optional env: XAI_API_KEY for Ask Grok. Tape still works without it.
+
+    npm run typecheck
+    npm run build
+
+Coinbase for Agents is dry-run in this repo. Never commit CDP JSON, seeds, admin hashes, or Yubi ids.
+
+## Disclaimer
+
+s1r1us.ai and this desk are not licensed for financial advice and are not a recommendation to buy or sell bitcoin. Education only.
