@@ -46,3 +46,9 @@ services:
       - key: BETTER_AUTH_URL
         value: "https://s1r1us.ai"
         scope: RUN_TIME
+      - key: GROK_AUTH_ISSUER
+        value: "https://auth.grok.me"
+        scope: RUN_TIME
+      - key: GROK_AUTH_CLIENT_ID
+        value: "grok_a3389f926a0c42b3b1c95fec1287e3ef"
+        scope: RUN_TIME

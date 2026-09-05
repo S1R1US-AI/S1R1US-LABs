@@ -119,6 +119,10 @@ export function Shell({
                 FAQ
               </Link>
               <span aria-hidden>|</span>
+              <Link to="/login" className="text-oss hover:underline" title="login">
+                login
+              </Link>
+              <span aria-hidden>|</span>
               <a
                 href="/s1r1us-labs-github.zip"
                 download="s1r1us-labs-github.zip"

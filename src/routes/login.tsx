@@ -10,6 +10,7 @@ import { secondFactorStatus } from "@/lib/desk/access";
 import { useOperator } from "@/lib/desk/operator";
 import { looksLikeSecret } from "@/lib/desk/security";
 import { APP_NAME } from "@/lib/brand";
+import { LoginCluster, Shell } from "@/components/shell";
 
 export const Route = createFileRoute("/login")({
   component: Login,
@@ -57,11 +58,13 @@ function Login() {
 
   if (isPending) {
     return (
+      <Shell>
       <main className="mx-auto max-w-lg px-4 py-10 sm:px-6">
         <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">login</p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
         <div className="mt-6 h-11 animate-pulse rounded-md bg-fg/8" />
       </main>
+      </Shell>
     );
   }
   if (unlocked) return <Navigate to={role === "user" ? "/" : "/admin"} />;
@@ -92,7 +95,8 @@ function Login() {
   }
 
   return (
-    <main className="mx-auto max-w-lg px-4 py-10 sm:px-6">
+    <Shell right={<LoginCluster />}>
+      <main className="mx-auto max-w-lg px-4 py-10 sm:px-6">
       <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">
         {idleLocked ? "Idle lock" : "login"}
       </p>
@@ -167,6 +171,7 @@ function Login() {
           {xAdmin ? "Unlock admin" : "Unlock"}
         </Button>
       </form>
-    </main>
+      </main>
+    </Shell>
   );
 }

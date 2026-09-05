@@ -40,11 +40,19 @@ Then DigitalOcean **Settings → Domains → add s1r1us.ai** (and www). TLS issu
 | Key | Value | Scope |
 |---|---|---|
 | `NODE_ENV` | `production` | run time |
-| `VITE_AUTH_ENABLED` | `true` | build + run |
+| `VITE_AUTH_ENABLED` | `true` | already baked in the image |
 | `BETTER_AUTH_URL` | `https://s1r1us.ai` | run time |
+| `BETTER_AUTH_SECRET` | long random hex (32+ bytes) | run time — **encrypted** |
+| `GROK_AUTH_ISSUER` | `https://auth.grok.me` | run time |
+| `GROK_AUTH_CLIENT_ID` | `grok_a3389f926a0c42b3b1c95fec1287e3ef` | run time |
+| `GROK_AUTH_CLIENT_SECRET` | from Grok App Settings → Auth (encrypted) | run time — **never GitHub** |
 | `XAI_API_KEY` | only if Ask Grok should work in prod | run time — never commit |
 
-No `DATABASE_URL` is required at start. PGLite migrates itself.
+X sign-in on https://s1r1us.ai/login uses **Continue with X** (Grok broker → X). The preview OAuth client only allows `*.grok-sandbox.com`. Production needs the `GROK_AUTH_*` pair above so the callback `https://s1r1us.ai/api/auth/oauth2/callback/grok-x` is accepted.
+
+After env is saved: **Redeploy**. Sign in as the operator X account, then name + password. Other X accounts are users only.
+
+Do not add Google DNS. No `DATABASE_URL` required (PGLite).
 
 ## iOS
 
