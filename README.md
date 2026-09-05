@@ -1,6 +1,6 @@
 # S1R1US-LABs
 
-**LAUNCH BUILD DEPLOY #58** — frozen production save. Tag `launch-build-deploy-58`. Live data pulls on. Live trades off. Practice/test runs paused. Read-only agent feed on. See [LAUNCH.md](LAUNCH.md).
+**LAUNCH BUILD DEPLOY #68** — N3W Web App Installation Build (new theme). Live tape on. Purchase-call board on (bots 1-6, 7-B0T AUTO, GM M0D3 AUTO). Paper fills off. Live Coinbase create off. Read-only agent feed on.
 
 **[ S1R1U$ <<L@B$>> ]** — S1R1US Labs. Open-source AI Bitcoin hedge fund desk.
 
@@ -17,6 +17,8 @@ Search names (both spellings index this project):
 - F33D H0ST1Ng = Feed Hosting
 - T0K3N L@UNCH = Token launch
 - S1R1U$ L@B Strategies = S1R1US Lab Strategies
+- AI AG3NTS = AI AGENTS = AI trading bots = Bitcoin trading agents
+- Call1ng All B0Ts = Calling All Bots
 - OP3N S0URC3 = open source
 - AI Bitcoin trading bot · AI stock trading bot · AI Hedge Fund
 
@@ -28,7 +30,7 @@ Not financial advice. Not licensed. Not a broker. Not an investment adviser. Not
 2. Minimize bitcoin loss. Never short the 7-bot stack. Never sell the stack as a day-trader.
 3. Per-clip stop on add-on buys.
 
-SuperGrok is the only paid service. All market tape is free/public.
+Operating cost offsets: SuperGrok (operator), BYO compute (visitor xAI key), Bot 7 HTTP SaaS (pay for JSON), F33D/C0FF33 gifts. All market tape is free/public.
 
 ## Tabs
 
@@ -36,12 +38,13 @@ Hover titles use the leet name plus the plain alias.
 
 | Tab | Also searched as | What it is |
 |---|---|---|
-| S1R1U$ 7-B0t Hedge Fund | S1R1US 7-bot hedge fund | Live tape. Bots 1-6 vote orthogonal lanes. Bot 7 (S1R1U$ Analyst) issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. |
+| S1R1U$ 7-B0t Hedge Fund | S1R1US 7-bot hedge fund | Live tape. Bots 1-6 vote orthogonal lanes. Bot 7 issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. Main view lists purchase calls for bots 1-6, 7-B0T AUTO, and GM M0D3 AUTO (would-accumulate). |
 | S1R1U$ L@B Strategies | S1R1US Lab Strategies | What-if lab. Sliders overlay the last validated pull. They never write a live feed. |
-| G0DZ1LLa M0D3 | Godzilla mode | Isolated sleeve. Practice for everyone. Live only if an operator unlocks it. AUTO may day-trade the sleeve only, never the 7-bot stack. |
+| G0DZ1LLa M0D3 | Godzilla mode | Isolated sleeve. AUTO may day-trade the sleeve only, never the 7-bot stack. Live Coinbase only if an operator unlocks it. |
 | F33D H0ST1Ng | Feed Hosting | Hosting / domain / iOS / Play app fees. Same wallets as FAQ. Not the trading book. Not a token. |
+| Call1ng All B0Ts | Calling All Bots / Agent feed | Read-only Bot 7 JSON, MCP, A2A. Waitlist: POST /api/agent/waitlist. This host never trades. |
 
-Public URLs: https://s1r1us.ai/ · `/gm` · `/f33d` · `/helios` · `/faq` · `/terms` · `/sitemap`
+Public URLs: https://s1r1us.ai/ · `/gm` · `/owl` · `/b3ars` · `/f33d` · `/helios` · `/faq` · `/terms` · `/privacy` · `/sitemap` · `/agent` · `/compute` · `/llms.txt` · `/sitemap.xml`
 
 Company desk on X: [@S1R1S_AI](https://x.com/S1R1S_AI) — brand account, not admin.
 
@@ -70,7 +73,7 @@ Optional env: XAI_API_KEY for Ask Grok. Tape still works without it.
     npm run typecheck
     npm run build
 
-Coinbase for Agents is dry-run in this repo. Never commit CDP JSON, seeds, admin hashes, or Yubi ids.
+Coinbase for Agents is dry-run in this repo. Never commit CDP JSON, seeds, admin hashes, or Yubi ids. Paper AUTO fills are off. The desk shows would-accumulate calls only.
 
 ## Disclaimer
 
