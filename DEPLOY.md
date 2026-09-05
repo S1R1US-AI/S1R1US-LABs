@@ -35,7 +35,7 @@ Replace the stub `package.json` (`echo skip`) with this one.
 6. Size: **1 vCPU / 1 GB / 1 container** to start
 7. Create. Wait for a green deploy before DNS.
 
-If a deploy fails in about one minute with no red npm line: App Platform was installing Playwright and lint tools, which can kill a 1 GB build. The image now installs **production deps only** (Vite/Nitro are production deps) and skips Playwright. In App Platform env, set **NODE_ENV = production, run time only** (not build). Click **Deploy** again.
+If a deploy dies in under a minute: a 1.5 GB Node heap was set on the 1 GB box and V8 exits immediately. That is removed. Also skip Playwright and native install scripts. Click **Deploy** again. You should see `[s1r1us] npm install ok` then `[s1r1us] vite build ok`. Do **not** add a `NODE_OPTIONS` env var in the dashboard.
 
 ## 3. Domain (wait for the exact DNS)
 
