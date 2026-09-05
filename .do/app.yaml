@@ -15,11 +15,16 @@ services:
     envs:
       - key: NODE_ENV
         value: production
+        scope: RUN_TIME
       - key: NITRO_PRESET
         value: node-server
+        scope: RUN_AND_BUILD_TIME
       - key: VITE_AUTH_ENABLED
         value: "true"
+        scope: RUN_AND_BUILD_TIME
       - key: HOST
         value: "0.0.0.0"
+        scope: RUN_TIME
       - key: PORT
         value: "8080"
+        scope: RUN_TIME
