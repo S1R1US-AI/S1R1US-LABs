@@ -37,6 +37,14 @@ function Login() {
   const [xErr, setXErr] = useState<string | null>(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const q = new URLSearchParams(window.location.search).get("error");
+    if (q) {
+      setXErr("X sign-in did not finish. Add GROK_AUTH_CLIENT_SECRET on the host, redeploy, then Continue with X again.");
+    }
+  }, []);
+
+  useEffect(() => {
     if (!me) {
       setXAdmin(false);
       return;
@@ -119,7 +127,12 @@ function Login() {
               variant="primary"
               className="w-full"
               type="button"
-              onClick={() => void signIn(p.providerId, { callbackURL: "/login" })}
+              onClick={() => {
+                setXErr(null);
+                void signIn(p.providerId, { callbackURL: "/login", errorCallbackURL: "/login" }).catch(() => {
+                  setXErr("X sign-in failed. Try again.");
+                });
+              }}
             >
               Continue with X
             </Button>
@@ -127,6 +140,7 @@ function Login() {
           <p className="text-xs leading-relaxed text-muted">
             Admin needs the operator X account, then name and password. Other X accounts stay users. They cannot open Admin.
           </p>
+          {xErr ? <p className="text-sm text-down">{xErr}</p> : null}
         </div>
       ) : user ? (
         <div className="mt-6 space-y-3">

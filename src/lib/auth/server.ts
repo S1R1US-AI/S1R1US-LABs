@@ -78,8 +78,13 @@ const authDisabled = env("VITE_AUTH_ENABLED") === "false";
 // otherwise fall back to the shared live-preview client, which the broker accepts
 // for any `*.grok-sandbox.com` callback (see `./preview`).
 const grokIssuer = env("GROK_AUTH_ISSUER") ?? GROK_ISSUER_DEFAULT;
-const grokClientId = env("GROK_AUTH_CLIENT_ID") ?? PREVIEW_CLIENT_ID;
-const grokClientSecret = env("GROK_AUTH_CLIENT_SECRET") ?? PREVIEW_CLIENT_SECRET;
+const publicSite = Boolean(
+  (env("BETTER_AUTH_URL") ?? "").includes("s1r1us.ai"),
+);
+// Never pair the live client id with the preview secret — that 401s the broker
+// as HTTPError 500 on Continue with X.
+const grokClientId = env("GROK_AUTH_CLIENT_ID") ?? (publicSite ? undefined : PREVIEW_CLIENT_ID);
+const grokClientSecret = env("GROK_AUTH_CLIENT_SECRET") ?? (publicSite ? undefined : PREVIEW_CLIENT_SECRET);
 
 /** True when federated sign-in is active (real auth is enforced). */
 export const authConfigured =
