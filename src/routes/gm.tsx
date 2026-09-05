@@ -3,10 +3,6 @@ import { GmDesk } from "@/components/gm-desk";
 import { PAGE_DESC_GM, PAGE_TITLE_GM, SEO_KEYWORDS } from "@/lib/brand";
 
 export const Route = createFileRoute("/gm")({
-  beforeLoad: async () => {
-    const { loadSnapshot } = await import("@/lib/desk/sources");
-    void loadSnapshot(true);
-  },
   component: GmDesk,
   head: () => ({
     meta: [

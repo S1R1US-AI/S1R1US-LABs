@@ -1,0 +1,1 @@
+import{f as e}from"./store-VL5R1oMI.js";import{n as t}from"./practice-BCmU8re8.js";import{r as n}from"./index-BGhbnMFL.js";async function r(r){await e({force:r?.force}),await Promise.all([n.getState().tick({admin:!!r?.admin}),t.getState().tick()])}export{r as t};

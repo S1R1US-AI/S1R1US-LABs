@@ -1,1 +1,0 @@
-import{t as e}from"./s1r1us-site-CNaILTFr.js";var t=e;export{t as component};
