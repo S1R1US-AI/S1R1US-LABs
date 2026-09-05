@@ -61,7 +61,7 @@ export function SeoCopy() {
       {
         "@type": "WebPage",
         name: TAB_FEED,
-        alternateName: [SEO_TAB_FEED, "F33D N0W"],
+        alternateName: [SEO_TAB_FEED, "Feed Hosting", "F33D G0dZiLLa M0D3", "F33D N0W"],
         description: `${TAB_FEED} is ${SEO_TAB_FEED}. Optional donations for hosting, domain, and open-source apps.`,
         url: `${SEO_CANONICAL}f33d`,
       },
@@ -69,7 +69,7 @@ export function SeoCopy() {
         "@type": "WebPage",
         name: TAB_HELLO,
         alternateName: ["Hello World", "H3LL0 W0RLD"],
-        description: `${TAB_HELLO} is Hello World. Expand greeting on the public tape. Links to OP3N S0URC3 (open source). MaX1UM G@1Ns (Maximum Gains) opens Godzilla mode. S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens Feed Godzilla mode.`,
+        description: `${TAB_HELLO} is Hello World. Expand greeting on the public tape. Links to OP3N S0URC3 (open source). MaX1UM G@1Ns (Maximum Gains) opens Godzilla mode. S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens F33D H0ST1Ng (Feed Hosting).`,
         url: SEO_CANONICAL,
       },
       {

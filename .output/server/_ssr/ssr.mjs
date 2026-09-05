@@ -123,7 +123,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-CfIYtRMn.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-BgWIMpmS.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -145,119 +145,119 @@ async function getStartManifest(matchedRoutes) {
 var manifest = {
 	"028840d145605509d02a84e3c9e10e20666a2f09596e3760b8531e00337b142b": {
 		functionName: "listDeskAccounts_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"08afd2e285c9ae25b69be9b0b0689069cb0b951c9f4e04fb46b172d4fbefd0e7": {
 		functionName: "setGmLive_createServerFn_handler",
-		importer: () => import("./gm-live-DX8TWsy0.mjs")
+		importer: () => import("./gm-live-DSJxcr7b.mjs")
 	},
 	"1078d4d28c3e8d28ab7fe6b4f0b5af95d0185184a4a96f94ac063f68f4e2899a": {
 		functionName: "bumpDeskEpoch_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"1f504f3759a09927c02161a4fe94340a66e215dbd27eebb3c61862e71b436d44": {
 		functionName: "confirmYubi_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"39488170e2f4ede9521cf8480eb8834ea03a488feddb0db2a53c0da49cd81522": {
 		functionName: "loadDeskVault_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"3a9d5b832410bc3d673c52dcdfddff6b023d4a16b6642a4e4a5ff90fbc69ba47": {
 		functionName: "completeAdminReset_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"3bb2b512072976cd3a86a22f8611883216c8291ee761c4550c25d6127801d639": {
 		functionName: "getGmLive_createServerFn_handler",
-		importer: () => import("./gm-live-DX8TWsy0.mjs")
+		importer: () => import("./gm-live-DSJxcr7b.mjs")
 	},
 	"41c7f435231776334c1ee8bedbd182aac11b8b488b4280d092b91c02f5304912": {
 		functionName: "resetSecondFactor_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"4ad2fda086277f62e7ecbc8458401244541db57fe627e90504025516478eab67": {
 		functionName: "fetchTapeMeta_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"4fa8b20236df6ba606e4ca17dcdb1e4be033ec0167e3fac02a23b1e395de0728": {
 		functionName: "enrollYubi_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"56a5cd771ece1bf754af79b4554bf63f9f41484e364fb0b15cf2e36f5ee5bc68": {
 		functionName: "setMorningReportPaused_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"5cf62f4e779d5d6880a0cc11d158c6be2e5eeb2026216ec06a53d5d2048406cd": {
 		functionName: "fetchDesk_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"5d795ffcbdcf278e95568b2620b25787d8cc249f9c1bd5d88d8fc94e060d890b": {
 		functionName: "fetchAuto24h_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"5e1297c3c46a34d5383344d4744427836346a714cac56b3c8b95fc2b8e31450d": {
 		functionName: "probeLaunch_createServerFn_handler",
-		importer: () => import("./probes-r0_y9QMp.mjs")
+		importer: () => import("./probes-UMOD2qTo.mjs")
 	},
 	"61219593192ece2914d98974b32d3ecf6190fe2d923e9dac9abd63fcdd198b09": {
 		functionName: "disconnectXAdmin_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"61dc68cb3e47b6f737b59aef4206d5d95c923fca2fd17a743f42496022983ea9": {
 		functionName: "saveDeskVault_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"645ce5dcd2143f301180bb73a3bbb42b5706b9673c921fa057498f2781d8f8b4": {
 		functionName: "setTapeFreeze_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"655b6287f928b66af4ea43a18d488ad65454dde5a25513c897a89ec520fbb53a": {
 		functionName: "trackUsdcWallet_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"66bce2ab80060d1a3cf1f7adb491e9c151baec4204d8ee6fa73c6f79d234b173": {
 		functionName: "unlockBoundX_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"6b8982d09e1149c67c73735b62707e48db97be044371de46161546bbb93d065e": {
 		functionName: "revokeDeskSessions_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"6cec224d2d3bacdaff9821d9e34983f58a4bb3ab931693a937be1ca19d5e3a92": {
 		functionName: "rebuildDesk_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"70e9587696840a33b344a5ecd8706e3aa8526f9c1a9462bcac2625207915aa78": {
 		functionName: "askHelios_createServerFn_handler",
-		importer: () => import("./grok-Choh8Kod.mjs")
+		importer: () => import("./grok-Brth5P5M.mjs")
 	},
 	"714e6a99647b786be76155dccc41f88d1e9cd20b7c7759e61c1c7581a763f559": {
 		functionName: "changeAdminCreds_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"7426936e6524e949f61ef1414e1b7b92054624acddd912f28187bda0b5b11380": {
 		functionName: "adminStatus_createServerFn_handler",
-		importer: () => import("./grok-Choh8Kod.mjs")
+		importer: () => import("./grok-Brth5P5M.mjs")
 	},
 	"7a0518f7402808c01848d78b41fe4e037690e17016b522dd8589178db010723e": {
 		functionName: "renewAdminPasswordWithX_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"99a48c81c1c9a39e8a8cf483a677adafc020c90f1cebb7a7636d99460f61d497": {
 		functionName: "connectXAdmin_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"a09f23fe5bdae92d6c7606faa5e475556882d6ad931424c9a3c8a4bce42359e6": {
 		functionName: "fetchDeskErrors_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"a73ac4990fa60fd9c4761549d20c270b5a523ed55c0345083fa595814a22715a": {
 		functionName: "deleteDeskAccount_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"aabfbd992d53b80b9bfa984840ff4f1fa6047cd24fbf19077c50c7eb262c25e7": {
 		functionName: "addDeskAccount_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"b78068c75690078e5a681d6804197292c06c5c9a8df7947d062d4d2a7ebd9393": {
 		functionName: "isMarketingHost_createServerFn_handler",
@@ -265,47 +265,47 @@ var manifest = {
 	},
 	"bd29d0b6bb34b0f97cb375088f5253f65373a39cffb50760d3afefd56a5a4669": {
 		functionName: "probeSiteHealth_createServerFn_handler",
-		importer: () => import("./site-health-C0tJTixv.mjs")
+		importer: () => import("./site-health-DKbZdcdg.mjs")
 	},
 	"c07cac131e869252f1c8f5a7d6921698ad393b5d17f3b98af547969e3722495a": {
 		functionName: "requestAdminReset_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"c10fb0a85e2cd1077f8f287b7d041a6d84db2e3e7e9084332a5a19de89eba858": {
 		functionName: "removeYubi_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"c8c38dc27a85273c33a153b8bdd9ceb8050fbee3fd4aa99a6af0967f62bea416": {
 		functionName: "approveOutgoing_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"dca4d87376279eca9587a4116dd129419dd87dba6ff83aa63103145403d231c1": {
 		functionName: "signInDesk_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"e91da4e66df44aa9ebdf315575068b5fff2eede3ec0cfb2fcef1671147a4c0c7": {
 		functionName: "postPracticePulse_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"ee22c7fb43caf7a85cab1e93c385f89578a27439ee4627d25f82af6f48a4983b": {
 		functionName: "fetchDonate_createServerFn_handler",
-		importer: () => import("./donate-CC5rJTpp.mjs")
+		importer: () => import("./donate-DyqRnzn-.mjs")
 	},
 	"f50e05dc58b5b0575866cc2c7311bb5c3e0e947c4d045a2d25e02521fee667aa": {
 		functionName: "fetchPracticePulse_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"f57bee00551cea168a828cfda0a1bbfa0a2802559e29d2c609fe1d31497cd3cf": {
 		functionName: "fetchMorningLib_createServerFn_handler",
-		importer: () => import("./desk-rpc-Bgk-8jZ2.mjs")
+		importer: () => import("./desk-rpc-BvkbRJek.mjs")
 	},
 	"f90b29ef79efd75cfcbf8084099a6bb59379e1a4b6f492752d0faa3050ca8c58": {
 		functionName: "secondFactorStatus_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	},
 	"fb063609c78071b3e3e758f104f3addd377f7e782d404c1649251722ec90a80e": {
 		functionName: "trackProfitWallet_createServerFn_handler",
-		importer: () => import("./access-DdIulZdV.mjs")
+		importer: () => import("./access-D5mwlxN0.mjs")
 	}
 };
 async function getServerFnById(id, access) {
@@ -1575,7 +1575,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-DHmQ4-E9.mjs").then((n) => n.t),
+		import("./router-DjJwDK72.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);

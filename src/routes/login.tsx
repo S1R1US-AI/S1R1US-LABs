@@ -151,7 +151,8 @@ function Login() {
             </p>
           ) : (
             <p className="text-sm text-muted">
-              This X account is not the operator. Name + password opens a user session only.
+              This X session is not the operator account. Sign out, then Continue with X again as
+              the operator handle — the desk reads the handle from X, not the display name.
             </p>
           )}
           <XRenewWhenAdmin />

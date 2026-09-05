@@ -46,6 +46,7 @@ import {
   PREVIEW_CLIENT_ID,
   PREVIEW_CLIENT_SECRET,
 } from "./preview";
+import { looksLikeAdminX, preferredXAccountId } from "../desk/x-admin";
 
 // Kick (and share) PGLite bootstrap as soon as the auth server module loads.
 void ensureDbReady();
@@ -144,6 +145,54 @@ const grokAuthorizationUrl = `${issuerBase}/api/auth/oauth2/authorize`;
 const grokTokenUrl = `${issuerBase}/api/auth/oauth2/token`;
 const grokUserInfoUrl = `${issuerBase}/api/auth/oauth2/userinfo`;
 
+async function grokBrokerUserInfo(tokens: { accessToken?: string; idToken?: string }) {
+  const profile: Record<string, unknown> = {};
+  if (tokens.idToken && tokens.idToken.split(".").length >= 2) {
+    try {
+      const payload = JSON.parse(
+        Buffer.from(tokens.idToken.split(".")[1]!, "base64url").toString("utf8"),
+      ) as unknown;
+      if (payload && typeof payload === "object" && !Array.isArray(payload)) {
+        Object.assign(profile, payload);
+      }
+    } catch {
+      /* encrypted or not a JWT — userinfo fetch still runs */
+    }
+  }
+  if (tokens.accessToken) {
+    try {
+      const res = await fetch(grokUserInfoUrl, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${tokens.accessToken}` },
+      });
+      if (res.ok) {
+        const data: unknown = await res.json();
+        if (data && typeof data === "object" && !Array.isArray(data)) {
+          Object.assign(profile, data);
+        }
+      }
+    } catch {
+      /* id_token candidates may already be enough */
+    }
+  }
+  const id =
+    preferredXAccountId(profile) ||
+    (typeof profile.sub === "string" ? profile.sub.trim() : "") ||
+    (typeof profile.id === "string" ? profile.id.trim() : "");
+  if (!id) return null;
+  const handle =
+    [profile.preferred_username, profile.username, profile.nickname].find(
+      (v) => typeof v === "string" && looksLikeAdminX(v),
+    ) ?? null;
+  return {
+    id,
+    name: typeof handle === "string" ? handle.replace(/^@/, "") : typeof profile.name === "string" ? profile.name : id,
+    email: typeof profile.email === "string" ? profile.email : undefined,
+    image: typeof profile.picture === "string" ? profile.picture : undefined,
+    emailVerified: false,
+  };
+}
+
 // Real Postgres when `DATABASE_URL` is set (deployed apps), else the app's
 // embedded PGLite (preview) via a Kysely dialect — so Better Auth persists to the
 // SAME DB as app data, including email/password users. Both use the Better Auth
@@ -170,6 +219,7 @@ const grokOAuthPlugin = authConfigured
         tokenUrl: grokTokenUrl,
         userInfoUrl: grokUserInfoUrl,
         scopes: ["openid", "profile", "email"],
+        getUserInfo: grokBrokerUserInfo,
         // `prompt: "login"` forces the broker to re-authenticate against the
         // upstream on every sign-in instead of silently reusing an existing
         // broker session. Combined with the broker sending Google

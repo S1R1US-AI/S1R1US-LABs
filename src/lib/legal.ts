@@ -1,5 +1,6 @@
 import { APP_NAME, LABS_NAME, SEO_CANONICAL, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
 import { COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
+import { SUPPORT_GIFT_RECEIPT } from "@/lib/desk/support";
 
 export const TERMS_PATH = "/terms";
 export const TERMS_TITLE = "Terms and Agreements";
@@ -40,12 +41,12 @@ export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "desk",
     title: "5. The desk, lab, and sleeves",
-    body: `${TAB_DESK} (S1R1US 7-bot hedge fund), ${TAB_LAB} (S1R1US Lab Strategies), ${TAB_GM} (Godzilla mode), and ${TAB_FEED} (Feed Godzilla mode) are educational tools and open-source software. Practice and paper fills are not live orders. Live execution, if ever unlocked, is the operator's own risk. You are responsible for any action you take.`,
+    body: `${TAB_DESK} (S1R1US 7-bot hedge fund), ${TAB_LAB} (S1R1US Lab Strategies), ${TAB_GM} (Godzilla mode), and ${TAB_FEED} (Feed Hosting) are educational tools and open-source software. Practice and paper fills are not live orders. Live execution, if ever unlocked, is the operator's own risk. You are responsible for any action you take.`,
   },
   {
     id: "gifts",
     title: "6. Donations and gifts",
-    body: `${TAB_FEED} wallets, if used, are optional gifts to help pay hosting, domain, and app-store fees. Gifts buy no ticker, no equity, no profit share, and no service level. Do not send anything except the stated asset to the stated address. Wrong-network sends can be lost.`,
+    body: `${TAB_FEED} wallets, if used, are optional gifts to help pay hosting, domain, and app-store fees. ${SUPPORT_GIFT_RECEIPT} Gifts buy no ticker, no equity, no profit share, and no service level. Bitcoin (BTC) to the stated BTC address. USDC (Ethereum ERC-20 + Base) to the stated 0x address — same address on both chains, native Circle USDC only. Do not send anything except the stated asset on the stated network. Wrong-network sends can be lost. F33D is not the trading book and not the token.`,
   },
   {
     id: "risk",

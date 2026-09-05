@@ -9,6 +9,8 @@ import {
   looksLikeAdminX,
   looksLikeCompanyX,
   normalizeXIdentity,
+  preferredXAccountId,
+  profileLooksLikeAdminX,
 } from "./x-admin.ts";
 
 describe("admin X identity", () => {
@@ -58,5 +60,27 @@ describe("admin X identity", () => {
     assert.equal(isAdminXProvider("credential"), false);
     assert.equal(isAdminXProvider("grok-gate"), false);
     assert.equal(normalizeXIdentity("_Mr_R0b0t0_@x.com"), "");
+  });
+
+  it("reads broker userinfo preferred_username when sub is a grok uuid", () => {
+    const grokSub = "a1b2c3d4-e5f6-7890-abcd-ef1234567890";
+    const profile = {
+      sub: grokSub,
+      name: "Mr. R0b0t0",
+      preferred_username: "_Mr_R0b0t0_",
+      email: "_Mr_R0b0t0_@users.noreply.x.com",
+    };
+    assert.equal(looksLikeAdminX(grokSub), false);
+    assert.equal(looksLikeAdminX("Mr. R0b0t0"), false);
+    assert.equal(profileLooksLikeAdminX(profile), true);
+    assert.equal(preferredXAccountId(profile), ADMIN_X_HANDLE_CORE);
+    assert.equal(
+      preferredXAccountId({
+        sub: grokSub,
+        identities: [{ provider: "twitter", user_id: ADMIN_X_ID, username: "_Mr_R0b0t0_" }],
+      }),
+      ADMIN_X_ID,
+    );
+    assert.equal(profileLooksLikeAdminX({ sub: grokSub, name: "Mr. R0b0t0" }), false);
   });
 });

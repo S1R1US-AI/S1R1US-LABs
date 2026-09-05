@@ -7,7 +7,7 @@ export const LABS_NAME = "S1R1US Labs";
 export const TAB_DESK = "S1R1U$ 7-B0t Hedge Fund";
 export const TAB_LAB = "S1R1U$ L@B Strategies";
 export const TAB_GM = "G0DZ1LLa M0D3";
-export const TAB_FEED = "F33D G0dZiLLa M0D3";
+export const TAB_FEED = "F33D H0ST1Ng";
 export const TAB_FEED_NOW = "F33D N0W!";
 export const TAB_FEED_GROWL =
   "web hosting data pull hungry, stomach growling demon of a resource pig dragon = F33D N0W!";
@@ -15,7 +15,7 @@ export const TAB_FEED_GROWL =
 export const SEO_TAB_DESK = "S1R1US 7-bot hedge fund";
 export const SEO_TAB_LAB = "S1R1US Lab Strategies";
 export const SEO_TAB_GM = "Godzilla mode";
-export const SEO_TAB_FEED = "Feed Godzilla mode";
+export const SEO_TAB_FEED = "Feed Hosting";
 
 export const TAB_HELLO = "H3LL0 W0RLD";
 export const SEO_TAB_HELLO = "Hello World";
@@ -40,6 +40,8 @@ export const SEO_KEYWORDS = [
   "G0DZ1LLa M0D3",
   "Godzilla mode",
   "Godzilla Mode",
+  "F33D H0ST1Ng",
+  "Feed Hosting",
   "F33D G0dZiLLa M0D3",
   "Feed Godzilla mode",
   "H3LL0 W0RLD",
@@ -77,7 +79,7 @@ export const SEO_ALIASES = [
   `7-B0T H3DGE FUND is also searched as 7-bot hedge fund.`,
   `${TAB_LAB} is also searched as ${SEO_TAB_LAB}.`,
   `${TAB_GM} is also searched as ${SEO_TAB_GM} and Godzilla Mode.`,
-  `${TAB_FEED} is also searched as ${SEO_TAB_FEED}.`,
+  `${TAB_FEED} is also searched as ${SEO_TAB_FEED}, F33D G0dZiLLa M0D3, and Feed Godzilla mode.`,
   `${TAB_HELLO} is also searched as ${SEO_TAB_HELLO}.`,
   `${TAB_MAX_GAINS} is also searched as ${SEO_TAB_MAX_GAINS} and opens ${TAB_GM} (${SEO_TAB_GM}).`,
   `${TAB_SEND_BTC} is also searched as ${SEO_TAB_SEND_BTC} and opens ${TAB_FEED} (${SEO_TAB_FEED}).`,
@@ -111,7 +113,7 @@ export const PAGE_DESC_GM = `${TAB_GM} (${SEO_TAB_GM} / Godzilla Mode) is the ag
 export const PAGE_DESC_LAB = `${TAB_LAB} (${SEO_TAB_LAB}) is the what-if lab on the 7-bot tape. ${TAB_DESK} (${SEO_TAB_DESK}). OP3N S0URC3 (open source). AI Bitcoin trading bot. Not financial advice.`;
 export const PAGE_DESC_FEED = `${TAB_FEED} (${SEO_TAB_FEED}). ${TAB_FEED_GROWL} Optional BTC/USDC cover hosting, s1r1us.ai, and the open-source web / iOS / Play apps. Not an investment.`;
 export const PAGE_DESC_FAQ =
-  "FAQ for S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla mode), F33D G0dZiLLa M0D3 (Feed Godzilla mode), S1R1U$ L@B Strategies (S1R1US Lab Strategies), T0K3N L@UNCH (Token launch), OP3N S0URC3 (open source). Not financial advice. Seek a licensed professional. Not an offer of securities.";
+  "FAQ for S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla mode), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), T0K3N L@UNCH (Token launch), OP3N S0URC3 (open source). Not financial advice. Seek a licensed professional. Not an offer of securities.";
 export const PAGE_DESC_SITEMAP =
-  "Sitemap for S1R1US Labs: S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla mode), F33D G0dZiLLa M0D3 (Feed Godzilla mode), S1R1U$ L@B Strategies (S1R1US Lab Strategies), H3LL0 W0RLD (Hello World), FAQ, OP3N S0URC3 (open source).";
+  "Sitemap for S1R1US Labs: S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla mode), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), H3LL0 W0RLD (Hello World), FAQ, OP3N S0URC3 (open source).";
 

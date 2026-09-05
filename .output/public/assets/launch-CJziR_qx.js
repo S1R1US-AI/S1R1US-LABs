@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-Dey04VX3.js";var t=e;export{t as component};

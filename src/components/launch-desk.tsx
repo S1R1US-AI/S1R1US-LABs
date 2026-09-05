@@ -10,7 +10,7 @@ import { loadDeskVault, secondFactorStatus } from "@/lib/desk/access";
 import { APP_NAME, TAB_DESK, TAB_LAB } from "@/lib/brand";
 import { LIVE_UNLOCKED } from "@/lib/desk/practice";
 import { useOperator } from "@/lib/desk/operator";
-import { BUDGET, CHECKLIST, COIN_CHAIN_REC, COIN_DISPLAY, COIN_DOMAIN, COIN_NAME_NOTE, COIN_STANDARD, COIN_TICKER, COMPANY_X_STEPS, DNS_STEPS, DOMAINS, FUND_INTEGRATION, FUND_LANES, GODADDY_IO, HOWEY_POSTURE, ICP_NOTE, LIQ_BANDS, MINT_STEPS, PLATFORM_ROWS, RH_NOTE, TIERS, TOKEN_LAUNCHED, TOKEN_UTILITY, type LaunchCheck } from "@/lib/launch/model";
+import { BUDGET, CHECKLIST, COIN_CHAIN_REC, COIN_DISPLAY, COIN_DOMAIN, COIN_NAME_NOTE, COIN_STANDARD, COIN_TICKER, COMPANY_X_STEPS, DNS_STEPS, DOMAINS, FUND_INTEGRATION, FUND_LANES, GIFT_RECEIPT, GODADDY_IO, HOWEY_POSTURE, ICP_NOTE, LIQ_BANDS, MINT_STEPS, PATH_A_LOCKED, PATH_A_NAME, PATH_A_ORDER, PLATFORM_ROWS, RH_NOTE, TIERS, TOKEN_LAUNCHED, TOKEN_UTILITY, type LaunchCheck } from "@/lib/launch/model";
 import { ADMIN_X_HANDLE, ADMIN_X_LABEL, COMPANY_X_ART, COMPANY_X_AVATAR, COMPANY_X_BANNER, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { CompanyAvatar } from "@/components/company-x";
 import { probeLaunch, type DomainProbe } from "@/lib/launch/probes";
@@ -159,7 +159,16 @@ export function LaunchDesk() {
       </div>
 
       <Panel className="mt-4" kicker="Funding" title="Path A — desk gifts vs marketing ticker">
-        <p className="text-sm text-muted">{FUND_INTEGRATION}</p>
+        <p className="text-sm font-medium text-high">
+          {PATH_A_NAME} · {PATH_A_LOCKED ? "LOCKED — standing order in force" : "open"}
+        </p>
+        <p className="mt-2 text-sm text-fg">{GIFT_RECEIPT}</p>
+        <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-sm text-muted">
+          {PATH_A_ORDER.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ol>
+        <p className="mt-3 text-sm text-muted">{FUND_INTEGRATION}</p>
         <p className="mt-3 text-sm text-fg">{TOKEN_UTILITY.oneLiner}</p>
         <p className="mt-2 text-xs leading-relaxed text-muted">{TOKEN_UTILITY.howey}</p>
         <p className="mt-3 text-sm font-medium text-fg">{HOWEY_POSTURE.problem}</p>

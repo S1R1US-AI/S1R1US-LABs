@@ -84,6 +84,79 @@ export function looksLikeAdminX(s: string | null | undefined) {
   return core.toLowerCase() === HANDLE;
 }
 
+const PROFILE_ID_KEYS = new Set([
+  "id",
+  "sub",
+  "user_id",
+  "userid",
+  "preferred_username",
+  "nickname",
+  "username",
+  "screen_name",
+  "screenname",
+  "twitter_id",
+  "twitterid",
+  "x_user_id",
+  "xuserid",
+  "email",
+]);
+
+function pushIdentity(out: string[], raw: unknown) {
+  if (typeof raw === "number" && Number.isFinite(raw)) {
+    out.push(String(raw));
+    return;
+  }
+  if (typeof raw !== "string") return;
+  const s = raw.trim();
+  if (!s || s.length > 320) return;
+  out.push(s);
+  const local = /^([^@\s]+)@[^@\s]+$/.exec(s);
+  if (local?.[1]) out.push(local[1]);
+}
+
+/** Pull handle / snowflake / email-local candidates from broker userinfo or an id_token. */
+export function collectXIdentityStrings(value: unknown, depth = 0): string[] {
+  const out: string[] = [];
+  if (depth > 4 || value == null) return out;
+  if (typeof value === "string" || typeof value === "number") {
+    pushIdentity(out, value);
+    return out;
+  }
+  if (Array.isArray(value)) {
+    for (const item of value) out.push(...collectXIdentityStrings(item, depth + 1));
+    return out;
+  }
+  if (typeof value !== "object") return out;
+  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+    const compact = k.replace(/[-_]/g, "").toLowerCase();
+    if (PROFILE_ID_KEYS.has(k.toLowerCase()) || PROFILE_ID_KEYS.has(compact)) {
+      out.push(...collectXIdentityStrings(v, depth + 1));
+      continue;
+    }
+    if (v && (Array.isArray(v) || typeof v === "object") && /identit|account|twitter|provider/i.test(k)) {
+      out.push(...collectXIdentityStrings(v, depth + 1));
+    }
+  }
+  return out;
+}
+
+export function profileLooksLikeAdminX(value: unknown) {
+  return collectXIdentityStrings(value).some((s) => looksLikeAdminX(s));
+}
+
+/** Stable accountId: operator handle/snowflake when present, else a twitter id/handle, else empty. */
+export function preferredXAccountId(value: unknown): string {
+  const all = collectXIdentityStrings(value);
+  if (all.some((s) => looksLikeAdminX(s))) {
+    const snow = all.map(normalizeXIdentity).find((c) => c === ADMIN_X_ID);
+    return snow || ADMIN_X_HANDLE_CORE;
+  }
+  const snow = all.map(normalizeXIdentity).find((c) => /^\d{15,20}$/.test(c));
+  if (snow) return snow;
+  const handle = all.map(normalizeXIdentity).find((c) => c.length >= 2 && c.length <= 15 && /[a-z]/i.test(c));
+  return handle || "";
+}
+
 /** Live company handle only. Blocked @S1R1US / @_S1R1US_ never match. Never admin. */
 export function looksLikeCompanyX(s: string | null | undefined) {
   if (!companyHandleSet()) return false;

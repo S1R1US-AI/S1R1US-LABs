@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { LAUNCH_FREEZE } from "@/lib/launch/build";
+import { LAUNCH_BUILD, LAUNCH_FREEZE } from "@/lib/launch/build";
 import { DESK_POLL_MS } from "./poll";
 import { useAutoRun } from "./auto-run";
 import {
@@ -159,7 +159,7 @@ export const useGm = create<GmState>()(
       setLiveUnlocked: (on) => set({ liveUnlocked: on, view: on ? get().view : get().view === "live" ? "live" : "practice" }),
       start: () => {
         if (LAUNCH_FREEZE) {
-          set({ running: false, liveUnlocked: false, error: "Practice paused — LAUNCH BUILD DEPLOY #39" });
+          set({ running: false, liveUnlocked: false, error: `Practice paused — ${LAUNCH_BUILD}` });
           return;
         }
         set({ running: true, error: null });

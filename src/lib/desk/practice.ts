@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { APP_CALLS } from "@/lib/brand";
-import { LAUNCH_FREEZE } from "@/lib/launch/build";
+import { LAUNCH_BUILD, LAUNCH_FREEZE } from "@/lib/launch/build";
 import { DESK_POLL_MS } from "./poll";
 import { heliosCall, runBots } from "./signal";
 import { peekDeskTape } from "./tape-client";
@@ -71,7 +71,7 @@ export const usePractice = create<PracticeState>()(
       stopPct: STOP_DEFAULT,
       start: () => {
         if (LAUNCH_FREEZE) {
-          set({ running: false, error: "Practice paused — LAUNCH BUILD DEPLOY #39" });
+          set({ running: false, error: `Practice paused — ${LAUNCH_BUILD}` });
           return;
         }
         set({ running: true, view: "practice", error: null });
@@ -96,7 +96,7 @@ export const usePractice = create<PracticeState>()(
       },
       beginTestPhase: () => {
         if (LAUNCH_FREEZE) {
-          set({ running: false, error: "Practice paused — LAUNCH BUILD DEPLOY #39" });
+          set({ running: false, error: `Practice paused — ${LAUNCH_BUILD}` });
           return;
         }
         usePaper.getState().reset(TEST_PHASE_USDC);

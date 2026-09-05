@@ -1,5 +1,6 @@
 import { APP_NAME, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
 import { ADMIN_X_HANDLE, COMPANY_X_BIO, companyHandleSet, COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
+import { SUPPORT_GIFT_RECEIPT } from "@/lib/desk/support";
 
 /** Token is s1r1us. Project/desk stays [ S1R1U$ <<L@B$>> ]. $ is not DNS or ticker. Domain is s1r1us.ai */
 export const COIN_NAME = "s1r1us";
@@ -25,7 +26,7 @@ export const PLATFORM_ROWS = [
     viral: "Best durable tape",
     launchUsd: "$0 mint · $0 seed LP",
     pair: "USDC or SOL",
-    verdict: "Still pick. USDC curve matches donations. Deepest meme retail.",
+    verdict: "Still pick. Deepest meme retail. Curve is not F33D and not the desk book.",
     pick: true,
   },
   {
@@ -128,11 +129,11 @@ export const ROADMAP: Milestone[] = [
     n: 2,
     name: "Bonding curve",
     when: "Hours–days after mint",
-    goal: "Retail buys the curve. No Uniswap seed. Optional treasury USDC onto the curve.",
+    goal: "Retail buys the curve. No Uniswap seed. Do not put F33D or desk gifts on the curve.",
     minUsd: 0,
     maxUsd: 5000,
     publicAfterMint: false,
-    hold: "Max is optional curve inventory, not a fee. $0 still launches.",
+    hold: "Max is optional operator inventory, not F33D, not desk gifts. $0 still launches.",
   },
   {
     id: "m3",
@@ -487,6 +488,20 @@ export const HOWEY_POSTURE = {
     "M5 confirms Path A is locked. Do not reopen B/C/D in public copy.",
   ],
 } as const;
+
+/** Standing order — Path A is the only live funding/token posture. */
+export const PATH_A_LOCKED = true;
+export const PATH_A_NAME = "Path A · Hard firewall";
+export const GIFT_RECEIPT = SUPPORT_GIFT_RECEIPT;
+export const PATH_A_ORDER = [
+  "Pot 1 — desk BTC: operator cash + gifts that get nothing back. Never pad proceeds or creator fees.",
+  "Pot 2 — F33D H0ST1Ng: hosting, domain, iOS/Play only. Not the book. Not the ticker.",
+  "Pot 3 — s1r1us on pump.fun: cultural ticker. Curve, LP, and creator fees stay off Coinbase.",
+  "No buy CTA on s1r1us.ai. Do not pitch bots, treasury, or a bitcoin stack as why to buy.",
+  "Print the gift receipt on every donate surface.",
+  "Do not reopen Path B, C, or D in public copy.",
+  "M5 counsel memo before any US-person invite to buy. Copy is not a safe harbor.",
+] as const;
 
 
 export const COIN_NAME_NOTE =

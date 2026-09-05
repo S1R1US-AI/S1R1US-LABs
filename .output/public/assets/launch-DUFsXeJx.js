@@ -1,1 +1,0 @@
-import{n as e}from"./launch-desk-BqtkMiR4.js";var t=e;export{t as component};

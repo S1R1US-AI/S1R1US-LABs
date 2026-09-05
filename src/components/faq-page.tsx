@@ -27,9 +27,9 @@ export function FaqPage() {
         <p className="font-mono text-xs tracking-[0.12em] text-oss uppercase">FAQ</p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          {TAB_DESK} (S1R1US 7-bot hedge fund) · {TAB_GM} (Godzilla mode) · {TAB_LAB} (S1R1US Lab
-          Strategies) · OP3N S0URC3 (open source). AI Bitcoin trading bot · AI stock trading bot · AI
-          Hedge Fund. Education only.
+          {TAB_DESK} (S1R1US 7-bot hedge fund) · {TAB_GM} (Godzilla mode) · {TAB_FEED} (Feed Hosting)
+          · {TAB_LAB} (S1R1US Lab Strategies) · OP3N S0URC3 (open source). AI Bitcoin trading bot · AI
+          stock trading bot · AI Hedge Fund. Education only.
         </p>
         <div className="mt-6 space-y-3">
           {FAQ_ITEMS.map((item) => (

@@ -19,7 +19,7 @@ import {
   TAB_TOKEN,
 } from "@/lib/brand";
 import { COMPANY_X_HANDLE, companyHandleSet } from "@/lib/desk/x-admin";
-import { SUPPORT_BLURB, SUPPORT_BTC, SUPPORT_USDC } from "@/lib/desk/support";
+import { SUPPORT_BLURB, SUPPORT_BTC, SUPPORT_GIFT_RECEIPT, SUPPORT_USDC, SUPPORT_USDC_LABEL } from "@/lib/desk/support";
 import { TERMS_PATH, TERMS_TITLE } from "@/lib/legal";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
@@ -48,7 +48,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/f33d`,
     label: TAB_FEED,
     title: PAGE_TITLE_FEED,
-    hint: `${SEO_TAB_FEED} · S3Nd 2 BTC Wall3t (Send to BTC Wallet) · hosting · domain · iOS / Play apps`,
+    hint: `${SEO_TAB_FEED} · S3Nd 2 BTC Wall3t (Send to BTC Wallet) · USDC (Ethereum ERC-20 + Base) · hosting · domain · iOS / Play apps`,
     changefreq: "weekly",
     priority: "0.7",
   },
@@ -109,6 +109,10 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
     a: `${TAB_GM} is Godzilla mode (also Godzilla Mode). It is the aggressive sleeve of the S1R1US 7-bot hedge fund: AUTO or MANUAL, practice or live (live only if admin unlocks). It can day-trade a sleeve. The 7-bot stack is still built to accumulate bitcoin, not to short the book. Not financial advice.`,
   },
   {
+    q: `What is ${TAB_FEED} (Feed Hosting)?`,
+    a: `${TAB_FEED} is also searched as ${SEO_TAB_FEED}. It is the hosting tab: optional gifts for web hosting, s1r1us.ai, and the open-source web / iOS / Play apps. Same wallets as FAQ. Not the trading book. Not a token. Unconditional gift. No tokens. No upside. No tax advice.`,
+  },
+  {
     q: `What is ${TAB_LAB} (S1R1US Lab Strategies)?`,
     a: `${TAB_LAB} is also searched as ${SEO_TAB_LAB}. It is the what-if lab: sliders and presets overlay the last live pull so you can see how Bot 7 and bots 1–6 would call under different market structure. It does not write feeds and does not place live orders.`,
   },
@@ -128,15 +132,15 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: `What is ${TAB_TOKEN} (Token launch)?`,
-    a: `${TAB_TOKEN} is also searched as ${SEO_TAB_TOKEN}. A cultural ticker named s1r1us may exist on a public pad such as pump.fun. Company desk on X is ${COMPANY_X_HANDLE}. This website does not sell tokens and does not take orders. The ticker is not shares of ${LABS_NAME}, not a claim on bitcoin, not a profit share, and not how the 7-bot book is funded. Do not buy any ticker because bots or a bitcoin stack exist. Not an offer of securities. Not financial advice. Seek a licensed professional. See Terms and Agreements.`,
+    a: `${TAB_TOKEN} is also searched as ${SEO_TAB_TOKEN}. A cultural ticker named s1r1us may exist on a public pad such as pump.fun. Company desk on X is ${COMPANY_X_HANDLE}. This website does not sell tokens and does not take orders. The ticker is not shares of ${LABS_NAME}, not a claim on bitcoin, not a profit share, and not how the 7-bot book is funded. Do not buy any ticker because bots or a bitcoin stack exist. Path A (hard firewall) is locked. Not an offer of securities. Not financial advice. Seek a licensed professional. See Terms and Agreements.`,
   },
   {
     q: `What is H3LL0 W0RLD (Hello World)?`,
-    a: `H3LL0 W0RLD is also searched as Hello World. It is the expand greeting on the public tape. It links to OP3N S0URC3 (open source) on GitHub. MaX1UM G@1Ns (Maximum Gains) opens G0DZ1LLa M0D3 (Godzilla mode). S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens F33D G0dZiLLa M0D3 (Feed Godzilla mode).`,
+    a: `H3LL0 W0RLD is also searched as Hello World. It is the expand greeting on the public tape. It links to OP3N S0URC3 (open source) on GitHub. MaX1UM G@1Ns (Maximum Gains) opens G0DZ1LLa M0D3 (Godzilla mode). S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens ${TAB_FEED} (${SEO_TAB_FEED}).`,
   },
   {
     q: "Is this financial advice?",
-    a: "No. s1r1us.ai, the desk, lab, G0DZ1LLa M0D3, F33D G0dZiLLa M0D3, T0K3N L@UNCH, and related systems are not licensed for financial advice and are not a broker or investment adviser. Education only. Seek a licensed professional. Invest at your own risk and only on the advice of a licensed advisor. Using this website is agreement to the Terms.",
+    a: `No. s1r1us.ai, the desk, lab, G0DZ1LLa M0D3, ${TAB_FEED}, T0K3N L@UNCH, and related systems are not licensed for financial advice and are not a broker or investment adviser. Education only. Seek a licensed professional. Invest at your own risk and only on the advice of a licensed advisor. Using this website is agreement to the Terms.`,
   },
   {
     q: "What are the Terms and Agreements?",
@@ -152,6 +156,6 @@ export const FAQ_ITEMS: { q: string; a: string }[] = [
   },
   {
     q: "How can I support hosting and the apps?",
-    a: `${SUPPORT_BLURB} Bitcoin (BTC): ${SUPPORT_BTC}. USDC on Ethereum (ERC-20): ${SUPPORT_USDC}. Send only those assets to those addresses. Tab: F33D G0dZiLLa M0D3.`,
+    a: `${SUPPORT_BLURB} ${SUPPORT_GIFT_RECEIPT} Bitcoin (BTC): ${SUPPORT_BTC}. ${SUPPORT_USDC_LABEL}: ${SUPPORT_USDC}. Same 0x address on Ethereum and Base. Native Circle USDC only — not Solana, Polygon, or Arbitrum. Send only those assets to those addresses. Tab: ${TAB_FEED} (${SEO_TAB_FEED}).`,
   },
 ];

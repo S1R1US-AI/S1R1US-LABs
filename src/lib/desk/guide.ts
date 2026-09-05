@@ -105,7 +105,7 @@ export const GUIDE: GuideSection[] = [
       `${TAB_GM} is not bot 8 on the public tape. It is a sleeve with full awareness of bots 1–7.`,
       "Practice is open to every visitor. Live unlock is admin HMAC only. Live book is not stored in the browser.",
       "AUTO may arm day-trader sleeve sells only when admin is in Live. AUTO never naked-shorts. MANUAL settings that fire a clip are printed on the fill card.",
-      "TRIM keeps bitcoin — send to Coinbase Receive 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8. Fund the sleeve with native USDC at 0x551163f5d4c0361155d16131459afa5c936a60ad (Base/ETH).",
+      "TRIM keeps bitcoin — send to Coinbase Receive 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8. Fund the sleeve with native USDC (Ethereum ERC-20 + Base) at 0x551163f5d4c0361155d16131459afa5c936a60ad. Same 0x address on both chains.",
       "Day-trader candle slider 1h–24h folds Coinbase hourly bars. RSI 30/70 on that candle.",
       "The 7-bot stack is never sold and never shorted. A GM sleeve fill cannot write the paper book.",
     ],
