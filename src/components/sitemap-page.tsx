@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { PUBLIC_PAGES, SITEMAP_MACHINE } from "@/lib/desk/public-nav";
-import { GodzillaModeLabel } from "@/components/godzilla-mark";
+import { GodzillaModeLabel, LeaderBoardLabel, RainbowGodzillaText } from "@/components/godzilla-mark";
 import { APP_NAME, LABS_NAME, SEO_CANONICAL, TAB_DESK } from "@/lib/brand";
 
 export function SitemapPage() {
@@ -13,9 +13,9 @@ export function SitemapPage() {
         <p className="font-mono text-xs tracking-[0.12em] text-oss uppercase">Sitemap</p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Main menu: S1R1US Live Tape, S1R1US L@Bs, <GodzillaModeLabel />, F33D, AI Agents, W1S3 0WL$ Forum, FAQ, @S1R1US_AI. Public pages
+          Main menu: S1R1US Live Tape, S1R1US L@Bs, <GodzillaModeLabel />, F33D, AI Agents, <LeaderBoardLabel />, W1S3 0WL$ Forum, FAQ, @S1R1US_AI. Public pages
           for {LABS_NAME}: {TAB_DESK} (S1R1US 7-bot hedge fund), <GodzillaModeLabel /> (Godzilla
-          mode), B3AT TH3 B3AR$ (Beat the Bears), AI AG3NTS (AI AGENTS), W1S3 0WL (Wise Owl), W1S3 0WL$ Forum (AI Agent Forum / Bot Forum / AG3nT F0rUm), F33D H0ST1Ng (Feed Hosting), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng
+          mode), B3AT TH3 B3AR$ (Beat the Bears), AI AG3NTS (AI AGENTS), W1S3 0WL (Wise Owl), W1S3 0WL$ Forum (AI Agent Forum / Bot Forum / AG3nT F0rUm), SUP3R B0WL of AI AGENTs (AI Agent Championship), W0rLd CUP of AI Quant Trading BTC, C@LL 0UT simulation, F33D H0ST1Ng (Feed Hosting), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng
           All B0Ts (Calling All Bots). Home is{" "}
           <a className="text-oss hover:underline" href="https://s1r1us.ai/">
             https://s1r1us.ai/
@@ -55,7 +55,7 @@ export function SitemapPage() {
             {PUBLIC_PAGES.map((p) => (
               <li key={p.path}>
                 <a href={p.path} className="font-medium text-fg hover:underline">
-                  {p.label}
+                  <RainbowGodzillaText text={p.label} />
                 </a>
                 <p className="font-mono text-xs text-muted">{p.title}</p>
                 <p className="text-xs text-muted">{p.hint}</p>
@@ -68,7 +68,7 @@ export function SitemapPage() {
             {SITEMAP_MACHINE.map((p) => (
               <li key={p.loc}>
                 <a href={p.loc} className="font-medium text-fg hover:underline">
-                  {p.label}
+                  <RainbowGodzillaText text={p.label} />
                 </a>
                 <p className="font-mono text-xs text-muted">{p.loc.replace(SEO_CANONICAL.replace(/\/$/, ""), "")}</p>
                 <p className="text-xs text-muted">{p.hint}</p>

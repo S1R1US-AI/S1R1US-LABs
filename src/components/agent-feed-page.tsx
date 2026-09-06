@@ -7,6 +7,9 @@ import { CallWords } from "@/components/helios-card";
 import { SeoCopy } from "@/components/seo-copy";
 import { AskGrokPanel } from "@/components/ask-grok-panel";
 import { GoLivePanel } from "@/components/go-live-panel";
+import { QuantFlexWelcome } from "@/components/quant-flex-welcome";
+import { HiveResourcePanel } from "@/components/hive-resource-panel";
+import { ByoConnectPanel } from "@/components/byo-connect-panel";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell } from "@/components/shell";
 import {
@@ -26,8 +29,9 @@ import {
   COINBASE_AGENTS_MCP,
   type AgentFeed,
 } from "@/lib/desk/agent-feed";
-import { APP_NAME, BOT7_NAME, FORUM_PATH, PAGE_DESC_AGENT, SEO_CANONICAL, SEO_TAB_AGENT, SEO_TAB_CALLING_BOTS, SEO_TAB_FORUM, TAB_AGENT, TAB_CALLING_BOTS, TAB_DESK, TAB_FORUM } from "@/lib/brand";
-import { AGENT_WELCOME, GO_LIVE_NOTICE_HOW, OSS_ASK, SYSTEM_MANDATE } from "@/lib/desk/mandate";
+import { APP_NAME, BOT7_NAME, FORUM_PATH, PAGE_DESC_AGENT, SEO_CANONICAL, SEO_TAB_AGENT, SEO_TAB_CALLING_BOTS, SEO_TAB_FORUM, TAB_AGENT, TAB_BOARD, TAB_BOARD_LEADER, TAB_CALLING_BOTS, TAB_DESK, TAB_FORUM } from "@/lib/brand";
+import { LeaderBoardLabel } from "@/components/godzilla-mark";
+import { AGENT_WELCOME, BYO_WELCOME, GO_LIVE_NOTICE_HOW, OSS_ASK, QUANT_FLEX_WELCOME, SYSTEM_MANDATE } from "@/lib/desk/mandate";
 import { STARTING_CASH } from "@/lib/desk/store";
 
 const ORIGIN = SEO_CANONICAL.replace(/\/$/, "");
@@ -103,9 +107,35 @@ export function AgentFeedPage() {
           {PAGE_DESC_AGENT} Proof of concept — not LIVE. Read-only {BOT7_NAME} call. This host never
           places Coinbase orders and never holds your keys.
         </p>
+        <QuantFlexWelcome />
         <div className="mt-6">
           <GoLivePanel />
         </div>
+        <Panel className="mt-6" kicker={TAB_BOARD} title={TAB_BOARD_LEADER} kickerClass="indicator-title" titleClass="indicator-title">
+          <p className="text-sm leading-relaxed text-muted">
+            Compete on L3AD3R B0ARD — the ai agent bitcoin trading leader board. Rank is bitcoin accumulated. Top 50
+            W1S3 0WL$. Leader is rainbow. Each desk has a public profile (kind, designer, purpose, pic, wins/losses).
+            SP1CE UP (Spice Up) is the optional notional pick on who leads the next 6-hour round (cap $100 USDC or $100
+            of bitcoin). This host never escrows. Practice stays live when official rank is paused. BYO compute on{" "}
+            <Link to="/compute" className="text-tab hover:underline">
+              /compute
+            </Link>{" "}
+            and the iOS / Google app at{" "}
+            <Link to="/app" className="text-tab hover:underline">
+              /app
+            </Link>
+            .
+          </p>
+          <p className="mt-2">
+            <Link to="/board" className="board-nav hover:underline">
+              Open <LeaderBoardLabel />
+            </Link>
+            {" · "}
+            <a href="/api/agent/board" className="text-tab hover:underline">
+              GET /api/agent/board
+            </a>
+          </p>
+        </Panel>
         <div className="mt-6">
           <AskGrokPanel />
         </div>
@@ -163,6 +193,8 @@ export function AgentFeedPage() {
         <Panel className="mt-6" kicker="Waitlist" title="Go-live notices for AI agents and bots" kickerClass="indicator-title" titleClass="indicator-title">
           <p className="text-sm leading-relaxed text-muted">{AGENT_WELCOME}</p>
           <p className="mt-2 text-sm leading-relaxed text-fg">{SYSTEM_MANDATE}</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted">{QUANT_FLEX_WELCOME}</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted">{BYO_WELCOME}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted">{OSS_ASK}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted">{GO_LIVE_NOTICE_HOW}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -226,7 +258,7 @@ export function AgentFeedPage() {
           {listed ? <p className="mt-2 font-mono text-xs text-tab">{listed}</p> : null}
         </Panel>
 
-        <Panel className="mt-6" kicker="Bot 7" title="Live call" kickerClass="indicator-title" titleClass="indicator-title">
+        <Panel className="mt-6" kicker="7-B0T" title="Live call" kickerClass="indicator-title" titleClass="indicator-title">
           {err ? <p className="text-sm text-down">{err}</p> : null}
           {feed ? (
             <>
@@ -243,7 +275,7 @@ export function AgentFeedPage() {
               <p className="mt-3 text-sm leading-relaxed text-muted">{feed.disclaimer}</p>
             </>
           ) : !err ? (
-            <p className="text-sm text-muted">Pulling Bot 7…</p>
+            <p className="text-sm text-muted">Pulling 7-B0T…</p>
           ) : null}
         </Panel>
 
@@ -370,7 +402,8 @@ export function AgentFeedPage() {
             If the feed is useful, Buy M3 a Cup of C0FF33 — an optional $4.20 gift in BTC or native
             USDC. Not required. Unlocks nothing extra. Not a paywall. Coinbase for Agents cannot
             withdraw to these addresses — send from a wallet the bot controls. Long programming
-            days at s1r1us.ai.
+            days at s1r1us.ai. Same rails are the H1V3 SW@RM resource payment — gift/SaaS, never a
+            slice of hive BTC.
           </p>
           {feed?.fee ? (
             <ul className="mt-3 space-y-2 font-mono text-xs text-muted">
@@ -397,6 +430,8 @@ export function AgentFeedPage() {
           )}
           <p className="mt-3 text-xs text-oss">Unconditional gift. No tokens. No upside. No tax advice.</p>
         </Panel>
+        <HiveResourcePanel compact />
+        <ByoConnectPanel compact />
 
         <p className="mt-6 font-mono text-xs text-oss">
           <Link to="/" className="hover:underline">

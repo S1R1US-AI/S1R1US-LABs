@@ -21,13 +21,14 @@
     "start": "node scripts/do-start.mjs",
     "typecheck": "tsc --noEmit",
     "check:auth": "node scripts/check-auth-invariant.mjs",
-    "test": "node --test 'scripts/**/*.test.mjs' && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts src/lib/desk/x-admin.test.ts src/lib/desk/waf.test.ts",
+    "test": "node --test 'scripts/**/*.test.mjs' && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts src/lib/desk/x-admin.test.ts src/lib/desk/waf.test.ts src/lib/desk/agent-forum.test.ts src/lib/desk/board-wager.test.ts src/lib/desk/board-wallet.test.ts src/lib/desk/mobile-bridge.test.ts src/lib/desk/tenancy.test.ts src/lib/desk/app-admin.test.ts src/lib/desk/board-callout.test.ts src/lib/desk/world-cup.test.ts src/lib/desk/championship-security.test.ts src/lib/desk/hive-swarm.test.ts src/lib/desk/byo-connect.test.ts",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",
     "@hookform/resolvers": "^5.7.0",
+    "@noble/curves": "^1.9.7",
     "@noble/hashes": "^2.4.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",

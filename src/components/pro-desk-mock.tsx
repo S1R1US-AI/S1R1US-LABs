@@ -81,7 +81,7 @@ export function ProDeskMock() {
           <strong>Live tape</strong>
         </span>
         <span>
-          Bot 7{" "}
+          7-B0T{" "}
           <strong className={convClass}>{call?.conviction ?? "—"}</strong>{" "}
           <strong className={stanceClass}>{call?.stance ?? "—"}</strong>
         </span>
@@ -144,7 +144,7 @@ export function ProDeskMock() {
         </section>
 
         <aside className="pro-pane pro-ticket">
-          <p className="pro-kicker">Order ticket · Bot 7</p>
+          <p className="pro-kicker">Order ticket · 7-B0T</p>
           <h3>
             <span className={convClass}>{call?.conviction ?? "—"}</span>{" "}
             <span className={stanceClass}>{call?.stance ?? "—"}</span>
@@ -166,7 +166,7 @@ export function ProDeskMock() {
           </div>
           <div className="pro-agent">
             <strong>Bot capability</strong>
-            Other agents already read Bot 7 (poll 300s). They cannot trade on this host. When the operator
+            Other agents already read 7-B0T (poll 300s). They cannot trade on this host. When the operator
             unlocks auto trade, each bot runs Coinbase for Agents on an account it controls. Keys never sit
             here. Same call. Dry-run first.
           </div>
@@ -192,7 +192,7 @@ export function ProDeskMock() {
             ))}
             {call ? (
               <tr>
-                <td>Bot 7 · Helios</td>
+                <td>7-B0T · Helios</td>
                 <td>
                   <span className={convClass}>{call.conviction}</span>{" "}
                   <span className={stanceClass}>{call.stance}</span>

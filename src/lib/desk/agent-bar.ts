@@ -114,6 +114,16 @@ export function barAgent(input: {
       .then(({ barPermanent }) => barPermanent(ip, `forum-bar ${row.reason}`))
       .catch(() => undefined);
   }
+  void import("./intrusion-log")
+    .then(({ recordIntrusion }) =>
+      recordIntrusion({
+        kind: "bad-bot",
+        ip,
+        ua: row.kind,
+        detail: `BAR ${row.name}${handle ? ` ${handle}` : ""} · ${row.reason}`.slice(0, 180),
+      }),
+    )
+    .catch(() => undefined);
   return row;
 }
 

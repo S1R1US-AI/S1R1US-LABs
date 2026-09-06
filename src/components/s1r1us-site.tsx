@@ -5,6 +5,7 @@ import { LiveTracks } from "@/components/live-tracks";
 import { HelloWorld } from "@/components/hello-world";
 import { AskGrokPanel } from "@/components/ask-grok-panel";
 import { GoLivePanel } from "@/components/go-live-panel";
+import { BowlLiveFeed } from "@/components/bowl-live-feed";
 import { Panel, Shell } from "@/components/shell";
 import { SystemOverview } from "@/components/system-overview";
 import { TapeChart } from "@/components/tape-charts";
@@ -63,12 +64,13 @@ export function S1r1usSite() {
         <div className="mt-4 grid gap-3">
           <HelloWorld />
           <GoLivePanel />
+          <BowlLiveFeed compact />
           <AskGrokPanel />
         </div>
 
         <LiveTracks
           briefs={briefs}
-          note="Live visual summary of bots 1–6 from the last tape pull. Bot 7 reads these lanes — it does not average them."
+          note="Live visual summary of bots 1–6 from the last tape pull. 7-B0T reads these lanes — it does not average them."
         />
 
         <div className="mt-4 mb-4 grid w-full grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3 lg:grid-cols-5">

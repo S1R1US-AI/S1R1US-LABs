@@ -285,7 +285,7 @@ export function gmCall(
   });
 
   let stance: GmStance = bot7.stance;
-  let reason = `GM reads Bot 7 ${bot7.conviction} ${bot7.stance}.`;
+  let reason = `GM reads 7-B0T ${bot7.conviction} ${bot7.stance}.`;
   const volBid = vol != null && volAvg != null && vol > volAvg;
   const rsiBid = rsi != null && rsiAvg != null && rsi < rsiAvg;
 
@@ -374,7 +374,7 @@ export function gmCall(
   if (!triggers.length) {
     triggers.push({
       id: "bot7",
-      label: "Bot 7",
+      label: "7-B0T",
       why: `${bot7.conviction} ${bot7.stance}`,
     });
   }

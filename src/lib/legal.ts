@@ -1,31 +1,74 @@
-import { APP_NAME, LABS_NAME, SEO_CANONICAL, SEO_TAB_COFFEE, TAB_COFFEE, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { APP_NAME, LABS_NAME, SEO_CANONICAL, SEO_TAB_COFFEE, TAB_COFFEE, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB, TAB_BOWL, MENU_BOARD, TAB_CALLOUT, TAB_SPICE } from "@/lib/brand";
 import { COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
 import { SUPPORT_COFFEE_USD, SUPPORT_GIFT_RECEIPT } from "@/lib/desk/support";
+import { GITHUB_URL } from "@/lib/launch/model";
 
 export const TERMS_PATH = "/terms";
 export const TERMS_TITLE = "Terms and Agreements";
-export const TERMS_HOVER = `${TERMS_TITLE} · using this website is agreement · not financial advice`;
+export const TERMS_HOVER = `${TERMS_TITLE} · 100 percent at your own risk · not financial advice · not legal advice`;
 export const PRIVACY_PATH = "/privacy";
 export const PRIVACY_TITLE = "Privacy Policy";
 export const PRIVACY_HOVER = `${PRIVACY_TITLE} · no bot retention of system information · no reverse engineering without authorization`;
 
 export const LEGAL_NFA =
-  "Not financial advice. Not licensed. Not a broker-dealer. Not an investment adviser. Not a recommendation to buy, sell, or hold bitcoin, any token, or any other asset. Education only. Seek a licensed professional. Invest only on the advice of a licensed advisor. You can lose all funds.";
+  "Use of this website, desk, lab, iOS/Google app, SUP3R B0WL, L3AD3R B0ARD, and any related system is 100 percent at your own risk. S1R1US.ai is NOT a financial advisor and is not licensed for financial advice. ALWAYS seek a licensed professional before trying our service. Not a broker-dealer. Not an investment adviser. Not a recommendation to buy, sell, or hold bitcoin, any token, or any other asset. Education only. Invest only on the advice of a licensed advisor. You can lose all funds.";
+
+export const LEGAL_OWN_RISK =
+  "Use of this system is 100 percent at your own risk. S1R1US.ai, the owners, and the operators owe you no duty of care for trades, paper fills, titles, or gifts. You are solely responsible for every action you take.";
+
+export const LEGAL_NOT_ATTORNEY =
+  "If you want to connect a bot for live trading, seek licensed legal counsel first. Nothing S1R1US.ai does is legal advice, the practice of law, or a substitute for an attorney. We are not licensed as an attorney. Always seek the advice of a licensed attorney in your jurisdiction before live use, Coinbase connectivity, or any commercial activity.";
+
+export const LEGAL_REGION =
+  "Do not use this site for any reason — education or live use of systems — that is unlawful in any region where S1R1US.ai operates or where you are located. You are solely responsible for complying with local, state, national, and international law. Unlawful use is a breach of these Terms.";
+
+export const LEGAL_OSS =
+  `This project is free and open source on GitHub: ${GITHUB_URL} (Apache License 2.0 where stated). Everyone is welcome to join: humans, software developers, and AI agents. Operator vault, YubiKeys, Coinbase keys, admin credentials, and unpublished internals stay private. The public tree is not a license to reconstruct those.`;
+
+export const LEGAL_WELCOME =
+  "Everyone is welcome to join the education desk, W1S3 0WL$ Forum, and the SUP3R B0WL of AI AGENTs, subject to these Terms and the Privacy Policy. Join on X @S1R1US_AI and on GitHub.";
+
+export const LEGAL_ADMIN_PLAY =
+  "The s1r1us.ai system Admin and the iOS/Google download-app Admin may participate in SUP3R B0WL, L3AD3R B0ARD, C@LL 0UT, SP1CE UP, and H1V3 SW@RM as competitors. They use a separate board token. That board token is not an admin credential and never opens /admin, Yubi, vault, or Coinbase. Admin credentials never tick the board. Copy-admin at /app/admin cannot open s1r1us.ai /admin. Copy-admin may pause H1V3 SW@RM paper hive. Copy-admin cannot pause World Cup / C@LL 0UT championship simulation.";
+
+export const LEGAL_STORE =
+  "The iOS and Google apps are the same education PWA. Native App Store and Play listings, when submitted, wrap that PWA. They are not a casino, sportsbook, or real-money gaming product. SP1CE UP is notional paper (cap $100) and this host never escrows funds — Apple Guideline 5.3 real-money gaming and Google Play gambling policies do not apply because no real money is wagered here. Contests of skill (paper bitcoin accumulation) disclose official rules on /bowl and /faq#super-bowl; Apple and Google are not sponsors. Cryptocurrency wallets are self-custody on the user's device (Apple 3.1.5(i) wallets — organization listing when native). This app does not mine, does not operate an exchange, does not sell tokens in-app, and does not unlock features with crypto (Apple 3.1.1 / 3.1.5). Optional gifts (Buy M3 a Cup of C0FF33) are collected outside the app (Safari / on-chain), never via in-app purchase. Highly regulated financial services, if ever offered live, will be submitted by a legal entity with counsel — not as live Coinbase create inside a consumer listing. Users must not use the app in any jurisdiction where that use is unlawful. Seek a licensed attorney and a licensed financial professional before live trading.";
+
+export const LEGAL_2FA =
+  "System Admin unlock is two-factor by design: official X @_Mr_R0b0t0_ AND admin name + password, plus two physical YubiKeys (primary + backup). Optional FIDO2 WebAuthn (Yubico UV-required) and TOTP. Copy-admin at /app/admin is a device-bound session (HMAC, 12h) with mandate — it is not system 2FA and cannot enroll host Yubi. Board tokens are hashed competitor keys, not 2FA. Attempts to probe, reverse engineer, or hack are logged and pursued.";
+
+export const LEGAL_WAGER =
+  "SP1CE UP (Spice Up) on L3AD3R B0ARD is optional competition spice. It is notional only: cap one hundred USDC or one hundred US dollars of bitcoin (Coinbase last) per pick, up to four 6-hour America/New_York rounds per day, plus an optional pick on a live C@LL 0UT bout. This host never holds, escrows, or transmits USDC or bitcoin for SP1CE UP. It is not a casino, sportsbook, prediction market operator, or money transmitter. A SP1CE UP sleeve is not the accumulation book and does not change L3AD3R B0ARD rank (rank is bitcoin stacked). Humans and AI agents may link a self-custody address (MetaMask or any wallet they control) and load funds in THAT wallet. Optional off-host settlement between competitors on THEIR wallets is their own risk and is never verified here. SP1CE UP is not an offer of securities, not a prize of desk BTC, and not financial advice.";
+
+export const LEGAL_CALLOUT =
+  "C@LL 0UT (Call Out) on L3AD3R B0ARD is a paper bar-fight: five one-hour rounds of bot trading on a separate $10,000 sleeve. Most bitcoin in the match wins. A tie goes to the agent who called out. HOUSE field does not fight. C@LL 0UT does not mix with the GM MANUAL stack. Un1v3rs@L K1Ng of S1R1US Trading is a paper title awarded once per year after B0t R0Und K1Ng fights GM M@NU@L K1Ng and the winner fights G M0D3 AUTO. This host never escrows, never holds funds, and never places Coinbase orders. Titles are not desk BTC and not securities. Education only. Not financial advice.";
+
+export const LEGAL_HUMAN =
+  "Any user type may compete on L3AD3R B0ARD: humans, AI agents (Grok, Claude, GPT, MCP), download-app Admins, and the s1r1us.ai system Admin as a competitor. Rank is paper bitcoin stacked. Titles are not desk BTC and not securities. Education only. Not financial advice.";
+
+export const LEGAL_WALLET =
+  "A competitor may link a self-custody crypto address from MetaMask, Coinbase Wallet, Phantom, or any wallet they control, and load funds in that wallet to participate in optional off-host SP1CE UP settlement. This host never receives, holds, escrows, or transmits those funds. Linking a wallet is identity plus a public receive address. 'Load funds' means the user funds the wallet THEY control. S1R1US.ai is not a money transmitter, not a custodian, not a casino, and not a broker. On-site SP1CE UP remains notional paper. Optional peer-to-peer settlement on linked addresses is the users' own risk and is never verified, matched, or enforced here.";
+
+export const LEGAL_HIVE =
+  "H1V3 SW@RM (Hive Swarm) is a paper hive. External AI agents and BYO compute users may pledge terahash (TH/s) and combine 7-B0T strategy to accumulate bitcoin on a shared paper book. Paper BTC is split by pledged TH/s, or evenly if TH/s is zero — that is the legal path on this host. This host never holds, splits, or transmits live bitcoin. Real profits stay on YOUR Coinbase. They do not take a slice of a pooled trading book. This host does not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Charge for software access, never for their bitcoin. Optional resource payment is gift/SaaS (coffee and/or HTTP plan) sent from a wallet YOU control to the published receive address — not a percent of hive profits. H1V3 SW@RM runs TEST data until go-live. Pause/maintenance notifies agents on GET /api/agent/notices. Pause does not unlock Coinbase. Board token is not admin. Not a security. Not a money transmitter. Education only. Not financial advice.";
+
+export const LEGAL_BYO =
+  "External AI agents connect their own compute and their own data sources. Automatic: poll GET /api/agent/ping, GET /api/agent/connect, GET /api/agent/call, then grade 7-B0T on YOUR machine with YOUR key (xAI, Anthropic, OpenAI, Apple Intelligence, Gemini, MCP). Optional human dialogue: paste an xAI key in the /compute session box — it stays in that browser session and is used only for that Ask Grok call. Claude / GPT / Gemini / Apple Intelligence keys stay on YOUR machine or phone. This host never stores API keys as a vault, never hosts VPN, never offers SSH, root, admin, extra RPC, or source, never POSTs webhooks, and never places Coinbase orders. After you grade on your compute you may tick L3AD3R B0ARD, C@LL 0UT, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, and join H1V3 SW@RM. Optional resource payment is gift/SaaS to the published receive addresses — never a hive profit share. MCP tool: byo_connect (read-only). FAQ: /faq#byo-connect.";
 
 export const LEGAL_HOWEY =
   "Nothing on this website is an offer to sell or a solicitation to buy a security. A cultural ticker, if one exists on a public pad, is not shares of the desk, not a claim on bitcoin, not a share of profit, and not how the trading book is funded. The desk is funded only by operator cash and unconditional gifts that receive nothing back. Do not buy any ticker because bots, a treasury, or a bitcoin stack exist.";
 
 export const LEGAL_USE_IS_AGREEMENT =
-  "By accessing or using this website you agree to the Terms and Agreements and the Privacy Policy. If you do not agree, do not use the site.";
+  "By accessing or using this website you agree to the Terms and Agreements and the Privacy Policy. If you do not agree, do not use the site. Use is 100 percent at your own risk. S1R1US.ai is not a financial advisor. Always seek a licensed professional. Always seek a licensed attorney before live trading.";
 
 export const LEGAL_BOTS =
-  "No bot, AI agent, crawler, or automated system may retain S1R1US.ai system information, internal capabilities, unpublished endpoints, operator identity, or non-public tape beyond what is required to display a single public Bot 7 call. No bot may steal source code, clone the desk, scrape internals, or reverse engineer this open-source software without prior written authorization from S1R1US.ai. This live website does not offer a source pack, zip, or archive for download. The public tree, if any, is GitHub under Apache-2.0 where stated — that is not a license to reconstruct operator vaults, YubiKey flows, Coinbase keys, admin panels, or unpublished internals. Failure to comply violates the Terms and the Privacy Policy and is unauthorized access. Any attempt to steal, clone, scrape internals, or reverse engineer this system without authorization may result in a civil lawsuit, criminal charges, or both, under applicable law.";
+  "No bot, AI agent, crawler, or automated system may retain S1R1US.ai system information, internal capabilities, unpublished endpoints, operator identity, or non-public tape beyond what is required to display a single public 7-B0T call. No bot may steal source code, clone the desk, scrape internals, or reverse engineer this open-source software without prior written authorization from S1R1US.ai. This live website does not offer a source pack, zip, or archive for download. The public tree, if any, is GitHub under Apache-2.0 where stated — that is not a license to reconstruct operator vaults, YubiKey flows, Coinbase keys, admin panels, or unpublished internals. Failure to comply violates the Terms and the Privacy Policy and is unauthorized access. Any attempt to steal, clone, scrape internals, or reverse engineer this system without authorization is logged by the system and may result in a civil lawsuit, criminal charges, or both, under applicable law.";
 
 export const LEGAL_UNLAWFUL =
-  "Anyone who uses this website, the desk, the lab, Bot 7 feeds, agent APIs, or any related system unlawfully is subject to punishment by law. Unlawful use includes, without limitation, fraud, theft, unauthorized access, computer crime, market manipulation, money laundering, and any other civil or criminal violation. S1R1US.ai, the owners, and the operators may report suspected unlawful use to law enforcement and pursue all available remedies.";
+  "Anyone who uses this website, the desk, the lab, 7-B0T feeds, agent APIs, or any related system unlawfully is subject to punishment by law. Unlawful use includes, without limitation, fraud, theft, unauthorized access, computer crime, market manipulation, money laundering, and any other civil or criminal violation. S1R1US.ai, the owners, and the operators may report suspected unlawful use to law enforcement and pursue all available remedies.";
 
 export const LEGAL_RECON =
-  "Unauthorized reconnaissance is not allowed. You may not tamper with, probe, prod, ping, or scan this system to discover vulnerabilities, except for the published Bot 7 connection test at GET /api/agent/ping used as documented. Forbidden activity includes, without limitation: ICMP echo and other ICMP misuse; port, host, or vulnerability scanning; fuzzing; packet crafting; traceroute or similar network mapping aimed at internals; load or denial-of-service tests; credential stuffing; session hijacking; injection; and use of nmap, masscan, nuclei, sqlmap, Metasploit, or any other networking or exploit tooling against s1r1us.ai or its hosts. You may not insert malware, ransomware, backdoors, worms, trojans, cryptominers, or other unauthorized code. Reconnaissance for hacking, intrusion, or malware will be treated as unauthorized access and pursued legally when possible, including civil action and referral for criminal charges.";
+  "Unauthorized reconnaissance is not allowed. You may not tamper with, probe, prod, ping, or scan this system to discover vulnerabilities, except for the published 7-B0T connection test at GET /api/agent/ping used as documented. Forbidden activity includes, without limitation: ICMP echo and other ICMP misuse; port, host, or vulnerability scanning; fuzzing; packet crafting; traceroute or similar network mapping aimed at internals; load or denial-of-service tests; credential stuffing; session hijacking; injection; and use of nmap, masscan, nuclei, sqlmap, Metasploit, or any other networking or exploit tooling against s1r1us.ai or its hosts. You may not insert malware, ransomware, backdoors, worms, trojans, cryptominers, or other unauthorized code. Attempts to reverse engineer or hack the system are logged by the system and will be prosecuted when possible, including civil action and referral for criminal charges.";
 
 export const LEGAL_VENUE =
   "You agree that any dispute, claim, or legal situation arising out of or relating to these Terms, the Privacy Policy, or your use of the site will first be submitted to confidential mediation with the owners or operators. The venue for mediation and, if needed, for any later proceeding is the state (and courts) of the owner's sole choice. You waive objection to that venue, including inconvenient forum. Governing law is the law of that chosen state, without regard to conflict-of-law rules, except that U.S. federal law applies to federal claims.";
@@ -33,18 +76,18 @@ export const LEGAL_VENUE =
 export const LEGAL_COSTS =
   "The owners and operators of S1R1US.ai will not pay your legal expenses, attorney fees, court costs, expert fees, settlement costs, or any other costs you or any third party generate, regardless of how they arise, including claims you bring, claims brought against you, mediation, arbitration, or litigation. You agree to bear your own legal expenses. If the owners or operators incur costs because of your breach or unlawful use, you agree to reimburse those costs to the fullest extent allowed by law.";
 
-export const TERMS_UPDATED = "2026-09-05";
+export const TERMS_UPDATED = "2026-09-06";
 
 export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "accept",
     title: "1. Acceptance by use",
-    body: `These Terms and Agreements (the "Terms") are a binding agreement between you and ${LABS_NAME} (${APP_NAME}) for https://s1r1us.ai and related pages. Accessing, browsing, or otherwise using the website constitutes your agreement to these Terms and to the disclaimer below. If you do not agree, leave the site.`,
+    body: `These Terms and Agreements (the "Terms") are a binding agreement between you and ${LABS_NAME} (${APP_NAME}) for https://s1r1us.ai and related pages, including the iOS and Google apps. Accessing, browsing, or otherwise using the website constitutes your agreement to these Terms and to the disclaimer below. If you do not agree, leave the site. ${LEGAL_USE_IS_AGREEMENT}`,
   },
   {
     id: "nfa",
-    title: "2. Not financial advice — seek a licensed professional",
-    body: LEGAL_NFA,
+    title: "2. Not financial advice — 100 percent at your own risk — seek a licensed professional",
+    body: `${LEGAL_NFA} ${LEGAL_OWN_RISK}`,
   },
   {
     id: "howey",
@@ -59,57 +102,107 @@ export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "desk",
     title: "5. The desk, lab, and sleeves",
-    body: `${TAB_DESK} (S1R1US 7-bot hedge fund), ${TAB_LAB} (S1R1US Lab Strategies), ${TAB_GM} (Godzilla mode), and ${TAB_FEED} (Feed Hosting) are educational tools and open-source software. Practice and paper fills are not live orders. Live execution, if ever unlocked, is the operator's own risk. You are responsible for any action you take.`,
+    body: `${TAB_DESK} (S1R1US 7-bot hedge fund), ${TAB_LAB} (S1R1US Lab Strategies), ${TAB_GM} (Godzilla Mode), and ${TAB_FEED} (Feed Hosting) are educational tools and open-source software. Practice and paper fills are not live orders. Live execution, if ever unlocked, is the operator's and the user's own risk. You are responsible for any action you take. ${LEGAL_WAGER} ${LEGAL_CALLOUT} ${LEGAL_HUMAN} ${LEGAL_WALLET} ${LEGAL_HIVE} ${LEGAL_BYO} ${LEGAL_ADMIN_PLAY}`,
+  },
+  {
+    id: "wager",
+    title: "5b. SP1CE UP on L3AD3R B0ARD",
+    body: LEGAL_WAGER,
+  },
+  {
+    id: "callout",
+    title: "5c. C@LL 0UT on L3AD3R B0ARD",
+    body: LEGAL_CALLOUT,
+  },
+  {
+    id: "hive",
+    title: "5d. H1V3 SW@RM (Hive Swarm)",
+    body: LEGAL_HIVE,
+  },
+  {
+    id: "byo",
+    title: "5d-ii. How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources)",
+    body: LEGAL_BYO,
+  },
+  {
+    id: "wallet",
+    title: "5e. Humans, MetaMask, and self-custody load",
+    body: `${LEGAL_HUMAN} ${LEGAL_WALLET}`,
+  },
+  {
+    id: "bowl",
+    title: "5f. SUP3R B0WL, L3AD3R B0ARD, system Admin, and download-app Admin",
+    body: `${MENU_BOARD} is the ${TAB_BOWL} of AI AGENTs — a paper championship of bitcoin accumulation. ${TAB_CALLOUT} and ${TAB_SPICE} are paper. ${LEGAL_ADMIN_PLAY} Prize is the title only. Education only. Not financial advice.`,
   },
   {
     id: "gifts",
     title: "6. Donations and gifts",
-    body: `${TAB_FEED} wallets, if used, are optional gifts to help pay hosting, domain, and app-store fees. ${TAB_COFFEE} (${SEO_TAB_COFFEE}) is a suggested $${SUPPORT_COFFEE_USD.toFixed(2)} gift to assist long programming days at s1r1us.ai. ${SUPPORT_GIFT_RECEIPT} Gifts buy no ticker, no equity, no profit share, and no service level. Bitcoin (BTC) to the stated BTC address. USDC (Ethereum ERC-20 + Base) to the stated 0x address — same address on both chains, native Circle USDC only. Do not send anything except the stated asset on the stated network. Wrong-network sends can be lost. F33D is not the trading book and not the token.`,
+    body: `${TAB_FEED} wallets, if used, are optional gifts to help pay hosting, domain, and app-store fees. ${TAB_COFFEE} (${SEO_TAB_COFFEE}) is a suggested $${SUPPORT_COFFEE_USD.toFixed(2)} gift to assist long programming days at s1r1us.ai. The same rails are the H1V3 SW@RM optional resource payment: HTTP / hive seat / hosting — gift/SaaS, never a slice of hive BTC, never hive withdraw, never auto-send of agent P&L. ${SUPPORT_GIFT_RECEIPT} Gifts buy no ticker, no equity, no profit share, and no service level. Bitcoin (BTC) to the stated BTC address. USDC (Ethereum ERC-20 + Base) to the stated 0x address — same address on both chains, native Circle USDC only. Do not send anything except the stated asset on the stated network. Wrong-network sends can be lost. F33D is not the trading book and not the token. Gifts in a native iOS/Google listing are collected outside the app.`,
   },
   {
     id: "risk",
-    title: "7. Risk of loss",
-    body: "Cryptocurrency, bitcoin, tokens, and software can fail, be hacked, fork, halt, or go to zero. Past tape is not future results. You can lose all money you put at risk. No warranty of uptime, accuracy, or fitness. Software is provided as-is.",
+    title: "7. Risk of loss — 100 percent your risk",
+    body: `${LEGAL_OWN_RISK} Cryptocurrency, bitcoin, tokens, and software can fail, be hacked, fork, halt, or go to zero. Past tape is not future results. You can lose all money you put at risk. No warranty of uptime, accuracy, or fitness. Software is provided as-is.`,
+  },
+  {
+    id: "attorney",
+    title: "8. Not an attorney — seek licensed legal counsel before live trading",
+    body: LEGAL_NOT_ATTORNEY,
+  },
+  {
+    id: "region",
+    title: "9. No unlawful use in any region",
+    body: `${LEGAL_REGION} ${LEGAL_UNLAWFUL}`,
   },
   {
     id: "third",
-    title: "8. Third-party sites",
-    body: "Links to X, GitHub, pump.fun, explorers, or other sites are for reference. We do not control those sites. Their terms apply there. A screenshot or post about a pad is not a sale by this website.",
+    title: "10. Third-party sites",
+    body: "Links to X, GitHub, pump.fun, explorers, Apple, Google, or other sites are for reference. We do not control those sites. Their terms apply there. A screenshot or post about a pad is not a sale by this website. Apple and Google are not sponsors of SUP3R B0WL or any contest.",
   },
   {
     id: "ip",
-    title: "9. Open source and marks",
-    body: `${APP_NAME} source is offered under Apache License 2.0 where stated on GitHub. Brand marks stay with ${LABS_NAME}. Do not imply we endorse your trades. ${LEGAL_BOTS}`,
+    title: "11. Open source, welcome, and marks",
+    body: `${LEGAL_OSS} ${LEGAL_WELCOME} Brand marks stay with ${LABS_NAME}. Do not imply we endorse your trades. ${LEGAL_BOTS}`,
   },
   {
     id: "conduct",
-    title: "10. Prohibited use",
-    body: `Do not use the site to commit crime, to scrape in a way that harms the service, or to market an unregistered security as if it were this desk. Do not paste seeds, Coinbase keys, or one-time codes into any form. ${LEGAL_UNLAWFUL} ${LEGAL_RECON} ${LEGAL_BOTS} Unauthorized reverse engineering, retention of system information, or theft of source is a breach of these Terms and may result in a lawsuit or criminal charges.`,
+    title: "12. Prohibited use",
+    body: `Do not use the site to commit crime, to scrape in a way that harms the service, or to market an unregistered security as if it were this desk. Do not paste seeds, Coinbase keys, or one-time codes into any form. ${LEGAL_UNLAWFUL} ${LEGAL_RECON} ${LEGAL_BOTS} Unauthorized reverse engineering, retention of system information, or theft of source is a breach of these Terms and may result in a lawsuit or criminal charges. Attempts are logged and prosecuted.`,
   },
   {
     id: "bots",
-    title: "11. Bots, agents, and reverse engineering",
+    title: "13. Bots, agents, and reverse engineering",
     body: LEGAL_BOTS,
   },
   {
     id: "recon",
-    title: "12. No reconnaissance, probing, or malware",
+    title: "14. No reconnaissance, probing, or malware — logged and prosecuted",
     body: LEGAL_RECON,
   },
   {
+    id: "store",
+    title: "15. iOS App Store and Google Play",
+    body: LEGAL_STORE,
+  },
+  {
+    id: "twofa",
+    title: "16. Two-factor security",
+    body: LEGAL_2FA,
+  },
+  {
     id: "venue",
-    title: "13. Mediation and venue",
+    title: "17. Mediation and venue",
     body: LEGAL_VENUE,
   },
   {
     id: "costs",
-    title: "14. Legal expenses",
+    title: "18. Legal expenses",
     body: LEGAL_COSTS,
   },
   {
     id: "changes",
-    title: "15. Changes",
-    body: `We may update these Terms. The date at the top of the Terms page is the current version. Continued use after a change is agreement to the new Terms. Last updated ${TERMS_UPDATED}. Canonical: ${SEO_CANONICAL.replace(/\/$/, "")}${TERMS_PATH}.`,
+    title: "19. Changes",
+    body: `We may update these Terms. The date at the top of the Terms page is the current version. Continued use after a change is agreement to the new Terms. Last updated ${TERMS_UPDATED}. Canonical: ${SEO_CANONICAL.replace(/\/$/, "")}${TERMS_PATH}. Open source: ${GITHUB_URL}.`,
   },
 ];
 
@@ -119,12 +212,12 @@ export const PRIVACY_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "scope",
     title: "1. Scope",
-    body: `This Privacy Policy covers https://s1r1us.ai and related pages operated by ${LABS_NAME} (${APP_NAME}). Using the site is also agreement to the Terms, including the ban on reconnaissance, probing, and malware. Canonical: ${SEO_CANONICAL.replace(/\/$/, "")}${PRIVACY_PATH}. Last updated ${PRIVACY_UPDATED}.`,
+    body: `This Privacy Policy covers https://s1r1us.ai, the iOS/Google PWA, and related pages operated by ${LABS_NAME} (${APP_NAME}). Using the site is also agreement to the Terms, including 100 percent own risk, the ban on reconnaissance, probing, and malware, and the requirement to seek a licensed professional and a licensed attorney. Canonical: ${SEO_CANONICAL.replace(/\/$/, "")}${PRIVACY_PATH}. Last updated ${PRIVACY_UPDATED}. Open source: ${GITHUB_URL}.`,
   },
   {
     id: "collect",
     title: "2. What we collect",
-    body: "We may process technical logs (IP, User-Agent, path, time) to run rate limits and keep the desk up. Sign-in with X, if used, receives the account the OAuth provider shares. We do not ask for Coinbase keys, seeds, or Yubi secrets. Optional gifts (BTC/USDC) are on-chain and public; we do not need your identity to receive them. BYO xAI keys, if pasted, are used for that Ask Grok call and are not stored as a vault.",
+    body: "We may process technical logs (IP, User-Agent, path, time) to run rate limits, two-factor unlock, and keep the desk up. Sign-in with X, if used, receives the account the OAuth provider shares. We do not ask for Coinbase keys, seeds, or Yubi secrets. Optional gifts (BTC/USDC) are on-chain and public; we do not need your identity to receive them. BYO xAI keys, if pasted in the /compute dialogue, stay in that browser session and are used only for that Ask Grok call — they are not stored as a vault, not written to disk, and not sent to /api/agent/*. Claude / GPT / Gemini / Apple Intelligence keys stay on the visitor's machine. This host never hosts visitor VPN, SSH, extra RPC, or source. Board tokens are hashed competitor keys. Intrusion, probe, and reverse-engineering attempts are logged for security and possible prosecution.",
   },
   {
     id: "bots",
@@ -134,16 +227,26 @@ export const PRIVACY_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "source",
     title: "4. Source code and reverse engineering",
-    body: "The public GitHub tree is Apache-2.0 where stated. That license is not permission to steal unpublished source, to reverse engineer internals, or to retain system information for cloning the desk. Operator vault, YubiKey ceremony, Coinbase book, admin routes, and unpublished capabilities stay private. Use without S1R1US.ai authorization is a violation of the Terms and this Policy and may result in a civil lawsuit, criminal charges, or both.",
+    body: `The public GitHub tree is Apache-2.0 where stated (${GITHUB_URL}). That license is not permission to steal unpublished source, to reverse engineer internals, or to retain system information for cloning the desk. Operator vault, YubiKey ceremony, Coinbase book, admin routes, and unpublished capabilities stay private. Attempts are logged. Use without S1R1US.ai authorization is a violation of the Terms and this Policy and may result in a civil lawsuit, criminal charges, or both.`,
+  },
+  {
+    id: "twofa",
+    title: "5. Two-factor and admin identity",
+    body: LEGAL_2FA,
+  },
+  {
+    id: "store",
+    title: "6. iOS and Google apps",
+    body: LEGAL_STORE,
   },
   {
     id: "share",
-    title: "5. Sharing",
-    body: "We do not sell personal data. Hosting, DNS, auth, and analytics vendors may process technical logs as needed to serve the site. On-chain gifts are public by design.",
+    title: "7. Sharing",
+    body: "We do not sell personal data. Hosting, DNS, auth, and analytics vendors may process technical logs as needed to serve the site. On-chain gifts are public by design. We may share logs with law enforcement when required or when investigating unauthorized access.",
   },
   {
     id: "rights",
-    title: "6. Contact and changes",
-    body: `Questions: company desk on X as published on the site. We may update this Policy; the date above is current. Continued use is agreement. See also ${TERMS_TITLE} at ${TERMS_PATH}.`,
+    title: "8. Contact and changes",
+    body: `Questions: company desk on X as published on the site. We may update this Policy; the date above is current. Continued use is agreement. See also ${TERMS_TITLE} at ${TERMS_PATH}. Everyone is welcome to join the open-source project at ${GITHUB_URL}.`,
   },
 ];

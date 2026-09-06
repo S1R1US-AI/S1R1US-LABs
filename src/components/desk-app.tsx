@@ -18,6 +18,7 @@ import { DeskWorkspace } from "@/components/desk-workspace";
 import { LiveTracks } from "@/components/live-tracks";
 import { HelloWorld } from "@/components/hello-world";
 import { GoLivePanel } from "@/components/go-live-panel";
+import { BowlLiveFeed } from "@/components/bowl-live-feed";
 import { SeoCopy } from "@/components/seo-copy";
 import { TapeFreezeBanner } from "@/components/tape-freeze";
 import { Panel, Shell } from "@/components/shell";
@@ -207,6 +208,9 @@ export function DeskApp() {
         <div className="mt-3">
           <GoLivePanel />
         </div>
+        <div className="mt-3">
+          <BowlLiveFeed compact />
+        </div>
 
         {isAdmin ? (
           <div className="mt-3">
@@ -225,7 +229,7 @@ export function DeskApp() {
         <div className="mt-4">
         <LiveTracks
           briefs={briefs}
-          note="Live visual summary of bots 1–6 from the last tape pull. Bot 7 reads these lanes — it does not average them."
+          note="Live visual summary of bots 1–6 from the last tape pull. 7-B0T reads these lanes — it does not average them."
         />
         </div>
 

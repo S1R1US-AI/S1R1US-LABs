@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { Shield, Bot, BotOff } from "lucide-react";
+import { Pause, Play, Shield, Bot, BotOff } from "lucide-react";
 import { Panel } from "@/components/shell";
 import { Button } from "@/components/ui/button";
 import { ANALYSIS_AS_OF, protocolRows, vulnRows } from "@/lib/desk/security";
 import { firewallLayers, firewallSummary } from "@/lib/desk/firewall";
 import { runHunter, HUNTER_WPS, type HunterReport } from "@/lib/desk/hunter";
-import { fetchIntrusions, fetchSecurityPosture, runHunterAudit, fetchAgentGate, setAgentGate, fetchTapeMeta, unbarAgent } from "@/lib/desk/desk-rpc";
-import { INTRUSION_KIND_LABEL, type IntrusionKind, type IntrusionRow } from "@/lib/desk/intrusion-log";
+import { fetchIntrusions, fetchSecurityPosture, runHunterAudit, fetchAgentGate, setAgentGate, fetchTapeMeta, unbarAgent, fetchGmBoard, setGmBoardStatus, setGmWagerStatus, setChampionshipSim } from "@/lib/desk/desk-rpc";
+import { INTRUSION_KIND_LABEL, BAD_BOT_KINDS, type IntrusionKind, type IntrusionRow } from "@/lib/desk/intrusion-log";
 import { useOperator } from "@/lib/desk/operator";
 import { COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
 import { wafStats } from "@/lib/desk/waf";
@@ -15,13 +15,15 @@ import { owaspRows, pciRows, pluginInventory } from "@/lib/desk/control-map";
 import { listBans } from "@/lib/desk/ban-list";
 import { listActions } from "@/lib/desk/auto-defend";
 import { TapeFreezePanel } from "@/components/tape-freeze";
+import { HiveAdminPanel } from "@/components/hive-admin-panel";
 import { cn } from "@/lib/utils";
 
-type Sub = "firewall" | "waf" | "intel" | "intrusions" | "response" | "audit" | "hunter" | "agentic" | "agents";
+type Sub = "firewall" | "waf" | "intel" | "intrusions" | "response" | "audit" | "hunter" | "agentic" | "agents" | "badbots";
 type SecurityPosture = NonNullable<Awaited<ReturnType<typeof fetchSecurityPosture>>["posture"]>;
 type AgentGateView = NonNullable<Awaited<ReturnType<typeof fetchAgentGate>>["gate"]>;
 type WaitlistView = Awaited<ReturnType<typeof fetchAgentGate>>["waitlist"];
 type BarsView = NonNullable<Awaited<ReturnType<typeof fetchAgentGate>>["bars"]>;
+type BoardView = NonNullable<Awaited<ReturnType<typeof fetchGmBoard>>["board"]>;
 
 function tone(status: string) {
   if (status === "PASS" || status === "FIXED" || status === "ARMED" || status === "FEED") return "text-high";
@@ -49,6 +51,9 @@ export function SecurityDesk() {
   const [agentGate, setAgentGateState] = useState<AgentGateView | null>(null);
   const [waitlist, setWaitlist] = useState<WaitlistView>({ count: 0, invited: 0, rows: [] });
   const [bars, setBars] = useState<BarsView>({ count: 0, rows: [] });
+  const [board, setBoard] = useState<BoardView | null>(null);
+  const [boardBusy, setBoardBusy] = useState(false);
+  const [boardErr, setBoardErr] = useState<string | null>(null);
   const [pullPaused, setPullPaused] = useState(false);
   const proto = posture?.protocol ?? protocolRows();
   const vulns = posture?.vulns ?? vulnRows();
@@ -131,6 +136,17 @@ export function SecurityDesk() {
     }
   }
 
+  async function loadBoard() {
+    if (!token) return;
+    const res = await fetchGmBoard({ data: { token } });
+    if (res.ok && res.board) {
+      setBoard(res.board);
+      setBoardErr(null);
+    } else {
+      setBoardErr(res.error ?? "Could not load GM B0aRd");
+    }
+  }
+
   async function toggleAgents(open: boolean) {
     if (!token) return;
     setGateBusy(true);
@@ -149,6 +165,38 @@ export function SecurityDesk() {
     }
   }
 
+  async function toggleBoard(status: "LIVE" | "PAUSED") {
+    if (!token) return;
+    setBoardBusy(true);
+    setBoardErr(null);
+    try {
+      const res = await setGmBoardStatus({ data: { token, status } });
+      if (!res.ok || !res.board) {
+        setBoardErr(res.error ?? "Could not change GM B0aRd");
+        return;
+      }
+      setBoard(res.board);
+    } finally {
+      setBoardBusy(false);
+    }
+  }
+
+  async function toggleSim(status: "LIVE" | "PAUSED") {
+    if (!token) return;
+    setBoardBusy(true);
+    setBoardErr(null);
+    try {
+      const res = await setChampionshipSim({ data: { token, status } });
+      if (!res.ok || !res.sim) {
+        setBoardErr(res.error ?? "Could not change championship simulation");
+        return;
+      }
+      await loadBoard();
+    } finally {
+      setBoardBusy(false);
+    }
+  }
+
   async function liftBar(id: string) {
     if (!token) return;
     const res = await unbarAgent({ data: { token, id } });
@@ -158,6 +206,7 @@ export function SecurityDesk() {
   useEffect(() => {
     void loadPosture(true);
     void loadGate();
+    void loadBoard();
     void fetchTapeMeta().then((m) => setPullPaused(Boolean(m.frozen)));
   }, [token]);
 
@@ -165,6 +214,22 @@ export function SecurityDesk() {
     () => (kindFilter === "all" ? rows : rows.filter((r) => r.kind === kindFilter)),
     [rows, kindFilter],
   );
+  const badBotRows = useMemo(
+    () => rows.filter((r) => (BAD_BOT_KINDS as readonly string[]).includes(r.kind)),
+    [rows],
+  );
+  const badBot24 = useMemo(() => {
+    const since = Date.now() - 24 * 60 * 60_000;
+    return badBotRows.filter((r) => Date.parse(r.at) >= since);
+  }, [badBotRows]);
+  const badBotKinds = useMemo(() => {
+    const byKind: Record<string, number> = {};
+    for (const r of badBot24) byKind[r.kind] = (byKind[r.kind] ?? 0) + 1;
+    return Object.entries(byKind)
+      .sort((a, b) => b[1] - a[1])
+      .map(([k, n]) => `${k} ${n}`)
+      .join(" · ");
+  }, [badBot24]);
 
   return (
     <div className="mt-6">
@@ -193,6 +258,7 @@ export function SecurityDesk() {
             ["hunter", "Hunter"],
             ["agentic", "Agentic"],
             ["agents", "AI Agents"],
+            ["badbots", "Bad bots"],
           ] as const
         ).map(([id, label]) => (
           <button
@@ -256,6 +322,16 @@ export function SecurityDesk() {
           ok={agentGate?.externalAgents !== false}
         />
         <Stat
+          kicker="Bad bots"
+          value={String(bars.count)}
+          hint={
+            badBot24.length
+              ? `${badBot24.length} probes / 24h · doNotReturn`
+              : "source-probe / inject / scrape · 403"
+          }
+          ok={bars.count === 0 && badBot24.length === 0}
+        />
+        <Stat
           kicker="Yubi lock"
           value={layers.find((l) => l.id === "yubi-panel")?.status === "ARMED" ? "ON" : "OFF"}
           hint="optional physical key · Admin → Wallet"
@@ -266,6 +342,16 @@ export function SecurityDesk() {
           value={pullPaused ? "PAUSED" : "LIVE"}
           hint={pullPaused ? "last-good snapshot · APIs idle" : "5-minute mandate clock"}
           ok={!pullPaused}
+        />
+        <Stat
+          kicker="GM B0aRd"
+          value={board?.status ?? "—"}
+          hint={
+            board
+              ? `${board.count} agents · ${board.house ?? 0} HOUSE · practice always on`
+              : "operator live / pause"
+          }
+          ok={board?.status !== "PAUSED"}
         />
         <Stat
           kicker="Agentic"
@@ -291,7 +377,7 @@ export function SecurityDesk() {
         titleClass={agentGate?.externalAgents === false ? "text-medium" : "text-high"}
       >
         <p className="text-sm leading-relaxed text-muted">
-          Turns off Bot 7 JSON, MCP feed, and A2A for external AI agents. Ping and waitlist stay up so Grok, Claude, and
+          Turns off 7-B0T JSON, MCP feed, and A2A for external AI agents. Ping and waitlist stay up so Grok, Claude, and
           GPT learn the desk is under maintenance and will be invited back when you turn communication on. A data-pull
           pause (below) also sets ops.status PAUSED on ping — bots must not trade on that snapshot. This host never POSTs
           webhooks — the invite is the next GET /api/agent/ping JSON (invite.status SENT). Blocked agents receive
@@ -322,6 +408,105 @@ export function SecurityDesk() {
       </Panel>
 
       <TapeFreezePanel onChange={setPullPaused} />
+
+      <Panel
+        className="mt-4"
+        kicker="GM B0aRd"
+        title={board?.status === "PAUSED" ? "PAUSED · official rank frozen" : "LIVE · official ticks count"}
+        kickerClass={board?.status === "PAUSED" ? "text-medium" : "text-high"}
+        titleClass={board?.status === "PAUSED" ? "text-medium" : "text-high"}
+      >
+        <p className="text-sm leading-relaxed text-muted">
+          Live / pause for the AI agent bitcoin competition. LIVE counts GM MANUAL paper ticks toward official rank (top
+          50, title AI Agent {'>'} GM B0aRd L3AD3R). PAUSE freezes official rank. Practice sessions stay live on Coinbase
+          last either way — bots POST book:practice. Board tokens are hashed gb_ keys on /board only. They cannot open
+          /admin, Yubi, vault, or Wallet. This host never places Coinbase orders. Paper wagers (cap $100 USDC or $100 of
+          bitcoin notional) are a separate sleeve — never escrow, never mix with stacked BTC.
+        </p>
+        <p className="mt-2 font-mono text-xs text-muted">
+          {board
+            ? `${board.count} desks · ${board.house ?? 0} HOUSE field · ${board.agents.filter((a) => !a.house).length} registered`
+            : "load board"}
+          {board?.liveAt ? ` · live ${board.liveAt.slice(0, 16).replace("T", " ")}` : ""}
+          {board?.pausedAt ? ` · paused ${board.pausedAt.slice(0, 16).replace("T", " ")}` : ""}
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {board?.status === "PAUSED" ? (
+            <Button variant="primary" onClick={() => void toggleBoard("LIVE")} disabled={boardBusy || !token}>
+              <Play className="size-4" />
+              {boardBusy ? "…" : "GM B0aRd LIVE"}
+            </Button>
+          ) : (
+            <Button onClick={() => void toggleBoard("PAUSED")} disabled={boardBusy || !token}>
+              <Pause className="size-4" />
+              {boardBusy ? "…" : "Pause GM B0aRd — practice stays on"}
+            </Button>
+          )}
+          <Button onClick={() => void loadBoard()} disabled={!token}>
+            Refresh board
+          </Button>
+          <Button
+            onClick={() => {
+              void (async () => {
+                if (!token) return;
+                setBoardBusy(true);
+                const res = await setGmWagerStatus({ data: { token, live: !(board?.wager?.live) } });
+                setBoardBusy(false);
+                if (res.ok) void loadBoard();
+                else setBoardErr(res.error ?? "wager toggle failed");
+              })();
+            }}
+            disabled={boardBusy || !token}
+          >
+            {board?.wager?.live === false ? "Open SP1CE UP" : "Pause SP1CE UP"}
+          </Button>
+        </div>
+        {boardErr ? <p className="mt-2 text-sm text-sell">{boardErr}</p> : null}
+        {board?.agents?.length ? (
+          <ol className="mt-3 max-h-48 divide-y divide-rule overflow-auto">
+            {board.agents.slice(0, 12).map((a) => (
+              <li key={a.id} className="flex justify-between gap-2 py-1.5 font-mono text-xs">
+                <span>
+                  #{a.rank} · {a.name}
+                  {a.house ? " · HOUSE" : ""}
+                </span>
+                <span className="text-high">{a.btc.toFixed(6)} BTC</span>
+              </li>
+            ))}
+          </ol>
+        ) : null}
+      </Panel>
+
+      <Panel
+        className="mt-4"
+        kicker="Simulation"
+        title={board?.sim?.live ? "LIVE · World Cup + C@LL 0UT sim on Coinbase last" : "PAUSED · championship sim frozen"}
+        kickerClass={board?.sim?.live ? "text-high" : "text-medium"}
+        titleClass={board?.sim?.live ? "text-high" : "text-medium"}
+      >
+        <p className="text-sm leading-relaxed text-muted">
+          Championship simulation for C@LL 0UT, simulated SUP3R B0WL, and W0rLd CUP of AI Quant Trading BTC. LIVE ticks
+          paper desks against live Coinbase last. PAUSE freezes those sim fills. This does not pause GM B0aRd official
+          rank, does not pause data pulls, and does not unlock Coinbase create on web or phone apps. Live apps still
+          follow parent policies, mandate, and security. System Admin only.
+        </p>
+        <p className="mt-2 font-mono text-xs text-muted">{board?.sim?.note ?? "load simulation"}</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {board?.sim?.live === false ? (
+            <Button variant="primary" onClick={() => void toggleSim("LIVE")} disabled={boardBusy || !token}>
+              <Play className="size-4" />
+              {boardBusy ? "…" : "Continue simulation"}
+            </Button>
+          ) : (
+            <Button onClick={() => void toggleSim("PAUSED")} disabled={boardBusy || !token}>
+              <Pause className="size-4" />
+              {boardBusy ? "…" : "Pause simulation"}
+            </Button>
+          )}
+        </div>
+      </Panel>
+
+      {token ? <HiveAdminPanel token={token} /> : null}
 
       {sub === "firewall" ? (
         <>
@@ -911,6 +1096,82 @@ export function SecurityDesk() {
             </ul>
           )}
         </Panel>
+        </>
+      ) : null}
+
+      {sub === "badbots" ? (
+        <>
+          <Panel className="mt-4" kicker="BAD B0TS" title="Blocked external agents" kickerClass="text-sell" titleClass="text-sell">
+            <p className="text-sm leading-relaxed text-muted">
+              A bad bot is an external AI agent that is not allowed: source-probe, prompt-inject, scrape, MCP/agency
+              abuse, waitlist webhook, secret-shaped paste, or harmful / false / off-mandate W1S3 0WL$ content. The gate
+              returns 403 with blocked=true and doNotReturn=true — you were blocked for malicious behavior, do not come
+              back. Name + IP are barred. Loopback is never banned so the operator is not locked out. Auto trade LOCKED.
+            </p>
+            <p className="mt-2 font-mono text-xs text-muted">
+              {bars.count} barred
+              {" · "}
+              {badBot24.length} probes / 24h
+              {badBotKinds ? ` · ${badBotKinds}` : ""}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Button onClick={() => void loadPosture(false)} disabled={busy || !token}>
+                {busy ? "Refreshing…" : "Refresh bars + probes"}
+              </Button>
+            </div>
+          </Panel>
+          <Panel className="mt-4" kicker="Bar" title="Permanently barred" kickerClass="text-sell">
+            <p className="text-sm leading-relaxed text-muted">
+              Unbar only if you verify a false positive. Unbar does not unlock Coinbase. Further probes still 403.
+            </p>
+            {!bars.rows.length ? (
+              <p className="mt-3 text-sm text-muted">No agents permanently barred in this process yet.</p>
+            ) : (
+              <ul className="mt-3 divide-y divide-rule">
+                {bars.rows.map((r) => (
+                  <li key={r.id} className="flex flex-wrap items-center justify-between gap-2 py-2 font-mono text-xs">
+                    <span>
+                      <span className="text-sell">BAR</span>
+                      {" · "}
+                      {r.kind} · {r.name}
+                      {r.handle ? ` · ${r.handle}` : ""}
+                      {" · "}
+                      <span className="text-muted">{r.reason}</span>
+                      {r.at ? (
+                        <span className="ml-2 text-muted">{r.at.slice(0, 16).replace("T", " ")}Z</span>
+                      ) : null}
+                    </span>
+                    <button type="button" className="text-tab hover:underline" onClick={() => void liftBar(r.id)}>
+                      Unbar
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Panel>
+          <Panel className="mt-4" kicker="IDS" title="24h blocked probes" kickerClass="text-sell">
+            <p className="text-sm leading-relaxed text-muted">
+              source-probe, inject, scrape, scanner, MCP deny, agency probe, waitlist reject, secret paste, forum bar.
+              Same ring as Intrusions, filtered to bad bots. Also on the 08:00 morning report.
+            </p>
+            {!badBot24.length ? (
+              <p className="mt-3 text-sm text-muted">No bad-bot probes in the last 24 hours. Gate is armed.</p>
+            ) : (
+              <ul className="mt-3 divide-y divide-rule">
+                {badBot24.slice(0, 80).map((r) => (
+                  <li key={r.id} className="py-2 font-mono text-xs">
+                    <span className="text-sell">BLOCKED</span>
+                    {" · "}
+                    <span className="text-medium">{r.kind}</span>
+                    {" · "}
+                    <span className="text-muted">{r.at.slice(11, 19)}Z</span>
+                    {" · "}
+                    {r.detail}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Panel>
         </>
       ) : null}
     </div>

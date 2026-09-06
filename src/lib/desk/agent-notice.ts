@@ -112,7 +112,7 @@ export function agentOpsPublic(): AgentOpsPublic {
       status: "MAINTENANCE",
       retryAfterSec: gate.retryAfterSec || 300,
       message: paused
-        ? `${gate.message} Data pulls are also paused — Bot 7 tape is the last validated snapshot, not a live clock.`
+        ? `${gate.message} Data pulls are also paused — 7-B0T tape is the last validated snapshot, not a live clock.`
         : gate.message,
       after: gate.after,
     };

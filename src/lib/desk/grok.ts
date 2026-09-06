@@ -16,6 +16,7 @@ type ByoInput = {
   xaiKey: string;
   question?: string;
   bearer?: string;
+  appToken?: string;
 };
 
 function looksLikeXaiKey(raw: string) {
@@ -73,7 +74,7 @@ async function gradeWithKey(apiKey: string, question: string | undefined) {
         },
         {
           role: "user",
-          content: `${userQ ? `Strategy question (integrated with Bot 7 tape): ${userQ}\n` : ""}Grade the coordinator and issue the BTC accumulation call.\n${JSON.stringify(compact)}`,
+          content: `${userQ ? `Strategy question (integrated with 7-B0T tape): ${userQ}\n` : ""}Grade the coordinator and issue the BTC accumulation call.\n${JSON.stringify(compact)}`,
         },
       ],
     }),
@@ -103,10 +104,18 @@ export const askHeliosByo = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { getSessionUser } = await import("@/lib/auth/verify.server");
     const user = await getSessionUser(data.bearer);
-    if (!user) {
+    let copyAdmin = false;
+    if (!user && data.appToken) {
+      const { isAppAdminToken } = await import("./tenancy");
+      if (isAppAdminToken(data.appToken)) {
+        const { verifyAppAdminToken } = await import("./app-admin");
+        copyAdmin = Boolean(verifyAppAdminToken(data.appToken));
+      }
+    }
+    if (!user && !copyAdmin) {
       return {
         ok: false as const,
-        error: "Sign in with X first. Then paste your xAI API key. This host never stores it and never spends operator SuperGrok on visitor Ask Grok.",
+        error: "Sign in with X, or unlock your copy Admin, then paste your xAI API key. This host never stores it and never spends operator SuperGrok on visitor Ask Grok.",
       };
     }
     const limited = grokRateLimit();

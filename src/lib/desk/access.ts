@@ -838,3 +838,28 @@ export const renewAdminPasswordWithX = createServerFn({ method: "POST" })
     }
     return { ok: true as const, token: await signAccessToken(), adminName: nextName };
   });
+
+/** iOS / Google copy-admin. Never mints a system /admin HMAC. */
+export const claimCopyAdmin = createServerFn({ method: "POST" })
+  .validator((input: { kind?: string; handle?: string; label?: string; mandate?: boolean; xHandle?: string | null }) => input)
+  .handler(async ({ data }) => {
+    const { claimAppAdmin, APP_ADMIN_PUBLIC } = await import("./app-admin");
+    const res = claimAppAdmin(data);
+    if (!res.ok) return res;
+    return { ...res, public: APP_ADMIN_PUBLIC };
+  });
+
+export const peekCopyAdmin = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { isAppAdminToken } = await import("./tenancy");
+    if (!isAppAdminToken(data.token)) {
+      return { ok: false as const, error: "Not a copy Admin session." };
+    }
+    const { verifyAppAdminToken, peekAppAdmin, APP_ADMIN_PUBLIC } = await import("./app-admin");
+    const hit = verifyAppAdminToken(data.token);
+    if (!hit) return { ok: false as const, error: "Copy Admin session expired." };
+    const you = peekAppAdmin(hit.id);
+    if (!you) return { ok: false as const, error: "Copy Admin session expired." };
+    return { ok: true as const, you, public: APP_ADMIN_PUBLIC };
+  });

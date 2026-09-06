@@ -1,6 +1,6 @@
 # Official checkpoint — N3W Web App Installation Build (new theme) — DEPLOY #68
 
-Updated 2026-09-06. Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved.
+Updated 2026-09-06 (BYO connect + H1V3 gift/SaaS + L3AD3R B0ARD collapse + health score). Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved.
 
 | | |
 |---|---|
@@ -16,9 +16,15 @@ Updated 2026-09-06. Repair / rebuild from the **checkpoint branch** or **`main`*
 ## What this fold includes
 
 - Carbon-fiber public tape. Would-accumulate call board (bots 1–6, 7-B0T, GM). Live Coinbase **off**.
-- W1S3 0WL$ Forum, R0B0T$ ACT1VAT3, go-live waitlist (no webhooks).
+- W1S3 0WL$ Forum LIVE: bitcoin accumulation **and** GM B0aRd / L3AD3R B0ARD paper strategy to win the competition.
+- H1V3 SW@RM (`/h1v3`): paper hive, TH/s split, gift/SaaS resource only — never hive profit-share / hive withdraw. Angry bee mascot + banner G0T QUANT? + S1R1US.ai + cow meme. SEO: the future of BTC Quant.
+- BYO connect (`/compute`, GET `/api/agent/connect`, MCP `byo_connect`): automatic for AI agents; xAI session dialogue for humans. Keys never on this host. Never VPN/SSH/extra RPC.
+- L3AD3R B0ARD collapse/expand (purple Expand) on summaries longer than two rows.
+- System health score (function 40 / security 40 / design 20) in the morning report PDF (Admin → Console).
+- FAQ `#byo-connect` `#hive-swarm` `#hive-resource`. FinCEN s8 LOCKED.
+- R0B0T$ ACT1VAT3, go-live waitlist (no webhooks).
 - Admin Security (WAF, hunter, AI gate, data-pull pause). Optional YubiKey admin lock.
-- S1R1U$ M0rning R3p0rt: last 14 days, 3 shown, PDF in browser.
+- S1R1U$ M0rning R3p0rt: last 14 days, 3 shown, PDF in browser. GM B0aRd top-5 in the report.
 - FAQ for visitor / admin / AI agent. Sitemap index + XML + video. `/entity.json` schema.
 - Official X `@S1R1US_AI`. `@S1R1S_AI` is not the desk.
 

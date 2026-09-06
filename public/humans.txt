@@ -20,4 +20,9 @@ brand.txt — official properties
 video-sitemap.xml — YouTube / Rumble / TikTok when live
 sitemap.xml — pages + images
 search?q= — sitelinks search box
-media — official desks
+media — official desks + AI Trading Bot Cost + SUP3R B0WL of AI AGENTs libraries
+bowl — SUP3R B0WL of AI Agents (AI Agent Championship)
+w0rld — W0rLd CUP of AI Quant Trading BTC
+h1v3 — H1V3 SW@RM (Hive Swarm) · the future of BTC Quant
+c0ut — C@LL 0UT simulation welcome
+compute — How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources)

@@ -12,55 +12,83 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AgentRouteImport } from './routes/agent'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as B3arsRouteImport } from './routes/b3ars'
+import { Route as BoardRouteImport } from './routes/board'
+import { Route as BowlRouteImport } from './routes/bowl'
 import { Route as C0ff33RouteImport } from './routes/c0ff33'
+import { Route as C0utRouteImport } from './routes/c0ut'
 import { Route as CoffeeRouteImport } from './routes/coffee'
 import { Route as ComputeRouteImport } from './routes/compute'
+import { Route as CupRouteImport } from './routes/cup'
 import { Route as EntityDotjsonRouteImport } from './routes/entity[.]json'
 import { Route as F33dRouteImport } from './routes/f33d'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ForumRouteImport } from './routes/forum'
 import { Route as GmRouteImport } from './routes/gm'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as H1v3RouteImport } from './routes/h1v3'
 import { Route as HeliosRouteImport } from './routes/helios'
 import { Route as HeliosbotRouteImport } from './routes/heliosbot'
+import { Route as HiveRouteImport } from './routes/hive'
+import { Route as IosRouteImport } from './routes/ios'
 import { Route as LaunchRouteImport } from './routes/launch'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
 import { Route as MediaRouteImport } from './routes/media'
 import { Route as OwlRouteImport } from './routes/owl'
+import { Route as PlayRouteImport } from './routes/play'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as R0b0tsRouteImport } from './routes/r0b0ts'
 import { Route as RenewRouteImport } from './routes/renew'
 import { Route as S1r1usRouteImport } from './routes/s1r1us'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SecurityRouteImport } from './routes/security'
+import { Route as SimRouteImport } from './routes/sim'
 import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as SitemapIndexDotxmlRouteImport } from './routes/sitemap-index[.]xml'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SourceRouteImport } from './routes/source'
+import { Route as SwarmRouteImport } from './routes/swarm'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThemeRouteImport } from './routes/theme'
 import { Route as VideoSitemapDotxmlRouteImport } from './routes/video-sitemap[.]xml'
+import { Route as W0rldRouteImport } from './routes/w0rld'
+import { Route as WorldCupRouteImport } from './routes/world-cup'
 import { Route as DotwellKnownAgentCardDotjsonRouteImport } from './routes/[.]well-known/agent-card[.]json'
 import { Route as DotwellKnownAgentDotjsonRouteImport } from './routes/[.]well-known/agent[.]json'
 import { Route as DotwellKnownAiPluginDotjsonRouteImport } from './routes/[.]well-known/ai-plugin[.]json'
+import { Route as DotwellKnownAppleAppSiteAssociationRouteImport } from './routes/[.]well-known/apple-app-site-association'
+import { Route as DotwellKnownAssetlinksDotjsonRouteImport } from './routes/[.]well-known/assetlinks[.]json'
 import { Route as ApiAgentRouteImport } from './routes/api.agent'
+import { Route as AppAdminRouteImport } from './routes/app_.admin'
+import { Route as BoardIdRouteImport } from './routes/board.$id'
 import { Route as MorningPdfIdRouteImport } from './routes/morning-pdf.$id'
 import { Route as ApiAgentA2aRouteImport } from './routes/api/agent.a2a'
+import { Route as ApiAgentAppRouteImport } from './routes/api/agent.app'
+import { Route as ApiAgentAppleRouteImport } from './routes/api/agent.apple'
+import { Route as ApiAgentBoardRouteImport } from './routes/api/agent.board'
 import { Route as ApiAgentCallRouteImport } from './routes/api/agent/call'
 import { Route as ApiAgentCardRouteImport } from './routes/api/agent.card'
 import { Route as ApiAgentClaudeRouteImport } from './routes/api/agent.claude'
+import { Route as ApiAgentConnectRouteImport } from './routes/api/agent.connect'
+import { Route as ApiAgentCupRouteImport } from './routes/api/agent.cup'
 import { Route as ApiAgentFeeRouteImport } from './routes/api/agent.fee'
 import { Route as ApiAgentForumRouteImport } from './routes/api/agent.forum'
+import { Route as ApiAgentGoogleRouteImport } from './routes/api/agent.google'
 import { Route as ApiAgentGrokRouteImport } from './routes/api/agent.grok'
+import { Route as ApiAgentHiveRouteImport } from './routes/api/agent.hive'
 import { Route as ApiAgentKeysRouteImport } from './routes/api/agent.keys'
 import { Route as ApiAgentMcpRouteImport } from './routes/api/agent.mcp'
 import { Route as ApiAgentNoticesRouteImport } from './routes/api/agent.notices'
 import { Route as ApiAgentOpenaiRouteImport } from './routes/api/agent.openai'
 import { Route as ApiAgentOpenapiRouteImport } from './routes/api/agent.openapi'
 import { Route as ApiAgentPingRouteImport } from './routes/api/agent.ping'
+import { Route as ApiAgentSiriRouteImport } from './routes/api/agent.siri'
 import { Route as ApiAgentWaitlistRouteImport } from './routes/api/agent.waitlist'
+import { Route as ApiAgentWebmcpRouteImport } from './routes/api/agent.webmcp'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as ApiAgentBoardPicIdRouteImport } from './routes/api/agent.board.pic.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -77,14 +105,34 @@ const AgentRoute = AgentRouteImport.update({
   path: '/agent',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const B3arsRoute = B3arsRouteImport.update({
   id: '/b3ars',
   path: '/b3ars',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BoardRoute = BoardRouteImport.update({
+  id: '/board',
+  path: '/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BowlRoute = BowlRouteImport.update({
+  id: '/bowl',
+  path: '/bowl',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const C0ff33Route = C0ff33RouteImport.update({
   id: '/c0ff33',
   path: '/c0ff33',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const C0utRoute = C0utRouteImport.update({
+  id: '/c0ut',
+  path: '/c0ut',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoffeeRoute = CoffeeRouteImport.update({
@@ -95,6 +143,11 @@ const CoffeeRoute = CoffeeRouteImport.update({
 const ComputeRoute = ComputeRouteImport.update({
   id: '/compute',
   path: '/compute',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CupRoute = CupRouteImport.update({
+  id: '/cup',
+  path: '/cup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntityDotjsonRoute = EntityDotjsonRouteImport.update({
@@ -127,6 +180,11 @@ const GuideRoute = GuideRouteImport.update({
   path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const H1v3Route = H1v3RouteImport.update({
+  id: '/h1v3',
+  path: '/h1v3',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HeliosRoute = HeliosRouteImport.update({
   id: '/helios',
   path: '/helios',
@@ -135,6 +193,16 @@ const HeliosRoute = HeliosRouteImport.update({
 const HeliosbotRoute = HeliosbotRouteImport.update({
   id: '/heliosbot',
   path: '/heliosbot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HiveRoute = HiveRouteImport.update({
+  id: '/hive',
+  path: '/hive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IosRoute = IosRouteImport.update({
+  id: '/ios',
+  path: '/ios',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaunchRoute = LaunchRouteImport.update({
@@ -147,6 +215,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ManifestDotwebmanifestRoute = ManifestDotwebmanifestRouteImport.update({
+  id: '/manifest.webmanifest',
+  path: '/manifest.webmanifest',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MediaRoute = MediaRouteImport.update({
   id: '/media',
   path: '/media',
@@ -155,6 +228,11 @@ const MediaRoute = MediaRouteImport.update({
 const OwlRoute = OwlRouteImport.update({
   id: '/owl',
   path: '/owl',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlayRoute = PlayRouteImport.update({
+  id: '/play',
+  path: '/play',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -187,6 +265,11 @@ const SecurityRoute = SecurityRouteImport.update({
   path: '/security',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SimRoute = SimRouteImport.update({
+  id: '/sim',
+  path: '/sim',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapRoute = SitemapRouteImport.update({
   id: '/sitemap',
   path: '/sitemap',
@@ -207,6 +290,11 @@ const SourceRoute = SourceRouteImport.update({
   path: '/source',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SwarmRoute = SwarmRouteImport.update({
+  id: '/swarm',
+  path: '/swarm',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -220,6 +308,16 @@ const ThemeRoute = ThemeRouteImport.update({
 const VideoSitemapDotxmlRoute = VideoSitemapDotxmlRouteImport.update({
   id: '/video-sitemap.xml',
   path: '/video-sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const W0rldRoute = W0rldRouteImport.update({
+  id: '/w0rld',
+  path: '/w0rld',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorldCupRoute = WorldCupRouteImport.update({
+  id: '/world-cup',
+  path: '/world-cup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DotwellKnownAgentCardDotjsonRoute =
@@ -240,10 +338,32 @@ const DotwellKnownAiPluginDotjsonRoute =
     path: '/.well-known/ai-plugin.json',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DotwellKnownAppleAppSiteAssociationRoute =
+  DotwellKnownAppleAppSiteAssociationRouteImport.update({
+    id: '/.well-known/apple-app-site-association',
+    path: '/.well-known/apple-app-site-association',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DotwellKnownAssetlinksDotjsonRoute =
+  DotwellKnownAssetlinksDotjsonRouteImport.update({
+    id: '/.well-known/assetlinks.json',
+    path: '/.well-known/assetlinks.json',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAgentRoute = ApiAgentRouteImport.update({
   id: '/api/agent',
   path: '/api/agent',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminRoute = AppAdminRouteImport.update({
+  id: '/app_/admin',
+  path: '/app/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BoardIdRoute = BoardIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => BoardRoute,
 } as any)
 const MorningPdfIdRoute = MorningPdfIdRouteImport.update({
   id: '/morning-pdf/$id',
@@ -253,6 +373,21 @@ const MorningPdfIdRoute = MorningPdfIdRouteImport.update({
 const ApiAgentA2aRoute = ApiAgentA2aRouteImport.update({
   id: '/a2a',
   path: '/a2a',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentAppRoute = ApiAgentAppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentAppleRoute = ApiAgentAppleRouteImport.update({
+  id: '/apple',
+  path: '/apple',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentBoardRoute = ApiAgentBoardRouteImport.update({
+  id: '/board',
+  path: '/board',
   getParentRoute: () => ApiAgentRoute,
 } as any)
 const ApiAgentCallRoute = ApiAgentCallRouteImport.update({
@@ -270,6 +405,16 @@ const ApiAgentClaudeRoute = ApiAgentClaudeRouteImport.update({
   path: '/claude',
   getParentRoute: () => ApiAgentRoute,
 } as any)
+const ApiAgentConnectRoute = ApiAgentConnectRouteImport.update({
+  id: '/connect',
+  path: '/connect',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentCupRoute = ApiAgentCupRouteImport.update({
+  id: '/cup',
+  path: '/cup',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
 const ApiAgentFeeRoute = ApiAgentFeeRouteImport.update({
   id: '/fee',
   path: '/fee',
@@ -280,9 +425,19 @@ const ApiAgentForumRoute = ApiAgentForumRouteImport.update({
   path: '/forum',
   getParentRoute: () => ApiAgentRoute,
 } as any)
+const ApiAgentGoogleRoute = ApiAgentGoogleRouteImport.update({
+  id: '/google',
+  path: '/google',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
 const ApiAgentGrokRoute = ApiAgentGrokRouteImport.update({
   id: '/grok',
   path: '/grok',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentHiveRoute = ApiAgentHiveRouteImport.update({
+  id: '/hive',
+  path: '/hive',
   getParentRoute: () => ApiAgentRoute,
 } as any)
 const ApiAgentKeysRoute = ApiAgentKeysRouteImport.update({
@@ -315,9 +470,19 @@ const ApiAgentPingRoute = ApiAgentPingRouteImport.update({
   path: '/ping',
   getParentRoute: () => ApiAgentRoute,
 } as any)
+const ApiAgentSiriRoute = ApiAgentSiriRouteImport.update({
+  id: '/siri',
+  path: '/siri',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
 const ApiAgentWaitlistRoute = ApiAgentWaitlistRouteImport.update({
   id: '/waitlist',
   path: '/waitlist',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentWebmcpRoute = ApiAgentWebmcpRouteImport.update({
+  id: '/webmcp',
+  path: '/webmcp',
   getParentRoute: () => ApiAgentRoute,
 } as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
@@ -325,169 +490,258 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAgentBoardPicIdRoute = ApiAgentBoardPicIdRouteImport.update({
+  id: '/pic/$id',
+  path: '/pic/$id',
+  getParentRoute: () => ApiAgentBoardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/app': typeof AppRoute
   '/b3ars': typeof B3arsRoute
+  '/board': typeof BoardRouteWithChildren
+  '/bowl': typeof BowlRoute
   '/c0ff33': typeof C0ff33Route
+  '/c0ut': typeof C0utRoute
   '/coffee': typeof CoffeeRoute
   '/compute': typeof ComputeRoute
+  '/cup': typeof CupRoute
   '/entity.json': typeof EntityDotjsonRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
+  '/h1v3': typeof H1v3Route
   '/helios': typeof HeliosRoute
   '/heliosbot': typeof HeliosbotRoute
+  '/hive': typeof HiveRoute
+  '/ios': typeof IosRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
   '/owl': typeof OwlRoute
+  '/play': typeof PlayRoute
   '/privacy': typeof PrivacyRoute
   '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
   '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
+  '/sim': typeof SimRoute
   '/sitemap': typeof SitemapRoute
   '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
+  '/swarm': typeof SwarmRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
   '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
+  '/w0rld': typeof W0rldRoute
+  '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
+  '/.well-known/apple-app-site-association': typeof DotwellKnownAppleAppSiteAssociationRoute
+  '/.well-known/assetlinks.json': typeof DotwellKnownAssetlinksDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/app/admin': typeof AppAdminRoute
+  '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
+  '/api/agent/app': typeof ApiAgentAppRoute
+  '/api/agent/apple': typeof ApiAgentAppleRoute
+  '/api/agent/board': typeof ApiAgentBoardRouteWithChildren
   '/api/agent/call': typeof ApiAgentCallRoute
   '/api/agent/card': typeof ApiAgentCardRoute
   '/api/agent/claude': typeof ApiAgentClaudeRoute
+  '/api/agent/connect': typeof ApiAgentConnectRoute
+  '/api/agent/cup': typeof ApiAgentCupRoute
   '/api/agent/fee': typeof ApiAgentFeeRoute
   '/api/agent/forum': typeof ApiAgentForumRoute
+  '/api/agent/google': typeof ApiAgentGoogleRoute
   '/api/agent/grok': typeof ApiAgentGrokRoute
+  '/api/agent/hive': typeof ApiAgentHiveRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
   '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/siri': typeof ApiAgentSiriRoute
   '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
+  '/api/agent/webmcp': typeof ApiAgentWebmcpRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/api/agent/board/pic/$id': typeof ApiAgentBoardPicIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/app': typeof AppRoute
   '/b3ars': typeof B3arsRoute
+  '/board': typeof BoardRouteWithChildren
+  '/bowl': typeof BowlRoute
   '/c0ff33': typeof C0ff33Route
+  '/c0ut': typeof C0utRoute
   '/coffee': typeof CoffeeRoute
   '/compute': typeof ComputeRoute
+  '/cup': typeof CupRoute
   '/entity.json': typeof EntityDotjsonRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
+  '/h1v3': typeof H1v3Route
   '/helios': typeof HeliosRoute
   '/heliosbot': typeof HeliosbotRoute
+  '/hive': typeof HiveRoute
+  '/ios': typeof IosRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
   '/owl': typeof OwlRoute
+  '/play': typeof PlayRoute
   '/privacy': typeof PrivacyRoute
   '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
   '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
+  '/sim': typeof SimRoute
   '/sitemap': typeof SitemapRoute
   '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
+  '/swarm': typeof SwarmRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
   '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
+  '/w0rld': typeof W0rldRoute
+  '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
+  '/.well-known/apple-app-site-association': typeof DotwellKnownAppleAppSiteAssociationRoute
+  '/.well-known/assetlinks.json': typeof DotwellKnownAssetlinksDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/app/admin': typeof AppAdminRoute
+  '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
+  '/api/agent/app': typeof ApiAgentAppRoute
+  '/api/agent/apple': typeof ApiAgentAppleRoute
+  '/api/agent/board': typeof ApiAgentBoardRouteWithChildren
   '/api/agent/call': typeof ApiAgentCallRoute
   '/api/agent/card': typeof ApiAgentCardRoute
   '/api/agent/claude': typeof ApiAgentClaudeRoute
+  '/api/agent/connect': typeof ApiAgentConnectRoute
+  '/api/agent/cup': typeof ApiAgentCupRoute
   '/api/agent/fee': typeof ApiAgentFeeRoute
   '/api/agent/forum': typeof ApiAgentForumRoute
+  '/api/agent/google': typeof ApiAgentGoogleRoute
   '/api/agent/grok': typeof ApiAgentGrokRoute
+  '/api/agent/hive': typeof ApiAgentHiveRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
   '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/siri': typeof ApiAgentSiriRoute
   '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
+  '/api/agent/webmcp': typeof ApiAgentWebmcpRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/api/agent/board/pic/$id': typeof ApiAgentBoardPicIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/app': typeof AppRoute
   '/b3ars': typeof B3arsRoute
+  '/board': typeof BoardRouteWithChildren
+  '/bowl': typeof BowlRoute
   '/c0ff33': typeof C0ff33Route
+  '/c0ut': typeof C0utRoute
   '/coffee': typeof CoffeeRoute
   '/compute': typeof ComputeRoute
+  '/cup': typeof CupRoute
   '/entity.json': typeof EntityDotjsonRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
+  '/h1v3': typeof H1v3Route
   '/helios': typeof HeliosRoute
   '/heliosbot': typeof HeliosbotRoute
+  '/hive': typeof HiveRoute
+  '/ios': typeof IosRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
   '/owl': typeof OwlRoute
+  '/play': typeof PlayRoute
   '/privacy': typeof PrivacyRoute
   '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
   '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
+  '/sim': typeof SimRoute
   '/sitemap': typeof SitemapRoute
   '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
+  '/swarm': typeof SwarmRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
   '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
+  '/w0rld': typeof W0rldRoute
+  '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
+  '/.well-known/apple-app-site-association': typeof DotwellKnownAppleAppSiteAssociationRoute
+  '/.well-known/assetlinks.json': typeof DotwellKnownAssetlinksDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/app_/admin': typeof AppAdminRoute
+  '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
+  '/api/agent/app': typeof ApiAgentAppRoute
+  '/api/agent/apple': typeof ApiAgentAppleRoute
+  '/api/agent/board': typeof ApiAgentBoardRouteWithChildren
   '/api/agent/call': typeof ApiAgentCallRoute
   '/api/agent/card': typeof ApiAgentCardRoute
   '/api/agent/claude': typeof ApiAgentClaudeRoute
+  '/api/agent/connect': typeof ApiAgentConnectRoute
+  '/api/agent/cup': typeof ApiAgentCupRoute
   '/api/agent/fee': typeof ApiAgentFeeRoute
   '/api/agent/forum': typeof ApiAgentForumRoute
+  '/api/agent/google': typeof ApiAgentGoogleRoute
   '/api/agent/grok': typeof ApiAgentGrokRoute
+  '/api/agent/hive': typeof ApiAgentHiveRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
   '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/siri': typeof ApiAgentSiriRoute
   '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
+  '/api/agent/webmcp': typeof ApiAgentWebmcpRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/api/agent/board/pic/$id': typeof ApiAgentBoardPicIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -495,202 +749,303 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/agent'
+    | '/app'
     | '/b3ars'
+    | '/board'
+    | '/bowl'
     | '/c0ff33'
+    | '/c0ut'
     | '/coffee'
     | '/compute'
+    | '/cup'
     | '/entity.json'
     | '/f33d'
     | '/faq'
     | '/forum'
     | '/gm'
     | '/guide'
+    | '/h1v3'
     | '/helios'
     | '/heliosbot'
+    | '/hive'
+    | '/ios'
     | '/launch'
     | '/login'
+    | '/manifest.webmanifest'
     | '/media'
     | '/owl'
+    | '/play'
     | '/privacy'
     | '/r0b0ts'
     | '/renew'
     | '/s1r1us'
     | '/search'
     | '/security'
+    | '/sim'
     | '/sitemap'
     | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
+    | '/swarm'
     | '/terms'
     | '/theme'
     | '/video-sitemap.xml'
+    | '/w0rld'
+    | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
     | '/.well-known/ai-plugin.json'
+    | '/.well-known/apple-app-site-association'
+    | '/.well-known/assetlinks.json'
     | '/api/agent'
+    | '/app/admin'
+    | '/board/$id'
     | '/morning-pdf/$id'
     | '/api/agent/a2a'
+    | '/api/agent/app'
+    | '/api/agent/apple'
+    | '/api/agent/board'
     | '/api/agent/call'
     | '/api/agent/card'
     | '/api/agent/claude'
+    | '/api/agent/connect'
+    | '/api/agent/cup'
     | '/api/agent/fee'
     | '/api/agent/forum'
+    | '/api/agent/google'
     | '/api/agent/grok'
+    | '/api/agent/hive'
     | '/api/agent/keys'
     | '/api/agent/mcp'
     | '/api/agent/notices'
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/siri'
     | '/api/agent/waitlist'
+    | '/api/agent/webmcp'
     | '/api/auth/$'
+    | '/api/agent/board/pic/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin'
     | '/agent'
+    | '/app'
     | '/b3ars'
+    | '/board'
+    | '/bowl'
     | '/c0ff33'
+    | '/c0ut'
     | '/coffee'
     | '/compute'
+    | '/cup'
     | '/entity.json'
     | '/f33d'
     | '/faq'
     | '/forum'
     | '/gm'
     | '/guide'
+    | '/h1v3'
     | '/helios'
     | '/heliosbot'
+    | '/hive'
+    | '/ios'
     | '/launch'
     | '/login'
+    | '/manifest.webmanifest'
     | '/media'
     | '/owl'
+    | '/play'
     | '/privacy'
     | '/r0b0ts'
     | '/renew'
     | '/s1r1us'
     | '/search'
     | '/security'
+    | '/sim'
     | '/sitemap'
     | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
+    | '/swarm'
     | '/terms'
     | '/theme'
     | '/video-sitemap.xml'
+    | '/w0rld'
+    | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
     | '/.well-known/ai-plugin.json'
+    | '/.well-known/apple-app-site-association'
+    | '/.well-known/assetlinks.json'
     | '/api/agent'
+    | '/app/admin'
+    | '/board/$id'
     | '/morning-pdf/$id'
     | '/api/agent/a2a'
+    | '/api/agent/app'
+    | '/api/agent/apple'
+    | '/api/agent/board'
     | '/api/agent/call'
     | '/api/agent/card'
     | '/api/agent/claude'
+    | '/api/agent/connect'
+    | '/api/agent/cup'
     | '/api/agent/fee'
     | '/api/agent/forum'
+    | '/api/agent/google'
     | '/api/agent/grok'
+    | '/api/agent/hive'
     | '/api/agent/keys'
     | '/api/agent/mcp'
     | '/api/agent/notices'
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/siri'
     | '/api/agent/waitlist'
+    | '/api/agent/webmcp'
     | '/api/auth/$'
+    | '/api/agent/board/pic/$id'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/agent'
+    | '/app'
     | '/b3ars'
+    | '/board'
+    | '/bowl'
     | '/c0ff33'
+    | '/c0ut'
     | '/coffee'
     | '/compute'
+    | '/cup'
     | '/entity.json'
     | '/f33d'
     | '/faq'
     | '/forum'
     | '/gm'
     | '/guide'
+    | '/h1v3'
     | '/helios'
     | '/heliosbot'
+    | '/hive'
+    | '/ios'
     | '/launch'
     | '/login'
+    | '/manifest.webmanifest'
     | '/media'
     | '/owl'
+    | '/play'
     | '/privacy'
     | '/r0b0ts'
     | '/renew'
     | '/s1r1us'
     | '/search'
     | '/security'
+    | '/sim'
     | '/sitemap'
     | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
+    | '/swarm'
     | '/terms'
     | '/theme'
     | '/video-sitemap.xml'
+    | '/w0rld'
+    | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
     | '/.well-known/ai-plugin.json'
+    | '/.well-known/apple-app-site-association'
+    | '/.well-known/assetlinks.json'
     | '/api/agent'
+    | '/app_/admin'
+    | '/board/$id'
     | '/morning-pdf/$id'
     | '/api/agent/a2a'
+    | '/api/agent/app'
+    | '/api/agent/apple'
+    | '/api/agent/board'
     | '/api/agent/call'
     | '/api/agent/card'
     | '/api/agent/claude'
+    | '/api/agent/connect'
+    | '/api/agent/cup'
     | '/api/agent/fee'
     | '/api/agent/forum'
+    | '/api/agent/google'
     | '/api/agent/grok'
+    | '/api/agent/hive'
     | '/api/agent/keys'
     | '/api/agent/mcp'
     | '/api/agent/notices'
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/siri'
     | '/api/agent/waitlist'
+    | '/api/agent/webmcp'
     | '/api/auth/$'
+    | '/api/agent/board/pic/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   AgentRoute: typeof AgentRoute
+  AppRoute: typeof AppRoute
   B3arsRoute: typeof B3arsRoute
+  BoardRoute: typeof BoardRouteWithChildren
+  BowlRoute: typeof BowlRoute
   C0ff33Route: typeof C0ff33Route
+  C0utRoute: typeof C0utRoute
   CoffeeRoute: typeof CoffeeRoute
   ComputeRoute: typeof ComputeRoute
+  CupRoute: typeof CupRoute
   EntityDotjsonRoute: typeof EntityDotjsonRoute
   F33dRoute: typeof F33dRoute
   FaqRoute: typeof FaqRoute
   ForumRoute: typeof ForumRoute
   GmRoute: typeof GmRoute
   GuideRoute: typeof GuideRoute
+  H1v3Route: typeof H1v3Route
   HeliosRoute: typeof HeliosRoute
   HeliosbotRoute: typeof HeliosbotRoute
+  HiveRoute: typeof HiveRoute
+  IosRoute: typeof IosRoute
   LaunchRoute: typeof LaunchRoute
   LoginRoute: typeof LoginRoute
+  ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
   MediaRoute: typeof MediaRoute
   OwlRoute: typeof OwlRoute
+  PlayRoute: typeof PlayRoute
   PrivacyRoute: typeof PrivacyRoute
   R0b0tsRoute: typeof R0b0tsRoute
   RenewRoute: typeof RenewRoute
   S1r1usRoute: typeof S1r1usRoute
   SearchRoute: typeof SearchRoute
   SecurityRoute: typeof SecurityRoute
+  SimRoute: typeof SimRoute
   SitemapRoute: typeof SitemapRoute
   SitemapIndexDotxmlRoute: typeof SitemapIndexDotxmlRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourceRoute: typeof SourceRoute
+  SwarmRoute: typeof SwarmRoute
   TermsRoute: typeof TermsRoute
   ThemeRoute: typeof ThemeRoute
   VideoSitemapDotxmlRoute: typeof VideoSitemapDotxmlRoute
+  W0rldRoute: typeof W0rldRoute
+  WorldCupRoute: typeof WorldCupRoute
   DotwellKnownAgentCardDotjsonRoute: typeof DotwellKnownAgentCardDotjsonRoute
   DotwellKnownAgentDotjsonRoute: typeof DotwellKnownAgentDotjsonRoute
   DotwellKnownAiPluginDotjsonRoute: typeof DotwellKnownAiPluginDotjsonRoute
+  DotwellKnownAppleAppSiteAssociationRoute: typeof DotwellKnownAppleAppSiteAssociationRoute
+  DotwellKnownAssetlinksDotjsonRoute: typeof DotwellKnownAssetlinksDotjsonRoute
   ApiAgentRoute: typeof ApiAgentRouteWithChildren
+  AppAdminRoute: typeof AppAdminRoute
   MorningPdfIdRoute: typeof MorningPdfIdRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -718,6 +1073,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/b3ars': {
       id: '/b3ars'
       path: '/b3ars'
@@ -725,11 +1087,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof B3arsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/board': {
+      id: '/board'
+      path: '/board'
+      fullPath: '/board'
+      preLoaderRoute: typeof BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bowl': {
+      id: '/bowl'
+      path: '/bowl'
+      fullPath: '/bowl'
+      preLoaderRoute: typeof BowlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/c0ff33': {
       id: '/c0ff33'
       path: '/c0ff33'
       fullPath: '/c0ff33'
       preLoaderRoute: typeof C0ff33RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/c0ut': {
+      id: '/c0ut'
+      path: '/c0ut'
+      fullPath: '/c0ut'
+      preLoaderRoute: typeof C0utRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/coffee': {
@@ -744,6 +1127,13 @@ declare module '@tanstack/react-router' {
       path: '/compute'
       fullPath: '/compute'
       preLoaderRoute: typeof ComputeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cup': {
+      id: '/cup'
+      path: '/cup'
+      fullPath: '/cup'
+      preLoaderRoute: typeof CupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entity.json': {
@@ -788,6 +1178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/h1v3': {
+      id: '/h1v3'
+      path: '/h1v3'
+      fullPath: '/h1v3'
+      preLoaderRoute: typeof H1v3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/helios': {
       id: '/helios'
       path: '/helios'
@@ -800,6 +1197,20 @@ declare module '@tanstack/react-router' {
       path: '/heliosbot'
       fullPath: '/heliosbot'
       preLoaderRoute: typeof HeliosbotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hive': {
+      id: '/hive'
+      path: '/hive'
+      fullPath: '/hive'
+      preLoaderRoute: typeof HiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ios': {
+      id: '/ios'
+      path: '/ios'
+      fullPath: '/ios'
+      preLoaderRoute: typeof IosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch': {
@@ -816,6 +1227,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/manifest.webmanifest': {
+      id: '/manifest.webmanifest'
+      path: '/manifest.webmanifest'
+      fullPath: '/manifest.webmanifest'
+      preLoaderRoute: typeof ManifestDotwebmanifestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/media': {
       id: '/media'
       path: '/media'
@@ -828,6 +1246,13 @@ declare module '@tanstack/react-router' {
       path: '/owl'
       fullPath: '/owl'
       preLoaderRoute: typeof OwlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/play': {
+      id: '/play'
+      path: '/play'
+      fullPath: '/play'
+      preLoaderRoute: typeof PlayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -872,6 +1297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SecurityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sim': {
+      id: '/sim'
+      path: '/sim'
+      fullPath: '/sim'
+      preLoaderRoute: typeof SimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap': {
       id: '/sitemap'
       path: '/sitemap'
@@ -900,6 +1332,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SourceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/swarm': {
+      id: '/swarm'
+      path: '/swarm'
+      fullPath: '/swarm'
+      preLoaderRoute: typeof SwarmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -919,6 +1358,20 @@ declare module '@tanstack/react-router' {
       path: '/video-sitemap.xml'
       fullPath: '/video-sitemap.xml'
       preLoaderRoute: typeof VideoSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/w0rld': {
+      id: '/w0rld'
+      path: '/w0rld'
+      fullPath: '/w0rld'
+      preLoaderRoute: typeof W0rldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/world-cup': {
+      id: '/world-cup'
+      path: '/world-cup'
+      fullPath: '/world-cup'
+      preLoaderRoute: typeof WorldCupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.well-known/agent-card.json': {
@@ -942,12 +1395,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DotwellKnownAiPluginDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.well-known/apple-app-site-association': {
+      id: '/.well-known/apple-app-site-association'
+      path: '/.well-known/apple-app-site-association'
+      fullPath: '/.well-known/apple-app-site-association'
+      preLoaderRoute: typeof DotwellKnownAppleAppSiteAssociationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/assetlinks.json': {
+      id: '/.well-known/assetlinks.json'
+      path: '/.well-known/assetlinks.json'
+      fullPath: '/.well-known/assetlinks.json'
+      preLoaderRoute: typeof DotwellKnownAssetlinksDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/agent': {
       id: '/api/agent'
       path: '/api/agent'
       fullPath: '/api/agent'
       preLoaderRoute: typeof ApiAgentRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app_/admin': {
+      id: '/app_/admin'
+      path: '/app/admin'
+      fullPath: '/app/admin'
+      preLoaderRoute: typeof AppAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/board/$id': {
+      id: '/board/$id'
+      path: '/$id'
+      fullPath: '/board/$id'
+      preLoaderRoute: typeof BoardIdRouteImport
+      parentRoute: typeof BoardRoute
     }
     '/morning-pdf/$id': {
       id: '/morning-pdf/$id'
@@ -961,6 +1442,27 @@ declare module '@tanstack/react-router' {
       path: '/a2a'
       fullPath: '/api/agent/a2a'
       preLoaderRoute: typeof ApiAgentA2aRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/app': {
+      id: '/api/agent/app'
+      path: '/app'
+      fullPath: '/api/agent/app'
+      preLoaderRoute: typeof ApiAgentAppRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/apple': {
+      id: '/api/agent/apple'
+      path: '/apple'
+      fullPath: '/api/agent/apple'
+      preLoaderRoute: typeof ApiAgentAppleRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/board': {
+      id: '/api/agent/board'
+      path: '/board'
+      fullPath: '/api/agent/board'
+      preLoaderRoute: typeof ApiAgentBoardRouteImport
       parentRoute: typeof ApiAgentRoute
     }
     '/api/agent/call': {
@@ -984,6 +1486,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAgentClaudeRouteImport
       parentRoute: typeof ApiAgentRoute
     }
+    '/api/agent/connect': {
+      id: '/api/agent/connect'
+      path: '/connect'
+      fullPath: '/api/agent/connect'
+      preLoaderRoute: typeof ApiAgentConnectRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/cup': {
+      id: '/api/agent/cup'
+      path: '/cup'
+      fullPath: '/api/agent/cup'
+      preLoaderRoute: typeof ApiAgentCupRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
     '/api/agent/fee': {
       id: '/api/agent/fee'
       path: '/fee'
@@ -998,11 +1514,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAgentForumRouteImport
       parentRoute: typeof ApiAgentRoute
     }
+    '/api/agent/google': {
+      id: '/api/agent/google'
+      path: '/google'
+      fullPath: '/api/agent/google'
+      preLoaderRoute: typeof ApiAgentGoogleRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
     '/api/agent/grok': {
       id: '/api/agent/grok'
       path: '/grok'
       fullPath: '/api/agent/grok'
       preLoaderRoute: typeof ApiAgentGrokRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/hive': {
+      id: '/api/agent/hive'
+      path: '/hive'
+      fullPath: '/api/agent/hive'
+      preLoaderRoute: typeof ApiAgentHiveRouteImport
       parentRoute: typeof ApiAgentRoute
     }
     '/api/agent/keys': {
@@ -1047,11 +1577,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAgentPingRouteImport
       parentRoute: typeof ApiAgentRoute
     }
+    '/api/agent/siri': {
+      id: '/api/agent/siri'
+      path: '/siri'
+      fullPath: '/api/agent/siri'
+      preLoaderRoute: typeof ApiAgentSiriRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
     '/api/agent/waitlist': {
       id: '/api/agent/waitlist'
       path: '/waitlist'
       fullPath: '/api/agent/waitlist'
       preLoaderRoute: typeof ApiAgentWaitlistRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/webmcp': {
+      id: '/api/agent/webmcp'
+      path: '/webmcp'
+      fullPath: '/api/agent/webmcp'
+      preLoaderRoute: typeof ApiAgentWebmcpRouteImport
       parentRoute: typeof ApiAgentRoute
     }
     '/api/auth/$': {
@@ -1061,41 +1605,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/agent/board/pic/$id': {
+      id: '/api/agent/board/pic/$id'
+      path: '/pic/$id'
+      fullPath: '/api/agent/board/pic/$id'
+      preLoaderRoute: typeof ApiAgentBoardPicIdRouteImport
+      parentRoute: typeof ApiAgentBoardRoute
+    }
   }
 }
 
+interface BoardRouteChildren {
+  BoardIdRoute: typeof BoardIdRoute
+}
+
+const BoardRouteChildren: BoardRouteChildren = {
+  BoardIdRoute: BoardIdRoute,
+}
+
+const BoardRouteWithChildren = BoardRoute._addFileChildren(BoardRouteChildren)
+
+interface ApiAgentBoardRouteChildren {
+  ApiAgentBoardPicIdRoute: typeof ApiAgentBoardPicIdRoute
+}
+
+const ApiAgentBoardRouteChildren: ApiAgentBoardRouteChildren = {
+  ApiAgentBoardPicIdRoute: ApiAgentBoardPicIdRoute,
+}
+
+const ApiAgentBoardRouteWithChildren = ApiAgentBoardRoute._addFileChildren(
+  ApiAgentBoardRouteChildren,
+)
+
 interface ApiAgentRouteChildren {
   ApiAgentA2aRoute: typeof ApiAgentA2aRoute
+  ApiAgentAppRoute: typeof ApiAgentAppRoute
+  ApiAgentAppleRoute: typeof ApiAgentAppleRoute
+  ApiAgentBoardRoute: typeof ApiAgentBoardRouteWithChildren
   ApiAgentCallRoute: typeof ApiAgentCallRoute
   ApiAgentCardRoute: typeof ApiAgentCardRoute
   ApiAgentClaudeRoute: typeof ApiAgentClaudeRoute
+  ApiAgentConnectRoute: typeof ApiAgentConnectRoute
+  ApiAgentCupRoute: typeof ApiAgentCupRoute
   ApiAgentFeeRoute: typeof ApiAgentFeeRoute
   ApiAgentForumRoute: typeof ApiAgentForumRoute
+  ApiAgentGoogleRoute: typeof ApiAgentGoogleRoute
   ApiAgentGrokRoute: typeof ApiAgentGrokRoute
+  ApiAgentHiveRoute: typeof ApiAgentHiveRoute
   ApiAgentKeysRoute: typeof ApiAgentKeysRoute
   ApiAgentMcpRoute: typeof ApiAgentMcpRoute
   ApiAgentNoticesRoute: typeof ApiAgentNoticesRoute
   ApiAgentOpenaiRoute: typeof ApiAgentOpenaiRoute
   ApiAgentOpenapiRoute: typeof ApiAgentOpenapiRoute
   ApiAgentPingRoute: typeof ApiAgentPingRoute
+  ApiAgentSiriRoute: typeof ApiAgentSiriRoute
   ApiAgentWaitlistRoute: typeof ApiAgentWaitlistRoute
+  ApiAgentWebmcpRoute: typeof ApiAgentWebmcpRoute
 }
 
 const ApiAgentRouteChildren: ApiAgentRouteChildren = {
   ApiAgentA2aRoute: ApiAgentA2aRoute,
+  ApiAgentAppRoute: ApiAgentAppRoute,
+  ApiAgentAppleRoute: ApiAgentAppleRoute,
+  ApiAgentBoardRoute: ApiAgentBoardRouteWithChildren,
   ApiAgentCallRoute: ApiAgentCallRoute,
   ApiAgentCardRoute: ApiAgentCardRoute,
   ApiAgentClaudeRoute: ApiAgentClaudeRoute,
+  ApiAgentConnectRoute: ApiAgentConnectRoute,
+  ApiAgentCupRoute: ApiAgentCupRoute,
   ApiAgentFeeRoute: ApiAgentFeeRoute,
   ApiAgentForumRoute: ApiAgentForumRoute,
+  ApiAgentGoogleRoute: ApiAgentGoogleRoute,
   ApiAgentGrokRoute: ApiAgentGrokRoute,
+  ApiAgentHiveRoute: ApiAgentHiveRoute,
   ApiAgentKeysRoute: ApiAgentKeysRoute,
   ApiAgentMcpRoute: ApiAgentMcpRoute,
   ApiAgentNoticesRoute: ApiAgentNoticesRoute,
   ApiAgentOpenaiRoute: ApiAgentOpenaiRoute,
   ApiAgentOpenapiRoute: ApiAgentOpenapiRoute,
   ApiAgentPingRoute: ApiAgentPingRoute,
+  ApiAgentSiriRoute: ApiAgentSiriRoute,
   ApiAgentWaitlistRoute: ApiAgentWaitlistRoute,
+  ApiAgentWebmcpRoute: ApiAgentWebmcpRoute,
 }
 
 const ApiAgentRouteWithChildren = ApiAgentRoute._addFileChildren(
@@ -1106,39 +1697,57 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   AgentRoute: AgentRoute,
+  AppRoute: AppRoute,
   B3arsRoute: B3arsRoute,
+  BoardRoute: BoardRouteWithChildren,
+  BowlRoute: BowlRoute,
   C0ff33Route: C0ff33Route,
+  C0utRoute: C0utRoute,
   CoffeeRoute: CoffeeRoute,
   ComputeRoute: ComputeRoute,
+  CupRoute: CupRoute,
   EntityDotjsonRoute: EntityDotjsonRoute,
   F33dRoute: F33dRoute,
   FaqRoute: FaqRoute,
   ForumRoute: ForumRoute,
   GmRoute: GmRoute,
   GuideRoute: GuideRoute,
+  H1v3Route: H1v3Route,
   HeliosRoute: HeliosRoute,
   HeliosbotRoute: HeliosbotRoute,
+  HiveRoute: HiveRoute,
+  IosRoute: IosRoute,
   LaunchRoute: LaunchRoute,
   LoginRoute: LoginRoute,
+  ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
   MediaRoute: MediaRoute,
   OwlRoute: OwlRoute,
+  PlayRoute: PlayRoute,
   PrivacyRoute: PrivacyRoute,
   R0b0tsRoute: R0b0tsRoute,
   RenewRoute: RenewRoute,
   S1r1usRoute: S1r1usRoute,
   SearchRoute: SearchRoute,
   SecurityRoute: SecurityRoute,
+  SimRoute: SimRoute,
   SitemapRoute: SitemapRoute,
   SitemapIndexDotxmlRoute: SitemapIndexDotxmlRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourceRoute: SourceRoute,
+  SwarmRoute: SwarmRoute,
   TermsRoute: TermsRoute,
   ThemeRoute: ThemeRoute,
   VideoSitemapDotxmlRoute: VideoSitemapDotxmlRoute,
+  W0rldRoute: W0rldRoute,
+  WorldCupRoute: WorldCupRoute,
   DotwellKnownAgentCardDotjsonRoute: DotwellKnownAgentCardDotjsonRoute,
   DotwellKnownAgentDotjsonRoute: DotwellKnownAgentDotjsonRoute,
   DotwellKnownAiPluginDotjsonRoute: DotwellKnownAiPluginDotjsonRoute,
+  DotwellKnownAppleAppSiteAssociationRoute:
+    DotwellKnownAppleAppSiteAssociationRoute,
+  DotwellKnownAssetlinksDotjsonRoute: DotwellKnownAssetlinksDotjsonRoute,
   ApiAgentRoute: ApiAgentRouteWithChildren,
+  AppAdminRoute: AppAdminRoute,
   MorningPdfIdRoute: MorningPdfIdRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }

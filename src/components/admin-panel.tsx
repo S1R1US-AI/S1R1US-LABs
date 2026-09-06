@@ -14,6 +14,9 @@ import { WebsitePortal } from "@/components/website-portal";
 import { YubiApprove } from "@/components/yubi-approve";
 import { OperatorGate } from "@/components/operator-lock";
 import { XRenewWhenAdmin } from "@/components/renew-password";
+import { BoardPlayPanel } from "@/components/board-play-panel";
+import { HiveAdminPanel } from "@/components/hive-admin-panel";
+import { HiveSwarmLabel } from "@/components/godzilla-mark";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell } from "@/components/shell";
 import { APP_NAME } from "@/lib/brand";
@@ -56,7 +59,7 @@ export function AdminPanel() {
   const [loading, setLoading] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [tab, setTab] = useState<"console" | "wallet" | "paper" | "coin" | "website" | "access" | "security">("wallet");
+  const [tab, setTab] = useState<"console" | "wallet" | "paper" | "coin" | "website" | "access" | "security" | "bowl" | "hive">("wallet");
 
   useEffect(() => setMounted(true), []);
   useEffect(() => {
@@ -64,15 +67,17 @@ export function AdminPanel() {
     const h = window.location.hash.replace(/^#/, "");
     if (h === "access") setTab("access");
     if (h === "security") setTab("security");
+    if (h === "bowl") setTab("bowl");
+    if (h === "hive") setTab("hive");
   }, []);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (tab === "access" || tab === "security") {
+    if (tab === "access" || tab === "security" || tab === "bowl" || tab === "hive") {
       const want = `#${tab}`;
       if (window.location.hash !== want) {
         window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${want}`);
       }
-    } else if (window.location.hash === "#access" || window.location.hash === "#security") {
+    } else if (window.location.hash === "#access" || window.location.hash === "#security" || window.location.hash === "#bowl" || window.location.hash === "#hive") {
       window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
     }
   }, [tab]);
@@ -121,8 +126,8 @@ export function AdminPanel() {
             <h1 className="mt-1 text-2xl font-semibold tracking-tight text-brand">Admin</h1>
             <p className="mt-3 text-sm leading-relaxed text-muted">
               Signed in as desk user <span className="font-mono text-fg">{operatorName || "—"}</span>.
-              Account creation and fund controls stay with the admin. Open the desk, or sign in as
-              admin.
+              s1r1us.ai Admin is only @_Mr_R0b0t0_ plus name and password (two YubiKeys). iOS / Google copy
+              Admin is on the downloaded app. Open the desk, or sign in as system admin.
             </p>
             <Link
               to="/"
@@ -140,15 +145,19 @@ export function AdminPanel() {
             {tab === "wallet"
               ? "Wallet rails: fund the Coinbase agent in USDC, accumulate BTC, take profit to the Coinbase BTC address. Dry-run + YubiKey. No keys on this host."
               : tab === "paper"
-                ? "Operating manual — admin only. Public desk does not show Paper."
+                ? "Research paper — system Admin only. PhD-style working paper on architecture and future outcomes. Not shown on iOS/Google copy-admin."
                 : tab === "coin"
-                  ? "Second business: S1R1US access-token launch. Same admin/Yubi. Bot 7 never trades the ticker."
+                  ? "Second business: S1R1US access-token launch. Same admin/Yubi. 7-B0T never trades the ticker."
                   : tab === "website"
                     ? "Portal to the public s1r1us.ai tape. Live build in this app. No launch notes on that page."
                     : tab === "access"
                       ? "Secure access — Coinbase MCP posture, protocol status, vulnerability review. Admin only."
                       : tab === "security"
                         ? "Firewall, intrusion log, Electrovolt audit, Hacktron-style hunter. Admin only."
+                        : tab === "bowl"
+                          ? "SUP3R B0WL / L3AD3R B0ARD / C@LL 0UT — compete as a separate board token. Not Yubi. Not vault."
+                          : tab === "hive"
+                            ? "H1V3 SW@RM — combine BYO compute (TH/s). Paper BTC split by pledged terahash. TEST until go-live. Pause/continue. Copy-admin may pause hive; championship pause stays system-only."
                 : `Fund control for ${APP_NAME}. Session, Grok cap, two YubiKeys, risk rules, Coinbase MCP posture.`}
           </p>
           {err ? <p className="mt-3 text-sm text-down">{err}</p> : null}
@@ -224,6 +233,26 @@ export function AdminPanel() {
             >
               Security
             </button>
+            <button
+              type="button"
+              className={cn(
+                "inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium",
+                tab === "bowl" && "is-on",
+              )}
+              onClick={() => setTab("bowl")}
+            >
+              SUP3R B0WL
+            </button>
+            <button
+              type="button"
+              className={cn(
+                "hive-nav inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium",
+                tab === "hive" && "is-on",
+              )}
+              onClick={() => setTab("hive")}
+            >
+              <HiveSwarmLabel className="text-sm" />
+            </button>
           </nav>
 
           {tab === "console" || tab === "wallet" ? <PracticeDesk /> : null}
@@ -257,6 +286,10 @@ export function AdminPanel() {
             <AccessDesk />
           ) : tab === "security" ? (
             <SecurityDesk />
+          ) : tab === "bowl" ? (
+            <BoardPlayPanel plane="system" defaultName="S1R1US-ADMIN" defaultKind="admin" />
+          ) : tab === "hive" ? (
+            token ? <HiveAdminPanel token={token} /> : null
           ) : tab === "wallet" ? (
             <>
               <TreasuryPanel />
@@ -810,7 +843,7 @@ function TreasuryPanel() {
 
       <div className="mt-4 rounded-md border border-rule bg-bg p-4">
         <p className="text-[11px] font-medium tracking-[0.08em] text-muted uppercase">
-          Bot 7 → Coinbase agent
+          7-B0T → Coinbase agent
         </p>
         {call ? (
           <div className="mt-2">
@@ -833,7 +866,7 @@ function TreasuryPanel() {
               onCopy={() =>
                 requestOutgoing(
                   "Approve HIGH conviction BTC buy",
-                  `Bot 7 ${call.stance} HIGH. Clip ${money(call.clipUsd, 0)} USDC from the $100 book. Dry-run only. You run the Coinbase agent/CLI.`,
+                  `7-B0T ${call.stance} HIGH. Clip ${money(call.clipUsd, 0)} USDC from the $100 book. Dry-run only. You run the Coinbase agent/CLI.`,
                   `trade:HIGH-BUY:${call.clipUsd}`,
                   buyBtcPreview(call.clipUsd),
                   "HIGH buy preview",
@@ -851,7 +884,7 @@ function TreasuryPanel() {
               onCopy={() =>
                 requestOutgoing(
                   "Approve HIGH conviction take-profit",
-                  `Bot 7 TRIM HIGH. Clip ${money(call.clipUsd, 0)} toward the Coinbase BTC profit address. Dry-run only.`,
+                  `7-B0T TRIM HIGH. Clip ${money(call.clipUsd, 0)} toward the Coinbase BTC profit address. Dry-run only.`,
                   `send:HIGH-TRIM:${call.clipUsd}`,
                   takeProfitPreviewUsd(call.clipUsd, profitAddress),
                   "HIGH trim send",

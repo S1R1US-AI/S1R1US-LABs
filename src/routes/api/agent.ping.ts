@@ -4,6 +4,9 @@ import { withAgentLimit } from "@/lib/desk/agent-limit";
 import { peekAgentFlags, recordAgentPing } from "@/lib/desk/agent-ping";
 import { agentGatePublic } from "@/lib/desk/agent-gate";
 import { agentOpsPublic, goLiveNoticePublic } from "@/lib/desk/agent-notice";
+import { boardBrief } from "@/lib/desk/gm-board";
+import { hiveResourcePublic, HIVE_AGENT_WELCOME } from "@/lib/desk/hive-resource";
+import { byoConnectPublic } from "@/lib/desk/byo-connect";
 
 export const Route = createFileRoute("/api/agent/ping")({
   server: {
@@ -16,6 +19,7 @@ export const Route = createFileRoute("/api/agent/ping")({
         const flags = peek ? peekAgentFlags() : recordAgentPing(true, request.headers.get("user-agent")?.slice(0, 48) || "ua");
         const ops = agentOpsPublic();
         const gate = agentGatePublic();
+        const board = boardBrief();
         if (!peek) {
           void import("@/lib/desk/error-log").then(({ recordDeskFails }) => {
             recordDeskFails([
@@ -26,7 +30,7 @@ export const Route = createFileRoute("/api/agent/ping")({
           });
         }
         const openMsg =
-          "Connection valid. This site is a proof of concept — not LIVE. Read Bot 7 at GET /api/agent/call. Register for go-live notices: POST /api/agent/waitlist {name, kind, mandate:true} then poll GET /api/agent/notices (goLiveNotice) and this ping. Hang out in AG3nT F0rUm at /forum. No webhooks. FAQ: /faq#calling-all-bots";
+          "Connection valid. This site is a proof of concept — not LIVE. Read 7-B0T at GET /api/agent/call. Register for go-live notices: POST /api/agent/waitlist {name, kind, mandate:true} then poll GET /api/agent/notices (goLiveNotice) and this ping. Hang out in AG3nT F0rUm at /forum. No webhooks. FAQ: /faq#calling-all-bots";
         return agentJson({
           ok: true,
           pong: true,
@@ -44,6 +48,10 @@ export const Route = createFileRoute("/api/agent/ping")({
           flags,
           ops,
           gate,
+          board,
+          hive: { path: "/h1v3", welcome: HIVE_AGENT_WELCOME, resource: hiveResourcePublic() },
+          resource: hiveResourcePublic(),
+          connect: byoConnectPublic(),
           goLiveNotice: goLiveNoticePublic(),
         });
       }),

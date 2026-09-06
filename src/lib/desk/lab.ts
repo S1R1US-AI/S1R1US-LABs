@@ -46,11 +46,11 @@ export function fgLabel(v: number): string {
 }
 
 export const LAB_PRESETS: { id: string; name: string; blurb: string; knobs: LabKnobs }[] = [
-  { id: "live", name: "Live tape", blurb: "No overlay. Bot 7 reads the last validated pull.", knobs: { ...DEFAULT_KNOBS } },
+  { id: "live", name: "Live tape", blurb: "No overlay. 7-B0T reads the last validated pull.", knobs: { ...DEFAULT_KNOBS } },
   {
     id: "crash",
     name: "Crash bid",
-    blurb: "RSI panic, extreme fear, EM offering — does Bot 7 BUY or wait the knife?",
+    blurb: "RSI panic, extreme fear, EM offering — does 7-B0T BUY or wait the knife?",
     knobs: {
       ...DEFAULT_KNOBS,
       rsi: 27,
@@ -142,7 +142,7 @@ export const LAB_PRESETS: { id: string; name: string; blurb: string; knobs: LabK
   {
     id: "etf",
     name: "ETF melt",
-    blurb: "$500M session inflow with RSI ≥ 50 — Bot 7 should WAIT the melt-up.",
+    blurb: "$500M session inflow with RSI ≥ 50 — 7-B0T should WAIT the melt-up.",
     knobs: {
       ...DEFAULT_KNOBS,
       rsi: 56,
@@ -251,7 +251,7 @@ function fmtSigned(n: number | null | undefined, d = 2, suffix = "%") {
   return `${n >= 0 ? "+" : ""}${n.toFixed(d)}${suffix}`;
 }
 
-/** Market-structure read Bot 7 uses. Labs overlay this; Desk paints the live pull. */
+/** Market-structure read 7-B0T uses. Labs overlay this; Desk paints the live pull. */
 export function readStructure(snap: DeskSnapshot): StructureRead {
   const rsi = snap.rsi14;
   const fg = snap.fearGreed?.value ?? null;

@@ -9,7 +9,7 @@ export function LiveTracks({
   briefs,
   kicker = "B0TS 1–6",
   title = "Live Hedge Fund analysts",
-  note = "Visual summary of bots 1–6. Each stance is an independent lane Bot 7 reads.",
+  note = "Visual summary of bots 1–6. Each stance is an independent lane 7-B0T reads.",
 }: {
   briefs: BotBrief[];
   kicker?: string;

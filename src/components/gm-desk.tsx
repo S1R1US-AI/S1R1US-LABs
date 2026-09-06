@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { money, CallWords, bannerTone, callStanceClass, CallInk } from "@/components/helios-card";
-import { GodzillaMark, GmRainbow } from "@/components/godzilla-mark";
+import { GodzillaMark, GmRainbow, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell, LoginCluster } from "@/components/shell";
-import { TAB_GM } from "@/lib/brand";
+import { TAB_BOARD, TAB_BOARD_LEADER, TAB_GM } from "@/lib/brand";
 import { SeoCopy } from "@/components/seo-copy";
 import { getGmLive, setGmLive } from "@/lib/desk/gm-live";
 import {
@@ -136,6 +136,14 @@ export function GmDesk() {
               <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
                 <GmRainbow text={GM_NAME} />
               </h1>
+              <p className="mt-1 font-mono text-[11px] text-muted">
+                Compete on{" "}
+                <a href="/board" className="board-nav hover:underline">
+                  <LeaderBoardLabel className="text-[11px]" />
+                </a>
+                {" · "}
+                {TAB_BOARD} · {TAB_BOARD_LEADER}
+              </p>
             </div>
           </div>
           <div className="desk-tabs flex flex-wrap items-center gap-1" role="tablist" aria-label="GM book">
@@ -217,7 +225,7 @@ export function GmDesk() {
         />
         <LiveTracks
           briefs={briefs}
-          note="Bots 1–6 from this Coinbase cycle. Bot 7 reads these lanes — it does not average them."
+          note="Bots 1–6 from this Coinbase cycle. 7-B0T reads these lanes — it does not average them."
         />
 
         <div className="mt-5 grid gap-4 lg:grid-cols-3">
@@ -248,7 +256,7 @@ export function GmDesk() {
             )}
             {call?.clipUsd ? <p className={cn("font-mono text-sm", USD_TONE)}>{money(call.clipUsd, 0)}</p> : null}
             <Button className="mt-3" onClick={() => void rollBots({ force: true, admin })} disabled={busy}>
-              Roll Bot 7 + bots 1–6
+              Roll 7-B0T + bots 1–6
             </Button>
             <p
               className={cn(
@@ -276,7 +284,7 @@ export function GmDesk() {
               </ul>
             ) : null}
             <p className="mt-3 font-mono text-xs text-muted">
-              Bot 7{" "}
+              7-B0T{" "}
               {call ? (
                 isGmAccumulate(call.vsBot7) ? (
                   <GmRainbow text={`${call.vsBot7.conviction} ${call.vsBot7.stance}`} />
@@ -566,7 +574,7 @@ function AutoLiveFeed({
   return (
     <Panel className="mt-5" kicker="AUTO" title="Live tape" kickerClass="text-high" titleClass="text-high">
       <p className="text-sm text-muted">
-        Live Coinbase tape. GM AUTO reads it with Bot 7. Coinbase orders stay off until Live is unlocked.
+        Live Coinbase tape. G M0D3 AUTO reads it with 7-B0T. Coinbase orders stay off until Live is unlocked.
       </p>
       <div className="mt-3 grid gap-3 sm:grid-cols-4 font-mono text-sm">
         <div>
@@ -575,7 +583,7 @@ function AutoLiveFeed({
           <p className={BTC_TONE}>{gmBook.btc.toFixed(6)} BTC</p>
         </div>
         <div>
-          <p className="text-[11px] text-muted">Bot 7 NAV</p>
+          <p className="text-[11px] text-muted">7-B0T NAV</p>
           <p className={USD_TONE}>{money(bot7Nav, 0)}</p>
           <p className={BTC_TONE}>{paperBtc.toFixed(6)} BTC</p>
         </div>
@@ -604,7 +612,7 @@ function AutoLiveFeed({
       </div>
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
         <TickList label="GM sleeve" rows={liveRows} />
-        <TickList label="Bot 7" rows={bot7Rows} />
+        <TickList label="7-B0T" rows={bot7Rows} />
       </div>
     </Panel>
   );

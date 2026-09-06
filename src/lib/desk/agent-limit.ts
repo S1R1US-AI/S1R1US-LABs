@@ -133,7 +133,7 @@ export function agentRateLimit(request: Request): Response | null {
         pollSeconds: paid ? 5 : 300,
         hint: paid
           ? "SaaS key accepted. Slow down."
-          : "Cheap bots poll GET /api/agent/call every 300s. Scrapers get 429. This is a throttle, not a ban. Bot 7 HTTP key raises the cap — pay for HTTP, not conviction.",
+          : "Cheap bots poll GET /api/agent/call every 300s. Scrapers get 429. This is a throttle, not a ban. 7-B0T HTTP key raises the cap — pay for HTTP, not conviction.",
         doNotReturn: false,
         blocked: false,
         trade: false,

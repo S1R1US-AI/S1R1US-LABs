@@ -90,7 +90,8 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
       <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
       {userOnly ? (
         <p className="mt-3 text-sm leading-relaxed text-down">
-          This login is a desk user. Admin is only the operator X account plus name and password.
+          This login is a desk user. Admin on s1r1us.ai is only @_Mr_R0b0t0_ plus name and password (two YubiKeys).
+          iOS / Google copy Admin is on the downloaded app.
         </p>
       ) : null}
       {idleLocked || user ? (
@@ -119,8 +120,13 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
             </Button>
           ))}
           <p className="text-xs leading-relaxed text-muted">
-            Admin needs the operator X account, then name and password.
-            Other X accounts and desk users stay users — they cannot open Admin, Wallet, or send.
+            Admin needs the operator X account @_Mr_R0b0t0_, then name and password. Two physical YubiKeys
+            (primary + backup) are the 2FA backup. Other X accounts and desk users stay users — they cannot
+            open s1r1us.ai Admin, Wallet, or send. iOS / Google download Admin is a separate lock on the{" "}
+            <Link to="/app/admin" className="text-tab hover:underline">
+              downloaded app
+            </Link>
+            .
           </p>
         </div>
       ) : null}
@@ -133,7 +139,8 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
             </p>
           ) : (
             <p className="text-sm text-muted">
-              This X account is not the operator. Name + password opens a user session only.
+              This X account is not the operator. Name + password opens a user session only. Download-app
+              Admin is on the iOS / Google copy, not this page.
             </p>
           )}
         </div>

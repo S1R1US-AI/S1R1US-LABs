@@ -17,7 +17,8 @@ export type IntrusionKind =
   | "mcp-deny"
   | "agency-probe"
   | "forum-bar"
-  | "forum-offtopic";
+  | "forum-offtopic"
+  | "bad-bot";
 
 export type IntrusionRow = {
   id: string;
@@ -47,7 +48,26 @@ export const INTRUSION_KIND_LABEL: Record<IntrusionKind, string> = {
   "agency-probe": "Agency probe",
   "forum-bar": "W1S3 0WL$ bar",
   "forum-offtopic": "Forum off-topic",
+  "bad-bot": "Bad bot",
 };
+
+/** External agents that probe, inject, scrape, or violate mandate. Always blocked. */
+export const BAD_BOT_KINDS: readonly IntrusionKind[] = [
+  "bad-bot",
+  "source-probe",
+  "agent-inject",
+  "mcp-deny",
+  "agency-probe",
+  "forum-bar",
+  "scraper",
+  "scanner",
+  "waitlist-reject",
+  "secret-paste",
+];
+
+export function isBadBotKind(kind: string): kind is IntrusionKind {
+  return (BAD_BOT_KINDS as readonly string[]).includes(kind);
+}
 
 const MAX = 200;
 let RING: IntrusionRow[] = [];
@@ -58,6 +78,11 @@ function persist() {
   void import("node:fs")
     .then((fs) => {
       try {
+        try {
+          ingestPersisted(JSON.parse(fs.readFileSync(LOG_PATH, "utf8")));
+        } catch {
+          /* missing */
+        }
         fs.writeFileSync(LOG_PATH, JSON.stringify({ at: new Date().toISOString(), rows: RING }, null, 2));
       } catch {
         /* preview */
@@ -92,6 +117,16 @@ export function ingestPersisted(raw: unknown) {
   RING = [...RING, ...extra].sort((a, b) => Date.parse(b.at) - Date.parse(a.at)).slice(0, MAX);
 }
 
+/** Permanent IP bar on first malicious / probing agent hit. Not scrapers (those 429). */
+const AUTO_BAR_KINDS: readonly IntrusionKind[] = [
+  "bad-bot",
+  "source-probe",
+  "agent-inject",
+  "mcp-deny",
+  "agency-probe",
+  "forum-bar",
+];
+
 export function recordIntrusion(row: {
   kind: IntrusionKind;
   ip?: string;
@@ -120,6 +155,13 @@ export function recordIntrusion(row: {
   RING.unshift(rec);
   if (RING.length > MAX) RING.length = MAX;
   persist();
+  if (typeof window === "undefined" && (AUTO_BAR_KINDS as readonly string[]).includes(row.kind)) {
+    void import("./ban-list")
+      .then(({ barPermanent, isLoopback }) => {
+        if (!isLoopback(ip)) barPermanent(ip, `${row.kind} ${detail}`.slice(0, 160));
+      })
+      .catch(() => undefined);
+  }
   return rec;
 }
 
@@ -137,5 +179,22 @@ export function intrusionSummary() {
     last24h: today.length,
     byKind,
     lastAt: RING[0]?.at ?? null,
+  };
+}
+
+export function badBotIntrusions(hours = 24) {
+  const since = Date.now() - hours * 60 * 60_000;
+  return RING.filter((r) => isBadBotKind(r.kind) && Date.parse(r.at) >= since);
+}
+
+export function badBotSummary() {
+  const last24 = badBotIntrusions(24);
+  const byKind: Record<string, number> = {};
+  for (const r of last24) byKind[r.kind] = (byKind[r.kind] ?? 0) + 1;
+  return {
+    last24h: last24.length,
+    byKind,
+    lastAt: last24[0]?.at ?? null,
+    rows: last24.slice(0, 40),
   };
 }

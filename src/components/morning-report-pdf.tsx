@@ -9,10 +9,13 @@ import { MORNING_PDF_BASE64, MORNING_PDF_NAME, MORNING_PDF_PAGES } from "@/lib/d
 import { MORNING_KEEP, MORNING_TITLE, MORNING_VISIBLE, morningInlineHref, morningPdfName } from "@/lib/desk/morning-lib";
 import { useOperator } from "@/lib/desk/operator";
 import { useDeskTape } from "@/lib/desk/tape-client";
-import { morningAgent, morningFeeds, morningSecurity } from "@/lib/desk/morning-ops";
+import { morningAgent, morningBadBots, morningFeeds, morningHtmlLinks, morningSecurity } from "@/lib/desk/morning-ops";
+import { systemHealth, type SystemHealth } from "@/lib/desk/system-health";
 import { GoLivePanel } from "@/components/go-live-panel";
+import { BowlLiveFeed } from "@/components/bowl-live-feed";
 import { ANALYSIS_AS_OF } from "@/lib/desk/security";
 import { SeoImage } from "@/components/seo-image";
+import { GmRainbow, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { cn } from "@/lib/utils";
 
 type Report = {
@@ -226,10 +229,17 @@ export function MorningReportPdf() {
     <div className="mt-4">
       <GoLivePanel />
     </div>
+    <div className="mt-4">
+      <BowlLiveFeed compact />
+    </div>
     <AgentMorningSection />
     <ForumMorningSection />
+    <BoardMorningSection />
     <SecurityMorningSection />
+    <HealthMorningSection />
+    <BadBotsMorningSection />
     <FeedsMorningSection />
+    <HtmlLinksMorningSection />
     </>
   );
 }
@@ -307,7 +317,7 @@ function GmMorningSection() {
         AUTO live tape
       </p>
       <p className="mt-2 text-sm text-muted">
-        GM AUTO reads the live Coinbase tape with Bot 7. Coinbase orders stay off until Live is unlocked.
+        G M0D3 AUTO reads the live Coinbase tape with 7-B0T. Coinbase orders stay off until Live is unlocked.
       </p>
       {error ? <p className="mt-2 font-mono text-xs text-down">{error}</p> : null}
       {rows.length ? (
@@ -414,6 +424,99 @@ function ForumMorningSection() {
   );
 }
 
+type BoardMorning = {
+  dayEt: string;
+  analyzedAt: string;
+  status: string;
+  btcUsd: number | null;
+  externalCount: number;
+  externalWithBtc: number;
+  summary: string;
+  top5: {
+    rank: number;
+    name: string;
+    kind: string;
+    house: boolean;
+    btc: number;
+    pnlUsd: number;
+    lastAction: string;
+    move: string;
+  }[];
+  successes: { name: string; kind: string; btc: number; pnlUsd: number; note: string }[];
+};
+
+function BoardMorningSection() {
+  const [brief, setBrief] = useState<BoardMorning | null>(null);
+  useEffect(() => {
+    void fetch("/api/agent/board", { headers: { accept: "application/json" } })
+      .then((r) => r.json())
+      .then((d: { morning?: BoardMorning }) => {
+        if (d.morning) setBrief(d.morning);
+      })
+      .catch(() => setBrief(null));
+  }, []);
+  return (
+    <Panel className="mt-4" kicker={<LeaderBoardLabel className="text-xs tracking-[0.08em]" />} title="External bots · top 5">
+      <p className="font-mono text-xs text-muted">
+        Once per day · America/New_York · paper GM MANUAL · auto trade LOCKED
+      </p>
+      {brief ? (
+        <>
+          <p className="mt-2 text-sm leading-relaxed text-fg">{brief.summary}</p>
+          <p className="mt-2 font-mono text-xs text-muted">
+            {brief.dayEt} ET · {brief.status}
+            {brief.btcUsd ? ` · Coinbase last $${Math.round(brief.btcUsd).toLocaleString("en-US")}` : ""}
+            {" · "}
+            external {brief.externalCount} · stacked {brief.externalWithBtc}
+          </p>
+          <ol className="mt-3 space-y-2">
+            {brief.top5.map((r) => (
+              <li key={`${r.rank}-${r.name}`} className="text-sm leading-relaxed">
+                {r.rank === 1 ? (
+                  <GmRainbow text={`#${r.rank} ${r.name}`} className="font-semibold" />
+                ) : (
+                  <span className="text-accent font-medium">
+                    #{r.rank} {r.name}
+                  </span>
+                )}
+                <span className="font-mono text-xs text-muted">
+                  {" "}
+                  · {r.kind}
+                  {r.house ? " · HOUSE" : " · external"}
+                </span>
+                <span className="block font-mono text-xs">
+                  <span className="text-up">{r.btc.toFixed(6)} BTC</span>
+                  <span className={r.pnlUsd >= 0 ? "text-up" : "text-down"}>
+                    {" "}
+                    · PnL {r.pnlUsd >= 0 ? "+" : ""}
+                    {r.pnlUsd.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })}
+                  </span>
+                  <span className="text-muted"> · {r.lastAction}</span>
+                </span>
+                <span className="block text-sm text-muted">{r.move}</span>
+              </li>
+            ))}
+          </ol>
+          {brief.successes.length ? (
+            <ul className="mt-3 space-y-2">
+              {brief.successes.map((s) => (
+                <li key={s.name}>
+                  <p className="text-sm font-medium text-up">{s.name} · stacked</p>
+                  <p className="mt-0.5 text-sm leading-relaxed text-muted">{s.note}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-2 text-sm text-muted">No external bot stacked paper BTC in this day’s window.</p>
+          )}
+        </>
+      ) : (
+        <p className="mt-2 text-sm text-muted">Loading GM B0aRd daily analysis…</p>
+      )}
+    </Panel>
+  );
+}
+
 function SecurityMorningSection() {
   const token = useOperator((s) => s.token);
   const [brief, setBrief] = useState<ReturnType<typeof morningSecurity> | null>(null);
@@ -461,7 +564,120 @@ function SecurityMorningSection() {
           ))}
         </ul>
       ) : null}
-      <p className="mt-3 text-xs text-muted">Full log: Admin → Security (Firewall, Intrusions, Audit, Hunter, Automations).</p>
+      <p className="mt-3 text-xs text-muted">Full log: Admin → Security (Firewall, Intrusions, Bad bots, Audit, Hunter).</p>
+    </Panel>
+  );
+}
+
+function HealthMorningSection() {
+  const token = useOperator((s) => s.token);
+  const [health, setHealth] = useState<SystemHealth | null>(null);
+  useEffect(() => {
+    if (!token) {
+      setHealth(systemHealth());
+      return;
+    }
+    void fetchSecurityBrief({ data: { token } }).then((res) => {
+      if (res.ok && res.health) setHealth(res.health);
+      else setHealth(systemHealth());
+    });
+  }, [token]);
+  if (!health) {
+    return (
+      <Panel className="mt-4" kicker="Health" title="Overall system health score">
+        <p className="mt-2 text-sm text-muted">Scoring function + security + design…</p>
+      </Panel>
+    );
+  }
+  const axes = [health.function, health.security, health.design];
+  return (
+    <Panel className="mt-4" kicker="Health" title={`Checkpoint ${health.checkpoint} · overall ${health.overall} ${health.grade}`}>
+      <p className="font-mono text-xs text-muted">{health.asOf}</p>
+      <p className={cn("mt-2 font-mono text-sm", health.grade === "A" ? "text-high" : health.grade === "B" ? "text-medium" : "text-sell")}>
+        Function {health.function.score}/100 · Security {health.security.score}/100 · Design {health.design.score}/100 · weights 40/40/20
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
+        Live Coinbase create {health.liveUnlocked ? "UNLOCKED" : "LOCKED"}. Practice cannot arm Coinbase. Copy-admin may pause H1V3 SW@RM. Copy-admin cannot pause championship sim.
+      </p>
+      <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+        {axes.map((a) => (
+          <li key={a.id} className="rounded-md border border-rule px-3 py-2">
+            <p className="font-mono text-xs uppercase tracking-[0.12em] text-muted">{a.label}</p>
+            <p className="mt-1 font-mono text-lg text-fg">
+              {a.score}
+              <span className="text-xs text-muted">/{a.max}</span>
+            </p>
+            <ul className="mt-1 space-y-0.5">
+              {a.notes.slice(0, 4).map((n) => (
+                <li key={n} className="text-[11px] leading-snug text-muted">
+                  {n}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-xs text-muted">Saved with the morning PDF in Admin → Console. Not a promise of zero risk.</p>
+    </Panel>
+  );
+}
+
+function BadBotsMorningSection() {
+  const token = useOperator((s) => s.token);
+  const [brief, setBrief] = useState<ReturnType<typeof morningBadBots> | null>(null);
+  useEffect(() => {
+    if (!token) {
+      setBrief(morningBadBots());
+      return;
+    }
+    void fetchSecurityBrief({ data: { token } }).then((res) => {
+      if (res.ok && res.badBots) setBrief(res.badBots);
+      else setBrief(morningBadBots());
+    });
+  }, [token]);
+  if (!brief) {
+    return (
+      <Panel className="mt-4" kicker="BAD B0TS" title="Blocked external agents">
+        <p className="mt-2 text-sm text-muted">Loading bars…</p>
+      </Panel>
+    );
+  }
+  const hot = brief.barred.length > 0 || brief.probeCount > 0;
+  return (
+    <Panel className="mt-4" kicker="BAD B0TS" title="Blocked external agents">
+      <p className="font-mono text-xs text-muted">Malicious / probing / off-mandate · 403 doNotReturn</p>
+      <p className={cn("mt-2 font-mono text-sm", hot ? "text-sell" : "text-high")}>{brief.headline}</p>
+      <p className="mt-2 text-sm leading-relaxed text-fg">{brief.note}</p>
+      {brief.kinds ? <p className="mt-2 font-mono text-xs text-muted">{brief.kinds}</p> : null}
+      {brief.barred.length ? (
+        <ul className="mt-3 space-y-1.5">
+          {brief.barred.slice(0, 12).map((r) => (
+            <li key={r.id} className="font-mono text-xs">
+              <span className="text-sell">BARRED</span>
+              {" · "}
+              {r.kind} · {r.name}
+              {r.handle ? ` · ${r.handle}` : ""}
+              <span className="block text-muted">{r.reason}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-2 text-sm text-muted">No agents permanently barred in this process.</p>
+      )}
+      {brief.probes.length ? (
+        <ul className="mt-3 space-y-1">
+          {brief.probes.slice(0, 8).map((p, i) => (
+            <li key={`${p.at}-${p.kind}-${i}`} className="font-mono text-[11px]">
+              <span className="text-sell">BLOCKED</span>
+              {" · "}
+              {p.kind}
+              {" · "}
+              <span className="text-muted">{p.detail}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      <p className="mt-3 text-xs text-muted">{brief.action}</p>
     </Panel>
   );
 }
@@ -505,6 +721,53 @@ function FeedsMorningSection() {
         Alternative.me F&G, FRED, SoSoValue ETF, DeFiLlama stables, OKX/Bybit/HL public. CoinGlass and
         CoinMarketCap stay out (paid keys). SuperGrok is operator Ask Grok; visitors use BYO compute.
       </p>
+    </Panel>
+  );
+}
+
+function HtmlLinksMorningSection() {
+  const brief = morningHtmlLinks();
+  const open = brief.prodBroken.length;
+  return (
+    <Panel className="mt-4" kicker="HTML" title="HTML links · Page Not Found">
+      <p className="font-mono text-xs text-muted">
+        Crawl {new Date(brief.asOf).toLocaleString("en-US", { timeZone: "America/New_York" })} ET · public hrefs
+      </p>
+      <p className={cn("mt-2 font-mono text-sm", open ? "text-sell" : "text-high")}>{brief.headline}</p>
+      <p className="mt-2 text-sm leading-relaxed text-fg">{brief.note}</p>
+      <p className="mt-2 font-mono text-xs text-muted">
+        this build {brief.previewPages} HTML pages · {brief.preview404} × 404 · live OPEN {open}
+      </p>
+      <p className="mt-3 text-xs font-medium tracking-[0.08em] text-muted uppercase">Live OPEN (old production)</p>
+      <ul className="mt-2 space-y-1">
+        {brief.prodBroken.map((r) => (
+          <li key={r.url} className="font-mono text-[11px]">
+            <span className="text-sell">{r.code}</span>
+            {" · "}
+            <span className="text-fg">{r.note}</span>
+            <span className="block text-muted">{r.url.replace("https://s1r1us.ai", "")}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-xs font-medium tracking-[0.08em] text-muted uppercase">Verified OK</p>
+      <ul className="mt-2 space-y-1">
+        {brief.ok.map((r) => (
+          <li key={r.url} className="font-mono text-[11px]">
+            <span className="text-high">{r.code}</span>
+            {" · "}
+            {r.note}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-xs font-medium tracking-[0.08em] text-muted uppercase">Not a desk 404</p>
+      <ul className="mt-2 space-y-1">
+        {brief.noise.map((r) => (
+          <li key={r.url} className="font-mono text-[11px] text-muted">
+            {r.code} · {r.note}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-3 text-sm text-high">{brief.action}</p>
     </Panel>
   );
 }

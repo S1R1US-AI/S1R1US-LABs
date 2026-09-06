@@ -3,12 +3,13 @@ import { agentCorsHeaders } from "@/lib/desk/agent-feed";
 import { withAgentLimit } from "@/lib/desk/agent-limit";
 import { agentPublicJson } from "@/lib/desk/agent-notice";
 import { AGENT_FEE } from "@/lib/desk/agent-protocol";
+import { hiveResourcePublic } from "@/lib/desk/hive-resource";
 
 export const Route = createFileRoute("/api/agent/fee")({
   server: {
     handlers: {
       OPTIONS: () => new Response(null, { status: 204, headers: agentCorsHeaders() }),
-      GET: ({ request }) => withAgentLimit(request, () => agentPublicJson({ ok: true, trade: false, ...AGENT_FEE })),
+      GET: ({ request }) => withAgentLimit(request, () => agentPublicJson({ ok: true, trade: false, ...AGENT_FEE, resource: hiveResourcePublic() })),
       POST: ({ request }) =>
         withAgentLimit(request, () =>
           agentPublicJson(

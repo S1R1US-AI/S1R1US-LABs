@@ -4,7 +4,7 @@
  * Pause is a test switch only. It MUST NOT:
  * - unlock live Coinbase create
  * - sell or short bitcoin
- * - change Bot 7's accumulate mandate
+ * - change 7-B0T's accumulate mandate
  * - auto-green feed errors
  * - close/open the external AI gate
  * - write paper fills

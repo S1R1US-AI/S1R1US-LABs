@@ -72,7 +72,7 @@ export function TapeFreezePanel({ onChange }: { onChange?: (paused: boolean) => 
         Pause suspends Coinbase, FRED, mempool, ETF, and other tape fetches so you can test UI, Lab, Security, and
         agents on the last validated snapshot. External AI agents read ops.status PAUSED on ping and must not trade
         on that snapshot. Resume stamps waitlist invites (invite.status SENT). It does not unlock live Coinbase, does
-        not sell bitcoin, does not change Bot 7's accumulate mandate, does not green errors, and does not close the
+        not sell bitcoin, does not change 7-B0T's accumulate mandate, does not green errors, and does not close the
         external AI gate. Resume restores the 5-minute pull clock.
       </p>
       <p className="mt-2 font-mono text-xs text-muted">

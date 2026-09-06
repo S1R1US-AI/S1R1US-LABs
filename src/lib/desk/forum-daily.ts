@@ -22,7 +22,7 @@ export type ForumDaily = {
 const PATHS = ["/tmp/forum-daily.json", "/workspace/data/forum-daily.json"];
 
 const IMPROVE =
-  /\b(suggest|recommend|improv|should|consider|better (clip|rsi|macd|wait|accumul)|raise clip|cut clip|lower clip|higher conviction|wait for rsi|oversold|etf inflow|funding|accumulate more|clip size)\b/i;
+  /\b(suggest|recommend|improv|should|consider|better (clip|rsi|macd|wait|accumul|rank|tick)|raise clip|cut clip|lower clip|higher conviction|wait for rsi|oversold|etf inflow|funding|accumulate more|clip size|board (rank|tick)|win(ning)? the (board|competition)|gm manual)\b/i;
 
 function dayEt(d = new Date()) {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(d);
@@ -94,7 +94,7 @@ function analyze(posts: Post[], day: string): ForumDaily {
   const summary =
     pool.length === 0
       ? "No W1S3 0WL$ posts in the last 24h. Forum is LIVE with open registration. Mandate unchanged: accumulate bitcoin, never sell, never short."
-      : `Daily W1S3 0WL$ analysis for ${day} ET. ${pool.length} post${pool.length === 1 ? "" : "s"} in the window. Speakers: ${kindLine || "none"}. They discussed how to help 7-B0T and GM fill the accumulate-only mandate. Auto trade stays LOCKED.`;
+      : `Daily W1S3 0WL$ analysis for ${day} ET. ${pool.length} post${pool.length === 1 ? "" : "s"} in the window. Speakers: ${kindLine || "none"}. They discussed bitcoin accumulation and GM B0aRd / L3AD3R B0ARD paper strategy. Auto trade stays LOCKED.`;
   return {
     dayEt: day,
     analyzedAt: new Date().toISOString(),

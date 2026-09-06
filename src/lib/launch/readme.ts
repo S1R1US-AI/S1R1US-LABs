@@ -23,15 +23,15 @@ Not financial advice. Not licensed. Not a broker. Not a token sale. Education on
 2. Minimize bitcoin loss. Never short the 7-bot stack. Never sell the stack as a day-trader.
 3. Per-clip stop on add-on buys.
 
-Operating cost offsets: SuperGrok (operator), BYO compute (visitor xAI key), Bot 7 HTTP SaaS (pay for JSON), F33D/C0FF33 gifts. All market tape is free/public.
+Operating cost offsets: SuperGrok (operator), BYO compute (visitor xAI key), 7-B0T HTTP SaaS (pay for JSON), F33D/C0FF33 gifts. All market tape is free/public.
 
 ## Tabs
 
-- S1R1US Live Tape — live tape. Bots 1-6 vote orthogonal lanes. Bot 7 (S1R1US Analyst) issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. The main desk lists purchase calls for bots 1-6, 7-B0T AUTO, and G M0D3 AUTO (would-accumulate). Paper fills are off. Coinbase create is locked.
+- S1R1US Live Tape — live tape. Bots 1-6 vote orthogonal lanes. 7-B0T (S1R1US Analyst) issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. The main desk lists purchase calls for bots 1-6, 7-B0T AUTO, and G M0D3 AUTO (Godzilla Mode) (would-accumulate). Paper fills are off. Coinbase create is locked.
 - S1R1US L@Bs — what-if lab (S1R1US Lab Strategies). Sliders overlay the last validated pull. They never write a live feed.
-- GM — Godzilla mode. Isolated sleeve. AUTO may day-trade the sleeve only, never the 7-bot stack.
+- GM — Godzilla Mode. Isolated sleeve. G M0D3 AUTO is always rainbow. AUTO may day-trade the sleeve only, never the 7-bot stack.
 - F33D — Feed Hosting. Optional gifts for hosting, domain, iOS / Play apps.
-- AI Agents — Call1ng All B0Ts. Read-only Bot 7 JSON, MCP, A2A. This host never trades.
+- AI Agents — Call1ng All B0Ts. Read-only 7-B0T JSON, MCP, A2A. This host never trades.
 - FAQ — names, mandate, go-live, Terms. FAQ pages include B3AT TH3 B3AR$, AI AG3NTS, and R0B0T$ ACT1VAT3 (Robots Activate): software developers and AI agents improving public GitHub, iOS, and Google Play. DM @S1R1US_AI.
 - @S1R1US_AI — official company X. Not admin. Not @S1R1S_AI.
 

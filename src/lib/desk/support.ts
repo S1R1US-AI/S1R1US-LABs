@@ -26,7 +26,7 @@ export const SUPPORT_COFFEE_PATH = "/c0ff33";
 export const SUPPORT_COFFEE_WHY =
   "Optional $4.20 cup of coffee to assist the long programming days at s1r1us.ai. Not required. Unlocks nothing extra.";
 export const SUPPORT_ENCOURAGE =
-  "If this Bot 7 feed is useful, Buy M3 a Cup of C0FF33 — an optional $4.20 gift in BTC or native USDC. Not required. Unlocks nothing extra. Covers long programming days, hosting, and the open-source apps.";
+  "If this 7-B0T feed is useful, Buy M3 a Cup of C0FF33 — an optional $4.20 gift in BTC or native USDC. Not required. Unlocks nothing extra. Covers long programming days, hosting, and the open-source apps.";
 
 export type SupportRail = {
   asset: "BTC" | "USDC";

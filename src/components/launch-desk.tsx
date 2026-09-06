@@ -128,8 +128,8 @@ export function LaunchDesk() {
 
       <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">
         Path A is locked. <span className="font-mono text-fg">{COIN_TICKER}</span> is a marketing ticker — not{" "}
-        {APP_NAME}, not {TAB_DESK}, not how bot 7 buys bitcoin. Desk book = operator cash + gifts that get
-        nothing back. Same admin door. Bot 7 never trades this ticker. TOKEN_LAUNCHED ={" "}
+        {APP_NAME}, not {TAB_DESK}, not how 7-B0T buys bitcoin. Desk book = operator cash + gifts that get
+        nothing back. Same admin door. 7-B0T never trades this ticker. TOKEN_LAUNCHED ={" "}
         {TOKEN_LAUNCHED ? "true" : "false"}.
       </p>
       <div className="mt-6">

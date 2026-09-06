@@ -42,7 +42,7 @@ export function OrderBookPanel({
             <p className={`font-mono text-lg tabular-nums ${BTC_TONE}`}>{last ? money(last, 0) : "—"}</p>
           </div>
           <div className="text-right">
-            <p className="text-[11px] font-medium tracking-[0.08em] text-muted uppercase">Bot 7</p>
+            <p className="text-[11px] font-medium tracking-[0.08em] text-muted uppercase">7-B0T</p>
             <p className={cn("font-mono text-sm", stance ? stanceClass(stance) : "text-muted")}>
               {conviction ?? "—"} {stance ?? "WAITING"}
             </p>

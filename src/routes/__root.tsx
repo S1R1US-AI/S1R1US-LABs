@@ -4,6 +4,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { MatrixSaver } from "@/components/matrix-saver";
 import { PracticeEngine } from "@/components/practice-engine";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { WebMcpBridge } from "@/components/webmcp-bridge";
 import appCss from "../styles.css?url";
 
 import { SEO_DESCRIPTION, SEO_KEYWORDS, SEO_TITLE } from "@/lib/brand";
@@ -26,6 +27,9 @@ export const Route = createRootRoute({
       { name: "theme-color", content: "#070908" },
       { name: "application-name", content: "S1R1US Labs" },
       { name: "apple-mobile-web-app-title", content: "S1R1US" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { name: "msapplication-TileColor", content: "#070908" },
       { name: "msapplication-TileImage", content: "/icon-192.png" },
       { name: "twitter:site", content: COMPANY_X_HANDLE },
@@ -41,13 +45,14 @@ export const Route = createRootRoute({
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
       { rel: "mask-icon", href: "/favicon.svg", color: "#3dff1a" },
       { rel: "stylesheet", href: appCss },
+      { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "sitemap", type: "application/xml", href: "/sitemap.xml" },
       { rel: "sitemap", type: "application/xml", href: "/sitemap-index.xml" },
       { rel: "alternate", type: "application/xml", href: "/video-sitemap.xml", title: "video sitemap" },
       { rel: "alternate", type: "application/json", href: "/entity.json", title: "organization entity" },
       { rel: "alternate", type: "text/plain", href: "/llms.txt", title: "llms.txt" },
-      { rel: "alternate", type: "application/json", href: "/api/agent/call", title: "Bot 7 agent feed" },
+      { rel: "alternate", type: "application/json", href: "/api/agent/call", title: "7-B0T agent feed" },
       { rel: "author", href: "/humans.txt" },
       ...liveMeLinks().map((href) => ({ rel: "me" as const, href })),
       { rel: "preconnect", href: "https://fonts.bunny.net", crossOrigin: "anonymous" },
@@ -65,6 +70,7 @@ export const Route = createRootRoute({
       </head>
       <body className="bg-bg font-sans text-fg">
         <PreviewHostBridge />
+        <WebMcpBridge />
         <AuthProvider>
           <Outlet />
         </AuthProvider>

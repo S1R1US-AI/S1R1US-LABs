@@ -4,7 +4,7 @@ export const LAUNCH_BUILD_N = 68;
 /** Paper AUTO fills off. Not a Coinbase freeze. */
 export const LAUNCH_FREEZE = false;
 export const LAUNCH_LIVE_TRADES = false;
-/** Show Bot 7 + GM would-accumulate calls on the live tape. No paper fills. Never orders create. */
+/** Show 7-B0T + GM would-accumulate calls on the live tape. No paper fills. Never orders create. */
 export const DEMO_AUTO = true;
 export const LAUNCH_ON = "2026-09-05";
 export { PATH_A_LOCKED } from "@/lib/launch/model";

@@ -147,7 +147,9 @@ function Login() {
             </Button>
           ))}
           <p className="text-xs leading-relaxed text-muted">
-            Admin needs the operator X account, then name and password. Other X accounts stay users. They cannot open Admin.
+            Admin needs the operator X account @_Mr_R0b0t0_, then name and password. Two physical YubiKeys
+            (primary + backup) are the 2FA backup. Other X accounts stay users. They cannot open s1r1us.ai Admin.
+            iOS / Google copy Admin is on the downloaded app.
           </p>
           {xErr ? <p className="text-sm text-down">{xErr}</p> : null}
         </div>
@@ -161,7 +163,8 @@ function Login() {
           ) : (
             <p className="text-sm text-muted">
               This X session is not the operator account. Sign out, then Continue with X again as
-              the operator handle — the desk reads the handle from X, not the display name.
+              the operator handle @_Mr_R0b0t0_ — the desk reads the handle from X, not the display name.
+              iOS / Google copy Admin is a separate lock on the downloaded app.
             </p>
           )}
           <XRenewWhenAdmin />

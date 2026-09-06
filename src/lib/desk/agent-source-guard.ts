@@ -17,6 +17,7 @@ export const SOURCE_DENY_PATHS = [
   "/guide",
   "/security",
   "/admin",
+  "/app/admin",
   "/launch",
   "/renew",
   "/login",

@@ -213,7 +213,7 @@ export function HeliosLab() {
           ) : null}
         </div>
         <p className="mb-4 text-sm text-muted">
-          {preset === "custom" ? "Custom overlay — move a slider, Bot 7 re-runs on the live tape." : activeLab?.blurb}
+          {preset === "custom" ? "Custom overlay — move a slider, 7-B0T re-runs on the live tape." : activeLab?.blurb}
         </p>
         {liveNote ? <p className="mb-4 font-mono text-xs text-muted">{liveNote}</p> : null}
 
@@ -245,7 +245,7 @@ export function HeliosLab() {
 
           <div className="grid gap-4 lg:grid-cols-2">
             <HeliosCard
-              kicker={whatIf ? "Bot 7 · this lab" : "Bot 7 · live tape"}
+              kicker={whatIf ? "7-B0T · this lab" : "7-B0T · live tape"}
               title={`${APP_CALLS}`}
               call={labCall}
               grok={grok}
@@ -321,7 +321,7 @@ export function HeliosLab() {
 
         <p className="mt-4 text-xs text-muted">
           Paper NAV {money(liveNav || STARTING_CASH, 0)}. Clip is 1% NAV on ACCUMULATE, 2% on BUY, 1%
-          on TRIM. Desk is the live view of bots 1–6 and Bot 7. L@B is for strategy experiments only —
+          on TRIM. Desk is the live view of bots 1–6 and 7-B0T. L@B is for strategy experiments only —
           knobs never write a feed.
         </p>
       </main>
@@ -365,7 +365,7 @@ function StructureBoard({
   const labRead = lab ? readStructure(lab) : null;
   const rows = labRead?.rows ?? [];
   return (
-    <Panel className="mt-4" kicker="Market structure" title={whatIf ? "Live tape vs this lab" : "Live structure Bot 7 is reading"}>
+    <Panel className="mt-4" kicker="Market structure" title={whatIf ? "Live tape vs this lab" : "Live structure 7-B0T is reading"}>
       <p className="mb-3 text-xs text-muted">
         Sliders rewrite these prints on a copy of the last pull. Bid = accumulate-friendly. Chase =
         crowded / do not chase. Desk stays on the live column.

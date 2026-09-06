@@ -91,6 +91,16 @@ export function gateHttp(req: GateReq): GateResult {
 
   if (agentSourceDenied(path, ua)) {
     if (!isLoopback(ip)) barPermanent(ip, `source-probe ${path.slice(0, 40)}`);
+    void import("./intrusion-log")
+      .then(({ recordIntrusion }) =>
+        recordIntrusion({
+          kind: "source-probe",
+          ip,
+          ua,
+          detail: `agent denied ${path.slice(0, 80)}`,
+        }),
+      )
+      .catch(() => undefined);
     return {
       block: true,
       status: 403,

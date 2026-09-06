@@ -3,7 +3,9 @@ import { Link } from "@tanstack/react-router";
 import {
   APP_NAME,
   TAB_CALLING_BOTS,
+  TAB_COMPUTE,
   TAB_HELLO,
+  TAB_HOVER_COMPUTE,
   TAB_HOVER_HELLO,
   TAB_HOVER_MAX_GAINS,
   TAB_HOVER_ROBOTS,
@@ -101,6 +103,17 @@ export function HelloWorld() {
             className="call1ng-bots font-semibold tracking-tight underline decoration-sell underline-offset-2"
           >
             "{TAB_CALLING_BOTS}"
+          </Link>
+          <span className="text-muted">);</span>
+          {"\n"}
+          <span className={GRAY}>{"  run executable ("}</span>
+          <Link
+            to="/compute"
+            title={TAB_HOVER_COMPUTE}
+            aria-label={TAB_HOVER_COMPUTE}
+            className={`${BLUE} font-semibold tracking-tight underline decoration-tab underline-offset-2`}
+          >
+            "{TAB_COMPUTE}"
           </Link>
           <span className="text-muted">);</span>
           {"\n"}

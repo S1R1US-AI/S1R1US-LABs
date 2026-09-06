@@ -68,7 +68,7 @@ export function owaspRows(): MapRow[] {
       code: "A07",
       title: "Authentication Failures",
       status: "PASS",
-      control: "X AND password. Idle wipe. Throttle 8/10m. Fail2ban after 8 strikes.",
+      control: "X AND password. Two YubiKeys. Idle wipe. Throttle 8/10m. Fail2ban after 8 strikes. Copy-admin tokens never satisfy verifyAccessToken.",
     },
     {
       id: "a08",

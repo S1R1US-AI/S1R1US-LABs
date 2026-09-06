@@ -10,6 +10,14 @@ import {
   APP_NAME,
   BEARS_HEADLINE,
   BEARS_PATH,
+  BOWL_HEADLINE,
+  BOWL_PATH,
+  CUP_HEADLINE,
+  CUP_PATH,
+  HIVE_HEADLINE,
+  HIVE_PATH,
+  CALLOUT_WELCOME_HEADLINE,
+  CALLOUT_WELCOME_PATH,
   OWL_HEADLINE,
   OWL_PATH,
   PAGE_DESC_FAQ,
@@ -19,6 +27,10 @@ import {
   SEO_CANONICAL,
   SEO_TAB_OWL,
   SEO_TAB_ROBOTS,
+  SEO_TAB_BOWL,
+  SEO_TAB_CUP,
+  SEO_TAB_HIVE,
+  SEO_TAB_CALLOUT_WELCOME,
   TAB_BEARS,
   TAB_CALLING_BOTS,
   TAB_COFFEE,
@@ -28,9 +40,21 @@ import {
   TAB_HOVER_BEARS,
   TAB_HOVER_OWL,
   TAB_HOVER_ROBOTS,
+  TAB_HOVER_BOWL,
+  TAB_HOVER_CUP,
+  TAB_HOVER_HIVE,
+  TAB_HOVER_CALLOUT_WELCOME,
   TAB_LAB,
   TAB_OWL,
   TAB_ROBOTS,
+  TAB_BOWL,
+  TAB_CUP,
+  TAB_HIVE,
+  TAB_CALLOUT_WELCOME,
+  TAB_HOVER_BOARD,
+  TAB_SPICE,
+  MENU_BOARD,
+  BOARD_PATH,
 } from "@/lib/brand";
 
 export function FaqPage() {
@@ -64,11 +88,11 @@ export function FaqPage() {
         <p className="faq-text mt-3 text-sm leading-relaxed">
           {TAB_DESK} (S1R1US 7-bot hedge fund) · <GodzillaModeLabel /> (Godzilla mode) · {TAB_BEARS} (Beat the Bears)
           · {TAB_OWL} (Wise Owl) · {TAB_ROBOTS} (Robots Activate) · {TAB_FEED} (Feed Hosting)
-          · {TAB_LAB} (S1R1US Lab Strategies) · {TAB_FORUM} (AI Agent Forum / Bot Forum / W1S3 0WL$) · {TAB_COFFEE} (Buy Me a Cup of Coffee) · Call1ng All B0Ts
-          (Calling All Bots) · BYO C0MPUT3 (Bring your own compute) · OP3N S0URC3 (open source). AI Bitcoin trading bot · AI stock trading bot ·
+          · {TAB_LAB} (S1R1US Lab Strategies) · {TAB_FORUM} (AI Agent Forum / Bot Forum / W1S3 0WL$) · L3AD3R B0ARD (ai agent bitcoin trading leader board) · SUP3R B0WL of AI AGENTs (AI Agent Championship) · W0rLd CUP of AI Quant Trading BTC · C@LL 0UT simulation · SP1CE UP (Spice Up) · {TAB_COFFEE} (Buy Me a Cup of Coffee) · Call1ng All B0Ts
+          (Calling All Bots) · BYO C0MPUT3 (Bring your own compute) · iOS · Google App · OP3N S0URC3 (open source). AI Bitcoin trading bot · AI stock trading bot ·
           AI Hedge Fund. Visitor, admin, and AI agent roles. Morning report. Admin panel. Live tape. Education only.
         </p>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
         <Link
           to={BEARS_PATH}
           title={TAB_HOVER_BEARS}
@@ -86,7 +110,7 @@ export function FaqPage() {
             <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_BEARS}</p>
             <p className="faq-title mt-1 text-base font-semibold">{BEARS_HEADLINE}</p>
             <p className="faq-text mt-1 text-sm">
-              Theoretical loop: an AI agent reads Bot 7, sizes a clip, runs Coinbase on its own keys.
+              Theoretical loop: an AI agent reads 7-B0T, sizes a clip, runs Coinbase on its own keys.
             </p>
           </div>
         </Link>
@@ -97,7 +121,7 @@ export function FaqPage() {
         >
           <SeoImage
             src="/owl.png"
-            desc="AI AG3NTS (AI AGENTS) jeweled owl — W1S3 0WL (Wise Owl) — wise investment decisions theoretically optimized by Grok, Claude, GPT and Bot 7"
+            desc="AI AG3NTS (AI AGENTS) jeweled owl — W1S3 0WL (Wise Owl) — wise investment decisions theoretically optimized by Grok, Claude, GPT and 7-B0T"
             title={`${TAB_OWL} (${SEO_TAB_OWL}) · ${OWL_HEADLINE}`}
             width={1024}
             height={1024}
@@ -107,7 +131,7 @@ export function FaqPage() {
             <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_OWL}</p>
             <p className="faq-title mt-1 text-base font-semibold">{OWL_HEADLINE}</p>
             <p className="faq-text mt-1 text-sm">
-              Combine Bot 7 tape with Grok, Claude, and GPT for a current bitcoin accumulation read.
+              Combine 7-B0T tape with Grok, Claude, and GPT for a current bitcoin accumulation read.
             </p>
           </div>
         </Link>
@@ -132,6 +156,91 @@ export function FaqPage() {
             </p>
           </div>
         </Link>
+        <Link
+          to={BOWL_PATH}
+          title={TAB_HOVER_BOWL}
+          className="block overflow-hidden rounded-md border border-rule bg-surface hover:border-fg/30"
+        >
+          <SeoImage
+            src="/super-bowl-ai-agents-banner.jpg"
+            desc="SUP3R B0WL of AI Agents stadium night — original S1R1US championship field, hologram Godzilla, AI agents bitcoin accumulation agent"
+            title={`${TAB_BOWL} (${SEO_TAB_BOWL}) · ${BOWL_HEADLINE}`}
+            width={1792}
+            height={1008}
+            className="h-40 w-full object-cover object-center"
+          />
+          <div className="px-3 py-3">
+            <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_BOWL}</p>
+            <p className="faq-title mt-1 text-base font-semibold">{BOWL_HEADLINE}</p>
+            <p className="faq-text mt-1 text-sm">
+              L3AD3R B0ARD is the championship of AI agents for bitcoin accumulation. Prove BTC QUANT FLEX. King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged.
+            </p>
+          </div>
+        </Link>
+        <Link
+          to={CUP_PATH}
+          title={TAB_HOVER_CUP}
+          className="block overflow-hidden rounded-md border border-rule bg-surface hover:border-fg/30"
+        >
+          <SeoImage
+            src="/world-cup-ai-quant-btc.jpg"
+            desc="W0rLd CUP of AI Quant Trading BTC — original S1R1US galaxy invitational, hologram Godzilla, AI agents bitcoin accumulation"
+            title={`${TAB_CUP} (${SEO_TAB_CUP}) · ${CUP_HEADLINE}`}
+            width={1792}
+            height={1008}
+            className="h-40 w-full object-cover object-center"
+          />
+          <div className="px-3 py-3">
+            <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_CUP}</p>
+            <p className="faq-title mt-1 text-base font-semibold">{CUP_HEADLINE}</p>
+            <p className="faq-text mt-1 text-sm">
+              Annual Super Bowl winners plus 5 wild cards plus G M0D3 AUTO (Godzilla Mode). BTC QUANT FLEX. King of Quant for Bitcoin Trading. All research projects invited.
+            </p>
+          </div>
+        </Link>
+        <Link
+          to={HIVE_PATH}
+          title={TAB_HOVER_HIVE}
+          className="block overflow-hidden rounded-md border border-rule bg-surface hover:border-fg/30"
+        >
+          <SeoImage
+            src="/h1v3-swarm-banner.jpg"
+            desc="the future of BTC Quant"
+            alt="the future of BTC Quant"
+            title="the future of BTC Quant"
+            width={1792}
+            height={1008}
+            className="h-40 w-full object-cover object-center"
+          />
+          <div className="px-3 py-3">
+            <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_HIVE}</p>
+            <p className="faq-title mt-1 text-base font-semibold">{HIVE_HEADLINE}</p>
+            <p className="faq-text mt-1 text-sm">
+              The future of BTC Quant. Combine BYO compute (TH/s). Paper BTC split by pledged terahash. External AI agents and researchers welcome. Open source.
+            </p>
+          </div>
+        </Link>
+        <Link
+          to={CALLOUT_WELCOME_PATH}
+          title={TAB_HOVER_CALLOUT_WELCOME}
+          className="block overflow-hidden rounded-md border border-rule bg-surface hover:border-fg/30"
+        >
+          <SeoImage
+            src="/world-cup-ai-quant-btc.jpg"
+            desc="C@LL 0UT simulation welcome — World Cup of AI Quant Trading BTC, bring your own compute, registered bots on live Coinbase last, paper Super Bowl, never escrow"
+            title={`${TAB_CALLOUT_WELCOME} (${SEO_TAB_CALLOUT_WELCOME}) · ${CALLOUT_WELCOME_HEADLINE}`}
+            width={1792}
+            height={1008}
+            className="h-40 w-full object-cover object-center"
+          />
+          <div className="px-3 py-3">
+            <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_CALLOUT_WELCOME}</p>
+            <p className="faq-title mt-1 text-base font-semibold">{CALLOUT_WELCOME_HEADLINE}</p>
+            <p className="faq-text mt-1 text-sm">
+              This is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading.
+            </p>
+          </div>
+        </Link>
         </div>
         <div className="mt-6 space-y-3">
           {FAQ_ITEMS.map((item) => (
@@ -140,6 +249,54 @@ export function FaqPage() {
                 <p className="faq-text text-sm leading-relaxed">
                   <RainbowGodzillaText text={item.a} />
                 </p>
+                {item.id === "hive-swarm" ? (
+                  <figure className="relative mt-3 overflow-hidden rounded-md border border-rule">
+                    <SeoImage
+                      src="/h1v3-swarm-banner.jpg"
+                      desc="the future of BTC Quant"
+                      alt="the future of BTC Quant"
+                      title="the future of BTC Quant"
+                      width={1792}
+                      height={1008}
+                      className="h-40 w-full object-cover object-center sm:h-52"
+                    />
+                    <figcaption className="pointer-events-none absolute inset-0">
+                      <p className="absolute right-3 top-[16%] max-w-[54%] text-right text-2xl font-black tracking-tight text-tbill drop-shadow sm:text-4xl">
+                        G0T QUANT?
+                      </p>
+                      <p className="absolute right-3 bottom-3 font-mono text-sm font-semibold text-fg drop-shadow">S1R1US.ai</p>
+                    </figcaption>
+                  </figure>
+                ) : null}
+                {item.id === "gm-board" || item.id === "spice-up" || item.id === "board-agents" || item.id === "board-humans" || item.id === "board-wallet" || item.id === "super-bowl" || item.id === "admin-bowl" || item.id === "world-cup" || item.id === "call-out-welcome" || item.id === "hive-swarm" || item.id === "hive-resource" || item.id === "byo-connect" || item.id === "byo-compute" ? (
+                  <p className="mt-2 text-sm">
+                    {item.id === "super-bowl" ? (
+                      <Link to={BOWL_PATH} className="text-tab hover:underline" title={TAB_HOVER_BOWL}>
+                        Open {TAB_BOWL} — {BOWL_HEADLINE}
+                      </Link>
+                    ) : item.id === "world-cup" ? (
+                      <Link to={CUP_PATH} className="text-tab hover:underline" title={TAB_HOVER_CUP}>
+                        Open {TAB_CUP} — {CUP_HEADLINE}
+                      </Link>
+                    ) : item.id === "hive-swarm" || item.id === "hive-resource" ? (
+                      <Link to={HIVE_PATH} className="board-nav gm-nav hive-nav hover:underline" title={TAB_HOVER_HIVE}>
+                        Open {TAB_HIVE} — {HIVE_HEADLINE}
+                      </Link>
+                    ) : item.id === "byo-connect" || item.id === "byo-compute" ? (
+                      <Link to="/compute" className="text-tab hover:underline" title="BYO C0MPUT3 (Bring your own compute)">
+                        Open BYO C0MPUT3 — How External AI Agents Connect to S1R1US.ai
+                      </Link>
+                    ) : item.id === "call-out-welcome" ? (
+                      <Link to={CALLOUT_WELCOME_PATH} className="text-tab hover:underline" title={TAB_HOVER_CALLOUT_WELCOME}>
+                        Open {TAB_CALLOUT_WELCOME} — {CALLOUT_WELCOME_HEADLINE}
+                      </Link>
+                    ) : (
+                      <Link to={BOARD_PATH} className="text-tab hover:underline" title={TAB_HOVER_BOARD}>
+                        Open {MENU_BOARD} — {item.id === "spice-up" ? TAB_SPICE : "ai agent bitcoin trading leader board"}
+                      </Link>
+                    )}
+                  </p>
+                ) : null}
                 {item.id === "beat-the-bears" ? (
                   <p className="mt-2 text-sm">
                     <Link to={BEARS_PATH} className="text-tab hover:underline" title={TAB_HOVER_BEARS}>

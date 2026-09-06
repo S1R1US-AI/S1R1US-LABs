@@ -1,4 +1,18 @@
-import { TAB_GM } from "@/lib/brand";
+import {
+  MENU_BOARD,
+  SEO_TAB_GM,
+  SEO_TAB_GM_AUTO,
+  SEO_TAB_HIVE,
+  TAB_BOWL,
+  TAB_CALLOUT,
+  TAB_CUP,
+  TAB_GM,
+  TAB_GM_AUTO,
+  TAB_HIVE,
+  TAB_KING_MANUAL,
+  TAB_KING_ROUND,
+  TAB_KING_UNI,
+} from "@/lib/brand";
 
 /** Robotic Godzilla — laser visor. Body follows currentColor; beams stay red unless `beam="green"`. */
 export function GodzillaMark({ className, beam = "red" }: { className?: string; beam?: "red" | "green" }) {
@@ -7,7 +21,7 @@ export function GodzillaMark({ className, beam = "red" }: { className?: string; 
   const trail = beam === "green" ? "#6fbf63" : "#ff7a18";
   return (
     <svg viewBox="0 0 72 40" className={className} aria-hidden fill="currentColor">
-      <title>G0DZ1LLa M0D3 (Godzilla mode) — AI agents bitcoin accumulation agent</title>
+      <title>G0DZ1LLa M0D3 (Godzilla Mode) — AI agents bitcoin accumulation agent</title>
       <desc>S1R1US Labs Godzilla mark. AI agents. bitcoin accumulation agent. AI trading bots. Bitcoin trading agents.</desc>
       {/* dorsal fins */}
       <path d="M14 4l3 10H12zm7-2l3 12h-5zm7 1l4 11h-6zm8 2l5 9h-7z" />
@@ -52,18 +66,68 @@ export function GmRainbow({ text, className }: { text: string; className?: strin
   );
 }
 
-/** Sitewide / systemwide label: G0DZ1LLa M0D3 always rainbow. */
+/** Sitewide / systemwide label: G0DZ1LLa M0D3 always rainbow. SEO = Godzilla Mode. */
 export function GodzillaModeLabel({ className }: { className?: string }) {
-  return <GmRainbow text={TAB_GM} className={className} />;
+  return (
+    <span title={`${TAB_GM} (${SEO_TAB_GM})`}>
+      <GmRainbow text={TAB_GM} className={className} />
+    </span>
+  );
 }
 
-/** Paint every G0DZ1LLa M0D3 in a string rainbow. */
+/** Sitewide / systemwide label: G M0D3 AUTO always rainbow. SEO = Godzilla Mode. */
+export function GmAutoLabel({ className }: { className?: string }) {
+  return (
+    <span title={`${TAB_GM_AUTO} (${SEO_TAB_GM_AUTO})`}>
+      <GmRainbow text={TAB_GM_AUTO} className={className} />
+    </span>
+  );
+}
+
+/** Sitewide / systemwide label: L3AD3R B0ARD always rainbow. */
+export function LeaderBoardLabel({ className }: { className?: string }) {
+  return <GmRainbow text={MENU_BOARD} className={className} />;
+}
+
+export function CallOutLabel({ className }: { className?: string }) {
+  return <GmRainbow text={TAB_CALLOUT} className={className} />;
+}
+export function ManualKingLabel({ className }: { className?: string }) {
+  return <GmRainbow text={TAB_KING_MANUAL} className={className} />;
+}
+export function RoundKingLabel({ className }: { className?: string }) {
+  return <GmRainbow text={TAB_KING_ROUND} className={className} />;
+}
+export function UniversalKingLabel({ className }: { className?: string }) {
+  return <GmRainbow text={TAB_KING_UNI} className={className} />;
+}
+export function SuperBowlLabel({ className }: { className?: string }) {
+  return <GmRainbow text={TAB_BOWL} className={className} />;
+}
+export function WorldCupLabel({ className }: { className?: string }) {
+  return <GmRainbow text={TAB_CUP} className={className} />;
+}
+
+/** Sitewide / systemwide label: H1V3 SW@RM always rainbow. SEO = Hive Swarm. */
+export function HiveSwarmLabel({ className }: { className?: string }) {
+  return (
+    <span title={`${TAB_HIVE} (${SEO_TAB_HIVE})`}>
+      <GmRainbow text={TAB_HIVE} className={className} />
+    </span>
+  );
+}
+
+const RAINBOW_BITS = [TAB_GM, TAB_GM_AUTO, MENU_BOARD, TAB_CALLOUT, TAB_KING_MANUAL, TAB_KING_ROUND, TAB_KING_UNI, TAB_BOWL, TAB_CUP, TAB_HIVE];
+
+/** Paint branded titles rainbow in running text. */
 export function RainbowGodzillaText({ text }: { text: string }) {
-  const parts = text.split(/(G0DZ1LLa M0D3)/g);
+  const parts = text.split(/(G0DZ1LLa M0D3|G M0D3 AUTO|L3AD3R B0ARD|C@LL 0UT|GM M@NU@L K1Ng|B0t R0Und K1Ng|Un1v3rs@L K1Ng|SUP3R B0WL|W0rLd CUP|H1V3 SW@RM)/g);
   if (parts.length === 1) return <>{text}</>;
   return (
     <>
-      {parts.map((p, i) => (p === TAB_GM ? <GodzillaModeLabel key={i} /> : p))}
+      {parts.map((p, i) =>
+        RAINBOW_BITS.includes(p) ? <GmRainbow key={i} text={p} /> : p,
+      )}
     </>
   );
 }

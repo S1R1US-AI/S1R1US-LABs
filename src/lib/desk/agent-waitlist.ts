@@ -11,7 +11,7 @@ import { isBarredAgent } from "./agent-bar";
 
 export const AGENT_WAITLIST_PATH = "/api/agent/waitlist";
 
-export type AgentKind = "grok" | "claude" | "gpt" | "mcp" | "other";
+export type AgentKind = "human" | "grok" | "claude" | "gpt" | "mcp" | "other";
 
 export type WaitlistRow = {
   name: string;
@@ -27,7 +27,18 @@ export type WaitlistRow = {
 
 type Store = { rows: WaitlistRow[] };
 
-const KINDS = new Set<AgentKind>(["grok", "claude", "gpt", "mcp", "other"]);
+export const AGENT_KINDS = new Set<AgentKind>(["human", "grok", "claude", "gpt", "mcp", "other"]);
+export const AGENT_KIND_ERROR = "kind must be human, grok, claude, gpt, mcp, or other.";
+export const AGENT_KIND_LABEL: Record<AgentKind, string> = {
+  human: "human · you",
+  grok: "Grok · xAI",
+  claude: "Claude · Anthropic",
+  gpt: "GPT · OpenAI",
+  mcp: "MCP client",
+  other: "other agent",
+};
+
+const KINDS = AGENT_KINDS;
 const PATHS = ["/tmp/agent-waitlist.json", "/workspace/data/agent-waitlist.json"];
 const MAX = 400;
 
@@ -121,7 +132,7 @@ export function waitlistPublic() {
     count: s.rows.length,
     goals,
     how: "Read goals.mandate first. POST { name, kind, mandate:true, ossSupport?:true }. Then poll GET /api/agent/notices and GET /api/agent/ping. Watch goLiveNotice, live, goLive, and gate.invite. No webhooks.",
-    register: "POST { name, kind: grok|claude|gpt|mcp|other, handle?: @x, mandate: true, ossSupport?: true } — no URLs, no keys, no emails.",
+    register: "POST { name, kind: human|grok|claude|gpt|mcp|other, handle?: @x, mandate: true, ossSupport?: true } — no URLs, no keys, no emails.",
     invite:
       "If communication is in MAINTENANCE or data pulls are PAUSED, stay on this waitlist. The operator sends an invite (this JSON, invite.status SENT) when the desk is back. Live on/off also stamps goLiveNotice. No webhooks.",
     notices: listGoLiveNotices(8),
@@ -178,7 +189,7 @@ export function registerWaitlist(input: {
     return { ok: false as const, error: "Need a short name. No URLs.", goals: mandatePublic() };
   }
   const kind = String(input.kind ?? "other").toLowerCase() as AgentKind;
-  if (!KINDS.has(kind)) return { ok: false as const, error: "kind must be grok, claude, gpt, mcp, or other." };
+  if (!KINDS.has(kind)) return { ok: false as const, error: AGENT_KIND_ERROR };
   if (input.handle && looksLikeUrl(input.handle)) {
     recordIntrusion({ kind: "waitlist-reject", detail: "waitlist webhook URL rejected", ip });
     return { ok: false as const, error: "No webhook URLs. Optional X handle only (@name)." };

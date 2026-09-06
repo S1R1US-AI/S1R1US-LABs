@@ -11,6 +11,7 @@ import { GmRainbow } from "@/components/godzilla-mark";
 import { AUTO_RUN_CASH, AUTO_RUN_LABEL } from "@/lib/desk/auto-run";
 import { DEFAULT_GM_VARS, GM_NAME, gmCall } from "@/lib/desk/gm";
 import { SeoImage } from "@/components/seo-image";
+import { SEO_TAB_GM_AUTO, TAB_BOT7, TAB_GM_AUTO, TAB_GM_AUTO_TAIL } from "@/lib/brand";
 
 function isPurchase(stance: string | undefined) {
   if (!stance) return false;
@@ -110,7 +111,7 @@ export function DeskWorkspace({
           Live tape
         </span>
         <span>
-          <span className="coinbase-orange font-semibold">7-B0T</span>{" "}
+          <span className="coinbase-orange font-semibold">{TAB_BOT7}</span>{" "}
           <strong className={cn("font-semibold", convClass(call?.conviction))}>{call?.conviction ?? "—"}</strong>{" "}
           <strong className={cn("font-semibold", stanceClass(call?.stance ?? "HOLD"))}>{call?.stance ?? "—"}</strong>
         </span>
@@ -119,13 +120,13 @@ export function DeskWorkspace({
           <strong className="text-sell">read-only</strong>
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="coinbase-orange font-semibold">B0T-7 AUTO</span>
+          <span className="coinbase-orange font-semibold">{TAB_BOT7} AUTO</span>
           {demoOn ? <strong className="text-high">would-run</strong> : null}
           <Lock className={cn("size-4", tradeOn ? "text-high" : "text-sell")} fill="currentColor" strokeWidth={1.5} />
           <strong className={tradeOn ? "text-high" : "text-sell"}>{tradeOn ? "unlocked" : "Coinbase locked"}</strong>
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <GmRainbow text="GM M0D3 AUTO" className="font-semibold" />
+          <GmRainbow text={TAB_GM_AUTO} className="font-semibold" />
           {demoOn ? <strong className="text-high">would-run</strong> : null}
           <Lock className={cn("size-4", tradeOn ? "text-high" : "text-sell")} fill="currentColor" strokeWidth={1.5} />
           <strong className={tradeOn ? "text-high" : "text-sell"}>{tradeOn ? "unlocked" : "Coinbase locked"}</strong>
@@ -203,7 +204,7 @@ export function DeskWorkspace({
         </section>
 
         <aside className="relative z-[1] flex min-h-0 min-w-0 flex-col overflow-hidden border-b border-rule bg-surface p-3 lg:border-b-0 lg:border-r">
-          <p className="coinbase-orange text-[10px] font-semibold tracking-[0.1em] uppercase">Order ticket · Bot 7</p>
+          <p className="coinbase-orange text-[10px] font-semibold tracking-[0.1em] uppercase">Order ticket · 7-B0T</p>
           <h2 className="mt-2 text-lg font-semibold tracking-tight">
             <span className={convClass(call?.conviction)}>{call?.conviction ?? "—"}</span>{" "}
             <span className={stanceClass(call?.stance ?? "HOLD")}>{call?.stance ?? "—"}</span>
@@ -225,7 +226,7 @@ export function DeskWorkspace({
           </div>
           <div className="mt-3 rounded-sm border border-brand/30 bg-brand/8 p-2.5 text-xs leading-relaxed text-muted">
             <p className="coinbase-orange mb-1 text-[10px] font-semibold tracking-[0.08em] uppercase">Bot capability</p>
-            Other agents already read Bot 7 (poll 300s). They cannot trade on this host. When the operator unlocks
+            Other agents already read 7-B0T (poll 300s). They cannot trade on this host. When the operator unlocks
             auto trade, each bot runs Coinbase for Agents on an account it controls. Keys never sit here.
           </div>
           {grokErr ? <p className="mt-2 text-sm text-down">{grokErr}</p> : null}
@@ -255,12 +256,12 @@ export function DeskWorkspace({
             </div>
           ) : null}
           {gm ? (
-            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 py-2 text-xs">
+            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 py-2 text-xs" title={`${TAB_GM_AUTO} (${SEO_TAB_GM_AUTO})`}>
               <span className="w-4 shrink-0">
                 <GmRainbow text="G" />
               </span>
               <span className="min-w-0 flex-1 leading-snug">
-                <GmRainbow text="GM M0D3 AUTO" />
+                <GmRainbow text={TAB_GM_AUTO_TAIL} />
               </span>
               <span className={cn("shrink-0", callStanceClass(gm.stance))}>{gm.stance}</span>
             </div>
@@ -301,7 +302,7 @@ export function DeskWorkspace({
             ? [
                 {
                   id: "gm",
-                  name: "G M0D3 AUTO",
+                  name: TAB_GM_AUTO,
                   stance: `${gm.conviction} ${gm.stance}`,
                   detail: `Would clip ${money(gm.clipUsd, 0)} · ${gm.reason}`,
                   tone: "gm" as const,
@@ -332,7 +333,7 @@ export function DeskWorkspace({
               </ul>
             ) : (
               <p className="mt-2 text-xs text-muted">
-                No BUY / ACCUMULATE this cycle. Bots 1–6, 7-B0T AUTO, and GM M0D3 AUTO are scanning the live tape.
+                No BUY / ACCUMULATE this cycle. Bots 1–6, 7-B0T AUTO, and <GmRainbow text={TAB_GM_AUTO} /> are scanning the live tape.
                 Coinbase create stays locked.
               </p>
             )}

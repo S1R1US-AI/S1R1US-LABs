@@ -20,6 +20,7 @@ import {
   TAB_OWL,
   TAB_ROBOTS,
   TAB_COMPUTE,
+  TAB_APP,
   TAB_COFFEE,
   TAB_DESK,
   TAB_FEED,
@@ -29,6 +30,9 @@ import {
   TAB_HOVER_OWL,
   TAB_HOVER_ROBOTS,
   TAB_HOVER_COMPUTE,
+  TAB_HOVER_APP,
+  TAB_HOVER_BOARD,
+  TAB_HOVER_HIVE,
   TAB_HOVER_COFFEE,
   TAB_HOVER_DESK,
   TAB_HOVER_FAQ,
@@ -41,7 +45,7 @@ import {
   TAB_LAB,
 } from "@/lib/brand";
 import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
-import { GodzillaMark, GodzillaModeLabel } from "@/components/godzilla-mark";
+import { GodzillaMark, GodzillaModeLabel, HiveSwarmLabel, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { ForumTitle } from "@/components/forum-title";
 import { rainGmBurst } from "@/components/matrix-saver";
 import { LegalBar } from "@/components/legal-bar";
@@ -123,6 +127,30 @@ export function Shell({
               }}
             >
               {MENU_AGENTS}
+            </Link>
+            <Link
+              to="/board"
+              title={TAB_HOVER_BOARD}
+              aria-label={TAB_HOVER_BOARD}
+              className="board-nav gm-nav inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]"
+              activeProps={{
+                className:
+                  "board-nav gm-nav is-on inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",
+              }}
+            >
+              <LeaderBoardLabel className="text-[0.825rem] font-semibold sm:text-[0.9625rem]" />
+            </Link>
+            <Link
+              to="/h1v3"
+              title={TAB_HOVER_HIVE}
+              aria-label={TAB_HOVER_HIVE}
+              className="board-nav gm-nav hive-nav inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]"
+              activeProps={{
+                className:
+                  "board-nav gm-nav hive-nav is-on inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",
+              }}
+            >
+              <HiveSwarmLabel className="text-[0.825rem] font-semibold sm:text-[0.9625rem]" />
             </Link>
             <Link
               to="/forum"
@@ -217,11 +245,20 @@ export function Shell({
               <Link to="/agent" className="shrink-0 text-oss hover:underline" title={TAB_HOVER_AGENT}>
                 {TAB_AGENT}
               </Link>
+              <Link to="/board" className="board-nav gm-nav shrink-0 hover:underline" title={TAB_HOVER_BOARD}>
+                <LeaderBoardLabel className="text-[11px] font-semibold" />
+              </Link>
+              <Link to="/h1v3" className="board-nav gm-nav hive-nav shrink-0 hover:underline" title={TAB_HOVER_HIVE}>
+                <HiveSwarmLabel className="text-[11px] font-semibold" />
+              </Link>
               <Link to="/forum" className="forum-nav shrink-0 hover:underline" title={TAB_HOVER_FORUM}>
                 <ForumTitle />
               </Link>
               <Link to="/compute" className="shrink-0 text-oss hover:underline" title={TAB_HOVER_COMPUTE}>
                 {TAB_COMPUTE}
+              </Link>
+              <Link to="/app" className="shrink-0 text-oss hover:underline" title={TAB_HOVER_APP}>
+                {TAB_APP}
               </Link>
               <Link to={TERMS_PATH} className="legal-purple shrink-0 hover:underline" title={TERMS_HOVER}>
                 {TERMS_TITLE}
@@ -368,7 +405,7 @@ export function Panel({
   children,
 }: {
   title: ReactNode;
-  kicker?: string;
+  kicker?: ReactNode;
   className?: string;
   titleClass?: string;
   kickerClass?: string;

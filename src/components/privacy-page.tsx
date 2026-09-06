@@ -13,7 +13,8 @@ export function PrivacyPage() {
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Updated {PRIVACY_UPDATED}. Bots may not retain system information. Reverse engineering without S1R1US.ai
-          authorization violates these terms.
+          authorization is logged and prosecuted. Use is 100 percent at your own risk. Seek a licensed professional
+          and a licensed attorney before live trading. Open source: github.com/S1R1US-AI/S1R1US-LABs.
         </p>
         <Panel className="mt-6" kicker="Privacy" title="Bots and source" kickerClass="legal-purple" titleClass="legal-purple">
           <p className="text-sm leading-relaxed text-muted">{LEGAL_BOTS}</p>

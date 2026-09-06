@@ -40,7 +40,7 @@ export function stanceClass(s: Stance | string) {
   return "text-muted";
 }
 
-/** Bot-7 / GM: green only on an announced BUY/ACCUMULATE. HOLD/TRIM stay red. WAIT purple. */
+/** 7-B0T / GM: green only on an announced BUY/ACCUMULATE. HOLD/TRIM stay red. WAIT purple. */
 export function callStanceClass(s: string) {
   if (s === "BUY") return "text-high";
   if (s === "ACCUMULATE") return "call-accumulate";
@@ -149,7 +149,7 @@ export function HeliosCard({
   onAsk,
   onCopy,
   onFill,
-  kicker = "Bot 7",
+  kicker = "7-B0T",
   title = APP_CALLS,
   canAct = true,
   canAsk,
@@ -210,7 +210,7 @@ export function HeliosCard({
               <div>
                 <dt
                   className="text-[13px] tracking-[0.14em] uppercase text-medium"
-                  title="How many of Bot 7's add-bitcoin conditions are true. Green = accumulate or buy. Red = wait."
+                  title="How many of 7-B0T's add-bitcoin conditions are true. Green = accumulate or buy. Red = wait."
                 >
                   Add-BTC
                 </dt>
@@ -278,7 +278,7 @@ export function HeliosCard({
               </ul>
             </div>
           ) : (
-            <p className="mt-2 text-xs text-muted">Admin — expand for proprietary Bot 7 overseer.</p>
+            <p className="mt-2 text-xs text-muted">Admin — expand for proprietary 7-B0T overseer.</p>
           )}
             </>
           ) : null}

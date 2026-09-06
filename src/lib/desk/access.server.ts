@@ -1,3 +1,4 @@
+import { isAppAdminToken } from "./tenancy";
 import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { AsyncLocalStorage } from "node:async_hooks";
 import { argon2id } from "@noble/hashes/argon2.js";
@@ -199,6 +200,7 @@ export async function signAccessToken() {
 
 export async function verifyAccessToken(token: string | undefined): Promise<boolean> {
   if (!token) return false;
+  if (isAppAdminToken(token) || token.startsWith("app.") || token.includes(".u.")) return false;
   const parts = token.split(".");
   if (parts.length !== 3) return false;
   const [expRaw, genRaw, sig] = parts;
@@ -253,7 +255,7 @@ export async function currentXUserId(bearerToken?: string): Promise<string | nul
 }
 
 export async function finishDeskUnlock(): Promise<
-  | { ok: true; needYubi: false; token: string; role: "admin"; username: string }
+  | { ok: true; needYubi: false; token: string; role: "admin"; scope: "system"; username: string }
   | { ok: true; needYubi: true; ticket: string; username: string }
 > {
   const username = await storedAdminName();
@@ -270,6 +272,7 @@ export async function finishDeskUnlock(): Promise<
     needYubi: false,
     token: await signAccessToken(),
     role: "admin",
+    scope: "system",
     username,
   };
 }
@@ -287,6 +290,7 @@ export type DeskSession = { role: "admin" } | { role: "user"; userId: string };
 
 export async function verifyDeskToken(token: string | undefined): Promise<DeskSession | null> {
   if (!token) return null;
+  if (isAppAdminToken(token) || token.startsWith("app.")) return null;
   const parts = token.split(".");
   if (parts.length === 3) {
     return (await verifyAccessToken(token)) ? { role: "admin" } : null;

@@ -74,7 +74,7 @@ export const HEADER_SPEC: HeaderRow[] = [
     name: "Cross-Origin-Resource-Policy",
     value: null,
     status: "SKIP",
-    why: "Agent feed is CORS * for Bot 7 pollers. CORP same-site would 429-starve paid keys.",
+    why: "Agent feed is CORS * for 7-B0T pollers. CORP same-site would 429-starve paid keys.",
   },
 ];
 

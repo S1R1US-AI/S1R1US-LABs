@@ -8,7 +8,7 @@ export const FEED_PLANS = [
     usdMonth: 0,
     pollSec: 300,
     burstEverySec: 25,
-    note: "Public Bot 7 JSON. Poll every 300s. Scrapers get 429. Same call as paid.",
+    note: "Public 7-B0T JSON. Poll every 300s. Scrapers get 429. Same call as paid.",
   },
   {
     id: "http",
@@ -30,14 +30,14 @@ export type FeedPlanId = (typeof FEED_PLANS)[number]["id"];
 
 export function feedPlansPublic() {
   return {
-    product: "Bot 7 JSON HTTP access",
+    product: "7-B0T JSON HTTP access",
     kind: "saas",
     investment: false,
     token: false,
     extraConviction: false,
     btcShare: false,
     thisHostTrades: false,
-    note: "Pay for HTTP. Same Bot 7 call. Operator hashes keys in BOT7_FEED_KEY_HASHES. Gifts (F33D / C0FF33) remain optional and unlock nothing extra.",
+    note: "Pay for HTTP. Same 7-B0T call. Operator hashes keys in BOT7_FEED_KEY_HASHES. Gifts (F33D / C0FF33) remain optional and unlock nothing extra.",
     header: `${FEED_KEY_HEADER}: ${FEED_KEY_PREFIX}…`,
     plans: FEED_PLANS,
   };

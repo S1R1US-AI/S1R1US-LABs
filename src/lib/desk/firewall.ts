@@ -53,7 +53,7 @@ export function firewallLayers(): FirewallLayer[] {
       name: "External AI gate",
       zone: "ingress",
       status: "OPERATOR",
-      detail: "Admin Security tab can set MAINTENANCE: Bot 7 / MCP feed / A2A return 503. Ping + waitlist stay open so bots learn the desk is down and can be invited back (pull JSON — no webhooks). Default OPEN.",
+      detail: "Admin Security tab can set MAINTENANCE: 7-B0T / MCP feed / A2A return 503. Ping + waitlist stay open so bots learn the desk is down and can be invited back (pull JSON — no webhooks). Default OPEN.",
     },
     {
       id: "source-deny",
@@ -95,7 +95,14 @@ export function firewallLayers(): FirewallLayer[] {
       name: "Admin AND lock",
       zone: "auth",
       status: "ARMED",
-      detail: "Operator X (id or handle) AND name+password. X alone or password alone cannot mint admin. Dual Yubi on outgoing BTC/USDC. Optional physical-key lock on Admin (default OFF).",
+      detail: "Operator X (@_Mr_R0b0t0_) AND name+password. X alone or password alone cannot mint admin. Dual Yubi on outgoing BTC/USDC. Optional physical-key lock on Admin (default OFF). Two YubiKey slots (primary + backup).",
+    },
+    {
+      id: "tenancy",
+      name: "System vs copy Admin",
+      zone: "auth",
+      status: "ARMED",
+      detail: "s1r1us.ai /admin is @_Mr_R0b0t0_ + name + password + two YubiKeys. iOS/Play copy-admin tokens are 4-part app.{exp}.{id}.{hmac} and never satisfy verifyAccessToken. Path /app/admin. Host hunter, WAF, Yubi, vault, source, morning-report library stay system-only.",
     },
     {
       id: "yubi-panel",

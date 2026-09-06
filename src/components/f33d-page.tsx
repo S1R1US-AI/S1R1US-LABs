@@ -26,7 +26,7 @@ export function F33dPage() {
         </p>
         <p className="mt-6 text-sm leading-relaxed text-muted">
           iOS / Google Play design: onboard compute. The app keeps your xAI / Grok key in the device
-          keychain, GETs Bot 7 JSON from this host, and Ask Grok on-device. This host never receives
+          keychain, GETs 7-B0T JSON from this host, and Ask Grok on-device. This host never receives
           spend keys. Gifts here cover those apps. See{" "}
           <Link to="/compute" className="text-tab hover:underline">
             BYO C0MPUT3

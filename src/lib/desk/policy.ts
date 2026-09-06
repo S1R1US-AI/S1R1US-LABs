@@ -25,7 +25,7 @@ export const BOT_ROSTER = [
   { id: "sentiment", name: "Sentiment Analyst", layer: "Mood", feed: "Alternative.me F&G · Cointelegraph CoinDesk Decrypt RSS" },
   { id: "rotation", name: "Rotation Analyst", layer: "Capital rotation", feed: "QQQ NVDA vs IBIT · GLD paper · RSS + whale overlay" },
   { id: "coordinator", name: "Coordinator", layer: "Maker-checker", feed: "Orthogonal two-lane · event + flow + RV + mood" },
-  { id: "helios", name: BOT7_NAME, layer: "Bot 7", feed: "All six + BTC tape, Asia, EM, ETF, BTC/gold, rotation, whales" },
+  { id: "helios", name: BOT7_NAME, layer: "7-B0T", feed: "All six + BTC tape, Asia, EM, ETF, BTC/gold, rotation, whales" },
 ] as const;
 
 export const DATA_FEEDS = [

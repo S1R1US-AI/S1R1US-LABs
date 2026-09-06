@@ -20,6 +20,7 @@
   --color-high: #3dcc8a;
   --color-medium: #5eb3e4;
   --color-wait: #b48cff;
+  --color-expand: #b48cff;
   --color-sell: #f0616d;
   --color-hash-na: #5eb3e4;
   --color-hash-jp: #8b7ec8;
@@ -425,8 +426,23 @@ span.seo-copy {
 .desk-tabs a.gm-nav.is-on,
 .desk-tabs a.gm-nav[data-status="active"],
 .desk-tabs a.gm-nav[aria-current="page"],
+.desk-tabs a.board-nav,
+.desk-tabs a.board-nav:hover,
+.desk-tabs a.board-nav.is-on,
+.desk-tabs a.board-nav[data-status="active"],
+.desk-tabs a.board-nav[aria-current="page"],
+.desk-tabs a.hive-nav,
+.desk-tabs a.hive-nav:hover,
+.desk-tabs a.hive-nav.is-on,
+.desk-tabs a.hive-nav[data-status="active"],
+.desk-tabs a.hive-nav[aria-current="page"],
+.desk-tabs button.hive-nav,
+.desk-tabs button.hive-nav:hover,
+.desk-tabs button.hive-nav.is-on,
 main a.gm-nav,
-footer a.gm-nav {
+footer a.gm-nav,
+footer a.board-nav,
+footer a.hive-nav {
   color: inherit !important;
 }
 .gm-rainbow > span,
@@ -457,7 +473,8 @@ footer a.gm-nav {
   -webkit-text-fill-color: transparent !important;
 }
 /* Sitewide G0DZ1LLa M0D3: rainbow even when wrapped without per-letter spans. */
-.godzilla-mode:not(.gm-rainbow) {
+.godzilla-mode:not(.gm-rainbow),
+.leader-board:not(.gm-rainbow) {
   background-image: linear-gradient(
     90deg,
     #ff1f1f,
@@ -515,6 +532,36 @@ footer a.gm-nav {
   85% { color: #e879b0; }
   100% { color: #ff1f1f; }
 }
+
+.gm-board-leader,
+.gm-rainbow:not(:has(span)) {
+  animation: gm-rainbow 3.6s linear infinite;
+  font-weight: 700;
+}
+.gm-board-leader-card {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-high) 35%, transparent);
+}
+
+.board-pic {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-rule);
+  background: var(--color-surface);
+}
+.board-pic-leader {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-high) 55%, transparent), 0 0 18px color-mix(in srgb, var(--color-high) 25%, transparent);
+}
+.board-profile-card {
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  transition: border-color var(--motion-quick) var(--ease-out), background-color var(--motion-quick) var(--ease-out);
+}
+.kind-grok { color: #ff8a1f; --kind-fill: #ff8a1f; }
+.kind-human { color: #e8c872; --kind-fill: #e8c872; }
+.kind-claude { color: var(--color-medium); --kind-fill: var(--color-medium); }
+.kind-gpt { color: var(--color-up); --kind-fill: var(--color-up); }
+.kind-mcp { color: var(--color-wait); --kind-fill: var(--color-wait); }
+.kind-other { color: var(--color-oss); --kind-fill: var(--color-oss); }
 
 .desk-tabs a.forum-nav,
 .desk-tabs a.forum-nav:hover,

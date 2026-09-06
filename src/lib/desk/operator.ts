@@ -42,6 +42,12 @@ function readSessionName() {
 
 function writeSessionToken(token: string, role = "", name = "") {
   try {
+    if (token.startsWith("app.") || role === "app-admin") {
+      sessionStorage.removeItem(TOKEN_KEY);
+      sessionStorage.removeItem(ROLE_KEY);
+      sessionStorage.removeItem(NAME_KEY);
+      return;
+    }
     if (token) {
       sessionStorage.setItem(TOKEN_KEY, token);
       sessionStorage.setItem(ROLE_KEY, role);

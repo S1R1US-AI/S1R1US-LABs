@@ -152,7 +152,7 @@ export function agentGatePublic(): AgentGatePublic {
       communication: "OPEN",
       maintenance: false,
       retryAfterSec: 0,
-      message: "External AI agents may read Bot 7. This host never places orders and never holds keys.",
+      message: "External AI agents may read 7-B0T. This host never places orders and never holds keys.",
       after: "Poll GET /api/agent/call every 300s. Watch live, goLive, and gate.invite.",
       invite: invitePublic(s),
       waitlist: WAITLIST,
@@ -168,7 +168,7 @@ export function agentGatePublic(): AgentGatePublic {
     maintenance: true,
     retryAfterSec: 300,
     message:
-      "S1R1US Labs is under maintenance. External AI agents cannot communicate with Bot 7, MCP feed, or A2A until the operator turns the gate back on.",
+      "S1R1US Labs is under maintenance. External AI agents cannot communicate with 7-B0T, MCP feed, or A2A until the operator turns the gate back on.",
     after:
       "The system will be up after maintenance. POST /api/agent/waitlist {name, kind} now. This host will send an invite (visible on GET /api/agent/ping and GET /api/agent/waitlist — no webhooks) when communication is restored.",
     invite: invitePublic(s),

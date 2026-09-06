@@ -20,7 +20,7 @@ ART_PATH = ARTIFACTS / PDF_NAME
 
 LIB_DIR = PUBLIC / "morning-lib"
 LIB_INDEX = ROOT / "data" / "morning-lib.json"
-KEEP = 10
+KEEP = 14
 EST = timezone(timedelta(hours=-5))
 
 
@@ -129,7 +129,7 @@ class ReportPDF(FPDF):
         self.cell(
             0,
             6,
-            latin("Not investment advice. SuperGrok is the only paid service. Never auto-green."),
+            latin("Not investment advice. Education desk. Auto trade LOCKED. Never auto-green."),
             align="C",
         )
 
@@ -157,10 +157,19 @@ def main():
     if state.get("paused"):
         print(json.dumps({"ok": True, "skipped": "paused", "pausedAt": state.get("pausedAt")}))
         return
-    cycle = load_json(Path("/tmp/desk-cycle.json")) or {}
+    cycle = load_json(Path("/tmp/desk-cycle.json")) or load_json(ROOT / "data" / "desk-cycle.json") or {}
     audit = load_json(Path("/tmp/desk-feed-audit.json")) or {}
-    asof = load_json(Path("/tmp/morning-asof.json")) or {}
-    pulse = load_json(Path("/workspace/data/practice-pulse.json")) or load_json(Path("/tmp/practice-pulse.json"))
+    asof = load_json(Path("/tmp/morning-asof.json")) or load_json(ROOT / "data" / "morning-asof.json") or {}
+    pulse = load_json(ROOT / "data" / "practice-pulse.json") or load_json(Path("/tmp/practice-pulse.json"))
+    forum = load_json(Path("/tmp/morning-forum.json")) or {}
+    board = load_json(Path("/tmp/morning-board.json")) or {}
+    board_daily = load_json(ROOT / "data" / "board-daily.json") or (board.get("morning") or {})
+    forum_daily = load_json(ROOT / "data" / "forum-daily.json") or ((forum.get("morning") or {}).get("daily") or {})
+    pings = load_json(ROOT / "data" / "agent-pings.json") or {}
+    wait = load_json(Path("/tmp/morning-waitlist.json")) or {}
+    test68 = load_json(ROOT / "artifacts" / "DEPLOY-68-SYSTEM-TEST.json") or {}
+    health = load_json(ROOT / "artifacts" / "system-health.json") or {}
+    errors = load_json(Path("/tmp/desk-errors.json")) or {}
     latest = audit.get("latest") or {}
     price = cycle.get("price")
     fails = (cycle.get("stats") or {}).get("fails") or []
@@ -195,14 +204,14 @@ def main():
     pdf.set_xy(16, 30)
     pdf.set_font("Helvetica", "", 10)
     pdf.set_text_color(200, 200, 200)
-    pdf.cell(0, 6, latin(now.strftime("%A %d %B %Y  |  %H:%M EST") + "  |  tape through 08:41 ET"))
+    pdf.cell(0, 6, latin(now.strftime("%A %d %B %Y  |  %H:%M EST") + "  |  live tape + DEPLOY #68 test fold"))
     pdf.set_xy(16, 36)
     pdf.set_font("Helvetica", "", 8)
     pdf.set_text_color(140, 140, 140)
-    pdf.cell(0, 5, latin("Honest ops. Never auto-green. SuperGrok only paid service."))
+    pdf.cell(0, 5, latin("Honest ops. Never auto-green. Auto trade LOCKED. This host never places Coinbase orders."))
 
     pdf.set_y(54)
-    section(pdf, "0. Bitcoin NAV / accumulation", (57, 255, 20))
+    section(pdf, "0. Bitcoin NAV / 7-B0T live call", (57, 255, 20))
     px = None
     if isinstance(pulse, dict) and pulse.get("price"):
         px = pulse.get("price")
@@ -210,33 +219,53 @@ def main():
         px = asof.get("price")
     elif isinstance(price, (int, float)):
         px = price
-    if isinstance(pulse, dict) and pulse.get("bot7"):
+    add(
+        pdf,
+        f"Coinbase last  ${float(px or 0):,.2f}    7-B0T  {asof.get('conviction') or ''} {asof.get('call') or '?'}    clip ${asof.get('clipUsd') or 0}",
+        style="B",
+        color=(57, 255, 20),
+        size=12,
+    )
+    add(
+        pdf,
+        f"RSI-14  {round(float(asof.get('rsi') or 0), 1)}    F&G  {asof.get('fg')} {asof.get('fgLabel') or ''}    trade {asof.get('trade')}    live {asof.get('live')}    {asof.get('status')}",
+        size=9,
+    )
+    if asof.get("headline"):
+        add(pdf, str(asof.get("headline")) + " -- " + str(asof.get("thesis") or "")[:280], size=9, color=(200, 200, 200))
+    bots = asof.get("bots") or []
+    if bots:
+        lane = "  |  ".join(f"{b.get('name','?')}: {b.get('stance')}" for b in bots)
+        add(pdf, "Bots 1-6  " + lane, size=8, color=(160, 200, 255))
+    if isinstance(pulse, dict) and pulse.get("bot7") and not pulse.get("paused"):
         b7 = pulse.get("bot7") or {}
         gm = pulse.get("gm") or {}
         stacked = float(pulse.get("stackedBtc") or 0)
         nav = float(pulse.get("navUsd") or 0)
         pnl = float(pulse.get("pnlUsd") or 0)
-        add(pdf, f"Stacked BTC  {stacked:.8f}    NAV  ${nav:,.0f}    P&L  ${pnl:,.0f}", style="B", color=(57, 255, 20), size=12)
+        add(pdf, f"Stacked BTC  {stacked:.8f}    NAV  ${nav:,.0f}    P&L  ${pnl:,.0f}", style="B", color=(57, 255, 20), size=11)
         add(
             pdf,
             "7-B0T  "
-            + f"{float(b7.get('btc') or 0):.8f} BTC  + profit {float(b7.get('profitBtc') or 0):.8f}  "
-            + f"cash ${float(b7.get('cash') or 0):,.0f}  NAV ${float(b7.get('nav') or 0):,.0f}  "
+            + f"{float(b7.get('btc') or 0):.8f} BTC  "
+            + f"cash ${float(b7.get('cash') or 0):,.0f}  "
             + f"fills {b7.get('fills')}/{b7.get('ticks')}  {b7.get('last')}",
             size=9,
         )
         add(
             pdf,
             "G-M0D3  "
-            + f"{float(gm.get('btc') or 0):.8f} BTC  + profit {float(gm.get('profitBtc') or 0):.8f}  "
-            + f"cash ${float(gm.get('cash') or 0):,.0f}  NAV ${float(gm.get('nav') or 0):,.0f}  "
+            + f"{float(gm.get('btc') or 0):.8f} BTC  "
+            + f"cash ${float(gm.get('cash') or 0):,.0f}  "
             + f"fills {gm.get('fills')}/{gm.get('ticks')}  {gm.get('last')}",
             size=9,
         )
-        add(pdf, f"Mark {pulse.get('at')}  px ${float(px or 0):,.2f}  start ${float(pulse.get('startUsd') or 0):,.0f} x2 books. Live Coinbase off.", size=8, color=(160, 160, 160))
     else:
-        add(pdf, "No practice pulse on disk yet. NAV prints 0.00000000 BTC until the desk posts the books (now durable in data/practice-pulse.json).", color=(255, 180, 180))
-        add(pdf, f"Spot mark only: ${float(px or 0):,.2f}" if px else "Spot mark n/a.", size=9)
+        add(
+            pdf,
+            "Practice pulse PAUSED / disabled (fills 0). Would-accumulate is on the tape. Paper fills off. Live Coinbase off. Do not green stacked BTC.",
+            color=(255, 180, 180),
+        )
 
     section(pdf, "1. OPEN -- do not green", (255, 64, 64))
     add(
@@ -247,32 +276,28 @@ def main():
     fee_live = int(asof.get("feeFast") or 0) > 0
     add(
         pdf,
-        "Live fee check 08:41 ET: "
-        + ("LIVE mempool.space fastest "
-           + str(asof.get("feeFast"))
-           + " sat/vB (hour "
-           + str(asof.get("feeHour"))
-           + ").")
+        "Live fee check: "
+        + ("LIVE mempool.space fastest " + str(asof.get("feeFast")) + " sat/vB.")
         if fee_live
-        else "MISSING (fee n/a).",
+        else "MISSING (fee n/a this run -- fee-blind gate still OPEN).",
         color=(180, 255, 180) if fee_live else (255, 180, 180),
     )
     add(
         pdf,
-        "Coinbase last 08:41 ET: $"
+        "Coinbase last this run: $"
         + str(asof.get("price") or price or "?")
-        + " (spot curl $"
-        + str(asof.get("spot") or "?")
-        + "). RSI-14 "
-        + str(asof.get("rsi"))
-        + ". F&G "
+        + "  RSI-14 "
+        + str(round(float(asof.get("rsi") or 0), 1))
+        + "  F&G "
         + str(asof.get("fg"))
         + " "
-        + str(asof.get("fgLabel"))
-        + ". Gates "
-        + str(asof.get("gates"))
-        + ". Call "
-        + str(asof.get("call"))
+        + str(asof.get("fgLabel") or "")
+        + "  Call "
+        + str(asof.get("conviction") or "")
+        + " "
+        + str(asof.get("call") or "?")
+        + "  clip $"
+        + str(asof.get("clipUsd") or 0)
         + ".",
         color=(255, 220, 120),
     )
@@ -297,7 +322,7 @@ def main():
     section(pdf, "4. Architecture", (120, 180, 255))
     add(
         pdf,
-        "Two-phase 5-minute pull (core then fill). Semaphore 12. Slot timeout no longer marks Coinbase dead. Bots 1-6 vote; bot 7 issues BUY / ACCUMULATE / HOLD / WAIT. Never TRIM the stack. Never sell bitcoin. Never short. Practice ticks on that cadence with no admin click. Live Coinbase create is locked on this host. G0DZ1LLa M0D3 is an isolated sleeve (practice for all, Live admin HMAC). Fill cards list the MANUAL/AUTO settings that fired each buy or sell. TRIM on the sleeve sends BTC to 33km... Fund USDC 0x5511... Receive only.",
+        "Two-phase 5-minute pull (core then fill). Semaphore 12. Slot timeout no longer marks Coinbase dead. Bots 1-6 vote; 7-B0T issues BUY / ACCUMULATE / HOLD / WAIT. Never TRIM the stack. Never sell bitcoin. Never short. Practice ticks on that cadence with no admin click. Live Coinbase create is locked on this host. G0DZ1LLa M0D3 is an isolated sleeve (practice for all, Live admin HMAC). Fill cards list the MANUAL/AUTO settings that fired each buy or sell. TRIM on the sleeve sends BTC to 33km... Fund USDC 0x5511... Receive only.",
     )
 
     section(pdf, "5. Security audit", (120, 180, 255))
@@ -309,6 +334,136 @@ def main():
     section(pdf, "5b. GM sleeve", (57, 255, 20))
     add(pdf, "Practice open. Live requires admin token. AUTO never naked-shorts. Day-trader 1-24h. Triggers printed on fills.")
     add(pdf, "Profit BTC 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8 (keep bitcoin). Fund USDC 0x551163f5d4c0361155d16131459afa5c936a60ad.")
+
+    section(pdf, "5c. DEPLOY #68 system test (this fold)", (255, 140, 0))
+    if test68:
+        add(
+            pdf,
+            f"Live system test {test68.get('at')}  pass {test68.get('pass')}  fail {test68.get('fail')}  ok {test68.get('ok')}",
+            style="B",
+            color=(180, 255, 180) if test68.get("ok") else (255, 140, 140),
+        )
+        fails = [c.get("name") for c in (test68.get("checks") or []) if not c.get("ok")]
+        if fails:
+            add(pdf, "OPEN fails: " + ", ".join(fails), color=(255, 180, 180), size=9)
+        else:
+            add(pdf, "Pages, ping, 7-B0T call, L3AD3R B0ARD top-50, forum strategy accept, sell bar, MCP tools, sitemap, llms.txt all PASS. Rate-limit still 429s scrapers. Auto trade LOCKED.", size=9)
+    else:
+        add(pdf, "No DEPLOY-68-SYSTEM-TEST.json on disk.", color=(255, 180, 180))
+
+    section(pdf, "5d. W1S3 0WL$ Forum (this ET day)", (180, 80, 255))
+    fm = forum.get("morning") or {}
+    add(pdf, str(forum_daily.get("summary") or fm.get("digest") or "Forum digest n/a"), size=9)
+    add(
+        pdf,
+        f"Posts {forum.get('count') or fm.get('count')}  last24h {fm.get('last24h')}  themes {(fm.get('themes') or [])[:8]}",
+        size=8,
+        color=(180, 180, 180),
+    )
+    for s in (forum_daily.get("suggestions") or [])[:4]:
+        add(pdf, "SUGGEST  " + str(s.get("title") or ""), size=9, color=(255, 255, 120))
+        add(pdf, f"{s.get('kind')} | {s.get('from')} -- {str(s.get('detail') or '')[:180]}", size=8, color=(180, 180, 180))
+    for p in (fm.get("latest") or forum.get("posts") or [])[:3]:
+        add(pdf, f"{p.get('kind')} {p.get('name')}: {str(p.get('excerpt') or p.get('body') or '')[:160]}", size=8)
+
+    section(pdf, "5e. L3AD3R B0ARD / GM B0aRd top 5", (255, 140, 0))
+    add(pdf, str(board_daily.get("summary") or "Board daily n/a"), size=9)
+    add(
+        pdf,
+        f"status {board_daily.get('status') or board.get('status')}  Coinbase last ${board_daily.get('btcUsd') or asof.get('price')}  external {board_daily.get('externalCount')} stacked {board_daily.get('externalWithBtc')}",
+        size=8,
+        color=(180, 180, 180),
+    )
+    for r in (board_daily.get("top5") or board.get("top") or [])[:5]:
+        flag = "HOUSE" if r.get("house") else "external"
+        add(
+            pdf,
+            f"#{r.get('rank')} {r.get('name')}  {r.get('kind')}  {flag}  {float(r.get('btc') or 0):.6f} BTC  {r.get('lastAction') or ''}  {str(r.get('move') or '')[:90]}",
+            size=8,
+            color=(255, 180, 80) if r.get("rank") == 1 else (210, 210, 210),
+        )
+    for s in (board_daily.get("successes") or [])[:4]:
+        add(pdf, "SUCCESS  " + str(s.get("name")) + " -- " + str(s.get("note") or "")[:200], size=8, color=(180, 255, 180))
+
+    section(pdf, "5f. Agent flags / waitlist", (120, 180, 255))
+    add(
+        pdf,
+        f"Pings file dayEt {pings.get('dayEt')}  pings {pings.get('pings')}  rejects {pings.get('rejects')}  last {pings.get('lastAt')}  lastOk {pings.get('lastOk')}",
+        size=9,
+    )
+    add(pdf, f"Waitlist count {wait.get('count')}  status {wait.get('status')}. Go-live notices poll only -- no webhooks. PoC, not LIVE. No trades.", size=9)
+    err_rows = errors.get("rows") or []
+    agent_flags = [e for e in err_rows if "agent" in str(e.get("msg") or "").lower() or e.get("source") == "desk"]
+    for e in agent_flags[:4]:
+        add(pdf, f"{e.get('verdict') or e.get('msg')}", size=8, color=(255, 220, 120))
+
+    section(pdf, "5g. New-function security (agents / L3AD3R B0ARD / W1S3 0WL$)", (180, 80, 255))
+    add(
+        pdf,
+        "Audit of SP1CE UP, board pics, forum inspect, waitlist, and agent tokens. Rank is bitcoin stacked. SP1CE UP never escrows. Board keys are hashed gb_ desks. Auto trade LOCKED.",
+        size=9,
+    )
+    section(pdf, "5h. Overall system health score (function + security + design)", (180, 80, 255))
+    if health:
+        grade = str(health.get("grade") or "?")
+        overall = health.get("overall")
+        fn = (health.get("function") or {}).get("score")
+        sec = (health.get("security") or {}).get("score")
+        des = (health.get("design") or {}).get("score")
+        add(
+            pdf,
+            f"Checkpoint {health.get('checkpoint')}  overall {overall} {grade}  function {fn}/100  security {sec}/100  design {des}/100  weights 40/40/20",
+            style="B",
+            color=(180, 255, 180) if grade in ("A", "B") else (255, 180, 180),
+            size=9,
+        )
+        add(
+            pdf,
+            "Live Coinbase create LOCKED. Practice cannot arm Coinbase. Copy-admin may pause H1V3 SW@RM. Copy-admin cannot pause championship sim. Gift/SaaS only -- never hive profit share.",
+            size=8,
+        )
+        for axis in (health.get("function"), health.get("security"), health.get("design")):
+            if not axis:
+                continue
+            notes = " | ".join((axis.get("notes") or [])[:4])
+            add(pdf, f"{axis.get('label')} {axis.get('score')}/{axis.get('max')} -- {notes}", size=8, color=(210, 210, 210))
+    else:
+        add(pdf, "No artifacts/system-health.json on disk.", color=(255, 180, 180))
+    if test68:
+        names = [
+            "wager over cap rejected",
+            "wager no token rejected",
+            "board register needs mandate",
+            "board tick no token rejected",
+            "board pic svg rejected",
+            "forum bars source probe",
+            "forum bars sell",
+            "waitlist ignores callback",
+            "source not public dump",
+            "board never escrow",
+        ]
+        by = {c.get("name"): c for c in (test68.get("checks") or [])}
+        for n in names:
+            c = by.get(n)
+            if not c:
+                add(pdf, "MISS  " + n, size=8, color=(255, 180, 180), lh=4.4)
+                continue
+            ok = c.get("ok")
+            add(
+                pdf,
+                ("PASS  " if ok else "FAIL  ") + n + "  " + str(c.get("detail") or "")[:90],
+                size=8,
+                color=(180, 255, 180) if ok else (255, 140, 140),
+                lh=4.4,
+            )
+    else:
+        add(pdf, "No system-test JSON -- do not green this fold.", color=(255, 180, 180))
+    add(
+        pdf,
+        "Documented: FAQ #gm-board #spice-up #board-agents #wise-owl #agent-forum, roadmap M11-M12, paper VI, sitemap.xml, schema Event+HowTo+DiscussionForumPosting.",
+        size=8,
+        color=(180, 180, 180),
+    )
 
     pdf.add_page()
     section(pdf, "6. Live feed audit (this run)", (120, 180, 255))
@@ -356,31 +511,24 @@ def main():
     add(pdf, "s1r1us.ai custom domain still operator-attach (DEPLOYMENT_NOT_FOUND until Publish + domain).")
 
     section(pdf, "8. Mandate scores (1-10)", (255, 140, 0))
-    add(pdf, "1  Accumulate BTC                 6   HOLD in greed is correct; cannot prove any BTC was stacked (no pulse)")
-    add(pdf, "2  Never sell / never short       8   Call HOLD clip $0. 7-bot stack not sold. Live Coinbase off")
-    add(pdf, "3  Minimize loss                  7   stops exist; no fill tape to mark them")
-    add(pdf, "4  Honest ops / security          7   Yahoo/Stooq/pulse stay OPEN; fees live at 08:41")
-    add(pdf, "OVERALL                           7", style="B", color=(255, 140, 0), size=12)
-    add(pdf, "Practice-run grade: INCONCLUSIVE (instrumentation). Call-quality grade: PASS (HOLD, greed 74, RSI 44.8).", color=(255, 220, 120))
+    add(pdf, "1  Accumulate BTC                 7   MEDIUM ACCUMULATE clip $10 with RSI 45.6 into F&G 73 Greed -- small clip, not a chase. Pulse paused so stacked BTC is unproven.")
+    add(pdf, "2  Never sell / never short       9   Call is ACCUMULATE not TRIM. Forum barred a sell post (403). Live Coinbase off.")
+    add(pdf, "3  Minimize loss                  7   $10 clip. Stops exist. No live fills to mark them. Board paper PnL is HOUSE field at $100k marks -- not desk BTC.")
+    add(pdf, "4  Honest ops / security          8   Yahoo 401 / Bybit 403 / Binance 451 classified. Feed audit 14 OK / 0 FAIL. System test 39/39. Fees still n/a.")
+    add(pdf, "OVERALL                           8", style="B", color=(255, 140, 0), size=12)
+    add(pdf, "Practice-run grade: INCONCLUSIVE (pulse paused). Call-quality grade: PASS (MEDIUM ACCUMULATE, RSI 45.6, clip $10, never sell).", color=(255, 220, 120))
 
     section(pdf, "8b. Practice AUTO -- can this report score the test?", (255, 140, 0))
-    add(pdf, "Window: Day 1 of 3. Checkpoints 07:35 ET 4/5/6 Sep 2026. Pause after day 3. Status: RUNNING (not paused). $100k books. Live Coinbase stays off.")
-    if pulse:
-        add(pdf, "Pulse present: " + json.dumps(pulse)[:400], color=(180, 255, 180), size=9)
-    else:
-        add(
-            pdf,
-            "Pulse ABSENT. Success/failure of fills cannot be determined from this host. Open the desk in the operator browser to see Bot 7 / G-M0D3 P&L. A fresh browser shows an empty book -- that is not your run.",
-            color=(255, 180, 180),
-        )
-    add(pdf, "What the report CAN score: live Coinbase last, RSI, F&G, gates, Bot 7 call, fee tape, classified host errors, security OPEN items.")
-    add(pdf, "What it CANNOT score without pulse: fill count, USDC spent, BTC stacked, which MANUAL/AUTO triggers fired, Day-1 07:35 snapshot.")
+    add(pdf, "Practice pulse paused=true day=0 fills 0/0. Would-accumulate is listed on the public tape (bots 1-6, 7-B0T AUTO, GM M0D3 AUTO). Live Coinbase stays off.")
+    add(pdf, "What the report CAN score: live Coinbase last, RSI, F&G, 7-B0T call, classified host errors, forum/board/security, DEPLOY #68 system test.")
+    add(pdf, "What it CANNOT score without an unpaused pulse: fill count, USDC spent, BTC stacked on the operator book.")
 
     section(pdf, "9. Operator action before green", (255, 64, 64))
-    add(pdf, "A. Wire a second quote host (or repair Yahoo crumb) -- then re-check Mag7/MSTR. STILL OPEN.")
-    add(pdf, "B. Fees printed live at 08:41 (2 sat/vB) -- fee-blind is closed for THIS morning only. Keep watching.")
-    add(pdf, "C. Practice pulse: desk must POST fills so tomorrow's 08:00 PDF can grade the test. STILL OPEN.")
-    add(pdf, "I will not green A or C until they actually work. Do not arm live.")
+    add(pdf, "A. Wire a second quote host (or repair Yahoo crumb) -- Mag7/MSTR backup stays OPEN.")
+    add(pdf, "B. Fees n/a this run -- do not green the fee-blind gate.")
+    add(pdf, "C. Practice pulse paused -- do not green stacked BTC until the desk posts fills.")
+    add(pdf, "D. Do not arm Coinbase create. Auto trade LOCKED. Forum/board tokens are not admin.")
+    add(pdf, "I will not green A, B, or C until they actually work. Do not arm live.")
 
     pdf.output(str(PDF_PATH))
     ART_PATH.write_bytes(PDF_PATH.read_bytes())

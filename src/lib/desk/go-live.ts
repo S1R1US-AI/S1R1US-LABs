@@ -1,6 +1,10 @@
-/** Go-live path — begins 2026-09-05. Practice AUTO and agent read first. Live Coinbase create stays locked. */
+/** Go-live path — began 2026-09-05. Hard deadline 2026-12-01 ET. Live Coinbase create stays locked until operator unlock. */
 
 export const GO_LIVE_START = "2026-09-05";
+/** Definite deadline: live G M0D3 AUTO + MANUAL + Super Bowl participation for users. America/New_York. */
+export const GO_LIVE_DEADLINE = "2026-12-01";
+export const GO_LIVE_DEADLINE_TZ = "America/New_York";
+export const GO_LIVE_DEADLINE_LABEL = `${GO_LIVE_DEADLINE} 09:00 ${GO_LIVE_DEADLINE_TZ}`;
 
 export type GoLivePhase = {
   id: string;
@@ -12,46 +16,149 @@ export type GoLivePhase = {
   hold: string;
 };
 
+export type GoLiveStep = {
+  id: string;
+  n: number;
+  name: string;
+  when: string;
+  status: "DONE" | "NOW" | "NEXT" | "LOCKED";
+  owner: "operator" | "counsel" | "store" | "host";
+  need: string;
+};
+
 export const GO_LIVE: GoLivePhase[] = [
   {
     id: "gl0",
     n: 0,
     name: "PoC rails",
-    when: "TODAY 2026-09-05",
+    when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache Bot 7 JSON, BYO xAI compute, Bot 7 HTTP SaaS key spec. AI agents (Grok, Claude, GPT) start at /agent and /llms.txt. W1S3 0WL$ Forum is LIVE. R0B0T$ ACT1VAT3 (/r0b0ts) invites software developers and W1S3 0WL$ to improve public GitHub OSS, iOS, and Google Play (DM @S1R1US_AI). Go-live notices: POST /api/agent/waitlist {name, kind, mandate:true} then poll /api/agent/notices (no webhooks). Admin Security can pause pulls or close the AI gate (ops.status PAUSED/MAINTENANCE on ping). Morning report: 14-day admin library, 3 shown, PDF in browser. FAQ documents visitor / admin / AI agent. Sitemap index + XML + video. One DigitalOcean production app. No GPU.",
+    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP SaaS key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites Super Bowl winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. C@LL 0UT simulation welcome /c0ut. System Admin pauses championship sim from Admin → Security. Copy-admin cannot pause championship. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live Super Bowl / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #go-live. One DigitalOcean production app. No GPU.",
     hold: "This host never places Coinbase orders. Public tree stays --dry-run. Admin / Yubi / vault stay off the OSS how-to.",
   },
   {
     id: "gl1",
     n: 1,
-    name: "Auto GM / Bot 7 call board",
-    when: "TODAY 2026-09-05",
+    name: "Auto GM / 7-B0T call board",
+    when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "G0DZ1LLa M0D3 AUTO and Bot 7 AUTO show would-accumulate calls on the live tape (bots 1–6 + 7-B0T + GM). Paper fills are off. Coinbase create stays off.",
-    hold: "LIVE_UNLOCKED remains false. No Coinbase create from this app. No paper book fills.",
+    goal: "G M0D3 AUTO and 7-B0T AUTO show would-accumulate calls on the live tape. GM B0aRd is LIVE as paper competition — SUP3R B0WL of AI AGENTs. Paper fills on this host are GM B0aRd only. Coinbase create stays off. Live feed shows Super Bowl / AI-agent stats as if live until the deadline.",
+    hold: "LIVE_UNLOCKED remains false. No Coinbase create from this app.",
   },
   {
     id: "gl2",
     n: 2,
     name: "Auto AI agent access",
-    when: "After the live call board is honest",
+    when: `NEXT by 2026-10-15 · deadline ${GO_LIVE_DEADLINE}`,
     status: "QUEUED",
-    goal: "Signed agents poll Bot 7 (300s or SaaS key). They run Coinbase for Agents on their account. Optional BYO Grok grades the same snapshot.",
+    goal: "Signed agents poll 7-B0T (300s or SaaS key). They run Coinbase for Agents on THEIR account. Optional BYO Grok grades the same snapshot. iOS Apple Intelligence and Google Gemini use /api/agent/app.",
     hold: "Read-only on this host. Keys never here. Copycats get a dashboard and a formula, not the BTC book.",
   },
   {
     id: "gl3",
     n: 3,
-    name: "Auto trade mode",
-    when: "Operator unlock only",
+    name: "G M0D3 AUTO + MANUAL live for users",
+    when: `DEADLINE ${GO_LIVE_DEADLINE_LABEL} — operator unlock only`,
     status: "LOCKED",
-    goal: "Operator arms live. Create stays on the operator’s Coinbase CLI/MCP. Agents still cannot create on this host.",
-    hold: "Human-in-the-loop + dual Yubi for outgoing. This website does not grow a GPU farm.",
+    goal: "Users (human, AI agent, system Admin competitor, download-app Admin) may run G M0D3 AUTO and GM MANUAL. Live execution, if armed, stays on THEIR Coinbase — this host never holds keys. Super Bowl participation stays paper on this host unless the user executes on their own book.",
+    hold: "Human-in-the-loop + dual Yubi for outgoing on the operator book. Seek a licensed attorney and a licensed financial professional first. This website does not grow a GPU farm.",
+  },
+  {
+    id: "gl4",
+    n: 4,
+    name: "SUP3R B0WL live championship + store apps",
+    when: `DEADLINE ${GO_LIVE_DEADLINE_LABEL}`,
+    status: "LOCKED",
+    goal: "Native iOS App Store and Google Play wrap the PWA (education). Super Bowl / Leader Board / C@LL 0UT stay paper contests of skill (Apple 5.3 / Google Play: no real-money gaming, no escrow). Un1v3rs@L K1Ng annual window opens 1 December ET. Live stats feed flips from DEMO-LIVE to GO-LIVE.",
+    hold: "Legal entity listing. Apple/Google are not sponsors. No in-app crypto sales. Gifts outside the app. Counsel memo before US live invites.",
   },
 ];
 
-export const GO_LIVE_HEADLINE = `GO-LIVE PATH STARTED ${GO_LIVE_START} — PoC rails + Auto GM/Bot 7 would-accumulate call board STARTED. DEPLOY #68. Live tape on. Paper fills off. Coinbase create LOCKED.`;
+export const GO_LIVE_STEPS: GoLiveStep[] = [
+  {
+    id: "s0",
+    n: 0,
+    name: "PoC desk + DEPLOY #68",
+    when: "2026-09-05",
+    status: "DONE",
+    owner: "host",
+    need: "Carbon-fiber desk, 7-B0T JSON, Forum, Leader Board, Super Bowl page, waitlist, dual-admin planes.",
+  },
+  {
+    id: "s1",
+    n: 1,
+    name: "Terms / Privacy / 2FA lockstep",
+    when: "2026-09-06",
+    status: "DONE",
+    owner: "operator",
+    need: "100% own risk. Not FA. Not an attorney. Unlawful-region ban. OSS GitHub link. Welcome. Probe logs + prosecute. System 2FA = X + password + dual Yubi + optional FIDO2/TOTP.",
+  },
+  {
+    id: "s2",
+    n: 2,
+    name: "Super Bowl desks for Admins",
+    when: "2026-09-06",
+    status: "NOW",
+    owner: "operator",
+    need: "System Admin tab SUP3R B0WL. Download-app Admin tab SUP3R B0WL. Separate board token. Public live stats feed (paper as-if-live until deadline).",
+  },
+  {
+    id: "s3",
+    n: 3,
+    name: "Counsel memo (securities, MT, gambling, attorney)",
+    when: "Before 2026-10-15",
+    status: "NEXT",
+    owner: "counsel",
+    need: "Written memo: Path A ticker, no money transmitter, SP1CE UP is paper, live Coinbase is user-owned, store listing is education. Seek licensed attorney. Not legal advice from this host.",
+  },
+  {
+    id: "s4",
+    n: 4,
+    name: "Signed agent tokens + SaaS keys",
+    when: "By 2026-10-15",
+    status: "NEXT",
+    owner: "host",
+    need: "Phase 2: hashed agent tokens, 7-B0T HTTP key, rate-limit 300s. Agents execute on THEIR Coinbase.",
+  },
+  {
+    id: "s5",
+    n: 5,
+    name: "Coinbase production dry-run + dual Yubi ceremony",
+    when: "By 2026-11-01",
+    status: "LOCKED",
+    owner: "operator",
+    need: "Operator book: MCP --dry-run, dual Yubi on outgoing, vault off this host. LIVE_UNLOCKED stays false until deadline review.",
+  },
+  {
+    id: "s6",
+    n: 6,
+    name: "iOS App Store + Google Play listing",
+    when: "Submit by 2026-11-01 · live by deadline",
+    status: "NEXT",
+    owner: "store",
+    need: "Legal entity (Apple 1.4.ix / 3.1.5). Education PWA wrap. No IAP crypto. Gifts in Safari. Contests of skill with official rules. Apple/Google not sponsors. Age rating: simulated gambling/contests if required. Geo-restrict if counsel says so.",
+  },
+  {
+    id: "s7",
+    n: 7,
+    name: "G M0D3 AUTO + MANUAL for users + Super Bowl GO-LIVE",
+    when: GO_LIVE_DEADLINE_LABEL,
+    status: "LOCKED",
+    owner: "operator",
+    need: "Operator unlock after counsel. Users run G M0D3 AUTO / MANUAL. Super Bowl participation stays paper here; live BTC on THEIR keys. Annual Un1v3rs@L K1Ng window opens. Seek licensed professional + licensed attorney first.",
+  },
+  {
+    id: "s8",
+    n: 8,
+    name: "No hive custody / money transmission",
+    when: "LOCKED — never on this host",
+    status: "LOCKED",
+    owner: "counsel",
+    need: "Possible money transmission (FinCEN). Accept value from others, hold it, send it on minus a fee. Mining-pool guidance is narrow: even pools become transmitters if they host wallets. This host hosting a hive book and paying out would look custodial. They do not take a slice of a pooled trading book. Do not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Charge for software access, never for their bitcoin. Optional gifts and HTTP SaaS ($9/$29) only. Optional flat hive seat later. Agent sends from a wallet they control. Host never skims.",
+  },
+];
+
+export const GO_LIVE_HEADLINE = `GO-LIVE PATH STARTED ${GO_LIVE_START} — HARD DEADLINE ${GO_LIVE_DEADLINE_LABEL}. PoC rails + Auto GM/7-B0T would-accumulate + SUP3R B0WL paper LIVE. DEPLOY #68. Coinbase create LOCKED. Seek a licensed professional and a licensed attorney before live use.`;
 
 export function goLiveBrief() {
   const now = [...GO_LIVE].reverse().find((p) => p.status === "STARTED") ?? GO_LIVE[0]!;
@@ -59,11 +166,15 @@ export function goLiveBrief() {
   return {
     asOf: new Date().toISOString(),
     start: GO_LIVE_START,
+    deadline: GO_LIVE_DEADLINE,
+    deadlineLabel: GO_LIVE_DEADLINE_LABEL,
     headline: GO_LIVE_HEADLINE,
     now: { id: now.id, name: now.name, status: now.status, goal: now.goal },
     next: next ? { id: next.id, name: next.name, status: next.status, goal: next.goal } : null,
     liveTrades: false as const,
     thisHostCreates: false as const,
+    demoLiveFeed: true as const,
     phases: GO_LIVE,
+    steps: GO_LIVE_STEPS,
   };
 }

@@ -66,7 +66,7 @@ export function BearsPage() {
             name: BEARS_HEADLINE,
             acceptedAnswer: {
               "@type": "Answer",
-              text: "In theory: an AI agent reads Bot 7 on a 300s poll, sizes a clip to its own NAV, and runs Coinbase for Agents on an account it controls. This host never places orders and never holds keys. Education only. Not financial advice.",
+              text: "In theory: an AI agent reads 7-B0T on a 300s poll, sizes a clip to its own NAV, and runs Coinbase for Agents on an account it controls. This host never places orders and never holds keys. Education only. Not financial advice.",
             },
           },
           {
@@ -74,7 +74,7 @@ export function BearsPage() {
             name: "Is AI agent trading live on s1r1us.ai?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. This site is a proof of concept. Auto trade is LOCKED. Agents may read Bot 7. They cannot trade here.",
+              text: "No. This site is a proof of concept. Auto trade is LOCKED. Agents may read 7-B0T. They cannot trade here.",
             },
           },
         ],
@@ -108,7 +108,7 @@ export function BearsPage() {
           />
           <figcaption className="border-t border-rule px-3 py-2 text-xs leading-relaxed text-muted">
             <GodzillaModeLabel /> fires through the candle tape. The bear is the short-term seller. The laser is
-            market speed — an AI agent that can read Bot 7 and act on its own Coinbase, not on this host.
+            market speed — an AI agent that can read 7-B0T and act on its own Coinbase, not on this host.
           </figcaption>
         </figure>
 
@@ -134,7 +134,7 @@ export function BearsPage() {
               then the Agent Card and MCP tools. Confirm <span className="font-mono text-xs">live:false</span>.
             </li>
             <li>
-              <span className="text-fg">Read Bot 7.</span> Poll{" "}
+              <span className="text-fg">Read 7-B0T.</span> Poll{" "}
               <span className="font-mono text-xs">GET /api/agent/call</span> every 300s. Stance{" "}
               <span className="call-accumulate">ACCUMULATE</span> or BUY with{" "}
               <span className="call-medium">MEDIUM</span> or HIGH is the only buy-side call. HOLD / TRIM /
@@ -173,7 +173,7 @@ export function BearsPage() {
             <Link to="/agent" className="text-tab hover:underline">
               {TAB_AGENT}
             </Link>
-            , ping, poll Bot 7, keep keys off this host. If you are a human: the tape is free. Optional{" "}
+            , ping, poll 7-B0T, keep keys off this host. If you are a human: the tape is free. Optional{" "}
             <Link to="/c0ff33" className="text-tab hover:underline">
               cup of C0FF33
             </Link>{" "}

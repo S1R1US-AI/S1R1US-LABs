@@ -2,7 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { APP_NAME, TAB_DESK } from "@/lib/brand";
-import { LEGAL_BOTS, LEGAL_HOWEY, LEGAL_NFA, PRIVACY_PATH, PRIVACY_TITLE, TERMS_SECTIONS, TERMS_TITLE, TERMS_UPDATED } from "@/lib/legal";
+import { GITHUB_URL } from "@/lib/launch/model";
+import { LEGAL_BOTS, LEGAL_HOWEY, LEGAL_NFA, LEGAL_NOT_ATTORNEY, LEGAL_OWN_RISK, LEGAL_OSS, PRIVACY_PATH, PRIVACY_TITLE, TERMS_SECTIONS, TERMS_TITLE, TERMS_UPDATED } from "@/lib/legal";
 
 export function TermsPage() {
   return (
@@ -14,8 +15,11 @@ export function TermsPage() {
         <p className="mt-3 text-sm leading-relaxed text-muted">Updated {TERMS_UPDATED}. Using this website is agreement to these Terms.</p>
         <Panel className="mt-6" kicker="Disclaimer" title="Read this first" kickerClass="legal-purple">
           <p className="text-sm leading-relaxed text-muted">{LEGAL_NFA}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">{LEGAL_OWN_RISK}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">{LEGAL_NOT_ATTORNEY}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted">{LEGAL_HOWEY}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted">{LEGAL_BOTS}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">{LEGAL_OSS}</p>
         </Panel>
         <div className="mt-4 space-y-3">
           {TERMS_SECTIONS.map((s) => (
@@ -32,6 +36,10 @@ export function TermsPage() {
           <Link to="/faq" className="faq-kicker hover:underline">
             FAQ
           </Link>
+          <span className="px-2">|</span>
+          <a href={GITHUB_URL} className="hover:underline" target="_blank" rel="noreferrer">
+            Open source
+          </a>
           <span className="px-2">|</span>
           <Link to="/" className="hover:underline">
             {TAB_DESK}

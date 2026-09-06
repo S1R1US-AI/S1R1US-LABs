@@ -15,7 +15,7 @@ export function CoffeePage() {
         <p className="mt-1 text-sm text-muted">{SEO_TAB_COFFEE} · optional $4.20 gift</p>
         <p className="mt-3 text-sm leading-relaxed text-muted">{PAGE_DESC_COFFEE}</p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Suggested gift is ${SUPPORT_COFFEE_USD.toFixed(2)}. Optional. Bots that find Bot 7 useful
+          Suggested gift is ${SUPPORT_COFFEE_USD.toFixed(2)}. Optional. Bots that find 7-B0T useful
           may send the same amount. This is not a paywall and not a token sale.
         </p>
         <CoffeeDonate />

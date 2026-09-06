@@ -121,7 +121,7 @@ export const fetchSecurityBrief = createServerFn({ method: "POST" })
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
     const { verifyAccessToken } = await import("./access.server");
-    if (!(await verifyAccessToken(data.token))) return { ok: false as const, brief: null };
+    if (!(await verifyAccessToken(data.token))) return { ok: false as const, brief: null, badBots: null, health: null };
     try {
       const fs = await import("node:fs");
       const { ingestPersisted } = await import("./intrusion-log");
@@ -129,8 +129,34 @@ export const fetchSecurityBrief = createServerFn({ method: "POST" })
     } catch {
       /* missing */
     }
-    const { morningSecurity } = await import("./morning-ops");
-    return { ok: true as const, brief: morningSecurity() };
+    const { morningSecurity, morningBadBots } = await import("./morning-ops");
+    const { systemHealth } = await import("./system-health");
+    const { listAgentBars } = await import("./agent-bar");
+    const { badBotIntrusions } = await import("./intrusion-log");
+    const bars = listAgentBars();
+    const probes = badBotIntrusions(24).map((r) => ({
+      at: r.at,
+      kind: r.kind,
+      detail: r.detail,
+      ip: r.ip,
+    }));
+    return {
+      ok: true as const,
+      brief: morningSecurity(),
+      health: systemHealth(),
+      badBots: morningBadBots({
+        barred: bars.rows.map((r) => ({
+          id: r.id,
+          at: r.at,
+          name: r.name,
+          handle: r.handle,
+          kind: r.kind,
+          ip: r.ip,
+          reason: r.reason,
+        })),
+        probes,
+      }),
+    };
   });
 
 export const fetchAgentFlags = createServerFn({ method: "GET" }).handler(async () => {
@@ -235,3 +261,82 @@ export const fetchAuto24h = createServerFn({ method: "GET" }).handler(async () =
   const { readAuto24h } = await import("./auto-24h.server");
   return readAuto24h();
 });
+
+export const fetchGmBoard = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required", board: null };
+    }
+    const { boardAdmin } = await import("./gm-board");
+    return { ok: true as const, error: null as string | null, board: boardAdmin() };
+  });
+
+export const setGmBoardStatus = createServerFn({ method: "POST" })
+  .validator((input: { token: string; status: "LIVE" | "PAUSED" }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required", board: null };
+    }
+    const next = data.status === "LIVE" ? ("LIVE" as const) : ("PAUSED" as const);
+    const { setBoardStatus } = await import("./gm-board");
+    return { ok: true as const, error: null as string | null, board: setBoardStatus(next) };
+  });
+
+export const setGmWagerStatus = createServerFn({ method: "POST" })
+  .validator((input: { token: string; live: boolean }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required", wager: null };
+    }
+    const { setWagerLive, wagerAdmin } = await import("./board-wager");
+    return { ok: true as const, error: null as string | null, wager: setWagerLive(Boolean(data.live)), peek: wagerAdmin() };
+  });
+
+export const setChampionshipSim = createServerFn({ method: "POST" })
+  .validator((input: { token: string; status: "LIVE" | "PAUSED" }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required", sim: null };
+    }
+    const next = data.status === "PAUSED" ? ("PAUSED" as const) : ("LIVE" as const);
+    const { setSimStatus } = await import("./world-cup");
+    return { ok: true as const, error: null as string | null, sim: setSimStatus(next) };
+  });
+
+export const fetchHiveSwarm = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    const system = await verifyAccessToken(data.token);
+    const { verifyAppAdminToken } = await import("./app-admin");
+    const copy = verifyAppAdminToken(data.token);
+    if (!system && !copy) {
+      return { ok: false as const, error: "Admin session required", hive: null };
+    }
+    const { hiveAdmin } = await import("./hive-swarm");
+    return { ok: true as const, error: null as string | null, hive: hiveAdmin(), role: system ? ("system" as const) : ("app-admin" as const) };
+  });
+
+export const setHiveSwarmStatus = createServerFn({ method: "POST" })
+  .validator((input: { token: string; status: "LIVE" | "PAUSED" }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    const system = await verifyAccessToken(data.token);
+    const { verifyAppAdminToken } = await import("./app-admin");
+    const copy = verifyAppAdminToken(data.token);
+    if (!system && !copy) {
+      return { ok: false as const, error: "Admin session required", hive: null };
+    }
+    const next = data.status === "PAUSED" ? ("PAUSED" as const) : ("LIVE" as const);
+    const { setHiveStatus } = await import("./hive-swarm");
+    return {
+      ok: true as const,
+      error: null as string | null,
+      hive: setHiveStatus(next, system ? "system" : "app-admin"),
+    };
+  });

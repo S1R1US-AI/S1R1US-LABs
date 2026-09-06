@@ -120,7 +120,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "live",
       title: "No live orders from this app",
       status: "PASS",
-      detail: "Bot 7 / Wallet emit `coinbase orders preview --dry-run` and `send --dry-run` only. Paper clip is simulated at Coinbase last. You run create on CLI/MCP.",
+      detail: "7-B0T / Wallet emit `coinbase orders preview --dry-run` and `send --dry-run` only. Paper clip is simulated at Coinbase last. You run create on CLI/MCP.",
     },
     {
       id: "hitl",
@@ -216,7 +216,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "agent-rate",
       title: "Agent feed rate-limit + cache",
       status: "PASS",
-      detail: "GET /api/agent/* limited per IP+UA. Free poll 300s (1 / 25s retry). Scrapers 1 / 60s → 429. Bot 7 JSON cached 20s so 15 bots are not rebuilt every GET. SaaS key raises cap — pay for HTTP, not conviction.",
+      detail: "GET /api/agent/* limited per IP+UA. Free poll 300s (1 / 25s retry). Scrapers 1 / 60s → 429. 7-B0T JSON cached 20s so 15 bots are not rebuilt every GET. SaaS key raises cap — pay for HTTP, not conviction.",
     },
     {
       id: "byo",
@@ -486,7 +486,7 @@ export function vulnRows(): VulnRow[] {
       title: "L@B charts used synthetic FRED/MSTR/holders",
       severity: "MED",
       status: "FIXED",
-      detail: "L@B polls fetchDesk every 5 minutes. Bot-7 call uses the live tape. What-if presets last until the next poll. HTTP + snapshot cache (25s/40s) stops desk/practice/L@B/admin from stampeding the same sources.",
+      detail: "L@B polls fetchDesk every 5 minutes. 7-B0T call uses the live tape. What-if presets last until the next poll. HTTP + snapshot cache (25s/40s) stops desk/practice/L@B/admin from stampeding the same sources.",
     },
     {
       id: "fetch-stampede",
@@ -556,7 +556,7 @@ export function vulnRows(): VulnRow[] {
       title: "SSR vs sessionStorage hydration mismatch",
       severity: "MED",
       status: "FIXED",
-      detail: "useDeskTape read sessionStorage in useState, so SSR had no tape and the client first paint did. Spinner class, Bot 7 headline, and ‘just now’ vs ‘waiting’ diverged. Tape now starts empty on both trees; sessionStorage hydrates in useEffect.",
+      detail: "useDeskTape read sessionStorage in useState, so SSR had no tape and the client first paint did. Spinner class, 7-B0T headline, and ‘just now’ vs ‘waiting’ diverged. Tape now starts empty on both trees; sessionStorage hydrates in useEffect.",
     },
     {
       id: "hl-429",

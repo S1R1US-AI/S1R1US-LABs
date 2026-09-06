@@ -28,7 +28,7 @@ import {
 
 const IMG = "/owl.png";
 const ALT = seoImgAlt(
-  "AI AG3NTS (AI AGENTS) jeweled owl portrait — W1S3 0WL (Wise Owl) — wise investment decisions theoretically optimized by AI agents: Grok, Claude, GPT and Bot 7 combined for bitcoin accumulation analysis",
+  "AI AG3NTS (AI AGENTS) jeweled owl portrait — W1S3 0WL (Wise Owl) — wise investment decisions theoretically optimized by AI agents: Grok, Claude, GPT and 7-B0T combined for bitcoin accumulation analysis",
 );
 
 export function OwlPage() {
@@ -66,7 +66,7 @@ export function OwlPage() {
             name: OWL_HEADLINE,
             acceptedAnswer: {
               "@type": "Answer",
-              text: "In theory Bot 7 supplies the live tape call. Grok, Claude, and GPT each read that JSON plus their own world-model and return a second opinion. Combined, they can keep a bitcoin accumulation mandate current without this host placing orders. Education only. Not financial advice.",
+              text: "In theory 7-B0T supplies the live tape call. Grok, Claude, and GPT each read that JSON plus their own world-model and return a second opinion. Combined, they can keep a bitcoin accumulation mandate current without this host placing orders. Education only. Not financial advice.",
             },
           },
           {
@@ -74,7 +74,7 @@ export function OwlPage() {
             name: "Do Grok, Claude, or GPT trade on s1r1us.ai?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. They may ping /api/agent and read Bot 7. Execution stays on an account the agent controls. Auto trade is LOCKED.",
+              text: "No. They may ping /api/agent and read 7-B0T. Execution stays on an account the agent controls. Auto trade is LOCKED.",
             },
           },
         ],
@@ -98,7 +98,7 @@ export function OwlPage() {
         </p>
 
         <figure className="mt-5 overflow-hidden rounded-md border border-rule bg-bg">
-          <SeoImage src={IMG} desc="AI AG3NTS (AI AGENTS) jeweled owl portrait — W1S3 0WL (Wise Owl) — wise investment decisions theoretically optimized by AI agents: Grok, Claude, GPT and Bot 7 combined for bitcoin accumulation analysis" width={1024} height={1024} className="mx-auto h-auto w-full max-w-xl" />
+          <SeoImage src={IMG} desc="AI AG3NTS (AI AGENTS) jeweled owl portrait — W1S3 0WL (Wise Owl) — wise investment decisions theoretically optimized by AI agents: Grok, Claude, GPT and 7-B0T combined for bitcoin accumulation analysis" width={1024} height={1024} className="mx-auto h-auto w-full max-w-xl" />
           <figcaption className="border-t border-rule px-3 py-2 text-xs leading-relaxed text-muted">
             The owl is patience with many eyes. Tape, models, and agents look at the same bitcoin. Wisdom
             is combining them without rushing a clip.
@@ -113,25 +113,25 @@ export function OwlPage() {
         <Panel kicker="Wisdom" title="A wise decision is slow on purpose" className="mt-4" kickerClass="text-oss">
           <p className="text-sm leading-relaxed text-muted">
             Chasing the last tick is not analysis. A wise bitcoin decision waits for orthogonal
-            confirmation: RSI vs its tape average, fear vs greed, walls, funding, ETF flow, then a Bot 7
+            confirmation: RSI vs its tape average, fear vs greed, walls, funding, ETF flow, then a 7-B0T
             stance of <span className="call-accumulate">ACCUMULATE</span> or BUY — not a headline. In
             theory an AI agent can apply that filter every poll. Humans forget. Models drift. The tape
             does not. Combining them is how a mandate stays current without becoming a day-trade.
           </p>
         </Panel>
 
-        <Panel kicker="Combine" title="Bot 7 + Grok + Claude + GPT" className="mt-3" kickerClass="text-oss">
+        <Panel kicker="Combine" title="7-B0T + Grok + Claude + GPT" className="mt-3" kickerClass="text-oss">
           <p className="text-sm leading-relaxed text-muted">
             Each force sees a different slice. Together they are a committee, not a hive-mind average.
           </p>
           <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
             <li>
-              <span className="text-fg">Bot 7.</span> Live public tape. Conviction + stance + clip +
+              <span className="text-fg">7-B0T.</span> Live public tape. Conviction + stance + clip +
               dry-run CLI. No LLM in the call. This is the clock.
             </li>
             <li>
               <span className="text-fg">Grok.</span> {TAB_COMPUTE} ({SEO_TAB_COMPUTE}) — Ask Grok on
-              your xAI key after X login. Strategy question against the current Bot 7 JSON. Operator
+              your xAI key after X login. Strategy question against the current 7-B0T JSON. Operator
               SuperGrok is separate.
             </li>
             <li>
@@ -142,7 +142,7 @@ export function OwlPage() {
             </li>
             <li>
               <span className="text-fg">GPT.</span> Actions via{" "}
-              <span className="font-mono text-xs">/.well-known/ai-plugin.json</span>. Same Bot 7 call.
+              <span className="font-mono text-xs">/.well-known/ai-plugin.json</span>. Same 7-B0T call.
               Same 300s politeness.
             </li>
           </ul>
@@ -150,7 +150,7 @@ export function OwlPage() {
 
         <Panel kicker="Theory" title="How the committee would stay current" className="mt-3" kickerClass="text-oss">
           <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed text-muted">
-            <li>Poll Bot 7. If stance is HOLD / WAIT / TRIM, all models stand down.</li>
+            <li>Poll 7-B0T. If stance is HOLD / WAIT / TRIM, all models stand down.</li>
             <li>
               If <span className="call-medium">MEDIUM</span>{" "}
               <span className="call-accumulate">ACCUMULATE</span> (or HIGH BUY), each agent writes a
