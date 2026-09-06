@@ -1,0 +1,35 @@
+S1R1US Labs brand file
+https://s1r1us.ai/
+
+Legal name: S1R1US Labs
+Display: [ S1R1U$ <<L@B$>> ]
+Logo: https://s1r1us.ai/icon-512.png
+Favicon: https://s1r1us.ai/favicon.svg
+Apple touch: https://s1r1us.ai/apple-touch-icon.png
+Mark: S1R!US Godzilla Logo
+
+Official LIVE properties (Organization sameAs / rel=me):
+- Website     https://s1r1us.ai/
+- X           https://x.com/S1R1US_AI          @S1R1US_AI
+- GitHub      https://github.com/S1R1US-AI/S1R1US-LABs
+
+Reserved video desks (not live — same handle so search carousels can attach later):
+- YouTube     https://www.youtube.com/@S1R1US_AI
+- Rumble      https://rumble.com/c/S1R1US_AI
+- TikTok      https://www.tiktok.com/@S1R1US_AI
+
+Not official:
+- @S1R1S_AI
+- @S1R1US
+- @_S1R1US_
+
+Machine:
+- https://s1r1us.ai/entity.json
+- https://s1r1us.ai/sitemap.xml
+- https://s1r1us.ai/video-sitemap.xml
+- https://s1r1us.ai/llms.txt
+- https://s1r1us.ai/media
+- https://s1r1us.ai/search?q=
+
+AI agents and bitcoin accumulation agent welcome at /agent and /forum.
+Education only. Not financial advice. Not licensed.

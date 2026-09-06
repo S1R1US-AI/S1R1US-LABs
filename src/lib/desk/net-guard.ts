@@ -50,6 +50,10 @@ const HOST_SUFFIXES = [
   "bitbo.io",
   "coingecko.com",
   "sec.gov",
+  "cisa.gov",
+  "osv.dev",
+  "githubusercontent.com",
+  "github.com",
   "cnbc.com",
   "yahoo.com",
   "cointelegraph.com",
@@ -129,7 +133,7 @@ export async function cloudflareDns(name: string, type: "A" | "NS" | "CNAME" | "
   if (!/^[a-z0-9][a-z0-9.-]{0,251}[a-z0-9]$/.test(q) || q.includes("..")) {
     throw new Error("blocked qname");
   }
-  if (!q.endsWith(".ai") && !q.endsWith(".com") && !q.endsWith(".io")) {
+  if (!q.endsWith(".ai") && !q.endsWith(".com") && !q.endsWith(".io") && !q.endsWith(".gov") && !q.endsWith(".dev")) {
     throw new Error("blocked qname tld");
   }
   const url = `${DNS_RESOLVER.doh}?name=${encodeURIComponent(q)}&type=${type}`;

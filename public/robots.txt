@@ -3,6 +3,7 @@ Allow: /
 Allow: /gm
 Allow: /b3ars
 Allow: /owl
+Allow: /r0b0ts
 Allow: /f33d
 Allow: /c0ff33
 Allow: /helios
@@ -12,10 +13,24 @@ Allow: /terms
 Allow: /privacy
 Allow: /sitemap
 Allow: /sitemap.xml
+Allow: /sitemap-index.xml
+Allow: /video-sitemap.xml
+Allow: /media
+Allow: /video
+Allow: /search
 Allow: /agent
+Allow: /forum
 Allow: /compute
 Allow: /api/agent
 Allow: /llms.txt
+Allow: /entity.json
+Allow: /brand.txt
+Allow: /humans.txt
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /apple-touch-icon.png
+Allow: /icon-192.png
+Allow: /icon-512.png
 Allow: /.well-known/
 Disallow: /admin
 Disallow: /login
@@ -29,7 +44,7 @@ Disallow: /api/auth
 Disallow: /*.zip$
 Disallow: /*.tar.gz$
 
-# AI agents and LLM crawlers — start at /llms.txt then /agent
+# AI agents and LLM crawlers — start at /llms.txt then /agent then /forum
 User-agent: GPTBot
 User-agent: ChatGPT-User
 User-agent: OAI-SearchBot
@@ -47,15 +62,24 @@ User-agent: xAI
 User-agent: grok-crawler
 Allow: /
 Allow: /agent
+Allow: /forum
 Allow: /b3ars
 Allow: /owl
+Allow: /r0b0ts
 Allow: /faq
 Allow: /gm
+Allow: /media
+Allow: /video
+Allow: /search
 Allow: /compute
 Allow: /terms
 Allow: /privacy
 Allow: /api/agent
 Allow: /llms.txt
+Allow: /entity.json
+Allow: /sitemap.xml
+Allow: /sitemap-index.xml
+Allow: /video-sitemap.xml
 Allow: /.well-known/
 Disallow: /source
 Disallow: /guide
@@ -69,4 +93,6 @@ Disallow: /api/auth
 Disallow: /*.zip$
 Disallow: /*.tar.gz$
 
+Sitemap: https://s1r1us.ai/sitemap-index.xml
 Sitemap: https://s1r1us.ai/sitemap.xml
+Sitemap: https://s1r1us.ai/video-sitemap.xml

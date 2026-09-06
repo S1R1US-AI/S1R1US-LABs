@@ -61,7 +61,7 @@ export function UserButton({ hideLabel }: { hideLabel?: boolean }) {
       {user.profileImageUrl ? (
         <img
           src={user.profileImageUrl}
-          alt=""
+          alt={`${label} avatar`}
           className="h-8 w-8 rounded-full object-cover"
         />
       ) : (

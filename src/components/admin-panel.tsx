@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Copy, Lock, RefreshCw, Shield } from "lucide-react";
 import { money, CallWords, bannerTone } from "@/components/helios-card";
 import { AccessDesk } from "@/components/security-page";
+import { SecurityDesk } from "@/components/security-desk";
 import { DeskErrorLog } from "@/components/desk-error-log";
 import { MorningReportPdf } from "@/components/morning-report-pdf";
 import { LaunchDesk } from "@/components/launch-desk";
@@ -16,7 +17,7 @@ import { XRenewWhenAdmin } from "@/components/renew-password";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell } from "@/components/shell";
 import { APP_NAME } from "@/lib/brand";
-import { addDeskAccount, connectXAdmin, deleteDeskAccount, disconnectXAdmin, enrollYubi, listDeskAccounts, loadDeskVault, removeYubi, resetSecondFactor, saveDeskVault, secondFactorStatus, trackProfitWallet, trackUsdcWallet } from "@/lib/desk/access";
+import { addDeskAccount, connectXAdmin, deleteDeskAccount, disconnectXAdmin, enrollYubi, listDeskAccounts, loadDeskVault, removeYubi, resetSecondFactor, saveDeskVault, secondFactorStatus, setYubiPanelLock, trackProfitWallet, trackUsdcWallet, webauthnBeginRegister, webauthnFinishRegister } from "@/lib/desk/access";
 import { adminStatus } from "@/lib/desk/grok";
 import { useOperator } from "@/lib/desk/operator";
 import { BOT_ROSTER, CYCLE_ARCH, DATA_FEEDS, RISK_RULES, SYSTEM_REVIEWED } from "@/lib/desk/policy";
@@ -55,20 +56,23 @@ export function AdminPanel() {
   const [loading, setLoading] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [tab, setTab] = useState<"console" | "wallet" | "paper" | "coin" | "website" | "access">("wallet");
+  const [tab, setTab] = useState<"console" | "wallet" | "paper" | "coin" | "website" | "access" | "security">("wallet");
 
   useEffect(() => setMounted(true), []);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.location.hash.replace(/^#/, "") === "access") setTab("access");
+    const h = window.location.hash.replace(/^#/, "");
+    if (h === "access") setTab("access");
+    if (h === "security") setTab("security");
   }, []);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (tab === "access") {
-      if (window.location.hash !== "#access") {
-        window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#access`);
+    if (tab === "access" || tab === "security") {
+      const want = `#${tab}`;
+      if (window.location.hash !== want) {
+        window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${want}`);
       }
-    } else if (window.location.hash === "#access") {
+    } else if (window.location.hash === "#access" || window.location.hash === "#security") {
       window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
     }
   }, [tab]);
@@ -143,6 +147,8 @@ export function AdminPanel() {
                     ? "Portal to the public s1r1us.ai tape. Live build in this app. No launch notes on that page."
                     : tab === "access"
                       ? "Secure access — Coinbase MCP posture, protocol status, vulnerability review. Admin only."
+                      : tab === "security"
+                        ? "Firewall, intrusion log, Electrovolt audit, Hacktron-style hunter. Admin only."
                 : `Fund control for ${APP_NAME}. Session, Grok cap, two YubiKeys, risk rules, Coinbase MCP posture.`}
           </p>
           {err ? <p className="mt-3 text-sm text-down">{err}</p> : null}
@@ -208,6 +214,16 @@ export function AdminPanel() {
             >
               Access
             </button>
+            <button
+              type="button"
+              className={cn(
+                "inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium",
+                tab === "security" && "is-on",
+              )}
+              onClick={() => setTab("security")}
+            >
+              Security
+            </button>
           </nav>
 
           {tab === "console" || tab === "wallet" ? <PracticeDesk /> : null}
@@ -239,6 +255,8 @@ export function AdminPanel() {
             <WebsitePortal />
           ) : tab === "access" ? (
             <AccessDesk />
+          ) : tab === "security" ? (
+            <SecurityDesk />
           ) : tab === "wallet" ? (
             <>
               <TreasuryPanel />
@@ -1278,12 +1296,16 @@ function YubiPanel() {
     yubiCount: number;
     yubiSlots: number;
     yubiKeys: { slot: string; publicId: string }[];
+    panelLock: boolean;
+    webauthnCount: number;
+    webauthn: { id: string; credentialId: string }[];
   } | null>(null);
   const [otp, setOtp] = useState("");
   const [current, setCurrent] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [ok, setOk] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [fidoOk, setFidoOk] = useState(false);
 
   async function refresh() {
     try {
@@ -1293,6 +1315,9 @@ function YubiPanel() {
         yubiCount: row.yubiCount ?? 0,
         yubiSlots: row.yubiSlots ?? 2,
         yubiKeys: row.yubiKeys ?? [],
+        panelLock: Boolean(row.panelLock),
+        webauthnCount: row.webauthnCount ?? 0,
+        webauthn: row.webauthn ?? [],
       });
     } catch {
       setSt(null);
@@ -1301,11 +1326,15 @@ function YubiPanel() {
 
   useEffect(() => {
     void refresh();
+    void import("@/lib/desk/webauthn-client").then((m) => setFidoOk(m.webauthnAvailable()));
   }, []);
 
   const count = st?.yubiCount ?? 0;
   const slots = st?.yubiSlots ?? 2;
   const firstLogin = count < slots;
+  const fidoCount = st?.webauthnCount ?? 0;
+  const hasKey = count > 0 || fidoCount > 0;
+  const lockOn = Boolean(st?.panelLock);
 
   async function enroll(value: string) {
     const tap = value.trim().toLowerCase();
@@ -1333,14 +1362,104 @@ function YubiPanel() {
     await refresh();
   }
 
+  async function enrollFido() {
+    setBusy(true);
+    setErr(null);
+    setOk(null);
+    try {
+      const { clientOrigin, createYubiCredential } = await import("@/lib/desk/webauthn-client");
+      const origin = clientOrigin();
+      const begin = await webauthnBeginRegister({ data: { token, origin } });
+      if (!begin.ok) {
+        setErr(begin.error);
+        setBusy(false);
+        return;
+      }
+      const cred = await createYubiCredential(begin.options);
+      const res = await webauthnFinishRegister({
+        data: {
+          token,
+          origin,
+          challenge: cred.challenge,
+          credentialId: cred.credentialId,
+          publicKey: cred.publicKey,
+          alg: cred.alg,
+          transports: cred.transports,
+          clientDataJSON: cred.clientDataJSON,
+        },
+      });
+      if (!res.ok) {
+        setErr(res.error);
+        setBusy(false);
+        return;
+      }
+      log("yubi", `FIDO2 YubiKey enrolled (${res.credentialId})`);
+      setOk(`FIDO2 key saved (${res.credentialId}). Yubico: enroll a backup key too.`);
+      await refresh();
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "FIDO2 enrollment failed.");
+    }
+    setBusy(false);
+  }
+
+  async function toggleLock(on: boolean) {
+    setBusy(true);
+    setErr(null);
+    setOk(null);
+    const res = await setYubiPanelLock({ data: { token, on } });
+    setBusy(false);
+    if (!res.ok) {
+      setErr(res.error);
+      return;
+    }
+    log("yubi", on ? "Admin panel locked behind YubiKey" : "Admin panel YubiKey lock off");
+    setOk(
+      on
+        ? "Admin panel now requires a physical YubiKey after X + name + password."
+        : "YubiKey lock off. X + name + password opens Admin again.",
+    );
+    await refresh();
+  }
+
   return (
-    <Panel className="mt-4" kicker="First login protocol" title="YubiKey × 2 (Yubico OTP)">
+    <Panel className="mt-4" kicker="Yubico" title="YubiKey — OTP, FIDO2, optional panel lock">
       <p className="text-sm leading-relaxed text-muted">
-        First login is name + password only. Then enroll <strong>two</strong> YubiKeys here — primary
-        and backup. Either key approves outgoing BTC/USDC. Not required to open the desk. Slot 1 on
-        each key must be Yubico OTP. Short-press with the field focused.
+        First login is name + password only. Enroll <strong>two</strong> YubiKeys for outgoing BTC/USDC
+        (Yubico OTP, slot 1, short-press). Optionally lock the admin panel behind a physical key —
+        default <strong>off</strong>. Official:{" "}
+        <a className="text-brand underline" href="https://www.yubico.com/" target="_blank" rel="noreferrer">
+          yubico.com
+        </a>
+        .
       </p>
-      <ol className="mt-3 grid gap-2 sm:grid-cols-2">
+
+      <div className="mt-4 rounded-md border border-rule bg-bg px-3 py-3">
+        <p className="font-mono text-[11px] tracking-[0.08em] text-muted uppercase">Admin panel lock</p>
+        <p className={cn("mt-1 font-mono text-sm", lockOn ? "text-up" : "text-accent")}>
+          {lockOn ? "ON — physical YubiKey required to open Admin" : "OFF — X + name + password is enough"}
+        </p>
+        <p className="mt-2 text-xs leading-relaxed text-muted">
+          Optional extra door. Cannot turn on without an enrolled YubiKey (OTP or FIDO2). Cannot remove
+          the last key while this is on. Yubico recommends two keys (primary + backup). Outgoing BTC/USDC
+          still needs both OTP keys. Official WebAuthn: UV required, hardware-bound, sign-count clone
+          detection.
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Button variant={lockOn ? undefined : "primary"} disabled={busy || lockOn || !hasKey} onClick={() => void toggleLock(true)}>
+            Lock admin behind YubiKey
+          </Button>
+          <Button disabled={busy || !lockOn} onClick={() => void toggleLock(false)}>
+            Turn lock off
+          </Button>
+        </div>
+        {!hasKey ? <p className="mt-2 text-xs text-accent">Enroll a YubiKey below before turning the lock on.</p> : null}
+        {hasKey && (count + fidoCount) < 2 ? (
+          <p className="mt-2 text-xs text-accent">Yubico: enroll a second key (backup) before relying on this lock.</p>
+        ) : null}
+      </div>
+
+      <p className="mt-4 font-mono text-[11px] tracking-[0.08em] text-muted uppercase">Yubico OTP × 2 (outgoing)</p>
+      <ol className="mt-2 grid gap-2 sm:grid-cols-2">
         {[1, 2].map((n) => {
           const row = st?.yubiKeys.find((k) => k.slot === String(n));
           return (
@@ -1355,9 +1474,11 @@ function YubiPanel() {
       </ol>
       <p className="mt-3 font-mono text-sm">
         {firstLogin ? (
-          <span className="text-accent">First login — enroll {slots - count} more key{slots - count === 1 ? "" : "s"} ({count}/{slots})</span>
+          <span className="text-accent">
+            Enroll {slots - count} more OTP key{slots - count === 1 ? "" : "s"} ({count}/{slots})
+          </span>
         ) : (
-          <span className="text-up">Both keys enrolled</span>
+          <span className="text-up">Both OTP keys enrolled</span>
         )}
       </p>
       <form
@@ -1369,7 +1490,7 @@ function YubiPanel() {
       >
         <div className="min-w-48 flex-1">
           <label className="block text-sm" htmlFor="enroll-yubi">
-            {count === 0 ? "Tap YubiKey 1" : count === 1 ? "Tap YubiKey 2" : "Slots full"}
+            {count === 0 ? "Tap YubiKey 1" : count === 1 ? "Tap YubiKey 2" : "OTP slots full"}
           </label>
           <input
             id="enroll-yubi"
@@ -1389,9 +1510,40 @@ function YubiPanel() {
           />
         </div>
         <Button type="submit" variant="primary" disabled={busy || count >= slots}>
-          Enroll key {Math.min(count + 1, slots)}
+          Enroll OTP {Math.min(count + 1, slots)}
         </Button>
       </form>
+
+      <p className="mt-6 font-mono text-[11px] tracking-[0.08em] text-muted uppercase">FIDO2 / WebAuthn (panel lock)</p>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
+        Hardware-bound YubiKey 5 / Security Key. User verification (PIN) required — Yubico FIDO2 MFA.
+        Cross-platform only (not a phone passkey). Enroll a backup.{" "}
+        <a className="text-brand underline" href="https://developers.yubico.com/WebAuthn/" target="_blank" rel="noreferrer">
+          developers.yubico.com/WebAuthn
+        </a>
+      </p>
+      <ol className="mt-2 grid gap-2 sm:grid-cols-2">
+        {(st?.webauthn ?? []).length ? (
+          (st?.webauthn ?? []).map((k, i) => (
+            <li key={k.id} className="rounded-md border border-rule bg-bg px-3 py-2">
+              <p className="font-mono text-[11px] tracking-[0.08em] text-muted uppercase">FIDO2 {i + 1}</p>
+              <p className="mt-1 font-mono text-sm text-up">{k.credentialId}</p>
+            </li>
+          ))
+        ) : (
+          <li className="rounded-md border border-rule bg-bg px-3 py-2">
+            <p className="font-mono text-[11px] tracking-[0.08em] text-muted uppercase">FIDO2</p>
+            <p className="mt-1 font-mono text-sm text-accent">none enrolled</p>
+          </li>
+        )}
+      </ol>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Button type="button" variant="primary" disabled={busy || !fidoOk || fidoCount >= 4} onClick={() => void enrollFido()}>
+          Enroll FIDO2 YubiKey
+        </Button>
+        {!fidoOk ? <p className="self-center text-xs text-muted">This browser has no WebAuthn.</p> : null}
+      </div>
+
       <form
         className="mt-4 flex flex-wrap items-end gap-2"
         onSubmit={(e) => {
@@ -1422,13 +1574,39 @@ function YubiPanel() {
             onChange={(e) => setCurrent(e.target.value)}
             className="mt-1 h-11 w-full rounded-md border border-rule bg-bg px-3 text-sm text-fg"
             required
-            disabled={!st?.yubi}
+            disabled={!hasKey}
           />
         </div>
-        <Button type="submit" disabled={!st?.yubi}>
+        <Button type="submit" disabled={!hasKey}>
           Remove all keys
         </Button>
       </form>
+      {lockOn ? (
+        <p className="mt-2 text-xs text-accent">Turn the panel lock off before removing the last physical key.</p>
+      ) : null}
+
+      <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
+        <li>
+          <a className="underline hover:text-fg" href="https://www.yubico.com/setup/" target="_blank" rel="noreferrer">
+            Setup
+          </a>
+        </li>
+        <li>
+          <a className="underline hover:text-fg" href="https://www.yubico.com/products/how-the-yubikey-works/" target="_blank" rel="noreferrer">
+            How the YubiKey works
+          </a>
+        </li>
+        <li>
+          <a className="underline hover:text-fg" href="https://developers.yubico.com/OTP/" target="_blank" rel="noreferrer">
+            Yubico OTP
+          </a>
+        </li>
+        <li>
+          <a className="underline hover:text-fg" href="https://developers.yubico.com/WebAuthn/WebAuthn_Developer_Guide/Best_Practices.html" target="_blank" rel="noreferrer">
+            WebAuthn best practices
+          </a>
+        </li>
+      </ul>
       {err ? <p className="mt-2 text-sm text-down">{err}</p> : null}
       {ok ? <p className="mt-2 text-sm text-up">{ok}</p> : null}
     </Panel>

@@ -32,8 +32,16 @@ Operating cost offsets: SuperGrok (operator), BYO compute (visitor xAI key), Bot
 - GM — Godzilla mode. Isolated sleeve. AUTO may day-trade the sleeve only, never the 7-bot stack.
 - F33D — Feed Hosting. Optional gifts for hosting, domain, iOS / Play apps.
 - AI Agents — Call1ng All B0Ts. Read-only Bot 7 JSON, MCP, A2A. This host never trades.
-- FAQ — names, mandate, go-live, Terms.
+- FAQ — names, mandate, go-live, Terms. FAQ pages include B3AT TH3 B3AR$, AI AG3NTS, and R0B0T$ ACT1VAT3 (Robots Activate): software developers and AI agents improving public GitHub, iOS, and Google Play. DM @S1R1US_AI.
 - @S1R1US_AI — official company X. Not admin. Not @S1R1S_AI.
+
+## R0B0T$ ACT1VAT3
+
+Call to action: https://s1r1us.ai/r0b0ts
+
+Software developers: fork this repo, open PRs (no vault, no Yubi, no Coinbase create), DM https://x.com/S1R1US_AI.
+
+AI agents: hang out in W1S3 0WL$ Forum. Discuss only public GitHub improvements that help 7-B0T and GM accumulate bitcoin. Never request host source.
 
 ## Run
 

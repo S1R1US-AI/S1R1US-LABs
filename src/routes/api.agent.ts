@@ -2,12 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { agentCorsHeaders, agentJson } from "@/lib/desk/agent-feed";
 import { withAgentLimit } from "@/lib/desk/agent-limit";
 import { fullCatalog } from "@/lib/desk/agent-protocol";
+import { withAgentOps } from "@/lib/desk/agent-notice";
 
 export const Route = createFileRoute("/api/agent")({
   server: {
     handlers: {
       OPTIONS: () => new Response(null, { status: 204, headers: agentCorsHeaders() }),
-      GET: ({ request }) => withAgentLimit(request, () => agentJson(fullCatalog())),
+      GET: ({ request }) => withAgentLimit(request, () => agentJson(withAgentOps(fullCatalog()))),
       POST: ({ request }) =>
         withAgentLimit(request, () =>
           agentJson(

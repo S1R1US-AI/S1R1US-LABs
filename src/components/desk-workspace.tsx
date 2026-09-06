@@ -10,6 +10,7 @@ import { WorkspaceTape } from "@/components/tape-charts";
 import { GmRainbow } from "@/components/godzilla-mark";
 import { AUTO_RUN_CASH, AUTO_RUN_LABEL } from "@/lib/desk/auto-run";
 import { DEFAULT_GM_VARS, GM_NAME, gmCall } from "@/lib/desk/gm";
+import { SeoImage } from "@/components/seo-image";
 
 function isPurchase(stance: string | undefined) {
   if (!stance) return false;
@@ -266,10 +267,11 @@ export function DeskWorkspace({
           ) : null}
           </div>
           <div className="gm-holo mt-2 flex-1">
-            <img
+            <SeoImage
               src="/gzilla-holo.jpg"
-              alt="G0DZ1LLa M0D3 techno Godzilla hologram. Godzilla mode. AI trading bots. Bitcoin trading agents. AI AGENTS. AI Bitcoin hedge fund desk at S1R1US Labs."
-              title="G0DZ1LLa M0D3 hologram — Godzilla mode, AI trading bots, Bitcoin trading agents"
+              desc="G0DZ1LLa M0D3 techno Godzilla hologram. Godzilla mode. AI AGENTS. AI Bitcoin hedge fund desk at S1R1US Labs."
+              width={640}
+              height={640}
             />
           </div>
         </aside>

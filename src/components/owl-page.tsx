@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
+import { SeoImage } from "@/components/seo-image";
 import {
   APP_NAME,
   LABS_NAME,
@@ -45,7 +46,7 @@ export function OwlPage() {
         image: `${origin}${IMG}`,
         author: { "@type": "Organization", name: LABS_NAME, url: SEO_CANONICAL },
         publisher: { "@type": "Organization", name: LABS_NAME, url: SEO_CANONICAL },
-        about: ["wise investment", "AI agent trading", "Grok", "Claude", "GPT", SEO_TAB_AGENT],
+        about: ["AI agents", "bitcoin accumulation agent", "wise investment", "AI agent trading", "Grok", "Claude", "GPT", SEO_TAB_AGENT],
       },
       {
         "@type": "ImageObject",
@@ -97,7 +98,7 @@ export function OwlPage() {
         </p>
 
         <figure className="mt-5 overflow-hidden rounded-md border border-rule bg-bg">
-          <img src={IMG} alt={ALT} title={ALT} width={1024} height={1024} className="mx-auto h-auto w-full max-w-xl" />
+          <SeoImage src={IMG} desc="AI AG3NTS (AI AGENTS) jeweled owl portrait — W1S3 0WL (Wise Owl) — wise investment decisions theoretically optimized by AI agents: Grok, Claude, GPT and Bot 7 combined for bitcoin accumulation analysis" width={1024} height={1024} className="mx-auto h-auto w-full max-w-xl" />
           <figcaption className="border-t border-rule px-3 py-2 text-xs leading-relaxed text-muted">
             The owl is patience with many eyes. Tape, models, and agents look at the same bitcoin. Wisdom
             is combining them without rushing a clip.

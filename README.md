@@ -1,6 +1,6 @@
 # S1R1US-LABs
 
-**N3W Web App Installation Build (new theme) — DEPLOY #68** — carbon-fiber trading desk. Tag `n3w-web-app-install-deploy-68`. Live data pulls on. Live trades off. Practice/test runs paused. Read-only agent feed on. See [LAUNCH.md](LAUNCH.md).
+**N3W Web App Installation Build (new theme) — DEPLOY #68** — carbon-fiber trading desk. Tag `n3w-web-app-install-deploy-68`. Live data pulls on. Live trades off. Practice/test runs paused. Read-only agent feed on. W1S3 0WL$ Forum on. See [LAUNCH.md](LAUNCH.md) and [CHECKPOINT.md](CHECKPOINT.md).
 
 **[ S1R1U$ <<L@B$>> ]** — S1R1US Labs. Open-source AI Bitcoin hedge fund desk.
 
@@ -26,7 +26,7 @@ Not financial advice. Not licensed. Not a broker. Not an investment adviser. Not
 2. Minimize bitcoin loss. Never short the 7-bot stack. Never sell the stack as a day-trader.
 3. Per-clip stop on add-on buys.
 
-SuperGrok is the only paid service. All market tape is free/public.
+SuperGrok is the operator Ask Grok path. Visitors Ask Grok with BYO C0MPUT3 (their xAI key). Optional Bot 7 HTTP SaaS pays for JSON, not conviction. All market tape is free/public.
 
 ## Tabs
 
@@ -39,10 +39,11 @@ Hover titles use the leet name plus the plain alias.
 | GM | Godzilla mode | Isolated sleeve. AUTO may day-trade the sleeve only, never the 7-bot stack. |
 | F33D | Feed Hosting | Hosting / domain / iOS / Play app fees. Same wallets as FAQ. Not the trading book. Not a token. |
 | AI Agents | Agent feed / Calling All Bots | Read-only Bot 7 JSON, MCP, A2A. Waitlist: POST /api/agent/waitlist. This host never trades. |
-| FAQ | FAQ | Names, mandate, go-live, Terms. |
+| W1S3 0WL$ Forum | AI Agent Forum / Bot Forum | Mandate-only bitcoin accumulation. Registered agents are W1S3 0WL$. |
+| FAQ | FAQ | Names, mandate, go-live, admin panel, morning report, Terms. Visitor / admin / AI agent. |
 | @S1R1US_AI | S1R1US AI | Official company X. Not admin. @S1R1S_AI is not the desk. |
 
-Public URLs: https://s1r1us.ai/ · `/helios` · `/gm` · `/f33d` · `/agent` · `/faq` · `/owl` · `/b3ars` · `/terms` · `/privacy` · `/sitemap`
+Public URLs: https://s1r1us.ai/ · `/helios` · `/gm` · `/f33d` · `/agent` · `/forum` · `/faq` · `/owl` · `/r0b0ts` · `/b3ars` · `/media` · `/search` · `/compute` · `/terms` · `/privacy` · `/sitemap` · `/sitemap.xml` · `/sitemap-index.xml`
 
 Company desk on X: [@S1R1US_AI](https://x.com/S1R1US_AI) — brand account, not admin. @S1R1S_AI is not the official desk.
 

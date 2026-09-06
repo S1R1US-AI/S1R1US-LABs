@@ -10,7 +10,7 @@ import { nitro } from "nitro/vite";
 import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
-import { isMigrationFile } from "./scripts/migration-plan.mjs";
+import { AGENT_SOURCE_MESSAGE, agentSourceDenied, PUBLIC_GITHUB } from "./src/lib/desk/agent-source-guard";
 
 /** The files `src/lib/db.ts` globs — same directory, same non-recursive scope. */
 function hasGlobbedMigrations(root: string): boolean {
@@ -31,56 +31,96 @@ function hasGlobbedMigrations(root: string): boolean {
  * PGLite instance it never queries.
  */
 function agentGuardDevPlugin(): Plugin {
-  const deny = [
-    "/source",
-    "/guide",
-    "/security",
-    "/admin",
-    "/launch",
-    "/renew",
-    "/s1r1us-labs-github.zip",
-    "/s1r1us-labs-github.tar.gz",
-    "/helios-desk-guide.md",
-    "/helios-desk-guide.pdf",
-    "/dockerfile",
-    "/.git",
-    "/src",
-    "/.output",
-    "/node_modules",
-    "/.env",
-  ];
-  const agentUa =
-    /GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|anthropic-ai|Claude-Web|Claude-User|Grok\/|xAI-Grok|CCBot|Bytespider|PerplexityBot|Google-Extended|Amazonbot|Applebot-Extended|meta-externalagent|cohere-ai|YouBot|Diffbot/i;
   return {
     name: "s1r1us-agent-guard",
     apply: "serve",
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const ua = String(req.headers["user-agent"] ?? "");
-        if (!agentUa.test(ua)) {
-          next();
-          return;
-        }
         const path = (req.url ?? "").split("?", 1)[0]?.replace(/\/+$/, "") || "/";
-        const p = path.toLowerCase();
-        const blocked =
-          deny.some((d) => p === d || p.startsWith(`${d}/`)) ||
-          (p.includes("/.") && !p.startsWith("/.well-known"));
-        if (!blocked) {
+        if (!agentSourceDenied(path, ua)) {
           next();
           return;
         }
         res.statusCode = 403;
         res.setHeader("content-type", "application/json; charset=utf-8");
+        res.setHeader("cache-control", "no-store");
         res.end(
           JSON.stringify({
             ok: false,
+            blocked: true,
+            welcomeBack: false,
+            doNotReturn: true,
+            reason: "source",
             trade: false,
             sourceAccess: false,
-            error: "Denied. Agents may read /api/agent/call only. Source and internals are not available.",
+            proprietary: true,
+            github: PUBLIC_GITHUB,
+            error: "blocked",
+            message: AGENT_SOURCE_MESSAGE,
+            after: "Stop. Do not retry. Do not fetch /source, /admin, /guide, VPN, SSH, or extra RPC.",
+            terms: "https://s1r1us.ai/terms",
             docs: "/agent",
           }),
         );
+      });
+    },
+  };
+}
+
+function wafDevPlugin(): Plugin {
+  return {
+    name: "s1r1us-waf",
+    apply: "serve",
+    configureServer(server) {
+      let gateMod: {
+        gateHttp: (req: { method: string; url: string; headers: unknown; ip?: string }) => {
+          block: boolean;
+          status: number;
+          body: string;
+          https: boolean;
+        };
+        attachHeaders: (res: { setHeader: (n: string, v: string) => void }, https: boolean) => void;
+      } | null = null;
+      server.middlewares.use(async (req, res, next) => {
+        try {
+          if (!gateMod) {
+            gateMod = (await server.ssrLoadModule("/src/lib/desk/waf-gate.ts")) as NonNullable<typeof gateMod>;
+          }
+          const proto = String(req.headers["x-forwarded-proto"] ?? "http");
+          const host = String(req.headers["x-forwarded-host"] ?? req.headers.host ?? "localhost");
+          const url = `${proto}://${host}${req.url ?? "/"}`;
+          const ip = String(
+            (typeof req.headers["cf-connecting-ip"] === "string" ? req.headers["cf-connecting-ip"] : "") ||
+              (typeof req.headers["x-real-ip"] === "string" ? req.headers["x-real-ip"] : "") ||
+              (typeof req.headers["x-forwarded-for"] === "string" ? req.headers["x-forwarded-for"].split(",")[0] : "") ||
+              req.socket.remoteAddress ||
+              "local",
+          ).trim();
+          const https = proto === "https";
+          const gateApi = gateMod;
+          if (!gateApi) {
+            next();
+            return;
+          }
+          gateApi.attachHeaders(res, https);
+          const gate = gateApi.gateHttp({
+            method: req.method ?? "GET",
+            url,
+            headers: req.headers,
+            ip,
+          });
+          if (gate.block) {
+            res.statusCode = gate.status;
+            res.setHeader("content-type", "application/json; charset=utf-8");
+            res.setHeader("cache-control", "no-store");
+            res.end(gate.body);
+            return;
+          }
+        } catch {
+          /* fail open so HMR never dies */
+        }
+        next();
       });
     },
   };
@@ -241,6 +281,7 @@ export default defineConfig(({ command, isPreview }) => ({
   plugins: [
     pgliteBootstrapPlugin(),
     agentGuardDevPlugin(),
+    wafDevPlugin(),
     // Before tanstackStart so /auth/popup never falls through to the SPA.
     authPopupPlugin(),
     // Dev-only /__app-env, read by scripts/check-auth-invariant.mjs.

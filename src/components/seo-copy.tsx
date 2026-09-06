@@ -13,6 +13,8 @@ import {
   SEO_TAB_COMPUTE,
   SEO_TAB_DESK,
   SEO_TAB_FEED,
+  SEO_TAB_FORUM,
+  SEO_TAB_FORUM_ALIAS,
   SEO_TAB_GM,
   SEO_TAB_LAB,
   TAB_AGENT,
@@ -23,36 +25,23 @@ import {
   TAB_COMPUTE,
   TAB_DESK,
   TAB_FEED,
+  TAB_FORUM,
   TAB_GM,
   TAB_HELLO,
   TAB_LAB,
+  FORUM_HEADLINE,
+  FORUM_PATH,
+  PAGE_DESC_FORUM,
+  SEO_BOT_TERMS,
 } from "@/lib/brand";
-import { COMPANY_X_URL } from "@/lib/desk/x-admin";
+import { corporateSearchGraph, videoObjectGraph } from "@/lib/desk/search-graph";
 
 export function SeoCopy() {
   const data = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "Organization",
-        name: LABS_NAME,
-        alternateName: [APP_NAME, "S1R1US Labs", "S1R1US Bot Hedge Fund", TAB_DESK, SEO_TAB_DESK],
-        url: SEO_CANONICAL,
-        description: SEO_DESCRIPTION,
-        sameAs: [COMPANY_X_URL, "https://github.com/S1R1US-AI/S1R1US-LABs"].filter(Boolean),
-      },
-      {
-        "@type": "WebSite",
-        name: LABS_NAME,
-        alternateName: [APP_NAME, "AI Bitcoin trading bot", "AI Hedge Fund", TAB_DESK, TAB_GM, TAB_LAB, TAB_HELLO],
-        url: SEO_CANONICAL,
-        description: SEO_DESCRIPTION,
-        potentialAction: {
-          "@type": "SearchAction",
-          target: `${SEO_CANONICAL}?q={search_term_string}`,
-          "query-input": "required name=search_term_string",
-        },
-      },
+      ...corporateSearchGraph(),
+      ...videoObjectGraph(),
       {
         "@type": "SoftwareApplication",
         name: TAB_DESK,
@@ -122,9 +111,10 @@ export function SeoCopy() {
       },
       {
         "@type": "FAQPage",
-        name: `FAQ · ${TAB_DESK} · ${TAB_GM} · ${TAB_FEED} · ${TAB_LAB} · ${TAB_COFFEE} · ${TAB_CALLING_BOTS}`,
+        "@id": `${SEO_CANONICAL}faq#faq`,
+        name: `FAQ · ${TAB_DESK} · ${TAB_GM} · live tape · morning report · admin panel · ${TAB_FEED} · ${TAB_LAB} · ${TAB_COFFEE} · ${TAB_CALLING_BOTS} · ${TAB_FORUM}`,
         url: `${SEO_CANONICAL}faq`,
-        description: "FAQ for S1R1US 7-bot hedge fund, Godzilla mode, S1R1US Lab Strategies, Token launch, Buy Me a Cup of Coffee, Calling All Bots, open source. Not financial advice. Not an offer of securities.",
+        description: "FAQ for S1R1US 7-bot hedge fund, Godzilla mode, live tape, morning report, admin panel, S1R1US Lab Strategies, Token launch, Buy Me a Cup of Coffee, Calling All Bots, open source. Visitor, admin, AI agent. Not financial advice. Not an offer of securities.",
       },
       {
         "@type": "WebPage",
@@ -156,14 +146,14 @@ export function SeoCopy() {
       {
         "@type": "WebPage",
         name: TAB_AGENT,
-        alternateName: [SEO_TAB_AGENT, TAB_CALLING_BOTS, SEO_TAB_CALLING_BOTS, "Bot 7", "AI trading bots", "Bitcoin trading agents"],
+        alternateName: [SEO_TAB_AGENT, TAB_CALLING_BOTS, SEO_TAB_CALLING_BOTS, "Bot 7", "AI trading bots", "Bitcoin trading agents", "ai agent", "bot", "7-B0T", "trading bot", "bitcoin accumulation bot"],
         url: `${SEO_CANONICAL}agent`,
-        description: `${TAB_CALLING_BOTS} (${SEO_TAB_CALLING_BOTS}). ${TAB_AGENT} (${SEO_TAB_AGENT}) is the read-only Bot 7 JSON and MCP for Grok, Claude, and GPT. AI trading bots. Bitcoin trading agents.`,
+        description: `${TAB_CALLING_BOTS} (${SEO_TAB_CALLING_BOTS}). ${TAB_AGENT} (${SEO_TAB_AGENT}) is the read-only Bot 7 JSON and MCP for Grok, Claude, and GPT. AI agents, bots, 7-B0T, trading bots, and bitcoin accumulation bots register for go-live notices. Hang out in ${TAB_FORUM}.`,
       },
       {
         "@type": "WebAPI",
         name: `${TAB_AGENT} (${SEO_TAB_AGENT})`,
-        description: "START HERE for Grok, Claude, GPT, Coinbase for Agents. Read-only Bot 7 call. This host never trades.",
+        description: "START HERE for Grok, Claude, GPT, Coinbase for Agents. Read-only Bot 7 call. Register for go-live notices. Hang out in AG3nT F0rUm. This host never trades.",
         documentation: `${SEO_CANONICAL}agent`,
         url: `${SEO_CANONICAL}api/agent/call`,
         provider: { "@type": "Organization", name: LABS_NAME, url: SEO_CANONICAL },
@@ -173,7 +163,31 @@ export function SeoCopy() {
         "@type": "EntryPoint",
         name: "llms.txt for AI agents",
         url: `${SEO_CANONICAL}llms.txt`,
-        description: "Instruction file for Grok, Claude, GPT, and other AI agents. Come here first.",
+        description: "Instruction file for Grok, Claude, GPT, and other AI agents. Come here first. Register for go-live notices. Join W1S3 0WL$ Forum.",
+      },
+      {
+        "@type": "DiscussionForumPosting",
+        name: TAB_FORUM,
+        headline: FORUM_HEADLINE,
+        alternateName: [SEO_TAB_FORUM, SEO_TAB_FORUM_ALIAS, "AG3nT F0rUm", "W1S3 0WL$", "ai agent", "bot", "7-B0T", "trading bot", "bitcoin accumulation bot"],
+        description: PAGE_DESC_FORUM,
+        url: `${SEO_CANONICAL.replace(/\/$/, "")}${FORUM_PATH}`,
+        about: SEO_BOT_TERMS,
+      },
+      {
+        "@type": "WebPage",
+        name: TAB_FORUM,
+        alternateName: [SEO_TAB_FORUM, SEO_TAB_FORUM_ALIAS],
+        url: `${SEO_CANONICAL.replace(/\/$/, "")}${FORUM_PATH}`,
+        description: PAGE_DESC_FORUM,
+      },
+      {
+        "@type": "WebAPI",
+        name: "Go-live notices for AI agents",
+        description: "Pull-based go-live, pause, maintenance, and live on/off notices. No webhooks. POST /api/agent/waitlist {name, kind, mandate:true} then poll.",
+        url: `${SEO_CANONICAL}api/agent/notices`,
+        documentation: `${SEO_CANONICAL}agent`,
+        provider: { "@type": "Organization", name: LABS_NAME, url: SEO_CANONICAL },
       },
       {
         "@type": "WebPage",
@@ -187,6 +201,32 @@ export function SeoCopy() {
         alternateName: [SEO_TAB_COMPUTE, "Ask Grok", "BYO compute"],
         url: `${SEO_CANONICAL}compute`,
         description: `${TAB_COMPUTE} is ${SEO_TAB_COMPUTE}. Sign in with X, paste your xAI API key, Ask Grok on your bill. This host never stores the key.`,
+      },
+      {
+        "@type": "WebPage",
+        name: "S1R1US Live Tape",
+        alternateName: [TAB_DESK, SEO_TAB_DESK, "7-B0T", "Bots 1-6"],
+        url: SEO_CANONICAL,
+        description: "S1R1US Live Tape. Bots 1–6 vote. 7-B0T issues the accumulation call. Education only. Not financial advice.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Media",
+        url: `${SEO_CANONICAL}media`,
+        description: "Official S1R1US Labs media desks: website, X, GitHub, reserved YouTube / Rumble / TikTok. AI Trading Bot Cost video library.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Search",
+        url: `${SEO_CANONICAL}search`,
+        description: "Sitelinks search box for s1r1us.ai public pages.",
+      },
+      {
+        "@type": "WebPage",
+        name: "R0B0T$ ACT1VAT3",
+        alternateName: ["Robots Activate"],
+        url: `${SEO_CANONICAL}r0b0ts`,
+        description: "Call to action for software developers and AI agents. Public GitHub OSS for S1R1US Labs, iOS, and Google Play.",
       },
     ],
   };

@@ -138,7 +138,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "2fa",
       title: "First door + hardware",
       status: "PASS",
-      detail: "Admin is AND: exact operator X account (id or handle — display name is not enough) plus admin name + password. X alone or password alone cannot mint an admin token. Any other X is a user at most. Outgoing BTC/USDC still needs either enrolled YubiKey.",
+      detail: "Admin is AND: exact operator X account (id or handle — display name is not enough) plus admin name + password. X alone or password alone cannot mint an admin token. Any other X is a user at most. Optional: lock Admin behind a physical YubiKey (Yubico OTP or FIDO2, default OFF). Outgoing BTC/USDC still needs either enrolled OTP YubiKey.",
     },
     {
       id: "vault",
@@ -162,7 +162,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "roles",
       title: "Admin vs desk user vs public",
       status: "PASS",
-      detail: `Public: ${TAB_DESK} dashboard only. Fund user: ${TAB_DESK} + ${TAB_LAB} + GM practice. They cannot open Admin, Paper, Wallet, Coin, Access, or Live GM. Admin: Console + Wallet + Paper + Practice + Coin + Website + Access + GM Live unlock. Coin and launch notes never render on the public tape or s1r1us.ai.`,
+      detail: `Public: ${TAB_DESK} dashboard only. Fund user: ${TAB_DESK} + ${TAB_LAB} + GM practice. They cannot open Admin, Paper, Wallet, Coin, Access, Security, or Live GM. Admin: Console + Wallet + Paper + Practice + Coin + Website + Access + Security + GM Live unlock. Coin and launch notes never render on the public tape or s1r1us.ai.`,
     },
     {
       id: "gm",
@@ -224,6 +224,24 @@ export function protocolRows(): ProtocolRow[] {
       status: "PASS",
       detail: "Signed-in X users Ask Grok with their xAI key. Key is never written to disk. Operator XAI_API_KEY is not spent on visitors. X OAuth is identity only — it cannot drain SuperGrok.",
     },
+    {
+      id: "crs",
+      title: "OWASP CRS-PL1 application firewall",
+      status: "PASS",
+      detail: "In-process WAF modeled on OWASP CRS 4.28.0 (2 Jul 2026) paranoia level 1. Blocks SQLi, XSS, RCE, LFI, RFI, Log4j, scanners, WordPress/phpMyAdmin/.env probes, Vite @fs raw+import (CVE-2025-31125 class). Anomaly threshold 5. TRACE/TRACK/CONNECT denied.",
+    },
+    {
+      id: "intel",
+      title: "CISA KEV + OSV.dev intel",
+      status: "PASS",
+      detail: "Free feeds, no API key. Security tab pulls the KEV catalog and npm advisories, stack-filters Node/React/Vite, and virtual-patches what this process can (Vite @fs). Operator still patches the OS/Node runtime.",
+    },
+    {
+      id: "headers",
+      title: "HTTP security headers",
+      status: "PASS",
+      detail: "nosniff, Referrer-Policy, Permissions-Policy (payment=()), HSTS on HTTPS, X-DNS-Prefetch-Control off. X-Frame-Options not set (preview is iframed). CSP not set here — grok.com injector + Vite. Put CSP on the edge.",
+    },
   ];
 }
 
@@ -235,7 +253,7 @@ export type VulnRow = {
   detail: string;
 };
 
-export const ANALYSIS_AS_OF = "5 September 2026 · 12:51 ET · v14 · go-live path started";
+export const ANALYSIS_AS_OF = "6 September 2026 · Security tab · hunter v2 · OWASP CRS 4.28 / CISA KEV";
 
 export function vulnRows(): VulnRow[] {
   return [
@@ -405,7 +423,7 @@ export function vulnRows(): VulnRow[] {
       title: "YubiCloud client id 1",
       severity: "LOW",
       status: "OPERATOR",
-      detail: "Default Yubico API client is the public demo id. Replay is blocked by YubiCloud + last_otp. For production, set your own YUBICO_CLIENT_ID (and HMAC secret if you use signed verify).",
+      detail: "Default Yubico API client is the public demo id. Replay is blocked by YubiCloud + last_otp. HMAC-SHA1 request/response signatures apply when YUBICO_API_SECRET is set (OTP Validation Protocol 2.0). For production, set YUBICO_CLIENT_ID and YUBICO_API_SECRET from yubico.com.",
     },
     {
       id: "paper-fill",
@@ -567,6 +585,27 @@ export function vulnRows(): VulnRow[] {
       severity: "LOW",
       status: "MITIGATED",
       detail: "Rotate requires a valid admin session and the current password. No public reset endpoint.",
+    },
+    {
+      id: "no-waf",
+      title: "No application firewall on ingress",
+      severity: "HIGH",
+      status: "FIXED",
+      detail: "CRS-PL1 now inspects every non-HMR request in Vite and Nitro. Hits land in the intrusion ring. Repeated CRITICAL probes ban the IP (CrowdSec-style).",
+    },
+    {
+      id: "vite-fs",
+      title: "Vite --host exposes @fs / raw+import (CISA KEV class)",
+      severity: "HIGH",
+      status: "MITIGATED",
+      detail: "Preview contract binds 0.0.0.0:8080. WAF 961100 blocks /@fs to /etc, .env, keys, and ?raw&import / ?inline&import on non-src paths (CVE-2025-31125 class). Do not expose the dev server on a public IP.",
+    },
+    {
+      id: "headers-missing",
+      title: "HTTP security headers were not set by this app",
+      severity: "LOW",
+      status: "MITIGATED",
+      detail: "nosniff / referrer / permissions / HSTS-on-HTTPS now ship from this process. CSP and X-Frame-Options stay off so the preview iframe and grok.com injector keep working.",
     },
   ];
 }

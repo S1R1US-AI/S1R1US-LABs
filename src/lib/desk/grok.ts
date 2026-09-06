@@ -118,6 +118,11 @@ export const askHeliosByo = createServerFn({ method: "POST" })
     if (looksLikeSecret(data.xaiKey)) {
       return { ok: false as const, error: "Secret rejected. Never paste Coinbase keys, seeds, or xprv." };
     }
+    const { inspectAgentInput } = await import("./agent-security");
+    const q = (data.question ?? "").trim();
+    if (q && inspectAgentInput(q).block) {
+      return { ok: false as const, error: "Question rejected. Prompt-injection / goal-hijack text is not sent to Grok." };
+    }
     return gradeWithKey(data.xaiKey.trim(), data.question);
   });
 

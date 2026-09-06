@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
+import { GodzillaModeLabel } from "@/components/godzilla-mark";
 import {
   APP_NAME,
   BEARS_HEADLINE,
@@ -16,7 +17,6 @@ import {
   TAB_BEARS,
   TAB_CALLING_BOTS,
   TAB_DESK,
-  TAB_GM,
   TAB_HOVER_BEARS,
   seoImgAlt,
 } from "@/lib/brand";
@@ -88,13 +88,13 @@ export function BearsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />
       <main className="mx-auto max-w-3xl px-3 py-6 sm:px-4">
         <p className="font-mono text-xs tracking-[0.12em] text-oss uppercase">
-          FAQ · {TAB_GM} · {TAB_BEARS}
+          FAQ · <GodzillaModeLabel /> · {TAB_BEARS}
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-fg sm:text-3xl" title={TAB_HOVER_BEARS}>
           {BEARS_HEADLINE}
         </h1>
         <p className="mt-1 text-sm text-muted">
-          {TAB_BEARS} ({SEO_TAB_BEARS}) · {TAB_GM} ({SEO_TAB_GM}) · {TAB_CALLING_BOTS} ({SEO_TAB_CALLING_BOTS})
+          {TAB_BEARS} ({SEO_TAB_BEARS}) · <GodzillaModeLabel /> ({SEO_TAB_GM}) · {TAB_CALLING_BOTS} ({SEO_TAB_CALLING_BOTS})
         </p>
 
         <figure className="mt-5 overflow-hidden rounded-md border border-rule bg-bg">
@@ -107,7 +107,7 @@ export function BearsPage() {
             className="h-auto w-full"
           />
           <figcaption className="border-t border-rule px-3 py-2 text-xs leading-relaxed text-muted">
-            {TAB_GM} fires through the candle tape. The bear is the short-term seller. The laser is
+            <GodzillaModeLabel /> fires through the candle tape. The bear is the short-term seller. The laser is
             market speed — an AI agent that can read Bot 7 and act on its own Coinbase, not on this host.
           </figcaption>
         </figure>
@@ -187,7 +187,7 @@ export function BearsPage() {
           </Link>
           <span className="px-2">|</span>
           <Link to="/gm" className="hover:underline">
-            {TAB_GM}
+            <GodzillaModeLabel />
           </Link>
           <span className="px-2">|</span>
           <Link to="/agent" className="hover:underline">

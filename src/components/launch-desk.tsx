@@ -7,7 +7,8 @@ import { SystemOverview } from "@/components/system-overview";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell } from "@/components/shell";
 import { loadDeskVault, secondFactorStatus } from "@/lib/desk/access";
-import { APP_NAME, TAB_DESK, TAB_LAB, seoImgAlt } from "@/lib/brand";
+import { SeoImage } from "@/components/seo-image";
+import { APP_NAME, TAB_DESK, TAB_LAB } from "@/lib/brand";
 import { LIVE_UNLOCKED } from "@/lib/desk/practice";
 import { useOperator } from "@/lib/desk/operator";
 import { BUDGET, CHECKLIST, COIN_CHAIN_REC, COIN_DISPLAY, COIN_DOMAIN, COIN_NAME_NOTE, COIN_STANDARD, COIN_TICKER, COMPANY_X_STEPS, DNS_STEPS, DOMAINS, FUND_INTEGRATION, FUND_LANES, GIFT_RECEIPT, GODADDY_IO, HOWEY_POSTURE, ICP_NOTE, LIQ_BANDS, MINT_STEPS, PATH_A_LOCKED, PATH_A_NAME, PATH_A_ORDER, PLATFORM_ROWS, RH_NOTE, TIERS, TOKEN_LAUNCHED, TOKEN_UTILITY, type LaunchCheck } from "@/lib/launch/model";
@@ -430,10 +431,9 @@ export function LaunchDesk() {
               ) : null}
               . This login cannot open Admin, Wallet, or copy outgoing BTC/USDC. Operator stays {ADMIN_X_HANDLE}.
             </p>
-            <img
+            <SeoImage
               src={COMPANY_X_BANNER}
-              alt={seoImgAlt("S1R1US AI (@S1R1US_AI) · G0DZ1LLa M0D3 (Godzilla mode) company X header · S1R1US Labs [ S1R1U$ <<L@B$>> ]")}
-              title={seoImgAlt("S1R1US AI (@S1R1US_AI) · G0DZ1LLa M0D3 (Godzilla mode) company X header")}
+              desc="S1R1US AI (@S1R1US_AI) · G0DZ1LLa M0D3 (Godzilla mode) company X header · S1R1US Labs"
               className="mt-3 w-full max-w-xl rounded-md border border-rule object-cover"
             />
             <div className="mt-3 flex flex-wrap gap-2">

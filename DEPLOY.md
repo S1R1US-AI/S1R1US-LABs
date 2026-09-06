@@ -1,8 +1,8 @@
 # Publish [ S1R1U$ <<L@B$>> ] — GitHub + DigitalOcean
 
-**Official checkpoint (verified live):** tag `n3w-web-app-install-deploy-68` · commit `415e5650ee66c3ce1d2a0c10f4ce170c545f1421`. See [CHECKPOINT.md](CHECKPOINT.md). If the site needs repair, deploy that tag — not a later untested `main`.
+**Official checkpoint:** tag `n3w-web-app-install-deploy-68` · see [CHECKPOINT.md](CHECKPOINT.md). If the site needs repair, deploy that tag.
 
-**N3W Web App Installation Build (new theme) — DEPLOY #68** — carbon-fiber desk. Tag `n3w-web-app-install-deploy-68`. Live tape on. Live trades off. Paper fills off. Would-accumulate call board on. Read-only agent feed on.
+**N3W Web App Installation Build (new theme) — DEPLOY #68** — carbon-fiber desk. Live tape on. Live trades off. Paper fills off. Would-accumulate call board on. Read-only agent feed on. W1S3 0WL$ Forum. R0B0T$ ACT1VAT3. Morning report library (admin). Sitemap index.
 
 Repo: https://github.com/S1R1US-AI/S1R1US-LABs  
 Site: https://s1r1us.ai

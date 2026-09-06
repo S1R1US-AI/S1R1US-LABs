@@ -1,5 +1,6 @@
 import { Panel } from "@/components/shell";
-import { APP_NAME, BOT7_NAME, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { GodzillaModeLabel } from "@/components/godzilla-mark";
+import { APP_NAME, BOT7_NAME, TAB_DESK, TAB_LAB } from "@/lib/brand";
 import { MANDATE, systemView } from "@/lib/desk/system-logic";
 import { useDeskTape } from "@/lib/desk/tape-client";
 import { stanceClass } from "@/components/helios-card";
@@ -34,7 +35,7 @@ export function SystemOverview({ showRoadmap = false }: { showRoadmap?: boolean 
         lanes are required for HIGH conviction. SuperGrok is the operator Ask Grok feed. Visitors use BYO compute. Tape paints in two
         beats — core ({view.cycle.coreMs / 1000}s: price, RSI, F&G, leverage, Asia, ETF flow) then
         fill (holders, news, filings, EM, macro). Same roster as {TAB_DESK}. {TAB_LAB} overlays that
-        tape. {TAB_GM} is an isolated sleeve (practice for all, Live admin-only) and does not vote
+        tape. <GodzillaModeLabel /> is an isolated sleeve (practice for all, Live admin-only) and does not vote
         bots 1–7. This block rebuilds on every 5-minute pull.
       </p>
       <p className="mt-2 font-mono text-[11px] text-muted">

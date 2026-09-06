@@ -1,34 +1,106 @@
-import { existsSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
+/**
+ * Last-good snapshot + admin data-pull pause.
+ *
+ * Pause is a test switch only. It MUST NOT:
+ * - unlock live Coinbase create
+ * - sell or short bitcoin
+ * - change Bot 7's accumulate mandate
+ * - auto-green feed errors
+ * - close/open the external AI gate
+ * - write paper fills
+ *
+ * While paused the desk serves the last validated snapshot. Resume restores
+ * the 5-minute pull clock. One process, one flag — Console and Security share it.
+ */
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import type { DeskSnapshot } from "./types";
 
 const LAST_PATH = "/tmp/desk-last-good.json";
-const FREEZE_PATH = "/tmp/desk-tape-freeze";
+const FREEZE_FLAG = "/tmp/desk-tape-freeze";
+const STATE_PATHS = ["/tmp/desk-pull-pause.json", "/workspace/data/desk-pull-pause.json"];
 
 type LastGood = { at: number; snap: DeskSnapshot };
 
+export type PullPauseState = {
+  paused: boolean;
+  pausedAt: string | null;
+  resumedAt: string | null;
+};
+
+type LastGoodMeta = {
+  frozen: boolean;
+  paused: boolean;
+  pausedAt: string | null;
+  resumedAt: string | null;
+  at: number | null;
+  ageMs: number | null;
+  price: number | null;
+};
+
+const OPEN: PullPauseState = { paused: false, pausedAt: null, resumedAt: null };
+
 let mem: LastGood | null = null;
-let frozen: boolean | null = null;
+
+function readPauseDisk(): PullPauseState | null {
+  if (typeof window !== "undefined") return null;
+  for (const p of STATE_PATHS) {
+    try {
+      const raw = JSON.parse(readFileSync(p, "utf8")) as PullPauseState;
+      if (typeof raw?.paused === "boolean") {
+        return {
+          paused: raw.paused,
+          pausedAt: raw.pausedAt ?? null,
+          resumedAt: raw.resumedAt ?? null,
+        };
+      }
+    } catch {
+      /* missing */
+    }
+  }
+  try {
+    if (existsSync(FREEZE_FLAG)) return { paused: true, pausedAt: null, resumedAt: null };
+  } catch {
+    /* preview */
+  }
+  return null;
+}
+
+function writePauseDisk(s: PullPauseState) {
+  if (typeof window !== "undefined") return;
+  const body = JSON.stringify(s);
+  for (const p of STATE_PATHS) {
+    try {
+      if (p.startsWith("/workspace/data")) mkdirSync("/workspace/data", { recursive: true });
+      writeFileSync(p, body);
+    } catch {
+      /* preview */
+    }
+  }
+  try {
+    if (s.paused) writeFileSync(FREEZE_FLAG, "1");
+    else if (existsSync(FREEZE_FLAG)) unlinkSync(FREEZE_FLAG);
+  } catch {
+    /* preview */
+  }
+}
+
+export function pullPauseState(): PullPauseState {
+  return readPauseDisk() ?? { ...OPEN };
+}
 
 export function isTapeFrozen(): boolean {
-  if (typeof window !== "undefined") return false;
-  try {
-    frozen = existsSync(FREEZE_PATH);
-  } catch {
-    frozen = false;
-  }
-  return frozen;
+  return pullPauseState().paused;
 }
 
 export function setTapeFrozen(on: boolean): boolean {
   if (typeof window !== "undefined") return on;
-  frozen = on;
-  try {
-    if (on) writeFileSync(FREEZE_PATH, "1");
-    else if (existsSync(FREEZE_PATH)) unlinkSync(FREEZE_PATH);
-  } catch {
-    /* preview */
-  }
-  return on;
+  const cur = pullPauseState();
+  const now = new Date().toISOString();
+  const next: PullPauseState = on
+    ? { paused: true, pausedAt: now, resumedAt: cur.resumedAt }
+    : { paused: false, pausedAt: cur.pausedAt, resumedAt: now };
+  writePauseDisk(next);
+  return next.paused;
 }
 
 export function readLastGood(): LastGood | null {
@@ -75,10 +147,14 @@ export function writeLastGood(snap: DeskSnapshot) {
   }
 }
 
-export function lastGoodMeta(): { frozen: boolean; at: number | null; ageMs: number | null; price: number | null } {
+export function lastGoodMeta(): LastGoodMeta {
   const g = readLastGood();
+  const pause = pullPauseState();
   return {
-    frozen: isTapeFrozen(),
+    frozen: pause.paused,
+    paused: pause.paused,
+    pausedAt: pause.pausedAt,
+    resumedAt: pause.resumedAt,
     at: g?.at ?? null,
     ageMs: g ? Date.now() - g.at : null,
     price: g?.snap.btc.price ?? null,

@@ -1,3 +1,5 @@
+import { TAB_GM } from "@/lib/brand";
+
 /** Robotic Godzilla — laser visor. Body follows currentColor; beams stay red unless `beam="green"`. */
 export function GodzillaMark({ className, beam = "red" }: { className?: string; beam?: "red" | "green" }) {
   const laser = beam === "green" ? "#3dff1a" : "#ff1f1f";
@@ -5,7 +7,8 @@ export function GodzillaMark({ className, beam = "red" }: { className?: string; 
   const trail = beam === "green" ? "#6fbf63" : "#ff7a18";
   return (
     <svg viewBox="0 0 72 40" className={className} aria-hidden fill="currentColor">
-      <title>G0DZ1LLa M0D3 (Godzilla mode)</title>
+      <title>G0DZ1LLa M0D3 (Godzilla mode) — AI agents bitcoin accumulation agent</title>
+      <desc>S1R1US Labs Godzilla mark. AI agents. bitcoin accumulation agent. AI trading bots. Bitcoin trading agents.</desc>
       {/* dorsal fins */}
       <path d="M14 4l3 10H12zm7-2l3 12h-5zm7 1l4 11h-6zm8 2l5 9h-7z" />
       {/* helmet plate */}
@@ -39,7 +42,7 @@ export function GodzillaMark({ className, beam = "red" }: { className?: string; 
 
 export function GmRainbow({ text, className }: { text: string; className?: string }) {
   return (
-    <span className={className ? `gm-rainbow ${className}` : "gm-rainbow"} aria-label={text}>
+    <span className={className ? `godzilla-mode gm-rainbow ${className}` : "godzilla-mode gm-rainbow"} aria-label={text}>
       {Array.from(text).map((ch, i) => (
         <span key={`${ch}-${i}`} style={{ animationDelay: `${(i % 12) * -0.28}s` }}>
           {ch === " " ? "\u00a0" : ch}
@@ -48,3 +51,20 @@ export function GmRainbow({ text, className }: { text: string; className?: strin
     </span>
   );
 }
+
+/** Sitewide / systemwide label: G0DZ1LLa M0D3 always rainbow. */
+export function GodzillaModeLabel({ className }: { className?: string }) {
+  return <GmRainbow text={TAB_GM} className={className} />;
+}
+
+/** Paint every G0DZ1LLa M0D3 in a string rainbow. */
+export function RainbowGodzillaText({ text }: { text: string }) {
+  const parts = text.split(/(G0DZ1LLa M0D3)/g);
+  if (parts.length === 1) return <>{text}</>;
+  return (
+    <>
+      {parts.map((p, i) => (p === TAB_GM ? <GodzillaModeLabel key={i} /> : p))}
+    </>
+  );
+}
+

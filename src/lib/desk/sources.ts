@@ -2859,6 +2859,9 @@ function stitchCore(
 }
 
 async function buildSnapshot(): Promise<DeskSnapshot> {
+  if (isTapeFrozen()) {
+    return snapCache?.value ?? readLastGood()?.snap ?? skeletonSnapshot();
+  }
   resetCycleStats();
   const t0 = Date.now();
   const errors: string[] = [];

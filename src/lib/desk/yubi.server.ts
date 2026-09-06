@@ -1,4 +1,4 @@
-import { randomBytes } from "node:crypto";
+import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { getSql } from "@/lib/db";
 import { guardedFetch } from "./net-guard";
 
@@ -88,10 +88,50 @@ export async function clearYubi(publicId?: string) {
   await sql`delete from admin_yubi`;
 }
 
+/** Yubico OTP Validation Protocol 2.0 HMAC-SHA1. Official: developers.yubico.com/OTP/Specifications/OTP_validation_protocol.html */
+export function yubiCloudHmac(params: Record<string, string>, secretB64: string) {
+  const line = Object.keys(params)
+    .filter((k) => k !== "h")
+    .sort()
+    .map((k) => `${k}=${params[k]}`)
+    .join("&");
+  return createHmac("sha1", Buffer.from(secretB64, "base64")).update(line).digest("base64");
+}
+
+function parseYubiKv(body: string) {
+  const out: Record<string, string> = {};
+  for (const line of body.split(/\r?\n/)) {
+    const i = line.indexOf("=");
+    if (i < 1) continue;
+    out[line.slice(0, i)] = line.slice(i + 1);
+  }
+  return out;
+}
+
+function yubiHmacOk(kv: Record<string, string>, secretB64: string) {
+  const got = kv.h;
+  if (!got) return false;
+  const expect = yubiCloudHmac(kv, secretB64);
+  const a = Buffer.from(got);
+  const b = Buffer.from(expect);
+  if (a.length !== b.length) return false;
+  try {
+    return timingSafeEqual(a, b);
+  } catch {
+    return false;
+  }
+}
+
 export async function verifyYubicoOtp(otp: string): Promise<string | null> {
   if (!YUBI_OTP_RE.test(otp)) return "Tap the YubiKey in this field (44-character Yubico OTP).";
   const nonce = randomBytes(16).toString("hex");
   const id = process.env.YUBICO_CLIENT_ID?.trim() || "1";
+  const secret = process.env.YUBICO_API_SECRET?.trim() || "";
+  const params: Record<string, string> = { id, nonce, otp, timeout: "8" };
+  if (secret) params.h = yubiCloudHmac(params, secret);
+  const query = Object.entries(params)
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+    .join("&");
   const hosts = [
     "https://api.yubico.com/wsapi/2.0/verify",
     "https://api2.yubico.com/wsapi/2.0/verify",
@@ -99,7 +139,6 @@ export async function verifyYubicoOtp(otp: string): Promise<string | null> {
     "https://api4.yubico.com/wsapi/2.0/verify",
     "https://api5.yubico.com/wsapi/2.0/verify",
   ];
-  const query = `id=${encodeURIComponent(id)}&otp=${encodeURIComponent(otp)}&nonce=${nonce}`;
   const ac = new AbortController();
   const timer = setTimeout(() => ac.abort(), 8000);
   try {
@@ -111,10 +150,12 @@ export async function verifyYubicoOtp(otp: string): Promise<string | null> {
     for (const item of settled) {
       if (item.status !== "fulfilled" || !item.value.ok) continue;
       const body = await item.value.text();
-      if (!body.includes(`nonce=${nonce}`)) continue;
-      if (/\bstatus=OK\b/.test(body)) return null;
-      if (/\bstatus=REPLAYED_OTP\b/.test(body)) replay = true;
-      if (/\bstatus=BAD_OTP\b/.test(body)) bad = true;
+      const kv = parseYubiKv(body);
+      if (kv.nonce !== nonce) continue;
+      if (secret && !yubiHmacOk(kv, secret)) continue;
+      if (kv.status === "OK") return null;
+      if (kv.status === "REPLAYED_OTP") replay = true;
+      if (kv.status === "BAD_OTP") bad = true;
     }
     if (replay) return "That YubiKey OTP was already used. Tap again.";
     if (bad) return "YubiCloud rejected that OTP.";

@@ -1,0 +1,23 @@
+/* TEAM */
+Site: S1R1US Labs
+Canonical: https://s1r1us.ai/
+X: https://x.com/S1R1US_AI
+GitHub: https://github.com/S1R1US-AI/S1R1US-LABs
+Handle: @S1R1US_AI
+Note: @S1R1S_AI is not the desk.
+
+/* SITE */
+Standards: HTML5, JSON-LD, Open Graph, llms.txt
+Doctype: HTML5
+Language: English
+Founded: 2026-09-04
+Mandate: Accumulate bitcoin. Never sell bitcoin. Never short bitcoin.
+Education only. Not financial advice. Not licensed.
+
+/* SEARCH */
+entity.json — Organization + sameAs knowledge panel
+brand.txt — official properties
+video-sitemap.xml — YouTube / Rumble / TikTok when live
+sitemap.xml — pages + images
+search?q= — sitelinks search box
+media — official desks

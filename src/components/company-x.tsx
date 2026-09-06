@@ -7,12 +7,9 @@ import {
   COMPANY_X_URL,
   companyHandleSet,
 } from "@/lib/desk/x-admin";
-import { APP_NAME, LABS_NAME, seoImgAlt } from "@/lib/brand";
+import { APP_NAME, LABS_NAME } from "@/lib/brand";
+import { SeoImage } from "@/components/seo-image";
 import { cn } from "@/lib/utils";
-
-const AVATAR_ALT = seoImgAlt(
-  `${COMPANY_X_LOGO_NAME} · ${COMPANY_X_LABEL} · ${LABS_NAME} ${APP_NAME} · G0DZ1LLa M0D3 hologram`,
-);
 
 export function CompanyAvatar({
   size = 32,
@@ -22,10 +19,9 @@ export function CompanyAvatar({
   className?: string;
 }) {
   return (
-    <img
+    <SeoImage
       src={COMPANY_X_AVATAR}
-      alt={AVATAR_ALT}
-      title={AVATAR_ALT}
+      desc={`${COMPANY_X_LOGO_NAME} · ${COMPANY_X_LABEL} · ${LABS_NAME} ${APP_NAME} · G0DZ1LLa M0D3 hologram`}
       width={size}
       height={size}
       className={cn("shrink-0 rounded-full bg-black object-cover", className)}
@@ -42,7 +38,7 @@ export function CompanyXChip({ className }: { className?: string }) {
       target="_blank"
       rel="noreferrer"
       className={cn("inline-flex items-center gap-2", className)}
-      aria-label={`${COMPANY_X_NAME || COMPANY_X_LABEL} on X · ${LABS_NAME} ${APP_NAME}`}
+      aria-label={`${COMPANY_X_NAME || COMPANY_X_LABEL} on X · ${LABS_NAME} ${APP_NAME} · AI agents · bitcoin accumulation agent`}
     >
       <CompanyAvatar size={28} className="h-7 w-7 ring-1 ring-rule" />
       <span className="leading-tight">

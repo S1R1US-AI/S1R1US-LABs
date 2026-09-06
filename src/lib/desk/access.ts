@@ -33,6 +33,7 @@ import {
   verifyYubiTicket,
 } from "./access.server";
 import { isBtcReceiveAddress, looksLikeSecret, usdcReceiveError } from "./security";
+import { handleAuthAbuse } from "./auto-defend";
 import { ADMIN_X_HANDLE, ADMIN_X_LABEL } from "./x-admin";
 import { clearYubi, consumeYubiOtp, maskYubiId, saveYubi, verifyYubicoOtp, yubiPublicId, yubiRows } from "./yubi.server";
 
@@ -131,8 +132,18 @@ export const signInDesk = createServerFn({ method: "POST" })
   .validator((input: { user: string; pass: string }) => input)
   .handler(async ({ data, context }) => {
     const blocked = throttle();
-    if (blocked) return { ok: false as const, error: blocked };
+    if (blocked) {
+      void import("./intrusion-log").then(({ recordIntrusion }) => {
+        recordIntrusion({ kind: "auth-throttle", detail: blocked });
+      });
+      handleAuthAbuse("local", "auth-throttle");
+      return { ok: false as const, error: blocked };
+    }
     if (looksLikeSecret(data.user) || looksLikeSecret(data.pass)) {
+      void import("./intrusion-log").then(({ recordIntrusion }) => {
+        recordIntrusion({ kind: "secret-paste", detail: "sign-in rejected secret-shaped input" });
+      });
+      handleAuthAbuse("local", "secret-paste");
       return { ok: false as const, error: "Secret rejected. Never paste a Coinbase key or wallet seed here." };
     }
     const name = data.user.trim();
@@ -166,7 +177,13 @@ export const signInDesk = createServerFn({ method: "POST" })
     }
     if (!(await credsMatch(name, data.pass))) {
       const deskUser = await matchDeskUser(name, data.pass);
-      if (!deskUser) return { ok: false as const, error: "Wrong name or password." };
+      if (!deskUser) {
+        void import("./intrusion-log").then(({ recordIntrusion }) => {
+          recordIntrusion({ kind: "auth-fail", detail: "wrong name or password" });
+        });
+        handleAuthAbuse("local", "auth-fail");
+        return { ok: false as const, error: "Wrong name or password." };
+      }
       try {
         return {
           ok: true as const,
@@ -186,6 +203,10 @@ export const signInDesk = createServerFn({ method: "POST" })
       };
     }
     if (!(await sessionIsAdminX(xUserId))) {
+      void import("./intrusion-log").then(({ recordIntrusion }) => {
+        recordIntrusion({ kind: "auth-fail", detail: "password ok but X is not the operator account" });
+      });
+      handleAuthAbuse("local", "auth-fail");
       return {
         ok: false as const,
         error: "This X session is not the operator account.",
@@ -204,6 +225,9 @@ export const changeAdminCreds = createServerFn({ method: "POST" })
     const blocked = throttle();
     if (blocked) return { ok: false as const, error: blocked };
     if (looksLikeSecret(data.current) || looksLikeSecret(data.next) || looksLikeSecret(data.nextName)) {
+      void import("./intrusion-log").then(({ recordIntrusion }) => {
+        recordIntrusion({ kind: "secret-paste", detail: "credential rotate rejected secret-shaped input" });
+      });
       return { ok: false as const, error: "Secret rejected. Never paste a Coinbase key or wallet seed here." };
     }
     const liveName = await storedAdminName();
@@ -261,6 +285,9 @@ export const addDeskAccount = createServerFn({ method: "POST" })
     const blocked = throttle();
     if (blocked) return { ok: false as const, error: blocked };
     if (looksLikeSecret(data.username) || looksLikeSecret(data.pass)) {
+      void import("./intrusion-log").then(({ recordIntrusion }) => {
+        recordIntrusion({ kind: "secret-paste", detail: "desk-user create rejected secret-shaped input" });
+      });
       return { ok: false as const, error: "Secret rejected. Never paste a Coinbase key or wallet seed here." };
     }
     const username = data.username.trim();
@@ -298,6 +325,19 @@ export const secondFactorStatus = createServerFn({ method: "POST" })
     const row = await enrolledRow();
     const keys = await yubiRows();
     const allowed = await sessionIsAdminX(context.userId);
+    let panelLock = false;
+    let webauthnCount = 0;
+    let webauthn: { id: string; credentialId: string }[] = [];
+    try {
+      const gate = await import("./yubi-gate");
+      const fido = await import("./webauthn.server");
+      panelLock = await gate.adminPanelYubiLock();
+      const rows = await fido.webauthnRows();
+      webauthnCount = rows.length;
+      webauthn = rows.map((r) => ({ id: r.id, credentialId: fido.maskCredId(r.credential_id) }));
+    } catch {
+      /* preview */
+    }
     return {
       enrolled: Boolean(row),
       match: row?.user_id === context.userId,
@@ -313,6 +353,9 @@ export const secondFactorStatus = createServerFn({ method: "POST" })
       yubiKeys: allowed
         ? keys.map((k) => ({ slot: k.id, publicId: maskYubiId(k.public_id) }))
         : [],
+      panelLock: allowed ? panelLock : false,
+      webauthnCount: allowed ? webauthnCount : 0,
+      webauthn: allowed ? webauthn : [],
     };
   });
 
@@ -396,7 +439,57 @@ export const confirmYubi = createServerFn({ method: "POST" })
     }
     const fail = await consumeYubiOtp(data.otp);
     if (fail) return { ok: false as const, error: fail };
-    return { ok: true as const, token: await signAccessToken() };
+    return { ok: true as const, token: await signAccessToken(), username: await storedAdminName() };
+  });
+
+export const confirmWebauthn = createServerFn({ method: "POST" })
+  .middleware([optionalXSession, authMiddleware])
+  .validator(
+    (input: {
+      ticket: string;
+      origin: string;
+      challenge: string;
+      credentialId: string;
+      authenticatorData: string;
+      clientDataJSON: string;
+      signature: string;
+    }) => input,
+  )
+  .handler(async ({ data, context }) => {
+    const who = await assertAdminX(context.userId);
+    if (who) return { ok: false as const, error: who };
+    if (!(await verifyYubiTicket(data.ticket))) {
+      return { ok: false as const, error: "YubiKey challenge expired. Unlock again." };
+    }
+    const fido = await import("./webauthn.server");
+    const host = await fido.requestHost();
+    if (!fido.originAllowed(data.origin, host)) {
+      return { ok: false as const, error: "WebAuthn origin not allowed." };
+    }
+    const res = await fido.finishAuthentication({
+      origin: data.origin,
+      challenge: data.challenge,
+      credentialId: data.credentialId,
+      authenticatorData: data.authenticatorData,
+      clientDataJSON: data.clientDataJSON,
+      signature: data.signature,
+    });
+    if (!res.ok) return res;
+    return { ok: true as const, token: await signAccessToken(), username: await storedAdminName() };
+  });
+
+export const webauthnBeginLogin = createServerFn({ method: "POST" })
+  .middleware([optionalXSession, authMiddleware])
+  .validator((input: { ticket: string; origin: string }) => input)
+  .handler(async ({ data, context }) => {
+    const who = await assertAdminX(context.userId);
+    if (who) return { ok: false as const, error: who };
+    if (!(await verifyYubiTicket(data.ticket))) {
+      return { ok: false as const, error: "YubiKey challenge expired. Unlock again." };
+    }
+    const fido = await import("./webauthn.server");
+    const host = await fido.requestHost();
+    return fido.authenticationOptions(data.origin, host);
   });
 
 export const enrollYubi = createServerFn({ method: "POST" })
@@ -439,17 +532,128 @@ export const removeYubi = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Current password is wrong." };
     }
     try {
+      const { adminPanelYubiLock } = await import("./yubi-gate");
+      const fido = await import("./webauthn.server");
+      if (await adminPanelYubiLock()) {
+        const keys = await yubiRows();
+        const fidoCount = await fido.webauthnCount();
+        if (!data.publicId) {
+          return {
+            ok: false as const,
+            error: "Turn off the admin-panel YubiKey lock before removing keys. Yubico: do not remove the last authenticator while it is required.",
+          };
+        }
+        const remainingOtp = keys.filter((k) => k.id !== data.publicId && maskYubiId(k.public_id) !== data.publicId).length;
+        if (remainingOtp + fidoCount < 1) {
+          return {
+            ok: false as const,
+            error: "Turn off the admin-panel YubiKey lock before removing the last physical key.",
+          };
+        }
+      }
       if (data.publicId) {
         const keys = await yubiRows();
         const hit = keys.find((k) => k.id === data.publicId || maskYubiId(k.public_id) === data.publicId);
         await clearYubi(hit?.public_id);
       } else {
         await clearYubi();
+        await fido.clearWebauthn();
       }
     } catch {
       return { ok: false as const, error: "Could not remove YubiKey." };
     }
     return { ok: true as const, count: (await yubiRows()).length };
+  });
+
+export const setYubiPanelLock = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
+  .validator((input: { token: string; on: boolean }) => input)
+  .handler(async ({ data }) => {
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required." };
+    }
+    const { setAdminPanelYubiLock } = await import("./yubi-gate");
+    return setAdminPanelYubiLock(data.on);
+  });
+
+export const webauthnBeginRegister = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
+  .validator((input: { token: string; origin: string }) => input)
+  .handler(async ({ data }) => {
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required. Unlock first, then enroll a FIDO2 YubiKey." };
+    }
+    const fido = await import("./webauthn.server");
+    const host = await fido.requestHost();
+    return fido.registrationOptions(data.origin, host);
+  });
+
+export const webauthnFinishRegister = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
+  .validator(
+    (input: {
+      token: string;
+      origin: string;
+      challenge: string;
+      credentialId: string;
+      publicKey: string;
+      alg: number;
+      transports: string[];
+      clientDataJSON: string;
+    }) => input,
+  )
+  .handler(async ({ data }) => {
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required." };
+    }
+    const fido = await import("./webauthn.server");
+    const host = await fido.requestHost();
+    if (!fido.originAllowed(data.origin, host)) {
+      return { ok: false as const, error: "WebAuthn origin not allowed." };
+    }
+    return fido.finishRegistration({
+      origin: data.origin,
+      challenge: data.challenge,
+      credentialId: data.credentialId,
+      publicKey: data.publicKey,
+      alg: data.alg,
+      transports: data.transports,
+      clientDataJSON: data.clientDataJSON,
+    });
+  });
+
+export const removeWebauthn = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
+  .validator((input: { token: string; current: string; credentialId?: string }) => input)
+  .handler(async ({ data }) => {
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required." };
+    }
+    const liveName = await storedAdminName();
+    if (!(await credsMatch(liveName, data.current))) {
+      return { ok: false as const, error: "Current password is wrong." };
+    }
+    const { adminPanelYubiLock } = await import("./yubi-gate");
+    const fido = await import("./webauthn.server");
+    if (await adminPanelYubiLock()) {
+      const otp = (await yubiRows()).length;
+      const rows = await fido.webauthnRows();
+      const remaining = data.credentialId
+        ? rows.filter((r) => r.id !== data.credentialId && r.credential_id !== data.credentialId).length
+        : 0;
+      if (otp + remaining < 1) {
+        return {
+          ok: false as const,
+          error: "Turn off the admin-panel YubiKey lock before removing the last physical key.",
+        };
+      }
+    }
+    try {
+      await fido.clearWebauthn(data.credentialId);
+    } catch {
+      return { ok: false as const, error: "Could not remove FIDO2 YubiKey." };
+    }
+    return { ok: true as const, count: await fido.webauthnCount() };
   });
 
 const ACTION_RE = /^[A-Za-z0-9:._= -]{3,200}$/;

@@ -3,183 +3,407 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://s1r1us.ai/</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
-      <image:title>S1R!US Godzilla Logo — S1R1US Live Tape. AI trading bots. Bitcoin trading agents.</image:title>
-      <image:caption>Official S1R1US Godzilla Logo for S1R1US Live Tape, S1R1US L@Bs, GM, F33D, AI Agents. AI trading bots. Bitcoin trading agents.</image:caption>
+      <image:title>S1R!US Godzilla Logo — S1R1US Labs hologram mark — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/gzilla-holo.jpg</image:loc>
+      <image:title>G0DZ1LLa M0D3 techno Godzilla hologram — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Rainbow hologram Godzilla on carbon fiber — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-x-banner.jpg</image:loc>
+      <image:title>S1R1US AI X banner G0DZ1LLa vs bear — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Company X header for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/x-banner.jpg</image:loc>
+      <image:title>S1R1US Open Graph / x-banner — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Share banner — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/og.jpg</image:loc>
+      <image:title>S1R1US Labs Open Graph image — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>s1r1us.ai share image — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-x-art.png</image:loc>
+      <image:title>S1R1US G0DZ1LLa vs bear full frame — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Full G0DZ1LLa vs bear frame — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/S1R!US-Godzilla-Logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo download — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Downloadable S1R!US Godzilla Logo — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-avatar.jpg</image:loc>
+      <image:title>S1R1US X profile 400 by 400 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>X profile avatar — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo-180.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo 180 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Apple touch style S1R!US Godzilla Logo — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/oss-brief-1.jpg</image:loc>
+      <image:title>S1R1US Labs open source brief cover — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Open source brief page 1 — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/oss-brief-2.jpg</image:loc>
+      <image:title>S1R1US Labs open source brief page 2 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Open source brief page 2 — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/oss-brief-3.jpg</image:loc>
+      <image:title>S1R1US Labs open source brief page 3 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Open source brief page 3 — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/paper/page-1.jpg</image:loc>
+      <image:title>S1R1US Labs paper page 1 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Title, abstract, index terms — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/paper/page-2.jpg</image:loc>
+      <image:title>S1R1US Labs paper page 2 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Eight-bot architecture — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/paper/page-3.jpg</image:loc>
+      <image:title>S1R1US Labs paper page 3 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Research desk and conclusion — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/icon-512.png</image:loc>
+      <image:title>S1R!US Godzilla Logo 512 PNG — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/apple-touch-icon.png</image:loc>
+      <image:title>S1R!US Godzilla Logo apple touch 180 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Apple touch S1R!US Godzilla Logo — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://s1r1us.ai/gm</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo — S1R1US Labs hologram mark — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/gzilla-holo.jpg</image:loc>
+      <image:title>G0DZ1LLa M0D3 techno Godzilla hologram — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Rainbow hologram Godzilla on carbon fiber — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://s1r1us.ai/b3ars</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://s1r1us.ai/gzilla-mrkt.png</image:loc>
-      <image:title>B3AT TH3 B3AR$ (Beat the Bears) — AI trading bots. Bitcoin trading agents.</image:title>
-      <image:caption>How to beat the Bears at market speed with AI Agents — AI trading bots. Bitcoin trading agents.</image:caption>
+      <image:title>B3AT TH3 B3AR$ Godzilla vs bear bitcoin candle chart — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>How to beat the Bears at market speed with AI Agents — bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://s1r1us.ai/owl</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://s1r1us.ai/owl.png</image:loc>
-      <image:title>AI AG3NTS (AI AGENTS) — AI trading bots. Bitcoin trading agents.</image:title>
-      <image:caption>Wise investment decisions, theoretically optimized by AI agents — AI trading bots. Bitcoin trading agents.</image:caption>
+      <image:title>AI AG3NTS jeweled owl — W1S3 0WL — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Wise investment decisions theoretically optimized by AI agents — bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/r0b0ts</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo — S1R1US Labs hologram mark — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/gzilla-mrkt.png</image:loc>
+      <image:title>B3AT TH3 B3AR$ Godzilla vs bear bitcoin candle chart — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>How to beat the Bears at market speed with AI Agents — bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://s1r1us.ai/f33d</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/c0ff33</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/helios</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/s1r1us</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/faq</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo — S1R1US Labs hologram mark — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://s1r1us.ai/gzilla-mrkt.png</image:loc>
-      <image:title>B3AT TH3 B3AR$ (Beat the Bears) — AI trading bots. Bitcoin trading agents.</image:title>
-      <image:caption>How to beat the Bears at market speed with AI Agents — AI trading bots. Bitcoin trading agents.</image:caption>
+      <image:title>B3AT TH3 B3AR$ Godzilla vs bear bitcoin candle chart — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>How to beat the Bears at market speed with AI Agents — bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://s1r1us.ai/owl.png</image:loc>
-      <image:title>AI AG3NTS (AI AGENTS) — AI trading bots. Bitcoin trading agents.</image:title>
-      <image:caption>Wise investment decisions, theoretically optimized by AI agents — AI trading bots. Bitcoin trading agents.</image:caption>
+      <image:title>AI AG3NTS jeweled owl — W1S3 0WL — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Wise investment decisions theoretically optimized by AI agents — bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/morning-report-1.jpg</image:loc>
+      <image:title>S1R1U$ M0rning R3p0rt page 1 — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Morning report page 1 — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://s1r1us.ai/terms</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/privacy</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/sitemap</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/agent</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo — S1R1US Labs hologram mark — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/forum</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo — S1R1US Labs hologram mark — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/owl.png</image:loc>
+      <image:title>AI AG3NTS jeweled owl — W1S3 0WL — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Wise investment decisions theoretically optimized by AI agents — bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://s1r1us.ai/compute</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://s1r1us.ai/media</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo — S1R1US Labs hologram mark — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/icon-512.png</image:loc>
+      <image:title>S1R!US Godzilla Logo 512 PNG — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo — AI agents bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/search</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo — S1R1US Labs hologram mark — AI agents. bitcoin accumulation agent. ai agent. bot. 7-B0T. trading bot. bitcoin accumulation bot. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://s1r1us.ai/llms.txt</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/.well-known/llms.txt</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/.well-known/agent-card.json</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://s1r1us.ai/.well-known/agent.json</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://s1r1us.ai/.well-known/ai-plugin.json</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://s1r1us.ai/api/agent</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://s1r1us.ai/api/agent/call</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/api/agent/ping</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/api/agent/waitlist</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://s1r1us.ai/api/agent/notices</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/forum</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/mcp</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/a2a</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://s1r1us.ai/api/agent/grok</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/api/agent/claude</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/api/agent/openapi</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/api/agent/fee</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/robots.txt</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/entity.json</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/brand.txt</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/humans.txt</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/video-sitemap.xml</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

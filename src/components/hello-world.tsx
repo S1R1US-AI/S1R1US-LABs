@@ -6,6 +6,7 @@ import {
   TAB_HELLO,
   TAB_HOVER_HELLO,
   TAB_HOVER_MAX_GAINS,
+  TAB_HOVER_ROBOTS,
   TAB_HOVER_SEND_BTC,
   TAB_MAX_GAINS,
   TAB_SEND_BTC,
@@ -56,7 +57,11 @@ export function HelloWorld() {
           {"\n"}
           <span className="text-muted">{`00000000  48 33 4c 4c 30 20 57 30  52 4c 44              |${TAB_HELLO}|`}</span>
           {"\n"}
-          <span className="text-sell">--[ payload / geek greeting only / not a shell / ROBOTS ACTIVATE ]--</span>
+          <span className="text-sell">--[ payload / geek greeting only / not a shell / </span>
+          <Link to="/r0b0ts" className="text-sell hover:underline" title={TAB_HOVER_ROBOTS}>
+            ROBOTS ACTIVATE
+          </Link>
+          <span className="text-sell"> ]--</span>
           {"\n"}
           <span className={GRAY}>function </span>
           <span className="text-high">main</span>

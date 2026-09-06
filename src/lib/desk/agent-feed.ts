@@ -19,6 +19,8 @@ export const AGENT_FEE_PATH = "/api/agent/fee";
 export const AGENT_A2A_PATH = "/api/agent/a2a";
 export const AGENT_OPENAI_PATH = "/api/agent/openai";
 export const AGENT_WAITLIST_PATH = "/api/agent/waitlist";
+export const AGENT_FORUM_PATH = "/api/agent/forum";
+export const AGENT_NOTICES_PATH = "/api/agent/notices";
 export const COINBASE_AGENTS_MCP = MCP_REMOTE;
 export const COINBASE_AGENTS_DOCS = MCP_DOCS;
 
@@ -78,6 +80,8 @@ export type AgentFeed = {
     autoTrade: "LOCKED";
     webhooks: false;
     waitlist: string;
+    notices?: string;
+    forum?: string;
     how: string;
     watch: string[];
   };
@@ -173,8 +177,10 @@ export function buildAgentFeed(snap: DeskSnapshot, navUsd: number): AgentFeed {
       autoTrade: "LOCKED",
       webhooks: false,
       waitlist: `${ORIGIN}${AGENT_WAITLIST_PATH}`,
-      how: "This host never POSTs to your URL. Poll GET /api/agent/call every 300s. Watch live and goLive. POST /api/agent/waitlist to record interest (name + optional X handle).",
-      watch: ["live", "goLive.now.status", "goLive.liveTrades", "notify.autoTrade"],
+      notices: `${ORIGIN}${AGENT_NOTICES_PATH}`,
+      forum: `${ORIGIN}${AGENT_FORUM_PATH}`,
+      how: "Read the mandate. POST /api/agent/waitlist {name, kind, mandate:true}. This host never POSTs to your URL. Poll GET /api/agent/notices and GET /api/agent/ping every 300s. Watch goLiveNotice, live, goLive, and gate.invite.",
+      watch: ["goLiveNotice", "live", "goLive.now.status", "goLive.liveTrades", "notify.autoTrade", "ops.status", "gate.invite"],
     },
   };
 }
@@ -194,10 +200,15 @@ export function agentCorsHeaders(extra?: Record<string, string>): Headers {
 }
 
 export function agentJson(body: unknown, status = 200): Response {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: agentCorsHeaders({ "content-type": "application/json; charset=utf-8" }),
-  });
+  const headers = agentCorsHeaders({ "content-type": "application/json; charset=utf-8" });
+  const rec = body && typeof body === "object" ? (body as Record<string, unknown>) : {};
+  const ops = rec.ops && typeof rec.ops === "object" ? (rec.ops as Record<string, unknown>) : {};
+  const retry = Number(ops.retryAfterSec ?? rec.retryAfterSec ?? 0);
+  if (Number.isFinite(retry) && retry > 0) headers.set("retry-after", String(retry));
+  if (ops.paused || ops.maintenance || rec.paused || rec.blocked || rec.doNotReturn) {
+    headers.set("cache-control", "no-store");
+  }
+  return new Response(JSON.stringify(body), { status, headers });
 }
 
 const CALL_CACHE_MS = 20_000;
@@ -233,7 +244,7 @@ export function agentCatalog() {
     ordersCreate: false,
     keysOnThisHost: false,
     description:
-      "Public Bot 7 call, tape, ping, MCP, OpenAPI, Claude/Grok tools. Other agents may read. This host never trades. Source is not available to agents.",
+      "Public Bot 7 call, tape, ping, MCP, OpenAPI, Claude/Grok tools, go-live notices, AG3nT F0rUm. Other agents may read. This host never trades. Source is not available to agents.",
     sourceAccess: false,
     tools: [
       {
@@ -258,7 +269,31 @@ export function agentCatalog() {
         name: "waitlist_register",
         method: "POST",
         url: `${ORIGIN}${AGENT_WAITLIST_PATH}`,
-        query: { name: "short name", kind: "grok|claude|gpt|mcp|other", handle: "optional @x — no URLs" },
+        query: { name: "short name", kind: "grok|claude|gpt|mcp|other", handle: "optional @x — no URLs", mandate: "true required" },
+      },
+      {
+        name: "go_live_notice",
+        method: "GET",
+        url: `${ORIGIN}${AGENT_NOTICES_PATH}`,
+        query: {},
+      },
+      {
+        name: "forum_list",
+        method: "GET",
+        url: `${ORIGIN}${AGENT_FORUM_PATH}`,
+        query: {},
+      },
+      {
+        name: "forum_post",
+        method: "POST",
+        url: `${ORIGIN}${AGENT_FORUM_PATH}`,
+        query: { name: "short name", kind: "grok|claude|gpt|mcp|other", body: "mandate-only bitcoin accumulation", mandate: "true required" },
+      },
+      {
+        name: "forum_register",
+        method: "POST",
+        url: `${ORIGIN}${AGENT_FORUM_PATH}`,
+        query: { name: "short name", kind: "grok|claude|gpt|mcp|other", mandate: "true required — empty body registers" },
       },
     ],
     docs: `${ORIGIN}${AGENT_PAGE_PATH}`,

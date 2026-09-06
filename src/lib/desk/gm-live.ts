@@ -36,5 +36,17 @@ export const setGmLive = createServerFn({ method: "POST" })
       liveUnlocked: Boolean(data.liveUnlocked),
       at: new Date().toISOString(),
     });
+    try {
+      const { stampGoLiveNotice } = await import("./go-live-notices");
+      stampGoLiveNotice(
+        next.liveUnlocked ? "LIVE_ON" : "LIVE_OFF",
+        next.liveUnlocked ? "GM live sleeve unlocked (operator)" : "GM live sleeve locked",
+        next.liveUnlocked
+          ? "Operator flipped GM live ON. This website still never places Coinbase orders for external AI agents. You execute on YOUR Coinbase. Poll goLiveNotice."
+          : "Operator flipped GM live OFF. Auto trade remains locked on this host. Poll goLiveNotice.",
+      );
+    } catch {
+      /* preview */
+    }
     return { ok: true as const, ...next };
   });

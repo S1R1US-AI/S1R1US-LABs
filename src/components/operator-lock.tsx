@@ -178,12 +178,18 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
   );
 }
 
-function YubiForm() {
+export function YubiForm() {
   const tapYubi = useOperator((s) => s.tapYubi);
+  const tapWebauthn = useOperator((s) => s.tapWebauthn);
   const lock = useOperator((s) => s.lock);
   const [otp, setOtp] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [fidoOk, setFidoOk] = useState(false);
+
+  useEffect(() => {
+    void import("@/lib/desk/webauthn-client").then((m) => setFidoOk(m.webauthnAvailable()));
+  }, []);
 
   async function submit(value: string) {
     const tap = value.trim().toLowerCase();
@@ -201,13 +207,21 @@ function YubiForm() {
     }
   }
 
+  async function fido() {
+    setBusy(true);
+    setErr(null);
+    const fail = await tapWebauthn();
+    setBusy(false);
+    if (fail) setErr(fail);
+  }
+
   return (
     <main className="mx-auto max-w-lg px-4 py-10 sm:px-6">
       <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">YubiKey</p>
       <h1 className="mt-2 font-mono text-2xl font-bold tracking-wide text-medium">{APP_NAME}</h1>
       <p className="mt-3 text-sm leading-relaxed text-muted">
-        Touch the enrolled YubiKey with this field focused. Short-press emits a Yubico OTP. Do not
-        paste a Coinbase secret here.
+        Admin locked the panel behind a physical YubiKey (Yubico). Short-press this field for a Yubico OTP,
+        or use FIDO2 (touch + PIN). Do not paste a Coinbase secret here.
       </p>
       <form
         className="mt-6 space-y-3"
@@ -217,7 +231,7 @@ function YubiForm() {
         }}
       >
         <label className="block text-sm" htmlFor="yubi-otp">
-          YubiKey
+          Yubico OTP
         </label>
         <input
           id="yubi-otp"
@@ -239,8 +253,15 @@ function YubiForm() {
         />
         {err ? <p className="text-sm text-down">{err}</p> : null}
         <Button variant="primary" type="submit" disabled={busy} className="w-full">
-          Verify YubiKey
+          Verify Yubico OTP
         </Button>
+        {fidoOk ? (
+          <Button type="button" className="w-full" disabled={busy} onClick={() => void fido()}>
+            Use YubiKey FIDO2
+          </Button>
+        ) : (
+          <p className="text-xs text-muted">This browser has no WebAuthn. Use Yubico OTP.</p>
+        )}
         <Button type="button" className="w-full" onClick={() => void lock()}>
           Back
         </Button>

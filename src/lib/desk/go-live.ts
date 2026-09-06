@@ -19,7 +19,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "PoC rails",
     when: "TODAY 2026-09-05",
     status: "STARTED",
-    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache Bot 7 JSON, BYO xAI compute, Bot 7 HTTP SaaS key spec. AI agents (Grok, Claude, GPT) start at /agent and /llms.txt. Go-live waitlist: POST /api/agent/waitlist then poll live/goLive (no webhooks). One DigitalOcean production app. No GPU.",
+    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache Bot 7 JSON, BYO xAI compute, Bot 7 HTTP SaaS key spec. AI agents (Grok, Claude, GPT) start at /agent and /llms.txt. W1S3 0WL$ Forum is LIVE. R0B0T$ ACT1VAT3 (/r0b0ts) invites software developers and W1S3 0WL$ to improve public GitHub OSS, iOS, and Google Play (DM @S1R1US_AI). Go-live notices: POST /api/agent/waitlist {name, kind, mandate:true} then poll /api/agent/notices (no webhooks). Admin Security can pause pulls or close the AI gate (ops.status PAUSED/MAINTENANCE on ping). Morning report: 14-day admin library, 3 shown, PDF in browser. FAQ documents visitor / admin / AI agent. Sitemap index + XML + video. One DigitalOcean production app. No GPU.",
     hold: "This host never places Coinbase orders. Public tree stays --dry-run. Admin / Yubi / vault stay off the OSS how-to.",
   },
   {

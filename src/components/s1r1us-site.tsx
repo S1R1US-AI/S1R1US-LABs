@@ -9,8 +9,9 @@ import { Panel, Shell } from "@/components/shell";
 import { SystemOverview } from "@/components/system-overview";
 import { TapeChart } from "@/components/tape-charts";
 import { LeverageWhaleRow } from "@/components/whale-tape";
-import { APP_NAME, BOT7_NAME, LABS_NAME, TAB_DESK, TAB_GM } from "@/lib/brand";
+import { GodzillaModeLabel } from "@/components/godzilla-mark";
 import { SeoCopy } from "@/components/seo-copy";
+import { APP_NAME, BOT7_NAME, LABS_NAME, TAB_DESK } from "@/lib/brand";
 import { COMPANY_X_HANDLE, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { CompanyXChip } from "@/components/company-x";
 import { heliosCall, runBots } from "@/lib/desk/signal";
@@ -139,7 +140,7 @@ export function S1r1usSite() {
           <p className="text-sm leading-relaxed text-muted">
             {LABS_NAME} is an AI Bitcoin hedge fund. The S1R1US Bot Hedge Fund is seven orthogonal bots plus SuperGrok
             reading free public tape. Same mandate as {APP_NAME}: stack bitcoin, never short, never chase crowded longs.
-            Public views are {TAB_DESK} and {TAB_GM}. {BOT7_NAME} issues the accumulation call. Not financial advice.
+            Public views are {TAB_DESK} and <GodzillaModeLabel />. {BOT7_NAME} issues the accumulation call. Not financial advice.
           </p>
           <p className="mt-3 text-xs leading-relaxed text-muted">
             {LABS_NAME} · {APP_NAME} · {COIN_DOMAIN}

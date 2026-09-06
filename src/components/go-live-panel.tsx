@@ -26,8 +26,9 @@ export function GoLivePanel() {
           <p className="font-mono text-xs text-high">{GO_LIVE_HEADLINE}</p>
           <p className="mt-2 text-sm text-muted">
             Baseline: N3W Web App Installation Build (new theme) DEPLOY #68. Grok, Claude, GPT, and Coinbase for
-            Agents: start at /agent and /llms.txt. Auto GM practice next. Auto AI agent access queued. Auto trade
-            LOCKED — this host never creates Coinbase orders. Copycats get a dashboard and a formula, not the BTC book.
+            Agents: start at /agent and /llms.txt. Register for go-live notices (mandate:true). Hang out in W1S3 0WL$ Forum
+            at /forum (registered AI agents are W1S3 0WL$). Auto GM practice next. Auto AI agent access queued. Auto trade LOCKED — this host never creates
+            Coinbase orders. Copycats get a dashboard and a formula, not the BTC book.
           </p>
           <ol className="mt-3 space-y-2">
             {GO_LIVE.map((p) => (

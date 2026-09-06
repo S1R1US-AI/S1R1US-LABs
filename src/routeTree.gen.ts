@@ -16,36 +16,46 @@ import { Route as B3arsRouteImport } from './routes/b3ars'
 import { Route as C0ff33RouteImport } from './routes/c0ff33'
 import { Route as CoffeeRouteImport } from './routes/coffee'
 import { Route as ComputeRouteImport } from './routes/compute'
+import { Route as EntityDotjsonRouteImport } from './routes/entity[.]json'
 import { Route as F33dRouteImport } from './routes/f33d'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ForumRouteImport } from './routes/forum'
 import { Route as GmRouteImport } from './routes/gm'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as HeliosRouteImport } from './routes/helios'
 import { Route as HeliosbotRouteImport } from './routes/heliosbot'
 import { Route as LaunchRouteImport } from './routes/launch'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MediaRouteImport } from './routes/media'
 import { Route as OwlRouteImport } from './routes/owl'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as R0b0tsRouteImport } from './routes/r0b0ts'
 import { Route as RenewRouteImport } from './routes/renew'
 import { Route as S1r1usRouteImport } from './routes/s1r1us'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as SecurityRouteImport } from './routes/security'
 import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as SitemapIndexDotxmlRouteImport } from './routes/sitemap-index[.]xml'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SourceRouteImport } from './routes/source'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThemeRouteImport } from './routes/theme'
+import { Route as VideoSitemapDotxmlRouteImport } from './routes/video-sitemap[.]xml'
 import { Route as DotwellKnownAgentCardDotjsonRouteImport } from './routes/[.]well-known/agent-card[.]json'
 import { Route as DotwellKnownAgentDotjsonRouteImport } from './routes/[.]well-known/agent[.]json'
 import { Route as DotwellKnownAiPluginDotjsonRouteImport } from './routes/[.]well-known/ai-plugin[.]json'
 import { Route as ApiAgentRouteImport } from './routes/api.agent'
+import { Route as MorningPdfIdRouteImport } from './routes/morning-pdf.$id'
 import { Route as ApiAgentA2aRouteImport } from './routes/api/agent.a2a'
 import { Route as ApiAgentCallRouteImport } from './routes/api/agent/call'
 import { Route as ApiAgentCardRouteImport } from './routes/api/agent.card'
 import { Route as ApiAgentClaudeRouteImport } from './routes/api/agent.claude'
 import { Route as ApiAgentFeeRouteImport } from './routes/api/agent.fee'
+import { Route as ApiAgentForumRouteImport } from './routes/api/agent.forum'
 import { Route as ApiAgentGrokRouteImport } from './routes/api/agent.grok'
 import { Route as ApiAgentKeysRouteImport } from './routes/api/agent.keys'
 import { Route as ApiAgentMcpRouteImport } from './routes/api/agent.mcp'
+import { Route as ApiAgentNoticesRouteImport } from './routes/api/agent.notices'
 import { Route as ApiAgentOpenaiRouteImport } from './routes/api/agent.openai'
 import { Route as ApiAgentOpenapiRouteImport } from './routes/api/agent.openapi'
 import { Route as ApiAgentPingRouteImport } from './routes/api/agent.ping'
@@ -87,6 +97,11 @@ const ComputeRoute = ComputeRouteImport.update({
   path: '/compute',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EntityDotjsonRoute = EntityDotjsonRouteImport.update({
+  id: '/entity.json',
+  path: '/entity.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const F33dRoute = F33dRouteImport.update({
   id: '/f33d',
   path: '/f33d',
@@ -95,6 +110,11 @@ const F33dRoute = F33dRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForumRoute = ForumRouteImport.update({
+  id: '/forum',
+  path: '/forum',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GmRoute = GmRouteImport.update({
@@ -127,6 +147,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OwlRoute = OwlRouteImport.update({
   id: '/owl',
   path: '/owl',
@@ -135,6 +160,11 @@ const OwlRoute = OwlRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R0b0tsRoute = R0b0tsRouteImport.update({
+  id: '/r0b0ts',
+  path: '/r0b0ts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RenewRoute = RenewRouteImport.update({
@@ -147,6 +177,11 @@ const S1r1usRoute = S1r1usRouteImport.update({
   path: '/s1r1us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SecurityRoute = SecurityRouteImport.update({
   id: '/security',
   path: '/security',
@@ -155,6 +190,11 @@ const SecurityRoute = SecurityRouteImport.update({
 const SitemapRoute = SitemapRouteImport.update({
   id: '/sitemap',
   path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapIndexDotxmlRoute = SitemapIndexDotxmlRouteImport.update({
+  id: '/sitemap-index.xml',
+  path: '/sitemap-index.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -175,6 +215,11 @@ const TermsRoute = TermsRouteImport.update({
 const ThemeRoute = ThemeRouteImport.update({
   id: '/theme',
   path: '/theme',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideoSitemapDotxmlRoute = VideoSitemapDotxmlRouteImport.update({
+  id: '/video-sitemap.xml',
+  path: '/video-sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DotwellKnownAgentCardDotjsonRoute =
@@ -198,6 +243,11 @@ const DotwellKnownAiPluginDotjsonRoute =
 const ApiAgentRoute = ApiAgentRouteImport.update({
   id: '/api/agent',
   path: '/api/agent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MorningPdfIdRoute = MorningPdfIdRouteImport.update({
+  id: '/morning-pdf/$id',
+  path: '/morning-pdf/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAgentA2aRoute = ApiAgentA2aRouteImport.update({
@@ -225,6 +275,11 @@ const ApiAgentFeeRoute = ApiAgentFeeRouteImport.update({
   path: '/fee',
   getParentRoute: () => ApiAgentRoute,
 } as any)
+const ApiAgentForumRoute = ApiAgentForumRouteImport.update({
+  id: '/forum',
+  path: '/forum',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
 const ApiAgentGrokRoute = ApiAgentGrokRouteImport.update({
   id: '/grok',
   path: '/grok',
@@ -238,6 +293,11 @@ const ApiAgentKeysRoute = ApiAgentKeysRouteImport.update({
 const ApiAgentMcpRoute = ApiAgentMcpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentNoticesRoute = ApiAgentNoticesRouteImport.update({
+  id: '/notices',
+  path: '/notices',
   getParentRoute: () => ApiAgentRoute,
 } as any)
 const ApiAgentOpenaiRoute = ApiAgentOpenaiRouteImport.update({
@@ -274,36 +334,46 @@ export interface FileRoutesByFullPath {
   '/c0ff33': typeof C0ff33Route
   '/coffee': typeof CoffeeRoute
   '/compute': typeof ComputeRoute
+  '/entity.json': typeof EntityDotjsonRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
+  '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
   '/helios': typeof HeliosRoute
   '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/media': typeof MediaRoute
   '/owl': typeof OwlRoute
   '/privacy': typeof PrivacyRoute
+  '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
+  '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
   '/sitemap': typeof SitemapRoute
+  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
+  '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/call': typeof ApiAgentCallRoute
   '/api/agent/card': typeof ApiAgentCardRoute
   '/api/agent/claude': typeof ApiAgentClaudeRoute
   '/api/agent/fee': typeof ApiAgentFeeRoute
+  '/api/agent/forum': typeof ApiAgentForumRoute
   '/api/agent/grok': typeof ApiAgentGrokRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
+  '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
@@ -318,36 +388,46 @@ export interface FileRoutesByTo {
   '/c0ff33': typeof C0ff33Route
   '/coffee': typeof CoffeeRoute
   '/compute': typeof ComputeRoute
+  '/entity.json': typeof EntityDotjsonRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
+  '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
   '/helios': typeof HeliosRoute
   '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/media': typeof MediaRoute
   '/owl': typeof OwlRoute
   '/privacy': typeof PrivacyRoute
+  '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
+  '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
   '/sitemap': typeof SitemapRoute
+  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
+  '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/call': typeof ApiAgentCallRoute
   '/api/agent/card': typeof ApiAgentCardRoute
   '/api/agent/claude': typeof ApiAgentClaudeRoute
   '/api/agent/fee': typeof ApiAgentFeeRoute
+  '/api/agent/forum': typeof ApiAgentForumRoute
   '/api/agent/grok': typeof ApiAgentGrokRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
+  '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
@@ -363,36 +443,46 @@ export interface FileRoutesById {
   '/c0ff33': typeof C0ff33Route
   '/coffee': typeof CoffeeRoute
   '/compute': typeof ComputeRoute
+  '/entity.json': typeof EntityDotjsonRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
+  '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
   '/guide': typeof GuideRoute
   '/helios': typeof HeliosRoute
   '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/media': typeof MediaRoute
   '/owl': typeof OwlRoute
   '/privacy': typeof PrivacyRoute
+  '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
+  '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
   '/sitemap': typeof SitemapRoute
+  '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
+  '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/call': typeof ApiAgentCallRoute
   '/api/agent/card': typeof ApiAgentCardRoute
   '/api/agent/claude': typeof ApiAgentClaudeRoute
   '/api/agent/fee': typeof ApiAgentFeeRoute
+  '/api/agent/forum': typeof ApiAgentForumRoute
   '/api/agent/grok': typeof ApiAgentGrokRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
+  '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
@@ -409,36 +499,46 @@ export interface FileRouteTypes {
     | '/c0ff33'
     | '/coffee'
     | '/compute'
+    | '/entity.json'
     | '/f33d'
     | '/faq'
+    | '/forum'
     | '/gm'
     | '/guide'
     | '/helios'
     | '/heliosbot'
     | '/launch'
     | '/login'
+    | '/media'
     | '/owl'
     | '/privacy'
+    | '/r0b0ts'
     | '/renew'
     | '/s1r1us'
+    | '/search'
     | '/security'
     | '/sitemap'
+    | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
     | '/terms'
     | '/theme'
+    | '/video-sitemap.xml'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
     | '/.well-known/ai-plugin.json'
     | '/api/agent'
+    | '/morning-pdf/$id'
     | '/api/agent/a2a'
     | '/api/agent/call'
     | '/api/agent/card'
     | '/api/agent/claude'
     | '/api/agent/fee'
+    | '/api/agent/forum'
     | '/api/agent/grok'
     | '/api/agent/keys'
     | '/api/agent/mcp'
+    | '/api/agent/notices'
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
@@ -453,36 +553,46 @@ export interface FileRouteTypes {
     | '/c0ff33'
     | '/coffee'
     | '/compute'
+    | '/entity.json'
     | '/f33d'
     | '/faq'
+    | '/forum'
     | '/gm'
     | '/guide'
     | '/helios'
     | '/heliosbot'
     | '/launch'
     | '/login'
+    | '/media'
     | '/owl'
     | '/privacy'
+    | '/r0b0ts'
     | '/renew'
     | '/s1r1us'
+    | '/search'
     | '/security'
     | '/sitemap'
+    | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
     | '/terms'
     | '/theme'
+    | '/video-sitemap.xml'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
     | '/.well-known/ai-plugin.json'
     | '/api/agent'
+    | '/morning-pdf/$id'
     | '/api/agent/a2a'
     | '/api/agent/call'
     | '/api/agent/card'
     | '/api/agent/claude'
     | '/api/agent/fee'
+    | '/api/agent/forum'
     | '/api/agent/grok'
     | '/api/agent/keys'
     | '/api/agent/mcp'
+    | '/api/agent/notices'
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
@@ -497,36 +607,46 @@ export interface FileRouteTypes {
     | '/c0ff33'
     | '/coffee'
     | '/compute'
+    | '/entity.json'
     | '/f33d'
     | '/faq'
+    | '/forum'
     | '/gm'
     | '/guide'
     | '/helios'
     | '/heliosbot'
     | '/launch'
     | '/login'
+    | '/media'
     | '/owl'
     | '/privacy'
+    | '/r0b0ts'
     | '/renew'
     | '/s1r1us'
+    | '/search'
     | '/security'
     | '/sitemap'
+    | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
     | '/terms'
     | '/theme'
+    | '/video-sitemap.xml'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
     | '/.well-known/ai-plugin.json'
     | '/api/agent'
+    | '/morning-pdf/$id'
     | '/api/agent/a2a'
     | '/api/agent/call'
     | '/api/agent/card'
     | '/api/agent/claude'
     | '/api/agent/fee'
+    | '/api/agent/forum'
     | '/api/agent/grok'
     | '/api/agent/keys'
     | '/api/agent/mcp'
+    | '/api/agent/notices'
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
@@ -542,28 +662,36 @@ export interface RootRouteChildren {
   C0ff33Route: typeof C0ff33Route
   CoffeeRoute: typeof CoffeeRoute
   ComputeRoute: typeof ComputeRoute
+  EntityDotjsonRoute: typeof EntityDotjsonRoute
   F33dRoute: typeof F33dRoute
   FaqRoute: typeof FaqRoute
+  ForumRoute: typeof ForumRoute
   GmRoute: typeof GmRoute
   GuideRoute: typeof GuideRoute
   HeliosRoute: typeof HeliosRoute
   HeliosbotRoute: typeof HeliosbotRoute
   LaunchRoute: typeof LaunchRoute
   LoginRoute: typeof LoginRoute
+  MediaRoute: typeof MediaRoute
   OwlRoute: typeof OwlRoute
   PrivacyRoute: typeof PrivacyRoute
+  R0b0tsRoute: typeof R0b0tsRoute
   RenewRoute: typeof RenewRoute
   S1r1usRoute: typeof S1r1usRoute
+  SearchRoute: typeof SearchRoute
   SecurityRoute: typeof SecurityRoute
   SitemapRoute: typeof SitemapRoute
+  SitemapIndexDotxmlRoute: typeof SitemapIndexDotxmlRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourceRoute: typeof SourceRoute
   TermsRoute: typeof TermsRoute
   ThemeRoute: typeof ThemeRoute
+  VideoSitemapDotxmlRoute: typeof VideoSitemapDotxmlRoute
   DotwellKnownAgentCardDotjsonRoute: typeof DotwellKnownAgentCardDotjsonRoute
   DotwellKnownAgentDotjsonRoute: typeof DotwellKnownAgentDotjsonRoute
   DotwellKnownAiPluginDotjsonRoute: typeof DotwellKnownAiPluginDotjsonRoute
   ApiAgentRoute: typeof ApiAgentRouteWithChildren
+  MorningPdfIdRoute: typeof MorningPdfIdRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -618,6 +746,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComputeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/entity.json': {
+      id: '/entity.json'
+      path: '/entity.json'
+      fullPath: '/entity.json'
+      preLoaderRoute: typeof EntityDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/f33d': {
       id: '/f33d'
       path: '/f33d'
@@ -630,6 +765,13 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forum': {
+      id: '/forum'
+      path: '/forum'
+      fullPath: '/forum'
+      preLoaderRoute: typeof ForumRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gm': {
@@ -674,6 +816,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/owl': {
       id: '/owl'
       path: '/owl'
@@ -686,6 +835,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/r0b0ts': {
+      id: '/r0b0ts'
+      path: '/r0b0ts'
+      fullPath: '/r0b0ts'
+      preLoaderRoute: typeof R0b0tsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/renew': {
@@ -702,6 +858,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof S1r1usRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/security': {
       id: '/security'
       path: '/security'
@@ -714,6 +877,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap'
       fullPath: '/sitemap'
       preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap-index.xml': {
+      id: '/sitemap-index.xml'
+      path: '/sitemap-index.xml'
+      fullPath: '/sitemap-index.xml'
+      preLoaderRoute: typeof SitemapIndexDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -744,6 +914,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ThemeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/video-sitemap.xml': {
+      id: '/video-sitemap.xml'
+      path: '/video-sitemap.xml'
+      fullPath: '/video-sitemap.xml'
+      preLoaderRoute: typeof VideoSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.well-known/agent-card.json': {
       id: '/.well-known/agent-card.json'
       path: '/.well-known/agent-card.json'
@@ -770,6 +947,13 @@ declare module '@tanstack/react-router' {
       path: '/api/agent'
       fullPath: '/api/agent'
       preLoaderRoute: typeof ApiAgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/morning-pdf/$id': {
+      id: '/morning-pdf/$id'
+      path: '/morning-pdf/$id'
+      fullPath: '/morning-pdf/$id'
+      preLoaderRoute: typeof MorningPdfIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/agent/a2a': {
@@ -807,6 +991,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAgentFeeRouteImport
       parentRoute: typeof ApiAgentRoute
     }
+    '/api/agent/forum': {
+      id: '/api/agent/forum'
+      path: '/forum'
+      fullPath: '/api/agent/forum'
+      preLoaderRoute: typeof ApiAgentForumRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
     '/api/agent/grok': {
       id: '/api/agent/grok'
       path: '/grok'
@@ -826,6 +1017,13 @@ declare module '@tanstack/react-router' {
       path: '/mcp'
       fullPath: '/api/agent/mcp'
       preLoaderRoute: typeof ApiAgentMcpRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/notices': {
+      id: '/api/agent/notices'
+      path: '/notices'
+      fullPath: '/api/agent/notices'
+      preLoaderRoute: typeof ApiAgentNoticesRouteImport
       parentRoute: typeof ApiAgentRoute
     }
     '/api/agent/openai': {
@@ -872,9 +1070,11 @@ interface ApiAgentRouteChildren {
   ApiAgentCardRoute: typeof ApiAgentCardRoute
   ApiAgentClaudeRoute: typeof ApiAgentClaudeRoute
   ApiAgentFeeRoute: typeof ApiAgentFeeRoute
+  ApiAgentForumRoute: typeof ApiAgentForumRoute
   ApiAgentGrokRoute: typeof ApiAgentGrokRoute
   ApiAgentKeysRoute: typeof ApiAgentKeysRoute
   ApiAgentMcpRoute: typeof ApiAgentMcpRoute
+  ApiAgentNoticesRoute: typeof ApiAgentNoticesRoute
   ApiAgentOpenaiRoute: typeof ApiAgentOpenaiRoute
   ApiAgentOpenapiRoute: typeof ApiAgentOpenapiRoute
   ApiAgentPingRoute: typeof ApiAgentPingRoute
@@ -887,9 +1087,11 @@ const ApiAgentRouteChildren: ApiAgentRouteChildren = {
   ApiAgentCardRoute: ApiAgentCardRoute,
   ApiAgentClaudeRoute: ApiAgentClaudeRoute,
   ApiAgentFeeRoute: ApiAgentFeeRoute,
+  ApiAgentForumRoute: ApiAgentForumRoute,
   ApiAgentGrokRoute: ApiAgentGrokRoute,
   ApiAgentKeysRoute: ApiAgentKeysRoute,
   ApiAgentMcpRoute: ApiAgentMcpRoute,
+  ApiAgentNoticesRoute: ApiAgentNoticesRoute,
   ApiAgentOpenaiRoute: ApiAgentOpenaiRoute,
   ApiAgentOpenapiRoute: ApiAgentOpenapiRoute,
   ApiAgentPingRoute: ApiAgentPingRoute,
@@ -908,28 +1110,36 @@ const rootRouteChildren: RootRouteChildren = {
   C0ff33Route: C0ff33Route,
   CoffeeRoute: CoffeeRoute,
   ComputeRoute: ComputeRoute,
+  EntityDotjsonRoute: EntityDotjsonRoute,
   F33dRoute: F33dRoute,
   FaqRoute: FaqRoute,
+  ForumRoute: ForumRoute,
   GmRoute: GmRoute,
   GuideRoute: GuideRoute,
   HeliosRoute: HeliosRoute,
   HeliosbotRoute: HeliosbotRoute,
   LaunchRoute: LaunchRoute,
   LoginRoute: LoginRoute,
+  MediaRoute: MediaRoute,
   OwlRoute: OwlRoute,
   PrivacyRoute: PrivacyRoute,
+  R0b0tsRoute: R0b0tsRoute,
   RenewRoute: RenewRoute,
   S1r1usRoute: S1r1usRoute,
+  SearchRoute: SearchRoute,
   SecurityRoute: SecurityRoute,
   SitemapRoute: SitemapRoute,
+  SitemapIndexDotxmlRoute: SitemapIndexDotxmlRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourceRoute: SourceRoute,
   TermsRoute: TermsRoute,
   ThemeRoute: ThemeRoute,
+  VideoSitemapDotxmlRoute: VideoSitemapDotxmlRoute,
   DotwellKnownAgentCardDotjsonRoute: DotwellKnownAgentCardDotjsonRoute,
   DotwellKnownAgentDotjsonRoute: DotwellKnownAgentDotjsonRoute,
   DotwellKnownAiPluginDotjsonRoute: DotwellKnownAiPluginDotjsonRoute,
   ApiAgentRoute: ApiAgentRouteWithChildren,
+  MorningPdfIdRoute: MorningPdfIdRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

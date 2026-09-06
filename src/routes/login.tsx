@@ -6,6 +6,7 @@ import { UserButton } from "@/lib/auth/gates";
 import { useCurrentUser, useCurrentUserState } from "@/lib/auth/use-current-user";
 import { Button } from "@/components/ui/button";
 import { XRenewWhenAdmin } from "@/components/renew-password";
+import { YubiForm } from "@/components/operator-lock";
 import { secondFactorStatus } from "@/lib/desk/access";
 import { useOperator } from "@/lib/desk/operator";
 import { looksLikeSecret } from "@/lib/desk/security";
@@ -28,6 +29,7 @@ function Login() {
   const unlocked = useOperator((s) => s.unlocked);
   const idleLocked = useOperator((s) => s.idleLocked);
   const role = useOperator((s) => s.role);
+  const yubiTicket = useOperator((s) => s.yubiTicket);
   const unlock = useOperator((s) => s.unlock);
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
@@ -76,6 +78,13 @@ function Login() {
     );
   }
   if (unlocked) return <Navigate to={role === "user" ? "/" : "/admin"} />;
+  if (yubiTicket) {
+    return (
+      <Shell right={<LoginCluster />}>
+        <YubiForm />
+      </Shell>
+    );
+  }
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();

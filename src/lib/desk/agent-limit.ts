@@ -1,5 +1,8 @@
 import { agentCorsHeaders } from "./agent-feed";
 import { feedKeyAccepted } from "./feed-key";
+import { underAttack } from "./auto-defend";
+import { agentBanResponse, agentOpsPublic } from "./agent-notice";
+import { agentGatePublic, isAgentCommOpen } from "./agent-gate";
 
 type Hit = { at: number };
 const buckets = new Map<string, Hit[]>();
@@ -33,6 +36,47 @@ function prune(hits: Hit[], since: number) {
   while (hits.length && hits[0]!.at < since) hits.shift();
 }
 
+function agentPath(request: Request) {
+  try {
+    return new URL(request.url).pathname;
+  } catch {
+    return "";
+  }
+}
+
+/** Ping + waitlist stay up so bots learn maintenance and can be invited. MCP stays up for initialize / waitlist_register only. */
+function openDuringMaintenance(path: string) {
+  return /\/api\/agent\/(ping|waitlist|notices|forum)\/?$/.test(path) || /\/api\/agent\/mcp\/?$/.test(path);
+}
+
+function maintenanceResponse(): Response {
+  const ops = agentOpsPublic();
+  const gate = agentGatePublic();
+  const body = {
+    ...ops,
+    ok: false as const,
+    error: "maintenance" as const,
+    pong: false as const,
+    live: false as const,
+    paused: ops.paused,
+    status: ops.status.toLowerCase(),
+    ops,
+    gate,
+  };
+  const headers = agentCorsHeaders({
+    "content-type": "application/json; charset=utf-8",
+    "retry-after": String(ops.retryAfterSec || 300),
+    "cache-control": "no-store",
+  });
+  return new Response(JSON.stringify(body), { status: 503, headers });
+}
+
+function agentMaintenance(request: Request): Response | null {
+  if (isAgentCommOpen()) return null;
+  if (openDuringMaintenance(agentPath(request))) return null;
+  return maintenanceResponse();
+}
+
 /** Free /call: 1 / 25s (poll 300s). Light discovery: 8 / 30s. SaaS key: 1 / 5s on /call. Scrapers: 1 / 60s. */
 export function agentRateLimit(request: Request): Response | null {
   const paid = feedKeyAccepted(request);
@@ -50,17 +94,17 @@ export function agentRateLimit(request: Request): Response | null {
     max = 1;
     retrySec = 5;
   } else if (kind === "scrape" || kind === "empty") {
-    windowMs = 60_000;
+    windowMs = underAttack() ? 120_000 : 60_000;
     max = 1;
-    retrySec = 60;
+    retrySec = underAttack() ? 120 : 60;
   } else if (weight === "heavy") {
-    windowMs = 25_000;
-    max = 2;
-    retrySec = 25;
+    windowMs = underAttack() ? 40_000 : 25_000;
+    max = underAttack() ? 1 : 2;
+    retrySec = underAttack() ? 40 : 25;
   } else {
-    windowMs = 30_000;
-    max = 8;
-    retrySec = 4;
+    windowMs = underAttack() ? 20_000 : 30_000;
+    max = underAttack() ? 4 : 8;
+    retrySec = underAttack() ? 8 : 4;
   }
   let hits = buckets.get(bucketKey);
   if (!hits) {
@@ -69,6 +113,14 @@ export function agentRateLimit(request: Request): Response | null {
   }
   prune(hits, now - windowMs);
   if (hits.length >= max) {
+    void import("./intrusion-log").then(({ recordIntrusion }) => {
+      recordIntrusion({
+        kind: kind === "scrape" || kind === "empty" ? "scraper" : "rate-limit",
+        ip,
+        ua,
+        detail: `${weight} ${kind} 429 retry ${retrySec}s`,
+      });
+    });
     const headers = agentCorsHeaders({
       "content-type": "application/json; charset=utf-8",
       "retry-after": String(retrySec),
@@ -81,7 +133,9 @@ export function agentRateLimit(request: Request): Response | null {
         pollSeconds: paid ? 5 : 300,
         hint: paid
           ? "SaaS key accepted. Slow down."
-          : "Cheap bots poll GET /api/agent/call every 300s. Scrapers get 429. Bot 7 HTTP key raises the cap — pay for HTTP, not conviction.",
+          : "Cheap bots poll GET /api/agent/call every 300s. Scrapers get 429. This is a throttle, not a ban. Bot 7 HTTP key raises the cap — pay for HTTP, not conviction.",
+        doNotReturn: false,
+        blocked: false,
         trade: false,
         ordersCreate: false,
       }),
@@ -100,7 +154,11 @@ export function agentRateLimit(request: Request): Response | null {
 }
 
 export function withAgentLimit(request: Request, run: () => Response | Promise<Response>) {
+  const banned = agentBanResponse(request);
+  if (banned) return banned;
   const blocked = agentRateLimit(request);
   if (blocked) return blocked;
+  const maint = agentMaintenance(request);
+  if (maint) return maint;
   return run();
 }

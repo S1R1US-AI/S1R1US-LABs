@@ -28,6 +28,29 @@ export const setTapeFreeze = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Admin session required", ...lastGoodMeta() };
     }
     setTapeFrozen(data.frozen);
+    try {
+      const { stampGoLiveNotice } = await import("./go-live-notices");
+      if (data.frozen) {
+        stampGoLiveNotice(
+          "PAUSED",
+          "Data pulls paused — under maintenance",
+          "The tape is the last validated snapshot. Do not place Coinbase orders from it. Poll GET /api/agent/ping. You will be invited when pulls resume.",
+        );
+      } else {
+        const now = new Date().toISOString();
+        const { stampInvites } = await import("./agent-waitlist");
+        const n = stampInvites(now);
+        const { noteInviteBatch } = await import("./agent-gate");
+        noteInviteBatch(n, now);
+        stampGoLiveNotice(
+          "RESUMED",
+          "Data pulls resumed",
+          "The 5-minute tape clock is back. Waitlisted bots: this is your go-live notice. Resume GET /api/agent/call every 300s. Do not treat this as live Coinbase unlock.",
+        );
+      }
+    } catch {
+      /* preview */
+    }
     return { ok: true as const, ...lastGoodMeta() };
   });
 
@@ -59,10 +82,115 @@ export const fetchDeskErrors = createServerFn({ method: "GET" }).handler(async (
   return listDeskErrors();
 });
 
+export const fetchIntrusions = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) return { ok: false as const, rows: [], summary: { total: 0, last24h: 0, byKind: {}, lastAt: null } };
+    const { listIntrusions, intrusionSummary, ingestPersisted } = await import("./intrusion-log");
+    try {
+      const fs = await import("node:fs");
+      ingestPersisted(JSON.parse(fs.readFileSync("/tmp/desk-intrusions.json", "utf8")));
+    } catch {
+      /* missing */
+    }
+    return { ok: true as const, rows: listIntrusions(), summary: intrusionSummary() };
+  });
+
+export const runHunterAudit = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) return { ok: false as const, report: null };
+    const { hydrateSecurityDisk } = await import("./posture");
+    hydrateSecurityDisk();
+    const { runHunter } = await import("./hunter");
+    return { ok: true as const, report: runHunter() };
+  });
+
+export const fetchSecurityPosture = createServerFn({ method: "POST" })
+  .validator((input: { token: string; refreshIntel?: boolean }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) return { ok: false as const, posture: null };
+    const { securityPosture } = await import("./posture");
+    return { ok: true as const, posture: await securityPosture({ refreshIntel: Boolean(data.refreshIntel) }) };
+  });
+
+export const fetchSecurityBrief = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) return { ok: false as const, brief: null };
+    try {
+      const fs = await import("node:fs");
+      const { ingestPersisted } = await import("./intrusion-log");
+      ingestPersisted(JSON.parse(fs.readFileSync("/tmp/desk-intrusions.json", "utf8")));
+    } catch {
+      /* missing */
+    }
+    const { morningSecurity } = await import("./morning-ops");
+    return { ok: true as const, brief: morningSecurity() };
+  });
+
 export const fetchAgentFlags = createServerFn({ method: "GET" }).handler(async () => {
   const { peekAgentFlags } = await import("./agent-ping");
-  return peekAgentFlags();
+  const { agentGatePublic, peekAgentGate } = await import("./agent-gate");
+  const flags = peekAgentFlags();
+  const gate = peekAgentGate();
+  return { ...flags, gate: agentGatePublic(), communication: gate.externalAgents ? ("OPEN" as const) : ("MAINTENANCE" as const) };
 });
+
+export const fetchAgentGate = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required", gate: null, waitlist: { count: 0, invited: 0, rows: [] }, bars: { count: 0, rows: [] } };
+    }
+    const { peekAgentGate, agentGatePublic } = await import("./agent-gate");
+    const { waitlistAdmin } = await import("./agent-waitlist");
+    const { listAgentBars } = await import("./agent-bar");
+    return {
+      ok: true as const,
+      error: null as string | null,
+      gate: { ...peekAgentGate(), public: agentGatePublic() },
+      waitlist: waitlistAdmin(),
+      bars: listAgentBars(),
+    };
+  });
+
+export const setAgentGate = createServerFn({ method: "POST" })
+  .validator((input: { token: string; open: boolean }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required", gate: null, waitlist: { count: 0, invited: 0, rows: [] }, bars: { count: 0, rows: [] } };
+    }
+    const { setAgentComm, peekAgentGate, agentGatePublic } = await import("./agent-gate");
+    const { waitlistAdmin } = await import("./agent-waitlist");
+    const { listAgentBars } = await import("./agent-bar");
+    setAgentComm(data.open);
+    return {
+      ok: true as const,
+      error: null as string | null,
+      gate: { ...peekAgentGate(), public: agentGatePublic() },
+      waitlist: waitlistAdmin(),
+      bars: listAgentBars(),
+    };
+  });
+
+export const unbarAgent = createServerFn({ method: "POST" })
+  .validator((input: { token: string; id: string }) => input)
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await verifyAccessToken(data.token))) {
+      return { ok: false as const, error: "Admin session required", bars: { count: 0, rows: [] } };
+    }
+    const { unbarAgent: drop } = await import("./agent-bar");
+    return { ok: true as const, error: null as string | null, bars: drop(data.id) };
+  });
+
 
 export const fetchMorningLib = createServerFn({ method: "POST" })
   .validator((input: { token: string }) => input)

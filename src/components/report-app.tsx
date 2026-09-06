@@ -8,7 +8,7 @@ import {
   Printer,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { seoImgAlt } from "@/lib/brand";
+import { SeoImage } from "@/components/seo-image";
 import {
   ABSTRACT,
   BOT_COSTS,
@@ -316,10 +316,9 @@ export function ReportApp({ embedded = false }: { embedded?: boolean }) {
                       className="group w-full text-left"
                     >
                       <span className="block overflow-hidden rounded-md border border-rule bg-paper-raised shadow-[0_1px_0_rgba(22,20,18,0.04)]">
-                        <img
+                        <SeoImage
                           src={page.thumb}
-                          alt={seoImgAlt(`S1R1US Labs paper page ${page.n} — ${page.caption}`)}
-                          title={seoImgAlt(`S1R1US Labs paper page ${page.n} — ${page.caption}`)}
+                          desc={`S1R1US Labs paper page ${page.n} — ${page.caption}`}
                           className="aspect-[3/4] w-full object-cover object-top transition-transform duration-[var(--motion-fast)] ease-[var(--ease-out)] group-hover:scale-[1.02]"
                         />
                       </span>
@@ -360,10 +359,9 @@ export function ReportApp({ embedded = false }: { embedded?: boolean }) {
           aria-label={`Original page ${scan}`}
           onClick={() => setScan(null)}
         >
-          <img
+          <SeoImage
             src={PAGES[scan - 1]?.src}
-            alt={seoImgAlt(`S1R1US Labs paper full scan of page ${scan}`)}
-            title={seoImgAlt(`S1R1US Labs paper full scan of page ${scan}`)}
+            desc={`S1R1US Labs paper full scan of page ${scan}`}
             className="max-h-full max-w-full rounded-md object-contain shadow-2xl"
           />
         </div>

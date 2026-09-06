@@ -1,5 +1,5 @@
 import { o as __toESM } from "../_runtime.mjs";
-import { H as require_react } from "./@tanstack/react-router+[...].mjs";
+import { U as require_react } from "./@tanstack/react-router+[...].mjs";
 import { t as require_prop_types } from "./prop-types.mjs";
 import { t as deepEqual } from "./fast-equals.mjs";
 //#region node_modules/react-smooth/es6/setRafTimeout.js

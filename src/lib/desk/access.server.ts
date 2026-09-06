@@ -254,14 +254,23 @@ export async function currentXUserId(bearerToken?: string): Promise<string | nul
 
 export async function finishDeskUnlock(): Promise<
   | { ok: true; needYubi: false; token: string; role: "admin"; username: string }
-  | { ok: true; needYubi: true; ticket: string }
+  | { ok: true; needYubi: true; ticket: string; username: string }
 > {
+  const username = await storedAdminName();
+  try {
+    const { adminPanelYubiLock, adminHasPhysicalKey } = await import("./yubi-gate");
+    if ((await adminPanelYubiLock()) && (await adminHasPhysicalKey())) {
+      return { ok: true, needYubi: true, ticket: await signYubiTicket(), username };
+    }
+  } catch {
+    /* gate off */
+  }
   return {
     ok: true,
     needYubi: false,
     token: await signAccessToken(),
     role: "admin",
-    username: await storedAdminName(),
+    username,
   };
 }
 
@@ -375,6 +384,12 @@ export async function purgeAuth() {
   await sql`delete from "verification"`;
   await sql`delete from admin_2fa`;
   await sql`delete from admin_yubi`;
+  try {
+    await sql`delete from admin_webauthn`;
+    await sql`update admin_yubi_gate set panel_lock = false, updated_at = now() where id = 'gate'`;
+  } catch {
+    /* migrate later */
+  }
   await sql`
     update admin_lock
     set token_gen = coalesce(token_gen, 1) + 1, updated_at = now()

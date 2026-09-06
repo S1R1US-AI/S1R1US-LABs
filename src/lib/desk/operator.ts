@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { bumpDeskEpoch, changeAdminCreds, completeAdminReset, confirmYubi, renewAdminPasswordWithX, requestAdminReset, signInDesk, unlockBoundX } from "./access";
+import { bumpDeskEpoch, changeAdminCreds, completeAdminReset, confirmWebauthn, confirmYubi, renewAdminPasswordWithX, requestAdminReset, signInDesk, unlockBoundX, webauthnBeginLogin } from "./access";
 import { signOut } from "@/lib/auth/client";
 
 export type AuditEvent = {
@@ -87,6 +87,7 @@ type OpState = {
   renewWithX: (next: string, confirm: string, nextName?: string) => Promise<string | null>;
   openRenew: (next: string, confirm: string) => Promise<string | null>;
   tapYubi: (otp: string) => Promise<string | null>;
+  tapWebauthn: () => Promise<string | null>;
   changeCreds: (current: string, next: string, confirm: string, nextName: string) => Promise<string | null>;
   lock: () => void | Promise<void>;
   lockFromIdle: () => Promise<void>;
@@ -110,7 +111,8 @@ export const useOperator = create<OpState>()(
           return res.error;
         }
         if (res.needYubi) {
-          set({ yubiTicket: res.ticket, token: "", unlocked: false, role: "", operatorName: "" });
+          const operatorName = "username" in res ? res.username : "";
+          set({ yubiTicket: res.ticket, token: "", unlocked: false, role: "", operatorName });
           get().log("yubi", "YubiKey tap required");
           return "yubi";
         }
@@ -174,11 +176,50 @@ export const useOperator = create<OpState>()(
           get().log("reject", "YubiKey failed");
           return res.error;
         }
-        writeSessionToken(res.token, "admin", get().operatorName);
+        const operatorName = "username" in res ? res.username : get().operatorName;
+        writeSessionToken(res.token, "admin", operatorName);
         clearIdleFlag();
-        set({ token: res.token, unlocked: true, yubiTicket: "", idleLocked: false, role: "admin" });
+        set({ token: res.token, unlocked: true, yubiTicket: "", idleLocked: false, role: "admin", operatorName });
         get().log("unlock", "YubiKey accepted");
         return null;
+      },
+      tapWebauthn: async () => {
+        const ticket = get().yubiTicket;
+        if (!ticket) return "YubiKey challenge expired. Unlock again.";
+        try {
+          const { clientOrigin, getYubiAssertion } = await import("./webauthn-client");
+          const begin = await webauthnBeginLogin({ data: { ticket, origin: clientOrigin() } });
+          if (!begin.ok) {
+            get().log("reject", "YubiKey FIDO2 failed");
+            return begin.error;
+          }
+          const assertion = await getYubiAssertion(begin.options);
+          const res = await confirmWebauthn({
+            data: {
+              ticket,
+              origin: clientOrigin(),
+              challenge: assertion.challenge,
+              credentialId: assertion.credentialId,
+              authenticatorData: assertion.authenticatorData,
+              clientDataJSON: assertion.clientDataJSON,
+              signature: assertion.signature,
+            },
+          });
+          if (!res.ok) {
+            get().log("reject", "YubiKey FIDO2 failed");
+            return res.error;
+          }
+          const operatorName = "username" in res ? res.username : get().operatorName;
+          writeSessionToken(res.token, "admin", operatorName);
+          clearIdleFlag();
+          set({ token: res.token, unlocked: true, yubiTicket: "", idleLocked: false, role: "admin", operatorName });
+          get().log("unlock", "YubiKey FIDO2 accepted");
+          return null;
+        } catch (e) {
+          const msg = e instanceof Error ? e.message : "YubiKey FIDO2 failed.";
+          get().log("reject", "YubiKey FIDO2 failed");
+          return msg;
+        }
       },
       changeCreds: async (current, next, confirm, nextName) => {
         const res = await changeAdminCreds({

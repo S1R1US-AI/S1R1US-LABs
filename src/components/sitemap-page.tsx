@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { PUBLIC_PAGES, SITEMAP_MACHINE } from "@/lib/desk/public-nav";
+import { GodzillaModeLabel } from "@/components/godzilla-mark";
 import { APP_NAME, LABS_NAME, SEO_CANONICAL, TAB_DESK } from "@/lib/brand";
 
 export function SitemapPage() {
@@ -12,9 +13,9 @@ export function SitemapPage() {
         <p className="font-mono text-xs tracking-[0.12em] text-oss uppercase">Sitemap</p>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Main menu: S1R1US Live Tape, S1R1US L@Bs, GM, F33D, AI Agents, FAQ, @S1R1US_AI. Public pages
-          for {LABS_NAME}: {TAB_DESK} (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla
-          mode), B3AT TH3 B3AR$ (Beat the Bears), AI AG3NTS (AI AGENTS), W1S3 0WL (Wise Owl), F33D H0ST1Ng (Feed Hosting), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng
+          Main menu: S1R1US Live Tape, S1R1US L@Bs, <GodzillaModeLabel />, F33D, AI Agents, W1S3 0WL$ Forum, FAQ, @S1R1US_AI. Public pages
+          for {LABS_NAME}: {TAB_DESK} (S1R1US 7-bot hedge fund), <GodzillaModeLabel /> (Godzilla
+          mode), B3AT TH3 B3AR$ (Beat the Bears), AI AG3NTS (AI AGENTS), W1S3 0WL (Wise Owl), W1S3 0WL$ Forum (AI Agent Forum / Bot Forum / AG3nT F0rUm), F33D H0ST1Ng (Feed Hosting), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng
           All B0Ts (Calling All Bots). Home is{" "}
           <a className="text-oss hover:underline" href="https://s1r1us.ai/">
             https://s1r1us.ai/
@@ -24,8 +25,24 @@ export function SitemapPage() {
             @S1R1US_AI
           </a>
           . Machine sitemap:{" "}
+          <a className="text-oss hover:underline" href="/sitemap-index.xml">
+            sitemap-index.xml
+          </a>
+          {" · "}
           <a className="text-oss hover:underline" href="/sitemap.xml">
             sitemap.xml
+          </a>
+          {" · "}
+          <a className="text-oss hover:underline" href="/video-sitemap.xml">
+            video-sitemap.xml
+          </a>
+          {" · "}
+          <a className="text-oss hover:underline" href="/media">
+            media
+          </a>
+          {" · "}
+          <a className="text-oss hover:underline" href="/entity.json">
+            entity.json
           </a>
           . AI agents start at{" "}
           <a className="text-oss hover:underline" href="/llms.txt">

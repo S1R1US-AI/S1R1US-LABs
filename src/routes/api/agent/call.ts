@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { agentCorsHeaders, agentJson, cachedAgentFeed, loadAgentSnapshot, parseAgentNav } from "@/lib/desk/agent-feed";
 import { withAgentLimit } from "@/lib/desk/agent-limit";
+import { withAgentOps } from "@/lib/desk/agent-notice";
 
 export const Route = createFileRoute("/api/agent/call")({
   server: {
@@ -12,16 +13,16 @@ export const Route = createFileRoute("/api/agent/call")({
             const url = new URL(request.url);
             const navUsd = parseAgentNav(url.searchParams.get("nav"));
             const snap = await loadAgentSnapshot();
-            return agentJson(cachedAgentFeed(snap, navUsd));
+            return agentJson(withAgentOps({ ...cachedAgentFeed(snap, navUsd) }));
           } catch {
             return agentJson(
-              {
+              withAgentOps({
                 ok: false,
                 mode: "read-only",
                 trade: false,
                 ordersCreate: false,
                 error: "Tape unavailable. Retry. This host never places orders.",
-              },
+              }),
               503,
             );
           }
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/api/agent/call")({
       POST: ({ request }) =>
         withAgentLimit(request, () =>
           agentJson(
-            { ok: false, trade: false, ordersCreate: false, error: "Read-only. GET only. This host never places orders." },
+            withAgentOps({ ok: false, trade: false, ordersCreate: false, error: "Read-only. GET only. This host never places orders." }),
             405,
           ),
         ),

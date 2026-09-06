@@ -320,8 +320,10 @@ footer a[href] {
   text-decoration-color: var(--color-wait);
 }
 .faq-kicker,
-.faq-kicker * {
-  color: #ff8a1f !important;
+.faq-kicker *,
+.faq-title,
+.faq-title * {
+  color: var(--color-wait) !important;
 }
 .indicator-title,
 .indicator-title *,
@@ -337,9 +339,14 @@ a.faq-kicker,
 a.faq-kicker:link,
 a.faq-kicker:visited,
 a.faq-kicker:hover,
-a.faq-kicker:focus {
-  color: #ff8a1f !important;
-  text-decoration-color: #ff8a1f;
+a.faq-kicker:focus,
+a.faq-title,
+a.faq-title:link,
+a.faq-title:visited,
+a.faq-title:hover,
+a.faq-title:focus {
+  color: var(--color-wait) !important;
+  text-decoration-color: var(--color-wait);
 }
 .bots-1-6,
 .bots-1-6 * {
@@ -417,12 +424,61 @@ span.seo-copy {
 .desk-tabs a.gm-nav:hover,
 .desk-tabs a.gm-nav.is-on,
 .desk-tabs a.gm-nav[data-status="active"],
-.desk-tabs a.gm-nav[aria-current="page"] {
-  color: inherit;
+.desk-tabs a.gm-nav[aria-current="page"],
+main a.gm-nav,
+footer a.gm-nav {
+  color: inherit !important;
 }
-.gm-rainbow > span {
+.gm-rainbow > span,
+.forum-rainbow > span {
   display: inline-block;
-  animation: gm-rainbow 3.6s linear infinite;
+  background-image: linear-gradient(
+    90deg,
+    #ff1f1f,
+    #ff8a1f,
+    #f4e14b,
+    #3dff1a,
+    #5eb3e4,
+    #9b6bdb,
+    #e879b0,
+    #ff1f1f
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: godzilla-shift 3.6s linear infinite;
+}
+.faq-title .gm-rainbow > span,
+.faq-kicker .gm-rainbow > span,
+.faq-text .gm-rainbow > span {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+/* Sitewide G0DZ1LLa M0D3: rainbow even when wrapped without per-letter spans. */
+.godzilla-mode:not(.gm-rainbow) {
+  background-image: linear-gradient(
+    90deg,
+    #ff1f1f,
+    #ff8a1f,
+    #f4e14b,
+    #3dff1a,
+    #5eb3e4,
+    #9b6bdb,
+    #e879b0,
+    #ff1f1f
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: godzilla-shift 3.6s linear infinite;
+  font-weight: 700;
+}
+@keyframes godzilla-shift {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 .gm-holo {
   position: relative;
@@ -460,8 +516,71 @@ span.seo-copy {
   100% { color: #ff1f1f; }
 }
 
-main a[href]:not(.call1ng-bots):not(.welcome-blue),
-footer a[href]:not(.call1ng-bots):not(.welcome-blue) {
+.desk-tabs a.forum-nav,
+.desk-tabs a.forum-nav:hover,
+.desk-tabs a.forum-nav.is-on,
+.desk-tabs a.forum-nav[data-status="active"],
+.desk-tabs a.forum-nav[aria-current="page"] {
+  color: inherit;
+  background: transparent;
+}
+.desk-tabs a.forum-nav:hover,
+.desk-tabs a.forum-nav.is-on,
+.desk-tabs a.forum-nav[aria-current="page"] {
+  background: var(--color-paper-raised);
+  border-color: var(--color-rule);
+}
+.forum-title {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28em;
+  white-space: nowrap;
+}
+.forum-owls {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-tab, #f59e0b);
+}
+.forum-rainbow {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+.forum-rainbow > span {
+  display: inline-block;
+  font-weight: 800;
+  text-shadow: none;
+}
+.forum-title-hero {
+  font-size: 1.85rem;
+  line-height: 1.15;
+}
+.forum-title-hero .forum-rainbow {
+  font-size: 1.15em;
+  letter-spacing: 0.1em;
+}
+.forum-owl-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-rule, #2a2e33);
+}
+.forum-owl-hero img {
+  display: block;
+  width: 100%;
+  max-height: 22rem;
+  object-fit: cover;
+  object-position: center 18%;
+  animation: gm-holo-glow 4.2s linear infinite;
+}
+.forum-suggest-title {
+  color: #f4e14b;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+main a[href]:not(.call1ng-bots):not(.welcome-blue):not(.forum-nav),
+footer a[href]:not(.call1ng-bots):not(.welcome-blue):not(.forum-nav) {
   color: var(--color-wait) !important;
   text-decoration-color: var(--color-wait);
 }
