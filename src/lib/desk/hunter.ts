@@ -280,6 +280,15 @@ export function runHunter(): HunterReport {
       "Do not vault visitor keys. Do not add VPN/SSH/extra RPC. Do not POST webhooks. Gift/SaaS resource only.",
     ),
     finding(
+      "h-lock3d",
+      "WP4 Agents",
+      "LoCK3D STATUS is Admin-toggle, agent-read — never lock_set, never Coinbase create",
+      "HIGH",
+      "PASS",
+      "lockWelcomePublic lockSet/trade/ordersCreate/keysOnThisHost false. MCP lock_status is read-only. MCP has no lock_set. GET /api/agent/locks. Live tape is not a lock. Championship pause stays system Admin. Practice cannot arm Coinbase.",
+      "Do not add lock_set to MCP. Do not let copy-admin pause championship. Unlock is live-intent only.",
+    ),
+    finding(
       "h-yubi-panel",
       "WP2 Auth",
       "Optional admin YubiKey lock is off until operator enables it",

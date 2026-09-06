@@ -340,3 +340,47 @@ export const setHiveSwarmStatus = createServerFn({ method: "POST" })
       hive: setHiveStatus(next, system ? "system" : "app-admin"),
     };
   });
+
+export const fetchLockStatus = createServerFn({ method: "GET" }).handler(async () => {
+  const { lockStatusPublic } = await import("./lock-status.server");
+  return lockStatusPublic();
+});
+
+export const setLockStatus = createServerFn({ method: "POST" })
+  .validator(
+    (input: {
+      token: string;
+      op: "master" | "one" | "include" | "includeAll" | "mode";
+      locked?: boolean;
+      id?: "agents" | "bot7Auto" | "gmAuto" | "gmManual" | "agentLive" | "hive";
+      include?: boolean;
+      mode?: "SIM" | "LIVE";
+    }) => input,
+  )
+  .handler(async ({ data }) => {
+    const { verifyAccessToken } = await import("./access.server");
+    const system = await verifyAccessToken(data.token);
+    const { verifyAppAdminToken } = await import("./app-admin");
+    const copy = verifyAppAdminToken(data.token);
+    if (!system && !copy) {
+      return { ok: false as const, error: "Admin session required", lock: null as null };
+    }
+    const by = system ? ("system" as const) : ("app-admin" as const);
+    const { applyMaster, setOneLock, setLockInclude, setIncludeAll, setDeskMode, lockStatusPublic } = await import("./lock-status.server");
+    if (data.op === "mode") {
+      return { ok: true as const, error: null as string | null, lock: setDeskMode(data.mode === "LIVE" ? "LIVE" : "SIM", by), role: by };
+    }
+    if (data.op === "includeAll") {
+      return { ok: true as const, error: null as string | null, lock: setIncludeAll(Boolean(data.include), by), role: by };
+    }
+    if (data.op === "include" && data.id) {
+      return { ok: true as const, error: null as string | null, lock: setLockInclude(data.id, Boolean(data.include), by), role: by };
+    }
+    if (data.op === "one" && data.id) {
+      return { ok: true as const, error: null as string | null, lock: setOneLock(data.id, Boolean(data.locked), by), role: by };
+    }
+    if (data.op === "master") {
+      return { ok: true as const, error: null as string | null, lock: applyMaster(Boolean(data.locked), by), role: by };
+    }
+    return { ok: true as const, error: null as string | null, lock: lockStatusPublic(), role: by };
+  });

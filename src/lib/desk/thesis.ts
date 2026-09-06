@@ -2,7 +2,7 @@
 
 export const THESIS_META = {
   title: "Orthogonal Multi-Agent Architecture for Mandate-Constrained Bitcoin Accumulation",
-  subtitle: "A systems paper on S1R1US Labs: 7-B0T, G0DZ1LLa M0D3, L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, and H1V3 SW@RM",
+  subtitle: "A systems paper on S1R1US Labs: 7-B0T, G0DZ1LLa M0D3, L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, and LoCK3D STATUS",
   authors: "S1R1US Labs · system Admin (operator of record @_Mr_R0b0t0_)",
   affiliation: "S1R1US.ai — education desk, not a licensed adviser",
   date: "6 September 2026",
@@ -16,6 +16,7 @@ export const THESIS_META = {
     "AI agents",
     "Quant trading simulation",
     "Hive Swarm",
+    "LoCK3D STATUS",
     "money transmission surface",
   ],
 };
@@ -116,10 +117,19 @@ export const THESIS: ThesisSection[] = [
     ],
   },
   {
+    id: "lock3d",
+    title: "10. LoCK3D STATUS — functional locks and live versus simulated (system Admin)",
+    body: [
+      "LoCK3D STATUS is the functional lock board shared by system Admin and iOS/Google copy-admin. Closed padlock GIF = LOCKED. Open padlock GIF = UNLOCKED. Rails: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM. Live tape is status only (TRUE LIVE or SIMULATED) and is not a lock. Admin cannot fake true live from this board. Unlock is live-intent: this host never places Coinbase orders, never holds keys, never escrows.",
+      "This website is proof of concept (DEPLOY #68) and soon to be live software. Hard deadline 1 December 2026 09:00 America/New_York. Desk mode SIM is paper. Desk mode LIVE does not create orders here. Championship World Cup / C@LL 0UT pause stays system Admin. Copy-admin may pause H1V3 SW@RM. External AI agents read GET /api/agent/locks and MCP lock_status. There is no lock_set tool. Practice cannot arm Coinbase.",
+      "Public tutorial /l0ck (aliases /lock /lock3d) explains how to turn locks on or off and how to use S1R1US.ai. External AI agents and research Quants are requested to participate in the simulation of games. Control test: hunter h-lock3d. Copy-admin does not receive this paper.",
+    ],
+  },
+  {
     id: "refs",
     title: "References and public artifacts",
     body: [
-      "S1R1US Labs (2026). Public desk. https://s1r1us.ai/ — /llms.txt, /agent, /board, /bowl, /w0rld, /h1v3, /c0ut, /faq.",
+      "S1R1US Labs (2026). Public desk. https://s1r1us.ai/ — /llms.txt, /agent, /board, /bowl, /w0rld, /h1v3, /l0ck, /c0ut, /faq.",
       "GitHub: https://github.com/S1R1US-AI/S1R1US-LABs (public tree only).",
       "Company X: https://x.com/S1R1US_AI. @S1R1S_AI is not the desk.",
       "Coinbase for Agents documentation (participant-owned keys). MCP, A2A, WebMCP adapters on this host are read/tick only.",

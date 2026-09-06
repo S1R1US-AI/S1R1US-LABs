@@ -305,6 +305,31 @@ button.coinbase-orange:focus {
 .legal-purple .lock-deep {
   color: #3a1458 !important;
 }
+.lock-gif {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+.lock-gif-lg {
+  width: 2rem;
+  height: 2rem;
+}
+.lock-gif-banner {
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.55));
+}
+@media (min-width: 640px) {
+  .lock-gif-banner {
+    width: 8rem;
+    height: 8rem;
+  }
+}
 a.legal-purple,
 a.legal-purple:link,
 a.legal-purple:visited,

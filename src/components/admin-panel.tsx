@@ -10,6 +10,7 @@ import { LaunchDesk } from "@/components/launch-desk";
 import { PaperManual } from "@/components/paper-manual";
 import { PracticeDesk } from "@/components/practice-desk";
 import { TapeFreezePanel } from "@/components/tape-freeze";
+import { Lock3dStatusPanel } from "@/components/lock3d-status";
 import { WebsitePortal } from "@/components/website-portal";
 import { YubiApprove } from "@/components/yubi-approve";
 import { OperatorGate } from "@/components/operator-lock";
@@ -256,6 +257,7 @@ export function AdminPanel() {
           </nav>
 
           {tab === "console" || tab === "wallet" ? <PracticeDesk /> : null}
+          {tab === "console" ? <Lock3dStatusPanel /> : null}
           {tab === "console" ? <TapeFreezePanel /> : null}
           {tab === "console" ? <DeskErrorLog /> : null}
           {tab === "console" ? <MorningReportPdf /> : null}

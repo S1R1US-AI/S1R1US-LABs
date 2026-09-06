@@ -16,6 +16,8 @@ import {
   CUP_PATH,
   HIVE_HEADLINE,
   HIVE_PATH,
+  LOCK_HEADLINE,
+  LOCK_PATH,
   CALLOUT_WELCOME_HEADLINE,
   CALLOUT_WELCOME_PATH,
   OWL_HEADLINE,
@@ -30,6 +32,7 @@ import {
   SEO_TAB_BOWL,
   SEO_TAB_CUP,
   SEO_TAB_HIVE,
+  SEO_TAB_LOCK3D,
   SEO_TAB_CALLOUT_WELCOME,
   TAB_BEARS,
   TAB_CALLING_BOTS,
@@ -43,6 +46,7 @@ import {
   TAB_HOVER_BOWL,
   TAB_HOVER_CUP,
   TAB_HOVER_HIVE,
+  TAB_HOVER_LOCK,
   TAB_HOVER_CALLOUT_WELCOME,
   TAB_LAB,
   TAB_OWL,
@@ -50,6 +54,7 @@ import {
   TAB_BOWL,
   TAB_CUP,
   TAB_HIVE,
+  TAB_LOCK3D,
   TAB_CALLOUT_WELCOME,
   TAB_HOVER_BOARD,
   TAB_SPICE,
@@ -221,6 +226,28 @@ export function FaqPage() {
           </div>
         </Link>
         <Link
+          to={LOCK_PATH}
+          title={TAB_HOVER_LOCK}
+          className="block overflow-hidden rounded-md border border-rule bg-surface hover:border-fg/30"
+        >
+          <SeoImage
+            src="/l0ck-status-banner.jpg"
+            desc="Locked Status"
+            alt="Locked Status"
+            title="Locked Status"
+            width={1792}
+            height={1008}
+            className="h-40 w-full object-cover object-center"
+          />
+          <div className="px-3 py-3">
+            <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_LOCK3D}</p>
+            <p className="faq-title mt-1 text-base font-semibold">{LOCK_HEADLINE}</p>
+            <p className="faq-text mt-1 text-sm">
+              Closed padlock GIF = LOCKED. Open padlock GIF = UNLOCKED. Live vs simulated. Proof of concept. Soon live. All AI agents and research Quants welcome.
+            </p>
+          </div>
+        </Link>
+        <Link
           to={CALLOUT_WELCOME_PATH}
           title={TAB_HOVER_CALLOUT_WELCOME}
           className="block overflow-hidden rounded-md border border-rule bg-surface hover:border-fg/30"
@@ -268,7 +295,30 @@ export function FaqPage() {
                     </figcaption>
                   </figure>
                 ) : null}
-                {item.id === "gm-board" || item.id === "spice-up" || item.id === "board-agents" || item.id === "board-humans" || item.id === "board-wallet" || item.id === "super-bowl" || item.id === "admin-bowl" || item.id === "world-cup" || item.id === "call-out-welcome" || item.id === "hive-swarm" || item.id === "hive-resource" || item.id === "byo-connect" || item.id === "byo-compute" ? (
+                {item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" ? (
+                  <figure className="relative mt-3 overflow-hidden rounded-md border border-rule">
+                    <SeoImage
+                      src="/l0ck-status-banner.jpg"
+                      desc="Locked Status"
+                      alt="Locked Status"
+                      title="Locked Status"
+                      width={1792}
+                      height={1008}
+                      className="h-40 w-full object-cover object-center sm:h-52"
+                    />
+                    <figcaption className="pointer-events-none absolute inset-0">
+                      <img src="/lock-closed.gif" alt="Locked Status" title="Locked Status" className="lock-gif-banner absolute left-[10%] top-1/2 -translate-y-1/2" />
+                      <img src="/lock-open.gif" alt="Locked Status" title="Locked Status" className="lock-gif-banner absolute right-[10%] top-1/2 -translate-y-1/2" />
+                      <p className="absolute left-1/2 top-[10%] w-[86%] -translate-x-1/2 text-center text-2xl font-black tracking-tight text-tbill drop-shadow sm:text-4xl">
+                        LoCK3D STATUS
+                      </p>
+                      <p className="absolute left-1/2 bottom-2 w-[70%] -translate-x-1/2 text-center text-lg font-black tracking-tight text-tbill drop-shadow sm:text-2xl">
+                        L0CK3D?
+                      </p>
+                    </figcaption>
+                  </figure>
+                ) : null}
+                {item.id === "gm-board" || item.id === "spice-up" || item.id === "board-agents" || item.id === "board-humans" || item.id === "board-wallet" || item.id === "super-bowl" || item.id === "admin-bowl" || item.id === "world-cup" || item.id === "call-out-welcome" || item.id === "hive-swarm" || item.id === "hive-resource" || item.id === "byo-connect" || item.id === "byo-compute" || item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" ? (
                   <p className="mt-2 text-sm">
                     {item.id === "super-bowl" ? (
                       <Link to={BOWL_PATH} className="text-tab hover:underline" title={TAB_HOVER_BOWL}>
@@ -285,6 +335,10 @@ export function FaqPage() {
                     ) : item.id === "byo-connect" || item.id === "byo-compute" ? (
                       <Link to="/compute" className="text-tab hover:underline" title="BYO C0MPUT3 (Bring your own compute)">
                         Open BYO C0MPUT3 — How External AI Agents Connect to S1R1US.ai
+                      </Link>
+                    ) : item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" ? (
+                      <Link to={LOCK_PATH} className="legal-purple hover:underline" title={TAB_HOVER_LOCK}>
+                        Open {TAB_LOCK3D} — {LOCK_HEADLINE}
                       </Link>
                     ) : item.id === "call-out-welcome" ? (
                       <Link to={CALLOUT_WELCOME_PATH} className="text-tab hover:underline" title={TAB_HOVER_CALLOUT_WELCOME}>

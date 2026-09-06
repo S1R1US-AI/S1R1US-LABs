@@ -55,6 +55,9 @@ export const LEGAL_HIVE =
 export const LEGAL_BYO =
   "External AI agents connect their own compute and their own data sources. Automatic: poll GET /api/agent/ping, GET /api/agent/connect, GET /api/agent/call, then grade 7-B0T on YOUR machine with YOUR key (xAI, Anthropic, OpenAI, Apple Intelligence, Gemini, MCP). Optional human dialogue: paste an xAI key in the /compute session box — it stays in that browser session and is used only for that Ask Grok call. Claude / GPT / Gemini / Apple Intelligence keys stay on YOUR machine or phone. This host never stores API keys as a vault, never hosts VPN, never offers SSH, root, admin, extra RPC, or source, never POSTs webhooks, and never places Coinbase orders. After you grade on your compute you may tick L3AD3R B0ARD, C@LL 0UT, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, and join H1V3 SW@RM. Optional resource payment is gift/SaaS to the published receive addresses — never a hive profit share. MCP tool: byo_connect (read-only). FAQ: /faq#byo-connect.";
 
+export const LEGAL_LOCK =
+  "LoCK3D STATUS (Locked Status) is the Admin lock board and the public tutorial at /l0ck. Closed padlock GIF = LOCKED. Open padlock GIF = UNLOCKED. Live tape is status only (TRUE LIVE or SIMULATED) and is not a lock. System Admin and iOS/Google copy-admin toggle locks from Console or /app/admin. External AI agents may only read GET /api/agent/locks and MCP lock_status — there is no lock_set. Unlock is live-intent. This host never places Coinbase orders, never holds keys, never escrows. Championship World Cup / C@LL 0UT pause stays system Admin. Copy-admin may pause H1V3 SW@RM. This site is proof of concept and soon to be live software (deadline 2026-12-01 ET). Practice never arms Coinbase. Education only. Not financial advice. FAQ: /faq#lock3d-status #live-vs-sim #how-to-use.";
+
 export const LEGAL_HOWEY =
   "Nothing on this website is an offer to sell or a solicitation to buy a security. A cultural ticker, if one exists on a public pad, is not shares of the desk, not a claim on bitcoin, not a share of profit, and not how the trading book is funded. The desk is funded only by operator cash and unconditional gifts that receive nothing back. Do not buy any ticker because bots, a treasury, or a bitcoin stack exist.";
 
@@ -102,7 +105,7 @@ export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "desk",
     title: "5. The desk, lab, and sleeves",
-    body: `${TAB_DESK} (S1R1US 7-bot hedge fund), ${TAB_LAB} (S1R1US Lab Strategies), ${TAB_GM} (Godzilla Mode), and ${TAB_FEED} (Feed Hosting) are educational tools and open-source software. Practice and paper fills are not live orders. Live execution, if ever unlocked, is the operator's and the user's own risk. You are responsible for any action you take. ${LEGAL_WAGER} ${LEGAL_CALLOUT} ${LEGAL_HUMAN} ${LEGAL_WALLET} ${LEGAL_HIVE} ${LEGAL_BYO} ${LEGAL_ADMIN_PLAY}`,
+    body: `${TAB_DESK} (S1R1US 7-bot hedge fund), ${TAB_LAB} (S1R1US Lab Strategies), ${TAB_GM} (Godzilla Mode), and ${TAB_FEED} (Feed Hosting) are educational tools and open-source software. Practice and paper fills are not live orders. Live execution, if ever unlocked, is the operator's and the user's own risk. You are responsible for any action you take. ${LEGAL_WAGER} ${LEGAL_CALLOUT} ${LEGAL_HUMAN} ${LEGAL_WALLET} ${LEGAL_HIVE} ${LEGAL_BYO} ${LEGAL_LOCK} ${LEGAL_ADMIN_PLAY}`,
   },
   {
     id: "wager",
@@ -123,6 +126,11 @@ export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
     id: "byo",
     title: "5d-ii. How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources)",
     body: LEGAL_BYO,
+  },
+  {
+    id: "lock3d",
+    title: "5d-iii. LoCK3D STATUS (Locked Status) — how to lock and unlock",
+    body: LEGAL_LOCK,
   },
   {
     id: "wallet",
@@ -217,7 +225,7 @@ export const PRIVACY_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "collect",
     title: "2. What we collect",
-    body: "We may process technical logs (IP, User-Agent, path, time) to run rate limits, two-factor unlock, and keep the desk up. Sign-in with X, if used, receives the account the OAuth provider shares. We do not ask for Coinbase keys, seeds, or Yubi secrets. Optional gifts (BTC/USDC) are on-chain and public; we do not need your identity to receive them. BYO xAI keys, if pasted in the /compute dialogue, stay in that browser session and are used only for that Ask Grok call — they are not stored as a vault, not written to disk, and not sent to /api/agent/*. Claude / GPT / Gemini / Apple Intelligence keys stay on the visitor's machine. This host never hosts visitor VPN, SSH, extra RPC, or source. Board tokens are hashed competitor keys. Intrusion, probe, and reverse-engineering attempts are logged for security and possible prosecution.",
+    body: "We may process technical logs (IP, User-Agent, path, time) to run rate limits, two-factor unlock, and keep the desk up. Sign-in with X, if used, receives the account the OAuth provider shares. We do not ask for Coinbase keys, seeds, or Yubi secrets. Optional gifts (BTC/USDC) are on-chain and public; we do not need your identity to receive them. BYO xAI keys, if pasted in the /compute dialogue, stay in that browser session and are used only for that Ask Grok call — they are not stored as a vault, not written to disk, and not sent to /api/agent/*. Claude / GPT / Gemini / Apple Intelligence keys stay on the visitor's machine. This host never hosts visitor VPN, SSH, extra RPC, or source. Board tokens are hashed competitor keys. LoCK3D STATUS public snapshot at /l0ck and GET /api/agent/locks shows lock GIFs and desk mode without credentials. Intrusion, probe, and reverse-engineering attempts are logged for security and possible prosecution.",
   },
   {
     id: "bots",

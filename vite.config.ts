@@ -42,6 +42,30 @@ function agentGuardDevPlugin(): Plugin {
           next();
           return;
         }
+        const ip = String(
+          (typeof req.headers["cf-connecting-ip"] === "string" ? req.headers["cf-connecting-ip"] : "") ||
+            (typeof req.headers["x-real-ip"] === "string" ? req.headers["x-real-ip"] : "") ||
+            (typeof req.headers["x-forwarded-for"] === "string" ? req.headers["x-forwarded-for"].split(",")[0] : "") ||
+            req.socket.remoteAddress ||
+            "local",
+        )
+          .trim()
+          .slice(0, 64);
+        void server
+          .ssrLoadModule("/src/lib/desk/intrusion-log.ts")
+          .then((mod) => {
+            (
+              mod as {
+                recordIntrusion: (row: { kind: "source-probe"; ua: string; ip: string; detail: string }) => void;
+              }
+            ).recordIntrusion({
+              kind: "source-probe",
+              ua,
+              ip,
+              detail: `agent denied ${path.slice(0, 80)}`,
+            });
+          })
+          .catch(() => undefined);
         res.statusCode = 403;
         res.setHeader("content-type", "application/json; charset=utf-8");
         res.setHeader("cache-control", "no-store");
@@ -73,20 +97,17 @@ function wafDevPlugin(): Plugin {
     name: "s1r1us-waf",
     apply: "serve",
     configureServer(server) {
-      let gateMod: {
-        gateHttp: (req: { method: string; url: string; headers: unknown; ip?: string }) => {
-          block: boolean;
-          status: number;
-          body: string;
-          https: boolean;
-        };
-        attachHeaders: (res: { setHeader: (n: string, v: string) => void }, https: boolean) => void;
-      } | null = null;
       server.middlewares.use(async (req, res, next) => {
         try {
-          if (!gateMod) {
-            gateMod = (await server.ssrLoadModule("/src/lib/desk/waf-gate.ts")) as NonNullable<typeof gateMod>;
-          }
+          const gateMod = (await server.ssrLoadModule("/src/lib/desk/waf-gate.ts")) as {
+            gateHttp: (req: { method: string; url: string; headers: unknown; ip?: string }) => {
+              block: boolean;
+              status: number;
+              body: string;
+              https: boolean;
+            };
+            attachHeaders: (res: { setHeader: (n: string, v: string) => void }, https: boolean) => void;
+          };
           const proto = String(req.headers["x-forwarded-proto"] ?? "http");
           const host = String(req.headers["x-forwarded-host"] ?? req.headers.host ?? "localhost");
           const url = `${proto}://${host}${req.url ?? "/"}`;

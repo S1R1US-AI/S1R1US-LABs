@@ -133,7 +133,7 @@ S1R1U$ Analyst: You are S1R1U$ Analyst, seventh bot. You can read the other six 
 
 The [ S1R1U$ <<L@B$>> ] preview is the desk in action: live Coinbase tape, Asia venues, EM flow (UAE/ME/Russia/Africa/South America), OKX positioning, Fear & Greed, SEC filings, free headlines, seven bot briefs, [ S1R1U$ <<L@B$>> ] CALLS, a paper Coinbase book, and copy-ready CLI / preview JSON.
 
-[ S1R1U$ <<L@B$>> ] test model (L@B in the top nav): same engine as bot 7 with sliders and presets (crash bid, Asia FOMO, EM crowded, trim). Paper clips hit the same book. Load live tape to seed knobs from Coinbase/Upbit/Luno. Not a live order.
+[ S1R1U$ <<L@B$>> ] test model (L@B in the top nav): same engine as 7-B0T with sliders and presets (crash bid, Asia FOMO, EM crowded, trim). Paper clips hit the same book. Load live tape to seed knobs from Coinbase/Upbit/Luno. Not a live order.
 
 Admin (Admin in the top nav): operator console — paper NAV, Grok cap, treasury (USDC hot / Sparrow cold), change password, 2FA (X then admin password), source health, risk policy, Coinbase MCP posture.
 

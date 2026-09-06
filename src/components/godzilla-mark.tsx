@@ -117,11 +117,11 @@ export function HiveSwarmLabel({ className }: { className?: string }) {
   );
 }
 
-const RAINBOW_BITS = [TAB_GM, TAB_GM_AUTO, MENU_BOARD, TAB_CALLOUT, TAB_KING_MANUAL, TAB_KING_ROUND, TAB_KING_UNI, TAB_BOWL, TAB_CUP, TAB_HIVE];
+const RAINBOW_BITS = [TAB_GM, TAB_GM_AUTO, "G M0D3 M@NU@L", MENU_BOARD, TAB_CALLOUT, TAB_KING_MANUAL, TAB_KING_ROUND, TAB_KING_UNI, TAB_BOWL, TAB_CUP, TAB_HIVE];
 
 /** Paint branded titles rainbow in running text. */
 export function RainbowGodzillaText({ text }: { text: string }) {
-  const parts = text.split(/(G0DZ1LLa M0D3|G M0D3 AUTO|L3AD3R B0ARD|C@LL 0UT|GM M@NU@L K1Ng|B0t R0Und K1Ng|Un1v3rs@L K1Ng|SUP3R B0WL|W0rLd CUP|H1V3 SW@RM)/g);
+  const parts = text.split(/(G0DZ1LLa M0D3|G M0D3 AUTO|G M0D3 M@NU@L|L3AD3R B0ARD|C@LL 0UT|GM M@NU@L K1Ng|B0t R0Und K1Ng|Un1v3rs@L K1Ng|SUP3R B0WL|W0rLd CUP|H1V3 SW@RM)/g);
   if (parts.length === 1) return <>{text}</>;
   return (
     <>

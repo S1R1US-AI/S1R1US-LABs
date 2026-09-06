@@ -21,7 +21,7 @@
     "start": "node scripts/do-start.mjs",
     "typecheck": "tsc --noEmit",
     "check:auth": "node scripts/check-auth-invariant.mjs",
-    "test": "node --test 'scripts/**/*.test.mjs' && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts src/lib/desk/x-admin.test.ts src/lib/desk/waf.test.ts src/lib/desk/agent-forum.test.ts src/lib/desk/board-wager.test.ts src/lib/desk/board-wallet.test.ts src/lib/desk/mobile-bridge.test.ts src/lib/desk/tenancy.test.ts src/lib/desk/app-admin.test.ts src/lib/desk/board-callout.test.ts src/lib/desk/world-cup.test.ts src/lib/desk/championship-security.test.ts src/lib/desk/hive-swarm.test.ts src/lib/desk/byo-connect.test.ts",
+    "test": "node --test 'scripts/**/*.test.mjs' && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts src/lib/desk/x-admin.test.ts src/lib/desk/waf.test.ts src/lib/desk/agent-forum.test.ts src/lib/desk/board-wager.test.ts src/lib/desk/board-wallet.test.ts src/lib/desk/mobile-bridge.test.ts src/lib/desk/tenancy.test.ts src/lib/desk/app-admin.test.ts src/lib/desk/board-callout.test.ts src/lib/desk/world-cup.test.ts src/lib/desk/championship-security.test.ts src/lib/desk/hive-swarm.test.ts src/lib/desk/byo-connect.test.ts src/lib/desk/lock-status.test.ts src/lib/desk/lock-welcome.test.ts",
     "lint": "eslint .",
     "format": "prettier --write ."
   },

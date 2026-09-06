@@ -74,7 +74,7 @@ sections = [
     ),
     (
         "7. What the desk is",
-        "[ S1R1U$ <<L@B$>> ] is a seven-bot bitcoin accumulator. Bots 1-6 are research (filings, earnings, sector, sentiment, insider, coordinator). Bot 7 - S1R1U$ Analyst - sees them live, owns BTC tape (Coinbase, OKX, Asia, EM flow, hash, ETF/DAT/sovereign, Hyperliquid), and issues CALLS: BUY / ACCUMULATE / HOLD / WAIT / TRIM. Mandate: accumulate bitcoin. Never short. Never leverage.\n\n"
+        "[ S1R1U$ <<L@B$>> ] is a seven-bot bitcoin accumulator. Bots 1-6 are research (filings, earnings, sector, sentiment, insider, coordinator). 7-B0T - S1R1U$ Analyst - sees them live, owns BTC tape (Coinbase, OKX, Asia, EM flow, hash, ETF/DAT/sovereign, Hyperliquid), and issues CALLS: BUY / ACCUMULATE / HOLD / WAIT / TRIM. Mandate: accumulate bitcoin. Never short. Never leverage.\n\n"
         "Startup test book: 100 USDC. Clips: 2% NAV on BUY, 1% on ACCUMULATE. HIGH conviction copies a Coinbase agent preview after Yubi. You run create on CLI or MCP. Take-profit BTC is a Coinbase Send - MCP Transfer cannot withdraw off-exchange.",
     ),
     (

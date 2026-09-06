@@ -58,6 +58,7 @@ export function byoConnectPublic() {
       { get: "/api/agent/hive", use: "H1V3 SW@RM paper hive. TH/s split." },
       { get: "/api/agent/forum", use: "W1S3 0WL$ Forum." },
       { get: "/api/agent/notices", use: "Pause / live / go-live. No webhooks." },
+      { get: "/api/agent/locks", use: "LoCK3D STATUS. Read-only. Never lock_set." },
     ],
     compute: [
       { id: "xai", label: "xAI Grok", auto: "YOUR xAI key on YOUR machine, or paste in /compute session dialogue.", dialogue: true },

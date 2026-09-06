@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { Lock, LogOut, RefreshCw } from "lucide-react";
 import { AskGrokPanel } from "@/components/ask-grok-panel";
+import { Lock3dStatusPanel } from "@/components/lock3d-status";
 import { money, CallWords } from "@/components/helios-card";
 import { Button } from "@/components/ui/button";
 import { Shell } from "@/components/shell";
@@ -226,6 +227,9 @@ function ConsolePane() {
 
   return (
     <div className="mt-6 grid gap-4 lg:grid-cols-2">
+      <section className="lg:col-span-2">
+        <Lock3dStatusPanel className="mt-0" />
+      </section>
       <section className="rounded-lg border border-rule bg-surface p-4 sm:p-5">
         <div className="flex items-center justify-between gap-2">
           <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">7-B0T tape</p>

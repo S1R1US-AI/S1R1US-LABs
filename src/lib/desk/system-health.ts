@@ -55,10 +55,14 @@ export function systemHealth(): SystemHealth {
     fnNotes.push("MCP hive + board + cup live");
   }
   if (MCP_TOOLS.has("byo_connect")) {
-    fn += 15;
+    fn += 10;
     fnNotes.push("BYO connect tool live");
   } else {
     fnNotes.push("BYO connect tool missing");
+  }
+  if (MCP_TOOLS.has("lock_status") && !MCP_TOOLS.has("lock_set")) {
+    fn += 5;
+    fnNotes.push("LoCK3D STATUS read-only MCP");
   }
   fn += 10;
   fnNotes.push("TH/s compute counter");
@@ -70,9 +74,9 @@ export function systemHealth(): SystemHealth {
 
   const secNotes: string[] = [];
   let sec = 0;
-  if (!MCP_TOOLS.has("hive_withdraw") && !MCP_TOOLS.has("hive_pause") && !MCP_TOOLS.has("orders_create")) {
+  if (!MCP_TOOLS.has("hive_withdraw") && !MCP_TOOLS.has("hive_pause") && !MCP_TOOLS.has("orders_create") && !MCP_TOOLS.has("lock_set")) {
     sec += 25;
-    secNotes.push("No hive_withdraw / hive_pause / orders_create MCP");
+    secNotes.push("No hive_withdraw / hive_pause / orders_create / lock_set MCP");
   }
   if (res.profitShare === false && res.hiveWithdraw === false && res.autoSendPnl === false) {
     sec += 20;
@@ -93,10 +97,11 @@ export function systemHealth(): SystemHealth {
   const desNotes = [
     "H1V3 banner G0T QUANT? + S1R1US.ai",
     "Meme the future of BTC Quant",
+    "LoCK3D STATUS banner + lock GIFs",
     "L3AD3R B0ARD collapse/expand (purple Expand)",
-    "FAQ + schema + XML sitemap hive images",
+    "FAQ + schema + XML sitemap hive + lock images",
   ];
-  const des = 92;
+  const des = 94;
 
   const overall = clamp(fn * 0.4 + sec * 0.4 + des * 0.2, 100);
   return {

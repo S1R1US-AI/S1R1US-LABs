@@ -22,6 +22,7 @@ describe("mobile-bridge", () => {
     assert.ok(paths.includes("/w0rld"));
     assert.ok(paths.includes("/c0ut"));
     assert.ok(paths.includes("/h1v3"));
+    assert.ok(paths.includes("/l0ck"));
     assert.ok(paths.includes("/compute"));
     assert.ok(paths.includes("/agent"));
     assert.ok(paths.includes("/app"));
@@ -63,6 +64,7 @@ describe("mobile-bridge", () => {
       "cup_list",
       "hive_list",
       "byo_connect",
+      "lock_status",
       "forum_post",
       "waitlist_register",
     ]) {

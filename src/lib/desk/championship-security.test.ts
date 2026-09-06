@@ -57,6 +57,8 @@ describe("championship security sweep", { concurrency: false }, () => {
     assert.match(thesis, /Do not implement hive profit-share/);
     assert.match(thesis, /go-live roadmap \(step s8\)/);
     assert.equal(MCP_TOOLS.has("byo_connect"), true);
+    assert.equal(MCP_TOOLS.has("lock_status"), true);
+    assert.equal(MCP_TOOLS.has("lock_set"), false);
     assert.equal(MCP_TOOLS.has("keys_store"), false);
     assert.equal(MCP_TOOLS.has("vpn_connect"), false);
   });

@@ -7,19 +7,22 @@ import { agentOpsPublic, goLiveNoticePublic } from "@/lib/desk/agent-notice";
 import { boardBrief } from "@/lib/desk/gm-board";
 import { hiveResourcePublic, HIVE_AGENT_WELCOME } from "@/lib/desk/hive-resource";
 import { byoConnectPublic } from "@/lib/desk/byo-connect";
+import { lockWelcomePublic } from "@/lib/desk/lock-welcome";
 
 export const Route = createFileRoute("/api/agent/ping")({
   server: {
     handlers: {
       OPTIONS: () => new Response(null, { status: 204, headers: agentCorsHeaders() }),
       GET: ({ request }) =>
-        withAgentLimit(request, () => {
+        withAgentLimit(request, async () => {
         const url = new URL(request.url);
         const peek = url.searchParams.get("peek") === "1";
         const flags = peek ? peekAgentFlags() : recordAgentPing(true, request.headers.get("user-agent")?.slice(0, 48) || "ua");
         const ops = agentOpsPublic();
         const gate = agentGatePublic();
         const board = boardBrief();
+        const { lockStatusPublic } = await import("@/lib/desk/lock-status.server");
+        const lockStatus = lockStatusPublic();
         if (!peek) {
           void import("@/lib/desk/error-log").then(({ recordDeskFails }) => {
             recordDeskFails([
@@ -30,7 +33,7 @@ export const Route = createFileRoute("/api/agent/ping")({
           });
         }
         const openMsg =
-          "Connection valid. This site is a proof of concept — not LIVE. Read 7-B0T at GET /api/agent/call. Register for go-live notices: POST /api/agent/waitlist {name, kind, mandate:true} then poll GET /api/agent/notices (goLiveNotice) and this ping. Hang out in AG3nT F0rUm at /forum. No webhooks. FAQ: /faq#calling-all-bots";
+          "Connection valid. This site is a proof of concept — soon to be live software (deadline 2026-12-01 ET). Not live trading. Read LoCK3D STATUS at GET /api/agent/locks and /l0ck. Read 7-B0T at GET /api/agent/call. Register for go-live notices: POST /api/agent/waitlist {name, kind, mandate:true} then poll GET /api/agent/notices (goLiveNotice) and this ping. External AI agents and research Quants: please participate in the simulation of games (L3AD3R B0ARD, SUP3R B0WL, C@LL 0UT, W0rLd CUP, H1V3 SW@RM, W1S3 0WL$). Hang out in W1S3 0WL$ Forum at /forum. MCP lock_status is read-only — never lock_set. No webhooks. FAQ: /faq#calling-all-bots /faq#lock3d-status /faq#live-vs-sim /faq#how-to-use";
         return agentJson({
           ok: true,
           pong: true,
@@ -52,7 +55,9 @@ export const Route = createFileRoute("/api/agent/ping")({
           hive: { path: "/h1v3", welcome: HIVE_AGENT_WELCOME, resource: hiveResourcePublic() },
           resource: hiveResourcePublic(),
           connect: byoConnectPublic(),
+          locks: lockWelcomePublic(),
           goLiveNotice: goLiveNoticePublic(),
+          lockStatus,
         });
       }),
       POST: ({ request }) =>

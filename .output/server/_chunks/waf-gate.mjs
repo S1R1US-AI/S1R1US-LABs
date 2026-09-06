@@ -64,7 +64,7 @@ var HEADER_SPEC = [
 		name: "Cross-Origin-Resource-Policy",
 		value: null,
 		status: "SKIP",
-		why: "Agent feed is CORS * for Bot 7 pollers. CORP same-site would 429-starve paid keys."
+		why: "Agent feed is CORS * for 7-B0T pollers. CORP same-site would 429-starve paid keys."
 	}
 ];
 function applySecHeaders(headers, opts) {
@@ -379,6 +379,12 @@ function gateHttp(req) {
 	}
 	if (agentSourceDenied(path, ua)) {
 		if (!isLoopback(ip)) barPermanent(ip, `source-probe ${path.slice(0, 40)}`);
+		import("./intrusion-log.mjs").then((n) => n.t).then(({ recordIntrusion }) => recordIntrusion({
+			kind: "source-probe",
+			ip,
+			ua,
+			detail: `agent denied ${path.slice(0, 80)}`
+		})).catch(() => void 0);
 		return {
 			block: true,
 			status: 403,

@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Lock, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { BotBrief, DeskSnapshot, HeliosCall } from "@/lib/desk/types";
 import { DEMO_AUTO, LAUNCH_LIVE_TRADES } from "@/lib/launch/build";
@@ -8,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { callStanceClass, money, stanceClass } from "@/components/helios-card";
 import { WorkspaceTape } from "@/components/tape-charts";
 import { GmRainbow } from "@/components/godzilla-mark";
+import { Lock3dRail } from "@/components/lock3d-status";
 import { AUTO_RUN_CASH, AUTO_RUN_LABEL } from "@/lib/desk/auto-run";
 import { DEFAULT_GM_VARS, GM_NAME, gmCall } from "@/lib/desk/gm";
 import { SeoImage } from "@/components/seo-image";
@@ -17,16 +17,6 @@ function isPurchase(stance: string | undefined) {
   if (!stance) return false;
   const u = stance.toUpperCase();
   return u === "BUY" || u.includes("ACCUMULATE");
-}
-
-function liveTapeTone(audit: { ok: number; fail: number } | null | undefined) {
-  const ok = audit?.ok ?? 0;
-  const fail = audit?.fail ?? 0;
-  const total = ok + fail;
-  if (total === 0 || ok === 0) return "live-tape-none";
-  if (fail === 0) return "live-tape-all";
-  if (ok > total / 2) return "live-tape-most";
-  return "live-tape-half";
 }
 
 function convClass(c: string | undefined) {
@@ -70,7 +60,6 @@ export function DeskWorkspace({
   onFill: () => void;
 }) {
   const [overseer, setOverseer] = useState(false);
-  const [lockOpen, setLockOpen] = useState(false);
   const gm = useMemo(
     () =>
       snap
@@ -98,58 +87,7 @@ export function DeskWorkspace({
 
   return (
     <div className="min-w-0">
-      <div className="mb-3 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-md border border-rule bg-paper-raised px-5 py-3 text-[1.08rem] leading-snug text-muted">
-        <span
-          className={cn("inline-flex items-center gap-1.5 font-semibold", liveTapeTone(snap?.feedAudit))}
-          title={
-            snap?.feedAudit
-              ? `Live tape · ${snap.feedAudit.ok} live · ${snap.feedAudit.fail} down`
-              : "Live tape · waiting on sources"
-          }
-        >
-          <Radio className="size-4" />
-          Live tape
-        </span>
-        <span>
-          <span className="coinbase-orange font-semibold">{TAB_BOT7}</span>{" "}
-          <strong className={cn("font-semibold", convClass(call?.conviction))}>{call?.conviction ?? "—"}</strong>{" "}
-          <strong className={cn("font-semibold", stanceClass(call?.stance ?? "HOLD"))}>{call?.stance ?? "—"}</strong>
-        </span>
-        <span>
-          <span className="legal-purple font-semibold">AI Agents</span>{" "}
-          <strong className="text-sell">read-only</strong>
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <span className="coinbase-orange font-semibold">{TAB_BOT7} AUTO</span>
-          {demoOn ? <strong className="text-high">would-run</strong> : null}
-          <Lock className={cn("size-4", tradeOn ? "text-high" : "text-sell")} fill="currentColor" strokeWidth={1.5} />
-          <strong className={tradeOn ? "text-high" : "text-sell"}>{tradeOn ? "unlocked" : "Coinbase locked"}</strong>
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <GmRainbow text={TAB_GM_AUTO} className="font-semibold" />
-          {demoOn ? <strong className="text-high">would-run</strong> : null}
-          <Lock className={cn("size-4", tradeOn ? "text-high" : "text-sell")} fill="currentColor" strokeWidth={1.5} />
-          <strong className={tradeOn ? "text-high" : "text-sell"}>{tradeOn ? "unlocked" : "Coinbase locked"}</strong>
-        </span>
-        <button
-          type="button"
-          aria-expanded={lockOpen}
-          onClick={() => setLockOpen((v) => !v)}
-          className={cn(
-            "inline-flex items-center gap-1.5 font-bold tracking-[0.08em] uppercase",
-            tradeOn ? "text-high" : "legal-purple",
-          )}
-        >
-          <Lock className={cn("size-4", tradeOn ? "text-high" : "lock-deep")} fill="currentColor" strokeWidth={1.5} />
-          LoCK3D STATUS
-        </button>
-        {lockOpen ? (
-          <span className="w-full">
-            When unlocked:{" "}
-            <GmRainbow text="AI Bots execute BTC on their Coinbase Wallet — K3YS ARE NEVER STORED HERE !!" />
-          </span>
-        ) : null}
-      </div>
+      <Lock3dRail feedAudit={snap?.feedAudit} />
 
       <div className="grid isolate rounded-md border border-rule carbon-fiber lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,0.7fr)] lg:items-stretch">
         <section className="relative z-0 flex min-h-0 min-w-0 flex-col overflow-hidden border-b border-rule bg-surface p-3 lg:border-b-0 lg:border-r">

@@ -32,7 +32,10 @@ import { Route as HeliosRouteImport } from './routes/helios'
 import { Route as HeliosbotRouteImport } from './routes/heliosbot'
 import { Route as HiveRouteImport } from './routes/hive'
 import { Route as IosRouteImport } from './routes/ios'
+import { Route as L0ckRouteImport } from './routes/l0ck'
 import { Route as LaunchRouteImport } from './routes/launch'
+import { Route as LockRouteImport } from './routes/lock'
+import { Route as Lock3dRouteImport } from './routes/lock3d'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
 import { Route as MediaRouteImport } from './routes/media'
@@ -79,6 +82,7 @@ import { Route as ApiAgentGoogleRouteImport } from './routes/api/agent.google'
 import { Route as ApiAgentGrokRouteImport } from './routes/api/agent.grok'
 import { Route as ApiAgentHiveRouteImport } from './routes/api/agent.hive'
 import { Route as ApiAgentKeysRouteImport } from './routes/api/agent.keys'
+import { Route as ApiAgentLocksRouteImport } from './routes/api/agent.locks'
 import { Route as ApiAgentMcpRouteImport } from './routes/api/agent.mcp'
 import { Route as ApiAgentNoticesRouteImport } from './routes/api/agent.notices'
 import { Route as ApiAgentOpenaiRouteImport } from './routes/api/agent.openai'
@@ -205,9 +209,24 @@ const IosRoute = IosRouteImport.update({
   path: '/ios',
   getParentRoute: () => rootRouteImport,
 } as any)
+const L0ckRoute = L0ckRouteImport.update({
+  id: '/l0ck',
+  path: '/l0ck',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LaunchRoute = LaunchRouteImport.update({
   id: '/launch',
   path: '/launch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LockRoute = LockRouteImport.update({
+  id: '/lock',
+  path: '/lock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Lock3dRoute = Lock3dRouteImport.update({
+  id: '/lock3d',
+  path: '/lock3d',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -445,6 +464,11 @@ const ApiAgentKeysRoute = ApiAgentKeysRouteImport.update({
   path: '/keys',
   getParentRoute: () => ApiAgentRoute,
 } as any)
+const ApiAgentLocksRoute = ApiAgentLocksRouteImport.update({
+  id: '/locks',
+  path: '/locks',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
 const ApiAgentMcpRoute = ApiAgentMcpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
@@ -520,7 +544,10 @@ export interface FileRoutesByFullPath {
   '/heliosbot': typeof HeliosbotRoute
   '/hive': typeof HiveRoute
   '/ios': typeof IosRoute
+  '/l0ck': typeof L0ckRoute
   '/launch': typeof LaunchRoute
+  '/lock': typeof LockRoute
+  '/lock3d': typeof Lock3dRoute
   '/login': typeof LoginRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
@@ -567,6 +594,7 @@ export interface FileRoutesByFullPath {
   '/api/agent/grok': typeof ApiAgentGrokRoute
   '/api/agent/hive': typeof ApiAgentHiveRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
+  '/api/agent/locks': typeof ApiAgentLocksRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
   '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
@@ -602,7 +630,10 @@ export interface FileRoutesByTo {
   '/heliosbot': typeof HeliosbotRoute
   '/hive': typeof HiveRoute
   '/ios': typeof IosRoute
+  '/l0ck': typeof L0ckRoute
   '/launch': typeof LaunchRoute
+  '/lock': typeof LockRoute
+  '/lock3d': typeof Lock3dRoute
   '/login': typeof LoginRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
@@ -649,6 +680,7 @@ export interface FileRoutesByTo {
   '/api/agent/grok': typeof ApiAgentGrokRoute
   '/api/agent/hive': typeof ApiAgentHiveRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
+  '/api/agent/locks': typeof ApiAgentLocksRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
   '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
@@ -685,7 +717,10 @@ export interface FileRoutesById {
   '/heliosbot': typeof HeliosbotRoute
   '/hive': typeof HiveRoute
   '/ios': typeof IosRoute
+  '/l0ck': typeof L0ckRoute
   '/launch': typeof LaunchRoute
+  '/lock': typeof LockRoute
+  '/lock3d': typeof Lock3dRoute
   '/login': typeof LoginRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
@@ -732,6 +767,7 @@ export interface FileRoutesById {
   '/api/agent/grok': typeof ApiAgentGrokRoute
   '/api/agent/hive': typeof ApiAgentHiveRoute
   '/api/agent/keys': typeof ApiAgentKeysRoute
+  '/api/agent/locks': typeof ApiAgentLocksRoute
   '/api/agent/mcp': typeof ApiAgentMcpRoute
   '/api/agent/notices': typeof ApiAgentNoticesRoute
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
@@ -769,7 +805,10 @@ export interface FileRouteTypes {
     | '/heliosbot'
     | '/hive'
     | '/ios'
+    | '/l0ck'
     | '/launch'
+    | '/lock'
+    | '/lock3d'
     | '/login'
     | '/manifest.webmanifest'
     | '/media'
@@ -816,6 +855,7 @@ export interface FileRouteTypes {
     | '/api/agent/grok'
     | '/api/agent/hive'
     | '/api/agent/keys'
+    | '/api/agent/locks'
     | '/api/agent/mcp'
     | '/api/agent/notices'
     | '/api/agent/openai'
@@ -851,7 +891,10 @@ export interface FileRouteTypes {
     | '/heliosbot'
     | '/hive'
     | '/ios'
+    | '/l0ck'
     | '/launch'
+    | '/lock'
+    | '/lock3d'
     | '/login'
     | '/manifest.webmanifest'
     | '/media'
@@ -898,6 +941,7 @@ export interface FileRouteTypes {
     | '/api/agent/grok'
     | '/api/agent/hive'
     | '/api/agent/keys'
+    | '/api/agent/locks'
     | '/api/agent/mcp'
     | '/api/agent/notices'
     | '/api/agent/openai'
@@ -933,7 +977,10 @@ export interface FileRouteTypes {
     | '/heliosbot'
     | '/hive'
     | '/ios'
+    | '/l0ck'
     | '/launch'
+    | '/lock'
+    | '/lock3d'
     | '/login'
     | '/manifest.webmanifest'
     | '/media'
@@ -980,6 +1027,7 @@ export interface FileRouteTypes {
     | '/api/agent/grok'
     | '/api/agent/hive'
     | '/api/agent/keys'
+    | '/api/agent/locks'
     | '/api/agent/mcp'
     | '/api/agent/notices'
     | '/api/agent/openai'
@@ -1016,7 +1064,10 @@ export interface RootRouteChildren {
   HeliosbotRoute: typeof HeliosbotRoute
   HiveRoute: typeof HiveRoute
   IosRoute: typeof IosRoute
+  L0ckRoute: typeof L0ckRoute
   LaunchRoute: typeof LaunchRoute
+  LockRoute: typeof LockRoute
+  Lock3dRoute: typeof Lock3dRoute
   LoginRoute: typeof LoginRoute
   ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
   MediaRoute: typeof MediaRoute
@@ -1213,11 +1264,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/l0ck': {
+      id: '/l0ck'
+      path: '/l0ck'
+      fullPath: '/l0ck'
+      preLoaderRoute: typeof L0ckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/launch': {
       id: '/launch'
       path: '/launch'
       fullPath: '/launch'
       preLoaderRoute: typeof LaunchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lock': {
+      id: '/lock'
+      path: '/lock'
+      fullPath: '/lock'
+      preLoaderRoute: typeof LockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lock3d': {
+      id: '/lock3d'
+      path: '/lock3d'
+      fullPath: '/lock3d'
+      preLoaderRoute: typeof Lock3dRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -1542,6 +1614,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAgentKeysRouteImport
       parentRoute: typeof ApiAgentRoute
     }
+    '/api/agent/locks': {
+      id: '/api/agent/locks'
+      path: '/locks'
+      fullPath: '/api/agent/locks'
+      preLoaderRoute: typeof ApiAgentLocksRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
     '/api/agent/mcp': {
       id: '/api/agent/mcp'
       path: '/mcp'
@@ -1653,6 +1732,7 @@ interface ApiAgentRouteChildren {
   ApiAgentGrokRoute: typeof ApiAgentGrokRoute
   ApiAgentHiveRoute: typeof ApiAgentHiveRoute
   ApiAgentKeysRoute: typeof ApiAgentKeysRoute
+  ApiAgentLocksRoute: typeof ApiAgentLocksRoute
   ApiAgentMcpRoute: typeof ApiAgentMcpRoute
   ApiAgentNoticesRoute: typeof ApiAgentNoticesRoute
   ApiAgentOpenaiRoute: typeof ApiAgentOpenaiRoute
@@ -1679,6 +1759,7 @@ const ApiAgentRouteChildren: ApiAgentRouteChildren = {
   ApiAgentGrokRoute: ApiAgentGrokRoute,
   ApiAgentHiveRoute: ApiAgentHiveRoute,
   ApiAgentKeysRoute: ApiAgentKeysRoute,
+  ApiAgentLocksRoute: ApiAgentLocksRoute,
   ApiAgentMcpRoute: ApiAgentMcpRoute,
   ApiAgentNoticesRoute: ApiAgentNoticesRoute,
   ApiAgentOpenaiRoute: ApiAgentOpenaiRoute,
@@ -1717,7 +1798,10 @@ const rootRouteChildren: RootRouteChildren = {
   HeliosbotRoute: HeliosbotRoute,
   HiveRoute: HiveRoute,
   IosRoute: IosRoute,
+  L0ckRoute: L0ckRoute,
   LaunchRoute: LaunchRoute,
+  LockRoute: LockRoute,
+  Lock3dRoute: Lock3dRoute,
   LoginRoute: LoginRoute,
   ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
   MediaRoute: MediaRoute,

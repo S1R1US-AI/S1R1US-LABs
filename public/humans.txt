@@ -24,5 +24,6 @@ media — official desks + AI Trading Bot Cost + SUP3R B0WL of AI AGENTs librari
 bowl — SUP3R B0WL of AI Agents (AI Agent Championship)
 w0rld — W0rLd CUP of AI Quant Trading BTC
 h1v3 — H1V3 SW@RM (Hive Swarm) · the future of BTC Quant
+l0ck — LoCK3D STATUS (Locked Status) · how to lock and unlock · live vs simulated
 c0ut — C@LL 0UT simulation welcome
 compute — How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources)

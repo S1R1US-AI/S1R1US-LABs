@@ -41,6 +41,7 @@ import { SOURCE_DENY_PATHS, PUBLIC_GITHUB } from "@/lib/desk/agent-source-guard"
 import { boardMe, boardPublic, issueBoardCallout, issueWalletChallenge, linkBoardWallet, loadBoardWallet, placeBoardWager, postBoardLog, registerBoard, tickBoard, updateBoardProfile, verifyBoardWallet } from "@/lib/desk/gm-board";
 import { hivePublic, joinHive, leaveHive, pledgeHive } from "@/lib/desk/hive-swarm";
 import { byoConnectPublic, BYO_CONNECT_API, BYO_CONNECT_HEADLINE } from "@/lib/desk/byo-connect";
+import { lockWelcomePublic, LOCK_API, LOCK_HEADLINE } from "@/lib/desk/lock-welcome";
 
 export {
   AGENT_A2A_PATH,
@@ -256,6 +257,14 @@ export function openApiSpec() {
           summary: BYO_CONNECT_HEADLINE,
           description: "Automatic for AI agents. Grade on YOUR compute. Never stores keys. Never VPN/SSH/extra RPC. Gift/SaaS resource only.",
           responses: { "200": { description: "BYO connect JSON" } },
+        },
+      },
+      [LOCK_API]: {
+        get: {
+          operationId: "lock_status",
+          summary: LOCK_HEADLINE,
+          description: "Read-only LoCK3D STATUS. Closed GIF = LOCKED. Open GIF = UNLOCKED. Live tape is status only. Never lock_set. This host never places Coinbase orders.",
+          responses: { "200": { description: "LoCK3D STATUS JSON" } },
         },
       },
       [AGENT_WAITLIST_PATH]: {
@@ -493,6 +502,13 @@ export function mcpToolDefs() {
       name: "byo_connect",
       title: "BYO connect",
       description: `${BYO_CONNECT_HEADLINE}. Automatic for AI agents: poll tape, grade on YOUR compute. Optional xAI session dialogue on /compute. This host never stores keys, never VPN, never SSH, never extra RPC.`,
+      inputSchema: { type: "object", properties: {}, additionalProperties: false },
+      annotations: { readOnlyHint: true, destructiveHint: false },
+    },
+    {
+      name: "lock_status",
+      title: "LoCK3D STATUS",
+      description: `${LOCK_HEADLINE}. Read-only. Closed padlock GIF = LOCKED. Open padlock GIF = UNLOCKED. Live tape is status only — not a lock. Never lock_set. Championship pause stays system Admin. This host never places Coinbase orders.`,
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       annotations: { readOnlyHint: true, destructiveHint: false },
     },
@@ -905,6 +921,22 @@ export async function callMcpTool(
         vpn: false,
         extraRpc: false,
         trade: false,
+      }),
+    };
+  }
+  if (name === "lock_status") {
+    if (!mcpFeedAllowed()) return { ok: true, data: mcpMaintenance() };
+    const { lockStatusPublic } = await import("./lock-status.server.ts");
+    return {
+      ok: true,
+      data: withAgentOps({
+        ok: true,
+        lock: lockStatusPublic(),
+        welcome: lockWelcomePublic(),
+        lockSet: false,
+        trade: false,
+        ordersCreate: false,
+        keysOnThisHost: false,
       }),
     };
   }

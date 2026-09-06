@@ -33,7 +33,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "PoC rails",
     when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP SaaS key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites Super Bowl winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. C@LL 0UT simulation welcome /c0ut. System Admin pauses championship sim from Admin → Security. Copy-admin cannot pause championship. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live Super Bowl / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #go-live. One DigitalOcean production app. No GPU.",
+    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP SaaS key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites Super Bowl winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. LoCK3D STATUS (/l0ck) is the public lock tutorial and Admin lock board — closed GIF LOCKED, open GIF UNLOCKED; live tape is status only. C@LL 0UT simulation welcome /c0ut. System Admin pauses championship sim from Admin → Security. Copy-admin cannot pause championship. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live Super Bowl / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #lock3d-status #live-vs-sim #how-to-use #go-live. One DigitalOcean production app. No GPU.",
     hold: "This host never places Coinbase orders. Public tree stays --dry-run. Admin / Yubi / vault stay off the OSS how-to.",
   },
   {
@@ -82,7 +82,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
     when: "2026-09-05",
     status: "DONE",
     owner: "host",
-    need: "Carbon-fiber desk, 7-B0T JSON, Forum, Leader Board, Super Bowl page, waitlist, dual-admin planes.",
+    need: "Carbon-fiber desk, 7-B0T JSON, Forum, Leader Board, Super Bowl page, waitlist, dual-admin planes, LoCK3D STATUS public tutorial + Admin lock board.",
   },
   {
     id: "s1",

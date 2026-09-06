@@ -20,7 +20,16 @@ Allow: /video
 Allow: /search
 Allow: /agent
 Allow: /forum
+Allow: /board
+Allow: /bowl
+Allow: /w0rld
+Allow: /h1v3
+Allow: /l0ck
+Allow: /c0ut
 Allow: /compute
+Allow: /app
+Allow: /ios
+Allow: /play
 Allow: /api/agent
 Allow: /llms.txt
 Allow: /entity.json
@@ -33,6 +42,7 @@ Allow: /icon-192.png
 Allow: /icon-512.png
 Allow: /.well-known/
 Disallow: /admin
+Disallow: /app/admin
 Disallow: /login
 Disallow: /theme
 Disallow: /renew
@@ -63,6 +73,12 @@ User-agent: grok-crawler
 Allow: /
 Allow: /agent
 Allow: /forum
+Allow: /board
+Allow: /bowl
+Allow: /w0rld
+Allow: /h1v3
+Allow: /l0ck
+Allow: /c0ut
 Allow: /b3ars
 Allow: /owl
 Allow: /r0b0ts
@@ -72,6 +88,9 @@ Allow: /media
 Allow: /video
 Allow: /search
 Allow: /compute
+Allow: /app
+Allow: /ios
+Allow: /play
 Allow: /terms
 Allow: /privacy
 Allow: /api/agent
@@ -84,6 +103,7 @@ Allow: /.well-known/
 Disallow: /source
 Disallow: /guide
 Disallow: /admin
+Disallow: /app/admin
 Disallow: /security
 Disallow: /launch
 Disallow: /login

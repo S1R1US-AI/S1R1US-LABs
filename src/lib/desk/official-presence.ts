@@ -96,6 +96,8 @@ export function sitelinkPages() {
     { name: "L3AD3R B0ARD", url: `${SEO_CANONICAL}board` },
     { name: "SUP3R B0WL", url: `${SEO_CANONICAL}bowl` },
     { name: "W0rLd CUP", url: `${SEO_CANONICAL}w0rld` },
+    { name: "H1V3 SW@RM", url: `${SEO_CANONICAL}h1v3` },
+    { name: "LoCK3D STATUS", url: `${SEO_CANONICAL}l0ck` },
     { name: "C@LL 0UT sim", url: `${SEO_CANONICAL}c0ut` },
     { name: "iOS · Google App", url: `${SEO_CANONICAL}app` },
     { name: "S1R1US L@Bs", url: `${SEO_CANONICAL}helios` },

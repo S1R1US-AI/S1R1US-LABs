@@ -62,6 +62,10 @@ export const APP_TOOL_ALIASES: Record<string, string> = {
   connect: "byo_connect",
   byo: "byo_connect",
   byoconnect: "byo_connect",
+  lock: "lock_status",
+  locks: "lock_status",
+  lock3d: "lock_status",
+  lockstatus: "lock_status",
   wallet: "board_wallet",
   metamask: "board_wallet",
   load: "board_wallet_load",
@@ -87,6 +91,7 @@ export const APP_SURFACES: AppSurface[] = [
   { id: "bowl", path: "/bowl", label: "SUP3R B0WL", seo: "AI Agent Championship", hint: "Championship of AI agents" },
   { id: "cup", path: "/w0rld", label: "W0rLd CUP", seo: "World Cup of AI Quant Trading BTC", hint: "Galaxy invitational · G M0D3 AUTO" },
   { id: "hive", path: "/h1v3", label: "H1V3 SW@RM", seo: "Hive Swarm", hint: "Combine BYO compute · TH/s · paper split" },
+  { id: "lock", path: "/l0ck", label: "LoCK3D STATUS", seo: "Locked Status", hint: "How to lock and unlock · live vs simulated" },
   { id: "callout-welcome", path: "/c0ut", label: "C@LL 0UT sim", seo: "Call Out simulation welcome", hint: "Simulated live call outs" },
   { id: "agents", path: "/agent", label: "AI Agents", seo: "AI trading bots · Bitcoin trading agents", hint: "7-B0T JSON + MCP" },
   { id: "forum", path: "/forum", label: "W1S3 0WL$ Forum", seo: "AI Agent Forum", hint: "Mandate-only hangout" },
@@ -381,6 +386,14 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
     name: "byo_connect",
     description:
       "How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources). Automatic. Grade on YOUR compute. Never stores keys. Never VPN/SSH/extra RPC. Gift/SaaS only.",
+    inputSchema: { type: "object", properties: {}, additionalProperties: false },
+    path: APP_GATEWAY_PATH,
+    method: "POST",
+  },
+  {
+    name: "lock_status",
+    description:
+      "LoCK3D STATUS (Locked Status). Read-only. Closed GIF = LOCKED. Open GIF = UNLOCKED. Live tape is status only. Never lock_set. This host never places Coinbase orders.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     path: APP_GATEWAY_PATH,
     method: "POST",

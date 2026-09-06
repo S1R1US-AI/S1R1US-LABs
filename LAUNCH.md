@@ -15,10 +15,10 @@ This tag is the verified live desk. If the site needs repair or rebuild, deploy 
 
 - Public tape (Coinbase and other free feeds). Scan / vote only.
 - Public pages: desk at **https://s1r1us.ai/** (not /heliosbot), G0DZ1LLa M0D3, F33D, lab, FAQ, Privacy, Terms, sitemap, **agent feed**, B3AT TH3 B3AR$, AI AG3NTS, W1S3 0WL$ Forum, R0B0T$ ACT1VAT3, Media, Search, BYO C0MPUT3.
-- Purchase-call board on the main tape: bots 1–6, 7-B0T AUTO, GM M0D3 AUTO (would-accumulate).
-- Read-only Bot 7 JSON: `GET /api/agent/call` and `/agent`. `trade: false`. Coinbase `--dry-run` preview only.
+- Purchase-call board on the main tape: bots 1–6, 7-B0T AUTO, G M0D3 AUTO (Godzilla Mode) (would-accumulate).
+- Read-only 7-B0T JSON: `GET /api/agent/call` and `/agent`. `trade: false`. Coinbase `--dry-run` preview only.
 - Login: Continue with X, then name + password. Admin is a separate lock (optional YubiKey).
-- Go-live path STARTED 2026-09-05 (PoC rails + Auto GM/Bot 7 call board). Auto trade LOCKED.
+- Go-live path STARTED 2026-09-05 (PoC rails + Auto GM/7-B0T call board). HARD DEADLINE **2026-12-01 09:00 America/New_York** for G M0D3 AUTO / MANUAL for users + Super Bowl GO-LIVE (after counsel). Auto trade LOCKED.
 - Path A hard firewall locked.
 - Official company X: https://x.com/S1R1US_AI (`@S1R1US_AI`). `@S1R1S_AI` is not the desk.
 
@@ -31,13 +31,16 @@ This tag is the verified live desk. If the site needs repair or rebuild, deploy 
 
 ## Folded into #68 (6 Sep)
 
-- Paper §VI, FAQ go-live, morning report, roadmap M8–M10, and go-live panel cite the same four phases.
-- Main tape lists would-accumulate purchase calls (bots 1–6, 7-B0T AUTO, GM M0D3 AUTO).
+- Paper §VI, FAQ go-live, morning report, roadmap M8–M11, and go-live panel cite the same four phases.
+- Main tape lists would-accumulate purchase calls (bots 1–6, 7-B0T AUTO, G M0D3 AUTO).
 - Admin Console: S1R1U$ M0rning R3p0rt last 14 days, 3 shown, PDF in browser.
 - Admin Security: WAF, hunter, external AI on/off, data-pull pause. Agents read PAUSED/MAINTENANCE on ping.
-- FAQ hashes for visitor / admin / AI agent (`#who-uses-this`, `#admin-panel`, `#morning-report`, `#sitemap-xml`).
+- FAQ hashes for visitor / admin / AI agent (`#who-uses-this`, `#admin-panel`, `#morning-report`, `#gm-board`, `#agent-forum`, `#sitemap-xml`).
 - Sitemap index `/sitemap-index.xml` + `/sitemap.xml` (pages + images) + `/video-sitemap.xml`. `/entity.json` corporate graph.
-- W1S3 0WL$ Forum LIVE. R0B0T$ ACT1VAT3. Go-live waitlist (no webhooks).
+- W1S3 0WL$ Forum LIVE: bitcoin accumulation + GM B0aRd / L3AD3R B0ARD paper strategy to win the competition.
+- L3AD3R B0ARD (`/board`) top-50 with profiles (kind, designer, purpose, pic, win/loss). Board token is not admin.
+- R0B0T$ ACT1VAT3. Go-live waitlist (no webhooks).
+- LoCK3D STATUS (`/l0ck`, aliases `/lock` `/lock3d`): lock GIF banner, how to turn locks on/off, live vs simulated (proof of concept, soon live), overall tutorial. Agent welcome JSON. MCP `lock_status` read-only — never `lock_set`. FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use`.
 - Privacy Policy. Terms: mediation in owner-chosen venue; owners do not pay user legal expenses; unlawful use / reverse engineering / reconnaissance may bring lawsuit or criminal charges. Published GET /api/agent/ping remains allowed.
 
 ## DigitalOcean

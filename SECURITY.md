@@ -34,7 +34,7 @@ We will rotate anything that leaked and credit a fix after it ships.
 | Admin reset mailbox | `reset-mail.server.ts` only — never rendered |
 | Snapshot passphrase | Sidecar `*.pass.txt` next to the `.gpg`, never inside the archive |
 
-Public clones run on free feeds. SuperGrok is the operator Ask Grok path. Visitors Ask Grok with BYO compute (their xAI key, never stored). Bot 7 HTTP SaaS keys are hashed in `BOT7_FEED_KEY_HASHES`. Practice paper is not Coinbase. The public tree must never emit `orders create`. Admin / Yubi / vault stay out of the OSS how-to.
+Public clones run on free feeds. SuperGrok is the operator Ask Grok path. Visitors Ask Grok with BYO compute (their xAI key, never stored). 7-B0T HTTP SaaS keys are hashed in `BOT7_FEED_KEY_HASHES`. Practice paper is not Coinbase. The public tree must never emit `orders create`. Admin / Yubi / vault stay out of the OSS how-to.
 
 Encrypted project snapshots (`artifacts/*.tar.gz.gpg`) are AES-256. Do not pack `*.pass.txt`, `node_modules`, or prior `.gpg` files inside a new archive. Rotate the passphrase if a sidecar left the host.
 

@@ -21,6 +21,7 @@ export const MCP_TOOLS = new Set([
   "connection_test",
   "fee_info",
   "byo_connect",
+  "lock_status",
   "autonomous_loop",
   "waitlist_register",
   "go_live_notice",

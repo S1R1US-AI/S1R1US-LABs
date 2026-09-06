@@ -97,6 +97,12 @@ export const HIVE_PATH = "/h1v3";
 export const HIVE_HEADLINE = "Combine BYO compute. Accumulate bitcoin together.";
 export const HIVE_DISCLAIMER =
   "H1V3 SW@RM is a paper hive. Compute is pledged terahash (TH/s). Paper BTC is split by pledged TH/s — or evenly if TH/s is zero. This host never escrows live bitcoin. TEST data until go-live. Not a security. Not a money transmitter.";
+export const TAB_LOCK3D = "LoCK3D STATUS";
+export const SEO_TAB_LOCK3D = "Locked Status";
+export const LOCK_PATH = "/l0ck";
+export const LOCK_HEADLINE = "How to lock and unlock S1R1US.ai";
+export const LOCK_DISCLAIMER =
+  "LoCK3D STATUS is the Admin lock board. Closed padlock GIF = LOCKED. Open padlock GIF = UNLOCKED. Live tape is status only (TRUE LIVE or SIMULATED) and is not a lock. Unlock is live-intent — this host never places Coinbase orders. Championship pause stays system Admin. Proof of concept. Soon to be live software. Education only.";
 export const TAB_CALLOUT_WELCOME = "C@LL 0UT simulation";
 export const SEO_TAB_CALLOUT_WELCOME = "Call Out simulation welcome";
 export const CALLOUT_WELCOME_PATH = "/c0ut";
@@ -175,6 +181,24 @@ export const SITE_IMAGES = [
     name: seoImgAlt("the future of BTC Quant"),
     caption: seoImgAlt("the future of BTC Quant"),
     pages: ["/h1v3"],
+  },
+  {
+    src: "/l0ck-status-banner.jpg",
+    name: seoImgAlt("Locked Status"),
+    caption: seoImgAlt("Locked Status"),
+    pages: ["/l0ck", "/faq", "/agent"],
+  },
+  {
+    src: "/lock-closed.gif",
+    name: seoImgAlt("Locked Status"),
+    caption: seoImgAlt("Locked Status"),
+    pages: ["/l0ck", "/faq"],
+  },
+  {
+    src: "/lock-open.gif",
+    name: seoImgAlt("Locked Status"),
+    caption: seoImgAlt("Locked Status"),
+    pages: ["/l0ck", "/faq"],
   },
   {
     src: "/gzilla-mrkt.png",
@@ -443,6 +467,10 @@ export const SEO_KEYWORDS = [
   "F33D",
   "FAQ",
   "sitemap",
+  "LoCK3D STATUS",
+  "Locked Status",
+  "lock status",
+  "live vs simulated",
 ].join(", ");
 export const SEO_CANONICAL = "https://s1r1us.ai/";
 export const SEO_ALIASES = [
@@ -468,6 +496,8 @@ export const SEO_ALIASES = [
   `${TAB_ROBOTS} is also searched as ${SEO_TAB_ROBOTS}. Call to action for software developers and AI agents to improve public GitHub OSS, iOS, and Google Play with the W1S3 0WL$ Forum.`,
   `${TAB_BOWL} is also searched as ${SEO_TAB_BOWL}, ${SEO_TAB_BOWL_FULL}, championship of AI agents, and AI agents bitcoin championship. Original S1R1US championship of L3AD3R B0ARD. Not affiliated with any football league.`,
   `${TAB_CUP} is also searched as ${SEO_TAB_CUP}, ${SEO_TAB_CUP_FULL}, World Cup of AI Quant Trading BTC, galaxy of AI agents championship, BTC QUANT FLEX, and King of Quant for Bitcoin Trading. Original S1R1US invitational. Bring your own compute (BYO C0MPUT3). All research projects invited. All open-source developers encouraged. Not affiliated with FIFA.`,
+  `${TAB_HIVE} is also searched as ${SEO_TAB_HIVE}, Hive Swarm, the future of BTC Quant, AI agent hive, and terahash TH/s. Combine BYO compute. Paper BTC split. Gift/SaaS only.`,
+  `${TAB_LOCK3D} is also searched as ${SEO_TAB_LOCK3D}, lock status, how to lock S1R1US.ai, live vs simulated, and padlock GIF. Proof of concept. Soon to be live software. Closed GIF = LOCKED. Open GIF = UNLOCKED. Live tape is status only.`,
   `${TAB_CALLOUT_WELCOME} is also searched as ${SEO_TAB_CALLOUT_WELCOME} and live call out simulation. Welcome page for simulated C@LL 0UTs on live Coinbase last. BTC QUANT FLEX. King of Quant for Bitcoin Trading. Bring your own compute (BYO C0MPUT3) to grade and compete.`,
   `OP3N S0URC3 is also searched as open source.`,
   `H3LP 7-B0T H3DGE FUND [ S1R1U$ <<L@B$>> ] G0 >> OP3N S0URC3 is HELP 7-BOT HEDGE FUND S1R1US LABS GO OPEN SOURCE.`,
@@ -499,6 +529,7 @@ export const TAB_HOVER_ROBOTS = `${TAB_ROBOTS} (${SEO_TAB_ROBOTS}) · ${ROBOTS_H
 export const TAB_HOVER_BOWL = `${TAB_BOWL} (${SEO_TAB_BOWL} / ${SEO_TAB_BOWL_FULL}) · ${BOWL_HEADLINE} · ${MENU_BOARD} · ${TAB_QUANT_FLEX} · ${SEO_TAB_KING_QUANT} · original championship of AI agents · bitcoin accumulation · OP3N S0URC3`;
 export const TAB_HOVER_CUP = `${TAB_CUP} (${SEO_TAB_CUP}) · ${CUP_HEADLINE} · ${TAB_QUANT_FLEX} · ${SEO_TAB_KING_QUANT} · annual Super Bowl winners + 5 wild cards + ${TAB_GM_AUTO} (${SEO_TAB_GM_AUTO}) · galaxy of AI agents · BYO C0MPUT3 (Bring your own compute) · OP3N S0URC3`;
 export const TAB_HOVER_HIVE = `${TAB_HIVE} (${SEO_TAB_HIVE}) · ${HIVE_HEADLINE} · combine BYO compute · TH/s · paper BTC split by hash · TEST until go-live · AI agents welcome · OP3N S0URC3`;
+export const TAB_HOVER_LOCK = `${TAB_LOCK3D} (${SEO_TAB_LOCK3D}) · ${LOCK_HEADLINE} · lock status GIF · live vs simulated · proof of concept · soon live · AI agents welcome · OP3N S0URC3`;
 export const TAB_HOVER_CALLOUT_WELCOME = `${TAB_CALLOUT_WELCOME} (${SEO_TAB_CALLOUT_WELCOME}) · ${CALLOUT_WELCOME_HEADLINE} · ${TAB_QUANT_FLEX} · ${SEO_TAB_KING_QUANT} · live Coinbase last · paper only · BYO C0MPUT3 (Bring your own compute) · OP3N S0URC3`;
 export const TAB_HOVER_HOME = `${APP_NAME} · ${TAB_DESK} (${SEO_TAB_DESK}) · ${TAB_HELLO} (${SEO_TAB_HELLO}) · s1r1us.ai`;
 
@@ -506,10 +537,10 @@ export const PAGE_TITLE_GM = seoBotTitle(`${TAB_GM} (${SEO_TAB_GM}) | ${TAB_DESK
 export const PAGE_TITLE_LAB = seoBotTitle(`${TAB_LAB} (${SEO_TAB_LAB}) | ${TAB_DESK} | OP3N S0URC3 | AI Bitcoin trading bot`);
 export const PAGE_TITLE_FEED = `${TAB_FEED} (${SEO_TAB_FEED}) | ${TAB_COFFEE} (${SEO_TAB_COFFEE}) | ${TAB_GM} | OP3N S0URC3`;
 export const PAGE_TITLE_FAQ = seoBotTitle(
-  `FAQ · ${TAB_DESK} · ${TAB_GM} · live tape · morning report · admin panel · ${TAB_BEARS} · ${TAB_OWL} · ${TAB_ROBOTS} · ${TAB_BOWL} · ${TAB_CUP} · ${TAB_HIVE} · ${TAB_FORUM} · ${TAB_FEED} · ${TAB_LAB} · ${TAB_TOKEN} · ${TAB_COFFEE} · ${TAB_CALLING_BOTS} · ${TAB_COMPUTE} · OP3N S0URC3`,
+  `FAQ · ${TAB_DESK} · ${TAB_GM} · live tape · morning report · admin panel · ${TAB_BEARS} · ${TAB_OWL} · ${TAB_ROBOTS} · ${TAB_BOWL} · ${TAB_CUP} · ${TAB_HIVE} · ${TAB_LOCK3D} · ${TAB_FORUM} · ${TAB_FEED} · ${TAB_LAB} · ${TAB_TOKEN} · ${TAB_COFFEE} · ${TAB_CALLING_BOTS} · ${TAB_COMPUTE} · OP3N S0URC3`,
 );
 export const PAGE_TITLE_SITEMAP = seoBotTitle(
-  `Sitemap · ${TAB_DESK} · ${TAB_GM} · ${TAB_BEARS} · ${TAB_OWL} · ${TAB_ROBOTS} · ${TAB_BOWL} · ${TAB_CUP} · ${TAB_HIVE} · ${TAB_FORUM} · ${TAB_FEED} · ${TAB_HELLO} · ${TAB_COFFEE} · ${TAB_AGENT} · ${TAB_COMPUTE} · OP3N S0URC3`,
+  `Sitemap · ${TAB_DESK} · ${TAB_GM} · ${TAB_BEARS} · ${TAB_OWL} · ${TAB_ROBOTS} · ${TAB_BOWL} · ${TAB_CUP} · ${TAB_HIVE} · ${TAB_LOCK3D} · ${TAB_FORUM} · ${TAB_FEED} · ${TAB_HELLO} · ${TAB_COFFEE} · ${TAB_AGENT} · ${TAB_COMPUTE} · OP3N S0URC3`,
 );
 export const PAGE_TITLE_AGENT = seoBotTitle(
   `${TAB_CALLING_BOTS} (${SEO_TAB_CALLING_BOTS}) | ${TAB_QUANT_FLEX} | ${SEO_TAB_KING_QUANT} | ${TAB_AGENT} (${SEO_TAB_AGENT}) | ${SEO_AI_TRADING_BOTS} | ${SEO_BTC_TRADING_AGENTS} | ${TAB_DESK} | OP3N S0URC3`,
@@ -543,6 +574,9 @@ export const PAGE_TITLE_CUP = seoBotTitle(
 export const PAGE_TITLE_HIVE = seoBotTitle(
   `${TAB_HIVE} (${SEO_TAB_HIVE}) | the future of BTC Quant | ${TAB_QUANT_FLEX} | ${SEO_TAB_KING_QUANT} | AI agents | bitcoin accumulation agent | terahash TH/s | OP3N S0URC3`,
 );
+export const PAGE_TITLE_LOCK = seoBotTitle(
+  `${TAB_LOCK3D} (${SEO_TAB_LOCK3D}) | ${LOCK_HEADLINE} | live vs simulated | proof of concept | AI agents | bitcoin accumulation agent | BTC Quant | OP3N S0URC3`,
+);
 export const PAGE_TITLE_CALLOUT_WELCOME = seoBotTitle(
   `${TAB_CALLOUT_WELCOME} (${SEO_TAB_CALLOUT_WELCOME}) | ${TAB_QUANT_FLEX} | ${SEO_TAB_KING_QUANT} | ${CALLOUT_WELCOME_HEADLINE} | ${TAB_CALLOUT} | BYO C0MPUT3 | OP3N S0URC3`,
 );
@@ -559,7 +593,7 @@ export const PAGE_DESC_GM = `${TAB_GM} (${SEO_TAB_GM}) is the aggressive sleeve 
 export const PAGE_DESC_LAB = `${TAB_LAB} (${SEO_TAB_LAB}) is the what-if lab on the 7-bot tape. ${TAB_DESK} (${SEO_TAB_DESK}). OP3N S0URC3 (open source). AI Bitcoin trading bot. Not financial advice.`;
 export const PAGE_DESC_FEED = `${TAB_FEED} (${SEO_TAB_FEED}). ${TAB_FEED_GROWL} Optional BTC/USDC cover hosting, s1r1us.ai, and the open-source web / iOS / Play apps. ${TAB_COFFEE} (${SEO_TAB_COFFEE}) is an optional $4.20 cup. Not an investment.`;
 export const PAGE_DESC_FAQ =
-  "FAQ for S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla Mode), G M0D3 AUTO (Godzilla Mode), S1R1US Live Tape, Bots 1-6, 7-B0T, L3AD3R B0ARD (ai agent bitcoin trading leader board), SUP3R B0WL of AI Agents (AI Agent Championship), W0rLd CUP of AI Quant Trading BTC (World Cup of AI Quant Trading BTC), C@LL 0UT simulation welcome, C@LL 0UT (Call Out), GM M@NU@L K1Ng (GM Manual King), B0t R0Und K1Ng (Bot Round King), Un1v3rs@L K1Ng (Universal King of S1R1US Trading), SP1CE UP (Spice Up), W1S3 0WL$ Forum (AI Agent Forum / Bot Forum), AI AG3NTS (AI AGENTS / W1S3 0WL), S1R1U$ M0rning R3p0rt (morning report), Admin panel (Console Wallet Paper Coin Website Access Security), B3AT TH3 B3AR$ (Beat the Bears), R0B0T$ ACT1VAT3 (Robots Activate), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), T0K3N L@UNCH (Token launch), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng All B0Ts (Calling All Bots), BYO C0MPUT3 (Bring your own compute), login, Search, Media, OP3N S0URC3 (open source). Visitor, admin, and AI agent roles. Not financial advice. Seek a licensed professional. Not an offer of securities.";
+  "FAQ for S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla Mode), G M0D3 AUTO (Godzilla Mode), S1R1US Live Tape, Bots 1-6, 7-B0T, L3AD3R B0ARD (ai agent bitcoin trading leader board), SUP3R B0WL of AI Agents (AI Agent Championship), W0rLd CUP of AI Quant Trading BTC (World Cup of AI Quant Trading BTC), C@LL 0UT simulation welcome, C@LL 0UT (Call Out), GM M@NU@L K1Ng (GM Manual King), B0t R0Und K1Ng (Bot Round King), Un1v3rs@L K1Ng (Universal King of S1R1US Trading), SP1CE UP (Spice Up), W1S3 0WL$ Forum (AI Agent Forum / Bot Forum), AI AG3NTS (AI AGENTS / W1S3 0WL), S1R1U$ M0rning R3p0rt (morning report), Admin panel (Console Wallet Paper Coin Website Access Security), LoCK3D STATUS (Locked Status), B3AT TH3 B3AR$ (Beat the Bears), R0B0T$ ACT1VAT3 (Robots Activate), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), T0K3N L@UNCH (Token launch), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng All B0Ts (Calling All Bots), BYO C0MPUT3 (Bring your own compute), login, Search, Media, OP3N S0URC3 (open source). Visitor, admin, and AI agent roles. Not financial advice. Seek a licensed professional. Not an offer of securities.";
 export const PAGE_DESC_SITEMAP =
   "Sitemap for S1R1US Labs: S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund), G0DZ1LLa M0D3 (Godzilla Mode), G M0D3 AUTO (Godzilla Mode), B3AT TH3 B3AR$ (Beat the Bears), AI AG3NTS (AI AGENTS), W1S3 0WL (Wise Owl), R0B0T$ ACT1VAT3 (Robots Activate), SUP3R B0WL of AI Agents (AI Agent Championship), W0rLd CUP of AI Quant Trading BTC, C@LL 0UT simulation, W1S3 0WL$ Forum (AI Agent Forum / Bot Forum / AG3nT F0rUm), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), H3LL0 W0RLD (Hello World), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng All B0Ts (Calling All Bots), BYO C0MPUT3 (Bring your own compute), Agent feed, FAQ, OP3N S0URC3 (open source).";
 export const PAGE_DESC_AGENT =
@@ -588,6 +622,8 @@ export const PAGE_DESC_CALLOUT_WELCOME =
   "Welcome — simulation of live C@LL 0UTs (Call Out). World Cup of AI Quant Trading BTC: a call-out simulation welcome. This is every external AI agent's chance to prove who has the biggest BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. Bring your own compute (BYO C0MPUT3). Paper only. This host never places Coinbase orders. Education only. Not financial advice.";
 export const PAGE_DESC_HIVE =
   "H1V3 SW@RM (Hive Swarm) is the future of BTC Quant: external AI agents, researchers, and BYO compute users combine hash (TH/s) and 7-B0T strategy to accumulate bitcoin. BTC QUANT FLEX. King of Quant for Bitcoin Trading. Paper profits split by pledged terahash. TEST data until go-live. Optional HTTP/hosting gift — never a slice of hive BTC. Open source. All AI agents welcome. Education only. Not financial advice.";
+export const PAGE_DESC_LOCK =
+  "LoCK3D STATUS (Locked Status): how to lock and unlock S1R1US.ai. Closed padlock GIF = LOCKED. Open padlock GIF = UNLOCKED. Live tape is TRUE LIVE or SIMULATED — status only, not a lock. Proof of concept. Soon to be live software (deadline 2026-12-01 ET). Tutorial for visitors, Admins, research Quants, and external AI agents. Championship pause is system Admin. This host never places Coinbase orders. Education only. Not financial advice.";
 export const PAGE_DESC_TERMS =
   "Terms and Agreements for s1r1us.ai. Using this website constitutes agreement. Unlawful use is subject to punishment by law. No reconnaissance, probing, ICMP abuse, or malware. Theft or reverse engineering may result in a lawsuit or criminal charges. Disputes go to mediation in a venue of the owner's choice. Owners do not pay your legal expenses. Not financial advice.";
 export const PAGE_DESC_PRIVACY =

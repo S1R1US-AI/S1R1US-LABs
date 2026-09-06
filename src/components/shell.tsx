@@ -251,6 +251,9 @@ export function Shell({
               <Link to="/h1v3" className="board-nav gm-nav hive-nav shrink-0 hover:underline" title={TAB_HOVER_HIVE}>
                 <HiveSwarmLabel className="text-[11px] font-semibold" />
               </Link>
+              <Link to="/l0ck" className="legal-purple shrink-0 hover:underline" title="LoCK3D STATUS (Locked Status) · how to lock and unlock">
+                LoCK3D STATUS
+              </Link>
               <Link to="/forum" className="forum-nav shrink-0 hover:underline" title={TAB_HOVER_FORUM}>
                 <ForumTitle />
               </Link>
