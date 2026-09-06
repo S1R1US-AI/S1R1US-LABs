@@ -7,7 +7,7 @@ Updated 2026-09-06. Use this to repair or rebuild. Deploy **this tag**, not an u
 | Name | N3W Web App Installation Build (new theme) — DEPLOY #68 |
 | Git tag | `n3w-web-app-install-deploy-68` |
 | Git branch | `checkpoint/n3w-web-app-install-deploy-68` |
-| Commit | `3bf69899b9b3ed238bb803ebffaeb8f18d98ddc5` |
+| Commit | `337b39c6404f8bedec3c146a916b6459f532b60a` |
 | Repo | https://github.com/S1R1US-AI/S1R1US-LABs |
 | Release | https://github.com/S1R1US-AI/S1R1US-LABs/releases/tag/n3w-web-app-install-deploy-68 |
 | Runtime | prebuilt `.output` · `NITRO_PRESET=node-server` |
