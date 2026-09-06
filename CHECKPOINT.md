@@ -1,13 +1,13 @@
 # Official checkpoint — N3W Web App Installation Build (new theme) — DEPLOY #68
 
-Updated 2026-09-06. Use this to repair or rebuild. Deploy **this tag**, not an untested later `main`.
+Updated 2026-09-06. Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved.
 
 | | |
 |---|---|
 | Name | N3W Web App Installation Build (new theme) — DEPLOY #68 |
-| Git tag | `n3w-web-app-install-deploy-68` |
-| Git branch | `checkpoint/n3w-web-app-install-deploy-68` |
-| Commit | `337b39c6404f8bedec3c146a916b6459f532b60a` |
+| Git tag | `n3w-web-app-install-deploy-68` (protected original snapshot) |
+| Git branch | `checkpoint/n3w-web-app-install-deploy-68` **and** `main` |
+| Commit | tip of `main` (this fold) |
 | Repo | https://github.com/S1R1US-AI/S1R1US-LABs |
 | Release | https://github.com/S1R1US-AI/S1R1US-LABs/releases/tag/n3w-web-app-install-deploy-68 |
 | Runtime | prebuilt `.output` · `NITRO_PRESET=node-server` |
@@ -24,9 +24,9 @@ Updated 2026-09-06. Use this to repair or rebuild. Deploy **this tag**, not an u
 
 ## Repair / rebuild
 
-1. On GitHub, open tag **`n3w-web-app-install-deploy-68`** (or branch `checkpoint/n3w-web-app-install-deploy-68`).
-2. On DigitalOcean, deploy that tag or `main` after this fold is pushed. Do not compile on the 1 GB box — the image copies `.output`.
+1. On GitHub, open branch **`checkpoint/n3w-web-app-install-deploy-68`** or **`main`** (same tip).
+2. On DigitalOcean, **Deploy** that branch. Autodeploy stays **off**. Do not compile on the 1 GB box — the image copies `.output`.
 3. Keep encrypted env (`BETTER_AUTH_SECRET`, `GROK_AUTH_CLIENT_SECRET`). `BETTER_AUTH_URL` = `https://s1r1us.ai`.
-4. Autodeploy stays **off**. Click **Deploy** when GitHub shows this tag.
+4. Env keys do not need to change for this fold.
 
 See [LAUNCH.md](LAUNCH.md) and [DEPLOY.md](DEPLOY.md).
