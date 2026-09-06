@@ -38,7 +38,7 @@ Hover titles use the leet name plus the plain alias.
 
 | Tab | Also searched as | What it is |
 |---|---|---|
-| S1R1US Live Tape | S1R1US 7-bot hedge fund | Live tape. Bots 1-6 vote orthogonal lanes. Bot 7 issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. Main view lists purchase calls for bots 1-6, 7-B0T AUTO, and G M0D3 AUTO (would-accumulate). |
+| S1R1US Live Tape | S1R1US 7-bot hedge fund | Live tape. Icon+label: all sources green, most blue, half-or-fewer yellow, none red. Bots 1-6 vote orthogonal lanes. Bot 7 issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. Main view lists purchase calls for bots 1-6, 7-B0T AUTO, and G M0D3 AUTO (would-accumulate). |
 | S1R1US L@Bs | S1R1US Lab Strategies | What-if lab. Sliders overlay the last validated pull. They never write a live feed. |
 | GM | Godzilla mode | Isolated sleeve. AUTO may day-trade the sleeve only, never the 7-bot stack. Live Coinbase only if an operator unlocks it. |
 | F33D | Feed Hosting | Hosting / domain / iOS / Play app fees. Same wallets as FAQ. Not the trading book. Not a token. |
