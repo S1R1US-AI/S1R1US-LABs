@@ -1,11 +1,14 @@
 import { useEffect, useMemo, type ReactNode } from "react";
-import { HeliosCard, money } from "@/components/helios-card";
+import { money } from "@/components/helios-card";
+import { DeskWorkspace } from "@/components/desk-workspace";
 import { LiveTracks } from "@/components/live-tracks";
 import { HelloWorld } from "@/components/hello-world";
+import { AskGrokPanel } from "@/components/ask-grok-panel";
+import { GoLivePanel } from "@/components/go-live-panel";
 import { Panel, Shell } from "@/components/shell";
 import { SystemOverview } from "@/components/system-overview";
-import { LiqHeatmap, TapeChart } from "@/components/tape-charts";
-import { WhaleTape } from "@/components/whale-tape";
+import { TapeChart } from "@/components/tape-charts";
+import { LeverageWhaleRow } from "@/components/whale-tape";
 import { APP_NAME, BOT7_NAME, LABS_NAME, TAB_DESK, TAB_GM } from "@/lib/brand";
 import { SeoCopy } from "@/components/seo-copy";
 import { COMPANY_X_HANDLE, COMPANY_X_URL } from "@/lib/desk/x-admin";
@@ -33,47 +36,33 @@ export function S1r1usSite() {
 
   return (
     <Shell>
-      <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+      <main className="mx-auto max-w-[1400px] px-3 py-4 sm:px-4">
         <SeoCopy />
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-base font-medium tracking-[0.08em] text-accum uppercase">Bitcoin accumulator</p>
-            <h1 className="mt-1 max-w-xl text-2xl font-bold tracking-tight text-medium sm:text-3xl">{APP_NAME}</h1>
-            <HelloWorld />
-          </div>
-          <CompanyXChip />
-        </div>
-
         {err ? (
-          <p className="mb-4 rounded-md border border-down/40 bg-down/10 px-3 py-2 text-sm text-down">{err}</p>
+          <p className="mb-3 rounded-md border border-down/40 bg-down/10 px-3 py-2 text-sm text-down">{err}</p>
         ) : null}
 
-        <div className="mb-4 grid gap-4">
-          <HeliosCard
-            call={call}
-            grok={null}
-            grokErr={null}
-            asking={false}
-            copied={false}
-            canFill={false}
-            canAct={false}
-            onAsk={() => undefined}
-            onCopy={() => undefined}
-            onFill={() => undefined}
-            kicker="Bot 7"
-            tape={
-              snap
-                ? {
-                    price: snap.btc.price,
-                    rsi: snap.rsi14,
-                    rsiAvg: snap.rsiAvg,
-                    fg: snap.fearGreed?.value ?? null,
-                    fgLabel: snap.fearGreed?.label,
-                    fetchedAt: snap.fetchedAt,
-                  }
-                : null
-            }
-          />
+        <DeskWorkspace
+          snap={snap}
+          briefs={briefs}
+          call={call}
+          canAct={false}
+          canFill={false}
+          asking={false}
+          copied={false}
+          grok={null}
+          grokErr={null}
+          onAsk={() => {
+            window.location.assign("/compute");
+          }}
+          onCopy={() => undefined}
+          onFill={() => undefined}
+        />
+
+        <div className="mt-4 grid gap-3">
+          <HelloWorld />
+          <GoLivePanel />
+          <AskGrokPanel />
         </div>
 
         <LiveTracks
@@ -142,10 +131,7 @@ export function S1r1usSite() {
         <div className="mt-4">
           <TapeChart snap={snap} />
         </div>
-        <div className="mt-4 grid gap-4 lg:grid-cols-2">
-          <LiqHeatmap snap={snap} />
-          <WhaleTape snap={snap} />
-        </div>
+        <LeverageWhaleRow snap={snap} />
 
         <SystemOverview />
 

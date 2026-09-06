@@ -85,6 +85,182 @@ function CandleLayer({
   );
 }
 
+const PANES = ["Candle", "MACD", "RSI", "Vol"] as const;
+type Pane = (typeof PANES)[number];
+
+/** Compact Coinbase-style tape for the bots 1–6 workspace. */
+export function WorkspaceTape({ snap }: { snap: DeskSnapshot | null }) {
+  const [pane, setPane] = useState<Pane>("Candle");
+  const [showEma, setShowEma] = useState(true);
+  const [showBb, setShowBb] = useState(true);
+  const data = useMemo(() => overlayBars(snap?.candles ?? []), [snap?.candles]);
+  const rsiData = data.filter((d) => d.rsi != null);
+  const last = data[data.length - 1];
+  const maxVol = Math.max(0, ...data.map((d) => d.volume));
+  const pxDomain = useMemo((): [number, number] | [string, string] => {
+    if (!data.length) return ["auto", "auto"];
+    let lo = Infinity;
+    let hi = -Infinity;
+    for (const d of data) {
+      lo = Math.min(lo, d.low, d.bbLower ?? d.low, d.ema12 ?? d.low);
+      hi = Math.max(hi, d.high, d.bbUpper ?? d.high, d.ema12 ?? d.high);
+    }
+    const pad = (hi - lo) * 0.06 || 50;
+    return [lo - pad, hi + pad];
+  }, [data]);
+
+  return (
+    <div className="mt-3 min-w-0">
+      <div className="mb-2 flex flex-wrap items-center gap-1">
+        {PANES.map((p) => (
+          <button
+            key={p}
+            type="button"
+            aria-pressed={pane === p}
+            onClick={() => setPane(p)}
+            className={cn(
+              "indicator-title h-7 rounded-sm border px-2 text-[10px] font-semibold tracking-[0.08em] uppercase",
+              pane === p ? "border-tab bg-tab/20" : "border-rule",
+            )}
+          >
+            {p}
+          </button>
+        ))}
+        <button
+          type="button"
+          aria-pressed={showEma}
+          onClick={() => setShowEma((v) => !v)}
+          className="indicator-title ml-auto h-7 rounded-sm px-2 text-[10px] font-semibold tracking-[0.08em] uppercase"
+        >
+          EMA
+        </button>
+        <button
+          type="button"
+          aria-pressed={showBb}
+          onClick={() => setShowBb((v) => !v)}
+          className="indicator-title h-7 rounded-sm px-2 text-[10px] font-semibold tracking-[0.08em] uppercase"
+        >
+          BB
+        </button>
+      </div>
+      <div className="tape-compact">
+        {!data.length ? (
+          <p className="text-xs text-muted">Waiting for Coinbase candles.</p>
+        ) : pane === "Candle" ? (
+          <ResponsiveContainer width="100%" height="100%">
+            <ComposedChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
+              <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.7} />
+              <XAxis
+                dataKey="t"
+                tickFormatter={(v) => new Date(Number(v) * 1000).toLocaleTimeString("en-US", { hour: "numeric" })}
+                tick={{ fill: "var(--color-muted)", fontSize: 9 }}
+                axisLine={false}
+                tickLine={false}
+                minTickGap={36}
+                height={18}
+              />
+              <YAxis
+                yAxisId="px"
+                domain={pxDomain}
+                tickFormatter={(v) => `$${Math.round(Number(v) / 1000)}k`}
+                tick={{ fill: "var(--color-muted)", fontSize: 9 }}
+                axisLine={false}
+                tickLine={false}
+                width={36}
+                orientation="right"
+              />
+              <YAxis yAxisId="vol" orientation="left" domain={[0, (max: number) => max * 3.8]} hide />
+              <Tooltip
+                contentStyle={{
+                  background: "var(--color-surface)",
+                  border: "1px solid var(--color-rule)",
+                  borderRadius: 6,
+                  fontSize: 11,
+                  color: "var(--color-fg)",
+                }}
+                labelFormatter={(l) => hourLabel(Number(l))}
+                formatter={(value, name) => {
+                  const n = typeof value === "number" ? value : Number(value);
+                  if (name === "volume") return [`${n.toFixed(1)} BTC`, "Vol"];
+                  return [money(n, 0), String(name)];
+                }}
+              />
+              <Bar yAxisId="vol" dataKey="volume" name="volume" maxBarSize={8} isAnimationActive={false}>
+                {data.map((d) => (
+                  <Cell key={d.t} fill={d.up ? UP : DN} fillOpacity={0.35} />
+                ))}
+              </Bar>
+              {showBb ? (
+                <Line yAxisId="px" type="monotone" dataKey="bbUpper" stroke="var(--color-muted)" strokeOpacity={0.5} strokeDasharray="3 3" dot={false} name="BB upper" isAnimationActive={false} />
+              ) : null}
+              {showBb ? (
+                <Line yAxisId="px" type="monotone" dataKey="bbLower" stroke="var(--color-muted)" strokeOpacity={0.5} strokeDasharray="3 3" dot={false} name="BB lower" isAnimationActive={false} />
+              ) : null}
+              {showEma ? (
+                <Line yAxisId="px" type="monotone" dataKey="ema12" stroke="var(--color-tab)" strokeWidth={1.4} dot={false} name="EMA12" isAnimationActive={false} />
+              ) : null}
+              {showEma ? (
+                <Line yAxisId="px" type="monotone" dataKey="ema26" stroke="var(--color-tab)" strokeOpacity={0.65} strokeDasharray="4 3" strokeWidth={1.2} dot={false} name="EMA26" isAnimationActive={false} />
+              ) : null}
+              <Customized
+                component={(props: { xAxisMap?: Record<string, Axis>; yAxisMap?: Record<string, Axis> }) => (
+                  <CandleLayer xAxisMap={props.xAxisMap} yAxisMap={props.yAxisMap} rows={data} />
+                )}
+              />
+            </ComposedChart>
+          </ResponsiveContainer>
+        ) : pane === "MACD" ? (
+          <ResponsiveContainer width="100%" height="100%">
+            <ComposedChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+              <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.6} />
+              <XAxis dataKey="t" hide />
+              <YAxis hide domain={["auto", "auto"]} />
+              <ReferenceLine y={0} stroke="var(--color-muted)" strokeOpacity={0.45} />
+              <Tooltip contentStyle={{ background: "var(--color-surface)", border: "1px solid var(--color-rule)", fontSize: 11, color: "var(--color-fg)" }} />
+              <Bar dataKey="macdHist" maxBarSize={6} isAnimationActive={false}>
+                {data.map((d) => (
+                  <Cell key={d.t} fill={(d.macdHist ?? 0) >= 0 ? UP : DN} />
+                ))}
+              </Bar>
+            </ComposedChart>
+          </ResponsiveContainer>
+        ) : pane === "RSI" ? (
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={rsiData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+              <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.6} />
+              <YAxis domain={[0, 100]} hide />
+              <ReferenceLine y={70} stroke={DN} strokeOpacity={0.5} strokeDasharray="3 3" />
+              <ReferenceLine y={50} stroke="var(--color-muted)" strokeOpacity={0.35} />
+              <ReferenceLine y={30} stroke={UP} strokeOpacity={0.5} strokeDasharray="3 3" />
+              <Line type="monotone" dataKey="rsi" stroke="var(--color-tab)" strokeWidth={1.6} dot={false} isAnimationActive={false} />
+            </LineChart>
+          </ResponsiveContainer>
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <ComposedChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+              <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.6} />
+              <XAxis dataKey="t" hide />
+              <YAxis hide />
+              <Bar dataKey="volume" maxBarSize={8} isAnimationActive={false}>
+                {data.map((d) => (
+                  <Cell key={d.t} fill={d.up ? UP : DN} />
+                ))}
+              </Bar>
+            </ComposedChart>
+          </ResponsiveContainer>
+        )}
+      </div>
+      {last ? (
+        <p className="mt-1 font-mono text-[10px] text-muted">
+          <span className={last.up ? "text-high" : "text-sell"}>{last.up ? "▲" : "▼"}</span>
+          {" · EMA12/26 · BB · vol green/red · "}
+          {snap?.btc.source ?? "Coinbase"}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
   const [showEma, setShowEma] = useState(true);
   const [showBb, setShowBb] = useState(true);
@@ -108,7 +284,7 @@ export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
   }, [data]);
 
   return (
-    <Panel kicker="Coinbase hourly" title="BTC tape + overlays" className="flex w-full min-h-0 flex-col">
+    <Panel kicker="Coinbase hourly" title="BTC tape + overlays" className="flex w-full min-h-0 flex-col" kickerClass="coinbase-orange" titleClass="text-high">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap gap-2">
           <Toggle on={showEma} onClick={() => setShowEma((v) => !v)} label="EMA 12/26" />
@@ -478,10 +654,10 @@ function Toggle({ on, onClick, label }: { on: boolean; onClick: () => void; labe
   return (
     <Button
       size="sm"
-      variant={on ? "primary" : "outline"}
+      variant="outline"
       aria-pressed={on}
       onClick={onClick}
-      className="h-10 min-h-10 px-3 text-xs"
+      className={cn("indicator-title h-10 min-h-10 px-3 text-xs", on && "border-tab")}
     >
       {label}
     </Button>
@@ -508,7 +684,7 @@ export function LiqHeatmap({ snap }: { snap: DeskSnapshot | null }) {
     : null;
 
   return (
-    <Panel kicker="Public leverage · no CoinGlass" title="Long / short heatmap" kickerClass="text-medium">
+    <Panel kicker="Public leverage · no CoinGlass" title="Long / short heatmap" kickerClass="indicator-title" titleClass="indicator-title">
       <div className="mb-3">
         <div className="flex h-2 overflow-hidden rounded-sm">
           <div className="bg-up" style={{ width: `${longPct ?? 50}%` }} />

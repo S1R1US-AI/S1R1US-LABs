@@ -47,7 +47,7 @@ export function PaperManual() {
       </p>
       <p className="mt-4 border-y border-rule py-3 text-sm text-muted">
         Not investment advice. Bitcoin is volatile. You authorize every live Coinbase order.
-        SuperGrok is the only paid dependency. This manual is not shown on {TAB_DESK} or {TAB_LAB}.
+        SuperGrok is the operator Ask Grok path; visitors bring their own compute. This manual is not shown on {TAB_DESK} or {TAB_LAB}.
       </p>
       <div className="mt-4">
         <PaperToolbar />

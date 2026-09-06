@@ -67,10 +67,10 @@ export function StrategyTape({ snap }: { snap: DeskSnapshot | null }) {
   }, [products]);
 
   return (
-    <Panel className="mb-4" kicker="Strategy Inc" title="MSTR + product stack">
+    <Panel className="mb-4" kicker="Strategy Inc" title="MSTR + product stack" kickerClass="indicator-title" titleClass="indicator-title">
       <div className="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div>
-          <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">MSTR</p>
+          <p className="indicator-title text-xs font-medium tracking-[0.08em] uppercase">MSTR</p>
           <p className="mt-1 font-mono text-3xl tabular-nums tracking-tight text-medium">
             {mstr?.last != null ? money(mstr.last, 2) : "—"}
           </p>
@@ -128,7 +128,7 @@ export function StrategyTape({ snap }: { snap: DeskSnapshot | null }) {
         </div>
 
         <div>
-          <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">6m total return</p>
+          <p className="indicator-title text-xs font-medium tracking-[0.08em] uppercase">6m total return</p>
           <div className="mt-2 h-56 sm:h-64">
             {ranked.length ? (
               <ResponsiveContainer width="100%" height="100%">
@@ -208,16 +208,16 @@ function ProductTable({
   if (!rows.length) return null;
   return (
     <div className={className}>
-      <p className="mb-2 text-xs font-medium tracking-[0.08em] text-muted uppercase">{title}</p>
+      <p className="coinbase-orange mb-2 text-xs font-medium tracking-[0.08em] uppercase">{title}</p>
       <ul className="divide-y divide-rule text-sm">
         {rows.map((p) => (
           <li key={p.symbol} className="grid grid-cols-[minmax(0,1.4fr)_auto_auto_auto] items-center gap-2 py-2">
             <div className="min-w-0">
-              <p className="font-medium text-fg">
+              <p className="coinbase-orange font-medium">
                 {p.symbol}
-                {p.coupon ? <span className="ml-2 font-mono text-xs text-muted">{p.coupon}</span> : null}
+                {p.coupon ? <span className="coinbase-orange ml-2 font-mono text-xs">{p.coupon}</span> : null}
               </p>
-              <p className="truncate text-xs text-muted">{p.name}</p>
+              <p className="coinbase-orange truncate text-xs">{p.name}</p>
             </div>
             <span className="font-mono tabular-nums">{p.last != null ? money(p.last, 2) : "—"}</span>
             <span className="font-mono tabular-nums" style={{ color: chgHex(p.changePct) }}>

@@ -384,6 +384,9 @@ export type HeliosCall = {
   stance: Stance;
   conviction: "LOW" | "MEDIUM" | "HIGH";
   clipUsd: number;
+  /** Public one-liner. Never the overseer dump. */
+  brief: string;
+  /** Proprietary overseer note — admin / operator only. */
   thesis: string;
   checks: { label: string; pass: boolean }[];
   cli: string;

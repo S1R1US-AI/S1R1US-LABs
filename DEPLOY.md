@@ -1,6 +1,6 @@
 # Publish [ S1R1U$ <<L@B$>> ] — GitHub + DigitalOcean
 
-**LAUNCH BUILD DEPLOY #58** — frozen save. Tag `launch-build-deploy-58`. Live tape on. Live trades off. Practice paused. Read-only agent feed on.
+**N3W Web App Installation Build (new theme) — DEPLOY #68** — carbon-fiber desk. Tag `n3w-web-app-install-deploy-68`. Live tape on. Live trades off. Paper fills off. Would-accumulate call board on. Read-only agent feed on.
 
 Repo: https://github.com/S1R1US-AI/S1R1US-LABs  
 Site: https://s1r1us.ai
@@ -47,7 +47,7 @@ Then DigitalOcean **Settings → Domains → add s1r1us.ai** (and www). TLS issu
 2. Replace `PASTE_GROK_APP_SETTINGS_CLIENT_SECRET` with the real secret from **Grok App Settings → Auth**.
 3. Confirm `GROK_AUTH_CLIENT_ID` is the full `grok_a3389f926a0c42b3b1c95fec1287e3ef` (no ellipsis). Do not encrypt the client id so you can read it.
 4. If `BETTER_AUTH_SECRET` is already encrypted on the host, keep that row — do not overwrite it.
-5. Save, then Deploy tag `launch-build-deploy-58`.
+5. Save, then Deploy tag `n3w-web-app-install-deploy-68`.
 
 Template in git: [`.env.example`](.env.example). Filled `.env` is gitignored.
 

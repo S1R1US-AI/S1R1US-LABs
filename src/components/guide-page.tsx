@@ -45,8 +45,8 @@ export function GuidePage() {
         <p className="mt-1 text-sm font-medium text-medium">Seven-Bot Bitcoin Accumulator</p>
         <p className="mt-3 text-muted">{GUIDE_META.subtitle}</p>
         <p className="mt-4 border-y border-rule py-3 text-sm text-muted">
-          Not investment advice. You authorize every live Coinbase order. SuperGrok is the only
-          paid dependency.
+          Not investment advice. You authorize every live Coinbase order. SuperGrok is the operator
+          Ask Grok path. Visitors use BYO C0MPUT3.
         </p>
         {GUIDE.map((section) => (
           <section key={section.id} id={section.id} className="mt-10">

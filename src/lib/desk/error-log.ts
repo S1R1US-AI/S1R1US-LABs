@@ -34,11 +34,25 @@ export function classifyFail(msg: string): { resolved: boolean; attention: boole
       verdict: "Known geo-block. LS still comes from OKX / Hyperliquid / Bitfinex.",
     };
   }
+  if (/yahoo/.test(m) && /429/.test(m)) {
+    return {
+      resolved: true,
+      attention: false,
+      verdict: "Yahoo chart rate-limit. Last-good MSTR spark + CNBC last stay. Not core BTC tape.",
+    };
+  }
   if (/yahoo/.test(m) && /401|403/.test(m)) {
     return {
-      resolved: false,
-      attention: true,
-      verdict: "OPEN — Yahoo quote backup 401. CNBC is primary; Stooq .us fill is the second backup. Mag7/rotation still degrade if CNBC+Stooq miss.",
+      resolved: true,
+      attention: false,
+      verdict: "query1 quote is 401 from this host. CNBC last + Yahoo query2 charts are the live path. Not core BTC tape.",
+    };
+  }
+  if (/stooq/.test(m) && /block|403|451/.test(m)) {
+    return {
+      resolved: true,
+      attention: false,
+      verdict: "Stooq off-allowlist or geo. CNBC + Yahoo query2 charts cover Mag7/MSTR. Not core BTC tape.",
     };
   }
   if (/mempool\.space|blockstream/.test(m) && /timeout|slot/.test(m)) {

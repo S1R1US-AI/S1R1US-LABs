@@ -1,8 +1,9 @@
+import { Link } from "@tanstack/react-router";
 import { GodzillaMark, GmRainbow } from "@/components/godzilla-mark";
 import { Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { SupportDonate } from "@/components/support-donate";
-import { TAB_FEED, TAB_FEED_GROWL } from "@/lib/brand";
+import { TAB_COFFEE, TAB_FEED, TAB_FEED_GROWL } from "@/lib/brand";
 
 export function F33dPage() {
   return (
@@ -17,6 +18,21 @@ export function F33dPage() {
         </div>
         <p className="mt-4 text-lg font-bold leading-relaxed text-high">{TAB_FEED_GROWL}</p>
         <SupportDonate />
+        <p className="mt-6 font-mono text-xs text-oss">
+          <Link to="/c0ff33" className="hover:underline">
+            {TAB_COFFEE}
+          </Link>
+          {" — optional $4.20 cup for long programming days at s1r1us.ai."}
+        </p>
+        <p className="mt-6 text-sm leading-relaxed text-muted">
+          iOS / Google Play design: onboard compute. The app keeps your xAI / Grok key in the device
+          keychain, GETs Bot 7 JSON from this host, and Ask Grok on-device. This host never receives
+          spend keys. Gifts here cover those apps. See{" "}
+          <Link to="/compute" className="text-tab hover:underline">
+            BYO C0MPUT3
+          </Link>
+          .
+        </p>
       </main>
     </Shell>
   );

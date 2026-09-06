@@ -210,7 +210,19 @@ export function protocolRows(): ProtocolRow[] {
       id: "oss",
       title: "Open-source ready",
       status: "PASS",
-      detail: "Apache-2.0, SECURITY.md, stealth README. GitHub org s1r1us. No CDP/Yubi/vault in git. Mint recipe stays admin until TOKEN_LAUNCHED.",
+      detail: "Apache-2.0, SECURITY.md, stealth README. GitHub org s1r1us. No CDP/Yubi/vault in git. Mint recipe stays admin until TOKEN_LAUNCHED. Public tree never emits orders create. Agent UAs cannot fetch /src, zips, /guide, /admin.",
+    },
+    {
+      id: "agent-rate",
+      title: "Agent feed rate-limit + cache",
+      status: "PASS",
+      detail: "GET /api/agent/* limited per IP+UA. Free poll 300s (1 / 25s retry). Scrapers 1 / 60s → 429. Bot 7 JSON cached 20s so 15 bots are not rebuilt every GET. SaaS key raises cap — pay for HTTP, not conviction.",
+    },
+    {
+      id: "byo",
+      title: "BYO compute — visitor Ask Grok",
+      status: "PASS",
+      detail: "Signed-in X users Ask Grok with their xAI key. Key is never written to disk. Operator XAI_API_KEY is not spent on visitors. X OAuth is identity only — it cannot drain SuperGrok.",
     },
   ];
 }
@@ -223,7 +235,7 @@ export type VulnRow = {
   detail: string;
 };
 
-export const ANALYSIS_AS_OF = "4 September 2026 · 22:45 ET · v13";
+export const ANALYSIS_AS_OF = "5 September 2026 · 12:51 ET · v14 · go-live path started";
 
 export function vulnRows(): VulnRow[] {
   return [
@@ -484,7 +496,14 @@ export function vulnRows(): VulnRow[] {
       title: "Ask Grok trusted a client snapshot",
       severity: "MED",
       status: "FIXED",
-      detail: "A desk session could send a fake tape and spend SuperGrok quota. Ask Grok now grades getLiveSnapshot() on the server. Client snapshot/briefs/call are ignored.",
+      detail: "A desk session could send a fake tape and spend SuperGrok quota. Ask Grok now grades getLiveSnapshot() on the server. Client snapshot/briefs/call are ignored. Visitor Ask Grok uses BYO xAI key only.",
+    },
+    {
+      id: "byo-session-key",
+      title: "Visitor xAI key in sessionStorage",
+      severity: "LOW",
+      status: "MITIGATED",
+      detail: "BYO key is kept in this browser session so Ask Grok can call xAI from the server (CORS). It is never written to disk, never logged, never in git. XSS could read it — same class as the admin token. Do not Ask Grok on a shared kiosk.",
     },
     {
       id: "usdc-solana",

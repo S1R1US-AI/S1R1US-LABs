@@ -12,6 +12,7 @@ let pending: Promise<DeskSnapshot> | null = null;
 let pendingAt = 0;
 let pollOn = false;
 let pollPaused = false;
+let pollTimer = 0;
 let reloadForceUsed = false;
 let fillCatch = 0;
 let fillCatchTimer = 0;
@@ -27,7 +28,8 @@ export function tapeNeedsFill(s: DeskSnapshot | null) {
   const holders = s.holders?.holders?.length ?? 0;
   const news = (s.headlines?.length ?? 0) + (s.filings?.length ?? 0);
   const dats = s.capital?.dats?.length ?? 0;
-  return bars < 3 || curve < 8 || cpi < 6 || m2n < 6 || stables < 1 || holders < 5 || news < 3 || dats < 3;
+  const strat = (s.strategy?.products ?? []).filter((p) => (p.points?.length ?? 0) > 2 || p.change6m != null).length;
+  return bars < 3 || curve < 8 || cpi < 6 || m2n < 6 || stables < 1 || holders < 5 || news < 3 || dats < 3 || strat < 1;
 }
 
 function richness(s: DeskSnapshot) {
@@ -152,6 +154,10 @@ export function peekDeskTape(): DeskSnapshot | null {
 }
 
 export async function pullDeskTape(opts?: { force?: boolean }): Promise<DeskSnapshot> {
+  if (pending && Date.now() - pendingAt >= 8_000) {
+    pending = null;
+    pendingAt = 0;
+  }
   if (pending && Date.now() - pendingAt < 4_000) return pending;
   const had = peekDeskTape();
   let force = Boolean(opts?.force) || takeReloadForce();
@@ -189,11 +195,23 @@ function ensurePoll() {
   if (pollOn || typeof window === "undefined") return;
   pollOn = true;
   if (!peekDeskTape()) void pullDeskTape();
-  window.setInterval(() => {
+  pollTimer = window.setInterval(() => {
     if (pollPaused) return;
     if (typeof document !== "undefined" && document.hidden) return;
     void pullDeskTape();
   }, DESK_POLL_MS);
+}
+
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => {
+    pollOn = false;
+    pending = null;
+    pendingAt = 0;
+    if (pollTimer) window.clearInterval(pollTimer);
+    pollTimer = 0;
+    if (fillCatchTimer) window.clearTimeout(fillCatchTimer);
+    fillCatchTimer = 0;
+  });
 }
 
 export function setDeskPollLive(on: boolean) {

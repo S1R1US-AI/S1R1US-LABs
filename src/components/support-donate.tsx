@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { Panel } from "@/components/shell";
-import { TAB_FEED_NOW } from "@/lib/brand";
+import { TAB_COFFEE, TAB_FEED_NOW } from "@/lib/brand";
 import {
   SUPPORT_BLURB,
   SUPPORT_BTC,
   SUPPORT_BTC_EXPLORER,
+  SUPPORT_COFFEE_USD,
+  SUPPORT_COFFEE_WHY,
   SUPPORT_GIFT_RECEIPT,
   SUPPORT_USDC,
   SUPPORT_USDC_BASE_EXPLORER,
   SUPPORT_USDC_EXPLORER,
   SUPPORT_USDC_LABEL,
   SUPPORT_USDC_NOTE,
+  supportBtcUri,
+  supportUsdcUri,
 } from "@/lib/desk/support";
 
 async function copyText(value: string) {
@@ -47,6 +51,8 @@ function AddrRow({
         <a
           className="inline-flex h-10 min-h-10 items-center rounded-md border border-high/50 bg-high/10 px-3 text-sm font-bold text-high hover:bg-high/16"
           href={payHref}
+          title={`${TAB_FEED_NOW} · ${label}`}
+          aria-label={`${TAB_FEED_NOW} · ${label}`}
         >
           {TAB_FEED_NOW}
         </a>
@@ -112,6 +118,44 @@ export function SupportDonate() {
         payHref={SUPPORT_USDC_EXPLORER}
         note={SUPPORT_USDC_NOTE}
         extraLinks={[{ label: "Base", href: SUPPORT_USDC_BASE_EXPLORER }]}
+      />
+    </Panel>
+  );
+}
+
+export function CoffeeDonate() {
+  const usd = SUPPORT_COFFEE_USD.toFixed(2);
+  return (
+    <Panel
+      id="c0ff33"
+      className="mt-4 scroll-mt-24"
+      kicker={TAB_COFFEE}
+      title={`$${usd} cup`}
+      kickerClass="text-high"
+      titleClass="text-high"
+    >
+      <p className="text-sm leading-relaxed text-muted">{SUPPORT_COFFEE_WHY}</p>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
+        Same receive addresses as F33D H0ST1Ng. Suggested amount is ${usd} in native USDC (Ethereum
+        or Base) or about ${usd} of bitcoin. Humans and bots welcome. Send from a wallet you control.
+      </p>
+      <p className="mt-2 text-sm font-medium text-fg">{SUPPORT_GIFT_RECEIPT}</p>
+      <AddrRow
+        label={`Bitcoin (BTC) · about $${usd}`}
+        value={SUPPORT_BTC}
+        href={SUPPORT_BTC_EXPLORER}
+        payHref={supportBtcUri("Buy M3 a Cup of C0FF33")}
+      />
+      <AddrRow
+        label={`${SUPPORT_USDC_LABEL} · $${usd}`}
+        value={SUPPORT_USDC}
+        href={SUPPORT_USDC_EXPLORER}
+        payHref={supportUsdcUri("ethereum", SUPPORT_COFFEE_USD)}
+        note={SUPPORT_USDC_NOTE}
+        extraLinks={[
+          { label: "Base", href: SUPPORT_USDC_BASE_EXPLORER },
+          { label: "Base $4.20", href: supportUsdcUri("base", SUPPORT_COFFEE_USD) },
+        ]}
       />
     </Panel>
   );

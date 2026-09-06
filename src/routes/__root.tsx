@@ -30,6 +30,8 @@ export const Route = createRootRoute({
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
       { rel: "sitemap", type: "application/xml", href: "/sitemap.xml" },
+      { rel: "alternate", type: "text/plain", href: "/llms.txt", title: "llms.txt" },
+      { rel: "alternate", type: "application/json", href: "/api/agent/call", title: "Bot 7 agent feed" },
       { rel: "preconnect", href: "https://fonts.bunny.net", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",

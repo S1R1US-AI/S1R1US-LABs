@@ -18,7 +18,7 @@ export function LiveTracks({
 }) {
   const six = ORDER.map((id) => briefs.find((b) => b.id === id)).filter(Boolean) as BotBrief[];
   return (
-    <Panel className="mt-4" kicker={kicker} title={title} kickerClass="text-medium" titleClass="text-medium">
+    <Panel className="mt-4" kicker={kicker} title={title} kickerClass="bots-1-6" titleClass="text-medium">
       <p className="mb-3 text-xs text-muted">{note}</p>
       {six.length ? (
         <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

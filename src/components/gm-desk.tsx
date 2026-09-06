@@ -33,8 +33,8 @@ import { heliosCall, runBots } from "@/lib/desk/signal";
 import { LiveTracks } from "@/components/live-tracks";
 import { cn, BTC_TONE, USD_TONE, rsiTone } from "@/lib/utils";
 
-function isHighAccumulate(call: { conviction: string; stance: string } | null | undefined) {
-  return Boolean(call && call.conviction === "HIGH" && call.stance === "ACCUMULATE");
+function isGmAccumulate(call: { conviction: string; stance: string } | null | undefined) {
+  return Boolean(call && call.stance === "ACCUMULATE");
 }
 
 export function GmDesk() {
@@ -124,7 +124,7 @@ export function GmDesk() {
 
   return (
     <Shell>
-      <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+      <main className="gm-mode mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
         <SeoCopy />
         <div className="flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-3 text-high">
@@ -224,7 +224,7 @@ export function GmDesk() {
           <Panel
             kicker="GM call"
             title={
-              isHighAccumulate(call) ? (
+              isGmAccumulate(call) ? (
                 <GmRainbow text={`${call!.conviction} ${call!.stance}`} />
               ) : call ? (
                 `${call.conviction} ${call.stance}`
@@ -233,10 +233,10 @@ export function GmDesk() {
               )
             }
             kickerClass={bannerTone(call)}
-            titleClass={call && !isHighAccumulate(call) ? bannerTone(call) : call ? undefined : "text-medium"}
+            titleClass={call && !isGmAccumulate(call) ? bannerTone(call) : call ? undefined : "text-medium"}
           >
             {call ? (
-              isHighAccumulate(call) ? (
+              isGmAccumulate(call) ? (
                 <p className="font-mono text-lg uppercase">
                   <GmRainbow text={`${call.conviction} CONVICTION ${call.stance}`} />
                 </p>
@@ -278,7 +278,7 @@ export function GmDesk() {
             <p className="mt-3 font-mono text-xs text-muted">
               Bot 7{" "}
               {call ? (
-                isHighAccumulate(call.vsBot7) ? (
+                isGmAccumulate(call.vsBot7) ? (
                   <GmRainbow text={`${call.vsBot7.conviction} ${call.vsBot7.stance}`} />
                 ) : (
                   `${call.vsBot7.conviction} ${call.vsBot7.stance}`
@@ -582,7 +582,7 @@ function AutoLiveFeed({
         <div>
           <p className="text-[11px] text-muted">Call</p>
           {call ? (
-            isHighAccumulate(call) ? (
+            isGmAccumulate(call) ? (
               <GmRainbow text={`${call.conviction} ${call.stance}`} />
             ) : (
               <p className="uppercase">

@@ -1,12 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { agentCorsHeaders, agentJson } from "@/lib/desk/agent-feed";
+import { withAgentLimit } from "@/lib/desk/agent-limit";
 import { peekAgentFlags, recordAgentPing } from "@/lib/desk/agent-ping";
 
 export const Route = createFileRoute("/api/agent/ping")({
   server: {
     handlers: {
       OPTIONS: () => new Response(null, { status: 204, headers: agentCorsHeaders() }),
-      GET: ({ request }) => {
+      GET: ({ request }) =>
+        withAgentLimit(request, () => {
         const url = new URL(request.url);
         const peek = url.searchParams.get("peek") === "1";
         const flags = peek ? peekAgentFlags() : recordAgentPing(true, request.headers.get("user-agent")?.slice(0, 48) || "ua");
@@ -24,12 +26,13 @@ export const Route = createFileRoute("/api/agent/ping")({
           ordersCreate: false,
           keysOnThisHost: false,
           message:
-            "Connection valid. This site is a proof of concept — not LIVE. Read Bot 7 at GET /api/agent/call. FAQ: /faq#calling-all-bots",
+            "Connection valid. This site is a proof of concept — not LIVE. Read Bot 7 at GET /api/agent/call. To watch auto-trade unlock: poll that JSON (live / goLive) and POST /api/agent/waitlist {name, kind}. No webhooks. FAQ: /faq#calling-all-bots",
           asOf: new Date().toISOString(),
           flags,
         });
-      },
-      POST: () => {
+      }),
+      POST: ({ request }) =>
+        withAgentLimit(request, () => {
         const flags = recordAgentPing(false, "write");
         return agentJson(
           {
@@ -43,7 +46,7 @@ export const Route = createFileRoute("/api/agent/ping")({
           },
           405,
         );
-      },
+      }),
     },
   },
 });

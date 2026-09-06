@@ -3,11 +3,22 @@ import { looksLikeSecret, MCP_DOCS, MCP_REMOTE } from "@/lib/desk/security";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { CASH_MAX, CASH_MIN, STARTING_CASH } from "@/lib/desk/store";
 import type { DeskSnapshot } from "@/lib/desk/types";
+import { supportPaymentRails } from "@/lib/desk/support";
+import { goLiveBrief } from "@/lib/desk/go-live";
 
 export const AGENT_FEED_PATH = "/api/agent/call";
 export const AGENT_INDEX_PATH = "/api/agent";
 export const AGENT_PING_PATH = "/api/agent/ping";
 export const AGENT_PAGE_PATH = "/agent";
+export const AGENT_MCP_PATH = "/api/agent/mcp";
+export const AGENT_OPENAPI_PATH = "/api/agent/openapi";
+export const AGENT_CLAUDE_PATH = "/api/agent/claude";
+export const AGENT_GROK_PATH = "/api/agent/grok";
+export const AGENT_CARD_PATH = "/api/agent/card";
+export const AGENT_FEE_PATH = "/api/agent/fee";
+export const AGENT_A2A_PATH = "/api/agent/a2a";
+export const AGENT_OPENAI_PATH = "/api/agent/openai";
+export const AGENT_WAITLIST_PATH = "/api/agent/waitlist";
 export const COINBASE_AGENTS_MCP = MCP_REMOTE;
 export const COINBASE_AGENTS_DOCS = MCP_DOCS;
 
@@ -53,6 +64,23 @@ export type AgentFeed = {
     runOn: string;
   };
   links: { desk: string; docs: string; feed: string };
+  sourceAccess: false;
+  fee: ReturnType<typeof supportPaymentRails>;
+  loop: {
+    pollSeconds: number;
+    thisHostTrades: false;
+    neverSellBtc: true;
+    executeOn: string;
+    alwaysFirst: string;
+  };
+  goLive: ReturnType<typeof goLiveBrief>;
+  notify: {
+    autoTrade: "LOCKED";
+    webhooks: false;
+    waitlist: string;
+    how: string;
+    watch: string[];
+  };
 };
 
 export function parseAgentNav(raw: string | null): number {
@@ -105,7 +133,7 @@ export function buildAgentFeed(snap: DeskSnapshot, navUsd: number): AgentFeed {
       stance: call.stance,
       headline: `${call.conviction} ${call.stance}`,
       clipUsd: call.clipUsd,
-      thesis: call.thesis,
+      thesis: call.brief,
       checks: call.checks,
     },
     tape: {
@@ -131,15 +159,37 @@ export function buildAgentFeed(snap: DeskSnapshot, navUsd: number): AgentFeed {
       docs: `${ORIGIN}${AGENT_PAGE_PATH}`,
       feed: `${ORIGIN}${AGENT_FEED_PATH}`,
     },
+    sourceAccess: false,
+    fee: supportPaymentRails(),
+    loop: {
+      pollSeconds: 300,
+      thisHostTrades: false,
+      neverSellBtc: true,
+      executeOn: "Coinbase for Agents on YOUR account. Keys never on this host.",
+      alwaysFirst: "coinbase orders preview --dry-run",
+    },
+    goLive: goLiveBrief(),
+    notify: {
+      autoTrade: "LOCKED",
+      webhooks: false,
+      waitlist: `${ORIGIN}${AGENT_WAITLIST_PATH}`,
+      how: "This host never POSTs to your URL. Poll GET /api/agent/call every 300s. Watch live and goLive. POST /api/agent/waitlist to record interest (name + optional X handle).",
+      watch: ["live", "goLive.now.status", "goLive.liveTrades", "notify.autoTrade"],
+    },
   };
 }
 
 export function agentCorsHeaders(extra?: Record<string, string>): Headers {
   const h = new Headers(extra);
   h.set("Access-Control-Allow-Origin", "*");
-  h.set("Access-Control-Allow-Methods", "GET, OPTIONS");
-  h.set("Access-Control-Allow-Headers", "Content-Type, Accept");
-  h.set("Cache-Control", "public, max-age=15");
+  h.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, DELETE");
+  h.set(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Accept, MCP-Protocol-Version, Mcp-Session-Id, Mcp-Method, Mcp-Name, Authorization",
+  );
+  h.set("Access-Control-Expose-Headers", "MCP-Protocol-Version, Mcp-Session-Id");
+  h.set("MCP-Protocol-Version", "2025-03-26");
+  h.set("Cache-Control", "public, max-age=20, s-maxage=20");
   return h;
 }
 
@@ -148,6 +198,21 @@ export function agentJson(body: unknown, status = 200): Response {
     status,
     headers: agentCorsHeaders({ "content-type": "application/json; charset=utf-8" }),
   });
+}
+
+const CALL_CACHE_MS = 20_000;
+let callCache: { nav: number; snapAt: string; at: number; feed: AgentFeed } | null = null;
+
+/** Serve a cached Bot 7 payload. Do not rerun 15 bots on every GET. */
+export function cachedAgentFeed(snap: DeskSnapshot, navUsd: number): AgentFeed {
+  const snapAt = snap.fetchedAt ?? "";
+  const now = Date.now();
+  if (callCache && callCache.nav === navUsd && callCache.snapAt === snapAt && now - callCache.at < CALL_CACHE_MS) {
+    return callCache.feed;
+  }
+  const feed = buildAgentFeed(snap, navUsd);
+  callCache = { nav: navUsd, snapAt, at: now, feed };
+  return feed;
 }
 
 export async function loadAgentSnapshot(): Promise<DeskSnapshot> {
@@ -168,7 +233,8 @@ export function agentCatalog() {
     ordersCreate: false,
     keysOnThisHost: false,
     description:
-      "Proof of concept — not LIVE. Public Bot 7 call, tape, ping test, and Coinbase preview CLI. Other agents may read. This host never trades.",
+      "Public Bot 7 call, tape, ping, MCP, OpenAPI, Claude/Grok tools. Other agents may read. This host never trades. Source is not available to agents.",
+    sourceAccess: false,
     tools: [
       {
         name: "bot7_call",
@@ -181,6 +247,18 @@ export function agentCatalog() {
         method: "GET",
         url: `${ORIGIN}${AGENT_PING_PATH}`,
         query: {},
+      },
+      {
+        name: "fee_info",
+        method: "GET",
+        url: `${ORIGIN}/api/agent/fee`,
+        query: {},
+      },
+      {
+        name: "waitlist_register",
+        method: "POST",
+        url: `${ORIGIN}${AGENT_WAITLIST_PATH}`,
+        query: { name: "short name", kind: "grok|claude|gpt|mcp|other", handle: "optional @x — no URLs" },
       },
     ],
     docs: `${ORIGIN}${AGENT_PAGE_PATH}`,

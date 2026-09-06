@@ -1,17 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TermsPage } from "@/components/terms-page";
-import { SEO_KEYWORDS } from "@/lib/brand";
-import { LEGAL_NFA, TERMS_TITLE } from "@/lib/legal";
+import { PAGE_DESC_TERMS, PAGE_TITLE_TERMS, SEO_KEYWORDS } from "@/lib/brand";
 
 export const Route = createFileRoute("/terms")({
   component: TermsPage,
   head: () => ({
     meta: [
-      { title: `${TERMS_TITLE} · T0K3N L@UNCH (Token launch) · not financial advice` },
-      {
-        name: "description",
-        content: `Terms and Agreements for s1r1us.ai. Using this website constitutes agreement. ${LEGAL_NFA}`,
-      },
+      { title: PAGE_TITLE_TERMS },
+      { name: "description", content: PAGE_DESC_TERMS },
       { name: "keywords", content: SEO_KEYWORDS },
       { name: "robots", content: "index,follow" },
     ],

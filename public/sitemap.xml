@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://s1r1us.ai/</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/s1r1us-godzilla-logo.jpg</image:loc>
+      <image:title>S1R!US Godzilla Logo — S1R1US Live Tape. AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Official S1R1US Godzilla Logo for S1R1US Live Tape, S1R1US L@Bs, GM, F33D, AI Agents. AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://s1r1us.ai/gm</loc>
@@ -13,10 +19,38 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://s1r1us.ai/b3ars</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/gzilla-mrkt.png</image:loc>
+      <image:title>B3AT TH3 B3AR$ (Beat the Bears) — AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>How to beat the Bears at market speed with AI Agents — AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/owl</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/owl.png</image:loc>
+      <image:title>AI AG3NTS (AI AGENTS) — AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Wise investment decisions, theoretically optimized by AI agents — AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://s1r1us.ai/f33d</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/c0ff33</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://s1r1us.ai/helios</loc>
@@ -35,9 +69,25 @@
     <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://s1r1us.ai/gzilla-mrkt.png</image:loc>
+      <image:title>B3AT TH3 B3AR$ (Beat the Bears) — AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>How to beat the Bears at market speed with AI Agents — AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://s1r1us.ai/owl.png</image:loc>
+      <image:title>AI AG3NTS (AI AGENTS) — AI trading bots. Bitcoin trading agents.</image:title>
+      <image:caption>Wise investment decisions, theoretically optimized by AI agents — AI trading bots. Bitcoin trading agents.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://s1r1us.ai/terms</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/privacy</loc>
     <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -53,5 +103,83 @@
     <lastmod>2026-09-05</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/compute</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/llms.txt</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/.well-known/llms.txt</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/.well-known/agent-card.json</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/.well-known/ai-plugin.json</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/call</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/ping</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/waitlist</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/grok</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/claude</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/openapi</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/api/agent/fee</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://s1r1us.ai/robots.txt</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

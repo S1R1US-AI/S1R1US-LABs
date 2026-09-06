@@ -6,7 +6,7 @@ export const AUTO_RUN_START_MS = Date.parse("2026-09-04T13:40:00-04:00");
 export const AUTO_RUN_UNTIL_MS = Date.parse("2026-09-05T13:40:00-04:00");
 export const AUTO_RUN_CASH = GM_CASH_MAX;
 export const AUTO_RUN_LABEL =
-  "Practice AUTO disabled — live tape only. No paper fills. Live Coinbase off.";
+  "DEMO AUTO on live tape · paper only · Coinbase locked";
 
 export function autoWindowOpen() {
   return false;

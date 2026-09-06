@@ -12,6 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AgentRouteImport } from './routes/agent'
+import { Route as B3arsRouteImport } from './routes/b3ars'
+import { Route as C0ff33RouteImport } from './routes/c0ff33'
+import { Route as CoffeeRouteImport } from './routes/coffee'
+import { Route as ComputeRouteImport } from './routes/compute'
 import { Route as F33dRouteImport } from './routes/f33d'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GmRouteImport } from './routes/gm'
@@ -20,15 +24,32 @@ import { Route as HeliosRouteImport } from './routes/helios'
 import { Route as HeliosbotRouteImport } from './routes/heliosbot'
 import { Route as LaunchRouteImport } from './routes/launch'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as OwlRouteImport } from './routes/owl'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RenewRouteImport } from './routes/renew'
 import { Route as S1r1usRouteImport } from './routes/s1r1us'
 import { Route as SecurityRouteImport } from './routes/security'
 import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SourceRouteImport } from './routes/source'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ThemeRouteImport } from './routes/theme'
+import { Route as DotwellKnownAgentCardDotjsonRouteImport } from './routes/[.]well-known/agent-card[.]json'
+import { Route as DotwellKnownAgentDotjsonRouteImport } from './routes/[.]well-known/agent[.]json'
+import { Route as DotwellKnownAiPluginDotjsonRouteImport } from './routes/[.]well-known/ai-plugin[.]json'
 import { Route as ApiAgentRouteImport } from './routes/api.agent'
+import { Route as ApiAgentA2aRouteImport } from './routes/api/agent.a2a'
 import { Route as ApiAgentCallRouteImport } from './routes/api/agent/call'
+import { Route as ApiAgentCardRouteImport } from './routes/api/agent.card'
+import { Route as ApiAgentClaudeRouteImport } from './routes/api/agent.claude'
+import { Route as ApiAgentFeeRouteImport } from './routes/api/agent.fee'
+import { Route as ApiAgentGrokRouteImport } from './routes/api/agent.grok'
+import { Route as ApiAgentKeysRouteImport } from './routes/api/agent.keys'
+import { Route as ApiAgentMcpRouteImport } from './routes/api/agent.mcp'
+import { Route as ApiAgentOpenaiRouteImport } from './routes/api/agent.openai'
+import { Route as ApiAgentOpenapiRouteImport } from './routes/api/agent.openapi'
 import { Route as ApiAgentPingRouteImport } from './routes/api/agent.ping'
+import { Route as ApiAgentWaitlistRouteImport } from './routes/api/agent.waitlist'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -44,6 +65,26 @@ const AdminRoute = AdminRouteImport.update({
 const AgentRoute = AgentRouteImport.update({
   id: '/agent',
   path: '/agent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const B3arsRoute = B3arsRouteImport.update({
+  id: '/b3ars',
+  path: '/b3ars',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const C0ff33Route = C0ff33RouteImport.update({
+  id: '/c0ff33',
+  path: '/c0ff33',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoffeeRoute = CoffeeRouteImport.update({
+  id: '/coffee',
+  path: '/coffee',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComputeRoute = ComputeRouteImport.update({
+  id: '/compute',
+  path: '/compute',
   getParentRoute: () => rootRouteImport,
 } as any)
 const F33dRoute = F33dRouteImport.update({
@@ -86,6 +127,16 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OwlRoute = OwlRouteImport.update({
+  id: '/owl',
+  path: '/owl',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RenewRoute = RenewRouteImport.update({
   id: '/renew',
   path: '/renew',
@@ -106,6 +157,11 @@ const SitemapRoute = SitemapRouteImport.update({
   path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SourceRoute = SourceRouteImport.update({
   id: '/source',
   path: '/source',
@@ -116,19 +172,92 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ThemeRoute = ThemeRouteImport.update({
+  id: '/theme',
+  path: '/theme',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DotwellKnownAgentCardDotjsonRoute =
+  DotwellKnownAgentCardDotjsonRouteImport.update({
+    id: '/.well-known/agent-card.json',
+    path: '/.well-known/agent-card.json',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DotwellKnownAgentDotjsonRoute =
+  DotwellKnownAgentDotjsonRouteImport.update({
+    id: '/.well-known/agent.json',
+    path: '/.well-known/agent.json',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DotwellKnownAiPluginDotjsonRoute =
+  DotwellKnownAiPluginDotjsonRouteImport.update({
+    id: '/.well-known/ai-plugin.json',
+    path: '/.well-known/ai-plugin.json',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAgentRoute = ApiAgentRouteImport.update({
   id: '/api/agent',
   path: '/api/agent',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAgentA2aRoute = ApiAgentA2aRouteImport.update({
+  id: '/a2a',
+  path: '/a2a',
+  getParentRoute: () => ApiAgentRoute,
 } as any)
 const ApiAgentCallRoute = ApiAgentCallRouteImport.update({
   id: '/call',
   path: '/call',
   getParentRoute: () => ApiAgentRoute,
 } as any)
+const ApiAgentCardRoute = ApiAgentCardRouteImport.update({
+  id: '/card',
+  path: '/card',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentClaudeRoute = ApiAgentClaudeRouteImport.update({
+  id: '/claude',
+  path: '/claude',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentFeeRoute = ApiAgentFeeRouteImport.update({
+  id: '/fee',
+  path: '/fee',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentGrokRoute = ApiAgentGrokRouteImport.update({
+  id: '/grok',
+  path: '/grok',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentKeysRoute = ApiAgentKeysRouteImport.update({
+  id: '/keys',
+  path: '/keys',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentMcpRoute = ApiAgentMcpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentOpenaiRoute = ApiAgentOpenaiRouteImport.update({
+  id: '/openai',
+  path: '/openai',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentOpenapiRoute = ApiAgentOpenapiRouteImport.update({
+  id: '/openapi',
+  path: '/openapi',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
 const ApiAgentPingRoute = ApiAgentPingRouteImport.update({
   id: '/ping',
   path: '/ping',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentWaitlistRoute = ApiAgentWaitlistRouteImport.update({
+  id: '/waitlist',
+  path: '/waitlist',
   getParentRoute: () => ApiAgentRoute,
 } as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
@@ -141,6 +270,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/b3ars': typeof B3arsRoute
+  '/c0ff33': typeof C0ff33Route
+  '/coffee': typeof CoffeeRoute
+  '/compute': typeof ComputeRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/gm': typeof GmRoute
@@ -149,21 +282,42 @@ export interface FileRoutesByFullPath {
   '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/owl': typeof OwlRoute
+  '/privacy': typeof PrivacyRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
   '/security': typeof SecurityRoute
   '/sitemap': typeof SitemapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
+  '/theme': typeof ThemeRoute
+  '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
+  '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
+  '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/call': typeof ApiAgentCallRoute
+  '/api/agent/card': typeof ApiAgentCardRoute
+  '/api/agent/claude': typeof ApiAgentClaudeRoute
+  '/api/agent/fee': typeof ApiAgentFeeRoute
+  '/api/agent/grok': typeof ApiAgentGrokRoute
+  '/api/agent/keys': typeof ApiAgentKeysRoute
+  '/api/agent/mcp': typeof ApiAgentMcpRoute
+  '/api/agent/openai': typeof ApiAgentOpenaiRoute
+  '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/b3ars': typeof B3arsRoute
+  '/c0ff33': typeof C0ff33Route
+  '/coffee': typeof CoffeeRoute
+  '/compute': typeof ComputeRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/gm': typeof GmRoute
@@ -172,15 +326,32 @@ export interface FileRoutesByTo {
   '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/owl': typeof OwlRoute
+  '/privacy': typeof PrivacyRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
   '/security': typeof SecurityRoute
   '/sitemap': typeof SitemapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
+  '/theme': typeof ThemeRoute
+  '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
+  '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
+  '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/call': typeof ApiAgentCallRoute
+  '/api/agent/card': typeof ApiAgentCardRoute
+  '/api/agent/claude': typeof ApiAgentClaudeRoute
+  '/api/agent/fee': typeof ApiAgentFeeRoute
+  '/api/agent/grok': typeof ApiAgentGrokRoute
+  '/api/agent/keys': typeof ApiAgentKeysRoute
+  '/api/agent/mcp': typeof ApiAgentMcpRoute
+  '/api/agent/openai': typeof ApiAgentOpenaiRoute
+  '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
@@ -188,6 +359,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/b3ars': typeof B3arsRoute
+  '/c0ff33': typeof C0ff33Route
+  '/coffee': typeof CoffeeRoute
+  '/compute': typeof ComputeRoute
   '/f33d': typeof F33dRoute
   '/faq': typeof FaqRoute
   '/gm': typeof GmRoute
@@ -196,15 +371,32 @@ export interface FileRoutesById {
   '/heliosbot': typeof HeliosbotRoute
   '/launch': typeof LaunchRoute
   '/login': typeof LoginRoute
+  '/owl': typeof OwlRoute
+  '/privacy': typeof PrivacyRoute
   '/renew': typeof RenewRoute
   '/s1r1us': typeof S1r1usRoute
   '/security': typeof SecurityRoute
   '/sitemap': typeof SitemapRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
   '/terms': typeof TermsRoute
+  '/theme': typeof ThemeRoute
+  '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
+  '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
+  '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
+  '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/call': typeof ApiAgentCallRoute
+  '/api/agent/card': typeof ApiAgentCardRoute
+  '/api/agent/claude': typeof ApiAgentClaudeRoute
+  '/api/agent/fee': typeof ApiAgentFeeRoute
+  '/api/agent/grok': typeof ApiAgentGrokRoute
+  '/api/agent/keys': typeof ApiAgentKeysRoute
+  '/api/agent/mcp': typeof ApiAgentMcpRoute
+  '/api/agent/openai': typeof ApiAgentOpenaiRoute
+  '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
@@ -213,6 +405,10 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/agent'
+    | '/b3ars'
+    | '/c0ff33'
+    | '/coffee'
+    | '/compute'
     | '/f33d'
     | '/faq'
     | '/gm'
@@ -221,21 +417,42 @@ export interface FileRouteTypes {
     | '/heliosbot'
     | '/launch'
     | '/login'
+    | '/owl'
+    | '/privacy'
     | '/renew'
     | '/s1r1us'
     | '/security'
     | '/sitemap'
+    | '/sitemap.xml'
     | '/source'
     | '/terms'
+    | '/theme'
+    | '/.well-known/agent-card.json'
+    | '/.well-known/agent.json'
+    | '/.well-known/ai-plugin.json'
     | '/api/agent'
+    | '/api/agent/a2a'
     | '/api/agent/call'
+    | '/api/agent/card'
+    | '/api/agent/claude'
+    | '/api/agent/fee'
+    | '/api/agent/grok'
+    | '/api/agent/keys'
+    | '/api/agent/mcp'
+    | '/api/agent/openai'
+    | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/waitlist'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin'
     | '/agent'
+    | '/b3ars'
+    | '/c0ff33'
+    | '/coffee'
+    | '/compute'
     | '/f33d'
     | '/faq'
     | '/gm'
@@ -244,21 +461,42 @@ export interface FileRouteTypes {
     | '/heliosbot'
     | '/launch'
     | '/login'
+    | '/owl'
+    | '/privacy'
     | '/renew'
     | '/s1r1us'
     | '/security'
     | '/sitemap'
+    | '/sitemap.xml'
     | '/source'
     | '/terms'
+    | '/theme'
+    | '/.well-known/agent-card.json'
+    | '/.well-known/agent.json'
+    | '/.well-known/ai-plugin.json'
     | '/api/agent'
+    | '/api/agent/a2a'
     | '/api/agent/call'
+    | '/api/agent/card'
+    | '/api/agent/claude'
+    | '/api/agent/fee'
+    | '/api/agent/grok'
+    | '/api/agent/keys'
+    | '/api/agent/mcp'
+    | '/api/agent/openai'
+    | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/waitlist'
     | '/api/auth/$'
   id:
     | '__root__'
     | '/'
     | '/admin'
     | '/agent'
+    | '/b3ars'
+    | '/c0ff33'
+    | '/coffee'
+    | '/compute'
     | '/f33d'
     | '/faq'
     | '/gm'
@@ -267,15 +505,32 @@ export interface FileRouteTypes {
     | '/heliosbot'
     | '/launch'
     | '/login'
+    | '/owl'
+    | '/privacy'
     | '/renew'
     | '/s1r1us'
     | '/security'
     | '/sitemap'
+    | '/sitemap.xml'
     | '/source'
     | '/terms'
+    | '/theme'
+    | '/.well-known/agent-card.json'
+    | '/.well-known/agent.json'
+    | '/.well-known/ai-plugin.json'
     | '/api/agent'
+    | '/api/agent/a2a'
     | '/api/agent/call'
+    | '/api/agent/card'
+    | '/api/agent/claude'
+    | '/api/agent/fee'
+    | '/api/agent/grok'
+    | '/api/agent/keys'
+    | '/api/agent/mcp'
+    | '/api/agent/openai'
+    | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/waitlist'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
@@ -283,6 +538,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   AgentRoute: typeof AgentRoute
+  B3arsRoute: typeof B3arsRoute
+  C0ff33Route: typeof C0ff33Route
+  CoffeeRoute: typeof CoffeeRoute
+  ComputeRoute: typeof ComputeRoute
   F33dRoute: typeof F33dRoute
   FaqRoute: typeof FaqRoute
   GmRoute: typeof GmRoute
@@ -291,12 +550,19 @@ export interface RootRouteChildren {
   HeliosbotRoute: typeof HeliosbotRoute
   LaunchRoute: typeof LaunchRoute
   LoginRoute: typeof LoginRoute
+  OwlRoute: typeof OwlRoute
+  PrivacyRoute: typeof PrivacyRoute
   RenewRoute: typeof RenewRoute
   S1r1usRoute: typeof S1r1usRoute
   SecurityRoute: typeof SecurityRoute
   SitemapRoute: typeof SitemapRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourceRoute: typeof SourceRoute
   TermsRoute: typeof TermsRoute
+  ThemeRoute: typeof ThemeRoute
+  DotwellKnownAgentCardDotjsonRoute: typeof DotwellKnownAgentCardDotjsonRoute
+  DotwellKnownAgentDotjsonRoute: typeof DotwellKnownAgentDotjsonRoute
+  DotwellKnownAiPluginDotjsonRoute: typeof DotwellKnownAiPluginDotjsonRoute
   ApiAgentRoute: typeof ApiAgentRouteWithChildren
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -322,6 +588,34 @@ declare module '@tanstack/react-router' {
       path: '/agent'
       fullPath: '/agent'
       preLoaderRoute: typeof AgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/b3ars': {
+      id: '/b3ars'
+      path: '/b3ars'
+      fullPath: '/b3ars'
+      preLoaderRoute: typeof B3arsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/c0ff33': {
+      id: '/c0ff33'
+      path: '/c0ff33'
+      fullPath: '/c0ff33'
+      preLoaderRoute: typeof C0ff33RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coffee': {
+      id: '/coffee'
+      path: '/coffee'
+      fullPath: '/coffee'
+      preLoaderRoute: typeof CoffeeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compute': {
+      id: '/compute'
+      path: '/compute'
+      fullPath: '/compute'
+      preLoaderRoute: typeof ComputeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/f33d': {
@@ -380,6 +674,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/owl': {
+      id: '/owl'
+      path: '/owl'
+      fullPath: '/owl'
+      preLoaderRoute: typeof OwlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/renew': {
       id: '/renew'
       path: '/renew'
@@ -408,6 +716,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/source': {
       id: '/source'
       path: '/source'
@@ -422,12 +737,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/theme': {
+      id: '/theme'
+      path: '/theme'
+      fullPath: '/theme'
+      preLoaderRoute: typeof ThemeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/agent-card.json': {
+      id: '/.well-known/agent-card.json'
+      path: '/.well-known/agent-card.json'
+      fullPath: '/.well-known/agent-card.json'
+      preLoaderRoute: typeof DotwellKnownAgentCardDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/agent.json': {
+      id: '/.well-known/agent.json'
+      path: '/.well-known/agent.json'
+      fullPath: '/.well-known/agent.json'
+      preLoaderRoute: typeof DotwellKnownAgentDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/ai-plugin.json': {
+      id: '/.well-known/ai-plugin.json'
+      path: '/.well-known/ai-plugin.json'
+      fullPath: '/.well-known/ai-plugin.json'
+      preLoaderRoute: typeof DotwellKnownAiPluginDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/agent': {
       id: '/api/agent'
       path: '/api/agent'
       fullPath: '/api/agent'
       preLoaderRoute: typeof ApiAgentRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/api/agent/a2a': {
+      id: '/api/agent/a2a'
+      path: '/a2a'
+      fullPath: '/api/agent/a2a'
+      preLoaderRoute: typeof ApiAgentA2aRouteImport
+      parentRoute: typeof ApiAgentRoute
     }
     '/api/agent/call': {
       id: '/api/agent/call'
@@ -436,11 +786,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAgentCallRouteImport
       parentRoute: typeof ApiAgentRoute
     }
+    '/api/agent/card': {
+      id: '/api/agent/card'
+      path: '/card'
+      fullPath: '/api/agent/card'
+      preLoaderRoute: typeof ApiAgentCardRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/claude': {
+      id: '/api/agent/claude'
+      path: '/claude'
+      fullPath: '/api/agent/claude'
+      preLoaderRoute: typeof ApiAgentClaudeRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/fee': {
+      id: '/api/agent/fee'
+      path: '/fee'
+      fullPath: '/api/agent/fee'
+      preLoaderRoute: typeof ApiAgentFeeRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/grok': {
+      id: '/api/agent/grok'
+      path: '/grok'
+      fullPath: '/api/agent/grok'
+      preLoaderRoute: typeof ApiAgentGrokRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/keys': {
+      id: '/api/agent/keys'
+      path: '/keys'
+      fullPath: '/api/agent/keys'
+      preLoaderRoute: typeof ApiAgentKeysRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/mcp': {
+      id: '/api/agent/mcp'
+      path: '/mcp'
+      fullPath: '/api/agent/mcp'
+      preLoaderRoute: typeof ApiAgentMcpRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/openai': {
+      id: '/api/agent/openai'
+      path: '/openai'
+      fullPath: '/api/agent/openai'
+      preLoaderRoute: typeof ApiAgentOpenaiRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/openapi': {
+      id: '/api/agent/openapi'
+      path: '/openapi'
+      fullPath: '/api/agent/openapi'
+      preLoaderRoute: typeof ApiAgentOpenapiRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
     '/api/agent/ping': {
       id: '/api/agent/ping'
       path: '/ping'
       fullPath: '/api/agent/ping'
       preLoaderRoute: typeof ApiAgentPingRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/waitlist': {
+      id: '/api/agent/waitlist'
+      path: '/waitlist'
+      fullPath: '/api/agent/waitlist'
+      preLoaderRoute: typeof ApiAgentWaitlistRouteImport
       parentRoute: typeof ApiAgentRoute
     }
     '/api/auth/$': {
@@ -454,13 +867,33 @@ declare module '@tanstack/react-router' {
 }
 
 interface ApiAgentRouteChildren {
+  ApiAgentA2aRoute: typeof ApiAgentA2aRoute
   ApiAgentCallRoute: typeof ApiAgentCallRoute
+  ApiAgentCardRoute: typeof ApiAgentCardRoute
+  ApiAgentClaudeRoute: typeof ApiAgentClaudeRoute
+  ApiAgentFeeRoute: typeof ApiAgentFeeRoute
+  ApiAgentGrokRoute: typeof ApiAgentGrokRoute
+  ApiAgentKeysRoute: typeof ApiAgentKeysRoute
+  ApiAgentMcpRoute: typeof ApiAgentMcpRoute
+  ApiAgentOpenaiRoute: typeof ApiAgentOpenaiRoute
+  ApiAgentOpenapiRoute: typeof ApiAgentOpenapiRoute
   ApiAgentPingRoute: typeof ApiAgentPingRoute
+  ApiAgentWaitlistRoute: typeof ApiAgentWaitlistRoute
 }
 
 const ApiAgentRouteChildren: ApiAgentRouteChildren = {
+  ApiAgentA2aRoute: ApiAgentA2aRoute,
   ApiAgentCallRoute: ApiAgentCallRoute,
+  ApiAgentCardRoute: ApiAgentCardRoute,
+  ApiAgentClaudeRoute: ApiAgentClaudeRoute,
+  ApiAgentFeeRoute: ApiAgentFeeRoute,
+  ApiAgentGrokRoute: ApiAgentGrokRoute,
+  ApiAgentKeysRoute: ApiAgentKeysRoute,
+  ApiAgentMcpRoute: ApiAgentMcpRoute,
+  ApiAgentOpenaiRoute: ApiAgentOpenaiRoute,
+  ApiAgentOpenapiRoute: ApiAgentOpenapiRoute,
   ApiAgentPingRoute: ApiAgentPingRoute,
+  ApiAgentWaitlistRoute: ApiAgentWaitlistRoute,
 }
 
 const ApiAgentRouteWithChildren = ApiAgentRoute._addFileChildren(
@@ -471,6 +904,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   AgentRoute: AgentRoute,
+  B3arsRoute: B3arsRoute,
+  C0ff33Route: C0ff33Route,
+  CoffeeRoute: CoffeeRoute,
+  ComputeRoute: ComputeRoute,
   F33dRoute: F33dRoute,
   FaqRoute: FaqRoute,
   GmRoute: GmRoute,
@@ -479,12 +916,19 @@ const rootRouteChildren: RootRouteChildren = {
   HeliosbotRoute: HeliosbotRoute,
   LaunchRoute: LaunchRoute,
   LoginRoute: LoginRoute,
+  OwlRoute: OwlRoute,
+  PrivacyRoute: PrivacyRoute,
   RenewRoute: RenewRoute,
   S1r1usRoute: S1r1usRoute,
   SecurityRoute: SecurityRoute,
   SitemapRoute: SitemapRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourceRoute: SourceRoute,
   TermsRoute: TermsRoute,
+  ThemeRoute: ThemeRoute,
+  DotwellKnownAgentCardDotjsonRoute: DotwellKnownAgentCardDotjsonRoute,
+  DotwellKnownAgentDotjsonRoute: DotwellKnownAgentDotjsonRoute,
+  DotwellKnownAiPluginDotjsonRoute: DotwellKnownAiPluginDotjsonRoute,
   ApiAgentRoute: ApiAgentRouteWithChildren,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }

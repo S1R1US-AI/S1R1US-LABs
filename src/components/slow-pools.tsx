@@ -34,8 +34,8 @@ export function SlowPoolsBoard({ snap }: { snap: DeskSnapshot | null }) {
       className="mt-4"
       kicker="Slow capital · 5-year pipes"
       title="CRE · 401k · insurers · endowments · state reserves"
-      kickerClass="text-medium"
-      titleClass="text-medium"
+      kickerClass="indicator-title"
+      titleClass="indicator-title"
     >
       <button
         type="button"

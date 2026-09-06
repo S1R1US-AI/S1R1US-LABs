@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-CDr2JDwi.js";var t=e;export{t as component};

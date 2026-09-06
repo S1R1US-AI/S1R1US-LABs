@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { OSS_PDF_BASE64, OSS_PDF_NAME } from "@/lib/desk/oss-pdf";
+import { seoImgAlt } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 const PAGES = [
-  { src: "/oss-brief-1.jpg", alt: "Cover — Matrix idle lock" },
-  { src: "/oss-brief-2.jpg", alt: "Open source brief page 2" },
-  { src: "/oss-brief-3.jpg", alt: "Open source brief page 3" },
+  { src: "/oss-brief-1.jpg", alt: seoImgAlt("Cover — Matrix idle lock · S1R1US Labs open source brief") },
+  { src: "/oss-brief-2.jpg", alt: seoImgAlt("Open source brief page 2 · S1R1US Labs") },
+  { src: "/oss-brief-3.jpg", alt: seoImgAlt("Open source brief page 3 · S1R1US Labs") },
 ];
 
 type Mode = "images" | "pdfjs" | "native" | "embed";
@@ -125,7 +126,7 @@ function ImageViewer() {
   return (
     <div className="space-y-4">
       {PAGES.map((p) => (
-        <img key={p.src} src={p.src} alt={p.alt} className="w-full rounded-md border border-rule bg-surface" />
+        <img key={p.src} src={p.src} alt={p.alt} title={p.alt} className="w-full rounded-md border border-rule bg-surface" />
       ))}
     </div>
   );

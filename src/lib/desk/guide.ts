@@ -1,4 +1,4 @@
-import { APP_CALLS, APP_NAME, BOT7_NAME, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { APP_CALLS, APP_NAME, BOT7_NAME, PAID_SERVICES, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
 import { COIN_DOMAIN, GITHUB_STARTED, GITHUB_URL, MINT_FLOOR, OSS_NEEDS, ROADMAP, TOKEN_LAUNCHED } from "@/lib/launch/model";
 import { BOT_ROSTER, CYCLE_ARCH, SYSTEM_REVIEWED } from "./policy";
 import { MANDATE } from "./system-logic";
@@ -12,7 +12,7 @@ export type GuideSection = {
 export const GUIDE_META = {
   title: `${APP_NAME} — Seven-Bot Bitcoin Accumulator`,
   subtitle:
-    `Operating manual (admin only). SuperGrok is the only paid service. All market data is free. Two-phase core/fill tape. Orthogonal votes only. Per-clip stop-loss. ${TAB_DESK}, ${TAB_GM} practice, Coin tab, and s1r1us.ai share one system view.`,
+    `Operating manual (admin only). ${PAID_SERVICES} All market data is free. Two-phase core/fill tape. Orthogonal votes only. Per-clip stop-loss. ${TAB_DESK}, ${TAB_GM} practice, Coin tab, and s1r1us.ai share one system view.`,
   version: "6.7",
   date: "4 September 2026",
 };
@@ -29,7 +29,7 @@ export const GUIDE: GuideSection[] = [
       "Fit-to-goal: two-source confirmation must be orthogonal. Mag 7 dumping cannot confirm miners dumping. Same Nasdaq factor cannot mint HIGH conviction.",
       "Equities, metals, Mag 7, and NVIDIA exist as labels on the tape so you can see liquidity — they do not vote for a clip.",
       "xAI has no public BTC 8-K. Tesla / SpaceX treasuries are DAT or holder labels. Do not add xAI as a Sector vote (Sector is IBIT vs gold).",
-      "Only paid dependency: SuperGrok / xAI. Coinbase is a venue, not a data vendor. Public market data is free. Live orders stay on your Coinbase account via Coinbase for Agents (MCP or CLI), never inside this app’s servers.",
+      "Only paid operator tape-grade is SuperGrok / xAI. Visitors Ask Grok with BYO C0MPUT3 (their xAI key). Coinbase is a venue, not a data vendor. Public market data is free. Live orders stay on your Coinbase account via Coinbase for Agents (MCP or CLI), never inside this app’s servers.",
       `System logic reviewed ${SYSTEM_REVIEWED}. The same roster feeds ${TAB_DESK}, ${TAB_LAB}, ${TAB_GM} practice, Coin tab, and ${COIN_DOMAIN}.`,
     ],
   },
@@ -265,13 +265,14 @@ export const GUIDE: GuideSection[] = [
     id: "seo-launch",
     title: "19. s1r1us.ai — public SEO + sitemap",
     body: [
-      "Canonical apex: https://s1r1us.ai/. Public index, /s1r1us, /gm (G0DZ1LLa M0D3 / Godzilla mode), /helios (S1R1U$ L@B Strategies / S1R1US Lab Strategies), /faq, /sitemap, /agent. Machine file: https://s1r1us.ai/sitemap.xml. Agent JSON: /api/agent/call (read-only).",
-      "Footer on every Shell page: Sitemap | FAQ | H3LP 7-B0T H3DGE FUND [ S1R1U$ <<L@B$>> ] G0 >> OP3N S0URC3 (grey-blue).",
-      "Both spellings must hit this project: S1R1U$ 7-B0t Hedge Fund / S1R1US 7-bot hedge fund; G0DZ1LLa M0D3 / Godzilla mode; S1R1U$ L@B Strategies / S1R1US Lab Strategies; OP3N S0URC3 / open source. Also AI Bitcoin trading bot, AI stock trading bot, AI Hedge Fund, AI Bitcoin accumulation.",
+      "Canonical apex: https://s1r1us.ai/. Public: /, /s1r1us, /gm, /b3ars, /owl, /helios, /faq, /terms, /privacy, /sitemap, /c0ff33, /f33d, /agent, /compute. Machine: /sitemap.xml, /llms.txt, /robots.txt. Agent JSON: /api/agent/call (read-only). Waitlist: POST /api/agent/waitlist (no webhooks). MCP: /api/agent/mcp. Grok: /api/agent/grok. Claude: /api/agent/claude. GPT: /.well-known/ai-plugin.json. A2A: /.well-known/agent-card.json. Gift rails: /api/agent/fee.",
+      "Footer on every Shell page: Sitemap · Buy M3 a Cup of C0FF33 · FAQ · B3AT TH3 B3AR$ · AI AG3NTS · Agent feed · BYO C0MPUT3 · Terms · Privacy · OP3N S0URC3.",
+      "Both spellings must hit this project: S1R1U$ 7-B0t Hedge Fund / S1R1US 7-bot hedge fund; G0DZ1LLa M0D3 / Godzilla mode; S1R1U$ L@B Strategies / S1R1US Lab Strategies; OP3N S0URC3 / open source; Call1ng All B0Ts / Calling All Bots. Also AI Bitcoin trading bot, AI stock trading bot, AI Hedge Fund, AI Bitcoin accumulation, Grok agent, Claude MCP, GPT Actions.",
       "Leetspeak stays on the visible tabs. English aliases are sr-only + JSON-LD + title/description/FAQ. Do not print long English aliases as desk chrome.",
-      "Do not index /admin /login /guide /launch /source /renew /security /api/auth. Public /api/agent is the read-only Bot 7 feed. Coin/mint how-to stays off FAQ, sitemap, and s1r1us.ai until TOKEN_LAUNCHED.",
-      "Search Console + Bing: add https://s1r1us.ai/ and submit https://s1r1us.ai/sitemap.xml. robots.txt Allow / /gm /helios /s1r1us /faq /sitemap /agent /api/agent. llms.txt is for AI crawlers and matches this allow list.",
+      "Do not index /admin /login /guide /launch /source /renew /security /api/auth /theme. Public /api/agent is the read-only Bot 7 feed. Coin/mint how-to stays off FAQ, sitemap, and s1r1us.ai until TOKEN_LAUNCHED.",
+      "AI crawlers: robots.txt Allow /agent /api/agent /llms.txt /.well-known/. GPTBot, ClaudeBot, Grok, PerplexityBot, Google-Extended are told to start at /llms.txt. Search Console + Bing: submit https://s1r1us.ai/sitemap.xml.",
       "Attach s1r1us.ai on DigitalOcean App Settings → Domains. Confirm https://s1r1us.ai/ returns the public tape. Share company X with existing og/x-banner — do not change og:* in root (injector owns those).",
+      "Go-live and paper stay in lockstep: DEPLOY #68 carbon-fiber desk is the Phase 0+1 baseline. Call board lists bots 1–6, 7-B0T, and GM would-accumulate. Paper fills off. Paper §VI, FAQ #go-live and #agent-waitlist, morning report, sitemap, and this guide cite the same four phases plus POST /api/agent/waitlist (poll live/goLive, no webhooks).",
     ],
   },
 ];

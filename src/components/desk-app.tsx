@@ -11,14 +11,18 @@ import { BtcHoldersTable, MetalBoards } from "@/components/holders-table";
 import { GoldBtcChart } from "@/components/gold-btc-chart";
 import { MacroTape } from "@/components/macro-tape";
 import { StrategyTape } from "@/components/strategy-tape";
-import { HeliosCard, PaperCard, money } from "@/components/helios-card";
+import { PaperCard, money } from "@/components/helios-card";
+import { ConfirmClip } from "@/components/confirm-clip";
+import { isOutgoingCli, YubiApprove } from "@/components/yubi-approve";
+import { DeskWorkspace } from "@/components/desk-workspace";
 import { LiveTracks } from "@/components/live-tracks";
 import { HelloWorld } from "@/components/hello-world";
+import { GoLivePanel } from "@/components/go-live-panel";
 import { SeoCopy } from "@/components/seo-copy";
 import { TapeFreezeBanner } from "@/components/tape-freeze";
 import { Panel, Shell } from "@/components/shell";
-import { LiqHeatmap, TapeChart } from "@/components/tape-charts";
-import { WhaleTape } from "@/components/whale-tape";
+import { TapeChart } from "@/components/tape-charts";
+import { LeverageWhaleRow } from "@/components/whale-tape";
 
 import { askHelios } from "@/lib/desk/grok";
 import { useOperator } from "@/lib/desk/operator";
@@ -28,9 +32,10 @@ import { useDeskTape } from "@/lib/desk/tape-client";
 import { rollBots, DESK_POLL_MS } from "@/lib/desk/roll-bots";
 import { initialStop, STOP_DEFAULT } from "@/lib/desk/stops";
 import { STARTING_CASH, usePaper } from "@/lib/desk/store";
+import { GOLD_TICKERS, SILVER_TICKERS } from "@/lib/desk/proxy-book";
 import type { DeskSnapshot, HeliosCall } from "@/lib/desk/types";
 import { cn, BTC_TONE, USD_TONE, fgTone, kimchiHex, kimchiTone, rsiTone } from "@/lib/utils";
-import { APP_CALLS, APP_NAME } from "@/lib/brand";
+import { APP_CALLS } from "@/lib/brand";
 
 export function DeskApp() {
   const { snap, err, live } = useDeskTape();
@@ -39,6 +44,8 @@ export function DeskApp() {
   const [asking, setAsking] = useState(false);
   const [copied, setCopied] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+  const [copyAsk, setCopyAsk] = useState(false);
 
   const cash = usePaper((s) => s.cashUsd);
   const btc = usePaper((s) => s.btc);
@@ -138,49 +145,71 @@ export function DeskApp() {
 
   return (
     <Shell>
-      <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
-        <div className="mb-6">
-          <p className="text-xs font-medium tracking-[0.08em] text-accum uppercase">Bitcoin accumulator</p>
-          <h1 className="mt-1 max-w-xl text-2xl font-bold tracking-tight text-medium sm:text-3xl">
-            {APP_NAME}
-          </h1>
-          <HelloWorld />
-          <SeoCopy />
-          <TapeFreezeBanner />
-        </div>
+      <main className="mx-auto max-w-[1400px] px-3 py-4 sm:px-4">
+        <SeoCopy />
+        <TapeFreezeBanner />
 
         {err ? (
-          <p className="mb-4 rounded-md border border-down/40 bg-down/10 px-3 py-2 text-sm text-down">
+          <p className="mb-3 rounded-md border border-down/40 bg-down/10 px-3 py-2 text-sm text-down">
             {err}
           </p>
         ) : null}
 
-        <div className="mb-4 grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-          <HeliosCard
+        <DeskWorkspace
+          snap={snap}
+          briefs={briefs}
+          call={call}
+          canAct={isAdmin}
+          canFill={isAdmin && Boolean(px) && call != null && call.clipUsd > 0}
+          asking={asking}
+          copied={copied}
+          grok={grok}
+          grokErr={grokErr}
+          onAsk={() => {
+            if (!isAdmin) window.location.assign("/compute");
+            else void onAskGrok();
+          }}
+          onCopy={() => {
+            if (!call) return;
+            if (isOutgoingCli(call.cli)) setCopyAsk(true);
+            else void copyCli(call.cli);
+          }}
+          onFill={() => {
+            if (isAdmin) setConfirm(true);
+          }}
+        />
+        {confirm && call ? (
+          <ConfirmClip
             call={call}
-            grok={grok}
-            grokErr={grokErr}
-            asking={asking}
-            copied={copied}
-            canFill={isAdmin && Boolean(px) && call != null && call.clipUsd > 0}
-            canAct={isAdmin}
-            onAsk={() => void onAskGrok()}
-            onCopy={() => call && void copyCli(call.cli)}
-            onFill={() => call && executeClip(call)}
-            tape={
-              snap
-                ? {
-                    price: snap.btc.price,
-                    rsi: snap.rsi14,
-                    rsiAvg: snap.rsiAvg,
-                    fg: snap.fearGreed?.value ?? null,
-                    fgLabel: snap.fearGreed?.label,
-                    fetchedAt: snap.fetchedAt,
-                  }
-                : null
-            }
+            onCancel={() => setConfirm(false)}
+            onConfirm={() => {
+              setConfirm(false);
+              executeClip(call);
+            }}
           />
-          {isAdmin ? (
+        ) : null}
+        {copyAsk && call ? (
+          <YubiApprove
+            title="Approve outgoing CLI"
+            detail="Copying a Coinbase BTC/USDC trade or transfer command requires the admin YubiKey. This does not place a live order."
+            action={`cli:helios:${call.stance}:${Math.round(call.clipUsd)}`}
+            onCancel={() => setCopyAsk(false)}
+            onDone={() => {
+              setCopyAsk(false);
+              void copyCli(call.cli);
+            }}
+          />
+        ) : null}
+
+        <div className="mt-3">
+          <HelloWorld />
+        </div>
+        <div className="mt-3">
+          <GoLivePanel />
+        </div>
+
+        {isAdmin ? (
+          <div className="mt-3">
           <PaperCard
             mounted={mounted}
             cash={cash}
@@ -190,13 +219,15 @@ export function DeskApp() {
             fills={fills}
             onReset={unlocked ? reset : undefined}
           />
-          ) : null}
-        </div>
+          </div>
+        ) : null}
 
+        <div className="mt-4">
         <LiveTracks
           briefs={briefs}
           note="Live visual summary of bots 1–6 from the last tape pull. Bot 7 reads these lanes — it does not average them."
         />
+        </div>
 
         <div className="mt-4 mb-4 grid w-full grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3 lg:grid-cols-5">
             <Stat
@@ -308,10 +339,7 @@ export function DeskApp() {
         <div className="mt-4">
           <TapeChart snap={snap} />
         </div>
-        <div className="mt-4 grid gap-4 lg:grid-cols-2">
-          <LiqHeatmap snap={snap} />
-          <WhaleTape snap={snap} />
-        </div>
+        <LeverageWhaleRow snap={snap} />
 
         <AsiaPanel snap={snap} />
         <EmFlowPanel snap={snap} />
@@ -396,7 +424,7 @@ function AsiaPanel({ snap }: { snap: DeskSnapshot | null }) {
   const fmtPrem = (n: number | null | undefined) =>
     n == null ? "—" : `${n >= 0 ? "+" : ""}${n.toFixed(2)}%`;
   return (
-    <Panel className="mt-4" kicker="KR · HK · CN  ·  Binance blocked" title="Asia bitcoin tape">
+    <Panel className="mt-4" kicker="KR · HK · CN  ·  Binance blocked" title="Asia bitcoin tape" kickerClass="indicator-title" titleClass="indicator-title">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -501,7 +529,7 @@ function EmFlowPanel({ snap }: { snap: DeskSnapshot | null }) {
   const fmtPrem = (n: number | null | undefined) =>
     n == null ? "—" : `${n >= 0 ? "+" : ""}${n.toFixed(2)}%`;
   return (
-    <Panel className="mt-4" kicker="UAE · ME · RU · AF · SA  ·  free public books" title="EM bitcoin flow">
+    <Panel className="mt-4" kicker="UAE · ME · RU · AF · SA  ·  free public books" title="EM bitcoin flow" kickerClass="indicator-title" titleClass="indicator-title">
       <div className="mb-4 flex flex-wrap gap-6 font-mono text-sm">
         <div>
           <p className={cn("text-[11px]", FLOW_IN)}>Inflow</p>
@@ -551,7 +579,7 @@ function Quotes({ snap }: { snap: DeskSnapshot | null }) {
   const top = rows.slice(0, 5);
   const rest = rows.slice(5);
   return (
-    <Panel kicker="Sector / proxy" title="Public quotes">
+    <Panel kicker="Sector / proxy" title="Public quotes" kickerClass="indicator-title" titleClass="indicator-title">
       <QuoteList rows={top} />
       {rest.length ? (
         <>
@@ -561,7 +589,7 @@ function Quotes({ snap }: { snap: DeskSnapshot | null }) {
             aria-expanded={open}
             className="mt-2 flex w-full items-baseline justify-between gap-3 rounded-md py-1 text-left hover:bg-fg/4"
           >
-            <span className="font-mono text-sm text-fg">
+            <span className="font-mono text-sm text-high">
               Top 5 shown · {rows.length} quotes
             </span>
             <span className="shrink-0 font-mono text-[11px] expand-ctl">
@@ -576,11 +604,23 @@ function Quotes({ snap }: { snap: DeskSnapshot | null }) {
 }
 
 function QuoteList({ rows }: { rows: NonNullable<DeskSnapshot["quotes"]> }) {
+  const gold = new Set<string>(GOLD_TICKERS);
+  const silver = new Set<string>(SILVER_TICKERS);
   return (
     <ul className="space-y-2 font-mono text-sm">
       {rows.map((q) => (
         <li key={q.symbol} className="flex items-center justify-between gap-2">
-          <span>{q.symbol}</span>
+          <span
+            className={
+              silver.has(q.symbol)
+                ? "silver-css"
+                : gold.has(q.symbol)
+                  ? "gold-css"
+                  : "coinbase-orange"
+            }
+          >
+            {q.symbol}
+          </span>
           <span className="tabular-nums">{q.last != null ? money(q.last, 2) : "—"}</span>
           <span
             className={cn(
@@ -606,7 +646,7 @@ function WirePanel({ snap }: { snap: DeskSnapshot | null }) {
   const headlines = snap?.headlines ?? [];
   const [open, setOpen] = useState(true);
   return (
-    <Panel kicker="EDGAR · Free wire" title="Filings & headlines">
+    <Panel kicker="EDGAR · Free wire" title="Filings & headlines" kickerClass="indicator-title" titleClass="indicator-title">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -656,7 +696,7 @@ function WirePanel({ snap }: { snap: DeskSnapshot | null }) {
 
 function CoinbasePanel({ call }: { call: HeliosCall | null }) {
   return (
-    <Panel className="mt-4" kicker="Execution" title="Coinbase for Agents">
+    <Panel className="mt-4" kicker="Execution" title="Coinbase for Agents" kickerClass="indicator-title" titleClass="indicator-title">
       <p className="text-sm leading-relaxed text-muted">
         Helios never holds your CDP secret. Preview here, then run the CLI or connect MCP at{" "}
         <a

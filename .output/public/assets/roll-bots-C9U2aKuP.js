@@ -1,1 +1,0 @@
-import{n as e,r as t}from"./practice-iXSo1vEG.js";import{n}from"./tape-client-Cr7N20Gc.js";import{r}from"./index-BiXjhC5G.js";async function i(i){e.setState({running:!1}),r.setState({running:!1,liveUnlocked:!1}),t.getState().pauseUntilNotice(),await n({force:i?.force}),await Promise.all([r.getState().tick({admin:!!i?.admin}),e.getState().tick()])}export{i as t};

@@ -1,13 +1,26 @@
 import {
   APP_NAME,
   LABS_NAME,
+  PAGE_DESC_SITEMAP,
   SEO_ALIASES,
   SEO_CANONICAL,
   SEO_DESCRIPTION,
+  SEO_TAB_AGENT,
+  SEO_TAB_BEARS,
+  SEO_TAB_OWL,
+  SEO_TAB_CALLING_BOTS,
+  SEO_TAB_COFFEE,
+  SEO_TAB_COMPUTE,
   SEO_TAB_DESK,
   SEO_TAB_FEED,
   SEO_TAB_GM,
   SEO_TAB_LAB,
+  TAB_AGENT,
+  TAB_BEARS,
+  TAB_OWL,
+  TAB_CALLING_BOTS,
+  TAB_COFFEE,
+  TAB_COMPUTE,
   TAB_DESK,
   TAB_FEED,
   TAB_GM,
@@ -59,6 +72,24 @@ export function SeoCopy() {
         url: `${SEO_CANONICAL}gm`,
       },
       {
+        "@type": "Article",
+        name: TAB_BEARS,
+        headline: "How to beat the Bears at market speed with AI Agents",
+        alternateName: [SEO_TAB_BEARS, "How to beat the Bears at market speed with AI Agents"],
+        description: `${TAB_BEARS} is ${SEO_TAB_BEARS}. Theoretical loop for an AI agent reading Bot 7 to accumulate bitcoin on its own Coinbase. ${TAB_GM} (${SEO_TAB_GM}).`,
+        url: `${SEO_CANONICAL}b3ars`,
+        image: `${SEO_CANONICAL}gzilla-mrkt.png`,
+      },
+      {
+        "@type": "Article",
+        name: TAB_OWL,
+        headline: "Wise investment decisions, theoretically optimized by AI agents",
+        alternateName: [SEO_TAB_OWL, "Wise Owl", "AI trading bots", "Bitcoin trading agents", "wise investment"],
+        description: `${TAB_OWL} is ${SEO_TAB_OWL}. AI trading bots and Bitcoin trading agents. Bot 7 tape plus Grok, Claude, and GPT analysis combined for a current bitcoin accumulation read.`,
+        url: `${SEO_CANONICAL}owl`,
+        image: `${SEO_CANONICAL}owl.png`,
+      },
+      {
         "@type": "WebPage",
         name: TAB_FEED,
         alternateName: [SEO_TAB_FEED, "Feed Hosting", "F33D G0dZiLLa M0D3", "F33D N0W"],
@@ -69,7 +100,7 @@ export function SeoCopy() {
         "@type": "WebPage",
         name: TAB_HELLO,
         alternateName: ["Hello World", "H3LL0 W0RLD"],
-        description: `${TAB_HELLO} is Hello World. Expand greeting on the public tape. Links to OP3N S0URC3 (open source). MaX1UM G@1Ns (Maximum Gains) opens Godzilla mode. S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens F33D H0ST1Ng (Feed Hosting).`,
+        description: `${TAB_HELLO} is Hello World. Expand greeting on the public tape. Links to OP3N S0URC3 (open source). MaX1UM G@1Ns (Maximum Gains) opens Godzilla mode. S3Nd 2 BTC Wall3t (Send to BTC Wallet) opens F33D H0ST1Ng (Feed Hosting). Call1ng All B0Ts (Calling All Bots) opens the Agent feed.`,
         url: SEO_CANONICAL,
       },
       {
@@ -91,9 +122,9 @@ export function SeoCopy() {
       },
       {
         "@type": "FAQPage",
-        name: `FAQ · ${TAB_DESK} · ${TAB_GM} · ${TAB_FEED} · ${TAB_LAB}`,
+        name: `FAQ · ${TAB_DESK} · ${TAB_GM} · ${TAB_FEED} · ${TAB_LAB} · ${TAB_COFFEE} · ${TAB_CALLING_BOTS}`,
         url: `${SEO_CANONICAL}faq`,
-        description: "FAQ for S1R1US 7-bot hedge fund, Godzilla mode, S1R1US Lab Strategies, Token launch, open source. Not financial advice. Not an offer of securities.",
+        description: "FAQ for S1R1US 7-bot hedge fund, Godzilla mode, S1R1US Lab Strategies, Token launch, Buy Me a Cup of Coffee, Calling All Bots, open source. Not financial advice. Not an offer of securities.",
       },
       {
         "@type": "WebPage",
@@ -105,12 +136,63 @@ export function SeoCopy() {
         "@type": "WebPage",
         name: "Sitemap",
         url: `${SEO_CANONICAL}sitemap`,
+        description: PAGE_DESC_SITEMAP,
+      },
+      {
+        "@type": "WebPage",
+        name: TAB_COFFEE,
+        alternateName: [SEO_TAB_COFFEE, "C0FF33", "cup of coffee"],
+        url: `${SEO_CANONICAL}c0ff33`,
+        description: `${TAB_COFFEE} is ${SEO_TAB_COFFEE}. Optional $4.20 gift in BTC or native USDC to assist long programming days at s1r1us.ai. Unconditional gift. No tokens.`,
+      },
+      {
+        "@type": "DonateAction",
+        name: TAB_COFFEE,
+        alternateName: SEO_TAB_COFFEE,
+        description: "Optional $4.20 cup of coffee. Same BTC and USDC receive addresses as F33D H0ST1Ng (Feed Hosting).",
+        target: `${SEO_CANONICAL}c0ff33`,
+        recipient: { "@type": "Organization", name: LABS_NAME, url: SEO_CANONICAL },
+      },
+      {
+        "@type": "WebPage",
+        name: TAB_AGENT,
+        alternateName: [SEO_TAB_AGENT, TAB_CALLING_BOTS, SEO_TAB_CALLING_BOTS, "Bot 7", "AI trading bots", "Bitcoin trading agents"],
+        url: `${SEO_CANONICAL}agent`,
+        description: `${TAB_CALLING_BOTS} (${SEO_TAB_CALLING_BOTS}). ${TAB_AGENT} (${SEO_TAB_AGENT}) is the read-only Bot 7 JSON and MCP for Grok, Claude, and GPT. AI trading bots. Bitcoin trading agents.`,
+      },
+      {
+        "@type": "WebAPI",
+        name: `${TAB_AGENT} (${SEO_TAB_AGENT})`,
+        description: "START HERE for Grok, Claude, GPT, Coinbase for Agents. Read-only Bot 7 call. This host never trades.",
+        documentation: `${SEO_CANONICAL}agent`,
+        url: `${SEO_CANONICAL}api/agent/call`,
+        provider: { "@type": "Organization", name: LABS_NAME, url: SEO_CANONICAL },
+        termsOfService: `${SEO_CANONICAL}terms`,
+      },
+      {
+        "@type": "EntryPoint",
+        name: "llms.txt for AI agents",
+        url: `${SEO_CANONICAL}llms.txt`,
+        description: "Instruction file for Grok, Claude, GPT, and other AI agents. Come here first.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Privacy Policy",
+        url: `${SEO_CANONICAL}privacy`,
+        description: "No bot may retain system information. No reverse engineering without S1R1US.ai authorization.",
+      },
+      {
+        "@type": "WebPage",
+        name: TAB_COMPUTE,
+        alternateName: [SEO_TAB_COMPUTE, "Ask Grok", "BYO compute"],
+        url: `${SEO_CANONICAL}compute`,
+        description: `${TAB_COMPUTE} is ${SEO_TAB_COMPUTE}. Sign in with X, paste your xAI API key, Ask Grok on your bill. This host never stores the key.`,
       },
     ],
   };
   return (
     <>
-      <p className="seo-copy">{SEO_ALIASES}</p>
+      <p className="seo-copy sr-only" aria-hidden="true">{SEO_ALIASES}</p>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />
     </>
   );

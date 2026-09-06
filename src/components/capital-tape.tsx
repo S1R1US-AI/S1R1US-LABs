@@ -40,7 +40,7 @@ function StackTable({ title, rows }: { title: string; rows: DatHolding[] }) {
         aria-expanded={open}
         className="flex w-full items-baseline justify-between gap-3 rounded-md py-1 text-left hover:bg-fg/4"
       >
-        <span className="text-xs font-medium tracking-[0.08em] expand-ctl uppercase">{title}</span>
+        <span className="coinbase-orange text-xs font-medium tracking-[0.08em] uppercase">{title}</span>
         <span className="font-mono text-[11px] expand-ctl">
           {rows.length} · {btc.toLocaleString("en-US", { maximumFractionDigits: 0 })} BTC · {compactUsd(usd)} ·{" "}
           {open ? "collapse" : "expand"}
@@ -51,7 +51,7 @@ function StackTable({ title, rows }: { title: string; rows: DatHolding[] }) {
           <table className="w-full min-w-[28rem] text-left text-sm">
             <thead>
               <tr className="border-b border-rule text-xs text-muted">
-                <th className="py-1 pr-3 font-medium">Entity</th>
+                <th className="coinbase-orange py-1 pr-3 font-medium">Entity</th>
                 <th className={`py-1 pr-3 text-right font-medium ${BTC_TONE}`}>BTC</th>
                 <th className={`py-1 text-right font-medium ${USD_TONE}`}>USD</th>
               </tr>
@@ -60,8 +60,8 @@ function StackTable({ title, rows }: { title: string; rows: DatHolding[] }) {
               {rows.slice(0, 12).map((d) => (
                 <tr key={`${d.ticker}-${d.name}`} className="border-b border-rule/70">
                   <td className="py-1.5 pr-3">
-                    <span className="text-fg">{d.name}</span>
-                    {d.ticker ? <span className="ml-2 font-mono text-xs text-muted">{d.ticker}</span> : null}
+                    <span className="coinbase-orange">{d.name}</span>
+                    {d.ticker ? <span className="coinbase-orange ml-2 font-mono text-xs">{d.ticker}</span> : null}
                   </td>
                   <td className={`py-1.5 pr-3 text-right font-mono tabular-nums ${BTC_TONE}`}>
                     {d.btc.toLocaleString("en-US", { maximumFractionDigits: 0 })}
@@ -99,12 +99,12 @@ export function CapitalTapeChart({ snap }: { snap: DeskSnapshot | null }) {
   }, [bars]);
 
   return (
-    <Panel className="mb-4" kicker="Capital tape" title="Where the bid is">
+    <Panel className="mb-4" kicker="Capital tape" title="Where the bid is" kickerClass="indicator-title" titleClass="indicator-title">
       {data.length ? (
         <div className="h-56 sm:h-64">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} margin={{ top: 8, right: 8, left: 8, bottom: 4 }}>
-              <XAxis dataKey="name" tick={{ fill: "var(--color-muted)", fontSize: 12 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="name" tick={{ fill: "#ff8a1f", fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis
                 scale="log"
                 domain={[100_000, (max: number) => (Number.isFinite(max) && max > 0 ? max * 1.2 : 1e11)]}
@@ -135,7 +135,7 @@ export function CapitalTapeChart({ snap }: { snap: DeskSnapshot | null }) {
           <li key={b.id} className="flex gap-2">
             <span className="mt-1.5 size-2.5 shrink-0 rounded-sm" style={{ background: b.color }} />
             <div>
-              <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">{b.name}</p>
+              <p className="coinbase-orange text-xs font-medium tracking-[0.08em] uppercase">{b.name}</p>
               <p className={`mt-1 font-mono text-sm tabular-nums ${b.missing ? "text-muted" : USD_TONE}`}>
                 {b.missing ? "—" : compactUsd(b.value)}
               </p>

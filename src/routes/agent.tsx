@@ -3,6 +3,7 @@ import { AgentFeedPage } from "@/components/agent-feed-page";
 import { PAGE_DESC_AGENT, PAGE_TITLE_AGENT, SEO_KEYWORDS } from "@/lib/brand";
 
 export const Route = createFileRoute("/agent")({
+  ssr: false,
   component: AgentFeedPage,
   head: () => ({
     meta: [

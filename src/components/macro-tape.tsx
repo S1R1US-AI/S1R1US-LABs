@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, type CSSProperties } from "react";
 import { Area, Bar, CartesianGrid, Cell, ComposedChart, Line, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Panel } from "@/components/shell";
 import type { DeskSnapshot, RateSeries } from "@/lib/desk/types";
@@ -100,17 +100,17 @@ export function MacroTape({ snap }: { snap: DeskSnapshot | null }) {
   const curve = useMemo(() => {
     if (!macro) return [];
     const map = new Map<string, Record<string, number | string>>();
-    const add = (s: RateSeries) => {
+    const add = (id: "tbill" | "y2" | "y10" | "y30", s: RateSeries) => {
       for (const p of s.points) {
         const row = map.get(p.t) ?? { t: p.t };
-        row[s.id] = p.v;
+        row[id] = p.v;
         map.set(p.t, row);
       }
     };
-    add(macro.tbill);
-    add(macro.y2);
-    add(macro.y10);
-    add(macro.y30);
+    add("tbill", macro.tbill);
+    add("y2", macro.y2);
+    add("y10", macro.y10);
+    add("y30", macro.y30);
     return [...map.values()].sort((a, b) => String(a.t).localeCompare(String(b.t)));
   }, [macro]);
   const m2pts = macro?.m2.points ?? [];
@@ -138,26 +138,32 @@ export function MacroTape({ snap }: { snap: DeskSnapshot | null }) {
 
   return (
     <div className="mb-4 grid gap-4">
-      <Panel kicker="BLS / FRED" title="Inflation vs money printed">
+      <Panel kicker="BLS / FRED" title="Inflation vs money printed" kickerClass="indicator-title" titleClass="indicator-title">
         <div className="mb-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Metric
             label="CPI YoY"
             value={pct(latestCpi?.cpi ?? macro?.cpiYoy.last ?? null)}
             hint={latestCpi ? `${latestCpi.label} ${latestCpi.year}` : "CPIAUCSL"}
+            valueStyle={{ color: cpiFill(latestCpi?.cpi ?? macro?.cpiYoy.last ?? null) }}
           />
           <Metric
             label="M2 YoY"
             value={pct(latestM2?.m2yoy ?? null)}
             hint="Same months as CPI"
-            tone="text-medium"
+            tone={(latestM2?.m2yoy ?? 0) >= 0 ? "rsi-above" : "rsi-below"}
           />
           <Metric
             label="Debase gap"
             value={debaseGap == null ? "—" : `${debaseGap >= 0 ? "+" : ""}${debaseGap.toFixed(1)}pt`}
             hint="M2 YoY − CPI YoY"
-            tone={debaseGap != null && debaseGap > 0 ? "text-medium" : "text-muted"}
+            tone={debaseGap == null ? undefined : debaseGap > 0 ? "rsi-above" : "rsi-below"}
           />
-          <Metric label="Printed 12m" value={bn(printed12 || null)} hint="M2 MoM sum $bn" />
+          <Metric
+            label="Printed 12m"
+            value={bn(printed12 || null)}
+            hint="M2 MoM sum $bn"
+            tone={printed12 > 0 ? "rsi-above" : printed12 < 0 ? "rsi-below" : undefined}
+          />
         </div>
 
         <ol className="mb-4 grid grid-cols-4 gap-1.5 sm:grid-cols-6">
@@ -229,7 +235,7 @@ export function MacroTape({ snap }: { snap: DeskSnapshot | null }) {
       </Panel>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-      <Panel kicker="FRED" title="Treasuries + M2">
+      <Panel kicker="FRED" title="Treasuries + M2" kickerClass="indicator-title" titleClass="indicator-title">
         <div className="mb-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Metric label="T-bill 3m" value={pct(macro?.tbill.last ?? null)} hint={macro?.tbill.asOf ?? undefined} tone="text-tbill" />
           <Metric label="2-year" value={pct(macro?.y2.last ?? null)} hint={macro?.y2.asOf ?? undefined} tone="text-y2" />
@@ -279,7 +285,7 @@ export function MacroTape({ snap }: { snap: DeskSnapshot | null }) {
       </Panel>
 
       <div className="grid gap-4">
-        <Panel kicker="Money supply" title="M2">
+        <Panel kicker="Money supply" title="M2" kickerClass="indicator-title" titleClass="indicator-title">
           <Metric
             label="M2 (SA)"
             value={m2(macro?.m2.last ?? null)}
@@ -318,22 +324,34 @@ export function MacroTape({ snap }: { snap: DeskSnapshot | null }) {
             )}
           </div>
         </Panel>
-        <Panel kicker="DefiLlama" title="Stable yields">
-          <ul className="grid grid-cols-3 gap-3">
-            {(macro?.stables ?? []).map((s) => (
-              <li key={s.symbol}>
-                <p className={cn("text-xs font-medium tracking-[0.08em] uppercase", STABLE_TONE[s.symbol] || "text-muted")}>
-                  {s.symbol}
-                </p>
-                <p className={cn("mt-1 font-mono text-lg tabular-nums", STABLE_TONE[s.symbol] || "text-fg")}>
-                  {s.apy != null ? `${s.apy.toFixed(2)}%` : "—"}
-                </p>
-                <p className="mt-0.5 text-xs text-muted">
-                  {s.protocol ?? "—"}
-                  {s.tvlUsd ? ` · ${compactTvl(s.tvlUsd)}` : ""}
-                </p>
-              </li>
-            ))}
+        <Panel kicker="DefiLlama" title="Stable yields" kickerClass="indicator-title" titleClass="indicator-title">
+          <ul className="grid grid-cols-3 items-start gap-x-3 gap-y-2">
+            {(["USDC", "USDT", "USD1"] as const).map((sym) => {
+              const s = (macro?.stables ?? []).find((x) => x.symbol === sym);
+              const href = s?.protocol
+                ? `https://defillama.com/protocol/${encodeURIComponent(s.protocol)}`
+                : "https://defillama.com/stablecoins";
+              return (
+                <li key={sym} className="min-w-0">
+                  <p className={cn("truncate text-xs font-medium tracking-[0.08em] uppercase", STABLE_TONE[sym] || "text-muted")}>
+                    {sym}
+                  </p>
+                  <p className={cn("mt-1 font-mono text-lg tabular-nums leading-none", STABLE_TONE[sym] || "text-fg")}>
+                    {s?.apy != null ? `${s.apy.toFixed(2)}%` : "—"}
+                  </p>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="legal-purple mt-1 block truncate text-xs hover:underline"
+                    title={s?.protocol ?? "DefiLlama stables"}
+                  >
+                    {s?.protocol ?? "DefiLlama"}
+                    {s?.tvlUsd ? ` · ${compactTvl(s.tvlUsd)}` : ""}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
           <p className="mt-3 text-xs text-muted">
             TVL-weighted APY on single-asset, no-IL pools ≥ $5M. Not a venue recommendation.
@@ -345,11 +363,25 @@ export function MacroTape({ snap }: { snap: DeskSnapshot | null }) {
   );
 }
 
-function Metric({ label, value, hint, tone }: { label: string; value: string; hint?: string; tone?: string }) {
+function Metric({
+  label,
+  value,
+  hint,
+  tone,
+  valueStyle,
+}: {
+  label: string;
+  value: string;
+  hint?: string;
+  tone?: string;
+  valueStyle?: CSSProperties;
+}) {
   return (
     <div>
-      <p className={cn("text-xs font-medium tracking-[0.08em] uppercase", tone || "text-muted")}>{label}</p>
-      <p className={cn("mt-1 font-mono text-lg tabular-nums tracking-tight", tone)}>{value}</p>
+      <p className="coinbase-orange text-xs font-medium tracking-[0.08em] uppercase">{label}</p>
+      <p className={cn("mt-1 font-mono text-lg tabular-nums tracking-tight", tone)} style={valueStyle}>
+        {value}
+      </p>
       {hint ? <p className="mt-0.5 text-xs text-muted">{hint}</p> : null}
     </div>
   );

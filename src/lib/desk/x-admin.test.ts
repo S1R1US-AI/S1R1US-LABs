@@ -37,6 +37,8 @@ describe("admin X identity", () => {
     assert.equal(looksLikeAdminX("@S1R1US"), false);
     assert.equal(looksLikeAdminX("S1R1US"), false);
     assert.equal(looksLikeAdminX("@_S1R1US_"), false);
+    assert.equal(looksLikeAdminX("@S1R1S_AI"), false);
+    assert.equal(looksLikeAdminX("@S1R1US_AI"), false);
     assert.equal(looksLikeAdminX(""), false);
     assert.equal(looksLikeAdminX(null), false);
     assert.equal(looksLikeAdminX("2093335535146131457"), false);
@@ -45,9 +47,15 @@ describe("admin X identity", () => {
   it("never treats company or dead handles as company while unset, never as admin", () => {
     assert.equal(looksLikeCompanyX("@S1R1US"), false);
     assert.equal(looksLikeCompanyX("@_S1R1US_"), false);
+    assert.equal(looksLikeCompanyX("@S1R1S_AI"), false);
+    assert.equal(looksLikeCompanyX("S1R1S_AI"), false);
+    assert.equal(looksLikeCompanyX("@S1R1US_AI"), true);
+    assert.equal(looksLikeCompanyX("S1R1US_AI"), true);
     assert.equal(looksLikeCompanyX(ADMIN_X_HANDLE), false);
     assert.equal(isDeadCompanyHandle("S1R1US"), true);
     assert.equal(isDeadCompanyHandle("@_S1R1US_"), true);
+    assert.equal(isDeadCompanyHandle("@S1R1S_AI"), true);
+    assert.equal(isDeadCompanyHandle("@S1R1US_AI"), false);
     assert.equal(isDeadCompanyHandle(ADMIN_X_HANDLE), false);
   });
 

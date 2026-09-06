@@ -11,7 +11,6 @@ let frozen: boolean | null = null;
 
 export function isTapeFrozen(): boolean {
   if (typeof window !== "undefined") return false;
-  if (frozen != null) return frozen;
   try {
     frozen = existsSync(FREEZE_PATH);
   } catch {
@@ -51,7 +50,24 @@ export function readLastGood(): LastGood | null {
 export function writeLastGood(snap: DeskSnapshot) {
   if (typeof window !== "undefined") return;
   if (snap.btc?.price == null) return;
-  mem = { at: Date.now(), snap };
+  const prev = mem?.snap;
+  const keep = prev
+    ? {
+        ...snap,
+        macro:
+          (snap.macro?.m2?.points?.length ?? 0) >= 6 || (snap.macro?.cpiYoy?.points?.length ?? 0) >= 6
+            ? snap.macro
+            : prev.macro,
+        strategy:
+          snap.strategy?.products?.some((p) => (p.points?.length ?? 0) > 2 || p.change6m != null) ||
+          (snap.strategy?.products?.length ?? 0) > (prev.strategy?.products?.length ?? 0)
+            ? snap.strategy
+            : prev.strategy?.products?.length
+              ? prev.strategy
+              : snap.strategy,
+      }
+    : snap;
+  mem = { at: Date.now(), snap: keep };
   try {
     writeFileSync(LAST_PATH, JSON.stringify(mem));
   } catch {

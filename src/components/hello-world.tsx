@@ -16,6 +16,7 @@ const ORANGE =
   "coinbase-orange font-semibold tracking-tight underline decoration-[#ff8a1f] underline-offset-2";
 const BLUE =
   "welcome-blue font-semibold tracking-tight underline decoration-tab underline-offset-2";
+const GRAY = "text-[#c8d0cb]";
 
 export function HelloWorld() {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,7 @@ export function HelloWorld() {
         aria-expanded={open}
         className="block w-full rounded-md text-left hover:bg-fg/4"
       >
-        <p className="text-sm text-tab">welcome to {APP_NAME}</p>
+        <p className="welcome-blue text-sm">welcome to {APP_NAME}</p>
       </button>
       <a
         href={GITHUB_URL}
@@ -46,20 +47,22 @@ export function HelloWorld() {
           <span className="text-high">./stage --rwx 0x7f8a1c00</span>
           {"\n"}
           <span className="text-medium">[*]</span>
-          <span className="text-muted">{" attaching console.exploit  pid=1337  prot=rwx"}</span>
+          <span className="text-muted">{" attaching "}</span>
+          <span className={GRAY}>console.exploit</span>
+          <span className="text-muted">{"  pid=1337  prot=rwx"}</span>
           {"\n"}
           <span className="text-high">[+]</span>
           <span className="text-muted">{" hook H@CK4U2K  ret=0x0040f00d"}</span>
           {"\n"}
           <span className="text-muted">{`00000000  48 33 4c 4c 30 20 57 30  52 4c 44              |${TAB_HELLO}|`}</span>
           {"\n"}
-          <span className="text-sell">--[ payload / greeting only / not a shell ]--</span>
+          <span className="text-sell">--[ payload / geek greeting only / not a shell / ROBOTS ACTIVATE ]--</span>
           {"\n"}
-          <span className="text-muted">function </span>
+          <span className={GRAY}>function </span>
           <span className="text-high">main</span>
           <span className="text-muted">{"() {"}</span>
           {"\n"}
-          <span className="text-muted">{"  console.exploit ("}</span>
+          <span className={GRAY}>{"  console.exploit ("}</span>
           <a
             href={GITHUB_URL}
             target="_blank"
@@ -72,20 +75,19 @@ export function HelloWorld() {
           </a>
           <span className="text-muted">);</span>
           {"\n"}
-          <span className="text-muted">{"  console.H@CK4U2K.$("}</span>
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <span className={GRAY}>{"  console.H@CK4U2K.$("}</span>
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
             title={TAB_HOVER_HELLO}
-            aria-label={TAB_HOVER_HELLO}
-            className={BLUE}
+            aria-label={`welcome to ${APP_NAME}`}
+            className={`${BLUE} bg-transparent p-0 text-left`}
           >
             {greet}
-          </a>
+          </button>
           <span className="text-muted">);</span>
           {"\n"}
-          <span className="text-muted">{"  run executable ("}</span>
+          <span className={GRAY}>{"  run executable ("}</span>
           <Link
             to="/faq"
             hash="calling-all-bots"

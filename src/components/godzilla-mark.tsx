@@ -5,6 +5,7 @@ export function GodzillaMark({ className, beam = "red" }: { className?: string; 
   const trail = beam === "green" ? "#6fbf63" : "#ff7a18";
   return (
     <svg viewBox="0 0 72 40" className={className} aria-hidden fill="currentColor">
+      <title>G0DZ1LLa M0D3 (Godzilla mode)</title>
       {/* dorsal fins */}
       <path d="M14 4l3 10H12zm7-2l3 12h-5zm7 1l4 11h-6zm8 2l5 9h-7z" />
       {/* helmet plate */}

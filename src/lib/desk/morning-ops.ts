@@ -26,11 +26,11 @@ export const AUTO_ANALYSIS = {
   asOf: new Date().toISOString(),
   day: 1 as const,
   score: 8,
-  tape: "Client AUTO ticks are off (they were refreshing the desk). 24h paper fills, if any, record on the server after each live tape fill — no extra pull.",
-  fills: "Morning report 5 Sep 08:00 ET uses the server 24h book. Live Coinbase stays off. 7-bot stack never sells.",
-  errors: "Do not green OPEN feed errors. Yahoo/Stooq classified. SuperGrok is the only paid service.",
-  security: "Admin is operator X then name+password. Dual Yubi for outgoing. Practice fills are paper.",
-  action: "Practice AUTO is disabled. Do not arm live. Desk and website stay on the live tape only.",
+  tape: "Practice AUTO ticks and paper fills are off. The desk shows would-accumulate calls from the live snapshot.",
+  fills: "No paper fills. Morning report 5 Sep 08:00 ET uses the server 24h book if present. Live Coinbase stays off. 7-bot stack never sells.",
+  errors: "Do not green OPEN feed errors. Yahoo/Stooq classified. SuperGrok is operator Ask Grok; visitors use BYO compute. Bot 7 HTTP SaaS is pay-for-JSON.",
+  security: "Admin is operator X then name+password. Dual Yubi for outgoing. Practice fills are off. Coinbase create locked.",
+  action: "DEPLOY #68 call board: Bot 7 + GM + bots 1–6 would-accumulate on the live tape. Do not arm Coinbase. AI agents: /llms.txt, /agent, waitlist. GO-LIVE Phase 1 STARTED.",
 };
 
 export function morningAgent(flags: {

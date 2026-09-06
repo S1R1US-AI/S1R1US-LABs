@@ -30,6 +30,62 @@ function hasGlobbedMigrations(root: string): boolean {
  * migrations — no schema to apply — skips it entirely rather than paying for a
  * PGLite instance it never queries.
  */
+function agentGuardDevPlugin(): Plugin {
+  const deny = [
+    "/source",
+    "/guide",
+    "/security",
+    "/admin",
+    "/launch",
+    "/renew",
+    "/s1r1us-labs-github.zip",
+    "/s1r1us-labs-github.tar.gz",
+    "/helios-desk-guide.md",
+    "/helios-desk-guide.pdf",
+    "/dockerfile",
+    "/.git",
+    "/src",
+    "/.output",
+    "/node_modules",
+    "/.env",
+  ];
+  const agentUa =
+    /GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|anthropic-ai|Claude-Web|Claude-User|Grok\/|xAI-Grok|CCBot|Bytespider|PerplexityBot|Google-Extended|Amazonbot|Applebot-Extended|meta-externalagent|cohere-ai|YouBot|Diffbot/i;
+  return {
+    name: "s1r1us-agent-guard",
+    apply: "serve",
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const ua = String(req.headers["user-agent"] ?? "");
+        if (!agentUa.test(ua)) {
+          next();
+          return;
+        }
+        const path = (req.url ?? "").split("?", 1)[0]?.replace(/\/+$/, "") || "/";
+        const p = path.toLowerCase();
+        const blocked =
+          deny.some((d) => p === d || p.startsWith(`${d}/`)) ||
+          (p.includes("/.") && !p.startsWith("/.well-known"));
+        if (!blocked) {
+          next();
+          return;
+        }
+        res.statusCode = 403;
+        res.setHeader("content-type", "application/json; charset=utf-8");
+        res.end(
+          JSON.stringify({
+            ok: false,
+            trade: false,
+            sourceAccess: false,
+            error: "Denied. Agents may read /api/agent/call only. Source and internals are not available.",
+            docs: "/agent",
+          }),
+        );
+      });
+    },
+  };
+}
+
 function pgliteBootstrapPlugin(): Plugin {
   return {
     name: "app-builder:pglite-bootstrap",
@@ -184,6 +240,7 @@ export default defineConfig(({ command, isPreview }) => ({
   },
   plugins: [
     pgliteBootstrapPlugin(),
+    agentGuardDevPlugin(),
     // Before tanstackStart so /auth/popup never falls through to the SPA.
     authPopupPlugin(),
     // Dev-only /__app-env, read by scripts/check-auth-invariant.mjs.

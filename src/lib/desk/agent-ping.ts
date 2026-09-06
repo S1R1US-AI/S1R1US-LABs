@@ -1,4 +1,20 @@
-import { writeFileSync, readFileSync, mkdirSync } from "node:fs";
+/** Server-only ping log. Never import this module from a client page. */
+
+type Fs = {
+  writeFileSync: (p: string, b: string) => void;
+  readFileSync: (p: string, enc: string) => string;
+  mkdirSync: (p: string, o: { recursive: boolean }) => void;
+};
+
+function fsSafe(): Fs | null {
+  if (typeof window !== "undefined") return null;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    return require("node:fs") as Fs;
+  } catch {
+    return null;
+  }
+}
 
 export const AGENT_PING_PATH = "/api/agent/ping";
 
@@ -46,9 +62,11 @@ function empty(day: string): Store {
 
 function load(): Store {
   const today = dayEt();
+  const fs = fsSafe();
+  if (!fs) return empty(today);
   for (const p of PATHS) {
     try {
-      const raw = JSON.parse(readFileSync(p, "utf8")) as Store;
+      const raw = JSON.parse(fs.readFileSync(p, "utf8")) as Store;
       if (raw?.dayEt === today) return raw;
     } catch {
       /* missing */
@@ -58,11 +76,13 @@ function load(): Store {
 }
 
 function save(s: Store) {
+  const fs = fsSafe();
+  if (!fs) return;
   const body = JSON.stringify(s);
   for (const p of PATHS) {
     try {
-      if (p.startsWith("/workspace/data")) mkdirSync("/workspace/data", { recursive: true });
-      writeFileSync(p, body);
+      if (p.startsWith("/workspace/data")) fs.mkdirSync("/workspace/data", { recursive: true });
+      fs.writeFileSync(p, body);
     } catch {
       /* preview / serverless */
     }

@@ -2190,22 +2190,33 @@ const STRATEGY_BOOK: { symbol: string; name: string; kind: StrategyProduct["kind
   { symbol: "MSTZ", name: "T-Rex 2x inverse MSTR", kind: "etf", coupon: "-2x" },
 ];
 
-function strategyTape(quoteRows: Quote[] = []): StrategyTape {
+function strategyTape(
+  quoteRows: Quote[] = [],
+  sparks: Map<string, { last: number | null; changePct: number | null; change6m: number | null; points: { t: number; v: number }[] }> = new Map(),
+): StrategyTape {
   const prev = snapCache?.value?.strategy;
   const live = new Map(quoteRows.map((q) => [q.symbol.toUpperCase(), q]));
   const products: StrategyProduct[] = STRATEGY_BOOK.map((meta) => {
     const q = live.get(meta.symbol);
     const prevP = prev?.products.find((p) => p.symbol === meta.symbol);
+    const spark = sparks.get(meta.symbol);
+    const points = spark?.points?.length ? spark.points : prevP?.points ?? [];
+    const last = q?.last ?? spark?.last ?? prevP?.last ?? null;
+    const first = points[0]?.v;
+    const change6m =
+      spark?.change6m ??
+      prevP?.change6m ??
+      (first && last != null && first > 0 ? ((last - first) / first) * 100 : null);
     return {
       ...meta,
-      last: q?.last ?? prevP?.last ?? null,
-      changePct: q?.changePct ?? prevP?.changePct ?? null,
-      change6m: prevP?.change6m ?? null,
-      points: prevP?.points ?? [],
+      last,
+      changePct: q?.changePct ?? spark?.changePct ?? prevP?.changePct ?? null,
+      change6m,
+      points,
     };
   }).filter((p) => p.last != null);
   return {
-    source: "CNBC last (no Yahoo spark — 429 from this host)",
+    source: sparks.size ? "Yahoo chart 6m · CNBC last" : prev?.source ?? "CNBC last",
     products,
   };
 }
@@ -2278,6 +2289,59 @@ async function goldSpotUsd(): Promise<{ usd: number; source: string } | null> {
     /* GLD / last-good */
   }
   return null;
+}
+
+type StrategySpark = {
+  last: number | null;
+  changePct: number | null;
+  change6m: number | null;
+  points: { t: number; v: number }[];
+};
+
+async function yahooChartSpark(symbol: string): Promise<StrategySpark> {
+  const j = await getJson<{
+    chart?: {
+      result?: {
+        meta?: { regularMarketPrice?: number; chartPreviousClose?: number; regularMarketChangePercent?: number };
+        timestamp?: number[];
+        indicators?: { quote?: { close?: (number | null)[] }[] };
+      }[];
+    };
+  }>(`https://query2.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=6mo&interval=1wk`, 2200, {
+    "User-Agent": "Mozilla/5.0 S1R1US-Lab/1.0",
+  });
+  const res = j.chart?.result?.[0];
+  const ts = res?.timestamp ?? [];
+  const closes = res?.indicators?.quote?.[0]?.close ?? [];
+  const points: { t: number; v: number }[] = [];
+  for (let i = 0; i < ts.length; i++) {
+    const v = closes[i];
+    const t = ts[i];
+    if (t != null && v != null && Number.isFinite(v)) points.push({ t: t * 1000, v: Number(v) });
+  }
+  const live = Number(res?.meta?.regularMarketPrice);
+  const last = Number.isFinite(live) && live > 0 ? live : points[points.length - 1]?.v ?? null;
+  const first = points[0]?.v;
+  const change6m = first && last != null && first > 0 ? ((last - first) / first) * 100 : null;
+  const prevClose = Number(res?.meta?.chartPreviousClose);
+  const changePct =
+    last != null && Number.isFinite(prevClose) && prevClose > 0
+      ? ((last - prevClose) / prevClose) * 100
+      : Number.isFinite(Number(res?.meta?.regularMarketChangePercent))
+        ? Number(res?.meta?.regularMarketChangePercent)
+        : null;
+  return { last, changePct, change6m, points };
+}
+
+async function strategySparks(): Promise<Map<string, StrategySpark>> {
+  const out = new Map<string, StrategySpark>();
+  const rows = await Promise.allSettled(STRATEGY_BOOK.map((m) => capLane(yahooChartSpark(m.symbol), 2200)));
+  rows.forEach((r, i) => {
+    if (r.status === "fulfilled" && (r.value.points.length > 2 || r.value.last != null)) {
+      out.set(STRATEGY_BOOK[i]!.symbol, r.value);
+    }
+  });
+  return out;
 }
 
 function metalsFromQuotes(quoteRows: Quote[], meta: Record<string, MetalMeta>, symbols: string[]): MetalHolding[] {
@@ -2467,13 +2531,15 @@ export function getLiveSnapshot() {
 
 let warmTimer: ReturnType<typeof setInterval> | null = null;
 function ensureWarmLoop() {
-  if (typeof window !== "undefined" || warmTimer) return;
-  hydrateLastGood();
+  if (typeof window !== "undefined") return;
   if (isTapeFrozen()) return;
+  if (warmTimer) return;
+  hydrateLastGood();
   warmTimer = setInterval(() => {
     if (isTapeFrozen()) return;
     void loadSnapshot(false).catch(() => undefined);
   }, DESK_POLL_MS);
+  void loadSnapshot(false).catch(() => undefined);
 }
 
 export async function loadSnapshot(force: boolean): Promise<DeskSnapshot> {
@@ -2838,7 +2904,7 @@ async function assembleFill(t0: number, core: DeskSnapshot) {
     } catch {
       /* holders/capital use last cache */
     }
-    const [capR, hoR, hR, fR, eR, macR, aR, cutR, qR, fgR, whR, goldR] = await Promise.allSettled([
+    const [capR, hoR, hR, fR, eR, macR, aR, cutR, qR, fgR, whR, goldR, stR] = await Promise.allSettled([
       capLane(capitalTape(), 4000),
       capLane(holdersTape(), 4000),
       capLane(headlines(), 3500),
@@ -2851,6 +2917,7 @@ async function assembleFill(t0: number, core: DeskSnapshot) {
       capLane(fearGreed(), 1500),
       capLane(whaleTape(core.btc.price), 2800),
       capLane(goldSpotUsd(), 2000),
+      capLane(strategySparks(), 7000),
     ]);
     const silent: string[] = [];
     const capital = settled("capital", silent, capR, core.capital);
@@ -2864,6 +2931,7 @@ async function assembleFill(t0: number, core: DeskSnapshot) {
     const quoteRows = settled("cnbc", silent, qR, core.quotes);
     let quotesLive = quoteRows.length ? quoteRows : core.quotes;
     const goldSpot = goldR.status === "fulfilled" ? goldR.value : null;
+    const sparks = stR.status === "fulfilled" ? stR.value : new Map();
     if (goldSpot && !quotesLive.some((q) => q.symbol === "GC=F" || q.symbol === "GC%3DF")) {
       quotesLive = [...quotesLive, { symbol: "GC=F", name: "Gold COMEX", last: goldSpot.usd, changePct: null }];
     }
@@ -2904,7 +2972,7 @@ async function assembleFill(t0: number, core: DeskSnapshot) {
       onchain,
       quotes: quotesLive,
       fearGreed: fg ?? core.fearGreed,
-      strategy: quotesLive.length ? strategyTape(quotesLive) : core.strategy,
+      strategy: strategyTape(quotesLive, sparks),
       goldBtc: goldBtcFromQuotes(core.btc.price, quotesLive, goldSpot?.usd, goldSpot?.source ?? undefined)
         .ozPerBtc != null
         ? goldBtcFromQuotes(core.btc.price, quotesLive, goldSpot?.usd, goldSpot?.source ?? undefined)

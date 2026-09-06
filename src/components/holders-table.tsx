@@ -42,7 +42,7 @@ export function BtcHoldersTable({ snap }: { snap: DeskSnapshot | null }) {
   const hidden = Math.max(0, rows.length - 5);
   return (
     <>
-      <Panel className="mb-4" kicker="Who holds it" title="Top 20 bitcoin holders" kickerClass="text-medium" titleClass="text-medium">
+      <Panel className="mb-4" kicker="Who holds it" title="Top 20 bitcoin holders" kickerClass="indicator-title" titleClass="indicator-title">
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
@@ -56,7 +56,7 @@ export function BtcHoldersTable({ snap }: { snap: DeskSnapshot | null }) {
           </span>
           <span className="shrink-0 font-mono text-[11px] expand-ctl">{open ? "collapse" : "expand top 20"}</span>
         </button>
-        <div className="overflow-x-auto">
+        <div className="w-full min-w-0 max-w-full overflow-x-auto">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <thead>
               <tr className="border-b border-rule text-xs font-medium tracking-[0.08em] text-muted uppercase">
@@ -107,6 +107,8 @@ export function BtcHoldersTable({ snap }: { snap: DeskSnapshot | null }) {
         className="mb-4"
         kicker="Sovereign bitcoin"
         title="Bitcoin by region"
+        kickerClass="indicator-title"
+        titleClass="indicator-title"
         slices={btcRegions.map((r) => ({
           id: r.id,
           name: r.name,
@@ -138,7 +140,7 @@ export function MetalBoards({ snap }: { snap: DeskSnapshot | null }) {
   const [goldBreakOpen, setGoldBreakOpen] = useState(false);
   return (
     <>
-      <Panel className="mb-4" kicker="Official gold" title="Region · central bank" kickerClass="text-[#ffd24a]" titleClass="text-[#ffd24a]">
+      <Panel className="mb-4" kicker="Official gold" title="Region · central bank" kickerClass="gold-css" titleClass="gold-css">
         <div className="grid gap-6 lg:grid-cols-2">
           <SlicePie
             bare
@@ -146,6 +148,8 @@ export function MetalBoards({ snap }: { snap: DeskSnapshot | null }) {
             legend={false}
             kicker="Sovereign metal"
             title="By region"
+            kickerClass="gold-css"
+            titleClass="gold-css"
             slices={goldRegions.map((r) => ({
               id: r.id,
               name: r.name,
@@ -164,6 +168,8 @@ export function MetalBoards({ snap }: { snap: DeskSnapshot | null }) {
             legend={false}
             kicker="Central banks"
             title="By bank"
+            kickerClass="gold-css"
+            titleClass="gold-css"
             slices={goldBanks.map((r) => ({
               id: r.id,
               name: r.name,
@@ -183,7 +189,7 @@ export function MetalBoards({ snap }: { snap: DeskSnapshot | null }) {
           aria-expanded={goldBreakOpen}
           className="mt-3 flex w-full items-baseline justify-between gap-3 rounded-md py-1 text-left hover:bg-fg/4"
         >
-          <span className="text-xs font-medium tracking-[0.08em] expand-ctl uppercase">
+          <span className="gold-css text-xs font-medium tracking-[0.08em] uppercase">
             Region · central bank breakdown
           </span>
           <span className="font-mono text-[11px] expand-ctl">
@@ -229,8 +235,9 @@ export function MetalBoards({ snap }: { snap: DeskSnapshot | null }) {
         <MetalPanel
           kicker="Store of value"
           title="Gold holdings"
-          kickerClass="text-[#ffd24a]"
-          titleClass="text-[#ffd24a]"
+          kickerClass="gold-css"
+          titleClass="gold-css"
+          headClass="gold-css"
           rows={gold}
           metal="Gold"
           spot={goldPx}
@@ -240,13 +247,15 @@ export function MetalBoards({ snap }: { snap: DeskSnapshot | null }) {
         <MetalPanel
           kicker="Store of value"
           title="Silver holdings"
-          kickerClass="text-[#c5d0dc]"
-          titleClass="text-[#c5d0dc]"
+          kickerClass="silver-css"
+          titleClass="silver-css"
+          headClass="silver-css"
           rows={silver}
           metal="Silver"
           spot={silverPx}
           empty="Waiting for SLV / PSLV / miners…"
           note="Spot from SI=F, else SLV ~1 oz/share. PAAS / WPM / SIL are equity claims on production."
+          noteClass="silver-css"
         />
       </div>
     </>
@@ -258,26 +267,30 @@ function MetalPanel({
   title,
   kickerClass,
   titleClass,
+  headClass,
   rows,
   metal,
   spot,
   empty,
   note,
+  noteClass,
 }: {
   kicker: string;
   title: string;
   kickerClass?: string;
   titleClass?: string;
+  headClass?: string;
   rows: MetalHolding[];
   metal: string;
   spot: number | null;
   empty: string;
   note: string;
+  noteClass?: string;
 }) {
   return (
     <Panel kicker={kicker} title={title} kickerClass={kickerClass} titleClass={titleClass}>
       <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
-        <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">Spot {metal} / oz</p>
+        <p className={cn("text-xs font-medium tracking-[0.08em] uppercase", headClass || "text-muted")}>Spot {metal} / oz</p>
         <p className={cn("font-mono text-2xl tabular-nums", USD_TONE)}>
           {spot != null ? money(spot, 2) : "—"}
         </p>
@@ -285,7 +298,7 @@ function MetalPanel({
       <div className="overflow-x-auto">
         <table className="w-full min-w-[28rem] text-left text-sm">
           <thead>
-            <tr className="border-b border-rule text-xs font-medium tracking-[0.08em] text-muted uppercase">
+            <tr className={cn("border-b border-rule text-xs font-medium tracking-[0.08em] uppercase", headClass || "text-muted")}>
               <th className="py-2 pr-3">Vehicle</th>
               <th className="py-2 pr-3 text-right">Last</th>
               <th className="py-2 pr-3 text-right">Day</th>
@@ -297,9 +310,9 @@ function MetalPanel({
             {rows.map((s) => (
               <tr key={s.symbol} className="border-b border-rule/70">
                 <td className="py-2 pr-3">
-                  <p className="font-medium text-fg">{s.symbol}</p>
-                  <p className="text-xs text-muted">{s.name}</p>
-                  <p className="text-[11px] text-muted">{s.held}</p>
+                  <p className={cn("font-medium", headClass === "gold-css" ? "gold-css" : headClass === "silver-css" ? "silver-css" : "text-fg")}>{s.symbol}</p>
+                  <p className={cn("text-xs", headClass === "silver-css" ? "silver-css" : "text-muted")}>{s.name}</p>
+                  <p className={cn("text-[11px]", headClass === "silver-css" ? "silver-css" : "text-muted")}>{s.held}</p>
                 </td>
                 <td className="py-2 pr-3 text-right font-mono tabular-nums">{s.last != null ? money(s.last, 2) : "—"}</td>
                 <td className="py-2 pr-3 text-right font-mono tabular-nums" style={{ color: chgHex(s.changePct) }}>
@@ -321,7 +334,7 @@ function MetalPanel({
           </tbody>
         </table>
       </div>
-      <p className="mt-3 text-xs text-muted">{note}</p>
+      <p className={cn("mt-3 text-xs", noteClass || "text-muted")}>{note}</p>
     </Panel>
   );
 }
@@ -398,6 +411,8 @@ function SlicePie({
   bare,
   compact,
   legend = true,
+  kickerClass,
+  titleClass,
 }: {
   kicker: string;
   title: string;
@@ -410,6 +425,8 @@ function SlicePie({
   bare?: boolean;
   compact?: boolean;
   legend?: boolean;
+  kickerClass?: string;
+  titleClass?: string;
 }) {
   const total = slices.reduce((s, r) => s + r.value, 0);
   const pie = slices.filter((r) => r.value > 0);
@@ -417,8 +434,8 @@ function SlicePie({
     <>
       {bare ? (
         <p className="mb-2">
-          <span className="block font-mono text-[11px] tracking-[0.12em] text-muted uppercase">{kicker}</span>
-          <span className="text-sm font-medium text-fg">{title}</span>
+          <span className={cn("block font-mono text-[11px] tracking-[0.12em] uppercase", kickerClass || "text-muted")}>{kicker}</span>
+          <span className={cn("text-sm font-medium", titleClass || "text-fg")}>{title}</span>
         </p>
       ) : null}
       <div
@@ -469,7 +486,7 @@ function SlicePie({
   );
   if (bare) return <div className={className}>{inner}</div>;
   return (
-    <Panel className={className} kicker={kicker} title={title}>
+    <Panel className={className} kicker={kicker} title={title} kickerClass={kickerClass} titleClass={titleClass}>
       {inner}
     </Panel>
   );

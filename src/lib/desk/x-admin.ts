@@ -12,22 +12,27 @@ export const ADMIN_X_PROVIDERS = ["grok-x", "twitter", "x"] as const;
  * Handles that must never be company X.
  * @S1R1US — blocked for breaking rules.
  * @_S1R1US_ — operator rejected.
+ * @S1R1S_AI — accidental; not the official desk.
  */
-const DEAD_COMPANY_HANDLES = new Set(["s1r1us", "_s1r1us_"]);
+const DEAD_COMPANY_HANDLES = new Set(["s1r1us", "_s1r1us_", "s1r1s_ai"]);
 
 /**
  * Brand / company account — sub of the operator. Never admin.
- * Live: @S1R1S_AI. Do not wire blocked @S1R1US / @_S1R1US_.
+ * Official: @S1R1US_AI (https://x.com/S1R1US_AI).
+ * Do not wire blocked @S1R1US / @_S1R1US_ or accidental @S1R1S_AI.
  */
-export const COMPANY_X_NAME = "S1R1S AI";
-export const COMPANY_X_HANDLE = "@S1R1S_AI";
-export const COMPANY_X_HANDLE_CORE = "S1R1S_AI";
-export const COMPANY_X_URL = "https://x.com/S1R1S_AI";
+export const COMPANY_X_NAME = "S1R1US AI";
+export const COMPANY_X_HANDLE = "@S1R1US_AI";
+export const COMPANY_X_HANDLE_CORE = "S1R1US_AI";
+export const COMPANY_X_URL = "https://x.com/S1R1US_AI";
 export const COMPANY_X_LABEL = `${COMPANY_X_NAME} (${COMPANY_X_HANDLE})`;
 export const COMPANY_X_BIO =
   "Company desk of S1R1US Labs · [ S1R1U$ <<L@B$>> ] · education only · not financial advice · not an offer of securities";
-/** Square 400×400 laser-ape — desk mark / future X profile pic. */
-export const COMPANY_X_AVATAR = "/s1r1us-avatar.jpg";
+/** Square S1R!US Godzilla Logo — site mark and X profile (400×400 at s1r1us-avatar.jpg). */
+export const COMPANY_X_AVATAR = "/s1r1us-godzilla-logo.jpg";
+export const COMPANY_X_AVATAR_X400 = "/s1r1us-avatar.jpg";
+export const COMPANY_X_LOGO_NAME = "S1R!US Godzilla Logo";
+export const COMPANY_X_LOGO_FILE = "/S1R!US-Godzilla-Logo.jpg";
 /** 1500×500 G0DZ1LLa vs bear header. */
 export const COMPANY_X_BANNER = "/s1r1us-x-banner.jpg";
 /** Full G0DZ1LLa vs bear frame. */
@@ -157,7 +162,7 @@ export function preferredXAccountId(value: unknown): string {
   return handle || "";
 }
 
-/** Live company handle only. Blocked @S1R1US / @_S1R1US_ never match. Never admin. */
+/** Live official company handle @S1R1US_AI only. Blocked @S1R1US / @_S1R1US_ and accidental @S1R1S_AI never match. Never admin. */
 export function looksLikeCompanyX(s: string | null | undefined) {
   if (!companyHandleSet()) return false;
   const core = handleCore(s);

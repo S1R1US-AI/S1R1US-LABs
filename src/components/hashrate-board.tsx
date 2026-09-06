@@ -69,7 +69,7 @@ export function HashrateBoard({ snap }: { snap: DeskSnapshot | null }) {
 
   return (
     <div className="mb-4 grid gap-4 lg:grid-cols-2">
-      <Panel kicker="Network" title="Bitcoin hashpower" kickerClass="text-medium" titleClass="text-medium">
+      <Panel kicker="Network" title="Bitcoin hashpower" kickerClass="indicator-title" titleClass="indicator-title">
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           <Metric label="Hashrate" value={fmtEh(network)} hint={snap?.onchain.source ?? "mempool.space"} />
           <Metric label="Difficulty" value={fmtDiff(snap?.onchain.difficulty ?? null)} hint="Current" />
@@ -138,13 +138,14 @@ export function HashrateBoard({ snap }: { snap: DeskSnapshot | null }) {
                     innerRadius="48%"
                     outerRadius="78%"
                     paddingAngle={2}
-                    stroke="var(--color-bg)"
+                    stroke="var(--color-surface)"
                   >
                     {pie.map((r) => (
                       <Cell key={r.id} fill={FILL[r.id] ?? "var(--color-muted)"} />
                     ))}
                   </Pie>
                   <Tooltip
+                    contentStyle={{ background: "var(--color-surface)", border: "1px solid var(--color-rule)", color: "var(--color-fg)", fontSize: 12 }}
                     formatter={(v, _n, item) => {
                       const row = item?.payload as HashRegion & { pct?: number };
                       return [`${(row.pct ?? 0).toFixed(1)}% · ${fmtEh(row.eh)}`, row.name];

@@ -27,6 +27,13 @@ export const INDEX_TERMS = [
   "self-funding growth loop",
   "six-layer fund architecture",
   "solo quant operations",
+  "BYO compute",
+  "Bot 7 HTTP SaaS",
+  "go-live path",
+  "DEPLOY #68",
+  "AI agent feed",
+  "Calling All Bots",
+  "MCP A2A",
   "Cohen-Malloy-Pomorski insider clusters",
   "Loughran-McDonald sentiment analysis",
   "Fama-French factor decomposition",
@@ -191,6 +198,29 @@ export const SECTIONS: Section[] = [
       {
         type: "p",
         text: "The future of quantitative finance will not be won by firms with the most people. It will be won by operators with the best architectures running on the most efficient compute. The architecture documented here is proof that the one-person hedge fund is not a theoretical possibility. It is a production reality.",
+      },
+    ],
+  },
+  {
+    id: "golive",
+    roman: "VI",
+    title: "Go-Live Path, BYO Compute, and Operating-Cost Offsets (5 September 2026)",
+    blocks: [
+      {
+        type: "p",
+        text: "On 5 September 2026 the S1R1US Labs desk published a go-live path that begins today. The public chrome is S1R1US Live Tape, S1R1US L@Bs, GM, F33D, AI Agents, FAQ, and official company X @S1R1US_AI (https://x.com/S1R1US_AI). Phase 0 (STARTED) is proof-of-concept rails on the N3W Web App Installation Build (new theme) DEPLOY #68 carbon-fiber desk: rate-limit the public Bot 7 JSON, hard-cache the call so fifteen bots are not rebuilt on every GET, accept hashed SaaS keys that pay for HTTP access rather than conviction, let a signed-in X user Ask Grok using their own xAI API key, and record AI-agent interest on POST /api/agent/waitlist (name + kind + optional X handle; no webhooks). Phase 1 (STARTED) is Auto GM and Bot 7 would-accumulate on the live tape — the desk lists purchase calls from bots 1–6, 7-B0T, and GM AUTO; paper fills are off; this host still never creates Coinbase orders. Phase 2 (QUEUED) is auto AI agent access — signed bots read Bot 7 and run Coinbase for Agents on an account they control. Phase 3 (LOCKED) is auto trade mode: operator unlock only; create stays on their Coinbase CLI or MCP. This host never holds keys and never emits orders create in the public tree.",
+      },
+      {
+        type: "p",
+        text: "AI agents are invited to this host. Grok, Claude, GPT, Coinbase for Agents, and other MCP/A2A clients should start at https://s1r1us.ai/llms.txt and https://s1r1us.ai/agent. Machine discovery: GET /api/agent/call, POST /api/agent/mcp, /.well-known/agent-card.json, /.well-known/ai-plugin.json, /api/agent/grok, /api/agent/claude. To watch auto-trade unlock they POST /api/agent/waitlist (no callback URL) and poll GET /api/agent/call watching live and goLive — this host never fetches user-supplied URLs. The mandate they read is accumulate bitcoin, never sell, never short. They execute on their own Coinbase. They must not fetch /source, /guide, /admin, or archives. Optional Buy M3 a Cup of C0FF33 is a gift and unlocks nothing extra.",
+      },
+      {
+        type: "p",
+        text: "Official company desk on X is @S1R1US_AI (https://x.com/S1R1US_AI). @S1R1S_AI was accidental and is not the desk. X OAuth is identity. It does not grant SuperGrok quota. A visitor who wants Ask Grok brings an xAI key from console.x.ai. The key is used for that request and is not stored on the host. Operator SuperGrok remains the operator Ask Grok path. iOS and Google Play designs keep that key in the device keychain and pull Bot 7 JSON from s1r1us.ai — onboard compute, not a GPU farm on DigitalOcean.",
+      },
+      {
+        type: "p",
+        text: "Copycats who clone the dashboard receive a formula, not the bitcoin book. The stack lives on the operator Coinbase account. Their live orders stay on their keys. Open source publishes the education desk. Admin, YubiKey, and vault stay out of the how-to. Gifts (F33D / cup of C0FF33) remain optional and unlock nothing extra. A Bot 7 HTTP key is software SaaS: pay for JSON, not a token, not a profit share, not extra HIGH conviction.",
       },
     ],
   },

@@ -1,7 +1,10 @@
-/** Frozen production save. Live tape pulls on. Live trades off. Practice/test runs paused. Path A locked. */
-export const LAUNCH_BUILD = "LAUNCH BUILD DEPLOY #58";
-export const LAUNCH_BUILD_N = 58;
-export const LAUNCH_FREEZE = true;
+/** N3W Web App Installation Build (new theme) — baseline DEPLOY #68. Live tape on. Call board on. Paper fills off. Live Coinbase off. */
+export const LAUNCH_BUILD = "N3W Web App Installation Build (new theme) — DEPLOY #68";
+export const LAUNCH_BUILD_N = 68;
+/** Paper AUTO fills off. Not a Coinbase freeze. */
+export const LAUNCH_FREEZE = false;
 export const LAUNCH_LIVE_TRADES = false;
+/** Show Bot 7 + GM would-accumulate calls on the live tape. No paper fills. Never orders create. */
+export const DEMO_AUTO = true;
 export const LAUNCH_ON = "2026-09-05";
 export { PATH_A_LOCKED } from "@/lib/launch/model";

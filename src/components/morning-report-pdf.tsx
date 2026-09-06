@@ -9,7 +9,9 @@ import { MORNING_PDF_BASE64, MORNING_PDF_NAME, MORNING_PDF_PAGES } from "@/lib/d
 import { useOperator } from "@/lib/desk/operator";
 import { useDeskTape } from "@/lib/desk/tape-client";
 import { morningAgent, morningFeeds, morningSecurity } from "@/lib/desk/morning-ops";
+import { GoLivePanel } from "@/components/go-live-panel";
 import { ANALYSIS_AS_OF } from "@/lib/desk/security";
+import { seoImgAlt } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
 type Report = {
@@ -146,7 +148,8 @@ export function MorningReportPdf() {
       {src ? (
         <img
           src={src}
-          alt={`S1R1U$ M0rning R3p0rt page ${page}`}
+          alt={seoImgAlt(`S1R1U$ M0rning R3p0rt page ${page}`)}
+          title={seoImgAlt(`S1R1U$ M0rning R3p0rt page ${page}`)}
           className="mt-4 w-full rounded-md border border-rule bg-black"
         />
       ) : null}
@@ -204,6 +207,9 @@ export function MorningReportPdf() {
       </div>
     </Panel>
     <GmMorningSection />
+    <div className="mt-4">
+      <GoLivePanel />
+    </div>
     <AgentMorningSection />
     <SecurityMorningSection />
     <FeedsMorningSection />
@@ -375,7 +381,7 @@ function FeedsMorningSection() {
       <p className="mt-3 text-xs leading-relaxed text-muted">
         2026 free stack still fit: Coinbase public last (no key), mempool.space / blockchain.info (on-chain),
         Alternative.me F&G, FRED, SoSoValue ETF, DeFiLlama stables, OKX/Bybit/HL public. CoinGlass and
-        CoinMarketCap stay out (paid keys). SuperGrok is the only paid service.
+        CoinMarketCap stay out (paid keys). SuperGrok is operator Ask Grok; visitors use BYO compute.
       </p>
     </Panel>
   );

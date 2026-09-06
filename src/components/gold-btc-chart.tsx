@@ -66,7 +66,7 @@ export function GoldBtcChart({ snap }: { snap: DeskSnapshot | null }) {
                 tickFormatter={(v) => Number(v).toFixed(1)}
               />
               <Tooltip
-                contentStyle={{ background: "var(--color-bg)", border: "1px solid var(--color-rule)", fontSize: 12 }}
+                contentStyle={{ background: "var(--color-surface)", border: "1px solid var(--color-rule)", fontSize: 12, color: "var(--color-fg)" }}
                 formatter={(v) => [`${Number(v).toFixed(2)} oz`, "Gold / BTC"]}
               />
               <Line type="monotone" dataKey="oz" stroke={GOLD} strokeWidth={2.25} dot={false} />

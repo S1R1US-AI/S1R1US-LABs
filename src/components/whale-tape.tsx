@@ -1,4 +1,6 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import { Panel } from "@/components/shell";
+import { LiqHeatmap } from "@/components/tape-charts";
 import { money } from "@/components/helios-card";
 import type { DeskSnapshot, WhalePrint } from "@/lib/desk/types";
 import { cn, BTC_TONE, USD_TONE } from "@/lib/utils";
@@ -24,7 +26,43 @@ function sideClass(side: WhalePrint["side"]) {
   return "text-medium";
 }
 
-export function WhaleTape({ snap }: { snap: DeskSnapshot | null }) {
+export function LeverageWhaleRow({ snap }: { snap: DeskSnapshot | null }) {
+  const [open, setOpen] = useState(false);
+  const heatRef = useRef<HTMLDivElement>(null);
+  const [heatH, setHeatH] = useState<number | null>(null);
+  useLayoutEffect(() => {
+    const el = heatRef.current;
+    if (!el) return;
+    const apply = () => setHeatH(el.offsetHeight);
+    apply();
+    const ro = new ResizeObserver(apply);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [snap]);
+  return (
+    <div className="mt-4 grid gap-4 lg:grid-cols-2 lg:items-start">
+      <div ref={heatRef} className="min-w-0">
+        <LiqHeatmap snap={snap} />
+      </div>
+      <div
+        className="min-w-0"
+        style={!open && heatH ? { maxHeight: heatH, overflow: "hidden" } : undefined}
+      >
+        <WhaleTape snap={snap} open={open} onToggle={() => setOpen((v) => !v)} />
+      </div>
+    </div>
+  );
+}
+
+export function WhaleTape({
+  snap,
+  open = false,
+  onToggle,
+}: {
+  snap: DeskSnapshot | null;
+  open?: boolean;
+  onToggle?: () => void;
+}) {
   const rows = [...(snap?.whales ?? [])].sort((a, b) => b.t - a.t || Number(b.side === "buy") - Number(a.side === "buy"));
   const cutoff = Date.now() - 24 * 60 * 60 * 1000;
   const day = rows.filter((w) => w.t >= cutoff);
@@ -42,7 +80,22 @@ export function WhaleTape({ snap }: { snap: DeskSnapshot | null }) {
   const book24 = snap?.btc.volume24h;
 
   return (
-    <Panel kicker="BTC WHALES" title="Large BTC Prints" className="h-full" kickerClass="text-medium">
+    <Panel
+      kicker="BTC WHALES"
+      title={
+        <button
+          type="button"
+          aria-expanded={open}
+          onClick={onToggle}
+          className="expand-ctl text-left"
+        >
+          Large BTC Prints
+        </button>
+      }
+      className="min-w-0"
+      kickerClass="text-medium"
+    >
+      <div>
       <div className="mb-3">
         <div className="flex h-2 overflow-hidden rounded-sm">
           <div className="bg-high" style={{ width: `${buyPct}%` }} />
@@ -54,7 +107,7 @@ export function WhaleTape({ snap }: { snap: DeskSnapshot | null }) {
         </p>
       </div>
       {rows.length ? (
-        <ul className="min-h-[60dvh] space-y-1">
+        <ul className="space-y-1">
           {rows.map((w, i) => (
             <li key={`${w.id}-${i}`} className="flex items-baseline justify-between gap-2 font-mono text-xs">
               <span className="w-8 shrink-0 text-muted">{ago(w.t)}</span>
@@ -68,12 +121,12 @@ export function WhaleTape({ snap }: { snap: DeskSnapshot | null }) {
           ))}
         </ul>
       ) : (
-        <p className="min-h-[60dvh] text-sm text-muted">Waiting for Coinbase / Hyperliquid / OKX prints or ≥5 BTC on-chain outs.</p>
+        <p className="text-sm text-muted">Waiting for Coinbase / Hyperliquid / OKX prints or ≥5 BTC on-chain outs.</p>
       )}
       <div className="mt-4 -mx-4 border-t border-rule px-4 pt-4 sm:-mx-5 sm:px-5">
         <p className="text-[11px] font-medium tracking-[0.14em] text-medium uppercase">24h whale print volume</p>
         <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-          <span className={cn("font-mono text-2xl font-semibold tabular-nums sm:text-3xl", BTC_TONE)}>
+          <span className="coinbase-orange font-mono text-2xl font-semibold tabular-nums sm:text-3xl">
             {volBtc ? volBtc.toLocaleString("en-US", { maximumFractionDigits: volBtc >= 100 ? 0 : 2 }) : "—"} BTC
           </span>
           <span className={cn("font-mono text-2xl font-semibold tabular-nums sm:text-3xl", USD_TONE)}>
@@ -82,7 +135,7 @@ export function WhaleTape({ snap }: { snap: DeskSnapshot | null }) {
         </div>
         <p className="mt-3 text-[11px] font-medium tracking-[0.14em] text-medium uppercase">24h average</p>
         <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-          <span className={cn("font-mono text-xl font-semibold tabular-nums sm:text-2xl", BTC_TONE)}>
+          <span className="coinbase-orange font-mono text-xl font-semibold tabular-nums sm:text-2xl">
             {avgBtcHr ? avgBtcHr.toLocaleString("en-US", { maximumFractionDigits: 2 }) : "—"} BTC/hr
           </span>
           <span className={cn("font-mono text-xl font-semibold tabular-nums sm:text-2xl", USD_TONE)}>
@@ -106,6 +159,7 @@ export function WhaleTape({ snap }: { snap: DeskSnapshot | null }) {
         Most recent print first (FILO). Volume and average are this tape’s last 24 hours
         (Coinbase / Hyperliquid / OKX + mempool ≥5 BTC), not every whale in the market.
       </p>
+      </div>
     </Panel>
   );
 }

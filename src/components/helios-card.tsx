@@ -32,28 +32,29 @@ export function money(n: number, d = 0) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: d });
 }
 
-export function stanceClass(s: Stance) {
+export function stanceClass(s: Stance | string) {
   if (s === "BUY") return "text-high";
   if (s === "ACCUMULATE") return "call-accumulate";
-  if (s === "HOLD" || s === "TRIM") return "text-sell";
-  if (s === "WAIT") return "text-wait";
+  if (s === "HOLD" || s === "TRIM") return "call-hold";
+  if (s === "WAIT") return "call-wait";
   return "text-muted";
 }
 
-/** Bot-7 / GM: green only on an announced BUY/ACCUMULATE. HOLD/TRIM stay red. */
+/** Bot-7 / GM: green only on an announced BUY/ACCUMULATE. HOLD/TRIM stay red. WAIT purple. */
 export function callStanceClass(s: string) {
   if (s === "BUY") return "text-high";
   if (s === "ACCUMULATE") return "call-accumulate";
-  if (s === "HOLD" || s === "TRIM" || s === "SHORT") return "text-sell";
-  if (s === "WAIT") return "text-wait";
+  if (s === "HOLD" || s === "TRIM" || s === "SHORT") return "call-hold";
+  if (s === "WAIT") return "call-wait";
   if (s === "HEDGE") return "text-tbill";
   return "text-muted";
 }
 
 export function convictionClass(conviction: string, stance?: string) {
-  if (conviction === "LOW") return "text-sell";
+  if (conviction === "LOW") return "call-hold";
   if (conviction === "MEDIUM") return "call-medium";
-  if (conviction === "HIGH" && (stance === "BUY" || stance === "ACCUMULATE")) return "text-high";
+  if (conviction === "HIGH" && stance === "ACCUMULATE") return "call-high-accum";
+  if (conviction === "HIGH" && stance === "BUY") return "text-high";
   return "text-muted";
 }
 
@@ -62,8 +63,9 @@ export function bannerTone(call: { stance: string; conviction: string } | null |
   if (!call) return "text-high";
   if (call.conviction === "LOW") return "text-sell";
   if (call.stance === "BUY" || call.stance === "ACCUMULATE") return "text-high";
-  if (call.conviction === "MEDIUM") return "text-tab";
-  if (call.stance === "HOLD" || call.stance === "TRIM" || call.stance === "SHORT") return "text-sell";
+  if (call.stance === "WAIT") return "call-wait";
+  if (call.stance === "HOLD" || call.stance === "TRIM" || call.stance === "SHORT") return "call-hold";
+  if (call.conviction === "MEDIUM") return "call-medium";
   return "text-muted";
 }
 
@@ -89,7 +91,7 @@ export function CallWords({
 }) {
   const stanceWord = call.stance === "TRIM" ? "SELL" : call.stance;
   return (
-    <p className={cn("uppercase", className)}>
+    <p className={cn("min-w-0 uppercase", className)}>
       <span className={convictionClass(call.conviction, call.stance)}>{call.conviction} CONVICTION</span>
       {" "}
       <span className={callStanceClass(call.stance)}>{stanceWord}</span>
@@ -102,11 +104,11 @@ const CALL_INK: Record<string, string> = {
   ACCUMULATE: "call-accumulate",
   BUY: "text-high",
   HIGH: "text-high",
-  LOW: "text-sell",
-  HOLD: "text-sell",
-  TRIM: "text-sell",
-  SELL: "text-sell",
-  WAIT: "text-wait",
+  LOW: "call-hold",
+  HOLD: "call-hold",
+  TRIM: "call-hold",
+  SELL: "call-hold",
+  WAIT: "call-wait",
 };
 
 /** Color MEDIUM (blue) and ACCUMULATE (green) inside a free-text scan line. */
@@ -150,6 +152,7 @@ export function HeliosCard({
   kicker = "Bot 7",
   title = APP_CALLS,
   canAct = true,
+  canAsk,
   tape,
 }: {
   call: HeliosCall | null;
@@ -164,22 +167,23 @@ export function HeliosCard({
   kicker?: string;
   title?: string;
   canAct?: boolean;
+  canAsk?: boolean;
   tape?: CallTape | null;
 }) {
+  const askOk = canAsk ?? canAct;
   const [confirm, setConfirm] = useState(false);
   const [copyAsk, setCopyAsk] = useState(false);
   const [summaryOpen, setSummaryOpen] = useState(false);
   const passed = call ? call.checks.filter((c) => c.pass).length : 0;
-  const failed = call ? call.checks.filter((c) => !c.pass) : [];
   return (
     <Panel kicker={kicker} title={title} kickerClass={bannerTone(call)} titleClass={bannerTone(call)}>
       {call ? (
         <>
           <div className="flex flex-wrap items-baseline gap-3">
-            <CallWords call={call} className="text-3xl font-semibold tracking-tight" />
+            <CallWords call={call} className="min-w-0 break-words text-2xl font-semibold tracking-tight sm:text-3xl" />
             <p className={cn("font-mono text-xs", USD_TONE)}>clip {money(call.clipUsd, 0)}</p>
           </div>
-          {tape ? (
+          {tape && canAct ? (
             <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-4">
               <div>
                 <dt className="text-[13px] tracking-[0.14em] text-muted uppercase">BTC-USD</dt>
@@ -221,7 +225,35 @@ export function HeliosCard({
                 </dd>
               </div>
             </dl>
+          ) : tape ? (
+            <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3">
+              <div>
+                <dt className="text-[13px] tracking-[0.14em] text-muted uppercase">BTC-USD</dt>
+                <dd className={cn("mt-0.5 font-mono text-[17px] tabular-nums", USD_TONE)}>
+                  {tape.price != null ? money(tape.price, 0) : "—"}
+                </dd>
+              </div>
+              <div>
+                <dt className={cn("text-[13px] tracking-[0.14em] uppercase", rsiTone(tape.rsi, tape.rsiAvg ?? null) || "text-muted")}>
+                  RSI-14
+                </dt>
+                <dd className={cn("mt-0.5 font-mono text-[17px] tabular-nums", rsiTone(tape.rsi, tape.rsiAvg ?? null))}>
+                  {tape.rsi != null ? tape.rsi.toFixed(1) : "—"}
+                </dd>
+              </div>
+              <div>
+                <dt className={cn("text-[13px] tracking-[0.14em] uppercase", fgTone(tape.fg, tape.fgLabel) || "text-muted")}>
+                  Fear & Greed
+                </dt>
+                <dd className={cn("mt-0.5 font-mono text-[17px] tabular-nums", fgTone(tape.fg, tape.fgLabel))}>
+                  {tape.fg != null ? String(tape.fg) : "—"}
+                </dd>
+              </div>
+            </dl>
           ) : null}
+          <p className="mt-3 text-sm leading-relaxed text-muted">{call.brief}</p>
+          {canAct ? (
+            <>
           <button
             type="button"
             onClick={() => setSummaryOpen((o) => !o)}
@@ -229,7 +261,7 @@ export function HeliosCard({
             className="mt-3 inline-flex min-h-10 items-center gap-2 text-sm font-medium expand-ctl hover:underline"
           >
             <Paperclip className="size-4 shrink-0" aria-hidden />
-            B0T 7 Summary
+            Overseer
           </button>
           {summaryOpen ? (
             <div className="mt-2 space-y-3">
@@ -246,12 +278,10 @@ export function HeliosCard({
               </ul>
             </div>
           ) : (
-            <p className="mt-2 text-xs text-muted">
-              {failed.length === 0
-                ? `${passed} of ${call.checks.length} gates pass.`
-                : `${passed} of ${call.checks.length} · FAIL ${failed.map((c) => gateShort(c.label)).join(" · ")}. Expand for the list.`}
-            </p>
+            <p className="mt-2 text-xs text-muted">Admin — expand for proprietary Bot 7 overseer.</p>
           )}
+            </>
+          ) : null}
           <pre className="mt-4 overflow-x-auto rounded-md bg-bg px-3 py-2 font-mono text-[11px] text-accent">
             {call.cli}
           </pre>
@@ -269,13 +299,24 @@ export function HeliosCard({
               <Copy className="size-4" />
               {copied ? "Copied" : "Copy CLI"}
             </Button>
-            <Button onClick={onAsk} disabled={!canAct || asking}>
+            <Button onClick={onAsk} disabled={!askOk || asking}>
               {asking ? <LoaderCircle className="size-4 animate-spin" /> : <ScanSearch className="size-4" />}
               Ask Grok
             </Button>
           </div>
           {canAct ? null : (
-            <p className="mt-3 text-sm text-muted">Sign in to paper-fill, copy CLI, or Ask Grok.</p>
+            <p className="mt-3 text-sm text-muted">
+              Sign in to paper-fill or copy CLI.{" "}
+              {askOk ? "Ask Grok is on." : (
+                <>
+                  Ask Grok:{" "}
+                  <a href="/compute" className="text-tab hover:underline">
+                    BYO C0MPUT3
+                  </a>
+                  .
+                </>
+              )}
+            </p>
           )}
           {grokErr ? <p className="mt-3 text-sm text-down">{grokErr}</p> : null}
           {grok ? (

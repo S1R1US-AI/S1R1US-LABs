@@ -443,7 +443,7 @@ function BotDelta({
     live: live.find((x) => x.id === b.id) ?? live[i],
   }));
   return (
-    <Panel className="mt-4" kicker="B0TS 1–6" title="Live vs this lab">
+    <Panel className="mt-4" kicker="B0TS 1–6" title="Live vs this lab" kickerClass="bots-1-6">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead>

@@ -7,11 +7,11 @@ import { SystemOverview } from "@/components/system-overview";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell } from "@/components/shell";
 import { loadDeskVault, secondFactorStatus } from "@/lib/desk/access";
-import { APP_NAME, TAB_DESK, TAB_LAB } from "@/lib/brand";
+import { APP_NAME, TAB_DESK, TAB_LAB, seoImgAlt } from "@/lib/brand";
 import { LIVE_UNLOCKED } from "@/lib/desk/practice";
 import { useOperator } from "@/lib/desk/operator";
 import { BUDGET, CHECKLIST, COIN_CHAIN_REC, COIN_DISPLAY, COIN_DOMAIN, COIN_NAME_NOTE, COIN_STANDARD, COIN_TICKER, COMPANY_X_STEPS, DNS_STEPS, DOMAINS, FUND_INTEGRATION, FUND_LANES, GIFT_RECEIPT, GODADDY_IO, HOWEY_POSTURE, ICP_NOTE, LIQ_BANDS, MINT_STEPS, PATH_A_LOCKED, PATH_A_NAME, PATH_A_ORDER, PLATFORM_ROWS, RH_NOTE, TIERS, TOKEN_LAUNCHED, TOKEN_UTILITY, type LaunchCheck } from "@/lib/launch/model";
-import { ADMIN_X_HANDLE, ADMIN_X_LABEL, COMPANY_X_ART, COMPANY_X_AVATAR, COMPANY_X_BANNER, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_URL } from "@/lib/desk/x-admin";
+import { ADMIN_X_HANDLE, ADMIN_X_LABEL, COMPANY_X_ART, COMPANY_X_AVATAR_X400, COMPANY_X_BANNER, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_LOGO_FILE, COMPANY_X_LOGO_NAME, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { CompanyAvatar } from "@/components/company-x";
 import { probeLaunch, type DomainProbe } from "@/lib/launch/probes";
 import { probeSiteHealth, type SiteHealth } from "@/lib/launch/site-health";
@@ -432,16 +432,24 @@ export function LaunchDesk() {
             </p>
             <img
               src={COMPANY_X_BANNER}
-              alt="company X header"
+              alt={seoImgAlt("S1R1US AI (@S1R1US_AI) · G0DZ1LLa M0D3 (Godzilla mode) company X header · S1R1US Labs [ S1R1U$ <<L@B$>> ]")}
+              title={seoImgAlt("S1R1US AI (@S1R1US_AI) · G0DZ1LLa M0D3 (Godzilla mode) company X header")}
               className="mt-3 w-full max-w-xl rounded-md border border-rule object-cover"
             />
             <div className="mt-3 flex flex-wrap gap-2">
               <a
-                href={COMPANY_X_AVATAR}
-                download="S1R1US-avatar.jpg"
+                href={COMPANY_X_LOGO_FILE}
+                download="S1R!US-Godzilla-Logo.jpg"
                 className="inline-flex h-10 min-h-10 items-center rounded-md border border-rule px-3 text-sm hover:bg-fg/6"
               >
-                Download avatar
+                Download {COMPANY_X_LOGO_NAME}
+              </a>
+              <a
+                href={COMPANY_X_AVATAR_X400}
+                download="S1R!US-Godzilla-Logo-400.jpg"
+                className="inline-flex h-10 min-h-10 items-center rounded-md border border-rule px-3 text-sm hover:bg-fg/6"
+              >
+                X profile 400×400
               </a>
               <a
                 href={COMPANY_X_BANNER}
@@ -535,7 +543,7 @@ export function LaunchDesk() {
         </div>
         <p className="mt-3 text-xs text-muted">
           Figures are 2026 street ranges. pump.fun mint is $0 — do not budget $150k as seed LP.
-          SuperGrok stays the only paid data service on the trading desk. Token legal is a different bill.
+          SuperGrok remains the operator Ask Grok path. Visitors use BYO compute. Token legal is a different bill.
         </p>
       </Panel>
 
