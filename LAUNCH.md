@@ -5,8 +5,12 @@ Production baseline after the professional carbon-fiber desk theme.
 - Site: https://s1r1us.ai
 - Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 - Branch: `main`
-- Tag: `n3w-web-app-install-deploy-68`
+- Official checkpoint tag: `n3w-web-app-install-deploy-68`
+- Official checkpoint commit: `415e5650ee66c3ce1d2a0c10f4ce170c545f1421`
+- Official checkpoint branch: `checkpoint/n3w-web-app-install-deploy-68`
 - Host: DigitalOcean App Platform, Dockerfile, HTTP 8080, 1 GB, autodeploy **off**
+
+This tag is the verified live desk. If the site needs repair or rebuild, deploy **this tag** (or the checkpoint branch), not a later untested `main`.
 
 ## What is on
 
