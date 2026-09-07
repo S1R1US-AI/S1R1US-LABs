@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   build:
@@ -22,14 +23,19 @@ jobs:
         run: npm ci
       - name: Build DigitalOcean bundle
         run: npm run build:do
-      - name: Commit .output
+      - name: Push branch and open PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name "S1R1US L@B$"
-          git config user.email "324942684+S1R1US-AI@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BRANCH="rebuild-output-$(date -u +%Y%m%d-%H%M)"
+          git checkout -b "$BRANCH"
           git add .output
           if git diff --cached --quiet; then
             echo "No .output changes"
             exit 0
           fi
           git commit -m "rebuild .output from source (PR3D1CT10N$ / checkpoint 68)"
-          git push origin HEAD:main
+          git push origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "rebuild .output (checkpoint 68)" --body "Compiled .output from current source. Merge this PR so DigitalOcean can deploy PR3D1CT10N$. Build itself already passed."
