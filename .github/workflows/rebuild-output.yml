@@ -1,0 +1,35 @@
+name: Rebuild .output
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Build DigitalOcean bundle
+        run: npm run build:do
+      - name: Commit .output
+        run: |
+          git config user.name "S1R1US L@B$"
+          git config user.email "324942684+S1R1US-AI@users.noreply.github.com"
+          git add .output
+          if git diff --cached --quiet; then
+            echo "No .output changes"
+            exit 0
+          fi
+          git commit -m "rebuild .output from source (PR3D1CT10N$ / checkpoint 68)"
+          git push origin HEAD:main
