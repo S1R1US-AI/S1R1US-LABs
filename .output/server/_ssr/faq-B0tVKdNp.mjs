@@ -4,7 +4,7 @@ import { A as LOCK_HEADLINE, An as TAB_BEARS, Ar as TAB_OSS_ROADMAP, B as OWL_HE
 import { _ as SeoImage, h as RainbowGodzillaText, m as Panel, s as GodzillaModeLabel, v as Shell } from "./shell-Ct9ufj2c.mjs";
 import { t as SeoCopy } from "./seo-copy-n_mfd1Dr.mjs";
 import { n as SupportDonate } from "./support-donate-BSJeptWc.mjs";
-import { O as FAQ_ITEMS } from "./router-CUxAs7hq.mjs";
+import { O as FAQ_ITEMS } from "./router-b37fhG0o.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/faq-B0tVKdNp.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

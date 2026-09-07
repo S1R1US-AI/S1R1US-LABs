@@ -22,10 +22,11 @@ console.log("[copy-pglite] pinned pglite.wasm + pglite.data into .output/server/
 const ssrCssDir = join(root, "node_modules/.nitro/vite/services/ssr/assets");
 const publicAssets = join(root, ".output/public/assets");
 mkdirSync(publicAssets, { recursive: true });
-if (existsSync(ssrCssDir)) {
-  for (const name of readdirSync(ssrCssDir)) {
-    if (!name.startsWith("styles-") || !name.endsWith(".css")) continue;
-    copyFileSync(join(ssrCssDir, name), join(publicAssets, name));
-    console.log(`[copy-pglite] pinned SSR stylesheet ${name} into .output/public/assets`);
-  }
+const llms = join(root, "public/llms.txt");
+if (existsSync(llms)) {
+  const well = join(root, ".output/public/.well-known");
+  mkdirSync(well, { recursive: true });
+  copyFileSync(llms, join(root, ".output/public/llms.txt"));
+  copyFileSync(llms, join(well, "llms.txt"));
+  console.log("[copy-pglite] pinned public/llms.txt into .output/public and .well-known");
 }

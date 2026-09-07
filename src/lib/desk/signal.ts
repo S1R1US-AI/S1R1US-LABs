@@ -358,7 +358,7 @@ export function heliosCall(snap: DeskSnapshot, briefs: BotBrief[], navUsd: numbe
     .filter(Boolean)
     .join(" ");
 
-  const brief = `${conviction} ${stance}. Clip $${Math.round(clipUsd)}. Stack bitcoin — never sell, never short. Preview only. Dry-run on your Coinbase. This host never trades.`;
+  const brief = `${conviction} ${stance}. Clip $${Math.round(clipUsd)}. Pred overlay ${pred.stance} — ${pred.checkLabel}. Stack bitcoin — never sell, never short. Preview only. Dry-run on your Coinbase. This host never trades.`;
 
   const side = "BUY";
   const preview = {

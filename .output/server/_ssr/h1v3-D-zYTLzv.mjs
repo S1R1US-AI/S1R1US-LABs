@@ -9,7 +9,7 @@ import { _ as SeoImage, l as HiveSwarmLabel, m as Panel, u as LeaderBoardLabel, 
 import { t as SeoCopy } from "./seo-copy-n_mfd1Dr.mjs";
 import { t as QuantFlexWelcome } from "./quant-flex-welcome-DcEbKTRl.mjs";
 import { n as HiveResourcePanel, t as ByoConnectPanel } from "./byo-connect-panel-WU925yas.mjs";
-import { k as GITHUB_REPO_URL } from "./router-CUxAs7hq.mjs";
+import { k as GITHUB_REPO_URL } from "./router-b37fhG0o.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/h1v3-D-zYTLzv.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

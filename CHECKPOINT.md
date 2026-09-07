@@ -21,10 +21,10 @@ Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + morning problems + **
 - Live feed title: **AI Agent SUP3R B0WL**.
 - Morning report: Alignment Score 1–100 + **Problems found last 24 hours**. healLiveSim keeps data pulls with sim. Stray practice killed.
 - W1S3 0WL$ Forum LIVE. H1V3 SW@RM paper hive. BYO connect. L3AD3R B0ARD / C@LL 0UT / W0rLd CUP.
-- As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68 (`CHECKPOINT_FOLD` 2026-09-07T04:35:00.000Z). Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
+- As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68 (`CHECKPOINT_FOLD` 2026-09-07T14:50:00.000Z). Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
 - FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use` `#btc-bets` `#oss-roadmap` `#morning-report`. FinCEN s8 LOCKED.
 - Official X `@S1R1US_AI`. This host never places Coinbase orders.
-- Source for this fold is on **`main`** and **`checkpoint/n3w-web-app-install-deploy-68`** (not the protected tag). DigitalOcean live-production: `deploy_on_push: true` on `main` — rebuild copies `.output`, then push. Do not move the tag.
+- Source for this fold is on **`main`** and **`checkpoint/n3w-web-app-install-deploy-68`** (not the protected tag). Leftover Pr3d paper book / Ph0 W@ll3t runtime (`data/pred-book.json`, MCP pred_list/pred_arm/pred_bet) is **gone**. 7-B0T still reads Polymarket/Kalshi as a sub-analyst overlay. DigitalOcean live-production: `deploy_on_push: true` on `main` — rebuild copies `.output`, then push. Do not move the tag.
 
 ## Repair / rebuild
 
