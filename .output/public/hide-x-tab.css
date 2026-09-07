@@ -1,0 +1,5 @@
+.desk-tabs a.x-handle-nav,
+.desk-tabs a.x-handle-nav:hover,
+.desk-tabs a.x-handle-nav:focus {
+  display: none !important;
+}
