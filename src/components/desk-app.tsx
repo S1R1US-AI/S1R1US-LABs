@@ -34,7 +34,8 @@ import { rollBots, DESK_POLL_MS } from "@/lib/desk/roll-bots";
 import { initialStop, STOP_DEFAULT } from "@/lib/desk/stops";
 import { STARTING_CASH, usePaper } from "@/lib/desk/store";
 import { GOLD_TICKERS, SILVER_TICKERS } from "@/lib/desk/proxy-book";
-import type { DeskSnapshot, HeliosCall } from "@/lib/desk/types";
+import type { DeskSnapshot, HeliosCall, PredictionKind, PredictionMarket } from "@/lib/desk/types";
+import { PRED_KIND_LABEL } from "@/lib/desk/prediction-markets";
 import { cn, BTC_TONE, USD_TONE, fgTone, kimchiHex, kimchiTone, rsiTone } from "@/lib/utils";
 import { APP_CALLS } from "@/lib/brand";
 
@@ -648,6 +649,7 @@ function QuoteList({ rows }: { rows: NonNullable<DeskSnapshot["quotes"]> }) {
 function WirePanel({ snap }: { snap: DeskSnapshot | null }) {
   const filings = snap?.filings ?? [];
   const headlines = snap?.headlines ?? [];
+  const preds = snap?.predictionMarkets ?? [];
   const [open, setOpen] = useState(true);
   return (
     <Panel kicker="EDGAR · Free wire" title="Filings & headlines" kickerClass="indicator-title" titleClass="indicator-title">
@@ -658,43 +660,103 @@ function WirePanel({ snap }: { snap: DeskSnapshot | null }) {
         className="flex w-full items-baseline justify-between gap-3 rounded-md py-1 text-left hover:bg-fg/4"
       >
         <span className="font-mono text-sm text-fg">
-          {filings.length} filings · {headlines.length} wire
+          {filings.length} filings · {headlines.length} wire · {preds.length} BTC bets
         </span>
         <span className="shrink-0 font-mono text-[11px] expand-ctl">{open ? "collapse" : "expand"}</span>
       </button>
       {open ? (
-        <div className="mt-3 grid gap-6 sm:grid-cols-2">
-          <div>
-            <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">SEC</p>
-            <ul className="space-y-2 text-sm">
-              {filings.slice(0, 6).map((f, i) => (
-                <li key={`${f.cik}-${f.filed}-${i}`}>
-                  <p className="font-mono text-[11px] text-muted">
-                    {f.name} · {f.form} · {f.filed}
-                  </p>
-                  <p className="truncate">{f.title}</p>
-                </li>
-              ))}
-              {!filings.length ? <li className="text-muted">No filings this cycle.</li> : null}
-            </ul>
+        <>
+          <div className="mt-3 grid gap-6 sm:grid-cols-2">
+            <div>
+              <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">SEC</p>
+              <ul className="space-y-2 text-sm">
+                {filings.slice(0, 6).map((f, i) => (
+                  <li key={`${f.cik}-${f.filed}-${i}`}>
+                    <p className="font-mono text-[11px] text-muted">
+                      {f.name} · {f.form} · {f.filed}
+                    </p>
+                    <p className="truncate">{f.title}</p>
+                  </li>
+                ))}
+                {!filings.length ? <li className="text-muted">No filings this cycle.</li> : null}
+              </ul>
+            </div>
+            <div>
+              <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">Wire</p>
+              <ul className="space-y-2 text-sm">
+                {headlines.slice(0, 6).map((h) => (
+                  <li key={h.url}>
+                    <p className="font-mono text-[11px] text-muted">{h.source}</p>
+                    <a href={h.url} target="_blank" rel="noreferrer" className="line-clamp-2 hover:underline">
+                      {h.title}
+                    </a>
+                  </li>
+                ))}
+                {!headlines.length ? <li className="text-muted">No headlines this cycle.</li> : null}
+              </ul>
+            </div>
           </div>
-          <div>
-            <p className="mb-2 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">Wire</p>
-            <ul className="space-y-2 text-sm">
-              {headlines.slice(0, 6).map((h) => (
-                <li key={h.url}>
-                  <p className="font-mono text-[11px] text-muted">{h.source}</p>
-                  <a href={h.url} target="_blank" rel="noreferrer" className="line-clamp-2 hover:underline">
-                    {h.title}
-                  </a>
-                </li>
-              ))}
-              {!headlines.length ? <li className="text-muted">No headlines this cycle.</li> : null}
-            </ul>
-          </div>
-        </div>
+          <PredictionTape rows={preds} />
+        </>
       ) : null}
     </Panel>
+  );
+}
+
+function volShort(n: number | null) {
+  if (n == null || !Number.isFinite(n)) return "—";
+  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}k`;
+  return `$${n.toFixed(0)}`;
+}
+
+function PredictionTape({ rows }: { rows: PredictionMarket[] }) {
+  const groups: PredictionKind[] = ["ath", "monthly", "other"];
+  return (
+    <div className="pred-tape mt-6">
+      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+        <p className="font-mono text-[11px] tracking-[0.12em] text-muted uppercase">BTC prediction markets</p>
+        <p className="text-xs text-muted">Polymarket · Kalshi · display only · this host never takes bets</p>
+      </div>
+      {rows.length ? (
+        <div className="grid gap-4 lg:grid-cols-3">
+          {groups.map((kind) => {
+            const list = rows.filter((r) => r.kind === kind);
+            return (
+              <div key={kind} className="pred-col">
+                <p className="pred-col-h">{PRED_KIND_LABEL[kind]}</p>
+                <ul className="space-y-2.5 text-sm">
+                  {list.length ? (
+                    list.map((r) => (
+                      <li key={r.id} className="pred-row">
+                        <a href={r.url} target="_blank" rel="noreferrer" className="pred-title hover:underline">
+                          {r.strike ? `${r.strike}` : r.title}
+                        </a>
+                        <p className="font-mono text-[11px] text-muted">
+                          {r.venue} · {volShort(r.volumeUsd)}
+                        </p>
+                        <div className="pred-yes">
+                          <span className="pred-yes-track" aria-hidden>
+                            <span className="pred-yes-fill" style={{ width: `${Math.min(100, Math.max(0, r.yesPct ?? 0))}%` }} />
+                          </span>
+                          <strong className={cn("pred-yes-pct", (r.yesPct ?? 0) >= 50 ? "text-high" : "text-muted")}>
+                            {r.yesPct != null ? `${r.yesPct.toFixed(r.yesPct >= 10 ? 0 : 1)}% Yes` : "—"}
+                          </strong>
+                        </div>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-muted">No {PRED_KIND_LABEL[kind].toLowerCase()} markets this cycle.</li>
+                  )}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="text-sm text-muted">No BTC prediction markets this cycle.</p>
+      )}
+    </div>
   );
 }
 

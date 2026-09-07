@@ -33,6 +33,7 @@ import {
   TAB_HOVER_APP,
   TAB_HOVER_BOARD,
   TAB_HOVER_HIVE,
+  TAB_HOVER_PRED,
   TAB_HOVER_COFFEE,
   TAB_HOVER_DESK,
   TAB_HOVER_FAQ,
@@ -43,6 +44,7 @@ import {
   TAB_HOVER_LAB,
   TAB_HOVER_SITEMAP,
   TAB_LAB,
+  TAB_PRED,
 } from "@/lib/brand";
 import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
 import { GodzillaMark, GodzillaModeLabel, HiveSwarmLabel, LeaderBoardLabel } from "@/components/godzilla-mark";
@@ -69,10 +71,6 @@ export function Shell({
     <div className="flex min-h-dvh w-full min-w-0 flex-col overflow-x-hidden bg-bg text-fg">
       <header className="desk-nav-fiber no-print sticky top-0 z-30 border-b border-rule">
         <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-x-3 gap-y-1 px-3 py-2 sm:px-4">
-          <Link to="/" className="flex min-w-0 items-center gap-2" title={TAB_HOVER_HOME} aria-label={TAB_HOVER_HOME}>
-            <CompanyAvatar size={28} className="h-7 w-7 ring-1 ring-rule" />
-            <span className="truncate text-[0.9625rem] font-semibold tracking-[0.04em] text-fg">S1R1US</span>
-          </Link>
           <nav className="desk-tabs flex flex-wrap gap-1">
             {LINKS.map((l) => (
               <Link
@@ -251,8 +249,14 @@ export function Shell({
               <Link to="/h1v3" className="board-nav gm-nav hive-nav shrink-0 hover:underline" title={TAB_HOVER_HIVE}>
                 <HiveSwarmLabel className="text-[11px] font-semibold" />
               </Link>
+              <Link to="/pr3d" className="shrink-0 text-oss hover:underline" title={TAB_HOVER_PRED}>
+                {TAB_PRED}
+              </Link>
               <Link to="/l0ck" className="legal-purple shrink-0 hover:underline" title="LoCK3D STATUS (Locked Status) · how to lock and unlock">
                 LoCK3D STATUS
+              </Link>
+              <Link to="/roadmap" className="shrink-0 text-oss hover:underline" title="OSS Roadmap · functions, go-live status, estimated timeline">
+                OSS Roadmap
               </Link>
               <Link to="/forum" className="forum-nav shrink-0 hover:underline" title={TAB_HOVER_FORUM}>
                 <ForumTitle />
@@ -273,6 +277,16 @@ export function Shell({
                 login
               </Link>
             </nav>
+            <p className="mt-3 text-xs">
+              <Link
+                to="/roadmap"
+                className="font-semibold text-oss hover:underline"
+                title="OSS Roadmap · functions, go-live status, estimated timeline"
+              >
+                OSS Roadmap
+              </Link>
+              <span className="text-muted"> · functions · go-live status · full live estimated 2026-12-01</span>
+            </p>
           </div>
         </div>
       </footer>

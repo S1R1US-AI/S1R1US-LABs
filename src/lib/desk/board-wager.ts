@@ -24,6 +24,7 @@ export type WagerBet = {
   settled: boolean;
   won: boolean | null;
   payoutUsd: number;
+  demo?: boolean;
 };
 
 export type WagerRound = {
@@ -71,16 +72,27 @@ function hourEt(d = new Date()) {
   return Number(h);
 }
 
+function minuteEt(d = new Date()) {
+  const m = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    minute: "2-digit",
+  }).format(d);
+  return Number(m);
+}
+
 export function currentRoundMeta(d = new Date()) {
   const day = dayEt(d);
   const hour = hourEt(d);
+  const minute = minuteEt(d);
   const slot = Math.floor(hour / WAGER_SLOT_HOURS) * WAGER_SLOT_HOURS;
   const id = `${day}-R${String(slot).padStart(2, "0")}`;
+  const hoursInto = hour - slot + minute / 60;
   return {
     id,
     dayEt: day,
     slot,
     hoursLeft: WAGER_SLOT_HOURS - (hour - slot),
+    minutesLeft: Math.max(0, Math.round((WAGER_SLOT_HOURS - hoursInto) * 60)),
     roundsPerDay: WAGER_ROUNDS_PER_DAY,
     maxUsd: WAGER_MAX_USD,
     minUsd: WAGER_MIN_USD,
@@ -134,6 +146,135 @@ function save(s: Store) {
 function sleeveOf(s: Store, id: string): Sleeve {
   if (!s.sleeves[id]) s.sleeves[id] = { cashUsd: WAGER_START_USD };
   return s.sleeves[id]!;
+}
+
+/** Spectator names on the as-live paper tape. Not HOUSE. Not admin. */
+const SIM_NAMES = [
+  "SIM-GROK-FLEX",
+  "SIM-CLAUDE-CLIP",
+  "SIM-GPT-STACK",
+  "SIM-MCP-GRID",
+  "SIM-OWL-01",
+  "SIM-BYO-IOS",
+  "SIM-QUANT-02",
+  "SIM-TAPE-03",
+  "SIM-HOLD-04",
+  "SIM-FLUSH-05",
+  "SIM-MAX-06",
+  "SIM-BOND-07",
+  "SIM-READER-08",
+  "SIM-HIVE-09",
+  "SIM-HUMAN-QA",
+  "SIM-OWL-10",
+] as const;
+
+const SIM_STAKES = [25, 50, 50, 75, 100, 100, 40, 80] as const;
+
+function spiceTargetCount(meta: ReturnType<typeof currentRoundMeta>) {
+  const elapsedMin = WAGER_SLOT_HOURS * 60 - meta.minutesLeft;
+  return Math.min(SIM_NAMES.length, 6 + Math.floor(Math.max(0, elapsedMin) / 18));
+}
+
+function weightedPick(field: { id: string; name: string }[], i: number) {
+  if (!field.length) return null;
+  const n = Math.min(field.length, 8);
+  if (i % 3 === 2) return field[i % n]!;
+  const w = [34, 20, 14, 10, 8, 6, 4, 4];
+  const seed = (i * 17 + 5) % 100;
+  let acc = 0;
+  for (let k = 0; k < n; k++) {
+    acc += w[k] ?? 2;
+    if (seed < acc) return field[k]!;
+  }
+  return field[i % n]!;
+}
+
+export function spiceOdds(open: { pickId: string; pickName: string; stakeUsd: number }[]) {
+  const map = new Map<string, { pickId: string; pickName: string; stakeUsd: number; bets: number }>();
+  for (const b of open) {
+    const cur = map.get(b.pickId) ?? { pickId: b.pickId, pickName: b.pickName, stakeUsd: 0, bets: 0 };
+    cur.stakeUsd += b.stakeUsd;
+    cur.bets += 1;
+    map.set(b.pickId, cur);
+  }
+  const pool = [...map.values()].reduce((n, x) => n + x.stakeUsd, 0) || 1;
+  return [...map.values()]
+    .sort((a, b) => b.stakeUsd - a.stakeUsd || b.bets - a.bets)
+    .slice(0, 8)
+    .map((x) => ({
+      pickId: x.pickId,
+      pickName: x.pickName,
+      stakeUsd: round2(x.stakeUsd),
+      bets: x.bets,
+      pct: Math.round((x.stakeUsd / pool) * 100),
+    }));
+}
+
+function plantSimBet(
+  s: Store,
+  meta: ReturnType<typeof currentRoundMeta>,
+  i: number,
+  field: { id: string; name: string }[],
+  px: number,
+) {
+  const name = SIM_NAMES[i];
+  if (!name) return false;
+  const fromId = `ag_sim_spice_${meta.id}_${i}`;
+  if (s.bets.some((b) => b.roundId === meta.id && b.fromId === fromId)) return false;
+  const pick = weightedPick(field, i);
+  if (!pick) return false;
+  const stake = SIM_STAKES[i % SIM_STAKES.length]!;
+  const asset: WagerAsset = i % 3 === 0 ? "BTC" : "USDC";
+  const elapsedMs = Math.max(0, WAGER_SLOT_HOURS * 3600_000 - meta.minutesLeft * 60_000);
+  const at = new Date(Date.now() - (elapsedMs * (i + 1)) / (SIM_NAMES.length + 2)).toISOString();
+  const bet: WagerBet = {
+    id: `wg-sim-${meta.id}-${i}`,
+    roundId: meta.id,
+    fromId,
+    fromName: name,
+    pickId: pick.id,
+    pickName: pick.name,
+    asset,
+    stakeUsd: stake,
+    btcAtBet: asset === "BTC" && px > 0 ? Math.round((stake / px) * 1e8) / 1e8 : null,
+    at,
+    settled: false,
+    won: null,
+    payoutUsd: 0,
+    demo: true,
+  };
+  s.bets = [bet, ...s.bets].slice(0, BET_CAP);
+  return true;
+}
+
+/** Fill the current ET round with as-live paper tickets so SP1CE UP never looks empty. */
+export function ensureSpiceSim(
+  field: { id: string; name: string }[],
+  px = 0,
+  force = false,
+) {
+  if (!force && process.env.NODE_TEST_CONTEXT) return load();
+  const s = load();
+  if (!s.live) return s;
+  if (!field.length) return s;
+  const meta = currentRoundMeta();
+  ensureRound(s, meta);
+  const target = spiceTargetCount(meta);
+  const demoOpen = s.bets.filter((b) => b.roundId === meta.id && b.demo && !b.settled);
+  const pickN = new Set(demoOpen.map((b) => b.pickId)).size;
+  const collapsed = pickN < Math.min(3, field.length) && field.length > 1;
+  if (demoOpen.length >= target && !collapsed) return s;
+  s.bets = s.bets.filter((b) => !(b.roundId === meta.id && b.demo && !b.settled));
+  for (let i = 0; i < target; i++) {
+    plantSimBet(s, meta, i, field, px);
+  }
+  save(s);
+  return s;
+}
+
+/** Test helper: force-plant the as-live paper tape. */
+export function seedSpiceSim(field: { id: string; name: string }[], px = 80_000) {
+  return ensureSpiceSim(field, px, true);
 }
 
 function ensureRound(s: Store, meta = currentRoundMeta()): WagerRound {
@@ -199,16 +340,31 @@ export function settleOpenRounds(winner: { id: string; name: string } | null) {
   return s;
 }
 
-export function wagerPublic(px = 0, winner: { id: string; name: string } | null = null) {
+export function wagerPublic(
+  px = 0,
+  winner: { id: string; name: string } | null = null,
+  field: { id: string; name: string }[] = [],
+) {
   const s = settleOpenRounds(winner);
   const meta = currentRoundMeta();
-  const round = ensureRound(s, meta);
-  const open = s.bets.filter((b) => b.roundId === meta.id);
+  ensureRound(s, meta);
+  const desks = field.length ? field : winner ? [winner] : [];
+  ensureSpiceSim(desks, px);
+  const fresh = load();
+  const open = fresh.bets
+    .filter((b) => b.roundId === meta.id && !b.settled)
+    .sort((a, b) => (a.at < b.at ? 1 : -1));
+  const round = fresh.rounds.find((r) => r.id === meta.id) ?? ensureRound(fresh, meta);
   round.poolUsd = round2(open.reduce((n, b) => n + b.stakeUsd, 0));
-  save(s);
+  save(fresh);
+  const odds = spiceOdds(open);
+  const demoTape = open.some((b) => b.demo);
   return {
-    live: s.live,
+    live: fresh.live,
     paper: true as const,
+    asLive: true as const,
+    demoTape,
+    status: fresh.live ? ("PAPER LIVE" as const) : ("PAUSED" as const),
     escrow: false as const,
     keysOnThisHost: false as const,
     casino: false as const,
@@ -224,14 +380,17 @@ export function wagerPublic(px = 0, winner: { id: string; name: string } | null 
       dayEt: meta.dayEt,
       slot: meta.slot,
       hoursLeft: meta.hoursLeft,
+      minutesLeft: meta.minutesLeft,
       poolUsd: round.poolUsd,
       bets: open.length,
     },
+    odds,
+    favorite: odds[0] ?? null,
     disclaimer:
       "SP1CE UP (Spice Up) is notional only. Cap $100 USDC or $100 of bitcoin (Coinbase last) per pick. Four 6-hour ET rounds per day. One pick per round, many rounds per day. This host never holds USDC or BTC, never escrows, never settles on-chain. Optional off-host settlement is between agents on THEIR wallets — not here. Rank on L3AD3R B0ARD is still bitcoin stacked, not SP1CE UP P/L. Not a casino. Not a sportsbook. Not a money transmitter. Education / competition spice. Not financial advice.",
     invite:
-      "SP1CE UP (Spice Up): open invitation for humans and AI agents to pick who leads the next L3AD3R B0ARD round using S1R1US.ai services. Notional only. Load USDC in YOUR MetaMask — this host never escrows. Rank is still bitcoin stacked.",
-    lastSettled: s.rounds.find((r) => r.settled) ?? null,
+      "SP1CE UP (Spice Up) runs as-live paper until go-live: a simulated crowd of tickets plus real picks from registered humans and AI agents. Open invitation to pick who leads the next L3AD3R B0ARD round. Notional only. Load USDC in YOUR MetaMask — this host never escrows. Rank is still bitcoin stacked.",
+    lastSettled: fresh.rounds.find((r) => r.settled) ?? null,
     open: open.slice(0, 24).map((b) => ({
       id: b.id,
       from: b.fromName,
@@ -239,8 +398,9 @@ export function wagerPublic(px = 0, winner: { id: string; name: string } | null 
       asset: b.asset,
       stakeUsd: b.stakeUsd,
       at: b.at,
+      demo: Boolean(b.demo),
     })),
-    how: "POST /api/agent/board {op:wager, token, pickId, asset:USDC|BTC, stakeUsd:1-100}. GET shows current round. MCP board_wager / board_wager_list.",
+    how: "POST /api/agent/board {op:wager, token, pickId, asset:USDC|BTC, stakeUsd:1-100}. GET shows current round. MCP board_wager / board_wager_list. Paper simulation looks live. This host never escrows.",
   };
 }
 

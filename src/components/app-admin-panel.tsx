@@ -3,6 +3,9 @@ import { Link } from "@tanstack/react-router";
 import { Lock, LogOut, RefreshCw } from "lucide-react";
 import { AskGrokPanel } from "@/components/ask-grok-panel";
 import { Lock3dStatusPanel } from "@/components/lock3d-status";
+import { MorningReportPdf } from "@/components/morning-report-pdf";
+import { LiveSimPanel } from "@/components/live-sim-panel";
+import { ChampionshipSimPanel } from "@/components/championship-sim-panel";
 import { money, CallWords } from "@/components/helios-card";
 import { Button } from "@/components/ui/button";
 import { Shell } from "@/components/shell";
@@ -22,6 +25,7 @@ type Tab = "console" | "wallet" | "paper" | "coin" | "website" | "access" | "sec
 export function AppAdminPanel() {
   const unlocked = useAppAdmin((s) => s.unlocked);
   const you = useAppAdmin((s) => s.you);
+  const token = useAppAdmin((s) => s.token);
   const refresh = useAppAdmin((s) => s.refresh);
   const lock = useAppAdmin((s) => s.lock);
   const [mounted, setMounted] = useState(false);
@@ -98,6 +102,7 @@ export function AppAdminPanel() {
             defaultName={you.handle}
             defaultKind={you.kind}
             defaultHandle={you.handle}
+            adminToken={token}
           />
         ) : null}
         {tab === "hive" ? <HivePane /> : null}
@@ -200,6 +205,7 @@ function ClaimForm() {
 }
 
 function ConsolePane() {
+  const token = useAppAdmin((s) => s.token);
   const { snap, refresh } = useDeskTape();
   const cash = usePaper((s) => s.cashUsd);
   const btc = usePaper((s) => s.btc);
@@ -229,6 +235,9 @@ function ConsolePane() {
     <div className="mt-6 grid gap-4 lg:grid-cols-2">
       <section className="lg:col-span-2">
         <Lock3dStatusPanel className="mt-0" />
+        <LiveSimPanel token={token} />
+        <ChampionshipSimPanel token={token} />
+        <MorningReportPdf token={token} canPauseLibrary={false} />
       </section>
       <section className="rounded-lg border border-rule bg-surface p-4 sm:p-5">
         <div className="flex items-center justify-between gap-2">
@@ -328,8 +337,8 @@ function PaperPane() {
         <li>Paper fills use Coinbase last. This desk never places a live order.</li>
       </ol>
       <p className="mt-3 text-xs leading-relaxed text-muted">
-        Device paper book only. The host research paper and championship simulation pause stay on s1r1us.ai system Admin.
-        This copy cannot pause World Cup / C@LL 0UT simulation. Pause {TAB_HIVE} from the {TAB_HIVE} tab.
+        Device paper book only. The host research paper stays on s1r1us.ai system Admin. Championship World Cup / C@LL 0UT pause is on this copy and on system Admin.
+        Pause championship World Cup / C@LL 0UT simulation, the as-live G M0D3 AUTO cycle, and {TAB_HIVE} from Console / Security / {TAB_HIVE}.
       </p>
     </section>
   );
@@ -414,9 +423,10 @@ function SecurityPane() {
         Lock this Admin session. Paper only. Never paste Coinbase keys or wallet seeds. Combine phone compute with
         an online key — both ACCUMULATE or WAIT. Copy-admin is a device-bound HMAC session (12h) plus mandate — not
         system 2FA. Host Yubi / FIDO2 stay on s1r1us.ai /admin. Compete on SUP3R B0WL from the SUP3R B0WL tab with a
-        separate board token. Pause {TAB_HIVE} from this panel — championship World Cup pause stays on s1r1us.ai system
-        Admin.
+        separate board token. Pause {TAB_HIVE}, the as-live G M0D3 AUTO / AI agents cycle, and the championship
+        World Cup / C@LL 0UT simulation from this panel. Copy-admin cannot open s1r1us.ai /admin, Yubi, or vault.
       </p>
+      {token ? <ChampionshipSimPanel token={token} /> : null}
       {token ? <HiveAdminPanel token={token} /> : null}
       <Button className="mt-4" type="button" onClick={() => lock()}>
         <LogOut className="size-4" />

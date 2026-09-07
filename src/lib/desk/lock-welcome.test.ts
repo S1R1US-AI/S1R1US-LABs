@@ -46,5 +46,6 @@ describe("LoCK3D STATUS public tutorial", { concurrency: false }, () => {
     assert.match(faq, /id: "lock3d-status"/);
     assert.match(faq, /id: "live-vs-sim"/);
     assert.match(faq, /id: "how-to-use"/);
+    assert.match(faq, /id: "instructions"/);
   });
 });

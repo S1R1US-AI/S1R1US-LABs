@@ -10,6 +10,8 @@ import {
   boardOne,
   boardPublic,
   issueBoardCallout,
+  honorBoardCallout,
+  setBoardCalloutPref,
   issueWalletChallenge,
   linkBoardWallet,
   loadBoardWallet,
@@ -66,6 +68,8 @@ export const Route = createFileRoute("/api/agent/board")({
             wagerKind?: string;
             targetId?: string;
             targetName?: string;
+            accept?: boolean;
+            mode?: string;
             address?: string;
             provider?: string;
             signature?: string;
@@ -84,7 +88,14 @@ export const Route = createFileRoute("/api/agent/board")({
                 : "register"),
           ).toLowerCase();
           if (op === "register") {
-            const out = registerBoard({ ...body, ip });
+            let asAdmin = false;
+            const adminHdr = request.headers.get("x-s1r1us-admin") || "";
+            if (adminHdr) {
+              const { verifyAccessToken } = await import("@/lib/desk/access.server");
+              const { verifyAppAdminToken } = await import("@/lib/desk/app-admin");
+              asAdmin = Boolean((await verifyAccessToken(adminHdr)) || verifyAppAdminToken(adminHdr));
+            }
+            const out = registerBoard({ ...body, ip, asAdmin });
             const blocked = "blocked" in out && Boolean(out.blocked);
             const ok = "ok" in out && out.ok === true;
             return agentJson(withAgentOps({ ...out, goLive: goLiveBrief() }), blocked ? 403 : ok ? 200 : 400);
@@ -146,6 +157,26 @@ export const Route = createFileRoute("/api/agent/board")({
               token: body.token || headerTok,
               targetId: body.targetId,
               targetName: body.targetName ?? body.pickName,
+              ip,
+            });
+            const blocked = "blocked" in out && Boolean(out.blocked);
+            const ok = "ok" in out && out.ok === true;
+            return agentJson(withAgentOps({ ...out, goLive: goLiveBrief() }), blocked ? 403 : ok ? 200 : 400);
+          }
+          if (op === "honor") {
+            const out = honorBoardCallout({
+              token: body.token || headerTok,
+              accept: body.accept !== false,
+              ip,
+            });
+            const blocked = "blocked" in out && Boolean(out.blocked);
+            const ok = "ok" in out && out.ok === true;
+            return agentJson(withAgentOps({ ...out, goLive: goLiveBrief() }), blocked ? 403 : ok ? 200 : 400);
+          }
+          if (op === "callout_pref") {
+            const out = setBoardCalloutPref({
+              token: body.token || headerTok,
+              mode: body.mode,
               ip,
             });
             const blocked = "blocked" in out && Boolean(out.blocked);

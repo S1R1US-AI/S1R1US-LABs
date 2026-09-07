@@ -11,7 +11,7 @@ import { Lock3dRail } from "@/components/lock3d-status";
 import { AUTO_RUN_CASH, AUTO_RUN_LABEL } from "@/lib/desk/auto-run";
 import { DEFAULT_GM_VARS, GM_NAME, gmCall } from "@/lib/desk/gm";
 import { SeoImage } from "@/components/seo-image";
-import { SEO_TAB_GM_AUTO, TAB_BOT7, TAB_GM_AUTO, TAB_GM_AUTO_TAIL } from "@/lib/brand";
+import { GIF_AI_BTC_BOT, GIF_AI_BTC_BOT_EQ, GIF_AI_BTC_BOT_NAME, SEO_TAB_GM_AUTO, TAB_BOT7, TAB_GM_AUTO, TAB_GM_AUTO_TAIL } from "@/lib/brand";
 
 function isPurchase(stance: string | undefined) {
   if (!stance) return false;
@@ -171,7 +171,7 @@ export function DeskWorkspace({
           {grok ? <p className="mt-2 whitespace-pre-wrap border-t border-rule pt-2 text-sm leading-relaxed">{grok}</p> : null}
         </aside>
 
-        <aside className="relative flex min-h-0 min-w-0 flex-col overflow-hidden carbon-fiber p-3">
+        <aside id="bot7" className="relative flex min-h-0 min-w-0 flex-col overflow-hidden carbon-fiber p-3">
           <div className="relative z-10 rounded-sm bg-bg/50 px-1 backdrop-blur-[1px]">
           <p className="bots-1-6 text-[10px] font-semibold tracking-[0.1em] uppercase">Bots 1–6</p>
           {briefs.map((b, i) => (
@@ -206,12 +206,23 @@ export function DeskWorkspace({
           ) : null}
           </div>
           <div className="gm-holo mt-2 flex-1">
-            <SeoImage
-              src="/gzilla-holo.jpg"
-              desc="G0DZ1LLa M0D3 techno Godzilla hologram. Godzilla mode. AI AGENTS. AI Bitcoin hedge fund desk at S1R1US Labs."
-              width={640}
-              height={640}
-            />
+            <Link
+              to="/gm"
+              hash="auto"
+              className="block h-full min-h-11"
+              title={GIF_AI_BTC_BOT_EQ}
+              aria-label={`${GIF_AI_BTC_BOT_EQ} · open G M0D3 AUTO`}
+            >
+              <SeoImage
+                src={GIF_AI_BTC_BOT}
+                alt={GIF_AI_BTC_BOT_NAME}
+                title={GIF_AI_BTC_BOT_EQ}
+                desc={GIF_AI_BTC_BOT_EQ}
+                width={640}
+                height={960}
+                className="h-full w-full cursor-pointer object-cover object-center"
+              />
+            </Link>
           </div>
         </aside>
       </div>

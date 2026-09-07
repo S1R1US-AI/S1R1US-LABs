@@ -21,7 +21,7 @@ import { loadAgentSnapshot } from "./agent-feed";
 import { boardDailyPublic, type BoardDaily } from "./board-daily";
 import { hasBoardPic, saveBoardPic } from "./board-pics";
 import { placeWager, settleOpenRounds, wagerAdmin, wagerPublic, wagerSleeve } from "./board-wager";
-import { calloutPublic, issueCallout, placeFightWager, tickCallout, SYSTEM_KING_ID, SYSTEM_KING_NAME } from "./board-callout";
+import { calloutPublic, issueCallout, placeFightWager, tickCallout, honorCallout, setCalloutPref, calloutPrefOf, SYSTEM_KING_ID, SYSTEM_KING_NAME } from "./board-callout";
 import { cupPublic, simAdmin } from "./world-cup";
 import {
   WALLET_CHALLENGE_MS,
@@ -101,6 +101,7 @@ export type BoardAgent = {
   wallet?: BoardWallet;
   walletChallenge?: { nonce: string; exp: number; at: string } | null;
   system?: boolean;
+  admin?: boolean;
 };
 
 type Store = {
@@ -426,6 +427,7 @@ function publicAgent(a: BoardAgent, px: number, rank: number | null) {
     compute: a.compute,
     house: Boolean(a.house),
     system: Boolean(a.system) || a.id === SYSTEM_KING_ID,
+    admin: Boolean(a.admin),
     designer: a.designer,
     purpose: a.purpose,
     pic: hasBoardPic(a.id),
@@ -555,7 +557,11 @@ export function boardPublic(px = 0) {
     top,
     practiceAlwaysOn: true as const,
     morning: boardMorning(px),
-    wager: wagerPublic(px, leader ? { id: leader.id, name: leader.name } : null),
+    wager: wagerPublic(
+      px,
+      leader ? { id: leader.id, name: leader.name } : null,
+      top.map((a) => ({ id: a.id, name: a.name })),
+    ),
     callout,
     cup,
     sim: cup.sim,
@@ -645,6 +651,7 @@ export function registerBoard(input: {
   designer?: string | null;
   purpose?: string | null;
   ip?: string;
+  asAdmin?: boolean;
 }) {
   const ip = (input.ip ?? "local").slice(0, 64);
   const rawName = String(input.name ?? "");
@@ -694,6 +701,7 @@ export function registerBoard(input: {
     mandate: true,
     compute,
     house: false,
+    admin: Boolean(input.asAdmin),
     designer,
     purpose,
     log: [],
@@ -760,7 +768,7 @@ export async function tickBoard(input: {
     }
     const snap = await loadAgentSnapshot();
     const px = snap.btc?.price ?? 0;
-    return tickCallout({ id: agent.id, name: agent.name, action, sizeUsd: input.sizeUsd, px });
+    return tickCallout({ id: agent.id, name: agent.name, action, sizeUsd: input.sizeUsd, px, admin: Boolean(agent.admin) });
   }
   if (bookKind === "official" && s.status === "PAUSED") {
     return {
@@ -868,6 +876,14 @@ export function boardMe(token: string, px = 0) {
       practice: agent.practice.fills.slice(0, 12),
     },
     wagerSleeveUsd: wagerSleeve(agent.id).cashUsd,
+    adminDesk: Boolean(agent.admin),
+    calloutPref: calloutPrefOf(agent.id, {
+      id: agent.id,
+      name: agent.name,
+      admin: Boolean(agent.admin),
+      system: Boolean(agent.system),
+      kind: agent.kind,
+    }),
     adminCredentials: false as const,
     trade: false as const,
   };
@@ -1085,14 +1101,83 @@ export function issueBoardCallout(input: { token?: string; targetId?: string; ta
     recordIntrusion({ kind: "agent-inject", detail: "board callout target injection", ip });
     return { ...agentBlockedPayload("inject"), error: "blocked" as const };
   }
-  const target =
+  const targetAgent =
     s.agents.find((a) => a.id === raw) || s.agents.find((a) => a.name.toLowerCase() === raw.toLowerCase()) || null;
+  const targetIs7 = raw === SYSTEM_KING_ID || raw.toLowerCase() === SYSTEM_KING_NAME.toLowerCase() || raw.toLowerCase() === "7-b0t" || raw.toLowerCase() === "7-bot";
+  const targetDesk = targetAgent
+    ? {
+        id: targetAgent.id,
+        name: targetAgent.name,
+        house: targetAgent.house,
+        purpose: targetAgent.purpose,
+        admin: Boolean(targetAgent.admin),
+        system: Boolean(targetAgent.system),
+        kind: targetAgent.kind,
+      }
+    : targetIs7
+      ? {
+          id: SYSTEM_KING_ID,
+          name: SYSTEM_KING_NAME,
+          house: false,
+          purpose: "System 7-B0T paper desk.",
+          admin: false,
+          system: true,
+          kind: "other",
+        }
+      : null;
+  let gmManualUnlocked = true;
+  for (const p of ["/tmp/lock-status.json", "/workspace/data/lock-status.json"]) {
+    try {
+      const raw = JSON.parse(readFileSync(p, "utf8")) as { locked?: { gmManual?: boolean } };
+      if (typeof raw?.locked?.gmManual === "boolean") {
+        gmManualUnlocked = !raw.locked.gmManual;
+        break;
+      }
+    } catch {
+      /* missing */
+    }
+  }
   return issueCallout({
-    from: { id: agent.id, name: agent.name, house: agent.house, purpose: agent.purpose },
-    target: target
-      ? { id: target.id, name: target.name, house: target.house, purpose: target.purpose }
-      : null,
+    from: {
+      id: agent.id,
+      name: agent.name,
+      house: agent.house,
+      purpose: agent.purpose,
+      admin: Boolean(agent.admin),
+      system: Boolean(agent.system),
+      kind: agent.kind,
+    },
+    target: targetDesk,
+    gmManualUnlocked,
   });
+}
+
+export function honorBoardCallout(input: { token?: string; accept?: boolean; ip?: string }) {
+  const ip = (input.ip ?? "local").slice(0, 64);
+  const token = String(input.token ?? "");
+  if (inspectText(token).block || inspectAgentInput(token).block) {
+    recordIntrusion({ kind: "agent-inject", detail: "board honor injection", ip });
+    return { ...agentBlockedPayload("inject"), error: "blocked" as const };
+  }
+  const s = load();
+  const agent = findByToken(s, token);
+  if (!agent) return { ok: false as const, error: "Unknown token. Register first. This is not admin." };
+  return honorCallout({ id: agent.id, accept: input.accept !== false });
+}
+
+export function setBoardCalloutPref(input: { token?: string; mode?: string; ip?: string }) {
+  const ip = (input.ip ?? "local").slice(0, 64);
+  const token = String(input.token ?? "");
+  if (inspectText(token).block || inspectAgentInput(token).block) {
+    recordIntrusion({ kind: "agent-inject", detail: "board callout pref injection", ip });
+    return { ...agentBlockedPayload("inject"), error: "blocked" as const };
+  }
+  const s = load();
+  const agent = findByToken(s, token);
+  if (!agent) return { ok: false as const, error: "Unknown token. Register first. This is not admin." };
+  const mode = String(input.mode ?? "manual").toLowerCase();
+  const next = mode === "auto" || mode === "pause" ? mode : "manual";
+  return setCalloutPref({ id: agent.id, mode: next });
 }
 
 function walletOf(s: Store, address: string) {

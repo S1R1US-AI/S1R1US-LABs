@@ -31,6 +31,21 @@ export type Headline = {
   published: string;
 };
 
+export type PredictionVenue = "Polymarket" | "Kalshi";
+export type PredictionKind = "ath" | "monthly" | "other";
+
+export type PredictionMarket = {
+  id: string;
+  venue: PredictionVenue;
+  kind: PredictionKind;
+  title: string;
+  strike: string | null;
+  yesPct: number | null;
+  volumeUsd: number | null;
+  end: string;
+  url: string;
+};
+
 export type HeatBucket = {
   price: number;
   bidUsd: number;
@@ -310,6 +325,7 @@ export type DeskSnapshot = {
   quotes: Quote[];
   filings: Filing[];
   headlines: Headline[];
+  predictionMarkets: PredictionMarket[];
   asia: AsiaTape;
   em: EmTape;
   capital: CapitalTape;

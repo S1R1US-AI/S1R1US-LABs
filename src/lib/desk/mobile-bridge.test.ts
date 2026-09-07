@@ -23,6 +23,7 @@ describe("mobile-bridge", () => {
     assert.ok(paths.includes("/c0ut"));
     assert.ok(paths.includes("/h1v3"));
     assert.ok(paths.includes("/l0ck"));
+    assert.ok(paths.includes("/roadmap"));
     assert.ok(paths.includes("/compute"));
     assert.ok(paths.includes("/agent"));
     assert.ok(paths.includes("/app"));

@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { MCP_TOOLS } from "./agent-security.ts";
 import { byoConnectPublic } from "./byo-connect.ts";
 import { systemHealth } from "./system-health.ts";
+import { CHECKPOINT_BUILD_N, checkpointId } from "../launch/checkpoint.ts";
 
 const proto = readFileSync(new URL("./agent-protocol.ts", import.meta.url), "utf8");
 const ping = readFileSync(new URL("../../routes/api/agent.ping.ts", import.meta.url), "utf8");
@@ -40,12 +41,12 @@ describe("BYO connect + health", { concurrency: false }, () => {
 
   it("checkpoint-68 health score is A-range and practice cannot arm Coinbase", () => {
     const h = systemHealth();
-    assert.equal(h.checkpoint, "68");
+    assert.equal(h.checkpoint, checkpointId(CHECKPOINT_BUILD_N));
     assert.equal(h.liveUnlocked, false);
     assert.equal(h.trade, false);
     assert.equal(h.practiceCannotArmCoinbase, true);
     assert.equal(h.copyAdminMayPauseHive, true);
-    assert.equal(h.copyAdminCannotPauseChampionship, true);
+    assert.equal(h.copyAdminCannotPauseChampionship, false);
     assert.ok(h.overall >= 85);
     assert.ok(h.security.score >= 90);
     assert.ok(h.function.score >= 80);

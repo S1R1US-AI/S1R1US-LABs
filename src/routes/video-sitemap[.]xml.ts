@@ -24,7 +24,7 @@ function videoSitemapXml() {
       <video:family_friendly>yes</video:family_friendly>
       <video:live>no</video:live>
       <video:requires_subscription>no</video:requires_subscription>
-      <video:publication_date>2026-09-06</video:publication_date>
+      <video:publication_date>2026-09-07</video:publication_date>
       <video:tag>${v.pack === "bowl" ? "SUP3R B0WL of AI Agents" : "AI Trading Bot Cost"}</video:tag>
       <video:tag>AI agents</video:tag>
       <video:tag>bitcoin accumulation agent</video:tag>
@@ -37,7 +37,7 @@ function videoSitemapXml() {
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>${origin}/media</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

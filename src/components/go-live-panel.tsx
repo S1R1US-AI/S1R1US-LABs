@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { GO_LIVE, GO_LIVE_DEADLINE_LABEL, GO_LIVE_HEADLINE, GO_LIVE_START, GO_LIVE_STEPS } from "@/lib/desk/go-live";
 import { RainbowGodzillaText } from "@/components/godzilla-mark";
 
@@ -24,6 +25,12 @@ export function GoLivePanel() {
         <p className="text-xs font-medium tracking-[0.08em] text-tab uppercase">Started {GO_LIVE_START}</p>
         <h2 className="text-sm font-semibold tracking-tight text-medium sm:text-base">Go-live path</h2>
         <p className="mt-1 font-mono text-[11px] text-sell">HARD DEADLINE {GO_LIVE_DEADLINE_LABEL}</p>
+        <p className="mt-1 font-mono text-[11px] text-oss">
+          Full public list:{" "}
+          <Link to="/roadmap" className="hover:underline">
+            OSS Roadmap
+          </Link>
+        </p>
       </button>
       {open ? (
         <div className="mt-3">

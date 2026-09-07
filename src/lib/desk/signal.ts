@@ -1,6 +1,7 @@
 import { clipForNav } from "./indicators";
 import { BOT_ROSTER } from "./policy";
 import { MAG7_TICKERS, MINER_TICKERS } from "./proxy-book";
+import { predAnalyst } from "./prediction-markets";
 import type { BotBrief, BotId, DeskSnapshot, HeliosCall, Quote, Stance } from "./types";
 
 function roster(id: Exclude<BotId, "helios">) {
@@ -261,6 +262,7 @@ export function heliosCall(snap: DeskSnapshot, briefs: BotBrief[], navUsd: numbe
   const macd50 = snap.macd50;
   const macd200 = snap.macd200;
   const macdDiscount = (macd50?.hist != null && macd50.hist < 0) || (macd200?.hist != null && macd200.hist < 0);
+  const pred = predAnalyst(snap.predictionMarkets, snap.btc.price);
 
   const checks = [
     { label: "Two orthogonal lanes (coordinator)", pass: Boolean(twoSource) },
@@ -282,6 +284,7 @@ export function heliosCall(snap: DeskSnapshot, briefs: BotBrief[], navUsd: numbe
     { label: "BTC not rich vs gold (oz/BTC ≤ +12% vs 1y median)", pass: !ratioRich },
     { label: "Not rotating out of BTC into Nasdaq/AI", pass: rot?.stance !== "WAIT" },
     { label: "Mempool not a fee spike (fastest < 50 sat/vB)", pass: snap.onchain.feeFast == null || snap.onchain.feeFast < 50 },
+    { label: pred.checkLabel, pass: pred.overlayPass },
   ];
   const passed = checks.filter((c) => c.pass).length;
 
@@ -289,11 +292,12 @@ export function heliosCall(snap: DeskSnapshot, briefs: BotBrief[], navUsd: numbe
   const asiaDiscount = (kimchi != null && kimchi <= -1.5) || emOffer;
 
   let stance: Stance = "HOLD";
-  if (rsi != null && rsi < 30 && fg <= 40 && !asiaFomo && !etfMelt) stance = "BUY";
-  else if (passed >= 3 && (twoSource || fg <= 35 || (rsi != null && rsi < 40) || asiaDiscount || cheapVsGold || ratioCheap || macdDiscount))
+  if (rsi != null && rsi < 30 && fg <= 40 && !asiaFomo && !etfMelt && !pred.fomo) stance = "BUY";
+  else if (passed >= 3 && (twoSource || fg <= 35 || (rsi != null && rsi < 40) || asiaDiscount || cheapVsGold || ratioCheap || macdDiscount || pred.discount))
     stance = "ACCUMULATE";
   else if (rsi != null && rsi > 72 && fg >= 75) stance = "HOLD";
-  else if ((passed <= 1 && fg >= 70) || (asiaFomo && fg >= 60) || etfMelt || (ratioRich && fg >= 60)) stance = "WAIT";
+  else if ((passed <= 1 && fg >= 70) || (asiaFomo && fg >= 60) || etfMelt || (ratioRich && fg >= 60) || (pred.fomo && fg >= 55))
+    stance = "WAIT";
 
   const conviction: HeliosCall["conviction"] =
     (stance === "BUY" || stance === "ACCUMULATE") && twoSource && passed >= 4
@@ -305,7 +309,7 @@ export function heliosCall(snap: DeskSnapshot, briefs: BotBrief[], navUsd: numbe
   const clipUsd = clipForNav(navUsd, stance);
   const px = snap.btc.price ?? 0;
   const thesis = [
-    `Overseer: all six lanes plus tape, leverage, Asia, EM, ETF, BTC/gold ratio, rotation (Nasdaq/AI/paper gold) + whale overlay. Gold/silver stock pies, Mag7 as beta, CB tonnes do not vote.`,
+    `Overseer: all six lanes plus tape, leverage, Asia, EM, ETF, BTC/gold ratio, rotation (Nasdaq/AI/paper gold) + whale overlay + Polymarket/Kalshi pred sub-analyst (label, not a 1–6 vote). Gold/silver stock pies, Mag7 as beta, CB tonnes do not vote.`,
     `BTC ${px ? px.toLocaleString("en-US", { maximumFractionDigits: 0 }) : "n/a"} on Coinbase.`,
     rsi != null ? `Hourly RSI(14) ${rsi.toFixed(1)}.` : "RSI unavailable.",
     macd50 || macd200
@@ -344,6 +348,9 @@ export function heliosCall(snap: DeskSnapshot, briefs: BotBrief[], navUsd: numbe
     rot
       ? `Rotation ${rot.stance}: ${rot.summary}`
       : "",
+    pred.summary,
+    `Polymarket: ${pred.polymarket.headline}`,
+    `Kalshi: ${pred.kalshi.headline}`,
     `NVDA / Mag7 / silver AUM / CB gold pies / hashrate-by-region are labels unless Rotation says Nasdaq/AI/paper-gold is moving vs IBIT. Sector votes gold valuation; Rotation votes capital leaving those sleeves into BTC.`,
     `Primary mandate: accumulate bitcoin. Never sell bitcoin. Never short bitcoin.`,
     `Stops do not dump BTC — they block add-on buys into a loser. BTC stays BTC.`,

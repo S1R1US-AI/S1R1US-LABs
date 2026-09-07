@@ -63,3 +63,7 @@ Admin Security tab pulls:
 - [OSV.dev](https://osv.dev) npm querybatch for react / vite / tanstack / better-auth / nitro
 
 Hits that this process can virtual-patch (Vite `@fs`) are applied automatically. Node/OS patches remain operator work. Live Coinbase create stays locked.
+
+## Legal surface (Terms + Privacy)
+
+Public functions are named in `/terms` and `/privacy`. Hunter control `h-legal` fails if a Terms/Privacy section for championships, hive, lock, FinCEN s8, cookies, UGC, children, or retention is removed. Do not add hive profit-share, hive withdraw, lock_set, or Coinbase create.

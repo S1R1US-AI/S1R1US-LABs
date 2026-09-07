@@ -28,6 +28,10 @@ Machine:
 - https://s1r1us.ai/sitemap.xml
 - https://s1r1us.ai/video-sitemap.xml
 - https://s1r1us.ai/llms.txt
+- https://s1r1us.ai/.well-known/llms.txt
+- https://s1r1us.ai/.well-known/ai-catalog.json
+- https://s1r1us.ai/.well-known/mcp.json
+- https://s1r1us.ai/.well-known/agent-card.json
 - https://s1r1us.ai/media
 - https://s1r1us.ai/bowl
 - https://s1r1us.ai/w0rld

@@ -35,7 +35,7 @@ function check(name, ok, detail) {
   else out.fail += 1;
 }
 
-const pages = ["/", "/board", "/forum", "/agent", "/faq", "/gm", "/compute", "/owl", "/sitemap", "/llms.txt", "/robots.txt", "/sitemap.xml", "/entity.json"];
+const pages = ["/", "/board", "/forum", "/agent", "/faq", "/gm", "/compute", "/owl", "/sitemap", "/llms.txt", "/robots.txt", "/sitemap.xml", "/entity.json", "/terms", "/privacy", "/l0ck", "/h1v3"];
 for (const p of pages) {
   const r = await hit(p, p);
   check(`page ${p}`, r.status === 200, r.status);

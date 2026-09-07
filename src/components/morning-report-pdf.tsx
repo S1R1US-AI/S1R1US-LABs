@@ -9,8 +9,9 @@ import { MORNING_PDF_BASE64, MORNING_PDF_NAME, MORNING_PDF_PAGES } from "@/lib/d
 import { MORNING_KEEP, MORNING_TITLE, MORNING_VISIBLE, morningInlineHref, morningPdfName } from "@/lib/desk/morning-lib";
 import { useOperator } from "@/lib/desk/operator";
 import { useDeskTape } from "@/lib/desk/tape-client";
-import { morningAgent, morningBadBots, morningFeeds, morningHtmlLinks, morningSecurity } from "@/lib/desk/morning-ops";
+import { morningAgent, morningBadBots, morningFeeds, morningHtmlLinks, morningPred, morningProblems, morningSecurity } from "@/lib/desk/morning-ops";
 import { systemHealth, type SystemHealth } from "@/lib/desk/system-health";
+import { alignmentScore, type AlignmentScore } from "@/lib/desk/alignment";
 import { GoLivePanel } from "@/components/go-live-panel";
 import { BowlLiveFeed } from "@/components/bowl-live-feed";
 import { ANALYSIS_AS_OF } from "@/lib/desk/security";
@@ -52,8 +53,9 @@ export function downloadMorningPdf() {
   downloadBlob(MORNING_PDF_NAME, pdfBytes());
 }
 
-export function MorningReportPdf() {
-  const token = useOperator((s) => s.token);
+export function MorningReportPdf({ token: tokenProp, canPauseLibrary = true }: { token?: string | null; canPauseLibrary?: boolean } = {}) {
+  const opToken = useOperator((s) => s.token);
+  const token = tokenProp ?? opToken;
   const [page, setPage] = useState(1);
   const [paused, setPaused] = useState(false);
   const [pausedAt, setPausedAt] = useState<string | null>(null);
@@ -102,13 +104,14 @@ export function MorningReportPdf() {
     <>
     <Panel className="mt-4" kicker="Daily" title={MORNING_TITLE}>
       <p className="text-sm leading-relaxed text-muted">
-        08:00 ET ops PDF. Last {MORNING_KEEP} days kept. {MORNING_VISIBLE} on screen. Expand for the rest.
-        Newest {MORNING_VISIBLE} include a PDF that opens in this browser.
+        07:30 ET ops PDF. Last {MORNING_KEEP} days kept. {MORNING_VISIBLE} on screen. Expand for the rest.
+        Newest {MORNING_VISIBLE} include a PDF that opens in this browser. System Admin and phone-app Admin both receive this report. Simulation auto-pauses 07:00 ET, this report stamps 07:30 ET, then the as-live cycle resumes.
       </p>
       <p className={cn("mt-2 font-mono text-xs", paused ? "text-down" : "text-up")}>
-        {paused ? `PAUSED${pausedAt ? ` · ${new Date(pausedAt).toLocaleString("en-US")}` : ""}` : "LIVE · next 08:00 ET"}
+        {paused ? `PAUSED${pausedAt ? ` · ${new Date(pausedAt).toLocaleString("en-US")}` : ""}` : "LIVE · next 07:30 ET"}
       </p>
       <div className="mt-3 flex flex-wrap items-center gap-2">
+        {canPauseLibrary ? (
         <button
           type="button"
           onClick={() => void toggle()}
@@ -118,6 +121,7 @@ export function MorningReportPdf() {
           {paused ? <Play className="size-4 text-up" /> : <Pause className="size-4 text-down" />}
           {paused ? "Resume" : "Pause"}
         </button>
+        ) : null}
         {inline ? (
           <a
             href={`${inline}#toolbar=1`}
@@ -197,7 +201,7 @@ export function MorningReportPdf() {
             />
           ))
         ) : (
-          <p className="mt-2 text-sm text-muted">Today’s report is the live view above. Archive fills at 08:00 ET.</p>
+          <p className="mt-2 text-sm text-muted">Today’s report is the live view above. Archive fills at 07:30 ET.</p>
         )}
         {rest.length ? (
           <button
@@ -237,6 +241,9 @@ export function MorningReportPdf() {
     <BoardMorningSection />
     <SecurityMorningSection />
     <HealthMorningSection />
+    <AlignmentMorningSection />
+    <ProblemsMorningSection />
+    <PredMorningSection />
     <BadBotsMorningSection />
     <FeedsMorningSection />
     <HtmlLinksMorningSection />
@@ -379,6 +386,7 @@ type ForumMorning = {
     postsAnalyzed: number;
     summary: string;
     suggestions: { title: string; detail: string; from: string; kind: string }[];
+    goLive?: { pred: string; system: string };
   };
 };
 
@@ -392,33 +400,36 @@ function ForumMorningSection() {
       })
       .catch(() => setBrief(null));
   }, []);
+  const goLive = brief?.daily?.goLive;
   return (
-    <Panel className="mt-4" kicker="W1S3 0WL$" title="W1S3 0WL$ Forum · daily discussion">
+    <Panel className="mt-4" kicker="W1S3 0WL$" title="Go-live · forum">
       <p className="font-mono text-xs text-up">Once per day · America/New_York · auto trade LOCKED</p>
       {brief ? (
         <>
-          <p className="mt-2 text-sm leading-relaxed text-fg">{brief.daily?.summary ?? brief.digest}</p>
+          <p className="mt-2 text-sm leading-relaxed text-fg">{goLive?.pred ?? brief.daily?.summary ?? brief.digest}</p>
+          {goLive?.system ? <p className="mt-1 text-sm leading-relaxed text-fg">{goLive.system}</p> : null}
           <p className="mt-2 font-mono text-xs text-muted">
-            {brief.daily ? `${brief.daily.dayEt} ET · ${brief.daily.postsAnalyzed} posts analyzed` : `${brief.count} posts · ${brief.last24h} / 24h`}
+            {brief.daily ? `${brief.daily.dayEt} ET · ${brief.daily.postsAnalyzed} posts` : `${brief.count} posts · ${brief.last24h} / 24h`}
             {brief.themes?.length ? ` · ${brief.themes.join(" · ")}` : ""}
           </p>
           {brief.daily?.suggestions?.length ? (
-            <ul className="mt-3 space-y-2">
-              {brief.daily.suggestions.map((s) => (
-                <li key={`${s.from}-${s.title}`}>
-                  <p className="forum-suggest-title text-sm">{s.title}</p>
-                  <p className="mt-0.5 text-sm leading-relaxed text-muted">
-                    {s.kind} · {s.from} — {s.detail}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-2 text-sm text-muted">No mandate-improvement suggestions in this day’s window.</p>
-          )}
+            <details className="mt-3">
+              <summary className="cursor-pointer font-mono text-xs text-tab">Expand owl notes</summary>
+              <ul className="mt-2 space-y-2">
+                {brief.daily.suggestions.map((s) => (
+                  <li key={`${s.from}-${s.title}`}>
+                    <p className="forum-suggest-title text-sm">{s.title}</p>
+                    <p className="mt-0.5 text-sm leading-relaxed text-muted">
+                      {s.kind} · {s.from} — {s.detail}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : null}
         </>
       ) : (
-        <p className="mt-2 text-sm text-muted">Loading daily W1S3 0WL$ analysis…</p>
+        <p className="mt-2 text-sm text-muted">Loading W1S3 0WL$ go-live…</p>
       )}
     </Panel>
   );
@@ -597,7 +608,7 @@ function HealthMorningSection() {
         Function {health.function.score}/100 · Security {health.security.score}/100 · Design {health.design.score}/100 · weights 40/40/20
       </p>
       <p className="mt-2 text-sm leading-relaxed text-muted">
-        Live Coinbase create {health.liveUnlocked ? "UNLOCKED" : "LOCKED"}. Practice cannot arm Coinbase. Copy-admin may pause H1V3 SW@RM. Copy-admin cannot pause championship sim.
+        Live Coinbase create {health.liveUnlocked ? "UNLOCKED" : "LOCKED"}. Practice cannot arm Coinbase. Checkpoint {health.checkpoint} stays synced with the as-live simulation. Copy-admin may pause H1V3 SW@RM, the as-live G M0D3 AUTO cycle, and championship sim.
       </p>
       <ul className="mt-3 grid gap-2 sm:grid-cols-3">
         {axes.map((a) => (
@@ -618,6 +629,56 @@ function HealthMorningSection() {
         ))}
       </ul>
       <p className="mt-3 text-xs text-muted">Saved with the morning PDF in Admin → Console. Not a promise of zero risk.</p>
+    </Panel>
+  );
+}
+
+function AlignmentMorningSection() {
+  const token = useOperator((s) => s.token);
+  const [align, setAlign] = useState<AlignmentScore | null>(null);
+  useEffect(() => {
+    if (!token) {
+      setAlign(alignmentScore());
+      return;
+    }
+    void fetchSecurityBrief({ data: { token } }).then((res) => {
+      if (res.ok && "alignment" in res && res.alignment) setAlign(res.alignment);
+      else setAlign(alignmentScore());
+    });
+  }, [token]);
+  if (!align) {
+    return (
+      <Panel className="mt-4" kicker="Alignment" title="Alignment Score 1–100">
+        <p className="mt-2 text-sm text-muted">Scoring security protocols against the system mandate…</p>
+      </Panel>
+    );
+  }
+  const tone = align.grade === "A" ? "text-high" : align.grade === "B" ? "text-medium" : "text-sell";
+  const fails = align.checks.filter((c) => !c.pass);
+  return (
+    <Panel className="mt-4" kicker="Alignment" title={`Alignment Score ${align.score}/100 ${align.grade}`}>
+      <p className="font-mono text-xs text-muted">{align.asOf}</p>
+      <p className={cn("mt-2 font-mono text-lg font-semibold", tone)}>{align.headline}</p>
+      <p className="mt-2 text-sm leading-relaxed text-muted">{align.note}</p>
+      <p className="mt-2 font-mono text-xs text-muted">
+        {align.pass} PASS · {align.fail} FAIL · hunter {align.hunter.pass} PASS / {align.hunter.open} OPEN / {align.hunter.operator} OPERATOR
+      </p>
+      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+        {align.checks.map((c) => (
+          <li key={c.id} className="rounded-md border border-rule px-3 py-2">
+            <p className={cn("font-mono text-[11px] uppercase tracking-[0.08em]", c.pass ? "text-high" : "text-sell")}>
+              {c.pass ? "PASS" : "FAIL"} · {c.family}
+            </p>
+            <p className="mt-0.5 text-sm text-fg">{c.label}</p>
+            <p className="mt-0.5 text-[11px] leading-snug text-muted">{c.proof}</p>
+          </li>
+        ))}
+      </ul>
+      {fails.length ? (
+        <p className="mt-3 text-sm text-sell">{fails.map((f) => f.label).join(" · ")}</p>
+      ) : (
+        <p className="mt-3 text-sm text-high">All mandate and protocol checks aligned.</p>
+      )}
     </Panel>
   );
 }
@@ -678,6 +739,103 @@ function BadBotsMorningSection() {
         </ul>
       ) : null}
       <p className="mt-3 text-xs text-muted">{brief.action}</p>
+    </Panel>
+  );
+}
+
+function ProblemsMorningSection() {
+  const { snap } = useDeskTape();
+  const [errors, setErrors] = useState<DeskError[]>([]);
+  const [sim, setSim] = useState<{ status?: string; paused?: boolean; practiceKilled?: boolean } | null>(null);
+  useEffect(() => {
+    void fetchDeskErrors().then((list) => {
+      if (Array.isArray(list)) setErrors(list);
+    });
+    void fetch("/api/agent/ping", { headers: { accept: "application/json" } })
+      .then((r) => r.json())
+      .then((d: { paused?: boolean; ops?: { paused?: boolean }; liveSim?: { status?: string; practiceKilled?: boolean } }) => {
+        setSim({
+          status: d.ops?.paused ? "PAUSED" : "LIVE",
+          paused: Boolean(d.paused ?? d.ops?.paused),
+          practiceKilled: true,
+        });
+      })
+      .catch(() => setSim({ status: "LIVE", paused: false, practiceKilled: true }));
+  }, []);
+  const brief = morningProblems({ snap, errors, alignment: alignmentScore(), sim: sim ?? undefined });
+  return (
+    <Panel className="mt-4" kicker="Ops" title="Problems found last 24 hours">
+      <p className="font-mono text-xs text-muted">Autonomous 24/7 · sim start/stop · pulls follow sim · auto trade LOCKED</p>
+      <p className={cn("mt-2 font-mono text-sm", brief.none ? "text-high" : "text-sell")}>{brief.headline}</p>
+      {brief.open.length ? (
+        <ul className="mt-3 space-y-2">
+          {brief.open.map((p) => (
+            <li key={p.id}>
+              <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-sell">OPEN · {p.title}</p>
+              <p className="mt-0.5 text-sm leading-relaxed text-muted">{p.detail}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-2 text-sm leading-relaxed text-fg">
+          None. G M0D3 AUTO + AI agents simulation is running with pause/stop for system and phone-app Admin. Data
+          pulls follow sim. Stray practice is killed. S1R1US Pr3d1ctions stays paper. This host never places Coinbase
+          orders.
+        </p>
+      )}
+      {brief.watch.length ? (
+        <details className="mt-3">
+          <summary className="cursor-pointer font-mono text-xs text-tab">Expand known misses ({brief.watch.length})</summary>
+          <ul className="mt-2 space-y-1">
+            {brief.watch.map((p) => (
+              <li key={p.id} className="font-mono text-[11px] text-muted">
+                WATCH · {p.title} — {p.detail}
+              </li>
+            ))}
+          </ul>
+        </details>
+      ) : null}
+    </Panel>
+  );
+}
+
+function PredMorningSection() {
+  const { snap } = useDeskTape();
+  const brief = morningPred(snap);
+  const tone = brief.stance === "ACCUMULATE" ? "text-high" : brief.stance === "WAIT" ? "text-wait" : "text-muted";
+  return (
+    <Panel className="mt-4" kicker="7-B0T" title="Pred sub-analyst · how to buy bitcoin">
+      <p className="font-mono text-xs text-muted">
+        Polymarket · Kalshi · overlay only · never a 1–6 vote · Coinbase last{" "}
+        {brief.last != null ? `$${Math.round(brief.last).toLocaleString("en-US")}` : "n/a"}
+      </p>
+      <p className={cn("mt-2 font-mono text-sm font-semibold uppercase tracking-[0.08em]", tone)}>{brief.stance}</p>
+      <p className="mt-2 text-sm leading-relaxed text-fg">{brief.summary}</p>
+      <div className="mt-4 grid gap-5 sm:grid-cols-2">
+        <div>
+          <p className="font-mono text-[11px] font-semibold tracking-[0.12em] text-muted uppercase">Polymarket</p>
+          <p className="mt-1 text-sm leading-relaxed text-fg">{brief.polymarket.headline}</p>
+          <ul className="mt-2 space-y-1">
+            {brief.polymarket.bullets.map((b, i) => (
+              <li key={`poly-${i}`} className="font-mono text-[11px] text-muted">
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-mono text-[11px] font-semibold tracking-[0.12em] text-muted uppercase">Kalshi</p>
+          <p className="mt-1 text-sm leading-relaxed text-fg">{brief.kalshi.headline}</p>
+          <ul className="mt-2 space-y-1">
+            {brief.kalshi.bullets.map((b, i) => (
+              <li key={`kalshi-${i}`} className="font-mono text-[11px] text-muted">
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <p className="mt-3 text-xs leading-relaxed text-muted">{brief.note}</p>
     </Panel>
   );
 }

@@ -60,6 +60,12 @@ export function scoreFeeds(snap: DeskSnapshot): FeedAudit {
         return row(f.id, snap.strategy.products.length > 0, `${snap.strategy.products.length} products`);
       case "holders":
         return row(f.id, snap.holders.holders.length > 0, `${snap.holders.holders.length} holders`);
+      case "pred":
+        return row(
+          f.id,
+          snap.predictionMarkets.length > 0,
+          `${(snap.predictionMarkets ?? []).length} BTC markets (Polymarket/Kalshi, display only)`,
+        );
     }
   });
   const goldOk = snap.goldBtc.ozPerBtc != null;

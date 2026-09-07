@@ -7,13 +7,15 @@ export type DeskMode = "SIM" | "LIVE";
 export type LockPlane = "system" | "app-admin";
 export type TapeStatus = "TRUE LIVE" | "SIMULATED";
 
-export type LockId = "agents" | "bot7Auto" | "gmAuto" | "gmManual" | "agentLive" | "hive";
+export type LockId = "agents" | "bot7Auto" | "gmAuto" | "gmManual" | "agentLive" | "hive" | "pred";
 
-export const LOCK_IDS: LockId[] = ["agents", "bot7Auto", "gmAuto", "gmManual", "agentLive", "hive"];
+export const LOCK_IDS: LockId[] = ["agents", "bot7Auto", "gmAuto", "gmManual", "agentLive", "hive", "pred"];
+
+export type LockHref = "/" | "/gm" | "/agent" | "/h1v3" | "/pr3d" | "/helios";
 
 export const LOCK_META: Record<
   LockId,
-  { id: LockId; name: string; seo: string; css: string; hint: string; copyAdmin: true }
+  { id: LockId; name: string; seo: string; css: string; hint: string; copyAdmin: true; to: LockHref; hash?: string }
 > = {
   agents: {
     id: "agents",
@@ -22,6 +24,7 @@ export const LOCK_META: Record<
     css: "legal-purple",
     hint: "Allow or refuse external AI agents on 7-B0T JSON / MCP / A2A. Ping and waitlist stay up.",
     copyAdmin: true,
+    to: "/agent",
   },
   bot7Auto: {
     id: "bot7Auto",
@@ -30,6 +33,8 @@ export const LOCK_META: Record<
     css: "coinbase-orange",
     hint: "Live-intent for 7-B0T AUTO. This host never places Coinbase orders. Agents execute on THEIR Coinbase.",
     copyAdmin: true,
+    to: "/",
+    hash: "bot7",
   },
   gmAuto: {
     id: "gmAuto",
@@ -38,6 +43,8 @@ export const LOCK_META: Record<
     css: "gm-rainbow",
     hint: "Live-intent for G M0D3 AUTO. This host never holds keys. Operator / agent Coinbase only.",
     copyAdmin: true,
+    to: "/gm",
+    hash: "auto",
   },
   gmManual: {
     id: "gmManual",
@@ -46,6 +53,8 @@ export const LOCK_META: Record<
     css: "gm-rainbow",
     hint: "Live-intent for G M0D3 M@NU@L. Paper until unlocked. This host never creates orders.",
     copyAdmin: true,
+    to: "/gm",
+    hash: "manual",
   },
   agentLive: {
     id: "agentLive",
@@ -54,6 +63,8 @@ export const LOCK_META: Record<
     css: "legal-purple",
     hint: "Live-intent for external AI agents only. They trade on THEIR Coinbase. GM sleeves stay as set.",
     copyAdmin: true,
+    to: "/agent",
+    hash: "live",
   },
   hive: {
     id: "hive",
@@ -62,8 +73,23 @@ export const LOCK_META: Record<
     css: "hive-nav",
     hint: "Pause or continue the paper hive. TEST data until go-live. Never escrow. Never hive_withdraw.",
     copyAdmin: true,
+    to: "/h1v3",
+  },
+  pred: {
+    id: "pred",
+    name: "Pr3d1ctions",
+    seo: "S1R1US Predictions paper book",
+    css: "gold-css",
+    hint: "Paper S1R1US Pr3d1ctions (Ph0 W@ll3t / ph0 BTC). UNLOCKED = paper tickets. LOCKED = book paused. Never live funds. Never a DCM.",
+    copyAdmin: true,
+    to: "/pr3d",
   },
 };
+
+export function lockViewPath(id: LockId): string {
+  const m = LOCK_META[id];
+  return m.hash ? `${m.to}#${m.hash}` : m.to;
+}
 
 export type LockFlags = Record<LockId, boolean>;
 
@@ -76,7 +102,9 @@ export type LockStore = {
 };
 
 export const LOCK_GIF_CLOSED = "/lock-closed.gif";
-export const LOCK_GIF_OPEN = "/lock-open.gif";
+export const LOCK_GIF_OPEN = "/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif";
+export const LOCK_GIF_OPEN_ALIAS = "/lock-open.gif";
+export const LOCK_GIF_OPEN_NAME = "AI Agent Lock System for AI Agent BTC Trading Bot";
 
 export const LOCK_DEFAULT: LockStore = {
   mode: "SIM",
@@ -87,6 +115,7 @@ export const LOCK_DEFAULT: LockStore = {
     gmManual: true,
     agentLive: true,
     hive: false,
+    pred: false,
   },
   include: {
     agents: true,
@@ -95,6 +124,7 @@ export const LOCK_DEFAULT: LockStore = {
     gmManual: true,
     agentLive: true,
     hive: true,
+    pred: true,
   },
   at: null,
   by: null,
@@ -108,6 +138,7 @@ export function emptyFlags(value: boolean): LockFlags {
     gmManual: value,
     agentLive: value,
     hive: value,
+    pred: value,
   };
 }
 
@@ -139,6 +170,8 @@ export type LockStatusPublic = {
     seo: string;
     css: string;
     hint: string;
+    to: LockHref;
+    hash?: string;
     locked: boolean;
     include: boolean;
     gif: string;
@@ -164,6 +197,8 @@ export function lockStatusView(store: LockStore, tape: TapeStatus, tapeNote: str
       seo: LOCK_META[id].seo,
       css: LOCK_META[id].css,
       hint: LOCK_META[id].hint,
+      to: LOCK_META[id].to,
+      hash: LOCK_META[id].hash,
       locked,
       include: store.include[id],
       gif: locked ? LOCK_GIF_CLOSED : LOCK_GIF_OPEN,
@@ -195,6 +230,14 @@ export function lockStatusView(store: LockStore, tape: TapeStatus, tapeNote: str
     dataPullPause: "system-only",
     agentExecuteOwnBook: store.mode === "LIVE" && !store.locked.agentLive,
     notice:
-      "LoCK3D STATUS is Admin (system or phone-app). Live tape is status only — simulated or true live — and is not a lock. Unlock is live-intent: agents and G M0D3 run on THEIR Coinbase. This host never places Coinbase orders, never holds keys, never escrows. Championship sim pause stays system Admin. Optional unlocks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE only, H1V3 SW@RM. Mode SIM or LIVE does not create orders here.",
+      "LoCK3D STATUS is Admin (system or phone-app). Live tape is status only — simulated or true live — and is not a lock. Unlock is live-intent: agents and G M0D3 run on THEIR Coinbase. This host never places Coinbase orders, never holds keys, never escrows. Championship sim pause stays system Admin. Optional unlocks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE only, H1V3 SW@RM, Pr3d1ctions (paper). Mode SIM or LIVE does not create orders here.",
+  };
+}
+
+/** Split rails into UNLOCKED vs LOCKED sets. UNLOCKED stacks above LOCKED. */
+export function groupLockRows<T extends { locked: boolean }>(rows: T[]) {
+  return {
+    unlocked: rows.filter((r) => !r.locked),
+    locked: rows.filter((r) => r.locked),
   };
 }

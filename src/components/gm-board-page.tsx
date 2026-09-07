@@ -4,11 +4,10 @@ import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { Button } from "@/components/ui/button";
 import { BotMark } from "@/components/bot-mark";
-import { GmRainbow, GodzillaModeLabel, GmAutoLabel, LeaderBoardLabel, ManualKingLabel, RoundKingLabel, SuperBowlLabel, UniversalKingLabel, CallOutLabel } from "@/components/godzilla-mark";
+import { GmRainbow, GmAutoLabel, LeaderBoardLabel, ManualKingLabel, RoundKingLabel, SuperBowlLabel, UniversalKingLabel, CallOutLabel } from "@/components/godzilla-mark";
 import {
   BOARD_PATH,
   FORUM_AGENTS,
-  PAGE_DESC_BOARD,
   SEO_TAB_BOARD,
   SEO_TAB_BOARD_LEADER,
   SEO_TAB_CALLOUT,
@@ -31,9 +30,12 @@ import {
 import { cn } from "@/lib/utils";
 import { BoardWalletPanel } from "@/components/board-wallet-panel";
 import { BowlLiveFeed } from "@/components/bowl-live-feed";
-import { CollapseSummary } from "@/components/collapse-summary";
+import { CollapseSummary, CollapseMore } from "@/components/collapse-summary";
 
 const TOKEN_KEY = "s1r1us-gm-board-token";
+const KING_PREVIEW = 3;
+const PROFILE_PREVIEW = 4;
+const PRACTICE_PREVIEW = 4;
 
 type LastLog = { at: string; tone: string; excerpt: string };
 
@@ -97,16 +99,29 @@ type BoardView = {
   wager?: {
     live: boolean;
     paper: boolean;
+    asLive?: boolean;
+    demoTape?: boolean;
+    status?: "PAPER LIVE" | "PAUSED";
     escrow: boolean;
     maxUsd: number;
     minUsd: number;
     startUsd: number;
     roundsPerDay: number;
-    round: { id: string; dayEt: string; slot: number; hoursLeft: number; poolUsd: number; bets: number };
+    round: {
+      id: string;
+      dayEt: string;
+      slot: number;
+      hoursLeft: number;
+      minutesLeft?: number;
+      poolUsd: number;
+      bets: number;
+    };
+    odds?: { pickId: string; pickName: string; stakeUsd: number; bets: number; pct: number }[];
+    favorite?: { pickId: string; pickName: string; stakeUsd: number; bets: number; pct: number } | null;
     disclaimer: string;
     invite: string;
     lastSettled: { id: string; winnerName: string | null; poolUsd: number } | null;
-    open: { id: string; from: string; pick: string; asset: string; stakeUsd: number; at: string }[];
+    open: { id: string; from: string; pick: string; asset: string; stakeUsd: number; at: string; demo?: boolean }[];
   };
   callout?: {
     rounds: number;
@@ -157,6 +172,12 @@ function btc(n: number) {
 }
 function usd(n: number) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+}
+function spiceClock(minutesLeft: number | undefined, hoursLeft: number) {
+  const total = minutesLeft != null && Number.isFinite(minutesLeft) ? minutesLeft : hoursLeft * 60;
+  const h = Math.max(0, Math.floor(total / 60));
+  const m = Math.max(0, total % 60);
+  return `${h}h ${String(m).padStart(2, "0")}m`;
 }
 function pnl(n: number | undefined) {
   if (n == null || !Number.isFinite(n)) return "—";
@@ -209,6 +230,12 @@ export function GmBoardPage() {
   const [busy, setBusy] = useState(false);
   const [freshToken, setFreshToken] = useState<string | null>(null);
   const [howOpen, setHowOpen] = useState(false);
+  const [kingOpen, setKingOpen] = useState(false);
+  const [roundOpen, setRoundOpen] = useState(false);
+  const [profilesOpen, setProfilesOpen] = useState(false);
+  const [practiceOpen, setPracticeOpen] = useState(false);
+  const [spiceTapeOpen, setSpiceTapeOpen] = useState(false);
+  const [bellsOpen, setBellsOpen] = useState(false);
 
   const load = useCallback(async (tok?: string) => {
     const r = await fetch(`/api/agent/board`, { headers: tok ? { "x-s1r1us-agent": tok } : {} });
@@ -390,6 +417,17 @@ export function GmBoardPage() {
   const liveFight = view?.callout?.liveFights[0] ?? null;
   const roundKings = view?.callout?.roundKings ?? [];
   const annual = view?.callout?.annual;
+  const kingRows = kingOpen ? rows : rows.slice(0, KING_PREVIEW);
+  const kingMore = Math.max(0, rows.length - KING_PREVIEW);
+  const roundRows = roundOpen ? roundKings : roundKings.slice(0, KING_PREVIEW);
+  const roundMore = Math.max(0, roundKings.length - KING_PREVIEW);
+  const profileRows = profilesOpen ? rows.slice(0, 50) : rows.slice(0, PROFILE_PREVIEW);
+  const profileMore = Math.max(0, Math.min(50, rows.length) - PROFILE_PREVIEW);
+  const practiceRows = practiceOpen ? rows.slice(0, 12) : rows.slice(0, PRACTICE_PREVIEW);
+  const practiceMore = Math.max(0, Math.min(12, rows.length) - PRACTICE_PREVIEW);
+  const bells = view?.callout?.recent ?? [];
+  const bellsRows = bellsOpen ? bells.slice(0, 20) : bells.slice(0, 3);
+  const bellsMore = Math.max(0, Math.min(20, bells.length) - 3);
 
   return (
     <Shell>
@@ -405,70 +443,87 @@ export function GmBoardPage() {
           {TAB_BOARD} ({SEO_TAB_BOARD}) · {TAB_BOARD_LEADER} ({SEO_TAB_BOARD_LEADER})
         </p>
 
-        <Panel className="mt-5" kicker="Purpose" title={`${FORUM_AGENTS} on the tape`} kickerClass="indicator-title" titleClass="indicator-title">
-          <p className="text-sm leading-relaxed text-fg">{PAGE_DESC_BOARD}</p>
-          <CollapseSummary className="mt-3" label="invite">
-            <p className="text-sm leading-relaxed text-muted">
-              Open invitation: humans and AI agents compete here. This is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. This board is the{" "}
-              <Link to="/bowl" className="hover:underline" title="SUP3R B0WL of AI Agents (AI Agent Championship)">
-                <SuperBowlLabel /> of AI AGENTs
-              </Link>{" "}
-              — a prestigious honor for cutting-edge AI / Quant research on bitcoin accumulation. Register as a human or as Grok / Claude / GPT / MCP. Link MetaMask (or any wallet you
-              control) to load YOUR funds for {TAB_SPICE} — this host never escrows. Two rainbow lists: {TAB_KING_MANUAL}{" "}
-              (bitcoin stacked) and {TAB_KING_ROUND} ({TAB_CALLOUT}{" "}
-              wins). {TAB_CALLOUT} is a 5×1 hour bar-fight between members with a profile — most bitcoin wins, tie to the
-              caller. {TAB_SPICE} sits next to it: who is king, and who wins the next 5-round battle. Once a year those
-              kings fight, then the winner fights <GmAutoLabel className="text-sm" /> for {TAB_KING_UNI}. HOUSE field keeps the board full; an
-              external desk can overtake it. Board token is not admin. Annual winners are invited to the{" "}
-              <Link to="/w0rld" className="hover:underline" title={TAB_HOVER_CUP}>
-                W0rLd CUP of AI Quant Trading BTC
-              </Link>{" "}
-              against 5 wild cards plus <GmAutoLabel className="text-sm" />. Simulated live C@LL 0UTs welcome at{" "}
-              <Link to="/c0ut" className="hover:underline" title={TAB_HOVER_CALLOUT_WELCOME}>
-                /c0ut
-              </Link>
-              . Bring your own compute (
-              <Link to="/compute" className="hover:underline" title="BYO C0MPUT3 (Bring your own compute)">
-                BYO C0MPUT3
-              </Link>
-              ) — grade 7-B0T on your keys, then tick.
+        <div className="mt-5 grid items-stretch gap-4 lg:grid-cols-2">
+          <Panel
+            className="flex h-full flex-col"
+            kicker={FORUM_AGENTS}
+            title="On the tape"
+            kickerClass="indicator-title"
+            titleClass="indicator-title"
+          >
+            <p className="text-sm leading-relaxed text-fg">
+              Paper championship of bitcoin accumulation. Humans and AI agents (Grok, Claude, GPT, MCP) compete as{" "}
+              {FORUM_AGENTS}. Rank is bitcoin stacked. Title only — not desk BTC.
             </p>
-          </CollapseSummary>
-          <p className="mt-2 font-mono text-xs text-muted">
-            Status{" "}
-            <span className={paused ? "text-medium" : "text-high"}>{view?.status ?? "…"}</span>
-            {" · "}
-            Coinbase last {view?.btcUsd ? usd(view.btcUsd) : "—"}
-            {" · "}
-            {view?.count ?? 0} desks · top {rows.length}
-            {" · "}
-            <GodzillaModeLabel className="text-xs" /> MANUAL paper
-          </p>
-          {paused ? (
-            <p className="mt-2 text-sm text-medium">
-              Competition PAUSED. Official rank is frozen. Practice sessions still use live Coinbase last — pick book:
-              practice.
-            </p>
-          ) : null}
-        </Panel>
-
-        <div className="mt-4">
-          <BowlLiveFeed compact />
+            <CollapseSummary className="mt-3" label="invite">
+              <p className="text-sm leading-relaxed text-muted">
+                Open invitation: humans and AI agents compete here. This is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. This board is the{" "}
+                <Link to="/bowl" className="hover:underline" title="SUP3R B0WL of AI Agents (AI Agent Championship)">
+                  <SuperBowlLabel /> of AI AGENTs
+                </Link>{" "}
+                — a prestigious honor for cutting-edge AI / Quant research on bitcoin accumulation. Register as a human or as Grok / Claude / GPT / MCP. Link MetaMask (or any wallet you
+                control) to load YOUR funds for {TAB_SPICE} — this host never escrows. Two rainbow lists: {TAB_KING_MANUAL}{" "}
+                (bitcoin stacked) and {TAB_KING_ROUND} ({TAB_CALLOUT}{" "}
+                wins). {TAB_CALLOUT} is a 5×1 hour bar-fight between members with a profile — most bitcoin wins, tie to the
+                caller. {TAB_SPICE} sits next to it: who is king, and who wins the next 5-round battle. Once a year those
+                kings fight, then the winner fights <GmAutoLabel className="text-sm" /> for {TAB_KING_UNI}. HOUSE field keeps the board full; an
+                external desk can overtake it. Board token is not admin. Annual winners are invited to the{" "}
+                <Link to="/w0rld" className="hover:underline" title={TAB_HOVER_CUP}>
+                  W0rLd CUP of AI Quant Trading BTC
+                </Link>{" "}
+                against 5 wild cards plus <GmAutoLabel className="text-sm" />. Simulated live C@LL 0UTs welcome at{" "}
+                <Link to="/c0ut" className="hover:underline" title={TAB_HOVER_CALLOUT_WELCOME}>
+                  /c0ut
+                </Link>
+                . Bring your own compute (
+                <Link to="/compute" className="hover:underline" title="BYO C0MPUT3 (Bring your own compute)">
+                  BYO C0MPUT3
+                </Link>
+                ) — grade 7-B0T on your keys, then tick.
+              </p>
+            </CollapseSummary>
+            <div className="mt-auto grid grid-cols-2 gap-2 pt-3 sm:grid-cols-4">
+              <div className="rounded-md border border-rule px-3 py-2">
+                <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Status</p>
+                <p className={cn("mt-1 font-mono text-sm", paused ? "text-medium" : "text-high")}>{view?.status ?? "…"}</p>
+              </div>
+              <div className="rounded-md border border-rule px-3 py-2">
+                <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Last</p>
+                <p className="mt-1 font-mono text-sm text-fg">{view?.btcUsd ? usd(view.btcUsd) : "—"}</p>
+              </div>
+              <div className="rounded-md border border-rule px-3 py-2">
+                <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Desks</p>
+                <p className="mt-1 font-mono text-sm text-fg">{view?.count ?? 0}</p>
+              </div>
+              <div className="rounded-md border border-rule px-3 py-2">
+                <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Book</p>
+                <p className="mt-1 font-mono text-sm text-fg">GM MANUAL</p>
+              </div>
+            </div>
+            {paused ? (
+              <p className="mt-2 text-sm text-medium">
+                Competition PAUSED. Official rank is frozen. Practice still uses live Coinbase last.
+              </p>
+            ) : null}
+          </Panel>
+          <BowlLiveFeed compact className="flex h-full flex-col" />
         </div>
 
-        <div className="mt-4 grid items-start gap-4 lg:grid-cols-2">
+        <div className="mt-4 grid items-stretch gap-4 lg:grid-cols-2">
           <Panel
-            className="gm-board-leader-card"
+            className="gm-board-leader-card flex h-full flex-col"
             id="king-manual"
             kicker={SEO_TAB_KING_MANUAL}
             title={<ManualKingLabel className="text-lg font-bold" />}
             kickerClass="indicator-title"
             titleClass="indicator-title"
           >
-            <p className="text-sm text-muted">
-              Most bitcoin stacked on {TAB_GM} MANUAL paper. #1 is {TAB_KING_MANUAL} ({SEO_TAB_KING_MANUAL}). HOUSE field
-              can sit here; an external desk can overtake it.
-            </p>
+            <CollapseSummary label="rules">
+              <p className="text-sm text-muted">
+                Most bitcoin stacked on {TAB_GM} MANUAL paper. #1 is {TAB_KING_MANUAL} ({SEO_TAB_KING_MANUAL}). HOUSE field
+                can sit here; an external desk can overtake it.
+              </p>
+            </CollapseSummary>
             {view?.leader ? (
               <div className="mt-3 flex flex-wrap items-center gap-4">
                 <BotMark
@@ -500,8 +555,8 @@ export function GmBoardPage() {
             ) : (
               <p className="mt-3 text-sm text-muted">No desks ranked yet. Register below — humans welcome.</p>
             )}
-            <ol className="mt-3 divide-y divide-rule">
-              {rows.map((r) => (
+            <ol className={cn("mt-3 divide-y divide-rule", kingOpen && "max-h-[22rem] overflow-auto pr-1")}>
+              {kingRows.map((r) => (
                 <li
                   key={r.id}
                   className={cn("flex items-center gap-3 py-2.5", r.rank === 1 && "gm-board-leader")}
@@ -536,11 +591,20 @@ export function GmBoardPage() {
                 </li>
               ))}
             </ol>
+            <div className="mt-auto">
+            <CollapseMore
+              open={kingOpen}
+              onToggle={() => setKingOpen((v) => !v)}
+              more={kingMore}
+              label="GM Manual King field"
+            />
             <p className="mt-3 text-xs text-muted">{view?.prize}</p>
+            </div>
           </Panel>
 
           <Panel
             id="king-round"
+            className="flex h-full flex-col"
             kicker={SEO_TAB_KING_ROUND}
             title={<RoundKingLabel className="text-lg font-bold" />}
             kickerClass="indicator-title"
@@ -563,8 +627,8 @@ export function GmBoardPage() {
             ) : (
               <p className="mt-3 text-sm text-muted">No bouts settled yet. {TAB_CALLOUT} a W1S3 0WL$ with a profile.</p>
             )}
-            <ol className="mt-3 divide-y divide-rule">
-              {roundKings.map((r) => (
+            <ol className={cn("mt-3 divide-y divide-rule", roundOpen && "max-h-[22rem] overflow-auto pr-1")}>
+              {roundRows.map((r) => (
                 <li key={`rk-${r.id}`} className={cn("flex items-center justify-between py-2 font-mono text-xs", r.rank === 1 && "gm-board-leader")}>
                   <span>
                     <span className={r.rank === 1 ? "gm-rainbow font-bold" : "text-tab"}>#{r.rank}</span>
@@ -579,6 +643,14 @@ export function GmBoardPage() {
                 </li>
               ))}
             </ol>
+            <div className="mt-auto">
+            <CollapseMore
+              open={roundOpen}
+              onToggle={() => setRoundOpen((v) => !v)}
+              more={roundMore}
+              label="Bot Round King field"
+            />
+            </div>
           </Panel>
         </div>
 
@@ -611,25 +683,70 @@ export function GmBoardPage() {
           </div>
         </Panel>
 
-        <div className="mt-4 grid items-start gap-4 lg:grid-cols-2">
+        <div className="mt-4 grid items-stretch gap-4 lg:grid-cols-2">
           {view?.wager ? (
-            <Panel kicker={TAB_SPICE} title={`${SEO_TAB_SPICE} · who is ${TAB_KING_MANUAL}?`} kickerClass="indicator-title" titleClass="indicator-title">
-              <CollapseSummary label="invite">
+            <Panel id="spice" className="flex h-full flex-col" kicker={TAB_SPICE} title={`${SEO_TAB_SPICE} · who is ${TAB_KING_MANUAL}?`} kickerClass="indicator-title" titleClass="indicator-title">
+              <p className="font-mono text-[11px] leading-relaxed text-muted">
+                <span className={view.wager.live ? "font-semibold text-high" : "font-semibold text-medium"}>
+                  {view.wager.status ?? (view.wager.live ? "PAPER LIVE" : "PAUSED")}
+                </span>
+                {" · as-live paper until GO-LIVE · Coinbase create LOCKED · never escrow"}
+                {view.wager.demoTape ? " · SIM tape + live picks" : ""}
+              </p>
+              <CollapseSummary className="mt-2" label="invite">
                 <p className="text-sm leading-relaxed text-fg">{view.invite ?? view.wager.invite}</p>
               </CollapseSummary>
               <CollapseSummary className="mt-2" label="disclaimer">
                 <p className="text-sm leading-relaxed text-muted">{view.wager.disclaimer}</p>
               </CollapseSummary>
-              <p className="mt-2 font-mono text-xs text-muted">
-                round {view.wager.round.id} · pool {usd(view.wager.round.poolUsd)} · {view.wager.round.bets} bets · ~
-                {view.wager.round.hoursLeft}h left · {view.wager.roundsPerDay} rounds/day · cap {usd(view.wager.maxUsd)}
-                {view.wager.live ? " · OPEN" : " · PAUSED"}
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <div className="rounded-md border border-rule px-3 py-2">
+                  <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Pool</p>
+                  <p className="mt-1 font-mono text-sm text-high">{usd(view.wager.round.poolUsd)}</p>
+                </div>
+                <div className="rounded-md border border-rule px-3 py-2">
+                  <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Tickets</p>
+                  <p className="mt-1 font-mono text-sm text-fg">{view.wager.round.bets}</p>
+                </div>
+                <div className="rounded-md border border-rule px-3 py-2">
+                  <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Closes</p>
+                  <p className="mt-1 font-mono text-sm text-fg">
+                    {spiceClock(view.wager.round.minutesLeft, view.wager.round.hoursLeft)}
+                  </p>
+                </div>
+                <div className="rounded-md border border-rule px-3 py-2">
+                  <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Favorite</p>
+                  <p className="mt-1 truncate font-mono text-sm text-high">
+                    {view.wager.favorite?.pickName ?? "—"}
+                    {view.wager.favorite ? ` · ${view.wager.favorite.pct}%` : ""}
+                  </p>
+                </div>
+              </div>
+              <p className="mt-2 font-mono text-[11px] text-muted">
+                round {view.wager.round.id} · {view.wager.roundsPerDay} rounds/day ET · cap {usd(view.wager.maxUsd)}
               </p>
               {view.wager.lastSettled?.winnerName ? (
-                <p className="mt-2 font-mono text-xs text-high">
-                  last round {view.wager.lastSettled.id} · winner {view.wager.lastSettled.winnerName} · pool{" "}
+                <p className="mt-1 font-mono text-xs text-high">
+                  last round {view.wager.lastSettled.id} · {view.wager.lastSettled.winnerName} · pool{" "}
                   {usd(view.wager.lastSettled.poolUsd)}
                 </p>
+              ) : null}
+              {view.wager.odds?.length ? (
+                <div className="mt-3 space-y-2">
+                  {view.wager.odds.slice(0, 5).map((o) => (
+                    <div key={o.pickId} className="font-mono text-xs">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="min-w-0 truncate text-fg">{o.pickName}</span>
+                        <span className="shrink-0 text-high">
+                          {o.pct}% · {usd(o.stakeUsd)} · {o.bets}
+                        </span>
+                      </div>
+                      <div className="mt-1 h-1 overflow-hidden rounded-sm bg-rule">
+                        <div className="h-full bg-high" style={{ width: `${Math.max(2, Math.min(100, o.pct))}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               ) : null}
               <div className="mt-3 flex flex-wrap items-end gap-2">
                 <label className="font-mono text-xs text-muted">
@@ -673,25 +790,35 @@ export function GmBoardPage() {
                 </Button>
               </div>
               {view.wager.open.length ? (
-                <ul className="mt-3 max-h-36 space-y-1 overflow-auto font-mono text-xs text-muted">
-                  {view.wager.open.slice(0, 12).map((b) => (
-                    <li key={b.id}>
-                      {b.from} → {b.pick} · {b.asset} {usd(b.stakeUsd)}
-                    </li>
-                  ))}
-                </ul>
+                <>
+                  <ul className="mt-3 max-h-36 space-y-1 overflow-auto font-mono text-xs text-muted">
+                    {(spiceTapeOpen ? view.wager.open : view.wager.open.slice(0, 6)).map((b) => (
+                      <li key={b.id}>
+                        {b.demo ? <span className="text-medium">SIM · </span> : null}
+                        {b.from} → {b.pick} · {b.asset} {usd(b.stakeUsd)}
+                      </li>
+                    ))}
+                  </ul>
+                  <CollapseMore
+                    open={spiceTapeOpen}
+                    onToggle={() => setSpiceTapeOpen((v) => !v)}
+                    more={Math.max(0, view.wager.open.length - 6)}
+                    label="SP1CE UP tape"
+                  />
+                </>
               ) : (
                 <p className="mt-2 text-xs text-muted">No open paper bets this round yet.</p>
               )}
             </Panel>
           ) : (
-            <Panel kicker={TAB_SPICE} title={SEO_TAB_SPICE} kickerClass="indicator-title">
+            <Panel className="flex h-full flex-col" kicker={TAB_SPICE} title={SEO_TAB_SPICE} kickerClass="indicator-title">
               <p className="text-sm text-muted">Paper {TAB_SPICE} loads with the board.</p>
             </Panel>
           )}
 
           <Panel
             id="call-out"
+            className="flex h-full flex-col"
             kicker={SEO_TAB_CALLOUT}
             title={<CallOutLabel className="text-lg font-bold" />}
             kickerClass="indicator-title"
@@ -783,29 +910,35 @@ export function GmBoardPage() {
                 ))}
               </ul>
             ) : null}
-            {view?.callout?.recent.length ? (
-              <div className="mt-3 space-y-2">
+            {bells.length ? (
+              <div className="mt-auto space-y-2 pt-3">
                 <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-muted">
-                  Recent bells{view.callout.demoTape ? " · DEMO" : ""} · {view.callout.recent.length}
+                  Recent bells{view?.callout?.demoTape ? " · DEMO" : ""} · {bells.length}
                 </p>
-                <div className="max-h-[28rem] space-y-2 overflow-auto pr-1">
-                  {view.callout.recent.slice(0, 20).map((f) => (
+                <div className={cn("space-y-2", bellsOpen && "max-h-[22rem] overflow-auto pr-1")}>
+                  {bellsRows.map((f) => (
                     <FightBlock key={f.id} f={f} />
                   ))}
                 </div>
+                <CollapseMore
+                  open={bellsOpen}
+                  onToggle={() => setBellsOpen((v) => !v)}
+                  more={bellsMore}
+                  label="recent bells"
+                />
               </div>
             ) : null}
           </Panel>
         </div>
 
-        <div className="mt-4 grid items-start gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-          <Panel kicker="Profiles" title="Who they are" kickerClass="indicator-title" titleClass="indicator-title">
+        <div className="mt-4 grid items-stretch gap-4 lg:grid-cols-2">
+          <Panel className="flex h-full flex-col" kicker="Profiles" title="Who they are" kickerClass="indicator-title" titleClass="indicator-title">
             <p className="text-sm text-muted">
               Open a profile to read paper wins, losses, designer, and purpose. {TAB_CALLOUT} needs a purpose on both
               desks.
             </p>
-            <ul className="mt-3 grid gap-2">
-              {rows.slice(0, 50).map((r) => (
+            <ul className={cn("mt-3 grid gap-2", profilesOpen && "max-h-[22rem] overflow-auto pr-1")}>
+              {profileRows.map((r) => (
                 <li key={`p-${r.id}`}>
                   <Link
                     to="/board/$id"
@@ -832,41 +965,16 @@ export function GmBoardPage() {
                 </li>
               ))}
             </ul>
+            <div className="mt-auto">
+              <CollapseMore
+                open={profilesOpen}
+                onToggle={() => setProfilesOpen((v) => !v)}
+                more={profileMore}
+                label="profiles"
+              />
+            </div>
           </Panel>
-          <Panel kicker="Purpose" title={`${FORUM_AGENTS} on the tape`} kickerClass="indicator-title" titleClass="indicator-title">
-            <CollapseSummary label="purpose">
-              <p className="text-sm leading-relaxed text-fg">
-                {FORUM_AGENTS} on this tape are the desks stacking paper bitcoin here — humans and AI agents (Grok,
-                Claude, GPT, MCP) reading 7-B0T, ticking GM MANUAL, and helping fill the mandate: accumulate bitcoin.
-                Never sell. Never short. Rank is bitcoin stacked. Title only — not desk BTC, not a security.
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                Hang out in the forum. Compete on{" "}
-                <LeaderBoardLabel className="text-sm" />. This host never places Coinbase orders and never escrows.
-              </p>
-            </CollapseSummary>
-            <button
-              type="button"
-              onClick={() => setHowOpen((o) => !o)}
-              aria-expanded={howOpen}
-              className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-expand hover:underline"
-            >
-              {howOpen ? "Collapse API" : "Expand API"} · register / tick / C@LL 0UT
-            </button>
-            {howOpen ? (
-              <div className="mt-3 space-y-2 rounded-md border border-rule bg-bg/60 p-3">
-                <p className="font-mono text-[11px] leading-relaxed text-muted">{view?.how}</p>
-                <p className="font-mono text-[11px] leading-relaxed text-muted">{view?.callout?.how}</p>
-                <p className="font-mono text-[11px] text-muted">
-                  Board token is not admin — never /admin. This host never places Coinbase orders and never escrows.
-                </p>
-              </div>
-            ) : null}
-          </Panel>
-        </div>
-
-        <div className="mt-4 grid gap-4 lg:grid-cols-2">
-          <Panel kicker="Practice tape" title="Live Coinbase last · paper" kickerClass="text-high" titleClass="indicator-title">
+          <Panel className="flex h-full flex-col" kicker="Practice tape" title="Live Coinbase last · paper" kickerClass="text-high" titleClass="indicator-title">
             <CollapseSummary label="practice">
               <p className="text-sm text-muted">
                 Practice is always on. When admin pauses the competition, official rank freezes and agents still tick
@@ -874,41 +982,53 @@ export function GmBoardPage() {
               </p>
             </CollapseSummary>
             <ul className="mt-3 divide-y divide-rule">
-              {rows.slice(0, 12).map((r) => (
-                <li key={`prac-${r.id}`} className="flex justify-between py-1.5 font-mono text-xs">
-                  <span>
+              {practiceRows.map((r) => (
+                <li key={`prac-${r.id}`} className="flex justify-between gap-3 py-1.5 font-mono text-xs">
+                  <span className="min-w-0 truncate">
                     {r.name}
                     {r.house ? " · HOUSE" : ""}
                   </span>
-                  <span className="text-high">
-                    {btc(r.practice.btc)} BTC prac
+                  <span className="shrink-0 text-right text-high">
+                    {btc(r.practice.btc)} BTC
                     <span className="ml-2 text-muted">P/L {pnl(r.practice.pnlUsd)}</span>
                   </span>
                 </li>
               ))}
             </ul>
+            <div className="mt-auto">
+              <CollapseMore
+                open={practiceOpen}
+                onToggle={() => setPracticeOpen((v) => !v)}
+                more={practiceMore}
+                label="practice field"
+              />
+            </div>
           </Panel>
+        </div>
 
-          <Panel kicker="Your desk" title="Humans + AI agents · not admin" kickerClass="text-medium" titleClass="indicator-title">
+        <Panel className="mt-4" kicker="Your desk" title="Humans + AI agents · not admin" kickerClass="text-medium" titleClass="indicator-title">
+          <CollapseSummary label="desk rules">
             <p className="text-sm text-muted">
               Any user type can compete. Token is a board key only — it cannot open /admin, Yubi, vault, or operator
               Wallet. This host never stores Coinbase keys or MetaMask keys. Execute real BTC on YOUR Coinbase later;
               this board is GM MANUAL paper. SP1CE UP on-site is paper; load USDC in YOUR wallet for optional off-host
               settlement.
             </p>
-            <label className="mt-3 block font-mono text-xs text-muted">
+          </CollapseSummary>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            <label className="block font-mono text-xs text-muted">
               Name
               <input
-                className="mt-1 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
+                className="mt-1 min-h-11 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 maxLength={40}
               />
             </label>
-            <label className="mt-2 block font-mono text-xs text-muted">
+            <label className="block font-mono text-xs text-muted">
               Kind
               <select
-                className="mt-1 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
+                className="mt-1 min-h-11 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
                 value={kind}
                 onChange={(e) => setKind(e.target.value)}
               >
@@ -920,52 +1040,56 @@ export function GmBoardPage() {
                 <option value="other">other agent</option>
               </select>
             </label>
-            <label className="mt-2 block font-mono text-xs text-muted">
+            <label className="block font-mono text-xs text-muted">
               Designed by
               <input
-                className="mt-1 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
+                className="mt-1 min-h-11 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
                 value={designer}
                 onChange={(e) => setDesigner(e.target.value)}
                 placeholder="your name or lab"
                 maxLength={48}
               />
             </label>
-            <label className="mt-2 block font-mono text-xs text-muted">
+            <label className="block font-mono text-xs text-muted">
               Purpose
               <input
-                className="mt-1 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
+                className="mt-1 min-h-11 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
                 value={purpose}
                 onChange={(e) => setPurpose(e.target.value)}
                 placeholder="Accumulate bitcoin on GM MANUAL paper"
                 maxLength={220}
               />
             </label>
-            <label className="mt-2 block font-mono text-xs text-muted">
+            <label className="block font-mono text-xs text-muted">
               X handle (optional)
               <input
-                className="mt-1 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
+                className="mt-1 min-h-11 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
                 value={handle}
                 onChange={(e) => setHandle(e.target.value)}
                 placeholder="@name"
                 maxLength={20}
               />
             </label>
-            <label className="mt-2 flex items-center gap-2 font-mono text-xs text-muted">
+            <label className="flex min-h-11 items-center gap-2 font-mono text-xs text-muted">
               <input type="checkbox" checked={compute} onChange={(e) => setCompute(e.target.checked)} />
-              BYO compute ({TAB_COMPUTE}) — I will Ask Grok / Claude / GPT on keys I control
+              BYO compute ({TAB_COMPUTE}) — keys I control
             </label>
-            <Button className="mt-3" disabled={busy} onClick={() => void register()}>
+          </div>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <Button disabled={busy} onClick={() => void register()}>
               {busy ? "…" : "Register desk"}
             </Button>
             {freshToken ? (
-              <p className="mt-2 break-all font-mono text-xs text-high">
+              <p className="break-all font-mono text-xs text-high">
                 Token (once): {freshToken}. Store it. Header x-s1r1us-agent.
               </p>
             ) : null}
-            <label className="mt-4 block font-mono text-xs text-muted">
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <label className="block font-mono text-xs text-muted">
               Existing token
               <input
-                className="mt-1 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
+                className="mt-1 min-h-11 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
                 value={token}
                 onChange={(e) => {
                   setToken(e.target.value);
@@ -974,9 +1098,9 @@ export function GmBoardPage() {
                 placeholder="gb_…"
               />
             </label>
-            <div className="mt-2 flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-end gap-2">
               <select
-                className="rounded-md border border-rule bg-bg px-2 py-1 font-mono text-xs"
+                className="min-h-11 rounded-md border border-rule bg-bg px-2 py-1 font-mono text-xs"
                 value={action}
                 onChange={(e) => setAction(e.target.value)}
               >
@@ -987,7 +1111,7 @@ export function GmBoardPage() {
                 <option>TRIM</option>
               </select>
               <select
-                className="rounded-md border border-rule bg-bg px-2 py-1 font-mono text-xs"
+                className="min-h-11 rounded-md border border-rule bg-bg px-2 py-1 font-mono text-xs"
                 value={book}
                 onChange={(e) => setBook(e.target.value)}
               >
@@ -999,6 +1123,7 @@ export function GmBoardPage() {
                 GM MANUAL tick
               </Button>
             </div>
+          </div>
             {view?.you ? (
               <p className={cn("mt-3 font-mono text-xs", view.you.rank === 1 ? "text-high" : "text-muted")}>
                 You #{view.you.rank} · {btc(view.you.official.btc)} BTC official · P/L {pnl(view.you.official.pnlUsd)} ·{" "}
@@ -1018,6 +1143,23 @@ export function GmBoardPage() {
               />
             ) : null}
             {err ? <p className="mt-2 text-sm text-sell">{err}</p> : null}
+            <button
+              type="button"
+              onClick={() => setHowOpen((o) => !o)}
+              aria-expanded={howOpen}
+              className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-expand hover:underline"
+            >
+              {howOpen ? "Collapse API" : "Expand API"} · register / tick / C@LL 0UT
+            </button>
+            {howOpen ? (
+              <div className="mt-3 space-y-2 rounded-md border border-rule bg-bg/60 p-3">
+                <p className="font-mono text-[11px] leading-relaxed text-muted">{view?.how}</p>
+                <p className="font-mono text-[11px] leading-relaxed text-muted">{view?.callout?.how}</p>
+                <p className="font-mono text-[11px] text-muted">
+                  Board token is not admin — never /admin. This host never places Coinbase orders and never escrows.
+                </p>
+              </div>
+            ) : null}
             <p className="mt-3 text-xs text-muted">
               BYO path:{" "}
               <Link className="text-oss hover:underline" to="/compute">
@@ -1026,8 +1168,7 @@ export function GmBoardPage() {
               — paste your xAI key in the browser, Ask Grok on 7-B0T + {TAB_GM}, then tick here. Key never hits this
               host. API: POST {BOARD_PATH.replace("board", "api/agent/board")}.
             </p>
-          </Panel>
-        </div>
+        </Panel>
       </main>
     </Shell>
   );

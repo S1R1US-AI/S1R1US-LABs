@@ -15,7 +15,7 @@ export const RISK_RULES = [
   { id: "clip", label: "Clip", value: "BUY 2% NAV · ACCUMULATE 1% · HOLD/WAIT 0. Never a sell clip." },
   { id: "stop", label: "Stop-loss", value: "Per-clip watch 1.5% under entry. At +1% mark breakeven. A stop does NOT sell BTC — it blocks add-on buys into that lot. Never short. Never dump the stack." },
   { id: "short", label: "Shorts", value: "Forbidden. Mandate is accumulate BTC. Never sell. Never short." },
-  { id: "ops", label: "Ops", value: "Honest error log. Never auto-green. Daily 08:00 ET chat report: architecture, security, open errors, mandate score 1–10." },
+  { id: "ops", label: "Ops", value: "Honest error log. Never auto-green. Daily 07:30 ET chat report: architecture, security, open errors, Alignment Score 1–100 (mandate vs protocols). As-live sim auto-pauses 07:00 ET." },
 ] as const;
 
 export const BOT_ROSTER = [
@@ -25,7 +25,7 @@ export const BOT_ROSTER = [
   { id: "sentiment", name: "Sentiment Analyst", layer: "Mood", feed: "Alternative.me F&G · Cointelegraph CoinDesk Decrypt RSS" },
   { id: "rotation", name: "Rotation Analyst", layer: "Capital rotation", feed: "QQQ NVDA vs IBIT · GLD paper · RSS + whale overlay" },
   { id: "coordinator", name: "Coordinator", layer: "Maker-checker", feed: "Orthogonal two-lane · event + flow + RV + mood" },
-  { id: "helios", name: BOT7_NAME, layer: "7-B0T", feed: "All six + BTC tape, Asia, EM, ETF, BTC/gold, rotation, whales" },
+  { id: "helios", name: BOT7_NAME, layer: "7-B0T", feed: "All six + BTC tape, Asia, EM, ETF, BTC/gold, rotation, whales + Polymarket/Kalshi pred sub-analyst (label)" },
 ] as const;
 
 export const DATA_FEEDS = [
@@ -42,6 +42,7 @@ export const DATA_FEEDS = [
   { id: "macro", name: "Rates + M2", role: "FRED bills/2s/10s/30s/M2/CPI/PCE · DefiLlama stables (fill, 7s cap)" },
   { id: "strategy", name: "MSTR stack", role: "MSTR, preferreds, MSTY/2x vehicles from quote tape" },
   { id: "holders", name: "Top holders", role: "Bitbo BTC treasuries (fill) · quote-derived gold/silver" },
+  { id: "pred", name: "BTC prediction markets", role: "Polymarket + Kalshi public odds: bitcoin all-time high, monthly high, other BTC (fill, display only)" },
 ] as const;
 
 /** Two-phase run cycle — shared by Paper, Admin, s1r1us.ai. */
@@ -52,7 +53,7 @@ export const CYCLE_ARCH = {
   spinnerMs: 3200,
   inflight: 12,
   core: "Coinbase last first, then RSI/MACD, F&G, on-chain, Asia kimchi, public leverage, ETF flow, whales",
-  fill: "Holders, headlines, filings, EM, FRED/M2, DAT/SWF, Binance LS/OI, mempool.space + Blockstream fees — last good tape reused on 429/timeout",
+  fill: "Holders, headlines, filings, BTC prediction markets (Polymarket/Kalshi), EM, FRED/M2, DAT/SWF, Binance LS/OI, mempool.space + Blockstream fees — last good tape reused on 429/timeout",
   skip: "None cut. Slow or geo-blocked hosts run on fill with 1.4s caps and last-good cache (Binance fapi → CoinGecko; mempool.space fees; Blockstream fees).",
 } as const;
 

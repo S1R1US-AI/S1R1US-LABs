@@ -28,3 +28,33 @@ export function CollapseSummary({
     </div>
   );
 }
+
+/** Purple Expand for long ranked lists so two-column boards stay even. */
+export function CollapseMore({
+  open,
+  onToggle,
+  more,
+  label,
+  className,
+}: {
+  open: boolean;
+  onToggle: () => void;
+  more: number;
+  label: string;
+  className?: string;
+}) {
+  if (!open && more <= 0) return null;
+  return (
+    <button
+      type="button"
+      className={cn(
+        "mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-expand hover:underline",
+        className,
+      )}
+      aria-expanded={open}
+      onClick={onToggle}
+    >
+      {open ? `Collapse ${label}` : `Expand ${label} · ${more} more`}
+    </button>
+  );
+}

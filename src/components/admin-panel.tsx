@@ -6,6 +6,8 @@ import { AccessDesk } from "@/components/security-page";
 import { SecurityDesk } from "@/components/security-desk";
 import { DeskErrorLog } from "@/components/desk-error-log";
 import { MorningReportPdf } from "@/components/morning-report-pdf";
+import { LiveSimPanel } from "@/components/live-sim-panel";
+import { ChampionshipSimPanel } from "@/components/championship-sim-panel";
 import { LaunchDesk } from "@/components/launch-desk";
 import { PaperManual } from "@/components/paper-manual";
 import { PracticeDesk } from "@/components/practice-desk";
@@ -158,7 +160,7 @@ export function AdminPanel() {
                         : tab === "bowl"
                           ? "SUP3R B0WL / L3AD3R B0ARD / C@LL 0UT — compete as a separate board token. Not Yubi. Not vault."
                           : tab === "hive"
-                            ? "H1V3 SW@RM — combine BYO compute (TH/s). Paper BTC split by pledged terahash. TEST until go-live. Pause/continue. Copy-admin may pause hive; championship pause stays system-only."
+                            ? "H1V3 SW@RM — combine BYO compute (TH/s). Paper BTC split by pledged terahash. TEST until go-live. Pause/continue. Copy-admin may pause hive and championship sim."
                 : `Fund control for ${APP_NAME}. Session, Grok cap, two YubiKeys, risk rules, Coinbase MCP posture.`}
           </p>
           {err ? <p className="mt-3 text-sm text-down">{err}</p> : null}
@@ -258,6 +260,12 @@ export function AdminPanel() {
 
           {tab === "console" || tab === "wallet" ? <PracticeDesk /> : null}
           {tab === "console" ? <Lock3dStatusPanel /> : null}
+          {tab === "console" ? (
+            <>
+              <LiveSimPanel token={token} />
+              <ChampionshipSimPanel token={token} />
+            </>
+          ) : null}
           {tab === "console" ? <TapeFreezePanel /> : null}
           {tab === "console" ? <DeskErrorLog /> : null}
           {tab === "console" ? <MorningReportPdf /> : null}
@@ -289,7 +297,7 @@ export function AdminPanel() {
           ) : tab === "security" ? (
             <SecurityDesk />
           ) : tab === "bowl" ? (
-            <BoardPlayPanel plane="system" defaultName="S1R1US-ADMIN" defaultKind="admin" />
+            <BoardPlayPanel plane="system" defaultName="S1R1US-ADMIN" defaultKind="admin" adminToken={token} />
           ) : tab === "hive" ? (
             token ? <HiveAdminPanel token={token} /> : null
           ) : tab === "wallet" ? (

@@ -1,6 +1,6 @@
 # Official checkpoint — N3W Web App Installation Build (new theme) — DEPLOY #68
 
-Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + Pr3d lock + morning problems). Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved. Checkpoint number stays **68**.
+Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + Pr3d lock + morning problems + **source on GitHub**). Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved. Checkpoint number stays **68**.
 
 | | |
 |---|---|
@@ -21,9 +21,10 @@ Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + Pr3d lock + morning p
 - Live feed title: **AI Agent SUP3R B0WL**.
 - Morning report: Alignment Score 1–100 + **Problems found last 24 hours**. healLiveSim keeps data pulls with sim. Stray practice killed.
 - W1S3 0WL$ Forum LIVE. H1V3 SW@RM paper hive. BYO connect. L3AD3R B0ARD / C@LL 0UT / W0rLd CUP.
-- As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68. Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
+- As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68 (`CHECKPOINT_FOLD` 2026-09-07T03:44:00.000Z). Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
 - FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use` `#s1r1us-predictions` `#pred-board` `#morning-report`. FinCEN s8 LOCKED.
 - Official X `@S1R1US_AI`. This host never places Coinbase orders.
+- Source for this fold is on **`main`** and **`checkpoint/n3w-web-app-install-deploy-68`** (not the protected tag). DigitalOcean: rebuild copies `.output` — click **Deploy** of that branch. Autodeploy stays **off**. Do not move the tag.
 
 ## Repair / rebuild
 

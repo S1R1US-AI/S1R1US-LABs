@@ -6,10 +6,13 @@ import {
   issueCallout,
   placeFightWager,
   tickCallout,
+  honorCallout,
+  setCalloutPref,
   GM_AUTO_ID,
   seedDemoTape,
   fightCount,
   SYSTEM_KING_NAME,
+  SYSTEM_KING_ID,
 } from "./board-callout.ts";
 
 try {
@@ -142,5 +145,72 @@ describe("board-callout", { concurrency: false }, () => {
     assert.equal(n.demo, 0);
     assert.equal(n.total, 1);
     assert.equal(n.live, 1);
+  });
+
+  it("honors or forfeits a pending C@LL 0UT and blocks admin from owl-vs-owl", () => {
+    const suffix = `${Date.now().toString(36)}hon`;
+    const from = { id: `ag_co_h_a_${suffix}`, name: "HumanA", purpose, kind: "human", admin: true };
+    const target = { id: `ag_co_h_b_${suffix}`, name: "GrokOwl", purpose, kind: "grok" };
+    setCalloutPref({ id: target.id, mode: "manual" });
+    const started = issueCallout({ from, target });
+    assert.equal(started.ok, true);
+    if (!started.ok) return;
+    assert.equal(started.fight.status, "PENDING");
+    assert.equal(started.lane, "admin-vs-agent");
+
+    const declined = honorCallout({ id: target.id, accept: false });
+    assert.equal(declined.ok, true);
+    if (declined.ok) {
+      assert.equal(declined.fight.status, "FORFEIT");
+      assert.equal(declined.fight.winnerId, from.id);
+      assert.equal(declined.fight.forfeit, true);
+    }
+
+    const owlA = { id: `ag_owl_a_${suffix}`, name: "OwlA", purpose, kind: "grok" };
+    const owlB = { id: `ag_owl_b_${suffix}`, name: "OwlB", purpose, kind: "claude" };
+    const owl = issueCallout({ from: owlA, target: owlB });
+    assert.equal(owl.ok, true);
+    if (owl.ok) assert.equal(owl.lane, "owl-vs-owl");
+
+    const adminTick = tickCallout({ id: owlA.id, name: owlA.name, action: "BUY", px: 80_000, admin: true });
+    assert.equal(adminTick.ok, false);
+
+    const paused = { id: `ag_pause_${suffix}`, name: "PausedOwl", purpose, kind: "gpt" };
+    setCalloutPref({ id: paused.id, mode: "pause" });
+    const toPaused = issueCallout({
+      from: { id: `ag_adm2_${suffix}`, name: "Adm2", purpose, kind: "human", admin: true },
+      target: paused,
+    });
+    assert.equal(toPaused.ok, false);
+  });
+
+  it("lets admin C@LL 0UT 7-B0T when G M0D3 M@NU@L is unlocked", () => {
+    const suffix = `${Date.now().toString(36)}7b`;
+    const admin = { id: `ag_adm7_${suffix}`, name: "AdminManual", purpose, kind: "human", admin: true };
+    const locked = issueCallout({
+      from: admin,
+      target: { id: SYSTEM_KING_ID, name: SYSTEM_KING_NAME, purpose, system: true, kind: "other" },
+      gmManualUnlocked: false,
+    });
+    assert.equal(locked.ok, false);
+
+    const human = issueCallout({
+      from: { id: `ag_hum7_${suffix}`, name: "NotAdmin", purpose, kind: "human" },
+      target: { id: SYSTEM_KING_ID, name: SYSTEM_KING_NAME, purpose, system: true, kind: "other" },
+      gmManualUnlocked: true,
+    });
+    assert.equal(human.ok, false);
+
+    const ok = issueCallout({
+      from: admin,
+      target: { id: SYSTEM_KING_ID, name: SYSTEM_KING_NAME, purpose, system: true, kind: "other" },
+      gmManualUnlocked: true,
+    });
+    assert.equal(ok.ok, true);
+    if (ok.ok) {
+      assert.equal(ok.lane, "admin-vs-7bot");
+      assert.equal(ok.fight.status, "LIVE");
+      assert.equal(ok.fight.roundMin, 15);
+    }
   });
 });

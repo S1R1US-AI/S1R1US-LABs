@@ -7,6 +7,7 @@ import { FILING_CIKS, GOLD_TICKERS, MACRO_QUOTES, MAG7_TICKERS, PROXY_QUOTES, SI
 import { DESK_POLL_MS } from "./poll";
 import { guardedFetch } from "./net-guard";
 import { isTapeFrozen, readLastGood, writeLastGood } from "./tape-persist";
+import { fetchPredictionMarkets } from "./prediction-markets";
 import type { AsiaTape, AsiaVenue, BtcHolder, Candle, CapitalTape, DatHolding, DeskSnapshot, EmRegion, EmTape, EmVenue, Filing, Flow, GoldBtcPoint, GoldBtcTape, Headline, HoldersTape, LeverageVenue, MacroTape, MetalHolding, Quote, RateSeries, StableYield, StrategyProduct, StrategyTape, WhalePrint } from "./types";
 
 const UA =
@@ -46,6 +47,7 @@ function isDead(url: string) {
 }
 
 function maxBytesFor(url: string) {
+  if (/gamma-api\.polymarket|elections\.kalshi/.test(url)) return 280_000;
   if (/yields\.llama\.fi\/pools/.test(url)) return 12_500_000;
   if (/coingecko\.com\/api\/v3\/derivatives/.test(url)) return 280_000;
   if (/book\?level=2|product_book/.test(url)) return 80_000;
@@ -55,6 +57,7 @@ function maxBytesFor(url: string) {
 }
 
 function ttlFor(url: string) {
+  if (/polymarket\.com|kalshi\.com/.test(url)) return 60_000;
   if (/stlouisfed\.org|fred|bitbo\.io|treasury\.gov|imf\.org|worldgold|bls\.gov/.test(url)) return 180_000;
   if (/llama\.fi/.test(url)) return 300_000;
   if (/coinbase\.com|okx\.com|upbit|bithumb|hashkey|htx|bybit|hyperliquid|bitfinex|alternative\.me|blockstream|blockchain\.info/.test(url))
@@ -2821,6 +2824,7 @@ function stitchCore(
     quotes: quoteRows,
     filings: prev?.filings ?? [],
     headlines: prev?.headlines ?? [],
+    predictionMarkets: prev?.predictionMarkets ?? [],
     asia: asia.kimchiPct != null || asia.venues.some((v) => v.lastUsd != null) ? asia : prev?.asia ?? asia,
     em: prev?.em ?? toEm(EMPTY_EM_RAW, tape.btc.price),
     capital: cap.etfFlow != null || cap.dats.length ? cap : prev?.capital ?? cap,
@@ -2859,6 +2863,12 @@ function stitchCore(
 }
 
 async function buildSnapshot(): Promise<DeskSnapshot> {
+  try {
+    const { ensureLiveSimScheduler } = await import("./live-sim.server");
+    ensureLiveSimScheduler();
+  } catch {
+    /* preview */
+  }
   if (isTapeFrozen()) {
     return snapCache?.value ?? readLastGood()?.snap ?? skeletonSnapshot();
   }
@@ -2907,7 +2917,7 @@ async function assembleFill(t0: number, core: DeskSnapshot) {
     } catch {
       /* holders/capital use last cache */
     }
-    const [capR, hoR, hR, fR, eR, macR, aR, cutR, qR, fgR, whR, goldR, stR] = await Promise.allSettled([
+    const [capR, hoR, hR, fR, eR, macR, aR, cutR, qR, fgR, whR, goldR, stR, predR] = await Promise.allSettled([
       capLane(capitalTape(), 4000),
       capLane(holdersTape(), 4000),
       capLane(headlines(), 3500),
@@ -2921,6 +2931,7 @@ async function assembleFill(t0: number, core: DeskSnapshot) {
       capLane(whaleTape(core.btc.price), 2800),
       capLane(goldSpotUsd(), 2000),
       capLane(strategySparks(), 7000),
+      capLane(fetchPredictionMarkets(), 4500),
     ]);
     const silent: string[] = [];
     const capital = settled("capital", silent, capR, core.capital);
@@ -2928,6 +2939,7 @@ async function assembleFill(t0: number, core: DeskSnapshot) {
     const headlinesV = settled("rss", silent, hR, core.headlines);
     const whalesV = settled("whales", silent, whR, core.whales);
     const filingsV = settled("sec", silent, fR, core.filings);
+    const predV = settled("pred", silent, predR, core.predictionMarkets);
     const em = toEm(settled("em", silent, eR, EMPTY_EM_RAW), core.btc.price);
     const macro = settled("macro", silent, macR, core.macro);
     const asia = toAsia(settled("asia", silent, aR, EMPTY_ASIA_RAW), core.btc.price);
@@ -2990,6 +3002,7 @@ async function assembleFill(t0: number, core: DeskSnapshot) {
       headlines: headlinesV.length ? headlinesV : core.headlines,
       whales: whalesV.length ? whalesV : core.whales,
       filings: filingsV.length ? filingsV : core.filings,
+      predictionMarkets: predV.length ? predV : core.predictionMarkets,
       em: em.regions.some((r) => r.premiumPct != null) ? em : core.em,
       asia: asia.kimchiPct != null ? asia : core.asia,
       macro: macro.tbill.last != null || macro.m2.last != null ? macro : core.macro,

@@ -204,7 +204,7 @@ function maybeTick(s: Store, px: number) {
   return s;
 }
 
-export function setSimStatus(status: SimStatus) {
+export function setSimStatus(status: SimStatus, by: "system" | "app-admin" = "system") {
   const s = load();
   s.sim = status === "PAUSED" ? "PAUSED" : "LIVE";
   s.simAt = new Date().toISOString();
@@ -214,7 +214,7 @@ export function setSimStatus(status: SimStatus) {
     s.sim === "LIVE" ? "Championship simulation LIVE" : "Championship simulation PAUSED",
     s.sim === "LIVE"
       ? "W0rLd CUP and simulated SUP3R B0WL / C@LL 0UT tick against live Coinbase last. This host never places Coinbase orders."
-      : "System Admin paused the championship simulation. Last tape held. Live web and phone apps still follow parent security — Coinbase create stays locked.",
+      : `${by === "app-admin" ? "Phone-app Admin" : "System Admin"} paused the championship simulation. Last tape held. Live web and phone apps still follow parent security — Coinbase create stays locked.`,
   );
   return simPublic(s);
 }
@@ -235,7 +235,7 @@ function simPublic(s: Store) {
     note:
       s.sim === "LIVE"
         ? "Simulation LIVE. World Cup and Super Bowl paper desks tick against live Coinbase last. This host never places Coinbase orders."
-        : "Simulation PAUSED by system Admin. Last tape held. Registered bots may still read. Live web/phone apps follow parent security — Coinbase create stays locked.",
+        : "Simulation PAUSED by system Admin or phone-app Admin. Last tape held. Registered bots may still read. Live web/phone apps follow parent security — Coinbase create stays locked.",
   };
 }
 

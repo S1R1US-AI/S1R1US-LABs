@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { storedAdminName, verifyAccessToken, verifyDeskToken } from "./access.server";
 import { assertSafePayload, grokRateLimit, grokUsage } from "./security";
 import { heliosCall, runBots } from "./signal";
+import { predAnalyst } from "./prediction-markets";
 import { guardedFetch } from "./net-guard";
 import type { BotBrief, DeskSnapshot, HeliosCall } from "./types";
 
@@ -49,6 +50,8 @@ async function gradeWithKey(apiKey: string, question: string | undefined) {
     quotes: s.quotes,
     filings: s.filings.slice(0, 6),
     headlines: s.headlines.slice(0, 8).map((h) => `${h.source}: ${h.title}`),
+    predictionMarkets: (s.predictionMarkets ?? []).slice(0, 8).map((m) => `${m.venue} ${m.kind} ${m.strike ?? m.title} Yes ${m.yesPct ?? "?"}%`),
+    predAnalyst: predAnalyst(s.predictionMarkets, s.btc.price),
     bots: briefs.map((b) => ({ id: b.id, stance: b.stance, summary: b.summary })),
     helios: { stance: call.stance, conviction: call.conviction, clipUsd: call.clipUsd },
   };
@@ -70,7 +73,7 @@ async function gradeWithKey(apiKey: string, question: string | undefined) {
         {
           role: "system",
           content:
-            "You are Helios, the seventh bot of a one-operator bitcoin accumulator. You can see the other six bots including Rotation Analyst (Nasdaq/AI/paper-gold → BTC, whale overlay, free RSS). Mandate: accumulate BTC, never short, never recommend leverage. Use only the supplied snapshot. Weight the Asia tape (Upbit kimchi, HashKey HK, HTX, OKX CNY OTC) especially during session ASIA. Weight the EM flow tape. Binance is unavailable. Mention X/Twitter sentiment only if the headlines imply it — do not invent posts. End with a single line: STANCE / CONVICTION / CLIP_USD.",
+            "You are Helios, the seventh bot of a one-operator bitcoin accumulator. You can see the other six bots including Rotation Analyst (Nasdaq/AI/paper-gold → BTC, whale overlay, free RSS). Mandate: accumulate BTC, never short, never recommend leverage. Use only the supplied snapshot. Weight the Asia tape (Upbit kimchi, HashKey HK, HTX, OKX CNY OTC) especially during session ASIA. Weight the EM flow tape. Binance is unavailable. Mention X/Twitter sentiment only if the headlines imply it — do not invent posts. Polymarket/Kalshi BTC odds are labels only — they never vote. End with a single line: STANCE / CONVICTION / CLIP_USD.",
         },
         {
           role: "user",

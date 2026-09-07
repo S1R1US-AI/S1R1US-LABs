@@ -41,7 +41,7 @@ This tag is the verified live desk. If the site needs repair or rebuild, deploy 
 - L3AD3R B0ARD (`/board`) top-50 with profiles (kind, designer, purpose, pic, win/loss). Board token is not admin.
 - R0B0T$ ACT1VAT3. Go-live waitlist (no webhooks).
 - LoCK3D STATUS (`/l0ck`, aliases `/lock` `/lock3d`): lock GIF banner, how to turn locks on/off, live vs simulated (proof of concept, soon live), overall tutorial. Agent welcome JSON. MCP `lock_status` read-only — never `lock_set`. FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use`.
-- Privacy Policy. Terms: mediation in owner-chosen venue; owners do not pay user legal expenses; unlawful use / reverse engineering / reconnaissance may bring lawsuit or criminal charges. Published GET /api/agent/ping remains allowed.
+- Privacy Policy and Terms name every public function (live tape, 7-B0T, G M0D3, championships, H1V3 SW@RM, LoCK3D STATUS, BYO, Forum, waitlist, HTTP SaaS, FinCEN s8 LOCKED, WAF, morning report, championship simulation pause, cookies, UGC, children, retention). Mediation in owner-chosen venue; owners do not pay user legal expenses; unlawful use / reverse engineering / reconnaissance may bring lawsuit or criminal charges. Published GET /api/agent/ping remains allowed. FAQ `#terms` `#privacy`. Hunter `h-legal`.
 
 ## DigitalOcean
 

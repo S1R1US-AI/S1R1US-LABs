@@ -287,9 +287,29 @@ button.coinbase-orange:focus {
   color: var(--color-tab) !important;
 }
 
-.gold-css,
-.gold-css * {
-  color: #ffd24a !important;
+.gold-css {
+  color: #ffd24a;
+  font-weight: 700;
+}
+.gold-css:not(:has(span)),
+.gold-css > span {
+  display: inline-block;
+  background-image: linear-gradient(
+    90deg,
+    #6b3f00,
+    #b8860b,
+    #ffd24a,
+    #fff6c2,
+    #e8c547,
+    #ffb347,
+    #6b3f00
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: godzilla-shift 3.6s linear infinite;
 }
 .silver-css,
 .silver-css * {
@@ -305,30 +325,404 @@ button.coinbase-orange:focus {
 .legal-purple .lock-deep {
   color: #3a1458 !important;
 }
-.lock-gif {
-  width: 1.5rem;
-  height: 1.5rem;
+.lock-gif,
+.lock-gif-closed,
+.lock-gif-open,
+.lock-gif-lg,
+.lock-gif-banner {
+  width: 2.75rem;
+  height: 2.75rem;
   object-fit: contain;
   flex-shrink: 0;
   display: inline-block;
   vertical-align: middle;
-  border-radius: 2px;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-radius: 0;
+  mix-blend-mode: normal;
+  isolation: isolate;
+  /* Padlock GIFs stay gold/red/green. Never inherit GM rainbow / hue-rotate. */
+  animation: none !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55));
+  image-rendering: auto;
 }
 .lock-gif-lg {
-  width: 2rem;
-  height: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 .lock-gif-banner {
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 7.5rem;
+  height: 7.5rem;
   object-fit: contain;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.55));
 }
 @media (min-width: 640px) {
   .lock-gif-banner {
-    width: 8rem;
-    height: 8rem;
+    width: 10rem;
+    height: 10rem;
   }
+}
+.lock-status-board {
+  width: 100%;
+  min-width: 0;
+}
+.lock-status-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+  align-items: center;
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+.lock-status-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.7rem;
+  min-width: 0;
+  font-size: 1.33rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-fg);
+}
+.lock-status-mode {
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--color-muted);
+}
+.lock-status-tape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem 0.55rem;
+  min-width: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.lock-status-tape-note {
+  font-size: 0.91rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.lock-status-expand {
+  margin-left: 0.15rem;
+  min-height: 2.75rem;
+  padding: 0 0.2rem;
+  border: 0;
+  background: transparent;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.lock-status-expand:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+.lock-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+.lock-status-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+  align-items: stretch;
+}
+.lock-status-cols-stack {
+  grid-template-columns: 1fr;
+}
+.lock-col {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  background: var(--color-paper);
+}
+.lock-col-h {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0.55rem 0.75rem 0.65rem;
+  font-size: 1.01rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-paper-raised);
+}
+.lock-col-h .lock-gif-lg {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-top: 0.15rem;
+}
+.lock-col-open .lock-col-h {
+  color: var(--color-high);
+}
+.lock-col-closed .lock-col-h {
+  color: var(--color-sell);
+}
+.lock-col-list {
+  display: grid;
+  grid-auto-rows: minmax(3.6rem, auto);
+  align-content: start;
+  min-height: 8.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lock-cell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.7rem;
+  row-gap: 0.15rem;
+  min-height: 3.6rem;
+  padding: 0.45rem 0.7rem;
+  border-top: 1px solid rgb(81 91 110 / 0.4);
+}
+.lock-cell:first-child {
+  border-top: 0;
+}
+.lock-cell-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+.lock-cell-copy {
+  min-width: 0;
+}
+.lock-cell-line {
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+.lock-cell-link {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+.lock-cell-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.lock-cell-hint {
+  margin: 0.15rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  color: var(--color-muted);
+}
+.lock-cell-state {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.lock-cell-include {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 1.75rem;
+  font-size: 0.98rem;
+  color: var(--color-muted);
+}
+.pred-tape {
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-rule);
+}
+.pred-col-h {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.pred-title {
+  display: block;
+  color: var(--color-fg);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.pred-yes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+.pred-yes-track {
+  display: block;
+  height: 0.35rem;
+  overflow: hidden;
+  border-radius: 99px;
+  background: var(--color-paper-raised);
+}
+.pred-yes-fill {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: var(--color-high);
+}
+.pred-yes-pct {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.lock-gif {
+  overflow: hidden;
+  color: transparent;
+}
+.lock-cell-gif {
+  width: 3.15rem;
+  height: 3.15rem;
+  padding: 0.12rem;
+}
+.lock-cell-gif .lock-gif {
+  width: 100%;
+  height: 100%;
+}
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.35rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.status-LIVE,
+.status-DONE,
+.status-STARTED {
+  color: var(--color-high);
+  background: rgb(61 204 138 / 0.16);
+  border-color: rgb(61 204 138 / 0.42);
+}
+.status-LIVE-PAPER,
+.status-NOW {
+  color: var(--color-tab);
+  background: rgb(94 179 228 / 0.16);
+  border-color: rgb(94 179 228 / 0.42);
+}
+.status-LIVE-TEST,
+.status-NEXT,
+.status-QUEUED {
+  color: var(--color-tbill);
+  background: rgb(201 180 74 / 0.16);
+  border-color: rgb(201 180 74 / 0.42);
+}
+.status-LOCKED {
+  color: var(--color-sell);
+  background: rgb(240 97 109 / 0.16);
+  border-color: rgb(240 97 109 / 0.42);
+}
+.status-NEVER {
+  color: var(--color-wait);
+  background: rgb(180 140 255 / 0.16);
+  border-color: rgb(180 140 255 / 0.42);
+}
+.status-row {
+  border-left: 3px solid var(--color-rule);
+  padding-left: 0.7rem;
+}
+.status-row-LIVE,
+.status-row-DONE,
+.status-row-STARTED {
+  border-left-color: var(--color-high);
+}
+.status-row-LIVE-PAPER,
+.status-row-NOW {
+  border-left-color: var(--color-tab);
+}
+.status-row-LIVE-TEST,
+.status-row-NEXT,
+.status-row-QUEUED {
+  border-left-color: var(--color-tbill);
+}
+.status-row-LOCKED {
+  border-left-color: var(--color-sell);
+}
+.status-row-NEVER {
+  border-left-color: var(--color-wait);
+}
+.roadmap-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.5rem;
+}
+.roadmap-track-item {
+  display: grid;
+  gap: 0.25rem;
+  min-height: 4.5rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  background: var(--color-paper-raised);
+}
+@media (max-width: 639px) {
+  .lock-status-head,
+  .lock-status-cols {
+    grid-template-columns: 1fr;
+  }
+  .lock-status-tape {
+    justify-content: flex-start;
+  }
+}
+/* Rainbow / hue cycle is for lock NAMES (G M0D3 AUTO), never the padlock GIF. */
+.gm-mode .lock-gif,
+.gm-mode .lock-gif-banner,
+.gm-mode .call-accumulate .lock-gif,
+.gm-mode .call-high-accum .lock-gif,
+.gm-rainbow .lock-gif,
+.gm-rainbow .lock-gif-banner,
+.forum-rainbow .lock-gif,
+.call-accumulate .lock-gif,
+.call-high-accum .lock-gif,
+.hive-nav .lock-gif,
+.gold-css .lock-gif {
+  animation: none !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4)) !important;
+  background: transparent !important;
+  -webkit-text-fill-color: initial !important;
+  color: inherit !important;
+}
+.gm-mode .lock-gif-banner,
+.gm-rainbow .lock-gif-banner {
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45)) !important;
 }
 a.legal-purple,
 a.legal-purple:link,

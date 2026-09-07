@@ -1,8 +1,10 @@
 /** Checkpoint-68 overall system health. Function + security + design. Relative imports only. Client-safe. */
 
+import { alignmentScore, type AlignmentScore } from "./alignment.ts";
 import { MCP_TOOLS } from "./agent-security.ts";
 import { GO_LIVE_STEPS } from "./go-live.ts";
 import { hiveResourcePublic } from "./hive-resource.ts";
+import { CHECKPOINT_BUILD_N, checkpointId } from "../launch/checkpoint.ts";
 
 export type HealthAxis = {
   id: string;
@@ -14,17 +16,19 @@ export type HealthAxis = {
 
 export type SystemHealth = {
   asOf: string;
-  checkpoint: "68";
+  checkpoint: string;
   overall: number;
   grade: "A" | "B" | "C" | "D" | "F";
   function: HealthAxis;
   security: HealthAxis;
   design: HealthAxis;
+  alignment: AlignmentScore;
   liveUnlocked: false;
   trade: false;
   practiceCannotArmCoinbase: true;
   copyAdminMayPauseHive: true;
-  copyAdminCannotPauseChampionship: true;
+  copyAdminMayPauseChampionship: true;
+  copyAdminCannotPauseChampionship: false;
 };
 
 function grade(n: number): SystemHealth["grade"] {
@@ -53,6 +57,10 @@ export function systemHealth(): SystemHealth {
   if (MCP_TOOLS.has("hive_list") && MCP_TOOLS.has("board_tick") && MCP_TOOLS.has("cup_list")) {
     fn += 20;
     fnNotes.push("MCP hive + board + cup live");
+  }
+  if (MCP_TOOLS.has("pred_list") && MCP_TOOLS.has("pred_bet") && !MCP_TOOLS.has("pred_live")) {
+    fn += 5;
+    fnNotes.push("S1R1US Pr3d1ctions paper MCP");
   }
   if (MCP_TOOLS.has("byo_connect")) {
     fn += 10;
@@ -100,22 +108,26 @@ export function systemHealth(): SystemHealth {
     "LoCK3D STATUS banner + lock GIFs",
     "L3AD3R B0ARD collapse/expand (purple Expand)",
     "FAQ + schema + XML sitemap hive + lock images",
+    "Terms + Privacy name every public function",
   ];
   const des = 94;
 
-  const overall = clamp(fn * 0.4 + sec * 0.4 + des * 0.2, 100);
+  const align = alignmentScore();
+  const overall = clamp(fn * 0.35 + sec * 0.35 + des * 0.15 + align.score * 0.15, 100);
   return {
     asOf: new Date().toISOString(),
-    checkpoint: "68",
+    checkpoint: checkpointId(CHECKPOINT_BUILD_N),
     overall,
     grade: grade(overall),
     function: { id: "function", label: "Function", score: fn, max: 100, notes: fnNotes },
     security: { id: "security", label: "Security", score: sec, max: 100, notes: secNotes },
     design: { id: "design", label: "Design", score: des, max: 100, notes: desNotes },
+    alignment: align,
     liveUnlocked: false,
     trade: false,
     practiceCannotArmCoinbase: true,
     copyAdminMayPauseHive: true,
-    copyAdminCannotPauseChampionship: true,
+    copyAdminMayPauseChampionship: true,
+    copyAdminCannotPauseChampionship: false,
   };
 }

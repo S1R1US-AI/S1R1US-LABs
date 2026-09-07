@@ -67,7 +67,7 @@ describe("H1V3 SW@RM", { concurrency: false }, () => {
     assert.equal(leave.ok, false);
   });
 
-  it("MCP hive_list is read-only; no hive_pause; copy-admin may pause hive not championship", () => {
+  it("MCP hive_list is read-only; no hive_pause; copy-admin may pause hive and championship", () => {
     assert.equal(MCP_TOOLS.has("hive_list"), true);
     assert.equal(MCP_TOOLS.has("hive_join"), true);
     assert.equal(MCP_TOOLS.has("hive_pledge"), true);
@@ -80,7 +80,7 @@ describe("H1V3 SW@RM", { concurrency: false }, () => {
     assert.match(rpc, /setHiveStatus\(next, system \? "system" : "app-admin"\)/);
     assert.match(appAdmin, /setHiveSwarmStatus|HiveAdminPanel/);
     assert.match(adminPanel, /HiveAdminPanel/);
-    assert.equal(/setChampionshipSim/.test(appAdmin), false);
+    assert.match(appAdmin, /ChampionshipSimPanel/);
     assert.match(hiveMod, /trade: false/);
     assert.match(hiveMod, /escrow: false/);
     assert.match(hiveMod, /Board token is not admin/);

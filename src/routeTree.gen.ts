@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AgentRouteImport } from './routes/agent'
+import { Route as AiCatalogDotjsonRouteImport } from './routes/ai-catalog[.]json'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as B3arsRouteImport } from './routes/b3ars'
 import { Route as BoardRouteImport } from './routes/board'
@@ -39,11 +40,16 @@ import { Route as Lock3dRouteImport } from './routes/lock3d'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
 import { Route as MediaRouteImport } from './routes/media'
+import { Route as OssRoadmapRouteImport } from './routes/oss-roadmap'
 import { Route as OwlRouteImport } from './routes/owl'
 import { Route as PlayRouteImport } from './routes/play'
+import { Route as Pr3dRouteImport } from './routes/pr3d'
+import { Route as PredRouteImport } from './routes/pred'
+import { Route as PredictionsRouteImport } from './routes/predictions'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as R0b0tsRouteImport } from './routes/r0b0ts'
 import { Route as RenewRouteImport } from './routes/renew'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as S1r1usRouteImport } from './routes/s1r1us'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SecurityRouteImport } from './routes/security'
@@ -60,13 +66,18 @@ import { Route as W0rldRouteImport } from './routes/w0rld'
 import { Route as WorldCupRouteImport } from './routes/world-cup'
 import { Route as DotwellKnownAgentCardDotjsonRouteImport } from './routes/[.]well-known/agent-card[.]json'
 import { Route as DotwellKnownAgentDotjsonRouteImport } from './routes/[.]well-known/agent[.]json'
+import { Route as DotwellKnownAiCatalogDotjsonRouteImport } from './routes/[.]well-known/ai-catalog[.]json'
 import { Route as DotwellKnownAiPluginDotjsonRouteImport } from './routes/[.]well-known/ai-plugin[.]json'
 import { Route as DotwellKnownAppleAppSiteAssociationRouteImport } from './routes/[.]well-known/apple-app-site-association'
 import { Route as DotwellKnownAssetlinksDotjsonRouteImport } from './routes/[.]well-known/assetlinks[.]json'
+import { Route as DotwellKnownLlmsDottxtRouteImport } from './routes/[.]well-known/llms[.]txt'
+import { Route as DotwellKnownMcpServerDotjsonRouteImport } from './routes/[.]well-known/mcp-server[.]json'
+import { Route as DotwellKnownMcpDotjsonRouteImport } from './routes/[.]well-known/mcp[.]json'
 import { Route as ApiAgentRouteImport } from './routes/api.agent'
 import { Route as AppAdminRouteImport } from './routes/app_.admin'
 import { Route as BoardIdRouteImport } from './routes/board.$id'
 import { Route as MorningPdfIdRouteImport } from './routes/morning-pdf.$id'
+import { Route as DotwellKnownMcpServerCardDotjsonRouteImport } from './routes/[.]well-known/mcp/server-card[.]json'
 import { Route as ApiAgentA2aRouteImport } from './routes/api/agent.a2a'
 import { Route as ApiAgentAppRouteImport } from './routes/api/agent.app'
 import { Route as ApiAgentAppleRouteImport } from './routes/api/agent.apple'
@@ -88,6 +99,8 @@ import { Route as ApiAgentNoticesRouteImport } from './routes/api/agent.notices'
 import { Route as ApiAgentOpenaiRouteImport } from './routes/api/agent.openai'
 import { Route as ApiAgentOpenapiRouteImport } from './routes/api/agent.openapi'
 import { Route as ApiAgentPingRouteImport } from './routes/api/agent.ping'
+import { Route as ApiAgentPredRouteImport } from './routes/api/agent.pred'
+import { Route as ApiAgentRoadmapRouteImport } from './routes/api/agent.roadmap'
 import { Route as ApiAgentSiriRouteImport } from './routes/api/agent.siri'
 import { Route as ApiAgentWaitlistRouteImport } from './routes/api/agent.waitlist'
 import { Route as ApiAgentWebmcpRouteImport } from './routes/api/agent.webmcp'
@@ -107,6 +120,11 @@ const AdminRoute = AdminRouteImport.update({
 const AgentRoute = AgentRouteImport.update({
   id: '/agent',
   path: '/agent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiCatalogDotjsonRoute = AiCatalogDotjsonRouteImport.update({
+  id: '/ai-catalog.json',
+  path: '/ai-catalog.json',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppRoute = AppRouteImport.update({
@@ -244,6 +262,11 @@ const MediaRoute = MediaRouteImport.update({
   path: '/media',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OssRoadmapRoute = OssRoadmapRouteImport.update({
+  id: '/oss-roadmap',
+  path: '/oss-roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OwlRoute = OwlRouteImport.update({
   id: '/owl',
   path: '/owl',
@@ -252,6 +275,21 @@ const OwlRoute = OwlRouteImport.update({
 const PlayRoute = PlayRouteImport.update({
   id: '/play',
   path: '/play',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Pr3dRoute = Pr3dRouteImport.update({
+  id: '/pr3d',
+  path: '/pr3d',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PredRoute = PredRouteImport.update({
+  id: '/pred',
+  path: '/pred',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PredictionsRoute = PredictionsRouteImport.update({
+  id: '/predictions',
+  path: '/predictions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -267,6 +305,11 @@ const R0b0tsRoute = R0b0tsRouteImport.update({
 const RenewRoute = RenewRouteImport.update({
   id: '/renew',
   path: '/renew',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const S1r1usRoute = S1r1usRouteImport.update({
@@ -351,6 +394,12 @@ const DotwellKnownAgentDotjsonRoute =
     path: '/.well-known/agent.json',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DotwellKnownAiCatalogDotjsonRoute =
+  DotwellKnownAiCatalogDotjsonRouteImport.update({
+    id: '/.well-known/ai-catalog.json',
+    path: '/.well-known/ai-catalog.json',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DotwellKnownAiPluginDotjsonRoute =
   DotwellKnownAiPluginDotjsonRouteImport.update({
     id: '/.well-known/ai-plugin.json',
@@ -369,6 +418,22 @@ const DotwellKnownAssetlinksDotjsonRoute =
     path: '/.well-known/assetlinks.json',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DotwellKnownLlmsDottxtRoute = DotwellKnownLlmsDottxtRouteImport.update({
+  id: '/.well-known/llms.txt',
+  path: '/.well-known/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DotwellKnownMcpServerDotjsonRoute =
+  DotwellKnownMcpServerDotjsonRouteImport.update({
+    id: '/.well-known/mcp-server.json',
+    path: '/.well-known/mcp-server.json',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DotwellKnownMcpDotjsonRoute = DotwellKnownMcpDotjsonRouteImport.update({
+  id: '/.well-known/mcp.json',
+  path: '/.well-known/mcp.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAgentRoute = ApiAgentRouteImport.update({
   id: '/api/agent',
   path: '/api/agent',
@@ -389,6 +454,12 @@ const MorningPdfIdRoute = MorningPdfIdRouteImport.update({
   path: '/morning-pdf/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DotwellKnownMcpServerCardDotjsonRoute =
+  DotwellKnownMcpServerCardDotjsonRouteImport.update({
+    id: '/.well-known/mcp/server-card.json',
+    path: '/.well-known/mcp/server-card.json',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiAgentA2aRoute = ApiAgentA2aRouteImport.update({
   id: '/a2a',
   path: '/a2a',
@@ -494,6 +565,16 @@ const ApiAgentPingRoute = ApiAgentPingRouteImport.update({
   path: '/ping',
   getParentRoute: () => ApiAgentRoute,
 } as any)
+const ApiAgentPredRoute = ApiAgentPredRouteImport.update({
+  id: '/pred',
+  path: '/pred',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
+const ApiAgentRoadmapRoute = ApiAgentRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => ApiAgentRoute,
+} as any)
 const ApiAgentSiriRoute = ApiAgentSiriRouteImport.update({
   id: '/siri',
   path: '/siri',
@@ -524,6 +605,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/ai-catalog.json': typeof AiCatalogDotjsonRoute
   '/app': typeof AppRoute
   '/b3ars': typeof B3arsRoute
   '/board': typeof BoardRouteWithChildren
@@ -551,11 +633,16 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
+  '/oss-roadmap': typeof OssRoadmapRoute
   '/owl': typeof OwlRoute
   '/play': typeof PlayRoute
+  '/pr3d': typeof Pr3dRoute
+  '/pred': typeof PredRoute
+  '/predictions': typeof PredictionsRoute
   '/privacy': typeof PrivacyRoute
   '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
+  '/roadmap': typeof RoadmapRoute
   '/s1r1us': typeof S1r1usRoute
   '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
@@ -572,13 +659,18 @@ export interface FileRoutesByFullPath {
   '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
+  '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/.well-known/apple-app-site-association': typeof DotwellKnownAppleAppSiteAssociationRoute
   '/.well-known/assetlinks.json': typeof DotwellKnownAssetlinksDotjsonRoute
+  '/.well-known/llms.txt': typeof DotwellKnownLlmsDottxtRoute
+  '/.well-known/mcp-server.json': typeof DotwellKnownMcpServerDotjsonRoute
+  '/.well-known/mcp.json': typeof DotwellKnownMcpDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
   '/app/admin': typeof AppAdminRoute
   '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
+  '/.well-known/mcp/server-card.json': typeof DotwellKnownMcpServerCardDotjsonRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/app': typeof ApiAgentAppRoute
   '/api/agent/apple': typeof ApiAgentAppleRoute
@@ -600,6 +692,8 @@ export interface FileRoutesByFullPath {
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/pred': typeof ApiAgentPredRoute
+  '/api/agent/roadmap': typeof ApiAgentRoadmapRoute
   '/api/agent/siri': typeof ApiAgentSiriRoute
   '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
   '/api/agent/webmcp': typeof ApiAgentWebmcpRoute
@@ -610,6 +704,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/ai-catalog.json': typeof AiCatalogDotjsonRoute
   '/app': typeof AppRoute
   '/b3ars': typeof B3arsRoute
   '/board': typeof BoardRouteWithChildren
@@ -637,11 +732,16 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
+  '/oss-roadmap': typeof OssRoadmapRoute
   '/owl': typeof OwlRoute
   '/play': typeof PlayRoute
+  '/pr3d': typeof Pr3dRoute
+  '/pred': typeof PredRoute
+  '/predictions': typeof PredictionsRoute
   '/privacy': typeof PrivacyRoute
   '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
+  '/roadmap': typeof RoadmapRoute
   '/s1r1us': typeof S1r1usRoute
   '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
@@ -658,13 +758,18 @@ export interface FileRoutesByTo {
   '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
+  '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/.well-known/apple-app-site-association': typeof DotwellKnownAppleAppSiteAssociationRoute
   '/.well-known/assetlinks.json': typeof DotwellKnownAssetlinksDotjsonRoute
+  '/.well-known/llms.txt': typeof DotwellKnownLlmsDottxtRoute
+  '/.well-known/mcp-server.json': typeof DotwellKnownMcpServerDotjsonRoute
+  '/.well-known/mcp.json': typeof DotwellKnownMcpDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
   '/app/admin': typeof AppAdminRoute
   '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
+  '/.well-known/mcp/server-card.json': typeof DotwellKnownMcpServerCardDotjsonRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/app': typeof ApiAgentAppRoute
   '/api/agent/apple': typeof ApiAgentAppleRoute
@@ -686,6 +791,8 @@ export interface FileRoutesByTo {
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/pred': typeof ApiAgentPredRoute
+  '/api/agent/roadmap': typeof ApiAgentRoadmapRoute
   '/api/agent/siri': typeof ApiAgentSiriRoute
   '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
   '/api/agent/webmcp': typeof ApiAgentWebmcpRoute
@@ -697,6 +804,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
+  '/ai-catalog.json': typeof AiCatalogDotjsonRoute
   '/app': typeof AppRoute
   '/b3ars': typeof B3arsRoute
   '/board': typeof BoardRouteWithChildren
@@ -724,11 +832,16 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/media': typeof MediaRoute
+  '/oss-roadmap': typeof OssRoadmapRoute
   '/owl': typeof OwlRoute
   '/play': typeof PlayRoute
+  '/pr3d': typeof Pr3dRoute
+  '/pred': typeof PredRoute
+  '/predictions': typeof PredictionsRoute
   '/privacy': typeof PrivacyRoute
   '/r0b0ts': typeof R0b0tsRoute
   '/renew': typeof RenewRoute
+  '/roadmap': typeof RoadmapRoute
   '/s1r1us': typeof S1r1usRoute
   '/search': typeof SearchRoute
   '/security': typeof SecurityRoute
@@ -745,13 +858,18 @@ export interface FileRoutesById {
   '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
+  '/.well-known/ai-catalog.json': typeof DotwellKnownAiCatalogDotjsonRoute
   '/.well-known/ai-plugin.json': typeof DotwellKnownAiPluginDotjsonRoute
   '/.well-known/apple-app-site-association': typeof DotwellKnownAppleAppSiteAssociationRoute
   '/.well-known/assetlinks.json': typeof DotwellKnownAssetlinksDotjsonRoute
+  '/.well-known/llms.txt': typeof DotwellKnownLlmsDottxtRoute
+  '/.well-known/mcp-server.json': typeof DotwellKnownMcpServerDotjsonRoute
+  '/.well-known/mcp.json': typeof DotwellKnownMcpDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
   '/app_/admin': typeof AppAdminRoute
   '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
+  '/.well-known/mcp/server-card.json': typeof DotwellKnownMcpServerCardDotjsonRoute
   '/api/agent/a2a': typeof ApiAgentA2aRoute
   '/api/agent/app': typeof ApiAgentAppRoute
   '/api/agent/apple': typeof ApiAgentAppleRoute
@@ -773,6 +891,8 @@ export interface FileRoutesById {
   '/api/agent/openai': typeof ApiAgentOpenaiRoute
   '/api/agent/openapi': typeof ApiAgentOpenapiRoute
   '/api/agent/ping': typeof ApiAgentPingRoute
+  '/api/agent/pred': typeof ApiAgentPredRoute
+  '/api/agent/roadmap': typeof ApiAgentRoadmapRoute
   '/api/agent/siri': typeof ApiAgentSiriRoute
   '/api/agent/waitlist': typeof ApiAgentWaitlistRoute
   '/api/agent/webmcp': typeof ApiAgentWebmcpRoute
@@ -785,6 +905,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/agent'
+    | '/ai-catalog.json'
     | '/app'
     | '/b3ars'
     | '/board'
@@ -812,11 +933,16 @@ export interface FileRouteTypes {
     | '/login'
     | '/manifest.webmanifest'
     | '/media'
+    | '/oss-roadmap'
     | '/owl'
     | '/play'
+    | '/pr3d'
+    | '/pred'
+    | '/predictions'
     | '/privacy'
     | '/r0b0ts'
     | '/renew'
+    | '/roadmap'
     | '/s1r1us'
     | '/search'
     | '/security'
@@ -833,13 +959,18 @@ export interface FileRouteTypes {
     | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
+    | '/.well-known/ai-catalog.json'
     | '/.well-known/ai-plugin.json'
     | '/.well-known/apple-app-site-association'
     | '/.well-known/assetlinks.json'
+    | '/.well-known/llms.txt'
+    | '/.well-known/mcp-server.json'
+    | '/.well-known/mcp.json'
     | '/api/agent'
     | '/app/admin'
     | '/board/$id'
     | '/morning-pdf/$id'
+    | '/.well-known/mcp/server-card.json'
     | '/api/agent/a2a'
     | '/api/agent/app'
     | '/api/agent/apple'
@@ -861,6 +992,8 @@ export interface FileRouteTypes {
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/pred'
+    | '/api/agent/roadmap'
     | '/api/agent/siri'
     | '/api/agent/waitlist'
     | '/api/agent/webmcp'
@@ -871,6 +1004,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/agent'
+    | '/ai-catalog.json'
     | '/app'
     | '/b3ars'
     | '/board'
@@ -898,11 +1032,16 @@ export interface FileRouteTypes {
     | '/login'
     | '/manifest.webmanifest'
     | '/media'
+    | '/oss-roadmap'
     | '/owl'
     | '/play'
+    | '/pr3d'
+    | '/pred'
+    | '/predictions'
     | '/privacy'
     | '/r0b0ts'
     | '/renew'
+    | '/roadmap'
     | '/s1r1us'
     | '/search'
     | '/security'
@@ -919,13 +1058,18 @@ export interface FileRouteTypes {
     | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
+    | '/.well-known/ai-catalog.json'
     | '/.well-known/ai-plugin.json'
     | '/.well-known/apple-app-site-association'
     | '/.well-known/assetlinks.json'
+    | '/.well-known/llms.txt'
+    | '/.well-known/mcp-server.json'
+    | '/.well-known/mcp.json'
     | '/api/agent'
     | '/app/admin'
     | '/board/$id'
     | '/morning-pdf/$id'
+    | '/.well-known/mcp/server-card.json'
     | '/api/agent/a2a'
     | '/api/agent/app'
     | '/api/agent/apple'
@@ -947,6 +1091,8 @@ export interface FileRouteTypes {
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/pred'
+    | '/api/agent/roadmap'
     | '/api/agent/siri'
     | '/api/agent/waitlist'
     | '/api/agent/webmcp'
@@ -957,6 +1103,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/agent'
+    | '/ai-catalog.json'
     | '/app'
     | '/b3ars'
     | '/board'
@@ -984,11 +1131,16 @@ export interface FileRouteTypes {
     | '/login'
     | '/manifest.webmanifest'
     | '/media'
+    | '/oss-roadmap'
     | '/owl'
     | '/play'
+    | '/pr3d'
+    | '/pred'
+    | '/predictions'
     | '/privacy'
     | '/r0b0ts'
     | '/renew'
+    | '/roadmap'
     | '/s1r1us'
     | '/search'
     | '/security'
@@ -1005,13 +1157,18 @@ export interface FileRouteTypes {
     | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
+    | '/.well-known/ai-catalog.json'
     | '/.well-known/ai-plugin.json'
     | '/.well-known/apple-app-site-association'
     | '/.well-known/assetlinks.json'
+    | '/.well-known/llms.txt'
+    | '/.well-known/mcp-server.json'
+    | '/.well-known/mcp.json'
     | '/api/agent'
     | '/app_/admin'
     | '/board/$id'
     | '/morning-pdf/$id'
+    | '/.well-known/mcp/server-card.json'
     | '/api/agent/a2a'
     | '/api/agent/app'
     | '/api/agent/apple'
@@ -1033,6 +1190,8 @@ export interface FileRouteTypes {
     | '/api/agent/openai'
     | '/api/agent/openapi'
     | '/api/agent/ping'
+    | '/api/agent/pred'
+    | '/api/agent/roadmap'
     | '/api/agent/siri'
     | '/api/agent/waitlist'
     | '/api/agent/webmcp'
@@ -1044,6 +1203,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   AgentRoute: typeof AgentRoute
+  AiCatalogDotjsonRoute: typeof AiCatalogDotjsonRoute
   AppRoute: typeof AppRoute
   B3arsRoute: typeof B3arsRoute
   BoardRoute: typeof BoardRouteWithChildren
@@ -1071,11 +1231,16 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
   MediaRoute: typeof MediaRoute
+  OssRoadmapRoute: typeof OssRoadmapRoute
   OwlRoute: typeof OwlRoute
   PlayRoute: typeof PlayRoute
+  Pr3dRoute: typeof Pr3dRoute
+  PredRoute: typeof PredRoute
+  PredictionsRoute: typeof PredictionsRoute
   PrivacyRoute: typeof PrivacyRoute
   R0b0tsRoute: typeof R0b0tsRoute
   RenewRoute: typeof RenewRoute
+  RoadmapRoute: typeof RoadmapRoute
   S1r1usRoute: typeof S1r1usRoute
   SearchRoute: typeof SearchRoute
   SecurityRoute: typeof SecurityRoute
@@ -1092,12 +1257,17 @@ export interface RootRouteChildren {
   WorldCupRoute: typeof WorldCupRoute
   DotwellKnownAgentCardDotjsonRoute: typeof DotwellKnownAgentCardDotjsonRoute
   DotwellKnownAgentDotjsonRoute: typeof DotwellKnownAgentDotjsonRoute
+  DotwellKnownAiCatalogDotjsonRoute: typeof DotwellKnownAiCatalogDotjsonRoute
   DotwellKnownAiPluginDotjsonRoute: typeof DotwellKnownAiPluginDotjsonRoute
   DotwellKnownAppleAppSiteAssociationRoute: typeof DotwellKnownAppleAppSiteAssociationRoute
   DotwellKnownAssetlinksDotjsonRoute: typeof DotwellKnownAssetlinksDotjsonRoute
+  DotwellKnownLlmsDottxtRoute: typeof DotwellKnownLlmsDottxtRoute
+  DotwellKnownMcpServerDotjsonRoute: typeof DotwellKnownMcpServerDotjsonRoute
+  DotwellKnownMcpDotjsonRoute: typeof DotwellKnownMcpDotjsonRoute
   ApiAgentRoute: typeof ApiAgentRouteWithChildren
   AppAdminRoute: typeof AppAdminRoute
   MorningPdfIdRoute: typeof MorningPdfIdRoute
+  DotwellKnownMcpServerCardDotjsonRoute: typeof DotwellKnownMcpServerCardDotjsonRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -1122,6 +1292,13 @@ declare module '@tanstack/react-router' {
       path: '/agent'
       fullPath: '/agent'
       preLoaderRoute: typeof AgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-catalog.json': {
+      id: '/ai-catalog.json'
+      path: '/ai-catalog.json'
+      fullPath: '/ai-catalog.json'
+      preLoaderRoute: typeof AiCatalogDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app': {
@@ -1313,6 +1490,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MediaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/oss-roadmap': {
+      id: '/oss-roadmap'
+      path: '/oss-roadmap'
+      fullPath: '/oss-roadmap'
+      preLoaderRoute: typeof OssRoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/owl': {
       id: '/owl'
       path: '/owl'
@@ -1325,6 +1509,27 @@ declare module '@tanstack/react-router' {
       path: '/play'
       fullPath: '/play'
       preLoaderRoute: typeof PlayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pr3d': {
+      id: '/pr3d'
+      path: '/pr3d'
+      fullPath: '/pr3d'
+      preLoaderRoute: typeof Pr3dRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pred': {
+      id: '/pred'
+      path: '/pred'
+      fullPath: '/pred'
+      preLoaderRoute: typeof PredRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/predictions': {
+      id: '/predictions'
+      path: '/predictions'
+      fullPath: '/predictions'
+      preLoaderRoute: typeof PredictionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -1346,6 +1551,13 @@ declare module '@tanstack/react-router' {
       path: '/renew'
       fullPath: '/renew'
       preLoaderRoute: typeof RenewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/s1r1us': {
@@ -1460,6 +1672,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DotwellKnownAgentDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.well-known/ai-catalog.json': {
+      id: '/.well-known/ai-catalog.json'
+      path: '/.well-known/ai-catalog.json'
+      fullPath: '/.well-known/ai-catalog.json'
+      preLoaderRoute: typeof DotwellKnownAiCatalogDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.well-known/ai-plugin.json': {
       id: '/.well-known/ai-plugin.json'
       path: '/.well-known/ai-plugin.json'
@@ -1479,6 +1698,27 @@ declare module '@tanstack/react-router' {
       path: '/.well-known/assetlinks.json'
       fullPath: '/.well-known/assetlinks.json'
       preLoaderRoute: typeof DotwellKnownAssetlinksDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/llms.txt': {
+      id: '/.well-known/llms.txt'
+      path: '/.well-known/llms.txt'
+      fullPath: '/.well-known/llms.txt'
+      preLoaderRoute: typeof DotwellKnownLlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/mcp-server.json': {
+      id: '/.well-known/mcp-server.json'
+      path: '/.well-known/mcp-server.json'
+      fullPath: '/.well-known/mcp-server.json'
+      preLoaderRoute: typeof DotwellKnownMcpServerDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/mcp.json': {
+      id: '/.well-known/mcp.json'
+      path: '/.well-known/mcp.json'
+      fullPath: '/.well-known/mcp.json'
+      preLoaderRoute: typeof DotwellKnownMcpDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/agent': {
@@ -1507,6 +1747,13 @@ declare module '@tanstack/react-router' {
       path: '/morning-pdf/$id'
       fullPath: '/morning-pdf/$id'
       preLoaderRoute: typeof MorningPdfIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/mcp/server-card.json': {
+      id: '/.well-known/mcp/server-card.json'
+      path: '/.well-known/mcp/server-card.json'
+      fullPath: '/.well-known/mcp/server-card.json'
+      preLoaderRoute: typeof DotwellKnownMcpServerCardDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/agent/a2a': {
@@ -1656,6 +1903,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAgentPingRouteImport
       parentRoute: typeof ApiAgentRoute
     }
+    '/api/agent/pred': {
+      id: '/api/agent/pred'
+      path: '/pred'
+      fullPath: '/api/agent/pred'
+      preLoaderRoute: typeof ApiAgentPredRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
+    '/api/agent/roadmap': {
+      id: '/api/agent/roadmap'
+      path: '/roadmap'
+      fullPath: '/api/agent/roadmap'
+      preLoaderRoute: typeof ApiAgentRoadmapRouteImport
+      parentRoute: typeof ApiAgentRoute
+    }
     '/api/agent/siri': {
       id: '/api/agent/siri'
       path: '/siri'
@@ -1738,6 +1999,8 @@ interface ApiAgentRouteChildren {
   ApiAgentOpenaiRoute: typeof ApiAgentOpenaiRoute
   ApiAgentOpenapiRoute: typeof ApiAgentOpenapiRoute
   ApiAgentPingRoute: typeof ApiAgentPingRoute
+  ApiAgentPredRoute: typeof ApiAgentPredRoute
+  ApiAgentRoadmapRoute: typeof ApiAgentRoadmapRoute
   ApiAgentSiriRoute: typeof ApiAgentSiriRoute
   ApiAgentWaitlistRoute: typeof ApiAgentWaitlistRoute
   ApiAgentWebmcpRoute: typeof ApiAgentWebmcpRoute
@@ -1765,6 +2028,8 @@ const ApiAgentRouteChildren: ApiAgentRouteChildren = {
   ApiAgentOpenaiRoute: ApiAgentOpenaiRoute,
   ApiAgentOpenapiRoute: ApiAgentOpenapiRoute,
   ApiAgentPingRoute: ApiAgentPingRoute,
+  ApiAgentPredRoute: ApiAgentPredRoute,
+  ApiAgentRoadmapRoute: ApiAgentRoadmapRoute,
   ApiAgentSiriRoute: ApiAgentSiriRoute,
   ApiAgentWaitlistRoute: ApiAgentWaitlistRoute,
   ApiAgentWebmcpRoute: ApiAgentWebmcpRoute,
@@ -1778,6 +2043,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   AgentRoute: AgentRoute,
+  AiCatalogDotjsonRoute: AiCatalogDotjsonRoute,
   AppRoute: AppRoute,
   B3arsRoute: B3arsRoute,
   BoardRoute: BoardRouteWithChildren,
@@ -1805,11 +2071,16 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
   MediaRoute: MediaRoute,
+  OssRoadmapRoute: OssRoadmapRoute,
   OwlRoute: OwlRoute,
   PlayRoute: PlayRoute,
+  Pr3dRoute: Pr3dRoute,
+  PredRoute: PredRoute,
+  PredictionsRoute: PredictionsRoute,
   PrivacyRoute: PrivacyRoute,
   R0b0tsRoute: R0b0tsRoute,
   RenewRoute: RenewRoute,
+  RoadmapRoute: RoadmapRoute,
   S1r1usRoute: S1r1usRoute,
   SearchRoute: SearchRoute,
   SecurityRoute: SecurityRoute,
@@ -1826,13 +2097,18 @@ const rootRouteChildren: RootRouteChildren = {
   WorldCupRoute: WorldCupRoute,
   DotwellKnownAgentCardDotjsonRoute: DotwellKnownAgentCardDotjsonRoute,
   DotwellKnownAgentDotjsonRoute: DotwellKnownAgentDotjsonRoute,
+  DotwellKnownAiCatalogDotjsonRoute: DotwellKnownAiCatalogDotjsonRoute,
   DotwellKnownAiPluginDotjsonRoute: DotwellKnownAiPluginDotjsonRoute,
   DotwellKnownAppleAppSiteAssociationRoute:
     DotwellKnownAppleAppSiteAssociationRoute,
   DotwellKnownAssetlinksDotjsonRoute: DotwellKnownAssetlinksDotjsonRoute,
+  DotwellKnownLlmsDottxtRoute: DotwellKnownLlmsDottxtRoute,
+  DotwellKnownMcpServerDotjsonRoute: DotwellKnownMcpServerDotjsonRoute,
+  DotwellKnownMcpDotjsonRoute: DotwellKnownMcpDotjsonRoute,
   ApiAgentRoute: ApiAgentRouteWithChildren,
   AppAdminRoute: AppAdminRoute,
   MorningPdfIdRoute: MorningPdfIdRoute,
+  DotwellKnownMcpServerCardDotjsonRoute: DotwellKnownMcpServerCardDotjsonRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

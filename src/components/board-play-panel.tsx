@@ -14,10 +14,23 @@ type View = {
   ok?: boolean;
   error?: string;
   status?: string;
-  you?: { id: string; name: string; kind?: string; official?: { btc: number; fills: number } };
+  you?: { id: string; name: string; kind?: string; official?: { btc: number; fills: number }; admin?: boolean };
   token?: string;
   top?: Row[];
-  callout?: { liveFights?: { challenger: { id: string; name: string }; target: { id: string; name: string } }[] };
+  calloutPref?: string;
+  adminDesk?: boolean;
+  callout?: {
+    liveFights?: {
+      id: string;
+      status?: string;
+      lane?: string;
+      honorLeftMin?: number;
+      minutesLeft?: number;
+      roundMin?: number;
+      challenger: { id: string; name: string };
+      target: { id: string; name: string };
+    }[];
+  };
 };
 
 const KIND_FOR: Record<string, string> = {
@@ -35,11 +48,13 @@ export function BoardPlayPanel({
   defaultName,
   defaultKind,
   defaultHandle,
+  adminToken,
 }: {
   plane: "system" | "app";
   defaultName?: string;
   defaultKind?: string;
   defaultHandle?: string;
+  adminToken?: string | null;
 }) {
   const [view, setView] = useState<View | null>(null);
   const [name, setName] = useState(defaultName ?? (plane === "system" ? "S1R1US-ADMIN" : ""));
@@ -73,7 +88,11 @@ export function BoardPlayPanel({
     try {
       const r = await fetch("/api/agent/board", {
         method: "POST",
-        headers: { "content-type": "application/json", ...(t ? { "x-s1r1us-agent": t } : {}) },
+        headers: {
+          "content-type": "application/json",
+          ...(t ? { "x-s1r1us-agent": t } : {}),
+          ...(adminToken ? { "x-s1r1us-admin": adminToken } : {}),
+        },
         body: JSON.stringify({ ...body, token: t || body.token }),
       });
       const j = (await r.json()) as View & { token?: string; error?: string };
@@ -95,13 +114,16 @@ export function BoardPlayPanel({
 
   const rows = view?.top ?? [];
   const opponents = rows.filter((r) => !r.house && r.id !== view?.you?.id);
+  const liveFight = view?.callout?.liveFights?.[0];
+  const pending = liveFight?.status === "PENDING";
+  const pref = view?.calloutPref ?? "manual";
 
   return (
     <div className="mt-6 space-y-4">
       <p className="max-w-2xl text-sm leading-relaxed text-muted">
         {plane === "system"
-          ? "System Admin may compete in SUP3R B0WL, L3AD3R B0ARD, and C@LL 0UT. Register a competitor desk. The board token is not your Admin session and never opens Yubi, vault, or Coinbase."
-          : `Download-app Admin may compete from ${APP_ADMIN_PATH}. Same paper Super Bowl as the public desk. This copy cannot open s1r1us.ai /admin.`}
+          ? "System Admin may compete in SUP3R B0WL, L3AD3R B0ARD, C@LL 0UT, SP1CE UP, and H1V3 SW@RM — not in W1S3 0WL$ AI-agent vs AI-agent bouts. Call out any AI agent as a system member, including 7-B0T vs G M0D3 M@NU@L while MANUAL is unlocked. Honor, auto-respond, or pause C@LL 0UTs. The board token is not your Admin session."
+          : `Download-app Admin may compete from ${APP_ADMIN_PATH} the same way. Pause championship simulation from Security. This copy cannot open s1r1us.ai /admin.`}
         {" "}
         100 percent at your own risk. Seek a licensed professional. Seek a licensed attorney before live trading.
       </p>
@@ -202,7 +224,8 @@ export function BoardPlayPanel({
             onChange={(e) => setTargetId(e.target.value)}
             className="h-10 w-full rounded-md border border-rule bg-bg px-3 text-sm"
           >
-            <option value="">Pick a W1S3 0WL$</option>
+            <option value="">Pick a W1S3 0WL$ or 7-B0T</option>
+            <option value="ag_system_s1r1us">S1R1US 7-B0T · G M0D3 M@NU@L</option>
             {opponents.map((r) => (
               <option key={r.id} value={r.id}>
                 {r.name}
@@ -212,6 +235,38 @@ export function BoardPlayPanel({
           <Button className="mt-2" type="button" disabled={busy} onClick={() => void post({ op: "callout", targetId })}>
             {TAB_CALLOUT}
           </Button>
+          {liveFight ? (
+            <p className="mt-2 font-mono text-[11px] text-muted">
+              {liveFight.status} · {liveFight.lane ?? "bout"} ·{" "}
+              {pending
+                ? `honor ${liveFight.honorLeftMin ?? 30} min`
+                : `round ${liveFight.roundMin ?? 60} min · ${liveFight.minutesLeft ?? 0} min left`}{" "}
+              · {liveFight.challenger.name} vs {liveFight.target.name}
+            </p>
+          ) : null}
+          {pending ? (
+            <div className="mt-2 flex flex-wrap gap-2">
+              <Button type="button" disabled={busy} onClick={() => void post({ op: "honor", accept: true })}>
+                Honor bout
+              </Button>
+              <Button type="button" disabled={busy} onClick={() => void post({ op: "honor", accept: false })}>
+                Forfeit
+              </Button>
+            </div>
+          ) : null}
+          <div className="mt-3 flex flex-wrap gap-2">
+            {(["auto", "manual", "pause"] as const).map((mode) => (
+              <Button
+                key={mode}
+                type="button"
+                variant={pref === mode ? "primary" : "outline"}
+                disabled={busy}
+                onClick={() => void post({ op: "callout_pref", mode })}
+              >
+                {mode === "auto" ? "Auto-respond" : mode === "manual" ? "Approve in advance" : "Pause call-outs"}
+              </Button>
+            ))}
+          </div>
         </Panel>
         <Panel kicker={TAB_SPICE} title="Who is king next" kickerClass="indicator-title">
           <select

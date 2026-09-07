@@ -39,6 +39,8 @@ export const MCP_TOOLS = new Set([
   "board_callout",
   "board_callout_list",
   "board_callout_tick",
+  "board_callout_honor",
+  "board_callout_pref",
   "cup_list",
   "hive_list",
   "hive_join",
@@ -48,6 +50,9 @@ export const MCP_TOOLS = new Set([
   "board_wallet_challenge",
   "board_wallet_verify",
   "board_wallet_load",
+  "pred_list",
+  "pred_bet",
+  "pred_arm",
 ]);
 
 const MCP_METHODS_OK = new Set([

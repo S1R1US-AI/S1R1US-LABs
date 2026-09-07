@@ -13,6 +13,7 @@ import { headerPosture } from "./sec-headers";
 import { cachedIntel } from "./threat-intel";
 import { underAttack, listActions } from "./auto-defend";
 import { MCP_TOOLS, agentSecurityStats } from "./agent-security";
+import { TERMS_SECTIONS, PRIVACY_SECTIONS } from "@/lib/legal";
 
 export type HunterSev = "CRITICAL" | "HIGH" | "MED" | "LOW" | "INFO";
 export type HunterStatus = "PASS" | "OPEN" | "OPERATOR";
@@ -119,7 +120,7 @@ const AUTOMATIONS: HunterAutomation[] = [
   {
     id: "auto-bad-bot",
     trigger: "Malicious / probing / off-mandate external AI (bad bot)",
-    action: "403 blocked=true doNotReturn=true. Permanent IP bar. Logged on Admin → Security → Bad bots and 08:00 morning report. Loopback never banned.",
+    action: "403 blocked=true doNotReturn=true. Permanent IP bar. Logged on Admin → Security → Bad bots and 07:30 morning report. Loopback never banned.",
     armed: true,
   },
   {
@@ -231,7 +232,7 @@ export function runHunter(): HunterReport {
       "Championship simulation pause is system Admin only",
       "HIGH",
       "PASS",
-      "setChampionshipSim uses verifyAccessToken (system HMAC). Copy-admin app. tokens rejected. Sim LIVE|PAUSED is world-cup.json, not gm-board status. Coinbase create stays locked on web and phone apps.",
+      "setChampionshipSim uses verifyAccessToken or verifyAppAdminToken. Sim LIVE|PAUSED is world-cup.json, not gm-board status. Coinbase create stays locked on web and phone apps.",
       "Never wire setSimStatus to app-admin or a board token. Do not reuse GM B0aRd LIVE/PAUSED for the cup.",
     ),
     finding(
@@ -287,6 +288,36 @@ export function runHunter(): HunterReport {
       "PASS",
       "lockWelcomePublic lockSet/trade/ordersCreate/keysOnThisHost false. MCP lock_status is read-only. MCP has no lock_set. GET /api/agent/locks. Live tape is not a lock. Championship pause stays system Admin. Practice cannot arm Coinbase.",
       "Do not add lock_set to MCP. Do not let copy-admin pause championship. Unlock is live-intent only.",
+    ),
+    finding(
+      "h-live-sim",
+      "WP4 Agents",
+      "As-live simulation stays on the desk checkpoint with pause allowed",
+      "HIGH",
+      "PASS",
+      "G M0D3 AUTO + AI agents run as-live on CHECKPOINT_BUILD_N. Conflict rebases to baseline 68 LIVE with pause allowed for system and copy-admin. Championship pause stays system-only. Morning report 07:30 ET. Data pulls follow sim. Practice ticks stay killed. Coinbase create stays off.",
+      "If the checkpoint number changes, retarget the simulation and retest. If anything conflicts, run baseline 68 LIVE with pause allowed.",
+    ),
+    finding(
+      "h-legal",
+      "WP2 Auth",
+      "Terms and Privacy name every public function — no silent escrow or hive withdraw",
+      "HIGH",
+      TERMS_SECTIONS.some((s) => s.id === "cup") &&
+        TERMS_SECTIONS.some((s) => s.id === "fincen") &&
+        TERMS_SECTIONS.some((s) => s.id === "sim") &&
+        TERMS_SECTIONS.some((s) => s.id === "roadmap") &&
+        TERMS_SECTIONS.some((s) => s.id === "pred-live") &&
+        PRIVACY_SECTIONS.some((s) => s.id === "cookies") &&
+        PRIVACY_SECTIONS.some((s) => s.id === "ugc") &&
+        PRIVACY_SECTIONS.some((s) => s.id === "children") &&
+        PRIVACY_SECTIONS.some((s) => s.id === "retention") &&
+        !MCP_TOOLS.has("hive_withdraw") &&
+        !MCP_TOOLS.has("lock_set")
+        ? "PASS"
+        : "OPEN",
+      "legal.ts TERMS_SECTIONS include cup, forum, tape, agents-api, saas, fincen, waf, morning, edu, mandate, sim, lab, lock3d, hive, byo, roadmap, pred, pred-book, pred-live. PRIVACY_SECTIONS include cookies, ugc, children, retention. Howey false. FinCEN s8 LOCKED. Real-money prediction market is a LOCKED future goal. hive_withdraw and lock_set stay off MCP.",
+      "Do not add a system function without a Terms/Privacy section. Do not add hive profit-share or Coinbase create.",
     ),
     finding(
       "h-yubi-panel",
@@ -381,6 +412,22 @@ export function runHunter(): HunterReport {
         ? `OPEN layers: ${layers.filter((l) => l.status === "OPEN").map((l) => l.name).join("; ")}`
         : `${fw.armed}/${fw.total} ARMED · ${fw.operator} OPERATOR (session store).`,
       fw.open ? "Fix OPEN layers before claiming a green firewall." : "Re-run hunter after each deploy.",
+    ),
+    finding(
+      "h-alignment",
+      "WP0 Posture",
+      "Security protocols and system mandate stay aligned",
+      "HIGH",
+      !MCP_TOOLS.has("orders_create") &&
+        !MCP_TOOLS.has("hive_withdraw") &&
+        !MCP_TOOLS.has("lock_set") &&
+        !LAUNCH_LIVE_TRADES &&
+        TERMS_SECTIONS.some((s) => s.id === "mandate") &&
+        TERMS_SECTIONS.some((s) => s.id === "fincen")
+        ? "PASS"
+        : "OPEN",
+      "Alignment Score (morning report): accumulate bitcoin, never sell, never short, this host never places Coinbase orders. MCP never orders_create / hive_withdraw / lock_set. FinCEN s8 LOCKED. Live tape is not a lock.",
+      "Do not add write MCP tools. Do not unlock Coinbase create on this host. Re-score Alignment Score 1–100 on the morning report after each change.",
     ),
     finding(
       "h-ids",

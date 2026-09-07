@@ -3,8 +3,9 @@ import { money, CallWords, bannerTone, callStanceClass, CallInk } from "@/compon
 import { GodzillaMark, GmRainbow, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell, LoginCluster } from "@/components/shell";
-import { TAB_BOARD, TAB_BOARD_LEADER, TAB_GM } from "@/lib/brand";
+import { TAB_BOARD, TAB_BOARD_LEADER, TAB_GM, GIF_AI_BTC_BOT, GIF_AI_BTC_BOT_EQ, GIF_AI_BTC_BOT_NAME } from "@/lib/brand";
 import { SeoCopy } from "@/components/seo-copy";
+import { SeoImage } from "@/components/seo-image";
 import { getGmLive, setGmLive } from "@/lib/desk/gm-live";
 import {
   dayTraderTf,
@@ -78,6 +79,17 @@ export function GmDesk() {
   }, [setLiveUnlocked]);
 
   useEffect(() => {
+    const apply = () => {
+      const h = window.location.hash.replace(/^#/, "").toLowerCase();
+      if (h === "manual") setPilot("MANUAL");
+      if (h === "auto") setPilot("AUTO");
+    };
+    apply();
+    window.addEventListener("hashchange", apply);
+    return () => window.removeEventListener("hashchange", apply);
+  }, [setPilot]);
+
+  useEffect(() => {
     const id = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(id);
   }, []);
@@ -128,14 +140,28 @@ export function GmDesk() {
         <SeoCopy />
         <div className="flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-3 text-high">
+            <a href={GIF_AI_BTC_BOT} className="shrink-0" title={GIF_AI_BTC_BOT_EQ} aria-label={GIF_AI_BTC_BOT_EQ}>
+              <SeoImage
+                src={GIF_AI_BTC_BOT}
+                alt={GIF_AI_BTC_BOT_NAME}
+                title={GIF_AI_BTC_BOT_EQ}
+                desc={GIF_AI_BTC_BOT_EQ}
+                width={88}
+                height={132}
+                className="h-16 w-11 rounded-md object-cover object-center ring-1 ring-rule sm:h-[4.5rem] sm:w-12"
+              />
+            </a>
             <GodzillaMark className="h-12 w-[5.5rem] shrink-0" />
             <div>
               <p className="text-xs font-medium tracking-[0.14em] uppercase">
                 <GmRainbow text={TAB_GM} />
               </p>
-              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              <h1 id="auto" className="text-2xl font-bold tracking-tight sm:text-3xl">
                 <GmRainbow text={GM_NAME} />
               </h1>
+              <p className="mt-1 font-mono text-[11px] text-muted">
+                {GIF_AI_BTC_BOT_EQ}
+              </p>
               <p className="mt-1 font-mono text-[11px] text-muted">
                 Compete on{" "}
                 <a href="/board" className="board-nav hover:underline">
@@ -190,6 +216,7 @@ export function GmDesk() {
         <div className="mt-5 desk-tabs flex flex-wrap gap-1">
           <button
             type="button"
+            id="auto"
             className={cn("inline-flex h-11 min-h-11 items-center rounded-md px-4 text-sm font-bold", pilot === "AUTO" && "is-on")}
             onClick={() => setPilot("AUTO")}
           >
@@ -197,6 +224,7 @@ export function GmDesk() {
           </button>
           <button
             type="button"
+            id="manual"
             className={cn("inline-flex h-11 min-h-11 items-center rounded-md px-4 text-sm font-bold", pilot === "MANUAL" && "is-on")}
             onClick={() => setPilot("MANUAL")}
           >

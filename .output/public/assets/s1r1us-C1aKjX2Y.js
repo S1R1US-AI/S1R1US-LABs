@@ -1,1 +1,0 @@
-import{t as e}from"./s1r1us-site-D_R3O-h2.js";var t=e;export{t as component};

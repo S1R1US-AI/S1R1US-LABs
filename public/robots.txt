@@ -24,7 +24,12 @@ Allow: /board
 Allow: /bowl
 Allow: /w0rld
 Allow: /h1v3
+Allow: /pr3d
+Allow: /pred
+Allow: /predictions
 Allow: /l0ck
+Allow: /roadmap
+Allow: /oss-roadmap
 Allow: /c0ut
 Allow: /compute
 Allow: /app
@@ -33,6 +38,7 @@ Allow: /play
 Allow: /api/agent
 Allow: /llms.txt
 Allow: /entity.json
+Allow: /ai-catalog.json
 Allow: /brand.txt
 Allow: /humans.txt
 Allow: /favicon.ico
@@ -40,7 +46,12 @@ Allow: /favicon.svg
 Allow: /apple-touch-icon.png
 Allow: /icon-192.png
 Allow: /icon-512.png
+Allow: /AI-Bitcoin-Trading-Bot.gif
+Allow: /AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif
 Allow: /.well-known/
+# Agentic Resource Discovery (Google + industry, 17 June 2026): /.well-known/ai-catalog.json
+# MCP server cards: /.well-known/mcp.json (SEP-2127) and /.well-known/mcp/server-card.json (SEP-1649)
+# Instructions module: /llms.txt and /.well-known/llms.txt — for agents, not Google ranking
 Disallow: /admin
 Disallow: /app/admin
 Disallow: /login
@@ -77,7 +88,12 @@ Allow: /board
 Allow: /bowl
 Allow: /w0rld
 Allow: /h1v3
+Allow: /pr3d
+Allow: /pred
+Allow: /predictions
 Allow: /l0ck
+Allow: /roadmap
+Allow: /oss-roadmap
 Allow: /c0ut
 Allow: /b3ars
 Allow: /owl
@@ -96,9 +112,12 @@ Allow: /privacy
 Allow: /api/agent
 Allow: /llms.txt
 Allow: /entity.json
+Allow: /ai-catalog.json
 Allow: /sitemap.xml
 Allow: /sitemap-index.xml
 Allow: /video-sitemap.xml
+Allow: /AI-Bitcoin-Trading-Bot.gif
+Allow: /AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif
 Allow: /.well-known/
 Disallow: /source
 Disallow: /guide

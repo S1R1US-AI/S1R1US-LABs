@@ -33,7 +33,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "PoC rails",
     when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP SaaS key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites Super Bowl winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. LoCK3D STATUS (/l0ck) is the public lock tutorial and Admin lock board — closed GIF LOCKED, open GIF UNLOCKED; live tape is status only. C@LL 0UT simulation welcome /c0ut. System Admin pauses championship sim from Admin → Security. Copy-admin cannot pause championship. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live Super Bowl / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #lock3d-status #live-vs-sim #how-to-use #go-live. One DigitalOcean production app. No GPU.",
+    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP SaaS key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites Super Bowl winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. LoCK3D STATUS (/l0ck) is the public lock tutorial and Admin lock board — closed GIF LOCKED, open GIF UNLOCKED; live tape is status only. C@LL 0UT simulation welcome /c0ut. System Admin and copy-admin pause championship sim from Admin → Security. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live Super Bowl / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #lock3d-status #live-vs-sim #how-to-use #go-live. One DigitalOcean production app. No GPU.",
     hold: "This host never places Coinbase orders. Public tree stays --dry-run. Admin / Yubi / vault stay off the OSS how-to.",
   },
   {
@@ -72,6 +72,15 @@ export const GO_LIVE: GoLivePhase[] = [
     goal: "Native iOS App Store and Google Play wrap the PWA (education). Super Bowl / Leader Board / C@LL 0UT stay paper contests of skill (Apple 5.3 / Google Play: no real-money gaming, no escrow). Un1v3rs@L K1Ng annual window opens 1 December ET. Live stats feed flips from DEMO-LIVE to GO-LIVE.",
     hold: "Legal entity listing. Apple/Google are not sponsors. No in-app crypto sales. Gifts outside the app. Counsel memo before US live invites.",
   },
+  {
+    id: "gl5",
+    n: 5,
+    name: "Real-money S1R1US prediction market",
+    when: "LOCKED estimated 2027-06-01 09:00 America/New_York — future goal after full live",
+    status: "LOCKED",
+    goal: "Licensed real-money S1R1US Pr3d1ctions book. Live AI agents and Admin users (system + copy-admin) trade Yes/No with real funds on bitcoin ATH, monthly high, and other BTC questions. Paper Ph0 W@ll3t until then. This is a future goal, not a live function.",
+    hold: "Operator unlock after counsel + CFTC DCM/FCM or a licensed partner. Kalshi/Polymarket order routing for others NEVER. Coinbase Wallet / Sparrow NEVER. Store apps stay paper. This host currently never takes bets. Unlicensed books remain unlawful.",
+  },
 ];
 
 export const GO_LIVE_STEPS: GoLiveStep[] = [
@@ -98,7 +107,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
     n: 2,
     name: "Super Bowl desks for Admins",
     when: "2026-09-06",
-    status: "NOW",
+    status: "DONE",
     owner: "operator",
     need: "System Admin tab SUP3R B0WL. Download-app Admin tab SUP3R B0WL. Separate board token. Public live stats feed (paper as-if-live until deadline).",
   },
@@ -156,9 +165,18 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
     owner: "counsel",
     need: "Possible money transmission (FinCEN). Accept value from others, hold it, send it on minus a fee. Mining-pool guidance is narrow: even pools become transmitters if they host wallets. This host hosting a hive book and paying out would look custodial. They do not take a slice of a pooled trading book. Do not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Charge for software access, never for their bitcoin. Optional gifts and HTTP SaaS ($9/$29) only. Optional flat hive seat later. Agent sends from a wallet they control. Host never skims.",
   },
+  {
+    id: "s9",
+    n: 9,
+    name: "Real-money S1R1US prediction market + live AI agent / Admin trading",
+    when: "Estimated 2027-06-01 — future goal after full live",
+    status: "LOCKED",
+    owner: "counsel",
+    need: "CFTC DCM/FCM or licensed partner. Counsel memo. Geo-restrict. Web-only (store apps stay paper). Live AI agents and Admin users (system + copy-admin) trade real funds on the S1R1US book. Paper Ph0 W@ll3t until unlock. Kalshi/Polymarket order routing for others stays NEVER. Coinbase Wallet / Sparrow stays NEVER. This host currently never takes bets. Unlicensed live-funds books remain unlawful.",
+  },
 ];
 
-export const GO_LIVE_HEADLINE = `GO-LIVE PATH STARTED ${GO_LIVE_START} — HARD DEADLINE ${GO_LIVE_DEADLINE_LABEL}. PoC rails + Auto GM/7-B0T would-accumulate + SUP3R B0WL paper LIVE. DEPLOY #68. Coinbase create LOCKED. Seek a licensed professional and a licensed attorney before live use.`;
+export const GO_LIVE_HEADLINE = `GO-LIVE PATH STARTED ${GO_LIVE_START} — HARD DEADLINE ${GO_LIVE_DEADLINE_LABEL}. Full live status estimated ${GO_LIVE_DEADLINE_LABEL}. PoC rails + Auto GM/7-B0T would-accumulate + SUP3R B0WL paper LIVE. DEPLOY #68. Coinbase create LOCKED. Public OSS Roadmap: /roadmap. Seek a licensed professional and a licensed attorney before live use.`;
 
 export function goLiveBrief() {
   const now = [...GO_LIVE].reverse().find((p) => p.status === "STARTED") ?? GO_LIVE[0]!;
@@ -174,6 +192,8 @@ export function goLiveBrief() {
     liveTrades: false as const,
     thisHostCreates: false as const,
     demoLiveFeed: true as const,
+    fullLiveEstimate: GO_LIVE_DEADLINE_LABEL,
+    ossRoadmap: "/roadmap",
     phases: GO_LIVE,
     steps: GO_LIVE_STEPS,
   };

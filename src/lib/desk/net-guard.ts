@@ -90,6 +90,8 @@ const HOST_SUFFIXES = [
   "grok.com",
   "x.com",
   "twitter.com",
+  "polymarket.com",
+  "kalshi.com",
 ] as const;
 
 const BLOCKED_DNS = new Set(["dns.google", "dns.google.com", "8.8.8.8", "8.8.4.4", "google.com"]);

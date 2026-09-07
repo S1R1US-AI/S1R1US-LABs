@@ -3,6 +3,10 @@ import { cachedHunter } from "./hunter";
 import { intrusionSummary } from "./intrusion-log";
 import { CYCLE_ARCH, DATA_FEEDS } from "./policy";
 import type { DeskSnapshot } from "./types";
+import { alignmentScore } from "./alignment";
+import { predAnalyst } from "./prediction-markets";
+export type { MorningProblem, MorningProblems } from "./morning-problems";
+export { morningProblems } from "./morning-problems";
 
 export function morningSecurity() {
   const proto = protocolRows();
@@ -36,8 +40,9 @@ export function morningSecurity() {
     kinds,
     effectiveness: hunter.effectiveness,
     patchQueue: hunter.patchQueue.slice(0, 4),
+    alignment: alignmentScore(hunter),
     mandateScoreNote:
-      "Security analysis: Electrovolt-style web work packages + Hacktron-style hunter (PoC || GTFO). Firewall is app-layer. Live Coinbase create stays off. Score is ops honesty, not a promise of zero risk.",
+      "Security analysis: Electrovolt-style web work packages + Hacktron-style hunter (PoC || GTFO). Alignment Score 1–100 is security protocols vs system mandate. Firewall is app-layer. Live Coinbase create stays off. Score is ops honesty, not a promise of zero risk.",
   };
 }
 
@@ -46,9 +51,9 @@ export const AUTO_ANALYSIS = {
   day: 1 as const,
   score: 8,
   tape: "Practice AUTO ticks and paper fills are off. The desk shows would-accumulate calls from the live snapshot.",
-  fills: "No paper fills. Morning report 5 Sep 08:00 ET uses the server 24h book if present. Live Coinbase stays off. 7-bot stack never sells.",
+  fills: "No paper fills. Morning report 07:30 ET uses the as-live 24h book if present. Live Coinbase stays off. 7-bot stack never sells.",
   errors: "Do not green OPEN feed errors. Yahoo/Stooq classified. SuperGrok is operator Ask Grok; visitors use BYO compute. 7-B0T HTTP SaaS is pay-for-JSON.",
-  security: "Admin Security tab: CRS-PL1 WAF + CISA KEV/OSV + CrowdSec bans + OWASP Agentic ASI01–10 / LLM Top 10 2026 on MCP/A2A + Hunter + external AI gate + data-pull pause (ops.status PAUSED/MAINTENANCE on ping; blocked agents get doNotReturn). Bad bots (source-probe / inject / scrape / harmful forum) auto-bar name+IP; 403 doNotReturn. Dual Yubi on outgoing. Optional YubiKey admin-panel lock (default OFF, Yubico FIDO2 UV-required + OTP with YubiCloud HMAC). Coinbase create locked.",
+  security: "Admin Security tab: CRS-PL1 WAF + CISA KEV/OSV + CrowdSec bans + OWASP Agentic ASI01–10 / LLM Top 10 2026 on MCP/A2A + Hunter + Alignment Score 1–100 (mandate vs protocols) + external AI gate + data-pull pause (ops.status PAUSED/MAINTENANCE on ping; blocked agents get doNotReturn). Bad bots (source-probe / inject / scrape / harmful forum) auto-bar name+IP; 403 doNotReturn. Dual Yubi on outgoing. Optional YubiKey admin-panel lock (default OFF, Yubico FIDO2 UV-required + OTP with YubiCloud HMAC). Coinbase create locked.",
   action: "DEPLOY #68: 7-B0T + GM + bots 1–6 would-accumulate. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD is the SUP3R B0WL of AI AGENTs. W0rLd CUP of AI Quant Trading BTC invites Super Bowl winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM combines BYO compute (TH/s) on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. BYO connect automatic at /api/agent/connect + MCP byo_connect — keys never on this host. Championship sim ticks live Coinbase last until system Admin pauses. HARD DEADLINE 2026-12-01 09:00 ET — G M0D3 AUTO / MANUAL for users + Super Bowl GO-LIVE after counsel. System Admin and download-app Admin compete with a separate board token. Live Super Bowl / World Cup stats feed is paper as-if-live. Terms: 100% own risk, not FA, not an attorney, unlawful-region ban, OSS GitHub, 2FA (X+password+dual Yubi). HTML LINKS 6 Sep 2026: this build 0 × 404. Production still 404 on new routes until this deploy ships. Do not arm Coinbase. Auto trade LOCKED. Seek a licensed professional and a licensed attorney before live use.",
 };
 
@@ -82,6 +87,24 @@ export function morningAgent(flags: {
       : flags.pings === 0
         ? "AGENT FLAG NONE — no connection tests today (ET). PoC, not LIVE."
         : `AGENT FLAG ${flags.flags.join("+")} — ${flags.pings} ping(s), ${flags.rejects} reject(s). PoC, not LIVE. No trades.`,
+  };
+}
+
+export function morningPred(snap: DeskSnapshot | null) {
+  const pred = predAnalyst(snap?.predictionMarkets, snap?.btc.price ?? null);
+  const last = snap?.btc.price ?? null;
+  return {
+    asOf: snap?.fetchedAt ?? new Date().toISOString(),
+    last,
+    stance: pred.stance,
+    summary: pred.summary,
+    discount: pred.discount,
+    fomo: pred.fomo,
+    overlayPass: pred.overlayPass,
+    checkLabel: pred.checkLabel,
+    polymarket: pred.polymarket,
+    kalshi: pred.kalshi,
+    note: "7-B0T sub-analyst overlay on how to buy bitcoin. Polymarket = crypto-native crowd. Kalshi = CFTC-regulated US crowd. Cheap implied path (low Yes on nearby highs) can overlay ACCUMULATE. Crowded near-spot Yes overlays WAIT. Never a 1–6 vote. Never sells. This host never takes bets.",
   };
 }
 

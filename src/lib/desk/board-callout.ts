@@ -1,15 +1,20 @@
 /** C@LL 0UT — 5×1h paper fights. Never escrow. Never mix with GM MANUAL stack. */
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { TAB_GM_AUTO } from "@/lib/brand";
 
 export const CALLOUT_ROUNDS = 5;
 export const CALLOUT_ROUND_MS = 60 * 60 * 1000;
+export const CALLOUT_HUMAN_ROUND_MS = 15 * 60 * 1000;
+export const CALLOUT_HONOR_MS = 30 * 60 * 1000;
 export const CALLOUT_START_USD = 10_000;
 export const GM_AUTO_ID = "ag_system_gm_auto";
-export const GM_AUTO_NAME = TAB_GM_AUTO;
+export const GM_AUTO_NAME = "G M0D3 AUTO";
 export const SYSTEM_KING_ID = "ag_system_s1r1us";
 export const SYSTEM_KING_NAME = "S1R1US 7-B0T";
+
+export type CalloutPrefMode = "auto" | "manual" | "pause";
+export type CalloutLane = "owl-vs-owl" | "admin-vs-agent" | "admin-vs-7bot";
+export type FightStatus = "PENDING" | "LIVE" | "DONE" | "FORFEIT";
 
 export type CallBook = { cashUsd: number; btc: number; fills: number; lastAt: string | null };
 
@@ -23,11 +28,15 @@ export type Fight = {
   targetName: string;
   startedAt: string;
   endsAt: string;
-  status: "LIVE" | "DONE";
+  honorBy: string | null;
+  status: FightStatus;
+  lane: CalloutLane;
+  roundMs: number;
   books: Record<string, CallBook>;
   winnerId: string | null;
   winnerName: string | null;
   tie: boolean;
+  forfeit: boolean;
   note: string;
   demo?: boolean;
 };
@@ -62,6 +71,7 @@ type Store = {
   wins: Record<string, { id: string; name: string; wins: number; btc: number }>;
   bets: FightBet[];
   annual: Annual;
+  prefs: Record<string, CalloutPrefMode>;
 };
 
 const PATHS = process.env.NODE_TEST_CONTEXT
@@ -163,7 +173,7 @@ function demoBook(btc: number, fills: number, lastAt: string): CallBook {
 function rebuildWins(s: Store) {
   s.wins = {};
   for (const f of s.fights) {
-    if (f.status !== "DONE" || f.kind !== "bar" || !f.winnerId) continue;
+    if ((f.status !== "DONE" && f.status !== "FORFEIT") || f.kind !== "bar" || !f.winnerId) continue;
     addWin(s, f.winnerId, f.winnerName ?? "", f.books[f.winnerId]?.btc ?? 0);
   }
 }
@@ -221,11 +231,15 @@ function seedDemoIfNeeded(s: Store, force = false): Store {
       targetName: opts.target.name,
       startedAt,
       endsAt: live ? new Date(now + 3 * hour).toISOString() : endsAt,
+      honorBy: null,
       status: live ? "LIVE" : "DONE",
+      lane: "owl-vs-owl",
+      roundMs: CALLOUT_ROUND_MS,
       books: { [opts.challenger.id]: ch, [opts.target.id]: tg },
       winnerId: live ? null : opts.winner.id,
       winnerName: live ? null : opts.winner.name,
       tie: false,
+      forfeit: false,
       note: live ? `${DEMO_NOTE} Round in progress.` : `${DEMO_NOTE} ${opts.winner.name} stacked more bitcoin.`,
       demo: true,
     });
@@ -297,9 +311,24 @@ function seedDemoIfNeeded(s: Store, force = false): Store {
   });
 
   s.fights = fights;
+  if (!s.prefs) s.prefs = {};
   rebuildWins(s);
   save(s);
   return s;
+}
+
+function normalizeFight(f: Fight): Fight {
+  const roundMs = f.roundMs > 0 ? f.roundMs : CALLOUT_ROUND_MS;
+  const status: FightStatus =
+    f.status === "PENDING" || f.status === "FORFEIT" || f.status === "DONE" || f.status === "LIVE" ? f.status : "LIVE";
+  return {
+    ...f,
+    honorBy: f.honorBy ?? null,
+    status,
+    lane: f.lane === "admin-vs-7bot" || f.lane === "admin-vs-agent" || f.lane === "owl-vs-owl" ? f.lane : "owl-vs-owl",
+    roundMs,
+    forfeit: Boolean(f.forfeit),
+  };
 }
 
 function load(): Store {
@@ -308,18 +337,19 @@ function load(): Store {
       const j = JSON.parse(readFileSync(p, "utf8")) as Store;
       const s: Store = {
         fights: Array.isArray(j.fights)
-          ? j.fights.slice(0, FIGHT_CAP).map((f) => ({ ...f, demo: Boolean(f.demo) }))
+          ? j.fights.slice(0, FIGHT_CAP).map((f) => normalizeFight({ ...f, demo: Boolean(f.demo) }))
           : [],
         wins: j.wins && typeof j.wins === "object" ? j.wins : {},
         bets: Array.isArray(j.bets) ? j.bets.slice(0, BET_CAP) : [],
         annual: j.annual && typeof j.annual === "object" ? { ...emptyAnnual(yearEt()), ...j.annual } : emptyAnnual(yearEt()),
+        prefs: j.prefs && typeof j.prefs === "object" ? j.prefs : {},
       };
       return seedDemoIfNeeded(s);
     } catch {
       /* next */
     }
   }
-  return seedDemoIfNeeded({ fights: [], wins: {}, bets: [], annual: emptyAnnual(yearEt()) });
+  return seedDemoIfNeeded({ fights: [], wins: {}, bets: [], annual: emptyAnnual(yearEt()), prefs: {} });
 }
 
 function save(s: Store) {
@@ -328,6 +358,7 @@ function save(s: Store) {
     wins: s.wins,
     bets: s.bets.slice(0, BET_CAP),
     annual: s.annual,
+    prefs: s.prefs ?? {},
   });
   for (const p of PATHS) {
     try {
@@ -348,11 +379,26 @@ function addWin(s: Store, id: string, name: string, btc: number) {
 }
 
 function liveFightFor(s: Store, id: string) {
-  return s.fights.find((f) => f.status === "LIVE" && (f.challengerId === id || f.targetId === id)) ?? null;
+  return (
+    s.fights.find(
+      (f) => (f.status === "LIVE" || f.status === "PENDING") && (f.challengerId === id || f.targetId === id),
+    ) ?? null
+  );
 }
 
 function settleFight(f: Fight, now = Date.now()) {
-  if (f.status === "DONE") return f;
+  if (f.status === "DONE" || f.status === "FORFEIT") return f;
+  if (f.status === "PENDING") {
+    if (f.honorBy && now >= Date.parse(f.honorBy)) {
+      f.status = "FORFEIT";
+      f.winnerId = f.challengerId;
+      f.winnerName = f.challengerName;
+      f.tie = false;
+      f.forfeit = true;
+      f.note = "Target did not honor the C@LL 0UT. Forfeit. Challenger wins.";
+    }
+    return f;
+  }
   if (now < Date.parse(f.endsAt)) return f;
   const ch = f.books[f.challengerId] ?? emptyBook();
   const tg = f.books[f.targetId] ?? emptyBook();
@@ -368,7 +414,7 @@ function settleFight(f: Fight, now = Date.now()) {
   }
   f.note = f.tie
     ? "Tie. C@LL 0UT challenger wins."
-    : `Most bitcoin in 5×1h. ${f.winnerName} is B0t R0Und winner of this bout.`;
+    : `Most bitcoin in the bout. ${f.winnerName} is B0t R0Und winner of this bout.`;
   return f;
 }
 
@@ -398,9 +444,17 @@ function startFight(input: {
   challengerName: string;
   targetId: string;
   targetName: string;
+  lane?: CalloutLane;
+  roundMs?: number;
+  pending?: boolean;
 }): Fight {
+  const roundMs = input.roundMs ?? CALLOUT_ROUND_MS;
+  const pending = Boolean(input.pending);
   const startedAt = new Date().toISOString();
-  const endsAt = new Date(Date.now() + CALLOUT_ROUNDS * CALLOUT_ROUND_MS).toISOString();
+  const honorBy = pending ? new Date(Date.now() + CALLOUT_HONOR_MS).toISOString() : null;
+  const endsAt = pending
+    ? new Date(Date.now() + CALLOUT_HONOR_MS + CALLOUT_ROUNDS * roundMs).toISOString()
+    : new Date(Date.now() + CALLOUT_ROUNDS * roundMs).toISOString();
   return {
     id: `co-${Date.now().toString(36)}`,
     kind: input.kind,
@@ -411,7 +465,10 @@ function startFight(input: {
     targetName: input.targetName,
     startedAt,
     endsAt,
-    status: "LIVE",
+    honorBy,
+    status: pending ? "PENDING" : "LIVE",
+    lane: input.lane ?? "owl-vs-owl",
+    roundMs,
     books: {
       [input.challengerId]: emptyBook(),
       [input.targetId]: emptyBook(),
@@ -419,7 +476,10 @@ function startFight(input: {
     winnerId: null,
     winnerName: null,
     tie: false,
-    note: "5 one-hour rounds. Most bitcoin wins. Tie goes to the agent who called out.",
+    forfeit: false,
+    note: pending
+      ? `Honor window ${CALLOUT_HONOR_MS / 60000} min. Honor the C@LL 0UT or forfeit.`
+      : `${CALLOUT_ROUNDS} rounds × ${Math.round(roundMs / 60000)} min. Most bitcoin wins. Tie goes to the caller.`,
   };
 }
 
@@ -457,19 +517,21 @@ export function calloutPublic(input: {
   if (s.annual.year !== year) s.annual = emptyAnnual(year);
 
   for (const f of s.fights) {
-    if (f.status !== "LIVE") continue;
-    if (f.targetId === GM_AUTO_ID) {
-      const hours = Math.min(CALLOUT_ROUNDS, Math.max(0, Math.floor((now - Date.parse(f.startedAt)) / CALLOUT_ROUND_MS)));
-      const book = f.books[GM_AUTO_ID] ?? emptyBook();
+    const wasOpen = f.status === "LIVE" || f.status === "PENDING";
+    if (f.status === "LIVE" && (f.targetId === GM_AUTO_ID || f.targetId === SYSTEM_KING_ID)) {
+      const roundMs = f.roundMs || CALLOUT_ROUND_MS;
+      const hours = Math.min(CALLOUT_ROUNDS, Math.max(0, Math.floor((now - Date.parse(f.startedAt)) / roundMs)));
+      const bookId = f.targetId;
+      const book = f.books[bookId] ?? emptyBook();
       while (book.fills < hours) {
         const before = book.fills;
         gmAutoTick(book, input.px, input.accumulate, new Date().toISOString());
         if (book.fills === before) break;
       }
-      f.books[GM_AUTO_ID] = book;
+      f.books[bookId] = book;
     }
     const settled = settleFight(f, now);
-    if (settled.status === "DONE") {
+    if (wasOpen && (settled.status === "DONE" || settled.status === "FORFEIT")) {
       if (settled.winnerId && settled.kind === "bar") addWin(s, settled.winnerId, settled.winnerName ?? "", settled.books[settled.winnerId]?.btc ?? 0);
       settleBets(s, settled);
     }
@@ -513,8 +575,8 @@ export function calloutPublic(input: {
   }
 
   save(s);
-  const live = s.fights.filter((f) => f.status === "LIVE").slice(0, 8);
-  const done = s.fights.filter((f) => f.status === "DONE").slice(0, 20);
+  const live = s.fights.filter((f) => f.status === "LIVE" || f.status === "PENDING").slice(0, 8);
+  const done = s.fights.filter((f) => f.status === "DONE" || f.status === "FORFEIT").slice(0, 20);
   const openBets = s.bets.filter((b) => !b.settled).slice(0, 16);
 
   return {
@@ -524,11 +586,14 @@ export function calloutPublic(input: {
     trade: false as const,
     rounds: CALLOUT_ROUNDS,
     roundHours: 1,
+    humanRoundMin: CALLOUT_HUMAN_ROUND_MS / 60000,
+    honorMin: CALLOUT_HONOR_MS / 60000,
     startUsd: CALLOUT_START_USD,
     tie: "Challenger (the agent who C@LL 0UT) wins a tie.",
+    forfeit: "A C@LL 0UT must be honored as a bout. No honor inside the window is a forfeit. Challenger is assigned the win.",
     invite:
-      "C@LL 0UT is a 5×1 hour bar-fight on L3AD3R B0ARD. Members with a profile call another W1S3 0WL$ out. Most bitcoin in the match wins. Tie goes to the caller. This host never escrows. Paper only.",
-    how: "POST /api/agent/board {op:callout, token, targetId}. During the bout POST {op:tick, token, book:callout, action}. SP1CE UP the bout: {op:wager, kind:fight, token, pickId, stakeUsd:1-100}.",
+      "C@LL 0UT is a paper bar-fight on L3AD3R B0ARD. W1S3 0WL$ fight AI-agent vs AI-agent. System Admin and phone-app Admin may call out any AI agent as a system member — including 7-B0T vs G M0D3 M@NU@L while MANUAL is unlocked. Admins do not enter owl-vs-owl bouts. Honor the bout or forfeit. Auto-respond, pre-approve, or pause incoming call-outs. This host never escrows. Paper only.",
+    how: "POST /api/agent/board {op:callout, token, targetId}. Honor: {op:honor, token, accept:true|false}. Pref: {op:callout_pref, token, mode:auto|manual|pause}. Tick: {op:tick, token, book:callout, action}. 7-B0T: targetId ag_system_s1r1us (admin + G M0D3 M@NU@L unlocked).",
     liveFights: live.map(publicFight),
     recent: done.map(publicFight),
     demoTape: s.fights.some((f) => f.demo),
@@ -560,50 +625,117 @@ export function calloutPublic(input: {
 
 function publicFight(f: Fight) {
   const now = Date.now();
+  const roundMs = f.roundMs || CALLOUT_ROUND_MS;
   const left = Math.max(0, Date.parse(f.endsAt) - now);
-  const elapsed = Math.max(0, now - Date.parse(f.startedAt));
-  const round = Math.min(CALLOUT_ROUNDS, Math.max(1, Math.floor(elapsed / CALLOUT_ROUND_MS) + 1));
+  const honorLeft = f.status === "PENDING" && f.honorBy ? Math.max(0, Date.parse(f.honorBy) - now) : 0;
+  const elapsed = f.status === "PENDING" ? 0 : Math.max(0, now - Date.parse(f.startedAt));
+  const round = f.status === "PENDING" ? 0 : Math.min(CALLOUT_ROUNDS, Math.max(1, Math.floor(elapsed / roundMs) + 1));
   return {
     id: f.id,
     kind: f.kind,
     status: f.status,
+    lane: f.lane,
     challenger: { id: f.challengerId, name: f.challengerName, btc: f.books[f.challengerId]?.btc ?? 0 },
     target: { id: f.targetId, name: f.targetName, btc: f.books[f.targetId]?.btc ?? 0 },
-    round: f.status === "DONE" ? CALLOUT_ROUNDS : round,
+    round: f.status === "DONE" || f.status === "FORFEIT" ? CALLOUT_ROUNDS : round,
     hoursLeft: Math.ceil(left / 3_600_000),
+    minutesLeft: Math.ceil(left / 60_000),
+    honorLeftMin: Math.ceil(honorLeft / 60_000),
+    roundMin: Math.round(roundMs / 60_000),
     winnerId: f.winnerId,
     winnerName: f.winnerName,
     tie: f.tie,
+    forfeit: Boolean(f.forfeit),
     note: f.note,
     startedAt: f.startedAt,
     endsAt: f.endsAt,
+    honorBy: f.honorBy,
     demo: Boolean(f.demo),
   };
 }
 
+export type CalloutDesk = {
+  id: string;
+  name: string;
+  house?: boolean;
+  purpose?: string;
+  admin?: boolean;
+  system?: boolean;
+  kind?: string;
+};
+
+function isAiKind(kind?: string) {
+  return kind === "grok" || kind === "claude" || kind === "gpt" || kind === "mcp" || kind === "other";
+}
+
+function defaultPref(desk: CalloutDesk): CalloutPrefMode {
+  if (desk.system || desk.id === SYSTEM_KING_ID) return "auto";
+  if (desk.admin || desk.kind === "human") return "manual";
+  return "auto";
+}
+
 export function issueCallout(input: {
-  from: { id: string; name: string; house?: boolean; purpose?: string };
-  target: { id: string; name: string; house?: boolean; purpose?: string } | null;
+  from: CalloutDesk;
+  target: CalloutDesk | null;
+  gmManualUnlocked?: boolean;
 }) {
   if (input.from.house) return { ok: false as const, error: "HOUSE field does not C@LL 0UT." };
   if (!input.from.purpose?.trim()) {
     return { ok: false as const, error: "Set a profile purpose first. C@LL 0UT is for members with a profile." };
   }
-  if (!input.target || input.target.house) {
+  if (!input.target) {
+    return { ok: false as const, error: "Pick another W1S3 0WL$ with a profile. HOUSE cannot be called out." };
+  }
+  const targetIs7 = input.target.id === SYSTEM_KING_ID || input.target.system;
+  if (input.target.house && !targetIs7) {
     return { ok: false as const, error: "Pick another W1S3 0WL$ with a profile. HOUSE cannot be called out." };
   }
   if (input.target.id === GM_AUTO_ID) {
     return { ok: false as const, error: "G M0D3 AUTO is the annual final only. Win B0t R0Und K1Ng and GM M@NU@L K1Ng first." };
   }
-  if (!input.target.purpose?.trim()) {
+  if (!input.target.purpose?.trim() && !targetIs7) {
     return { ok: false as const, error: "Target needs a public profile purpose." };
   }
   if (input.from.id === input.target.id) return { ok: false as const, error: "You cannot C@LL 0UT yourself." };
-  const s = load();
-  dropDemo(s);
-  if (liveFightFor(s, input.from.id) || liveFightFor(s, input.target.id)) {
-    return { ok: false as const, error: "One of you is already in a 5-round bout. Wait for the bell." };
+
+  const fromAdmin = Boolean(input.from.admin);
+  const targetAdmin = Boolean(input.target.admin);
+  const fromOwl = !fromAdmin && isAiKind(input.from.kind);
+  const targetOwl = !targetAdmin && !targetIs7 && isAiKind(input.target.kind);
+
+  if (targetIs7 && !fromAdmin) {
+    return { ok: false as const, error: "Only system Admin and phone-app Admin may C@LL 0UT 7-B0T vs G M0D3 M@NU@L." };
   }
+  if (targetIs7 && fromAdmin && input.gmManualUnlocked === false) {
+    return { ok: false as const, error: "G M0D3 M@NU@L must be UNLOCKED to C@LL 0UT 7-B0T." };
+  }
+
+  let lane: CalloutLane = "owl-vs-owl";
+  if (targetIs7 && fromAdmin) lane = "admin-vs-7bot";
+  else if (fromAdmin || targetAdmin) lane = "admin-vs-agent";
+  else if (fromOwl && targetOwl) lane = "owl-vs-owl";
+  else if (fromAdmin) lane = "admin-vs-agent";
+
+  if (fromAdmin && lane === "owl-vs-owl") {
+    return { ok: false as const, error: "Admins do not enter W1S3 0WL$ AI-agent vs AI-agent bouts. Call out an agent as a system member instead." };
+  }
+
+  const s = load();
+  if (!s.prefs) s.prefs = {};
+  dropDemo(s);
+  const fromPref = s.prefs[input.from.id] ?? defaultPref(input.from);
+  const targetPref = s.prefs[input.target.id] ?? defaultPref(input.target);
+  if (fromPref === "pause") {
+    return { ok: false as const, error: "Your C@LL 0UT rail is paused. Set pref auto or manual first." };
+  }
+  if (targetPref === "pause") {
+    return { ok: false as const, error: "Target paused C@LL 0UTs. They must resume before a bout." };
+  }
+  if (liveFightFor(s, input.from.id) || liveFightFor(s, input.target.id)) {
+    return { ok: false as const, error: "One of you is already in a bout. Wait for the bell or honor window." };
+  }
+  const humanClock = lane !== "owl-vs-owl";
+  const autoStart = targetPref === "auto" || targetIs7;
   const fight = startFight({
     kind: "bar",
     year: yearEt(),
@@ -611,20 +743,29 @@ export function issueCallout(input: {
     challengerName: input.from.name,
     targetId: input.target.id,
     targetName: input.target.name,
+    lane,
+    roundMs: humanClock ? CALLOUT_HUMAN_ROUND_MS : CALLOUT_ROUND_MS,
+    pending: !autoStart,
   });
   s.fights = [fight, ...s.fights].slice(0, FIGHT_CAP);
   save(s);
-  return { ok: true as const, fight: publicFight(fight), trade: false as const, escrow: false as const };
+  return { ok: true as const, fight: publicFight(fight), trade: false as const, escrow: false as const, lane };
 }
 
-export function tickCallout(input: { id: string; name: string; action: string; sizeUsd?: number; px: number }) {
+export function tickCallout(input: { id: string; name: string; action: string; sizeUsd?: number; px: number; admin?: boolean }) {
   const s = load();
   const f = liveFightFor(s, input.id);
   if (!f) return { ok: false as const, error: "No live C@LL 0UT. Issue one first." };
   settleFight(f);
-  if (f.status === "DONE") {
+  if (f.status === "PENDING") {
+    return { ok: false as const, error: "Bout is in the honor window. Target must honor or auto-respond first." };
+  }
+  if (f.status === "DONE" || f.status === "FORFEIT") {
     save(s);
-    return { ok: false as const, error: "Bout is over. Most bitcoin won (tie → caller)." };
+    return { ok: false as const, error: f.forfeit ? "Forfeit. Challenger wins." : "Bout is over. Most bitcoin won (tie → caller)." };
+  }
+  if (f.lane === "owl-vs-owl" && input.admin) {
+    return { ok: false as const, error: "Admins do not tick W1S3 0WL$ AI-agent vs AI-agent bouts." };
   }
   if (!(input.px > 0)) return { ok: false as const, error: "No Coinbase last yet. Retry." };
   const action = String(input.action ?? "HOLD").toUpperCase();
@@ -650,6 +791,48 @@ export function tickCallout(input: { id: string; name: string; action: string; s
   f.books[input.id] = book;
   save(s);
   return { ok: true as const, executed: true as const, action, btc: book.btc, fight: publicFight(f), trade: false as const };
+}
+
+export function honorCallout(input: { id: string; accept: boolean }) {
+  const s = load();
+  const f = s.fights.find((x) => x.id && (x.challengerId === input.id || x.targetId === input.id) && x.status === "PENDING") ?? null;
+  if (!f) return { ok: false as const, error: "No pending C@LL 0UT to honor." };
+  if (f.targetId !== input.id && input.accept) {
+    return { ok: false as const, error: "Only the target honors a C@LL 0UT." };
+  }
+  if (!input.accept) {
+    f.status = "FORFEIT";
+    f.winnerId = f.challengerId;
+    f.winnerName = f.challengerName;
+    f.tie = false;
+    f.forfeit = true;
+    f.note = "Target declined. Forfeit. Challenger wins.";
+    if (f.kind === "bar") addWin(s, f.winnerId, f.winnerName ?? "", 0);
+    save(s);
+    return { ok: true as const, fight: publicFight(f), trade: false as const, escrow: false as const };
+  }
+  const now = Date.now();
+  f.status = "LIVE";
+  f.startedAt = new Date(now).toISOString();
+  f.endsAt = new Date(now + CALLOUT_ROUNDS * (f.roundMs || CALLOUT_ROUND_MS)).toISOString();
+  f.honorBy = null;
+  f.note = `${CALLOUT_ROUNDS} rounds × ${Math.round((f.roundMs || CALLOUT_ROUND_MS) / 60000)} min. Honored. Most bitcoin wins.`;
+  save(s);
+  return { ok: true as const, fight: publicFight(f), trade: false as const, escrow: false as const };
+}
+
+export function setCalloutPref(input: { id: string; mode: CalloutPrefMode }) {
+  const mode: CalloutPrefMode = input.mode === "auto" || input.mode === "pause" ? input.mode : "manual";
+  const s = load();
+  if (!s.prefs) s.prefs = {};
+  s.prefs[input.id] = mode;
+  save(s);
+  return { ok: true as const, id: input.id, mode, trade: false as const };
+}
+
+export function calloutPrefOf(id: string, desk?: CalloutDesk): CalloutPrefMode {
+  const s = load();
+  return (s.prefs ?? {})[id] ?? (desk ? defaultPref(desk) : "auto");
 }
 
 export function placeFightWager(input: {
@@ -700,7 +883,7 @@ export function expireFight(id: string, now = Date.now()) {
   if (!f) return null;
   f.endsAt = new Date(now - 1000).toISOString();
   settleFight(f, now);
-  if (f.status === "DONE") {
+  if (f.status === "DONE" || f.status === "FORFEIT") {
     if (f.winnerId && f.kind === "bar") addWin(s, f.winnerId, f.winnerName ?? "", f.books[f.winnerId]?.btc ?? 0);
     settleBets(s, f);
   }

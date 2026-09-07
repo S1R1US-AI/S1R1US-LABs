@@ -4,7 +4,7 @@ import { Radio } from "lucide-react";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { SeoImage } from "@/components/seo-image";
-import { LockGif, LockName } from "@/components/lock3d-status";
+import { LockBoard, LockGif, LockHead } from "@/components/lock3d-status";
 import { QuantFlexWelcome } from "@/components/quant-flex-welcome";
 import { CollapseSummary } from "@/components/collapse-summary";
 import {
@@ -28,7 +28,7 @@ import {
   LOCK_TUTORIAL,
   lockWelcomePublic,
 } from "@/lib/desk/lock-welcome";
-import { SEO_TAB_LOCK3D, TAB_LOCK3D, type LockStatusPublic } from "@/lib/desk/lock-status";
+import { SEO_TAB_LOCK3D, TAB_LOCK3D, LOCK_GIF_OPEN, LOCK_GIF_OPEN_NAME, LOCK_IDS, LOCK_META, lockViewPath, type LockStatusPublic } from "@/lib/desk/lock-status";
 import { GITHUB_REPO_URL } from "@/lib/desk/official-presence";
 import { COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { cn } from "@/lib/utils";
@@ -70,7 +70,7 @@ export function LockPage() {
 
   const tape = lock?.tape ?? "SIMULATED";
   const masterLocked = lock?.masterLocked ?? true;
-  const rows = lock?.rows ?? [];
+  const [boardOpen, setBoardOpen] = useState(false);
 
   const data = {
     "@context": "https://schema.org",
@@ -82,7 +82,7 @@ export function LockPage() {
         headline: LOCK_HEADLINE,
         description: PAGE_DESC_LOCK,
         url: `${origin}${LOCK_PATH}`,
-        image: [`${origin}${BANNER}`, `${origin}/lock-closed.gif`, `${origin}/lock-open.gif`],
+        image: [`${origin}${BANNER}`, `${origin}/lock-closed.gif`, `${origin}${LOCK_GIF_OPEN}`],
         about: [
           "Locked Status",
           "AI agents",
@@ -92,7 +92,28 @@ export function LockPage() {
           "proof of concept",
           "AI trading bots",
           "Bitcoin trading agents",
+          "Pr3d1ctions",
+          "7-B0T AUTO",
+          "G M0D3 AUTO",
         ],
+        hasPart: LOCK_IDS.map((id) => ({
+          "@type": "WebPage",
+          name: LOCK_META[id].name,
+          url: `${origin}${lockViewPath(id)}`,
+          description: LOCK_META[id].seo,
+        })),
+      },
+      {
+        "@type": "ItemList",
+        name: "LoCK3D STATUS views",
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        numberOfItems: LOCK_IDS.length,
+        itemListElement: LOCK_IDS.map((id, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: LOCK_META[id].name,
+          url: `${origin}${lockViewPath(id)}`,
+        })),
       },
       {
         "@type": "ImageObject",
@@ -112,11 +133,12 @@ export function LockPage() {
       },
       {
         "@type": "ImageObject",
-        contentUrl: `${origin}/lock-open.gif`,
-        name: IMG_SEO,
-        caption: IMG_SEO,
-        description: IMG_SEO,
-        keywords: LOCK_IMG_SEO,
+        contentUrl: `${origin}${LOCK_GIF_OPEN}`,
+        name: seoImgAlt(LOCK_GIF_OPEN_NAME),
+        caption: seoImgAlt(LOCK_GIF_OPEN_NAME),
+        description: seoImgAlt(LOCK_GIF_OPEN_NAME),
+        keywords: LOCK_GIF_OPEN_NAME,
+        encodingFormat: "image/gif",
       },
       {
         "@type": "HowTo",
@@ -191,7 +213,7 @@ export function LockPage() {
           />
           <figcaption className="pointer-events-none absolute inset-0">
             <img
-              src="/lock-closed.gif"
+              src="/lock-closed.gif?v=68"
               alt={LOCK_IMG_SEO}
               title={LOCK_IMG_SEO}
               width={128}
@@ -199,9 +221,9 @@ export function LockPage() {
               className="lock-gif-banner absolute left-[8%] top-1/2 -translate-y-1/2 sm:left-[10%]"
             />
             <img
-              src="/lock-open.gif"
-              alt={LOCK_IMG_SEO}
-              title={LOCK_IMG_SEO}
+              src={`${LOCK_GIF_OPEN}?v=68`}
+              alt={seoImgAlt(LOCK_GIF_OPEN_NAME)}
+              title={seoImgAlt(LOCK_GIF_OPEN_NAME)}
               width={128}
               height={128}
               className="lock-gif-banner absolute right-[8%] top-1/2 -translate-y-1/2 sm:right-[10%]"
@@ -258,13 +280,7 @@ export function LockPage() {
         <Panel
           className="mt-4"
           kicker={TAB_LOCK3D}
-          title={
-            <span className="inline-flex items-center gap-2">
-              <LockGif locked={masterLocked} size="lg" />
-              {masterLocked ? "LOCKED" : "UNLOCKED"}
-              <span className="font-mono text-[11px] font-normal text-muted">desk {lock?.mode ?? "SIM"}</span>
-            </span>
-          }
+          title={TAB_LOCK3D}
           kickerClass="legal-purple"
           titleClass={masterLocked ? "text-sell" : "text-high"}
         >
@@ -272,27 +288,26 @@ export function LockPage() {
             Public snapshot. Admins toggle from Console or {APP_ADMIN_PATH}. Agents read GET /api/agent/locks. MCP
             lock_status is read-only — there is no lock_set.
           </p>
-          <ul className="mt-3 divide-y divide-rule">
-            {rows.length
-              ? rows.map((row) => (
-                  <li key={row.id} className="flex flex-wrap items-center gap-x-3 gap-y-2 py-2.5">
-                    <LockGif locked={row.locked} />
-                    <div className="min-w-0 flex-1">
-                      <p className="flex flex-wrap items-baseline gap-x-2">
-                        <LockName name={row.name} css={row.css} />
-                        <strong className={row.locked ? "text-sell" : "text-high"}>{row.label}</strong>
-                      </p>
-                      <p className="mt-0.5 text-xs leading-relaxed text-muted">{row.hint}</p>
-                    </div>
-                  </li>
-                ))
-              : welcome.rails.map((row) => (
-                  <li key={row.id} className="py-2.5">
-                    <p className="font-semibold">{row.name}</p>
-                    <p className="mt-0.5 text-xs text-muted">{row.hint}</p>
-                  </li>
-                ))}
-          </ul>
+          {lock ? (
+            <div className="mt-3">
+              <LockHead
+                lock={lock}
+                masterLocked={masterLocked}
+                expanded={boardOpen}
+                onToggle={() => setBoardOpen((v) => !v)}
+              />
+              {boardOpen ? <LockBoard lock={lock} compact /> : null}
+            </div>
+          ) : (
+            <ul className="mt-3 divide-y divide-rule">
+              {welcome.rails.map((row) => (
+                <li key={row.id} className="py-2.5">
+                  <p className="font-semibold">{row.name}</p>
+                  <p className="mt-0.5 text-xs text-muted">{row.hint}</p>
+                </li>
+              ))}
+            </ul>
+          )}
         </Panel>
 
         <Panel id="how-to-toggle" className="mt-4" kicker="How to" title="Turn locks on or off" kickerClass="faq-kicker">
@@ -326,6 +341,9 @@ export function LockPage() {
             </Link>
             <Link to="/h1v3" className="board-nav gm-nav hive-nav hover:underline" title={TAB_HOVER_HIVE}>
               H1V3 SW@RM
+            </Link>
+            <Link to="/pr3d" className="gold-css hover:underline" title="S1R1US Predictions">
+              Pr3d1ctions
             </Link>
             <Link to="/agent" className="text-oss hover:underline">
               Agent feed

@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/shell";
-import { GmRainbow } from "@/components/godzilla-mark";
+import { GmRainbow, GoldCss } from "@/components/godzilla-mark";
+import { rainGmBurst } from "@/components/matrix-saver";
 import { fetchLockStatus, setLockStatus } from "@/lib/desk/desk-rpc";
 import { useOperator } from "@/lib/desk/operator";
 import { useAppAdmin } from "@/lib/desk/app-admin-client";
 import {
   LOCK_GIF_CLOSED,
   LOCK_GIF_OPEN,
+  LOCK_GIF_OPEN_NAME,
   TAB_LOCK3D,
+  groupLockRows,
   type LockId,
   type LockStatusPublic,
 } from "@/lib/desk/lock-status";
@@ -62,11 +66,14 @@ export function LockGif({
   size?: "sm" | "md" | "lg";
   className?: string;
 }) {
-  const px = size === "lg" ? 32 : size === "sm" ? 20 : 24;
+  const px = size === "lg" ? 56 : size === "sm" ? 32 : 44;
+  const short = locked ? "LOCKED" : "UNLOCKED";
+  const seo = seoImgAlt(locked ? "Closed padlock. LOCKED." : LOCK_GIF_OPEN_NAME);
   return (
     <img
-      src={locked ? LOCK_GIF_CLOSED : LOCK_GIF_OPEN}
-      alt={seoImgAlt(locked ? "Closed padlock. LOCKED." : "Open padlock. UNLOCKED.")}
+      src={`${locked ? LOCK_GIF_CLOSED : LOCK_GIF_OPEN}?v=68`}
+      alt={seo}
+      title={short}
       width={px}
       height={px}
       className={cn("lock-gif", locked ? "lock-gif-closed" : "lock-gif-open", size === "lg" && "lock-gif-lg", className)}
@@ -77,6 +84,9 @@ export function LockGif({
 export function LockName({ name, css, className }: { name: string; css: string; className?: string }) {
   if (css === "gm-rainbow" || css === "hive-nav") {
     return <GmRainbow text={name} className={cn("font-semibold", className)} />;
+  }
+  if (css === "gold-css") {
+    return <GoldCss text={name} className={cn("font-semibold", className)} />;
   }
   return <span className={cn("font-semibold", css, className)}>{name}</span>;
 }
@@ -93,6 +103,215 @@ type ActInput = {
   mode?: "SIM" | "LIVE";
 };
 
+type LockRow = LockStatusPublic["rows"][number];
+
+function LockCell({
+  row,
+  canEdit,
+  token,
+  busy,
+  showHint,
+  showInclude,
+  onAct,
+}: {
+  row: LockRow;
+  canEdit: boolean;
+  token: string;
+  busy: boolean;
+  showHint?: boolean;
+  showInclude?: boolean;
+  onAct?: (input: ActInput) => void;
+}) {
+  const gif = canEdit && onAct ? (
+    <button
+      type="button"
+      disabled={busy || !token}
+      onClick={() => onAct({ op: "one", id: row.id, locked: !row.locked })}
+      className="lock-cell-gif inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-rule bg-paper-raised transition-transform duration-150 ease-out active:scale-[0.96]"
+      aria-pressed={row.locked}
+      aria-label={`${row.name} ${row.label} — toggle`}
+      title={row.hint}
+    >
+      <LockGif locked={row.locked} />
+    </button>
+  ) : (
+    <span className="lock-cell-gif inline-flex min-h-11 min-w-11 items-center justify-center" title={row.hint}>
+      <LockGif locked={row.locked} />
+    </span>
+  );
+  return (
+    <li className="lock-cell">
+      {gif}
+      <div className="lock-cell-copy min-w-0">
+        <p className="lock-cell-line">
+          <Link
+            to={row.to}
+            hash={row.hash}
+            className="lock-cell-link"
+            title={`${row.seo} — open view`}
+            aria-label={`Open ${row.name}`}
+            onClick={() => {
+              if (row.id === "gmAuto" || row.id === "gmManual") rainGmBurst(2500);
+            }}
+          >
+            <LockName name={row.name} css={row.css} />
+          </Link>
+        </p>
+        {showHint ? <p className="lock-cell-hint">{row.hint}</p> : null}
+      </div>
+      <strong className={cn("lock-cell-state", row.locked ? "text-sell" : "text-high")}>{row.locked ? "locked" : "unlocked"}</strong>
+      {showInclude && canEdit && onAct ? (
+        <label className="lock-cell-include">
+          <input
+            type="checkbox"
+            checked={row.include}
+            disabled={busy || !token}
+            onChange={() => onAct({ op: "include", id: row.id, include: !row.include })}
+          />
+          include
+        </label>
+      ) : null}
+    </li>
+  );
+}
+
+function LockColumn({
+  title,
+  tone,
+  rows,
+  empty,
+  canEdit,
+  token,
+  busy,
+  showHint,
+  showInclude,
+  onAct,
+}: {
+  title: string;
+  tone: "open" | "closed";
+  rows: LockRow[];
+  empty: string;
+  canEdit: boolean;
+  token: string;
+  busy: boolean;
+  showHint?: boolean;
+  showInclude?: boolean;
+  onAct?: (input: ActInput) => void;
+}) {
+  const closed = tone === "closed";
+  return (
+    <section className={cn("lock-col", closed ? "lock-col-closed" : "lock-col-open")}>
+      <header className="lock-col-h">
+        <span className={closed ? "text-sell" : "text-high"}>{title}</span>
+        <LockGif locked={closed} size="lg" />
+      </header>
+      <ul className="lock-col-list">
+        {rows.length ? (
+          rows.map((row) => (
+            <LockCell
+              key={row.id}
+              row={row}
+              canEdit={canEdit}
+              token={token}
+              busy={busy}
+              showHint={showHint}
+              showInclude={showInclude}
+              onAct={onAct}
+            />
+          ))
+        ) : (
+          <li className="lock-cell lock-cell-empty">{empty}</li>
+        )}
+      </ul>
+    </section>
+  );
+}
+
+export function LockBoard({
+  lock,
+  canEdit = false,
+  token = "",
+  busy = false,
+  compact = false,
+  onAct,
+}: {
+  lock: LockStatusPublic;
+  canEdit?: boolean;
+  token?: string;
+  busy?: boolean;
+  compact?: boolean;
+  onAct?: (input: ActInput) => void;
+}) {
+  const grouped = groupLockRows(lock.rows);
+  return (
+    <div className="lock-status-board">
+      <div className={cn("lock-status-cols", compact && "lock-status-cols-stack")}>
+        <LockColumn
+          title="UNLOCKED"
+          tone="open"
+          rows={grouped.unlocked}
+          empty="none unlocked"
+          canEdit={canEdit}
+          token={token}
+          busy={busy}
+          showHint={!compact}
+          showInclude={!compact}
+          onAct={onAct}
+        />
+        <LockColumn
+          title="LOCKED"
+          tone="closed"
+          rows={grouped.locked}
+          empty="none locked"
+          canEdit={canEdit}
+          token={token}
+          busy={busy}
+          showHint={!compact}
+          showInclude={!compact}
+          onAct={onAct}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function LockHead({
+  lock,
+  masterLocked,
+  expanded,
+  onToggle,
+}: {
+  lock: LockStatusPublic;
+  masterLocked: boolean;
+  expanded?: boolean;
+  onToggle?: () => void;
+}) {
+  return (
+    <div className="lock-status-head">
+      <div className="lock-status-title">
+        <LockGif locked={masterLocked} size="lg" />
+        <span className="legal-purple">{TAB_LOCK3D}</span>
+        <strong className={masterLocked ? "text-sell" : "text-high"}>{masterLocked ? "LOCKED" : "UNLOCKED"}</strong>
+        <span className="lock-status-mode">desk {lock.mode}</span>
+        {onToggle ? (
+          <button
+            type="button"
+            className="lock-status-expand text-expand"
+            aria-expanded={Boolean(expanded)}
+            onClick={onToggle}
+          >
+            {expanded ? "Collapse" : "Expand"}
+          </button>
+        ) : null}
+      </div>
+      <span className={cn("lock-status-tape", liveTapeClass(lock.tape))} title={lock.tapeNote}>
+        <Radio className="size-4 shrink-0" />
+        <span>Live tape</span>
+      </span>
+    </div>
+  );
+}
+
 function LockControls({
   lock,
   canEdit,
@@ -100,6 +319,7 @@ function LockControls({
   busy,
   err,
   onAct,
+  compact = false,
 }: {
   lock: LockStatusPublic;
   canEdit: boolean;
@@ -107,25 +327,16 @@ function LockControls({
   busy: boolean;
   err: string | null;
   onAct: (input: ActInput) => void;
+  compact?: boolean;
 }) {
+  const [open, setOpen] = useState(!compact);
   const included = lock.rows.filter((r) => r.include).length;
   return (
     <div className="lock-status-panel w-full min-w-0">
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-rule pb-3">
-        <span className={cn("inline-flex items-center gap-1.5 font-semibold", liveTapeClass(lock.tape))} title={lock.tapeNote}>
-          <Radio className="size-4" />
-          Live tape
-          <strong className="font-semibold">{lock.tape}</strong>
-        </span>
-        <span className="text-xs text-muted">status only · not a lock · not user-adjusted</span>
-        <span className="font-mono text-[11px] text-muted">
-          desk {lock.mode}
-          {lock.by ? ` · ${lock.by}` : ""}
-        </span>
-      </div>
+      <LockHead lock={lock} masterLocked={lock.masterLocked} expanded={open} onToggle={() => setOpen((v) => !v)} />
 
-      {canEdit ? (
-        <div className="mt-3 flex flex-wrap items-center gap-2">
+      {open && canEdit ? (
+        <div className="lock-status-actions">
           <Button
             variant={lock.mode === "SIM" ? "primary" : "outline"}
             disabled={busy || !token}
@@ -157,50 +368,15 @@ function LockControls({
         </div>
       ) : null}
 
-      <ul className="mt-3 divide-y divide-rule">
-        {lock.rows.map((row) => (
-          <li key={row.id} className="flex flex-wrap items-center gap-x-3 gap-y-2 py-2.5">
-            {canEdit ? (
-              <button
-                type="button"
-                disabled={busy || !token}
-                onClick={() => onAct({ op: "one", id: row.id, locked: !row.locked })}
-                className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-md border border-rule bg-paper-raised px-2 transition-transform duration-150 ease-out active:scale-[0.96]"
-                aria-pressed={row.locked}
-                aria-label={`${row.name} ${row.locked ? "LOCKED" : "UNLOCKED"} — toggle`}
-                title={row.hint}
-              >
-                <LockGif locked={row.locked} />
-              </button>
-            ) : (
-              <span className="inline-flex min-h-10 min-w-10 items-center justify-center" title={row.hint}>
-                <LockGif locked={row.locked} />
-              </span>
-            )}
-            <div className="min-w-0 flex-1">
-              <p className="flex flex-wrap items-baseline gap-x-2">
-                <LockName name={row.name} css={row.css} />
-                <strong className={row.locked ? "text-sell" : "text-high"}>{row.label}</strong>
-                {!row.include ? <span className="text-[11px] tracking-[0.08em] text-muted uppercase">off master</span> : null}
-              </p>
-              <p className="mt-0.5 text-xs leading-relaxed text-muted">{row.hint}</p>
-            </div>
-            {canEdit ? (
-              <label className="inline-flex min-h-10 items-center gap-2 text-xs text-muted">
-                <input
-                  type="checkbox"
-                  checked={row.include}
-                  disabled={busy || !token}
-                  onChange={() => onAct({ op: "include", id: row.id, include: !row.include })}
-                />
-                include
-              </label>
-            ) : null}
-          </li>
-        ))}
-      </ul>
-      {err ? <p className="mt-2 text-sm text-sell">{err}</p> : null}
-      <p className="mt-3 text-xs leading-relaxed text-muted">{lock.notice}</p>
+      {open ? (
+        <>
+          <LockBoard lock={lock} canEdit={canEdit} token={token} busy={busy} compact={compact} onAct={onAct} />
+          {err ? <p className="mt-2 text-sm text-sell">{err}</p> : null}
+          {compact ? null : <p className="mt-3 text-xs leading-relaxed text-muted">{lock.notice}</p>}
+        </>
+      ) : err ? (
+        <p className="mt-2 text-sm text-sell">{err}</p>
+      ) : null}
     </div>
   );
 }
@@ -232,13 +408,7 @@ export function Lock3dStatusPanel({ className }: { className?: string }) {
     <Panel
       className={cn("mt-4", className)}
       kicker={TAB_LOCK3D}
-      title={
-        <span className="inline-flex items-center gap-2">
-          <LockGif locked={masterLocked} />
-          {masterLocked ? "LOCKED" : "UNLOCKED"}
-          <span className="font-mono text-[11px] font-normal text-muted">{lock?.mode ?? "SIM"}</span>
-        </span>
-      }
+      title={TAB_LOCK3D}
       kickerClass="legal-purple"
       titleClass={masterLocked ? "text-sell" : "text-high"}
     >
@@ -266,7 +436,6 @@ export function Lock3dRail({
 }) {
   const { token, canEdit } = useLockAdmin();
   const { lock, setLock, err, setErr, busy, setBusy } = useLockView();
-  const [open, setOpen] = useState(false);
 
   async function act(input: ActInput) {
     if (!token) return;
@@ -286,7 +455,6 @@ export function Lock3dRail({
     }
   }
 
-  const tape = lock?.tape ?? "SIMULATED";
   const masterLocked = lock?.masterLocked ?? true;
   const ok = feedAudit?.ok ?? 0;
   const fail = feedAudit?.fail ?? 0;
@@ -294,57 +462,30 @@ export function Lock3dRail({
   const feedTone = total === 0 || ok === 0 ? "live-tape-none" : fail === 0 ? "live-tape-all" : ok > total / 2 ? "live-tape-most" : "live-tape-half";
 
   return (
-    <div className="lock-status-rail mb-3 rounded-md border border-rule bg-paper-raised px-5 py-3 text-[1.08rem] leading-snug text-muted">
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-        <span
-          className={cn("inline-flex items-center gap-1.5 font-semibold", lock ? liveTapeClass(tape) : feedTone)}
-          title={lock?.tapeNote ?? (feedAudit ? `Live tape · ${ok} live · ${fail} down` : "Live tape")}
-        >
-          <Radio className="size-4" />
-          Live tape
-          <strong className="font-semibold">{tape}</strong>
-        </span>
-        {(lock?.rows ?? []).map((row) => (
-          <span key={row.id} className="inline-flex items-center gap-1.5" title={row.hint}>
-            {canEdit ? (
-              <button
-                type="button"
-                disabled={busy || !token}
-                onClick={() => void act({ op: "one", id: row.id, locked: !row.locked })}
-                className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-md transition-transform duration-150 ease-out active:scale-[0.96]"
-                aria-label={`${row.name} ${row.label}`}
-              >
-                <LockGif locked={row.locked} size="lg" />
-              </button>
-            ) : (
-              <LockGif locked={row.locked} size="lg" />
-            )}
-            <LockName name={row.name} css={row.css} />
-            <strong className={row.locked ? "text-sell" : "text-high"}>{row.locked ? "locked" : "unlocked"}</strong>
+    <div className="lock-status-rail mb-3 rounded-md border border-rule bg-paper-raised px-4 py-3 text-sm leading-snug text-muted sm:px-5">
+      {lock ? (
+        <LockControls
+          lock={lock}
+          canEdit={canEdit}
+          token={token}
+          busy={busy}
+          err={err}
+          compact
+          onAct={(i) => void act(i)}
+        />
+      ) : (
+        <div className="lock-status-head">
+          <div className="lock-status-title">
+            <LockGif locked={masterLocked} size="lg" />
+            <span className="legal-purple">{TAB_LOCK3D}</span>
+          </div>
+          <span className={cn("lock-status-tape", feedTone)}>
+            <Radio className="size-4 shrink-0" />
+            <span>Live tape</span>
+            {feedAudit ? <span className="lock-status-tape-note">{ok} live · {fail} down</span> : null}
           </span>
-        ))}
-        <button
-          type="button"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className={cn(
-            "inline-flex min-h-10 items-center gap-1.5 font-bold tracking-[0.08em] uppercase",
-            masterLocked ? "legal-purple" : "text-high",
-          )}
-        >
-          <LockGif locked={masterLocked} size="lg" />
-          {TAB_LOCK3D}
-        </button>
-      </div>
-      {open ? (
-        <div className="mt-3 w-full border-t border-rule pt-3">
-          {lock ? (
-            <LockControls lock={lock} canEdit={canEdit} token={token} busy={busy} err={err} onAct={(i) => void act(i)} />
-          ) : (
-            <p className="text-sm text-muted">{err ?? "Reading locks…"}</p>
-          )}
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -486,9 +486,9 @@ export function SecurityDesk() {
       >
         <p className="text-sm leading-relaxed text-muted">
           Championship simulation for C@LL 0UT, simulated SUP3R B0WL, and W0rLd CUP of AI Quant Trading BTC. LIVE ticks
-          paper desks against live Coinbase last. PAUSE freezes those sim fills. This does not pause GM B0aRd official
-          rank, does not pause data pulls, and does not unlock Coinbase create on web or phone apps. Live apps still
-          follow parent policies, mandate, and security. System Admin only.
+          paper desks against live Coinbase last. PAUSE freezes those sim fills. System Admin and phone-app Admin may
+          pause or continue. This does not pause GM B0aRd official rank, does not pause data pulls, and does not unlock
+          Coinbase create on web or phone apps.
         </p>
         <p className="mt-2 font-mono text-xs text-muted">{board?.sim?.note ?? "load simulation"}</p>
         <div className="mt-3 flex flex-wrap gap-2">
@@ -1152,7 +1152,7 @@ export function SecurityDesk() {
           <Panel className="mt-4" kicker="IDS" title="24h blocked probes" kickerClass="text-sell">
             <p className="text-sm leading-relaxed text-muted">
               source-probe, inject, scrape, scanner, MCP deny, agency probe, waitlist reject, secret paste, forum bar.
-              Same ring as Intrusions, filtered to bad bots. Also on the 08:00 morning report.
+              Same ring as Intrusions, filtered to bad bots. Also on the 07:30 morning report.
             </p>
             {!badBot24.length ? (
               <p className="mt-3 text-sm text-muted">No bad-bot probes in the last 24 hours. Gate is armed.</p>

@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
-import { PUBLIC_PAGES, SITEMAP_MACHINE } from "@/lib/desk/public-nav";
-import { GodzillaModeLabel, LeaderBoardLabel, RainbowGodzillaText } from "@/components/godzilla-mark";
+import { PUBLIC_PAGES, SITEMAP_MACHINE, SITEMAP_LOCK_VIEWS } from "@/lib/desk/public-nav";
+import { GodzillaModeLabel, GoldCss, LeaderBoardLabel, RainbowGodzillaText } from "@/components/godzilla-mark";
 import { APP_NAME, LABS_NAME, SEO_CANONICAL, TAB_DESK } from "@/lib/brand";
 
 export function SitemapPage() {
@@ -48,7 +48,36 @@ export function SitemapPage() {
           <a className="text-oss hover:underline" href="/llms.txt">
             /llms.txt
           </a>
-          . Crawlers: {SEO_CANONICAL}
+          {" "}
+          (instructions module; also{" "}
+          <a className="text-oss hover:underline" href="/.well-known/llms.txt">
+            /.well-known/llms.txt
+          </a>
+          ). Google Search uses HTML + schema.org JSON-LD — llms.txt does not change ranking (Search Central, June 2026). Agent discovery:{" "}
+          <a className="text-oss hover:underline" href="/.well-known/ai-catalog.json">
+            ARD catalog
+          </a>
+          {" · "}
+          <a className="text-oss hover:underline" href="/.well-known/mcp.json">
+            MCP card
+          </a>
+          {" · "}
+          <a className="text-oss hover:underline" href="/.well-known/agent-card.json">
+            A2A card
+          </a>
+          . OSS Roadmap (functions, go-live status, estimated timeline):{" "}
+          <a className="text-oss font-semibold hover:underline" href="/roadmap" title="OSS Roadmap">
+            OSS Roadmap
+          </a>
+          {" "}
+          <a className="text-oss hover:underline" href="/roadmap">
+            /roadmap
+          </a>
+          . S1R1US Pr3d1ctions (paper Ph0 W@ll3t / ph0 BTC):{" "}
+          <a className="gold-css font-semibold hover:underline" href="/pr3d" title="S1R1US Predictions">
+            /pr3d
+          </a>
+          . LoCK3D STATUS name click opens AI Agents, H1V3 SW@RM, Pr3d1ctions, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE. Crawlers: {SEO_CANONICAL}
         </p>
         <Panel kicker="Index" title="Public URLs" className="mt-6" kickerClass="text-oss">
           <ul className="space-y-3">
@@ -58,6 +87,22 @@ export function SitemapPage() {
                   <RainbowGodzillaText text={p.label} />
                 </a>
                 <p className="font-mono text-xs text-muted">{p.title}</p>
+                <p className="text-xs text-muted">{p.hint}</p>
+              </li>
+            ))}
+          </ul>
+        </Panel>
+        <Panel kicker="LoCK3D" title="STATUS views — name click" className="mt-6" kickerClass="text-oss">
+          <p className="mb-3 text-sm leading-relaxed text-muted">
+            On LoCK3D STATUS, click the lock name to open that view. Padlock GIFs still only lock or unlock.
+          </p>
+          <ul className="space-y-3">
+            {SITEMAP_LOCK_VIEWS.map((p) => (
+              <li key={p.id}>
+                <a href={p.path} className="font-medium text-fg hover:underline">
+                  <RainbowGodzillaText text={p.label} />
+                </a>
+                <p className="font-mono text-xs text-muted">{p.path}</p>
                 <p className="text-xs text-muted">{p.hint}</p>
               </li>
             ))}

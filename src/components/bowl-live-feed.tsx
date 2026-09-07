@@ -8,7 +8,7 @@ import {
   RoundKingLabel,
   SuperBowlLabel,
 } from "@/components/godzilla-mark";
-import { MENU_BOARD, TAB_BOWL } from "@/lib/brand";
+import { MENU_BOARD, TAB_BOWL, TAB_SPICE } from "@/lib/brand";
 import { GO_LIVE_DEADLINE_LABEL } from "@/lib/desk/go-live";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +32,13 @@ type Feed = {
     roundKing?: King;
     liveFights?: Fight[];
   };
+  wager?: {
+    live?: boolean;
+    status?: string;
+    demoTape?: boolean;
+    round?: { poolUsd?: number; bets?: number; hoursLeft?: number; minutesLeft?: number };
+    favorite?: { pickName?: string; pct?: number } | null;
+  };
 };
 
 function btc(n: number | undefined) {
@@ -44,7 +51,7 @@ function usd(n: number | null | undefined) {
 }
 
 /** Public Super Bowl / AI-agent stats. Paper live until the go-live deadline. */
-export function BowlLiveFeed({ compact = false }: { compact?: boolean }) {
+export function BowlLiveFeed({ compact = false, className }: { compact?: boolean; className?: string }) {
   const [feed, setFeed] = useState<Feed | null>(null);
 
   useEffect(() => {
@@ -74,9 +81,14 @@ export function BowlLiveFeed({ compact = false }: { compact?: boolean }) {
   return (
     <Panel
       kicker="Live feed"
-      title={<SuperBowlLabel className="text-base font-semibold" />}
+      title={
+        <span className="text-base font-semibold">
+          AI Agent <SuperBowlLabel className="text-base font-semibold" />
+        </span>
+      }
       kickerClass="indicator-title"
       titleClass="indicator-title"
+      className={className}
     >
       <p className="font-mono text-[11px] leading-relaxed text-muted">
         <span className={cn("font-semibold", !feed ? "text-muted" : live ? "text-high" : "text-medium")}>
@@ -105,6 +117,23 @@ export function BowlLiveFeed({ compact = false }: { compact?: boolean }) {
           {feed?.callout?.roundKing?.wins ?? 0} wins
         </p>
       </div>
+      <p className="mt-2 font-mono text-xs text-fg">
+        <span className={cn("font-semibold", feed?.wager?.live === false ? "text-medium" : "text-high")}>
+          {feed?.wager?.status ?? (feed?.wager?.live === false ? "PAUSED" : "PAPER LIVE")}
+        </span>
+        {" · "}
+        <Link to="/board" hash="spice" className="text-tab hover:underline">
+          {TAB_SPICE}
+        </Link>
+        {" · pool "}
+        {usd(feed?.wager?.round?.poolUsd ?? 0)}
+        {" · "}
+        {feed?.wager?.round?.bets ?? 0} tickets
+        {feed?.wager?.favorite?.pickName
+          ? ` · favorite ${feed.wager.favorite.pickName} ${feed.wager.favorite.pct ?? 0}%`
+          : ""}
+        {feed?.wager?.demoTape ? " · SIM tape" : ""}
+      </p>
       {fight ? (
         <p className="mt-2 font-mono text-xs text-fg">
           <CallOutLabel className="text-xs" /> live · r{fight.round ?? 1}/5 · {fight.challenger?.name} vs {fight.target?.name}

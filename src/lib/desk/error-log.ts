@@ -48,11 +48,11 @@ export function classifyFail(msg: string): { resolved: boolean; attention: boole
       verdict: "query1 quote is 401 from this host. CNBC last + Yahoo query2 charts are the live path. Not core BTC tape.",
     };
   }
-  if (/stooq/.test(m) && /block|403|451/.test(m)) {
+  if (/stooq/.test(m) && /block|403|451|abort|timeout|slot/.test(m)) {
     return {
       resolved: true,
       attention: false,
-      verdict: "Stooq off-allowlist or geo. CNBC + Yahoo query2 charts cover Mag7/MSTR. Not core BTC tape.",
+      verdict: "Stooq miss (abort/geo). CNBC + Yahoo query2 charts cover Mag7/MSTR. Not core BTC tape.",
     };
   }
   if (/mempool\.space|blockstream/.test(m) && /timeout|slot/.test(m)) {

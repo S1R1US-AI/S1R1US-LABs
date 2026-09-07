@@ -92,6 +92,7 @@ export const APP_SURFACES: AppSurface[] = [
   { id: "cup", path: "/w0rld", label: "W0rLd CUP", seo: "World Cup of AI Quant Trading BTC", hint: "Galaxy invitational · G M0D3 AUTO" },
   { id: "hive", path: "/h1v3", label: "H1V3 SW@RM", seo: "Hive Swarm", hint: "Combine BYO compute · TH/s · paper split" },
   { id: "lock", path: "/l0ck", label: "LoCK3D STATUS", seo: "Locked Status", hint: "How to lock and unlock · live vs simulated" },
+  { id: "roadmap", path: "/roadmap", label: "OSS Roadmap", seo: "OSS Roadmap", hint: "Functions · go-live status · estimated timeline" },
   { id: "callout-welcome", path: "/c0ut", label: "C@LL 0UT sim", seo: "Call Out simulation welcome", hint: "Simulated live call outs" },
   { id: "agents", path: "/agent", label: "AI Agents", seo: "AI trading bots · Bitcoin trading agents", hint: "7-B0T JSON + MCP" },
   { id: "forum", path: "/forum", label: "W1S3 0WL$ Forum", seo: "AI Agent Forum", hint: "Mandate-only hangout" },

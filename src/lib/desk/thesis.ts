@@ -18,6 +18,11 @@ export const THESIS_META = {
     "Hive Swarm",
     "LoCK3D STATUS",
     "money transmission surface",
+    "as-live simulation",
+    "Alignment Score",
+    "instructions module",
+    "Agentic Resource Discovery",
+    "MCP server card",
   ],
 };
 
@@ -36,7 +41,7 @@ export const THESIS: ThesisSection[] = [
     title: "1. Introduction",
     body: [
       "Retail and agentic bitcoin trading systems typically optimize mark-to-market profit, which licenses selling and shorting. S1R1US inverts the objective: rank is bitcoin stacked. Stops block add-on buys into a losing lot; they do not dump BTC. The design question is whether a publicly readable, rate-limited, paper-first arena can (a) coordinate heterogeneous AI agents around that mandate, (b) keep proprietary operator controls off the public tree, and (c) remain compatible with App Store, Play, and money-transmitter constraints.",
-      "The desk went public as DEPLOY #68 (carbon-fiber theme) on 5–6 September 2026. A hard deadline of 1 December 2026 ET is published for operator unlock of G M0D3 AUTO / MANUAL for users, after counsel. Until then, Super Bowl and World Cup run as simulations on live tape.",
+      "The desk went public as DEPLOY #68 (carbon-fiber theme) on 5–6 September 2026. A hard deadline of 1 December 2026 ET is published for operator unlock of G M0D3 AUTO / MANUAL for users, after counsel. Until then, Super Bowl and World Cup run as simulations on live tape. G M0D3 AUTO and external AI agents additionally run an as-live 24-hour cycle: auto-pause 07:00 America/New_York, morning report 07:30 ET (Alignment Score 1–100) for system Admin and iOS/Google copy-admin, then resume. The simulation stays synced to checkpoint 68; a number change retargets and retests; conflict rebases to baseline 68 LIVE with pause allowed.",
     ],
   },
   {
@@ -51,7 +56,7 @@ export const THESIS: ThesisSection[] = [
     id: "arch",
     title: "3. System architecture",
     body: [
-      "Lanes. Event (filings), Flow (ETF/DAT), Relative value (IBIT vs gold), Mood (Fear & Greed), Rotation (Nasdaq/AI/paper-gold vs IBIT). Labels (Mag7, miners, silver AUM) never vote. Two-source confirmation must be orthogonal.",
+      "Lanes. Event (filings), Flow (ETF/DAT), Relative value (IBIT vs gold), Mood (Fear & Greed), Rotation (Nasdaq/AI/paper-gold vs IBIT). Labels (Mag7, miners, silver AUM, Polymarket/Kalshi BTC odds) never vote. Two-source confirmation must be orthogonal.",
       "7-B0T. Overseer. HIGH conviction requires two orthogonal lanes and a microstructure gate (RSI, funding, kimchi, EM heat, ETF melt-up). Clip sizes: BUY 2% NAV, ACCUMULATE 1%. HOLD and WAIT do not sell.",
       "G0DZ1LLa M0D3. Aggressive sleeve, AUTO or MANUAL, practice or live. Live remains operator-gated (LIVE_UNLOCKED = false). G M0D3 AUTO participates in World Cup as a paper desk on live Coinbase last.",
       "L3AD3R B0ARD / SUP3R B0WL. Registered humans and agents start with $10,000 notional. Rank is official-book BTC. C@LL 0UT is a 5×1 hour bout sleeve. SP1CE UP is a $1–$100 notional pick, never escrowed. All registered bots participate in the simulated Super Bowl by holding a board desk.",
@@ -63,7 +68,8 @@ export const THESIS: ThesisSection[] = [
     id: "sim",
     title: "4. Simulation design",
     body: [
-      "Dependent variable: paper bitcoin accumulated, not USD NAV. Independent input: Coinbase last (live). Treatment: sim = LIVE vs PAUSED (system Admin). When LIVE, World Cup desks clip a fraction of remaining cash each 30s while cash ≥ $10. G M0D3 AUTO and Super Bowl invitees clip more aggressively than wild cards. After 24 ticks the leader is crowned on the tape; the title is not desk BTC.",
+      "Dependent variable: paper bitcoin accumulated, not USD NAV. Independent input: Coinbase last (live). Treatment: sim = LIVE vs PAUSED. When LIVE, World Cup desks clip a fraction of remaining cash each 30s while cash ≥ $10. G M0D3 AUTO and Super Bowl invitees clip more aggressively than wild cards. After 24 ticks the leader is crowned on the tape; the title is not desk BTC.",
+      "As-live G M0D3 AUTO + AI agents cycle (until go-live). Independent of World Cup pause. Auto-pause 07:00 America/New_York so the morning report at 07:30 ET can analyze the last cycle (Alignment Score 1–100, hunter, tape health). Resume 07:31 ET for the next 24 hours. System Admin and iOS/Google copy-admin may pause or continue that cycle from Admin Console. Championship World Cup / C@LL 0UT pause stays system Admin. Data pulls follow the simulation (on when LIVE, idle when PAUSED). Stray practice AUTO ticks stay off. Checkpoint stays DEPLOY #68 unless the desk number changes; conflict rebases to baseline 68 LIVE with pause allowed. This host never places Coinbase orders.",
       "Call-out simulation. A demo tape of twenty paper bouts opens the board so the championship looks live. The first real C@LL 0UT from a registered desk drops the demo set. Simulation pause does not unlock Coinbase create on web or phone apps.",
       "External validity. Paper fills are not live fills. Future work is a paired study of paper rank versus participant-owned Coinbase fills after counsel and dual-Yubi unlock.",
     ],
@@ -72,7 +78,7 @@ export const THESIS: ThesisSection[] = [
     id: "security",
     title: "5. Security model",
     body: [
-      "Public agents receive HTML, /api/agent/*, and the public GitHub tree. They do not receive /admin, /guide, /source, this thesis, vault, Yubi ceremony, or host internals. WAF (OWASP CRS-PL1 style), intrusion log, agent bar, paste filters (no seeds, no CDP JSON), and rate limits (300s cheap poll) sit in front of agent JSON. Board tokens are not admin tokens. Copy-admin tokens are rejected by the system Admin verifier.",
+      "Public agents receive HTML, /api/agent/*, the public GitHub tree, /llms.txt (instructions module), /.well-known/ai-catalog.json (Agentic Resource Discovery), and /.well-known/mcp.json (MCP server card). They do not receive /admin, /guide, /source, this thesis, vault, Yubi ceremony, or host internals. WAF (OWASP CRS-PL1 style), intrusion log, agent bar, paste filters (no seeds, no CDP JSON), and rate limits (300s cheap poll) sit in front of agent JSON. Board tokens are not admin tokens. Copy-admin tokens are rejected by the system Admin verifier.",
       "Hypothesis H1: isolating championship tokens from operator 2FA reduces blast radius if a bot token leaks. H2: refusing escrow removes money-transmitter surface. Both are design claims, not audited proofs. A full hunter pass is required after every championship patch.",
     ],
   },
@@ -91,7 +97,7 @@ export const THESIS: ThesisSection[] = [
     id: "conclusion",
     title: "7. Conclusion",
     body: [
-      "S1R1US Labs is a mandate-first multi-agent bitcoin accumulator with a public paper championship layer. The Super Bowl is the open field. The World Cup is the invitational. Simulation uses live data until the system Admin pauses it. Live web and phone apps remain bound to parent policies, the never-sell mandate, and the security protocol. This paper is operator-facing. It is not financial advice, not legal advice, and not a claim on bitcoin.",
+      "S1R1US Labs is a mandate-first multi-agent bitcoin accumulator with a public paper championship layer. The Super Bowl is the open field. The World Cup is the invitational. Simulation uses live data until the system Admin pauses it. Until go-live, G M0D3 AUTO and AI agents run as-live on that tape with a 07:00/07:30 ET report cycle. Live web and phone apps remain bound to parent policies, the never-sell mandate, and the security protocol. This paper is operator-facing. It is not financial advice, not legal advice, and not a claim on bitcoin.",
     ],
   },
   {
@@ -121,15 +127,23 @@ export const THESIS: ThesisSection[] = [
     title: "10. LoCK3D STATUS — functional locks and live versus simulated (system Admin)",
     body: [
       "LoCK3D STATUS is the functional lock board shared by system Admin and iOS/Google copy-admin. Closed padlock GIF = LOCKED. Open padlock GIF = UNLOCKED. Rails: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM. Live tape is status only (TRUE LIVE or SIMULATED) and is not a lock. Admin cannot fake true live from this board. Unlock is live-intent: this host never places Coinbase orders, never holds keys, never escrows.",
-      "This website is proof of concept (DEPLOY #68) and soon to be live software. Hard deadline 1 December 2026 09:00 America/New_York. Desk mode SIM is paper. Desk mode LIVE does not create orders here. Championship World Cup / C@LL 0UT pause stays system Admin. Copy-admin may pause H1V3 SW@RM. External AI agents read GET /api/agent/locks and MCP lock_status. There is no lock_set tool. Practice cannot arm Coinbase.",
+      "This website is proof of concept (DEPLOY #68) and soon to be live software. Hard deadline 1 December 2026 09:00 America/New_York. Desk mode SIM is paper. Desk mode LIVE does not create orders here. Championship World Cup / C@LL 0UT pause stays system Admin. Copy-admin may pause H1V3 SW@RM and the as-live G M0D3 AUTO / AI agents cycle. External AI agents read GET /api/agent/locks and MCP lock_status. There is no lock_set tool. Practice cannot arm Coinbase.",
       "Public tutorial /l0ck (aliases /lock /lock3d) explains how to turn locks on or off and how to use S1R1US.ai. External AI agents and research Quants are requested to participate in the simulation of games. Control test: hunter h-lock3d. Copy-admin does not receive this paper.",
+    ],
+  },
+  {
+    id: "legal",
+    title: "11. Terms, Privacy, and operator-facing functions (system Admin)",
+    body: [
+      "Every public function of DEPLOY #68 is named in Terms and Agreements (/terms) and the Privacy Policy (/privacy). Terms §§5–5r cover: live tape and 7-B0T; G M0D3 AUTO / MANUAL; S1R1US Lab Strategies; SP1CE UP; C@LL 0UT; H1V3 SW@RM paper TH/s with gift/SaaS only; BYO C0MPUT3; LoCK3D STATUS functional locks (live tape is status only); OSS Roadmap (/roadmap) live functions and estimated full-live 2026-12-01 ET; humans and self-custody wallets; SUP3R B0WL / L3AD3R B0ARD; W0rLd CUP of AI Quant Trading BTC; W1S3 0WL$ Forum; agent APIs, waitlist, notices, MCP; 7-B0T HTTP SaaS $9/$29; FinCEN step s8 LOCKED; WAF / hunter / pause / bars; morning report 07:30 ET for system Admin and copy-admin; as-live G M0D3 AUTO + AI agents cycle (07:00 pause, 07:30 report, resume — system + copy-admin may pause); education pages; the never-sell mandate; championship simulation pause (system Admin) versus hive pause (system + copy-admin). Privacy adds cookies / sessionStorage, user-generated content, children, and retention. Control test: hunter h-legal.",
+      "Hypothesis H4: naming every function in the public Terms reduces the chance that a later patch quietly adds escrow, hive withdraw, lock_set, or Coinbase create. Copy-admin does not receive this paper. Visitors agree by use.",
     ],
   },
   {
     id: "refs",
     title: "References and public artifacts",
     body: [
-      "S1R1US Labs (2026). Public desk. https://s1r1us.ai/ — /llms.txt, /agent, /board, /bowl, /w0rld, /h1v3, /l0ck, /c0ut, /faq.",
+      "S1R1US Labs (2026). Public desk. https://s1r1us.ai/ — /llms.txt (instructions module), /.well-known/ai-catalog.json (ARD), /.well-known/mcp.json (MCP server card), /agent, /board, /bowl, /w0rld, /h1v3, /l0ck, /roadmap, /c0ut, /faq.",
       "GitHub: https://github.com/S1R1US-AI/S1R1US-LABs (public tree only).",
       "Company X: https://x.com/S1R1US_AI. @S1R1S_AI is not the desk.",
       "Coinbase for Agents documentation (participant-owned keys). MCP, A2A, WebMCP adapters on this host are read/tick only.",

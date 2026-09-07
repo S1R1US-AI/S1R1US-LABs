@@ -17,6 +17,7 @@ export type ForumDaily = {
   postsAnalyzed: number;
   summary: string;
   suggestions: MandateSuggestion[];
+  goLive: { pred: string; system: string };
 };
 
 const PATHS = ["/tmp/forum-daily.json", "/workspace/data/forum-daily.json"];
@@ -33,7 +34,7 @@ function loadDaily(): ForumDaily | null {
   for (const p of PATHS) {
     try {
       const raw = JSON.parse(readFileSync(p, "utf8")) as ForumDaily;
-      if (raw?.dayEt && typeof raw.summary === "string") return raw;
+      if (raw?.dayEt && typeof raw.summary === "string" && raw.goLive?.pred && raw.goLive?.system) return raw;
     } catch {
       /* missing */
     }
@@ -54,6 +55,27 @@ function saveDaily(row: ForumDaily) {
   }
 }
 
+export function owlGoLiveSummary(posts: Post[]): { pred: string; system: string } {
+  const text = posts.map((p) => p.body).join(" \n ");
+  const pred: string[] = [];
+  if (/train/i.test(text) && /pr3d|pred/i.test(text)) pred.push("train paper book");
+  if (/\bath\b|gold-cap|gold|macd/i.test(text) && /pr3d|pred|ph0/i.test(text)) pred.push("ATH/gold/MACD");
+  if (/42k|42,000|grant/i.test(text)) pred.push("$42k Ph0 PoC");
+  if (/cftc|counsel/i.test(text)) pred.push("counsel+CFTC before live funds");
+  if (/gift|saas/i.test(text)) pred.push("gift/SaaS only");
+  const sys: string[] = [];
+  if (/g m0d3|gm (auto|manual)/i.test(text)) sys.push("paper G M0D3 AUTO/MANUAL");
+  if (/2026-12-01/.test(text)) sys.push("until 2026-12-01 counsel");
+  if (/never places Coinbase|host never/i.test(text)) sys.push("host never Coinbase");
+  if (/never sell/i.test(text)) sys.push("never sell");
+  return {
+    pred: pred.length ? `Pred: ${pred.join(" · ")}.` : "Pred: train paper ATH/gold/MACD book · $42k Ph0 PoC · counsel+CFTC before live funds · gift/SaaS only.",
+    system: sys.length
+      ? `System: ${sys.join(" · ")}.`
+      : "System: paper G M0D3 AUTO/MANUAL until 2026-12-01 counsel · host never Coinbase · never sell.",
+  };
+}
+
 function titleFrom(body: string) {
   const clean = body.replace(/\s+/g, " ").trim();
   const sentence = clean.split(/(?<=[.!?])\s/)[0] ?? clean;
@@ -69,12 +91,6 @@ function analyze(posts: Post[], day: string): ForumDaily {
     return Number.isFinite(t) && now - t < 86_400_000;
   });
   const pool = window.length ? window : posts.slice(0, 40);
-  const kinds: Record<string, number> = {};
-  for (const p of pool) kinds[p.kind] = (kinds[p.kind] ?? 0) + 1;
-  const kindLine = Object.entries(kinds)
-    .sort((a, b) => b[1] - a[1])
-    .map(([k, n]) => `${k} ${n}`)
-    .join(" · ");
   const suggestions: MandateSuggestion[] = [];
   const seen = new Set<string>();
   for (const p of pool) {
@@ -91,16 +107,18 @@ function analyze(posts: Post[], day: string): ForumDaily {
     });
     if (suggestions.length >= 8) break;
   }
+  const goLive = owlGoLiveSummary(pool);
   const summary =
     pool.length === 0
-      ? "No W1S3 0WL$ posts in the last 24h. Forum is LIVE with open registration. Mandate unchanged: accumulate bitcoin, never sell, never short."
-      : `Daily W1S3 0WL$ analysis for ${day} ET. ${pool.length} post${pool.length === 1 ? "" : "s"} in the window. Speakers: ${kindLine || "none"}. They discussed bitcoin accumulation and GM B0aRd / L3AD3R B0ARD paper strategy. Auto trade stays LOCKED.`;
+      ? "No W1S3 0WL$ posts in the last 24h. Forum LIVE. Never sell."
+      : `${goLive.pred} ${goLive.system}`;
   return {
     dayEt: day,
     analyzedAt: new Date().toISOString(),
     postsAnalyzed: pool.length,
     summary,
     suggestions,
+    goLive,
   };
 }
 

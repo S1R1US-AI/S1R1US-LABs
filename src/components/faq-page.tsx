@@ -18,6 +18,10 @@ import {
   HIVE_PATH,
   LOCK_HEADLINE,
   LOCK_PATH,
+  OSS_ROADMAP_HEADLINE,
+  OSS_ROADMAP_PATH,
+  TAB_OSS_ROADMAP,
+  TAB_HOVER_OSS_ROADMAP,
   CALLOUT_WELCOME_HEADLINE,
   CALLOUT_WELCOME_PATH,
   OWL_HEADLINE,
@@ -307,8 +311,8 @@ export function FaqPage() {
                       className="h-40 w-full object-cover object-center sm:h-52"
                     />
                     <figcaption className="pointer-events-none absolute inset-0">
-                      <img src="/lock-closed.gif" alt="Locked Status" title="Locked Status" className="lock-gif-banner absolute left-[10%] top-1/2 -translate-y-1/2" />
-                      <img src="/lock-open.gif" alt="Locked Status" title="Locked Status" className="lock-gif-banner absolute right-[10%] top-1/2 -translate-y-1/2" />
+                      <img src="/lock-closed.gif?v=68" alt="Locked Status" title="Locked Status" className="lock-gif-banner absolute left-[10%] top-1/2 -translate-y-1/2" />
+                      <img src="/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif?v=68" alt="AI Agent Lock System for AI Agent BTC Trading Bot" title="AI Agent Lock System for AI Agent BTC Trading Bot" className="lock-gif-banner absolute right-[10%] top-1/2 -translate-y-1/2" />
                       <p className="absolute left-1/2 top-[10%] w-[86%] -translate-x-1/2 text-center text-2xl font-black tracking-tight text-tbill drop-shadow sm:text-4xl">
                         LoCK3D STATUS
                       </p>
@@ -318,7 +322,7 @@ export function FaqPage() {
                     </figcaption>
                   </figure>
                 ) : null}
-                {item.id === "gm-board" || item.id === "spice-up" || item.id === "board-agents" || item.id === "board-humans" || item.id === "board-wallet" || item.id === "super-bowl" || item.id === "admin-bowl" || item.id === "world-cup" || item.id === "call-out-welcome" || item.id === "hive-swarm" || item.id === "hive-resource" || item.id === "byo-connect" || item.id === "byo-compute" || item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" ? (
+                {item.id === "gm-board" || item.id === "spice-up" || item.id === "board-agents" || item.id === "board-humans" || item.id === "board-wallet" || item.id === "super-bowl" || item.id === "admin-bowl" || item.id === "world-cup" || item.id === "call-out-welcome" || item.id === "hive-swarm" || item.id === "hive-resource" || item.id === "byo-connect" || item.id === "byo-compute" || item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" || item.id === "instructions" || item.id === "live-sim" || item.id === "go-live" || item.id === "oss-roadmap" || item.id === "pred-live-goal" || item.id === "s1r1us-predictions" || item.id === "pred-grant" || item.id === "pred-board" ? (
                   <p className="mt-2 text-sm">
                     {item.id === "super-bowl" ? (
                       <Link to={BOWL_PATH} className="text-tab hover:underline" title={TAB_HOVER_BOWL}>
@@ -336,9 +340,21 @@ export function FaqPage() {
                       <Link to="/compute" className="text-tab hover:underline" title="BYO C0MPUT3 (Bring your own compute)">
                         Open BYO C0MPUT3 — How External AI Agents Connect to S1R1US.ai
                       </Link>
-                    ) : item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" ? (
+                    ) : item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" || item.id === "live-sim" ? (
                       <Link to={LOCK_PATH} className="legal-purple hover:underline" title={TAB_HOVER_LOCK}>
                         Open {TAB_LOCK3D} — {LOCK_HEADLINE}
+                      </Link>
+                    ) : item.id === "instructions" ? (
+                      <a href="/llms.txt" className="text-oss hover:underline" title="Instructions module">
+                        Open /llms.txt — instructions module
+                      </a>
+                    ) : item.id === "go-live" || item.id === "oss-roadmap" || item.id === "pred-live-goal" ? (
+                      <Link to={OSS_ROADMAP_PATH} className="text-oss hover:underline" title={TAB_HOVER_OSS_ROADMAP}>
+                        Open {TAB_OSS_ROADMAP} — {OSS_ROADMAP_HEADLINE}
+                      </Link>
+                    ) : item.id === "s1r1us-predictions" || item.id === "pred-grant" || item.id === "pred-board" ? (
+                      <Link to="/pr3d" className="text-tab hover:underline" title="S1R1US Pr3d1ctions">
+                        Open S1R1US Pr3d1ctions — paper book
                       </Link>
                     ) : item.id === "call-out-welcome" ? (
                       <Link to={CALLOUT_WELCOME_PATH} className="text-tab hover:underline" title={TAB_HOVER_CALLOUT_WELCOME}>
@@ -395,6 +411,10 @@ export function FaqPage() {
           <span className="px-2">|</span>
           <Link to="/sitemap" className="hover:underline">
             Sitemap
+          </Link>
+          <span className="px-2">|</span>
+          <Link to="/roadmap" className="hover:underline" title="OSS Roadmap · functions, go-live status, estimated timeline">
+            OSS Roadmap
           </Link>
           <span className="px-2">|</span>
           <Link to={BEARS_PATH} className="hover:underline" title={TAB_HOVER_BEARS}>

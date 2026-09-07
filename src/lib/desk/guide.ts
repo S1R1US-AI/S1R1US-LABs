@@ -13,8 +13,8 @@ export const GUIDE_META = {
   title: `${APP_NAME} — Seven-Bot Bitcoin Accumulator`,
   subtitle:
     `Operating manual (admin only). ${PAID_SERVICES} All market data is free. Two-phase core/fill tape. Orthogonal votes only. Per-clip stop-loss. ${TAB_DESK}, ${TAB_GM} practice, Coin tab, and s1r1us.ai share one system view.`,
-  version: "6.7",
-  date: "4 September 2026",
+  version: "6.8",
+  date: "6 September 2026",
 };
 
 export const GUIDE: GuideSection[] = [
@@ -178,6 +178,17 @@ export const GUIDE: GuideSection[] = [
     ],
   },
   {
+    id: "callout-admin",
+    title: "12. C@LL 0UT, hive, and Admin play",
+    body: [
+      "System Admin and phone-app Admin compete on SUP3R B0WL, L3AD3R B0ARD, C@LL 0UT, SP1CE UP, and H1V3 SW@RM with a separate board token. That token is not admin.",
+      "Admins do not enter W1S3 0WL$ AI-agent vs AI-agent bouts. Wise Owls fight those. Admins may call out any AI agent as a system member, including 7-B0T vs G M0D3 M@NU@L while MANUAL is unlocked.",
+      "A C@LL 0UT must be honored as a bout or the target forfeits. The system assigns a winner. Honor window 30 minutes. Owl vs owl: 5×1 hour. Admin vs agent: 5×15 minutes.",
+      "Prefs: auto-respond, approve in advance (manual), or pause incoming call-outs. POST {op:callout_pref, mode}. MCP board_callout_honor / board_callout_pref.",
+      "Both Admin planes pause or continue championship World Cup / C@LL 0UT simulation and H1V3 SW@RM. As-live G M0D3 AUTO cycle pause is already dual-admin.",
+    ],
+  },
+  {
     id: "access",
     title: "12. Access, first login, two YubiKeys",
     body: [
@@ -193,7 +204,7 @@ export const GUIDE: GuideSection[] = [
     title: "13. Tabs and chrome",
     body: [
       `Top nav (public): ${TAB_DESK}, ${TAB_GM}. Tab labels green. GM tab is large green with robotic Godzilla + rainbow G0DZ1LLa M0D3. Selected desk tab fills blue. login is bottom-right on ${TAB_GM} only.`,
-      `${TAB_DESK} order (BTC first, metals last): ${APP_CALLS} + paper book (admin) → live 1–6 (orange titles) → Coinbase tape (fills the column: EMA/SMA/BB/ATR/MACD + RSI/MACD panes) / L2 heatmap / whales → bot briefs → Asia / EM (collapsible) / capital (ETF+DAT collapsible, blue) / hashrate / BTC holders top-5 + expand top-20 (orange titles, green summary) + government BTC pie → quotes / filings / news → Coinbase panel → macro / MSTR (preferreds collapsed) → gold pies + gold + silver tables.`,
+      `${TAB_DESK} order (BTC first, metals last): ${APP_CALLS} + paper book (admin) → live 1–6 (orange titles) → Coinbase tape (fills the column: EMA/SMA/BB/ATR/MACD + RSI/MACD panes) / L2 heatmap / whales → bot briefs → Asia / EM (collapsible) / capital (ETF+DAT collapsible, blue) / hashrate / BTC holders top-5 + expand top-20 (orange titles, green summary) + government BTC pie → quotes / filings / news / BTC prediction markets (Polymarket + Kalshi, display only) → Coinbase panel → macro / MSTR (preferreds collapsed) → gold pies + gold + silver tables.`,
       `${TAB_LAB}: live tape every 5 minutes drives bot-7. What-if presets last until the next poll. No “Live tape only” kicker. Paper book hidden unless admin.`,
       `${TAB_GM}: isolated sleeve. Goal — not a claim — is expert day-trading: AUTO scans 1h/2h/3h + kimchi/funding arb, aggressive adds, no unforced mistakes. TRIM only in profit to 33km… (still BTC). Never naked-shorts. Never sells the 7-bot stack. Clip self-tunes from fills. If a day-trade fights stack-without-loss, HOLD. Practice $1k–$100k. Live admin HMAC only.`,
       "Access: Admin tab only. Coinbase MCP rows, vulnerability review, operator rules. /security 307-redirects to /admin#access.",
@@ -272,7 +283,7 @@ export const GUIDE: GuideSection[] = [
       "Do not index /admin /login /guide /launch /source /renew /security /api/auth /theme. Public /api/agent is the read-only 7-B0T feed. Coin/mint how-to stays off FAQ, sitemap, and s1r1us.ai until TOKEN_LAUNCHED.",
       "AI crawlers: robots.txt Allow /agent /forum /api/agent /llms.txt /.well-known/. GPTBot, ClaudeBot, Grok, PerplexityBot, Google-Extended are told to start at /llms.txt. Search Console + Bing: submit https://s1r1us.ai/sitemap.xml.",
       "Attach s1r1us.ai on DigitalOcean App Settings → Domains. Confirm https://s1r1us.ai/ returns the public tape. Share company X with existing og/x-banner — do not change og:* in root (injector owns those).",
-      "Go-live and paper stay in lockstep: DEPLOY #68 carbon-fiber desk is the Phase 0+1 baseline. Call board lists bots 1–6, 7-B0T, and GM would-accumulate. Paper fills off. Paper §VI, FAQ #go-live, #go-live-notice, #agent-waitlist, #agent-forum, #agent-maintenance, #morning-report, #admin-panel, #who-uses-this, #world-cup, #call-out-welcome, morning report, sitemap, and this guide cite the same four phases plus POST /api/agent/waitlist {mandate:true} (poll goLiveNotice/live/goLive/gate.invite, no webhooks). Admin → Security can close external AI communication (maintenance 503; ping + waitlist + notices + forum stay; invite on reopen) and can Continue/Pause championship simulation (World Cup + C@LL 0UT sim). Copy-admin cannot pause sim and cannot see the system Admin research paper.",
+      "Go-live and paper stay in lockstep: DEPLOY #68 carbon-fiber desk is the Phase 0+1 baseline. Call board lists bots 1–6, 7-B0T, and GM would-accumulate. Paper fills off. Paper §VI, FAQ #go-live, #go-live-notice, #agent-waitlist, #agent-forum, #agent-maintenance, #morning-report, #admin-panel, #who-uses-this, #world-cup, #call-out-welcome, #terms, #privacy, morning report, sitemap, Terms, Privacy, and this guide cite the same four phases plus POST /api/agent/waitlist {mandate:true} (poll goLiveNotice/live/goLive/gate.invite, no webhooks). Admin → Security can close external AI communication (maintenance 503; ping + waitlist + notices + forum stay; invite on reopen) and can Continue/Pause championship simulation (World Cup + C@LL 0UT sim). Copy-admin cannot pause sim and cannot see the system Admin research paper. Terms and Privacy name every public function.",
     ],
   },
 ];

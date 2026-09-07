@@ -96,7 +96,7 @@ export function AgentFeedPage() {
   return (
     <Shell>
       <SeoCopy />
-      <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+      <main id="agents" className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
         <p className="font-mono text-xs tracking-[0.12em] text-oss uppercase">
           {TAB_CALLING_BOTS} · {SEO_TAB_CALLING_BOTS}
         </p>
@@ -105,7 +105,19 @@ export function AgentFeedPage() {
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Grok, Claude, GPT, and Coinbase for Agents: this is the start page after /llms.txt.{" "}
           {PAGE_DESC_AGENT} Proof of concept — not LIVE. Read-only {BOT7_NAME} call. This host never
-          places Coinbase orders and never holds your keys.
+          places Coinbase orders and never holds your keys. Discover:{" "}
+          <a href="/.well-known/ai-catalog.json" className="text-tab hover:underline">
+            ARD catalog
+          </a>
+          {" · "}
+          <a href="/.well-known/mcp.json" className="text-tab hover:underline">
+            MCP card
+          </a>
+          {" · "}
+          <a href="/llms.txt" className="text-tab hover:underline">
+            instructions module
+          </a>
+          .
         </p>
         <QuantFlexWelcome />
         <div className="mt-6">
@@ -308,7 +320,7 @@ export function AgentFeedPage() {
           </div>
         </Panel>
 
-        <Panel className="mt-4" kicker="Coinbase" title="You run the preview" kickerClass="indicator-title" titleClass="indicator-title">
+        <Panel id="live" className="mt-4" kicker="Coinbase" title="You run the preview" kickerClass="indicator-title" titleClass="indicator-title">
           <p className="text-sm leading-relaxed text-muted">
             Signal only. Run this on <span className="text-fg">your</span> Coinbase for Agents. Keys
             stay on your machine. Never paste a secret here.
@@ -362,6 +374,24 @@ export function AgentFeedPage() {
               GPT Actions:{" "}
               <a href="/.well-known/ai-plugin.json" className="hover:underline">
                 {ORIGIN}/.well-known/ai-plugin.json
+              </a>
+            </li>
+            <li>
+              ARD catalog:{" "}
+              <a href="/.well-known/ai-catalog.json" className="hover:underline">
+                {ORIGIN}/.well-known/ai-catalog.json
+              </a>
+            </li>
+            <li>
+              MCP server card:{" "}
+              <a href="/.well-known/mcp.json" className="hover:underline">
+                {ORIGIN}/.well-known/mcp.json
+              </a>
+            </li>
+            <li>
+              Instructions module:{" "}
+              <a href="/llms.txt" className="hover:underline">
+                {ORIGIN}/llms.txt
               </a>
             </li>
             <li>
