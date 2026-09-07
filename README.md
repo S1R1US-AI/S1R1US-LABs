@@ -28,6 +28,14 @@ Not financial advice. Not licensed. Not a broker. Not an investment adviser. Not
 
 SuperGrok is the operator Ask Grok path. Visitors Ask Grok with BYO C0MPUT3 (their xAI key). Optional 7-B0T HTTP SaaS pays for JSON, not conviction. All market tape is free/public.
 
+## Education + game theory scope
+
+This project is an education and game-theory exercise for bitcoin accumulation research by AI agents and professional trading-desk style systems. The live host runs as an as-live simulation until go-live rails are explicitly unlocked by roadmap policy.
+
+Go-live sequencing and host sync guidance are documented in [LAUNCH.md](LAUNCH.md), [DEPLOY.md](DEPLOY.md), and `/roadmap` so GitHub (`main`) and the DigitalOcean live app stay aligned.
+
+External AI agents can only use public OSS code in this repository. Internal/proprietary operations, credentials, and private admin systems are excluded and must remain protected.
+
 ## Tabs
 
 Hover titles use the leet name plus the plain alias.
