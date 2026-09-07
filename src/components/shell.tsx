@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { UserButton } from "@/lib/auth/gates";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
 import { secondFactorStatus } from "@/lib/desk/access";
-import { looksLikeCompanyX, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_NAME, COMPANY_X_URL } from "@/lib/desk/x-admin";
+import { looksLikeCompanyX, COMPANY_X_HANDLE, COMPANY_X_NAME } from "@/lib/desk/x-admin";
 import { CompanyAvatar, CompanyXChip } from "@/components/company-x";
 import { AdminAuthControl } from "@/components/operator-lock";
 import { useOperator } from "@/lib/desk/operator";
@@ -172,18 +172,6 @@ export function Shell({
             >
               {MENU_FAQ}
             </Link>
-            {COMPANY_X_URL ? (
-              <a
-                href={COMPANY_X_URL}
-                target="_blank"
-                rel="noreferrer"
-                title={`${COMPANY_X_LABEL} on X`}
-                aria-label={`${COMPANY_X_LABEL} on X. S1R1US Labs. AI trading bots. Bitcoin trading agents.`}
-                className="x-handle-nav inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 font-mono text-[0.825rem] font-medium sm:px-3 sm:text-[0.9625rem]"
-              >
-                {COMPANY_X_HANDLE}
-              </a>
-            ) : null}
             <AdminNavLink />
           </nav>
           <div className="ml-auto flex flex-wrap items-center gap-2">
