@@ -24,6 +24,14 @@ import { TapeFreezeBanner } from "@/components/tape-freeze";
 import { Panel, Shell } from "@/components/shell";
 import { TapeChart } from "@/components/tape-charts";
 import { LeverageWhaleRow } from "@/components/whale-tape";
+import {
+  AsiaPanel,
+  CoinbasePanel,
+  EmFlowPanel,
+  Quotes,
+  Stat,
+  WirePanel,
+} from "@/components/desk-tape-panels";
 
 import { askHelios } from "@/lib/desk/grok";
 import { useOperator } from "@/lib/desk/operator";
