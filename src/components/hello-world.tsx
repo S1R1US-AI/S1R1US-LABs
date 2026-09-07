@@ -27,6 +27,8 @@ const GRAY = "text-[#c8d0cb]";
 const COMMENT = "text-[#6a9955]";
 const COMMENT_LINK =
   "font-semibold tracking-tight text-[#9cdcfe] underline decoration-[#6a9955] underline-offset-2 hover:text-[#ce9178]";
+const RED =
+  "text-sell font-semibold tracking-tight underline decoration-sell underline-offset-2";
 
 export function HelloWorld() {
   const [open, setOpen] = useState(false);
@@ -138,7 +140,7 @@ export function HelloWorld() {
             to="/compute"
             title={TAB_HOVER_COMPUTE}
             aria-label={TAB_HOVER_COMPUTE}
-            className={`${BLUE} font-semibold tracking-tight underline decoration-tab underline-offset-2`}
+            className={RED}
           >
             "{TAB_COMPUTE}"
           </Link>
