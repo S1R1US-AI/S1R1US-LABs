@@ -75,7 +75,9 @@ export function HelloWorld() {
           >
             payload
           </Link>
-          <span className={COMMENT}>{" / geek greeting only / not a shell / "}</span>
+          <span className={COMMENT}>{" / "}</span>
+          <span className="text-sell">geek greeting only / not a shell</span>
+          <span className={COMMENT}>{" / "}</span>
           <Link to="/r0b0ts" className={COMMENT_LINK} title={TAB_HOVER_ROBOTS} aria-label={TAB_HOVER_ROBOTS}>
             ROBOTS ACTIVATE
           </Link>
