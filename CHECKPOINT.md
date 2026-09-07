@@ -1,6 +1,6 @@
 # Official checkpoint — N3W Web App Installation Build (new theme) — DEPLOY #68
 
-Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + Pr3d lock + morning problems + **source on GitHub**). Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved. Checkpoint number stays **68**.
+Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + morning problems + **Pr3d/Ph0 withdrawn to roadmap footnote** + **source on GitHub**). Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved. Checkpoint number stays **68**.
 
 | | |
 |---|---|
@@ -15,14 +15,14 @@ Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + Pr3d lock + morning p
 ## What this fold includes
 
 - Carbon-fiber public tape. Would-accumulate call board (bots 1–6, 7-B0T, GM). Live Coinbase **off**. Auto trade **LOCKED**.
-- S1R1US Pr3d1ctions paper book (`/pr3d`): Ph0 W@ll3t, $42k ph0 BTC grant, Pr3d L3AD3R B0ARD. Real-money book LOCKED (estimated 2027-06-01).
-- Pr3d1ctions LoCK3D STATUS rail: gold shimmer CSS, paper UNLOCKED. Locking pauses the paper book.
+- BTC prediction markets (Polymarket / Kalshi) stay a **7-B0T sub-analyst overlay**. Display only. This host never takes bets.
+- S1R1US Pr3d1ctions paper book, Ph0 W@ll3t, ph0 BTC, and fake wallets are **off** the desk / web / phone apps. Remaining as a brief OSS Roadmap footnote possibility only (`/roadmap#pred-footnote`).
 - LoCK3D STATUS (`/l0ck`): UNLOCKED stacked above LOCKED. Purple **Expand / Collapse** on the LoCK3D STATUS UNLOCKED desk SIM line. Click a lock **NAME** to open that view. Padlocks still only lock or unlock. G M0D3 AUTO / M@NU@L names drop GM matrix rain **2.5s** then open `/gm`. Live tape is status only.
 - Live feed title: **AI Agent SUP3R B0WL**.
 - Morning report: Alignment Score 1–100 + **Problems found last 24 hours**. healLiveSim keeps data pulls with sim. Stray practice killed.
 - W1S3 0WL$ Forum LIVE. H1V3 SW@RM paper hive. BYO connect. L3AD3R B0ARD / C@LL 0UT / W0rLd CUP.
-- As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68 (`CHECKPOINT_FOLD` 2026-09-07T03:44:00.000Z). Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
-- FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use` `#s1r1us-predictions` `#pred-board` `#morning-report`. FinCEN s8 LOCKED.
+- As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68 (`CHECKPOINT_FOLD` 2026-09-07T04:35:00.000Z). Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
+- FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use` `#btc-bets` `#oss-roadmap` `#morning-report`. FinCEN s8 LOCKED.
 - Official X `@S1R1US_AI`. This host never places Coinbase orders.
 - Source for this fold is on **`main`** and **`checkpoint/n3w-web-app-install-deploy-68`** (not the protected tag). DigitalOcean live-production: `deploy_on_push: true` on `main` — rebuild copies `.output`, then push. Do not move the tag.
 

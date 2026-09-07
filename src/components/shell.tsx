@@ -33,7 +33,6 @@ import {
   TAB_HOVER_APP,
   TAB_HOVER_BOARD,
   TAB_HOVER_HIVE,
-  TAB_HOVER_PRED,
   TAB_HOVER_COFFEE,
   TAB_HOVER_DESK,
   TAB_HOVER_FAQ,
@@ -44,7 +43,6 @@ import {
   TAB_HOVER_LAB,
   TAB_HOVER_SITEMAP,
   TAB_LAB,
-  TAB_PRED,
 } from "@/lib/brand";
 import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
 import { GodzillaMark, GodzillaModeLabel, HiveSwarmLabel, LeaderBoardLabel } from "@/components/godzilla-mark";
@@ -248,9 +246,6 @@ export function Shell({
               </Link>
               <Link to="/h1v3" className="board-nav gm-nav hive-nav shrink-0 hover:underline" title={TAB_HOVER_HIVE}>
                 <HiveSwarmLabel className="text-[11px] font-semibold" />
-              </Link>
-              <Link to="/pr3d" className="shrink-0 text-oss hover:underline" title={TAB_HOVER_PRED}>
-                {TAB_PRED}
               </Link>
               <Link to="/l0ck" className="legal-purple shrink-0 hover:underline" title="LoCK3D STATUS (Locked Status) · how to lock and unlock">
                 LoCK3D STATUS

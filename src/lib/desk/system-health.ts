@@ -58,9 +58,9 @@ export function systemHealth(): SystemHealth {
     fn += 20;
     fnNotes.push("MCP hive + board + cup live");
   }
-  if (MCP_TOOLS.has("pred_list") && MCP_TOOLS.has("pred_bet") && !MCP_TOOLS.has("pred_live")) {
+  if (!MCP_TOOLS.has("pred_list") && !MCP_TOOLS.has("pred_bet") && !MCP_TOOLS.has("pred_arm") && !MCP_TOOLS.has("pred_live")) {
     fn += 5;
-    fnNotes.push("S1R1US Pr3d1ctions paper MCP");
+    fnNotes.push("BTC prediction overlay only — no paper book MCP");
   }
   if (MCP_TOOLS.has("byo_connect")) {
     fn += 10;

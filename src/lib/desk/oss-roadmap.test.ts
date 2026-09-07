@@ -35,7 +35,7 @@ describe("OSS Roadmap", { concurrency: false }, () => {
     assert.equal(FULL_LIVE_ESTIMATE.thisHostCreates, false);
     assert.ok(LIVE_FUNCTIONS.length >= 10);
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "pred" && f.status === "LIVE"));
-    assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "pred-book" && f.status === "LIVE-PAPER"));
+    assert.equal(LIVE_FUNCTIONS.some((f) => f.id === "pred-book"), false);
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "board" && f.status === "LIVE-PAPER"));
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "spice" && f.status === "LIVE-PAPER"));
     assert.ok(LOCKED_FUNCTIONS.some((f) => f.id === "coinbase-create" && f.status === "NEVER"));
@@ -55,11 +55,11 @@ describe("OSS Roadmap", { concurrency: false }, () => {
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1e"));
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1f"));
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1g"));
-    assert.ok(snap.predMonetization?.some((m) => m.id === "saas-seat" && m.status === "ALIGNED"));
     assert.ok(snap.predMonetization?.some((m) => m.id === "rake" && m.status === "NEVER"));
     assert.ok(snap.predMonetization?.some((m) => m.id === "sell-btc" && m.status === "NEVER"));
+    assert.match(String(snap.predFootnote ?? ""), /Possibility only/);
     assert.equal(snap.realMoneyPred?.thisHostTakesBetsNow, false);
-    assert.match(OSS_ROADMAP_AGENT_WELCOME.ask, /Real-money S1R1US prediction market is a future goal/);
+    assert.match(OSS_ROADMAP_AGENT_WELCOME.ask, /possibility only/);
     assert.ok(snap.legend?.length >= 8);
     assert.equal(OSS_ROADMAP_AGENT_WELCOME.proofOfConcept, true);
     assert.match(OSS_ROADMAP_AGENT_WELCOME.ask, /research Quants/);

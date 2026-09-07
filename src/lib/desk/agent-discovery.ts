@@ -97,7 +97,7 @@ export function ardCatalog() {
         type: "application/mcp-server-card+json",
         url: `${origin}${MCP_CARD_PATH}`,
         description:
-          "Read-only MCP. Tools: bot7_call, lock_status, pred_list, pred_arm, pred_bet, board_list, hive_list, cup_list, go_live_notice. Never lock_set or orders_create.",
+          "Read-only MCP. Tools: bot7_call, lock_status, board_list, hive_list, cup_list, go_live_notice. Never lock_set or orders_create. Polymarket/Kalshi odds stay a 7-B0T overlay. No pred_list / pred_arm / pred_bet.",
         representativeQueries: [
           "bitcoin accumulation signal",
           "AI bitcoin trading bot MCP",
@@ -126,15 +126,6 @@ export function ardCatalog() {
           "instructions for bots",
           "S1R1US instructions module",
         ],
-        version: String(CHECKPOINT_BUILD_N),
-      },
-      {
-        identifier: "urn:ai:s1r1us.ai:pred",
-        displayName: `${APP_NAME} S1R1US Pr3d1ctions`,
-        type: "application/json",
-        url: `${origin}/api/agent/pred`,
-        description: "Paper Ph0 W@ll3t / ph0 BTC book. Never live funds. MCP pred_list, pred_arm, pred_bet.",
-        representativeQueries: ["S1R1US Predictions", "ph0 BTC", "bitcoin prediction market paper"],
         version: String(CHECKPOINT_BUILD_N),
       },
       {

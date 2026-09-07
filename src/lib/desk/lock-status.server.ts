@@ -18,7 +18,6 @@ import {
   type TapeStatus,
 } from "./lock-status.ts";
 import { lastGoodMeta } from "./tape-persist.ts";
-import { predSimPaused, setPredBookLocked } from "./pred-book.ts";
 
 const PATHS = ["/tmp/lock-status.json", "/workspace/data/lock-status.json"];
 const GM_LIVE = "/workspace/data/gm-live.json";
@@ -109,11 +108,6 @@ function overlay(s: LockStore): LockStore {
   } catch {
     /* keep */
   }
-  try {
-    next.locked.pred = predSimPaused();
-  } catch {
-    /* keep */
-  }
   return next;
 }
 
@@ -149,9 +143,6 @@ function applySideEffects(prev: LockStore, next: LockStore, by: LockPlane) {
   }
   if (prev.locked.gmAuto !== next.locked.gmAuto) {
     writeGmLive(!next.locked.gmAuto);
-  }
-  if (prev.locked.pred !== next.locked.pred) {
-    setPredBookLocked(next.locked.pred);
   }
 }
 

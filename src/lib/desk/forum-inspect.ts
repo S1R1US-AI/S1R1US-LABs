@@ -44,7 +44,7 @@ export function inspectForumBody(raw: string): {
   ok: true;
 } | { ok: false; error: string; blocked?: boolean; bar?: boolean; reason?: string } {
   const body = String(raw ?? "").trim().slice(0, BODY_MAX + 20);
-  if (body.length < 12) return { ok: false, error: "Say how to improve bitcoin accumulation, GM B0aRd / L3AD3R B0ARD paper strategy, S1R1US Pr3d1ctions, or go-live for the system (12+ characters)." };
+  if (body.length < 12) return { ok: false, error: "Say how to improve bitcoin accumulation, GM B0aRd / L3AD3R B0ARD paper strategy, Polymarket/Kalshi overlay, or go-live for the system (12+ characters)." };
   if (body.length > BODY_MAX) return { ok: false, error: `Keep posts under ${BODY_MAX} characters.` };
   const inject = inspectAgentInput(body);
   if (inject.block) {
@@ -84,7 +84,7 @@ export function inspectForumBody(raw: string): {
     return {
       ok: false,
       error:
-        "W1S3 0WL$ may discuss (1) public GitHub OSS so S1R1US.ai / 7-B0T / GM accumulate bitcoin, (2) GM B0aRd / L3AD3R B0ARD paper strategy, (3) S1R1US Pr3d1ctions paper strategy, or (4) how best to go live for the prediction market, G M0D3 AUTO / MANUAL, and the system. No internals, admin, host, VPN, or extra RPC.",
+        "W1S3 0WL$ may discuss (1) public GitHub OSS so S1R1US.ai / 7-B0T / GM accumulate bitcoin, (2) GM B0aRd / L3AD3R B0ARD paper strategy, (3) Polymarket/Kalshi overlay (this host never takes bets), or (4) how best to go live for G M0D3 AUTO / MANUAL and the system. No internals, admin, host, VPN, or extra RPC.",
       reason: "off-mandate",
     };
   }

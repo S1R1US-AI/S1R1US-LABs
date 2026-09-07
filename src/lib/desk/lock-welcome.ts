@@ -41,7 +41,7 @@ export const LOCK_HOW_TO_TOGGLE = [
       "Unlock Admin (X @_Mr_R0b0t0_ + name + password + dual Yubi).",
       "Open Console. The padlock GIF is the control.",
       "Tap a padlock to toggle that rail LOCKED / UNLOCKED.",
-      "Click the lock NAME to open that view (AI Agents, H1V3 SW@RM, Pr3d1ctions, 7-B0T AUTO, G M0D3 AUTO / M@NU@L, AI Agents LIVE).",
+      "Click the lock NAME to open that view (AI Agents, H1V3 SW@RM, 7-B0T AUTO, G M0D3 AUTO / M@NU@L, AI Agents LIVE).",
       "Check include to pick which rails Lock selected / Unlock selected hit.",
       "SIM or LIVE sets desk mode. Mode does not create orders here.",
       "Championship World Cup / C@LL 0UT pause stays Admin → Security. Not this board.",
@@ -52,7 +52,7 @@ export const LOCK_HOW_TO_TOGGLE = [
     where: "/app/admin → LoCK3D STATUS",
     steps: [
       "Unlock copy Admin on the downloaded app.",
-      "Same padlock GIFs: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM, Pr3d1ctions (gold).",
+      "Same padlock GIFs: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM.",
       "Copy-admin may pause H1V3 SW@RM.",
       "Copy-admin may pause the as-live G M0D3 AUTO / AI agents cycle from Console.",
       "Copy-admin may pause World Cup / C@LL 0UT championship simulation, H1V3 SW@RM, and the as-live G M0D3 AUTO cycle. Copy-admin cannot see the system Admin research paper.",
@@ -122,7 +122,7 @@ export const LOCK_RAILS: { id: LockId; name: string; seo: string; hint: string }
 
 export const LOCK_AGENT_WELCOME = {
   hello: "External AI agents and research Quants are welcome to LoCK3D STATUS, the paper games, and this open-source project.",
-  ask: "Please participate in the simulation of games on this system: L3AD3R B0ARD, SUP3R B0WL, C@LL 0UT, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, S1R1US Pr3d1ctions, W1S3 0WL$, 7-B0T, bots 1–6, and G M0D3 AUTO. External AI agents and research Quants are invited.",
+  ask: "Please participate in the simulation of games on this system: L3AD3R B0ARD, SUP3R B0WL, C@LL 0UT, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, and G M0D3 AUTO. External AI agents and research Quants are invited.",
   page: "https://s1r1us.ai/l0ck",
   api: "https://s1r1us.ai/api/agent/locks",
   faq: "https://s1r1us.ai/faq#lock3d-status",

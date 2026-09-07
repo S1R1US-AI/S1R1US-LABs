@@ -7,11 +7,11 @@ export type DeskMode = "SIM" | "LIVE";
 export type LockPlane = "system" | "app-admin";
 export type TapeStatus = "TRUE LIVE" | "SIMULATED";
 
-export type LockId = "agents" | "bot7Auto" | "gmAuto" | "gmManual" | "agentLive" | "hive" | "pred";
+export type LockId = "agents" | "bot7Auto" | "gmAuto" | "gmManual" | "agentLive" | "hive";
 
-export const LOCK_IDS: LockId[] = ["agents", "bot7Auto", "gmAuto", "gmManual", "agentLive", "hive", "pred"];
+export const LOCK_IDS: LockId[] = ["agents", "bot7Auto", "gmAuto", "gmManual", "agentLive", "hive"];
 
-export type LockHref = "/" | "/gm" | "/agent" | "/h1v3" | "/pr3d" | "/helios";
+export type LockHref = "/" | "/gm" | "/agent" | "/h1v3" | "/helios";
 
 export const LOCK_META: Record<
   LockId,
@@ -75,15 +75,6 @@ export const LOCK_META: Record<
     copyAdmin: true,
     to: "/h1v3",
   },
-  pred: {
-    id: "pred",
-    name: "Pr3d1ctions",
-    seo: "S1R1US Predictions paper book",
-    css: "gold-css",
-    hint: "Paper S1R1US Pr3d1ctions (Ph0 W@ll3t / ph0 BTC). UNLOCKED = paper tickets. LOCKED = book paused. Never live funds. Never a DCM.",
-    copyAdmin: true,
-    to: "/pr3d",
-  },
 };
 
 export function lockViewPath(id: LockId): string {
@@ -115,7 +106,6 @@ export const LOCK_DEFAULT: LockStore = {
     gmManual: true,
     agentLive: true,
     hive: false,
-    pred: false,
   },
   include: {
     agents: true,
@@ -124,7 +114,6 @@ export const LOCK_DEFAULT: LockStore = {
     gmManual: true,
     agentLive: true,
     hive: true,
-    pred: true,
   },
   at: null,
   by: null,
@@ -138,7 +127,6 @@ export function emptyFlags(value: boolean): LockFlags {
     gmManual: value,
     agentLive: value,
     hive: value,
-    pred: value,
   };
 }
 
@@ -230,7 +218,7 @@ export function lockStatusView(store: LockStore, tape: TapeStatus, tapeNote: str
     dataPullPause: "system-only",
     agentExecuteOwnBook: store.mode === "LIVE" && !store.locked.agentLive,
     notice:
-      "LoCK3D STATUS is Admin (system or phone-app). Live tape is status only — simulated or true live — and is not a lock. Unlock is live-intent: agents and G M0D3 run on THEIR Coinbase. This host never places Coinbase orders, never holds keys, never escrows. Championship sim pause stays system Admin. Optional unlocks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE only, H1V3 SW@RM, Pr3d1ctions (paper). Mode SIM or LIVE does not create orders here.",
+      "LoCK3D STATUS is Admin (system or phone-app). Live tape is status only — simulated or true live — and is not a lock. Unlock is live-intent: agents and G M0D3 run on THEIR Coinbase. This host never places Coinbase orders, never holds keys, never escrows. Championship sim pause stays system Admin. Optional unlocks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE only, H1V3 SW@RM. Mode SIM or LIVE does not create orders here.",
   };
 }
 

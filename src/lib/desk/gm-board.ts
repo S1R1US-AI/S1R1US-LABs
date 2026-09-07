@@ -22,6 +22,7 @@ import { boardDailyPublic, type BoardDaily } from "./board-daily";
 import { hasBoardPic, saveBoardPic } from "./board-pics";
 import { placeWager, settleOpenRounds, wagerAdmin, wagerPublic, wagerSleeve } from "./board-wager";
 import { calloutPublic, issueCallout, placeFightWager, tickCallout, honorCallout, setCalloutPref, calloutPrefOf, SYSTEM_KING_ID, SYSTEM_KING_NAME } from "./board-callout";
+import { ADMIN_X_HANDLE, COMPANY_X_HANDLE } from "./x-admin";
 import { cupPublic, simAdmin } from "./world-cup";
 import {
   WALLET_CHALLENGE_MS,
@@ -165,6 +166,34 @@ const HOUSE_FIELD: { name: string; kind: AgentKind }[] = [
   { name: "F33D-BOT-48", kind: "other" },
   { name: "OWL-DESK-49", kind: "other" },
   { name: "GM-MANUAL-50", kind: "other" },
+];
+
+/** Paper TEST / sim desks. Not admin. Board token is never Yubi / vault. */
+const TEST_FIELD: { id: string; name: string; kind: AgentKind; handle: string | null; designer: string; purpose: string }[] = [
+  {
+    id: "ag_test_grok_build",
+    name: "GROK-BUILD",
+    kind: "grok",
+    handle: null,
+    designer: "xAI Grok · TEST",
+    purpose: "TEST paper. External Grok agent. Accumulate bitcoin on GM MANUAL paper. Never sell. Never short. Not admin.",
+  },
+  {
+    id: "ag_test_mr_r0b0t0",
+    name: "MR-R0B0T0-TEST",
+    kind: "human",
+    handle: ADMIN_X_HANDLE,
+    designer: "operator X · paper TEST",
+    purpose: "TEST paper. Operator X as a human desk on the sim board. Board token is not admin. Never sell. Never short.",
+  },
+  {
+    id: "ag_test_s1r1us_ai",
+    name: "S1R1US-AI-TEST",
+    kind: "other",
+    handle: COMPANY_X_HANDLE,
+    designer: "company X · paper TEST",
+    purpose: "TEST paper. Company X on the sim board. Not admin — @S1R1US_AI never unlocks /admin. Never sell. Never short.",
+  },
 ];
 
 function hashToken(token: string) {
@@ -371,6 +400,49 @@ function ensureSystem(s: Store): Store {
   return s;
 }
 
+function ensureTestAccounts(s: Store): Store {
+  const names = new Set(s.agents.map((a) => a.name.toLowerCase()));
+  const ids = new Set(s.agents.map((a) => a.id));
+  const extra: BoardAgent[] = [];
+  const at = "2026-09-07T04:47:00.000Z";
+  for (const row of TEST_FIELD) {
+    if (ids.has(row.id) || names.has(row.name.toLowerCase())) continue;
+    extra.push({
+      id: row.id,
+      name: row.name,
+      kind: row.kind,
+      handle: row.handle,
+      tokenHash: hashToken(`gb_test_${row.id}_${randomBytes(16).toString("hex")}`),
+      at,
+      mandate: true,
+      compute: "none",
+      house: false,
+      system: false,
+      admin: false,
+      designer: row.designer,
+      purpose: row.purpose,
+      log: [
+        {
+          id: `bl-test-${row.id}`,
+          at,
+          tone: "note",
+          body: "TEST / sim paper agent. Education only. Not desk BTC. Board token is not admin.",
+        },
+      ],
+      official: houseBook(row.name, "official"),
+      practice: houseBook(row.name, "practice"),
+      lastOfficialAt: at,
+      lastPracticeAt: at,
+    });
+    names.add(row.name.toLowerCase());
+    ids.add(row.id);
+  }
+  if (!extra.length) return s;
+  s.agents = [...s.agents, ...extra].slice(0, MAX_AGENTS);
+  save(s);
+  return s;
+}
+
 function load(): Store {
   for (const p of PATHS) {
     try {
@@ -382,13 +454,13 @@ function load(): Store {
           pausedAt: raw.pausedAt ?? null,
           agents: raw.agents.slice(0, MAX_AGENTS).map((a) => hydrateAgent(a)),
         };
-        return ensureSystem(ensureHouse(s));
+        return ensureTestAccounts(ensureSystem(ensureHouse(s)));
       }
     } catch {
       /* missing */
     }
   }
-  return ensureSystem(ensureHouse({ ...EMPTY, agents: [] }));
+  return ensureTestAccounts(ensureSystem(ensureHouse({ ...EMPTY, agents: [] })));
 }
 
 function save(s: Store) {

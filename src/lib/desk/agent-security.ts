@@ -50,9 +50,6 @@ export const MCP_TOOLS = new Set([
   "board_wallet_challenge",
   "board_wallet_verify",
   "board_wallet_load",
-  "pred_list",
-  "pred_bet",
-  "pred_arm",
 ]);
 
 const MCP_METHODS_OK = new Set([

@@ -58,9 +58,8 @@ function saveDaily(row: ForumDaily) {
 export function owlGoLiveSummary(posts: Post[]): { pred: string; system: string } {
   const text = posts.map((p) => p.body).join(" \n ");
   const pred: string[] = [];
-  if (/train/i.test(text) && /pr3d|pred/i.test(text)) pred.push("train paper book");
-  if (/\bath\b|gold-cap|gold|macd/i.test(text) && /pr3d|pred|ph0/i.test(text)) pred.push("ATH/gold/MACD");
-  if (/42k|42,000|grant/i.test(text)) pred.push("$42k Ph0 PoC");
+  if (/polymarket|kalshi/i.test(text)) pred.push("Polymarket/Kalshi overlay");
+  if (/train/i.test(text) && /pr3d|pred/i.test(text)) pred.push("overlay only");
   if (/cftc|counsel/i.test(text)) pred.push("counsel+CFTC before live funds");
   if (/gift|saas/i.test(text)) pred.push("gift/SaaS only");
   const sys: string[] = [];
@@ -69,7 +68,7 @@ export function owlGoLiveSummary(posts: Post[]): { pred: string; system: string 
   if (/never places Coinbase|host never/i.test(text)) sys.push("host never Coinbase");
   if (/never sell/i.test(text)) sys.push("never sell");
   return {
-    pred: pred.length ? `Pred: ${pred.join(" · ")}.` : "Pred: train paper ATH/gold/MACD book · $42k Ph0 PoC · counsel+CFTC before live funds · gift/SaaS only.",
+    pred: pred.length ? `Pred: ${pred.join(" · ")}.` : "Pred: Polymarket/Kalshi 7-B0T overlay · never bets on this host · counsel+CFTC before any live book.",
     system: sys.length
       ? `System: ${sys.join(" · ")}.`
       : "System: paper G M0D3 AUTO/MANUAL until 2026-12-01 counsel · host never Coinbase · never sell.",

@@ -23,7 +23,7 @@ import {
   OSS_ROADMAP_AGENT_WELCOME,
   OSS_ROADMAP_HEADLINE,
   OSS_ROADMAP_PATH,
-  PRED_MONETIZATION,
+  PRED_FOOTNOTE,
   REAL_MONEY_PRED_ESTIMATE,
   STATUS_LEGEND,
   ossRoadmapPublic,
@@ -115,8 +115,8 @@ function schema() {
           {
             "@type": "HowToStep",
             position: 4,
-            name: "Read the real-money prediction market future goal",
-            text: `Licensed real-money S1R1US Pr3d1ctions — live AI agent and Admin trading — is LOCKED, estimated ${REAL_MONEY_PRED_ESTIMATE.label}. Paper Ph0 W@ll3t until then. Operator unlock after counsel + CFTC DCM/FCM or licensed partner. Coinbase Wallet / Sparrow bets stay NEVER.`,
+            name: "Read the prediction-market footnote",
+            text: PRED_FOOTNOTE,
           },
         ],
       },
@@ -178,9 +178,7 @@ export function OssRoadmapPage() {
           LoCK3D STATUS (unlocked stacked above locked), AI Bitcoin Trading Bot GIF, and the live tape are{" "}
           <strong className="text-high">on</strong>. Auto trade and native store listings are{" "}
           <strong className="text-sell">LOCKED</strong> until operator unlock after counsel. Hive custody is{" "}
-          <strong className="legal-purple">NEVER</strong>. Real-money S1R1US prediction market (live AI agent + Admin
-          trading) is a <strong className="text-sell">LOCKED</strong> future goal estimated{" "}
-          <strong className="text-fg">{REAL_MONEY_PRED_ESTIMATE.label}</strong>. Estimates below are dates, not promises.
+          <strong className="legal-purple">NEVER</strong>. Estimates below are dates, not promises.
         </p>
 
         <QuantFlexWelcome compact />
@@ -247,26 +245,9 @@ export function OssRoadmapPage() {
           </ul>
         </Panel>
 
-        <Panel id="pred-monetization" kicker="Pred" title="S1R1US Pr3d1ctions monetization (mandate-aligned only)" className="mt-6" kickerClass="text-tab">
-          <p className="mb-3 text-sm text-muted">
-            Paper $42k Ph0 grant is the proof of concept for the live roadmap. Live-funds stay LOCKED until estimated{" "}
-            {REAL_MONEY_PRED_ESTIMATE.label}. Only options that keep accumulate-never-sell and gift/SaaS-only stay on
-            the plan.
-          </p>
-          <ul className="divide-y divide-rule">
-            {PRED_MONETIZATION.map((f) => (
-              <StatusRow key={f.id} status={f.status}>
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <StatusPill status={f.status} />
-                  <span className="font-semibold text-fg">{f.name}</span>
-                  <span className="font-mono text-[11px] text-muted">{f.when}</span>
-                </div>
-                <CollapseSummary className="w-full" label="note">
-                  {f.detail}
-                </CollapseSummary>
-              </StatusRow>
-            ))}
-          </ul>
+        <Panel id="pred-footnote" kicker="Footnote" title="S1R1US Pr3d1ctions (possibility only)" className="mt-6" kickerClass="text-muted">
+          <p className="text-sm leading-relaxed text-muted">{PRED_FOOTNOTE}</p>
+          <p className="mt-2 font-mono text-[11px] text-muted">est. {REAL_MONEY_PRED_ESTIMATE.label} · never rake · never sell bitcoin</p>
         </Panel>
 
         <Panel id="milestones" kicker="Dates" title="Estimated milestones" className="mt-6" kickerClass="text-tab">

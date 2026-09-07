@@ -66,8 +66,6 @@ describe("LoCK3D STATUS", () => {
     assert.equal(LOCK_META.gmManual.css, "gm-rainbow");
     assert.equal(LOCK_META.agentLive.css, "legal-purple");
     assert.equal(LOCK_META.hive.css, "hive-nav");
-    assert.equal(LOCK_META.pred.css, "gold-css");
-    assert.equal(LOCK_DEFAULT.locked.pred, false);
   });
 
   it("is wired for system Admin, phone Admin, tape rail, and agent ping", () => {
@@ -124,7 +122,6 @@ describe("LoCK3D STATUS", () => {
     assert.equal(LOCK_META.gmManual.hash, "manual");
     assert.equal(LOCK_META.bot7Auto.hash, "bot7");
     assert.equal(LOCK_META.agentLive.hash, "live");
-    assert.equal(LOCK_META.pred.to, "/pr3d");
     assert.equal(lockViewPath("gmAuto"), "/gm#auto");
     assert.equal(lockViewPath("hive"), "/h1v3");
     assert.match(ui, /lock-status-cols/);
@@ -133,7 +130,7 @@ describe("LoCK3D STATUS", () => {
     const grouped = groupLockRows(lockStatusView(LOCK_DEFAULT, "TRUE LIVE", "live").rows);
     assert.equal(grouped.unlocked.every((r) => r.locked === false), true);
     assert.equal(grouped.locked.every((r) => r.locked === true), true);
-    assert.equal(grouped.unlocked.length + grouped.locked.length, 7);
-    assert.equal(grouped.unlocked.some((r) => r.id === "pred"), true);
+    assert.equal(grouped.unlocked.length + grouped.locked.length, 6);
+    assert.equal(LOCK_IDS.includes("pred" as (typeof LOCK_IDS)[number]), false);
   });
 });

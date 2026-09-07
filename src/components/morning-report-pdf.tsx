@@ -779,7 +779,7 @@ function ProblemsMorningSection() {
       ) : (
         <p className="mt-2 text-sm leading-relaxed text-fg">
           None. G M0D3 AUTO + AI agents simulation is running with pause/stop for system and phone-app Admin. Data
-          pulls follow sim. Stray practice is killed. S1R1US Pr3d1ctions stays paper. This host never places Coinbase
+          pulls follow sim. Stray practice is killed. Polymarket/Kalshi stay a 7-B0T overlay. This host never places Coinbase
           orders.
         </p>
       )}

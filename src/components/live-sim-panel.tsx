@@ -45,8 +45,7 @@ export function LiveSimPanel({ token }: { token: string | null }) {
       kickerClass={live ? "text-high" : "text-medium"}
     >
       <p className="text-sm leading-relaxed text-muted">
-        {LIVE_SIM_NAME} runs as live until go-live ({sim?.until ?? "2026-12-01"}). Paper on Coinbase last. Includes
-        S1R1US Pr3d1ctions (Ph0 W@ll3t / $42k ph0 BTC). Daily auto pause {sim?.pauseEt ?? "07:00"} ET, morning report{" "}
+        {LIVE_SIM_NAME} runs as live until go-live ({sim?.until ?? "2026-12-01"}). Paper on Coinbase last. Daily auto pause {sim?.pauseEt ?? "07:00"} ET, morning report{" "}
         {sim?.reportEt ?? "07:30"} ET, then resume. System Admin and phone-app Admin may pause. Championship World Cup /
         C@LL 0UT pause is also system Admin and phone-app Admin. Old practice ticks stay off. Checkpoint stays synced
         with the desk build. Conflict rebases to baseline DEPLOY #68 LIVE with pause allowed.

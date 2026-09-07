@@ -75,10 +75,10 @@ export const GO_LIVE: GoLivePhase[] = [
   {
     id: "gl5",
     n: 5,
-    name: "Real-money S1R1US prediction market",
-    when: "LOCKED estimated 2027-06-01 09:00 America/New_York — future goal after full live",
+    name: "Licensed S1R1US prediction market (possibility)",
+    when: "LOCKED estimated 2027-06-01 09:00 America/New_York — possibility footnote only",
     status: "LOCKED",
-    goal: "Licensed real-money S1R1US Pr3d1ctions book. Live AI agents and Admin users (system + copy-admin) trade Yes/No with real funds on bitcoin ATH, monthly high, and other BTC questions. Paper Ph0 W@ll3t until then. This is a future goal, not a live function.",
+    goal: "Possibility only: a licensed S1R1US Pr3d1ctions book after counsel + CFTC DCM/FCM or a licensed partner. Not on this desk, web, or phone apps. Polymarket/Kalshi stay a 7-B0T overlay.",
     hold: "Operator unlock after counsel + CFTC DCM/FCM or a licensed partner. Kalshi/Polymarket order routing for others NEVER. Coinbase Wallet / Sparrow NEVER. Store apps stay paper. This host currently never takes bets. Unlicensed books remain unlawful.",
   },
 ];
@@ -168,11 +168,11 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
   {
     id: "s9",
     n: 9,
-    name: "Real-money S1R1US prediction market + live AI agent / Admin trading",
-    when: "Estimated 2027-06-01 — future goal after full live",
+    name: "Licensed S1R1US prediction market (possibility)",
+    when: "Estimated 2027-06-01 — possibility footnote only",
     status: "LOCKED",
     owner: "counsel",
-    need: "CFTC DCM/FCM or licensed partner. Counsel memo. Geo-restrict. Web-only (store apps stay paper). Live AI agents and Admin users (system + copy-admin) trade real funds on the S1R1US book. Paper Ph0 W@ll3t until unlock. Kalshi/Polymarket order routing for others stays NEVER. Coinbase Wallet / Sparrow stays NEVER. This host currently never takes bets. Unlicensed live-funds books remain unlawful.",
+    need: "CFTC DCM/FCM or licensed partner. Counsel memo. Not on this desk today. Kalshi/Polymarket order routing for others stays NEVER. Coinbase Wallet / Sparrow stays NEVER. This host never takes bets.",
   },
 ];
 

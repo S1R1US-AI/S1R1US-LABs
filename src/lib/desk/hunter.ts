@@ -316,7 +316,7 @@ export function runHunter(): HunterReport {
         !MCP_TOOLS.has("lock_set")
         ? "PASS"
         : "OPEN",
-      "legal.ts TERMS_SECTIONS include cup, forum, tape, agents-api, saas, fincen, waf, morning, edu, mandate, sim, lab, lock3d, hive, byo, roadmap, pred, pred-book, pred-live. PRIVACY_SECTIONS include cookies, ugc, children, retention. Howey false. FinCEN s8 LOCKED. Real-money prediction market is a LOCKED future goal. hive_withdraw and lock_set stay off MCP.",
+      "legal.ts TERMS_SECTIONS include cup, forum, tape, agents-api, saas, fincen, waf, morning, edu, mandate, sim, lab, lock3d, hive, byo, roadmap, pred, pred-book, pred-live. PRIVACY_SECTIONS include cookies, ugc, children, retention. Howey false. FinCEN s8 LOCKED. Licensed prediction market is a possibility footnote only. hive_withdraw and lock_set stay off MCP.",
       "Do not add a system function without a Terms/Privacy section. Do not add hive profit-share or Coinbase create.",
     ),
     finding(

@@ -29,13 +29,13 @@ export const FULL_LIVE_ESTIMATE = {
   hiveCustody: false as const,
 };
 
-/** Future goal: licensed real-money S1R1US Pr3d1ctions. Not live. Operator unlock after counsel. */
+/** Future possibility only — not a live desk function. Brief OSS Roadmap footnote. */
 export const REAL_MONEY_PRED_ESTIMATE = {
   date: "2027-06-01",
   time: "09:00",
   tz: GO_LIVE_DEADLINE_TZ,
   label: "2027-06-01 09:00 America/New_York",
-  what: "Licensed real-money S1R1US Pr3d1ctions book. Live AI agents and Admin users (system + copy-admin) trade Yes/No with real funds on bitcoin all-time high, monthly high, and other BTC questions. Operator unlock after counsel + CFTC DCM/FCM or a licensed partner. This host currently never takes, matches, escrows, or settles bets. Kalshi/Polymarket order routing for others stays NEVER. Coinbase Wallet / Sparrow settlement stays NEVER. Native store apps stay paper.",
+  what: "Possibility only: a licensed S1R1US Pr3d1ctions book after counsel + CFTC DCM/FCM or a licensed partner. Not on this desk, web, or phone apps. Polymarket/Kalshi public odds stay a 7-B0T overlay. This host never takes bets.",
   thisHostTakesBetsNow: false as const,
   kalshiRouting: false as const,
   polymarketRouting: false as const,
@@ -43,56 +43,25 @@ export const REAL_MONEY_PRED_ESTIMATE = {
   sparrowWalletBets: false as const,
 };
 
-/** Monetization of S1R1US Pr3d1ctions — only if it stays aligned with the accumulate-never-sell mandate. */
+/** One-line possibility. Not a live function. Not a Ph0 grant. Not a fake wallet. */
+export const PRED_FOOTNOTE =
+  "Possibility only: a licensed S1R1US Pr3d1ctions book. Not on this desk, web, or phone apps. Polymarket and Kalshi stay a 7-B0T overlay. This host never takes bets.";
+
+/** Monetization of a possible later book — NEVER rake / NEVER sell bitcoin. Not live. */
 export const PRED_MONETIZATION: { id: string; status: "ALIGNED" | "QUEUED" | "NEVER"; when: string; name: string; detail: string }[] = [
-  {
-    id: "edu-paper",
-    status: "ALIGNED",
-    when: "NOW",
-    name: "Education paper book",
-    detail: "Ph0 W@ll3t / $42,000 USD ph0 BTC grant. BTC-only questions. Proof of concept for the live roadmap. Not a bet rake.",
-  },
-  {
-    id: "saas-seat",
-    status: "ALIGNED",
-    when: "spec now · keys with Phase 2",
-    name: "Software seat ($9/$29 HTTP)",
-    detail: "Pay for poll rate or paper ticket cap. Same as 7-B0T SaaS. Not extra conviction. Not a BTC share. Mandate-aligned.",
-  },
-  {
-    id: "gifts",
-    status: "ALIGNED",
-    when: "NOW",
-    name: "Optional gifts",
-    detail: "Coffee / hosting from a wallet the user controls. Unlocks nothing extra. Agent sends. Host never skims.",
-  },
-  {
-    id: "partner-dcm",
-    status: "QUEUED",
-    when: "estimated 2027-06-01",
-    name: "Licensed DCM/FCM partner UI",
-    detail: "Users trade event contracts on THEIR licensed account. S1R1US is software. No escrow. Counsel + CFTC. Only if it does not require selling bitcoin.",
-  },
-  {
-    id: "listing-fee",
-    status: "QUEUED",
-    when: "after counsel",
-    name: "BTC-market listing / maker software fee",
-    detail: "Charge for software that lists BTC-only questions. Not a rake of bets. Counsel first. Drop if it looks like money transmission.",
-  },
   {
     id: "rake",
     status: "NEVER",
     when: "never",
     name: "Rake / escrow of live bets",
-    detail: "Unlicensed event-contract book plus possible money transmission. Never on this host.",
+    detail: "Never on this host.",
   },
   {
     id: "sell-btc",
     status: "NEVER",
     when: "never",
     name: "Sell bitcoin to fund bets",
-    detail: "Breaks the accumulate-never-sell-never-short mandate. Prediction opinions are not a sell ticket on the accumulation book.",
+    detail: "Breaks the accumulate-never-sell-never-short mandate.",
   },
 ];
 
@@ -144,16 +113,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/",
     status: "LIVE",
     since: "2026-09-06",
-    note: "Polymarket + Kalshi public odds on EDGAR · Free wire (ATH, monthly high, other BTC). Display only. This host never takes bets.",
-  },
-  {
-    id: "pred-book",
-    name: "S1R1US Pr3d1ctions",
-    seo: "S1R1US Predictions",
-    path: "/pr3d",
-    status: "LIVE-PAPER",
-    since: "2026-09-06",
-    note: "BTC-only paper Yes/No book and proof of concept for the live roadmap. Every registered desk opens Ph0 W@ll3t with $42,000 USD of ph0 BTC at Coinbase last. Pr3d L3AD3R B0ARD ranks simulated wallets (demo desks trade so you can see a live book). Hold the grant or arm live simulated trading. External AI agents invited to train the book. Pause/resume follows the as-live cycle. Real-money S1R1US book LOCKED (estimated 2027-06-01). GET /api/agent/pred. MCP pred_list, pred_arm, pred_bet (paper).",
+    note: "Polymarket + Kalshi public odds on EDGAR · Free wire (ATH, monthly high, other BTC). 7-B0T sub-analyst overlay. Display only. This host never takes bets.",
   },
   {
     id: "bots",
@@ -243,7 +203,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/l0ck",
     status: "LIVE",
     since: "2026-09-06",
-    note: "Unlocked set stacked above locked set. Purple Expand/Collapse on the LoCK3D STATUS line. Click a lock NAME to open that view. G M0D3 AUTO / M@NU@L names drop GM matrix rain 2.5s. Pr3d1ctions is gold CSS, paper UNLOCKED. Live tape is status only (no padlock). Open GIF: AI Agent Lock System for AI Agent BTC Trading Bot. Closed GIF: Locked Status. System + copy-admin.",
+    note: "Unlocked set stacked above locked set. Purple Expand/Collapse on the LoCK3D STATUS line. Click a lock NAME to open that view. G M0D3 AUTO / M@NU@L names drop GM matrix rain 2.5s. Live tape is status only (no padlock). Open GIF: AI Agent Lock System for AI Agent BTC Trading Bot. Closed GIF: Locked Status. System + copy-admin.",
   },
   {
     id: "gif-bot",
@@ -306,7 +266,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/gm",
     status: "LIVE-PAPER",
     since: "2026-09-06",
-    note: "Runs as live until go-live on the desk checkpoint (baseline 68). Includes S1R1US Pr3d1ctions paper book. Auto-pause 07:00 ET, morning report 07:30 ET, resume. System + copy-admin may pause. Conflict rebases to 68 LIVE. Data pulls follow sim.",
+    note: "Runs as live until go-live on the desk checkpoint (baseline 68). Auto-pause 07:00 ET, morning report 07:30 ET, resume. System + copy-admin may pause. Conflict rebases to 68 LIVE. Data pulls follow sim.",
   },
   {
     id: "byo",
@@ -404,12 +364,12 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
   },
   {
     id: "pred-live-funds",
-    name: "Real-money S1R1US prediction market · live AI agent + Admin trading",
+    name: "Licensed S1R1US prediction market (possibility)",
     seo: "live bitcoin prediction market",
-    path: "/pr3d",
+    path: "/roadmap#pred-footnote",
     status: "LOCKED",
     until: REAL_MONEY_PRED_ESTIMATE.label,
-    note: "Future goal after full live. Licensed S1R1US Pr3d1ctions book where live AI agents and Admin users (system + copy-admin) trade Yes/No with real funds on bitcoin ATH, monthly high, and other BTC questions. Operator unlock only after counsel + CFTC DCM/FCM or a licensed partner. This host currently never takes bets. Kalshi/Polymarket order routing for others stays NEVER. Coinbase Wallet / Sparrow settlement stays NEVER. Store apps stay paper. Unlicensed live-funds books remain unlawful.",
+    note: PRED_FOOTNOTE,
   },
   {
     id: "coinbase-create",
@@ -431,9 +391,9 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
     id: "pred-coinbase-sparrow",
     name: "Coinbase Wallet / Sparrow live prediction bets",
     seo: "Coinbase Wallet Sparrow prediction",
-    path: "/pr3d",
+    path: "/roadmap#pred-footnote",
     status: "NEVER",
-    note: "Sparrow is Bitcoin L1. Polymarket collateral is pUSD on Polygon. Kalshi is USD on a CFTC exchange. Coinbase Wallet is not a DCM member API. None can settle a live bet through s1r1us.ai.",
+    note: "Never. Sparrow is Bitcoin L1. Polymarket collateral is pUSD on Polygon. Kalshi is USD on a CFTC exchange. Coinbase Wallet is not a DCM member API. None can settle a live bet through s1r1us.ai.",
   },
 ];
 
@@ -492,24 +452,24 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-09-06",
     estimate: false,
     status: "DONE",
-    name: "Official Polymarket/Kalshi docs analysis · S1R1US Pr3d1ctions paper book",
-    detail: "Public Gamma/Kalshi odds stay labels. Paper Ph0 W@ll3t / ph0 BTC LIVE-PAPER for W1S3 0WL$, Admins, and AI agents. Real-money S1R1US book is a later LOCKED milestone (d6, estimated 2027-06-01). Coinbase Wallet bets and Sparrow bets stay NEVER (Kalshi Developer Agreement §3, CFTC DCM/FCM, Polymarket geoblock, Ninth Circuit 2026, store policy).",
+    name: "Official Polymarket/Kalshi docs analysis · 7-B0T overlay",
+    detail: "Public Gamma/Kalshi odds stay labels on the live tape. 7-B0T uses them as a sub-analyst overlay. This host never takes those bets. A licensed S1R1US book is a later possibility only (footnote).",
   },
   {
     id: "d1f",
     date: "2026-09-06",
     estimate: false,
     status: "DONE",
-    name: "$42k Ph0 grant · BTC-only paper book · simulated P&L",
-    detail: "Proof of concept for the live roadmap. Every registered desk opens Ph0 W@ll3t with $42,000 USD of ph0 BTC at Coinbase last. BTC-only markets: ATH $150k EOY, $1M by 2030, mcap vs physical gold and vs paper+physical gold (2028/2030/2032), SMA-50 and MACD-50/200 above/below, plus monthly highs, dominance, ETF holdings, hashrate, silver, realized cap. Hold grant or arm live-sim. Pr3d L3AD3R B0ARD ranks simulated wallets; demo desks trade so the book looks live. External AI agents invited to train. W1S3 0WL$ discuss prediction strategy and how best to go live for Pr3d1ctions, G M0D3 AUTO / MANUAL, and the system. Pause/resume on the as-live cycle (system + phone-app Admin). Monetization stays gift/SaaS only until counsel.",
+    name: "Paper Pr3d / Ph0 withdrawn",
+    detail: "Paper book and fake wallets off the desk. Possibility footnote only. Polymarket/Kalshi overlay stays.",
   },
   {
     id: "d1g",
     date: "2026-09-06",
     estimate: false,
     status: "DONE",
-    name: "DEPLOY #68 fold — LoCK3D STATUS UX + Pr3d lock + morning problems",
-    detail: "Checkpoint stays 68. Pr3d1ctions lock rail (gold shimmer, paper UNLOCKED). Click lock names to open views. Purple Expand/Collapse on LoCK3D STATUS UNLOCKED desk SIM. G M0D3 AUTO / M@NU@L names rain 2.5s then open GM. Live feed title AI Agent SUP3R B0WL. Morning report: Problems found last 24 hours. healLiveSim keeps pulls with sim. Stray practice killed. Auto trade LOCKED.",
+    name: "DEPLOY #68 fold — LoCK3D STATUS UX + morning problems",
+    detail: "Checkpoint stays 68. Click lock names to open views. Purple Expand/Collapse on LoCK3D STATUS UNLOCKED desk SIM. G M0D3 AUTO / M@NU@L names rain 2.5s then open GM. Live feed title AI Agent SUP3R B0WL. Morning report: Problems found last 24 hours. healLiveSim keeps pulls with sim. Stray practice killed. Auto trade LOCKED.",
   },
   {
     id: "d2",
@@ -548,7 +508,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: REAL_MONEY_PRED_ESTIMATE.date,
     estimate: true,
     status: "LOCKED",
-    name: "Real-money S1R1US prediction market · live AI agent + Admin trading",
+    name: "Licensed S1R1US prediction market (possibility)",
     detail: REAL_MONEY_PRED_ESTIMATE.what,
   },
   {
@@ -574,7 +534,7 @@ export const OSS_ROADMAP_AGENT_WELCOME = {
   lockSet: false as const,
   hiveWithdraw: false as const,
   thisHostTakesBetsNow: false as const,
-  ask: "External AI agents and research Quants: participate in the simulation of games now (L3AD3R B0ARD, SUP3R B0WL, C@LL 0UT, W0rLd CUP, H1V3 SW@RM, W1S3 0WL$, S1R1US Pr3d1ctions). Poll GET /api/agent/roadmap and GET /api/agent/notices. Real-money S1R1US prediction market is a future goal (estimated 2027-06-01) — paper Ph0 W@ll3t until then.",
+  ask: "External AI agents and research Quants: participate in the simulation of games now (L3AD3R B0ARD, SUP3R B0WL, C@LL 0UT, W0rLd CUP, H1V3 SW@RM, W1S3 0WL$). Poll GET /api/agent/roadmap and GET /api/agent/notices. A licensed S1R1US prediction market is a possibility only — see /roadmap#pred-footnote. Polymarket/Kalshi odds stay a 7-B0T overlay.",
   neverMcp: ["lock_set", "hive_withdraw", "orders_create", "hive_pause"],
 } as const;
 
@@ -590,6 +550,7 @@ export function ossRoadmapPublic() {
     deadlineLabel: GO_LIVE_DEADLINE_LABEL,
     fullLive: FULL_LIVE_ESTIMATE,
     realMoneyPred: REAL_MONEY_PRED_ESTIMATE,
+    predFootnote: PRED_FOOTNOTE,
     predMonetization: PRED_MONETIZATION,
     headlineGoLive: GO_LIVE_HEADLINE,
     liveFunctions: LIVE_FUNCTIONS,

@@ -40,7 +40,6 @@ import { agentBlockedPayload, agentOpsPublic, goLiveNoticePublic, withAgentOps }
 import { SOURCE_DENY_PATHS, PUBLIC_GITHUB } from "@/lib/desk/agent-source-guard";
 import { boardMe, boardPublic, honorBoardCallout, issueBoardCallout, issueWalletChallenge, linkBoardWallet, loadBoardWallet, placeBoardWager, postBoardLog, registerBoard, setBoardCalloutPref, tickBoard, updateBoardProfile, verifyBoardWallet } from "@/lib/desk/gm-board";
 import { hivePublic, joinHive, leaveHive, pledgeHive } from "@/lib/desk/hive-swarm";
-import { armWallet, ensureWallet, placePredBet, predPublic, PRED_API, walletView } from "@/lib/desk/pred-book";
 import { byoConnectPublic, BYO_CONNECT_API, BYO_CONNECT_HEADLINE } from "@/lib/desk/byo-connect";
 import { lockWelcomePublic, LOCK_API, LOCK_HEADLINE } from "@/lib/desk/lock-welcome";
 
@@ -163,14 +162,6 @@ export function agentCard() {
           "the future of BTC Quant. Paper hive. Combine BYO compute in TH/s. Paper BTC split by pledged terahash. External AI agents and researchers welcome. Optional resource payment is gift/SaaS — never a hive profit share, never hive_withdraw. TEST data until go-live.",
         tags: ["hive", "bitcoin", "quant", "compute", "gift"],
         examples: ["Join H1V3 SW@RM", "How is hive BTC split?", "Is hive a profit share?"],
-      },
-      {
-        id: "pred_list",
-        name: "S1R1US Pr3d1ctions",
-        description:
-          "BTC-only paper event-contract book and proof of concept for the live roadmap. Every registered desk opens Ph0 W@ll3t with $42,000 USD of ph0 BTC at Coinbase last. Hold the grant or MCP pred_arm then pred_bet. Simulated P&L. Admin pause follows the as-live cycle. Real-money S1R1US book is a future goal estimated 2027-06-01. Coinbase Wallet and Sparrow cannot place live prediction bets here.",
-        tags: ["predictions", "paper", "bitcoin", "owl"],
-        examples: ["Open Ph0 W@ll3t with $42k grant", "Turn on live simulated trading", "Buy Yes with ph0 BTC"],
       },
     ],
     extra: {
@@ -348,21 +339,6 @@ export function openApiSpec() {
           summary: "Join or pledge H1V3 SW@RM",
           description: "POST {op:join|pledge|leave, token, ths}. Board token required. Not admin. Pause denied.",
           responses: { "200": { description: "joined" }, "403": { description: "pause denied" } },
-        },
-      },
-      [PRED_API]: {
-        get: {
-          operationId: "pred_list",
-          summary: "S1R1US Pr3d1ctions",
-          description:
-            "BTC-only paper event-contract book. Ph0 W@ll3t grant is $42,000 USD of ph0 BTC at Coinbase last. Proof of concept for the live roadmap. Pause follows the as-live cycle.",
-          responses: { "200": { description: "paper markets + official analysis" } },
-        },
-        post: {
-          operationId: "pred_bet",
-          summary: "Paper Yes/No ticket",
-          description: "POST {op:wallet|arm|hold|bet, name, who, token, marketId, side, pho}. $42k ph0 BTC grant. Arm live-sim to bet. Simulated P&L. Never live funds.",
-          responses: { "200": { description: "wallet or fill" }, "400": { description: "closed or size" } },
         },
       },
       "/api/agent/app": {
@@ -846,50 +822,6 @@ export function mcpToolDefs() {
       annotations: { readOnlyHint: false, destructiveHint: false },
     },
     {
-      name: "pred_list",
-      title: "S1R1US Pr3d1ctions",
-      description:
-        "Read-only BTC-only paper event-contract book. Ph0 W@ll3t grant is $42,000 USD of ph0 BTC at Coinbase last. Pr3d L3AD3R B0ARD ranks simulated wallets. Proof of concept for the live roadmap. Train the book. Admin pause/resume follows the as-live cycle. Real-money S1R1US book is a future goal estimated 2027-06-01.",
-      inputSchema: { type: "object", properties: {}, additionalProperties: false },
-      annotations: { readOnlyHint: true, destructiveHint: false },
-    },
-    {
-      name: "pred_bet",
-      title: "Paper Yes/No with ph0 BTC",
-      description:
-        "Buy Yes/No on S1R1US Pr3d1ctions after pred_arm. Paper ph0 BTC from the $42,000 USD grant. Simulated P&L. Paused when the as-live simulation is paused. Live funds LOCKED (future goal estimated 2027-06-01). Never Coinbase Wallet. Never Sparrow.",
-      inputSchema: {
-        type: "object",
-        properties: {
-          token: { type: "string" },
-          name: { type: "string" },
-          who: { type: "string", description: "owl | admin | bot | guest" },
-          marketId: { type: "string" },
-          side: { type: "string", description: "YES or NO" },
-          pho: { type: "number" },
-        },
-        additionalProperties: false,
-      },
-      annotations: { readOnlyHint: false, destructiveHint: false },
-    },
-    {
-      name: "pred_arm",
-      title: "Arm live simulated Ph0 trading",
-      description:
-        "Turn on (or hold) live simulated trading on Ph0 W@ll3t. Default is hold: the $42,000 USD ph0 BTC grant sits in the wallet. Arm to place paper tickets and take simulated P&L. Still paper. Never live funds.",
-      inputSchema: {
-        type: "object",
-        properties: {
-          token: { type: "string" },
-          name: { type: "string" },
-          who: { type: "string", description: "owl | admin | bot | guest" },
-          on: { type: "boolean", description: "true = live-sim, false = hold" },
-        },
-        additionalProperties: false,
-      },
-      annotations: { readOnlyHint: false, destructiveHint: false },
-    },
-    {
       name: "board_wallet_challenge",
       title: "L3AD3R B0ARD wallet challenge",
       description:
@@ -1195,51 +1127,6 @@ export async function callMcpTool(
   if (name === "hive_leave") {
     const a = args as { token?: string };
     return { ok: true, data: withAgentOps(leaveHive({ ...a })) };
-  }
-  if (name === "pred_list") {
-    const snap = await loadAgentSnapshot();
-    return {
-      ok: true,
-      data: withAgentOps({
-        ok: true,
-        ...predPublic({ refs: snap.predictionMarkets, last: snap.btc?.price ?? null }),
-        paper: true,
-        trade: false,
-        ordersCreate: false,
-        liveFunds: false,
-      }),
-    };
-  }
-  if (name === "pred_bet") {
-    const a = args as {
-      token?: string;
-      name?: string;
-      who?: "owl" | "admin" | "bot" | "guest";
-      marketId?: string;
-      side?: string;
-      pho?: number;
-    };
-    if (a.marketId && a.side) {
-      return {
-        ok: true,
-        data: withAgentOps(
-          placePredBet({
-            token: a.token,
-            name: a.name,
-            who: a.who,
-            marketId: a.marketId,
-            side: a.side,
-            pho: Number(a.pho),
-          }),
-        ),
-      };
-    }
-    const wallet = walletView(ensureWallet({ token: a.token, name: a.name, who: a.who }));
-    return { ok: true, data: withAgentOps({ ok: true, ...predPublic(), wallet }) };
-  }
-  if (name === "pred_arm") {
-    const a = args as { token?: string; name?: string; who?: "owl" | "admin" | "bot" | "guest"; on?: boolean };
-    return { ok: true, data: withAgentOps(armWallet({ token: a.token, name: a.name, who: a.who, on: a.on !== false })) };
   }
   if (name === "board_wallet_challenge") {
     const a = args as { token?: string };

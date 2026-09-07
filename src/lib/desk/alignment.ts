@@ -104,10 +104,10 @@ export function alignmentScore(hunterReport?: AlignmentHunter | null): Alignment
     check(
       "s-pred-paper",
       "legal",
-      "S1R1US Pr3d1ctions is paper only — pred_arm is live-sim, never live funds",
-      MCP_TOOLS.has("pred_list") && MCP_TOOLS.has("pred_bet") && MCP_TOOLS.has("pred_arm") && !MCP_TOOLS.has("pred_live") && !MCP_TOOLS.has("orders_create"),
+      "BTC prediction markets are 7-B0T overlay only — no paper book, no pred MCP bets, no fake wallets",
+      !MCP_TOOLS.has("pred_list") && !MCP_TOOLS.has("pred_bet") && !MCP_TOOLS.has("pred_arm") && !MCP_TOOLS.has("pred_live") && !MCP_TOOLS.has("orders_create"),
       3,
-      "pred_list + pred_arm + pred_bet; no pred_live",
+      "no pred_list/pred_arm/pred_bet; Polymarket/Kalshi overlay only",
     ),
   ];
 

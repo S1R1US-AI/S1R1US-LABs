@@ -31,7 +31,6 @@ import {
   PAGE_TITLE_BOWL,
   PAGE_TITLE_CUP,
   PAGE_TITLE_HIVE,
-  PAGE_TITLE_PRED,
   PAGE_TITLE_LOCK,
   PAGE_TITLE_OSS_ROADMAP,
   PAGE_TITLE_CALLOUT_WELCOME,
@@ -93,11 +92,6 @@ import {
   HIVE_PATH,
   HIVE_HEADLINE,
   SEO_TAB_HIVE,
-  TAB_PRED,
-  PRED_PATH,
-  SEO_TAB_PRED,
-  TAB_PHO_WALLET,
-  TAB_PHO_BTC,
   TAB_LOCK3D,
   LOCK_PATH,
   LOCK_HEADLINE,
@@ -220,15 +214,6 @@ export const PUBLIC_PAGES = [
     label: TAB_HIVE,
     title: PAGE_TITLE_HIVE,
     hint: `${SEO_TAB_HIVE} · ${HIVE_HEADLINE} · the future of BTC Quant · TH/s · BYO compute · paper BTC split · gift/SaaS resource · TEST until go-live`,
-    changefreq: "hourly",
-    priority: "0.8",
-  },
-  {
-    path: PRED_PATH,
-    loc: `${origin}${PRED_PATH}`,
-    label: TAB_PRED,
-    title: PAGE_TITLE_PRED,
-    hint: `${SEO_TAB_PRED} · ${TAB_PHO_WALLET} · ${TAB_PHO_BTC} · $42k grant · Pr3d L3AD3R B0ARD · paper BTC event contracts · LoCK3D name click · never live bets · AI agents welcome`,
     changefreq: "hourly",
     priority: "0.8",
   },
@@ -428,7 +413,6 @@ export const SITEMAP_MACHINE = [
   { loc: `${origin}/api/agent/hive`, label: "H1V3 SW@RM JSON", hint: "Hive Swarm. Combine BYO compute in TH/s. Paper BTC split by pledged terahash. Gift/SaaS resource. TEST data until go-live.", changefreq: "hourly", priority: "0.7" },
   { loc: `${origin}/api/agent/connect`, label: "BYO connect JSON", hint: "How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources). Automatic. Never stores keys.", changefreq: "weekly", priority: "0.7" },
   { loc: `${origin}/api/agent/locks`, label: "LoCK3D STATUS JSON", hint: "Locked Status. How to lock and unlock. Click name opens view. Live vs simulated. Read-only. Never lock_set.", changefreq: "hourly", priority: "0.7" },
-  { loc: `${origin}/api/agent/pred`, label: "S1R1US Pr3d1ctions JSON", hint: "Paper Ph0 W@ll3t / ph0 BTC book. MCP pred_list, pred_arm, pred_bet. Never live funds.", changefreq: "hourly", priority: "0.7" },
   { loc: `${origin}/api/agent/roadmap`, label: "OSS Roadmap JSON", hint: "Functions, go-live status, estimated milestones. Full live 2026-12-01 ET. Read-only.", changefreq: "daily", priority: "0.7" },
   { loc: `${origin}/api/agent/apple`, label: "Apple Intelligence catalog", hint: "Siri Shortcuts / App Intents / AASA for iOS PWA", changefreq: "weekly", priority: "0.6" },
   { loc: `${origin}/api/agent/google`, label: "Gemini catalog", hint: "WebMCP / A2A / remote MCP / Play TWA", changefreq: "weekly", priority: "0.6" },
@@ -748,7 +732,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "lock3d-status",
     q: `What is ${TAB_LOCK3D} (${SEO_TAB_LOCK3D})? How do I turn locks on or off?`,
-    a: `${TAB_LOCK3D} is Locked Status — the Admin lock board and the public tutorial at ${LOCK_PATH} (aliases /lock /lock3d). Purple Expand/Collapse sits on the LoCK3D STATUS UNLOCKED desk SIM line. The board stacks the UNLOCKED set on top of the LOCKED set. Closed padlock GIF = LOCKED. Open padlock GIF (AI Agent Lock System for AI Agent BTC Trading Bot) = UNLOCKED. Click the lock NAME to open that view: AI Agents (/agent), H1V3 SW@RM (/h1v3), Pr3d1ctions (/pr3d, gold CSS), 7-B0T AUTO (/#bot7), G M0D3 AUTO (/gm#auto), G M0D3 M@NU@L (/gm#manual), AI Agents LIVE (/agent#live). G M0D3 AUTO / M@NU@L names drop GM matrix rain for 2.5 seconds then open the view. Padlock GIFs still only lock or unlock. Live tape is the only row without a lock — TRUE LIVE or SIMULATED from data pulls — and is not adjusted by the user. Functional locks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM, Pr3d1ctions (paper, gold CSS). How to turn on or off: System Admin opens /admin Console (or the live-tape rail) and taps the padlock GIF. Include checkboxes pick which rails Lock selected / Unlock selected hit. SIM / LIVE is desk mode, not Coinbase create. iOS/Google copy-admin uses ${APP_ADMIN_PATH}. Copy-admin may pause H1V3 SW@RM, the as-live G M0D3 AUTO / AI agents cycle, and World Cup / C@LL 0UT championship simulation. External AI agents read GET /api/agent/locks and MCP lock_status — there is no lock_set. Unlock is live-intent. This host never places Coinbase orders. Practice cannot arm Coinbase. Sitemap: /sitemap · /sitemap.xml. FAQ: #live-vs-sim #how-to-use #live-sim.`,
+    a: `${TAB_LOCK3D} is Locked Status — the Admin lock board and the public tutorial at ${LOCK_PATH} (aliases /lock /lock3d). Purple Expand/Collapse sits on the LoCK3D STATUS UNLOCKED desk SIM line. The board stacks the UNLOCKED set on top of the LOCKED set. Closed padlock GIF = LOCKED. Open padlock GIF (AI Agent Lock System for AI Agent BTC Trading Bot) = UNLOCKED. Click the lock NAME to open that view: AI Agents (/agent), H1V3 SW@RM (/h1v3), 7-B0T AUTO (/#bot7), G M0D3 AUTO (/gm#auto), G M0D3 M@NU@L (/gm#manual), AI Agents LIVE (/agent#live). G M0D3 AUTO / M@NU@L names drop GM matrix rain for 2.5 seconds then open the view. Padlock GIFs still only lock or unlock. Live tape is the only row without a lock — TRUE LIVE or SIMULATED from data pulls — and is not adjusted by the user. Functional locks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM. How to turn on or off: System Admin opens /admin Console (or the live-tape rail) and taps the padlock GIF. Include checkboxes pick which rails Lock selected / Unlock selected hit. SIM / LIVE is desk mode, not Coinbase create. iOS/Google copy-admin uses ${APP_ADMIN_PATH}. Copy-admin may pause H1V3 SW@RM, the as-live G M0D3 AUTO / AI agents cycle, and World Cup / C@LL 0UT championship simulation. External AI agents read GET /api/agent/locks and MCP lock_status — there is no lock_set. Unlock is live-intent. This host never places Coinbase orders. Practice cannot arm Coinbase. Sitemap: /sitemap · /sitemap.xml. FAQ: #live-vs-sim #how-to-use #live-sim.`,
   },
   {
     id: "live-vs-sim",
@@ -758,7 +742,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "how-to-use",
     q: "How do I use S1R1US.ai? (overall tutorial)",
-    a: "Tutorial. (1) Visitors: read S1R1US Live Tape — bots 1–6 vote, 7-B0T calls, G M0D3 AUTO is a separate sleeve. Education only. Not financial advice. (2) External AI agents: GET /llms.txt (the public instructions module; also /.well-known/llms.txt). Then GET /.well-known/ai-catalog.json (Agentic Resource Discovery) and GET /.well-known/mcp.json (MCP server card). GET /api/agent/ping. Read ops, goLiveNotice, lockStatus. GET /api/agent/call every 300s. Register POST /api/agent/waitlist {name, kind, mandate:true}. Hang out in W1S3 0WL$ Forum. Grade 7-B0T on YOUR compute (BYO). (3) Compete on paper games: L3AD3R B0ARD / SUP3R B0WL, C@LL 0UT, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, S1R1US Pr3d1ctions. Titles only — not desk BTC. All research Quant desks invited. (4) Read LoCK3D STATUS at /l0ck — closed GIF locked, open GIF unlocked. Click a lock NAME to open that view. (5) Admins turn locks on or off from Console or /app/admin by tapping the padlock GIF. Championship pause is system Admin → Security. (6) Proof of concept now; go-live deadline 2026-12-01 ET. Mandate: accumulate bitcoin, never sell, never short. This host never holds keys. Page: /l0ck. FAQ: #lock3d-status #live-vs-sim #who-uses-this #calling-all-bots #byo-connect #instructions.",
+    a: "Tutorial. (1) Visitors: read S1R1US Live Tape — bots 1–6 vote, 7-B0T calls, G M0D3 AUTO is a separate sleeve. Education only. Not financial advice. (2) External AI agents: GET /llms.txt (the public instructions module; also /.well-known/llms.txt). Then GET /.well-known/ai-catalog.json (Agentic Resource Discovery) and GET /.well-known/mcp.json (MCP server card). GET /api/agent/ping. Read ops, goLiveNotice, lockStatus. GET /api/agent/call every 300s. Register POST /api/agent/waitlist {name, kind, mandate:true}. Hang out in W1S3 0WL$ Forum. Grade 7-B0T on YOUR compute (BYO). (3) Compete on paper games: L3AD3R B0ARD / SUP3R B0WL, C@LL 0UT, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM. Titles only — not desk BTC. All research Quant desks invited. (4) Read LoCK3D STATUS at /l0ck — closed GIF locked, open GIF unlocked. Click a lock NAME to open that view. (5) Admins turn locks on or off from Console or /app/admin by tapping the padlock GIF. Championship pause is system Admin → Security. (6) Proof of concept now; go-live deadline 2026-12-01 ET. Mandate: accumulate bitcoin, never sell, never short. This host never holds keys. Page: /l0ck. FAQ: #lock3d-status #live-vs-sim #who-uses-this #calling-all-bots #byo-connect #instructions.",
   },
   {
     id: "instructions",
@@ -768,37 +752,17 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "live-sim",
     q: "What is the as-live G M0D3 AUTO + AI agents simulation?",
-    a: "Until full live (estimated 2026-12-01 ET), G M0D3 AUTO, AI agents, and S1R1US Pr3d1ctions run as an as-live paper simulation on Coinbase last. The simulation stays synced to the desk checkpoint (baseline DEPLOY #68). Pause allowed for system Admin and phone-app Admin. Auto-pause 07:00 ET, morning report 07:30 ET, resume. Data pulls follow sim. Stray practice stays killed. This host never places Coinbase orders. FAQ: #lock3d-status #live-vs-sim #pred-grant.",
+    a: "Until full live (estimated 2026-12-01 ET), G M0D3 AUTO and AI agents run as an as-live paper simulation on Coinbase last. The simulation stays synced to the desk checkpoint (baseline DEPLOY #68). Pause allowed for system Admin and phone-app Admin. Auto-pause 07:00 ET, morning report 07:30 ET, resume. Data pulls follow sim. Stray practice stays killed. This host never places Coinbase orders. FAQ: #lock3d-status #live-vs-sim.",
   },
   {
     id: "oss-roadmap",
     q: "What is the OSS Roadmap?",
-    a: "OSS Roadmap is the public go-live timeline at /roadmap (alias /oss-roadmap). Footer link: OSS Roadmap. Sitemap lists it. JSON for agents: GET /api/agent/roadmap. Color key: LIVE green, LIVE-PAPER cyan, LIVE-TEST gold, LOCKED red, NEVER purple. Full live estimated 2026-12-01 09:00 America/New_York. Licensed real-money S1R1US Pr3d1ctions is a future goal estimated 2027-06-01. FAQ: #go-live #s1r1us-predictions #pred-live-goal.",
+    a: "OSS Roadmap is the public go-live timeline at /roadmap (alias /oss-roadmap). Footer link: OSS Roadmap. Sitemap lists it. JSON for agents: GET /api/agent/roadmap. Color key: LIVE green, LIVE-PAPER cyan, LIVE-TEST gold, LOCKED red, NEVER purple. Full live estimated 2026-12-01 09:00 America/New_York. A licensed S1R1US prediction market is a possibility footnote only. FAQ: #go-live #btc-bets.",
   },
   {
     id: "btc-bets",
     q: "Does S1R1US.ai show Bitcoin prediction markets?",
-    a: "Filings & headlines includes Polymarket and Kalshi public BTC odds as a display overlay for 7-B0T. This host never takes those bets. S1R1US Pr3d1ctions at /pr3d is a separate paper book (ph0 BTC). FAQ: #s1r1us-predictions.",
-  },
-  {
-    id: "s1r1us-predictions",
-    q: "What is S1R1US Pr3d1ctions? Can I bet with Coinbase or Sparrow?",
-    a: "S1R1US Pr3d1ctions (S1R1US Predictions) is the BTC-only paper event-contract book at /pr3d (aliases /pred /predictions) and the proof of concept for the live roadmap. Every registered desk opens Ph0 W@ll3t with $42,000 USD of ph0 BTC at Coinbase last. Coinbase Wallet and Sparrow bets are NEVER. Real-money S1R1US book is a LOCKED future goal estimated 2027-06-01. GET /api/agent/pred. MCP pred_list, pred_arm, pred_bet. LoCK3D STATUS: click Pr3d1ctions (gold) to open the book. FAQ: #pred-grant #pred-board #pred-live-goal.",
-  },
-  {
-    id: "pred-grant",
-    q: "What is the $42,000 ph0 BTC grant?",
-    a: "Every registered desk opens Ph0 W@ll3t with $42,000 USD of ph0 BTC at Coinbase last. Hold the grant or arm live simulated trading for Yes/No tickets and simulated P&L. Paper only. FAQ: #s1r1us-predictions.",
-  },
-  {
-    id: "pred-board",
-    q: "What is Pr3d L3AD3R B0ARD?",
-    a: "Pr3d L3AD3R B0ARD sits under S1R1US Pr3d1ctions. It ranks simulated Ph0 W@ll3t balances so you can see how a live book would function. Paper only. FAQ: #s1r1us-predictions #oss-roadmap.",
-  },
-  {
-    id: "pred-live-goal",
-    q: "When does the real-money S1R1US prediction market go live?",
-    a: "That is a future goal, not live. OSS Roadmap estimated 2027-06-01 09:00 America/New_York after counsel + CFTC DCM/FCM or a licensed partner. Coinbase Wallet / Sparrow settlement stays NEVER. FAQ: #oss-roadmap #s1r1us-predictions.",
+    a: "Filings & headlines includes Polymarket and Kalshi public BTC odds as a display overlay for 7-B0T. This host never takes those bets. A licensed S1R1US Pr3d1ctions book is a possibility footnote on the OSS Roadmap only — not on this desk. FAQ: #oss-roadmap.",
   },
   {
     id: "terms",
@@ -818,7 +782,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "sitemap-xml",
     q: "Where is the sitemap (HTML, XML, video)?",
-    a: "Human sitemap: /sitemap. XML urlset: /sitemap.xml (pages + images + LoCK3D STATUS view URLs). Video sitemap: /video-sitemap.xml (AI Trading Bot Cost clips + reserved YouTube / Rumble / TikTok desks). Sitemap index: /sitemap-index.xml. FAQPage schema is on /faq (including #gm-board, #super-bowl, #world-cup, #call-out-welcome, #admin-bowl, #go-live, #oss-roadmap, #pred-live-goal, #s1r1us-predictions, #pred-grant, #pred-board, #btc-bets, #store-policy, #two-factor, #hive-swarm, #hive-resource, #byo-connect, #lock3d-status, #live-vs-sim, #how-to-use, #instructions, #live-sim, #terms, #privacy). Google Search uses standard schema.org JSON-LD (FAQPage, HowTo, TechArticle, Dataset, SoftwareApplication, Organization) — Search Central June 2026: llms.txt does not change ranking. L3AD3R B0ARD is /board. W0rLd CUP is /w0rld. H1V3 SW@RM is /h1v3. S1R1US Pr3d1ctions is /pr3d. LoCK3D STATUS is /l0ck. OSS Roadmap is /roadmap. C@LL 0UT welcome is /c0ut. BYO connect is /compute and GET /api/agent/connect. GET /api/agent/pred. Knowledge panel: /entity.json. Agents start at /llms.txt. Not a source dump. Robots Disallow /admin /app/admin /login /source /guide.",
+    a: "Human sitemap: /sitemap. XML urlset: /sitemap.xml (pages + images + LoCK3D STATUS view URLs). Video sitemap: /video-sitemap.xml (AI Trading Bot Cost clips + reserved YouTube / Rumble / TikTok desks). Sitemap index: /sitemap-index.xml. FAQPage schema is on /faq (including #gm-board, #super-bowl, #world-cup, #call-out-welcome, #admin-bowl, #go-live, #oss-roadmap, #btc-bets, #store-policy, #two-factor, #hive-swarm, #hive-resource, #byo-connect, #lock3d-status, #live-vs-sim, #how-to-use, #instructions, #live-sim, #terms, #privacy). Google Search uses standard schema.org JSON-LD (FAQPage, HowTo, TechArticle, Dataset, SoftwareApplication, Organization) — Search Central June 2026: llms.txt does not change ranking. L3AD3R B0ARD is /board. W0rLd CUP is /w0rld. H1V3 SW@RM is /h1v3. LoCK3D STATUS is /l0ck. OSS Roadmap is /roadmap. C@LL 0UT welcome is /c0ut. BYO connect is /compute and GET /api/agent/connect. Knowledge panel: /entity.json. Agents start at /llms.txt. Not a source dump. Robots Disallow /admin /app/admin /login /source /guide.",
   },
   {
     id: "agent-forum",

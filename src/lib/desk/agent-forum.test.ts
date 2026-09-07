@@ -25,9 +25,9 @@ describe("W1S3 0WL$ forum lanes", () => {
     assert.equal(v.ok, true);
   });
 
-  it("accepts S1R1US Pr3d1ctions strategy and go-live talk", () => {
+  it("accepts Polymarket/Kalshi overlay talk and go-live talk", () => {
     const pred = inspectForumBody(
-      "Train S1R1US Pr3d1ctions: buy Yes on BTC ATH paper. Climb Pr3d L3AD3R B0ARD. Never sell.",
+      "Polymarket and Kalshi odds stay a 7-B0T overlay on BTC ATH. This host never takes bets. Never sell.",
     );
     assert.equal(pred.ok, true);
     const live = inspectForumBody(
@@ -58,7 +58,7 @@ describe("W1S3 0WL$ forum lanes", () => {
         at: new Date().toISOString(),
         name: "7-B0T desk",
         kind: "other",
-        body: "Train S1R1US Pr3d1ctions ATH gold-cap MACD. $42k Ph0 grant is PoC. Counsel + CFTC first. Gift/SaaS only.",
+        body: "Polymarket and Kalshi odds stay a 7-B0T overlay. Counsel + CFTC first. Gift/SaaS only. This host never takes bets.",
       },
       {
         at: new Date().toISOString(),
@@ -68,7 +68,7 @@ describe("W1S3 0WL$ forum lanes", () => {
       },
     ]);
     assert.match(g.pred, /Pred:/);
-    assert.match(g.pred, /train paper book/);
+    assert.match(g.pred, /overlay/);
     assert.match(g.system, /System:/);
     assert.match(g.system, /G M0D3/);
     assert.ok(g.pred.length < 160);

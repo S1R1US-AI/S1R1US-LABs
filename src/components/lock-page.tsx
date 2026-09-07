@@ -92,7 +92,6 @@ export function LockPage() {
           "proof of concept",
           "AI trading bots",
           "Bitcoin trading agents",
-          "Pr3d1ctions",
           "7-B0T AUTO",
           "G M0D3 AUTO",
         ],
@@ -341,9 +340,6 @@ export function LockPage() {
             </Link>
             <Link to="/h1v3" className="board-nav gm-nav hive-nav hover:underline" title={TAB_HOVER_HIVE}>
               H1V3 SW@RM
-            </Link>
-            <Link to="/pr3d" className="gold-css hover:underline" title="S1R1US Predictions">
-              Pr3d1ctions
             </Link>
             <Link to="/agent" className="text-oss hover:underline">
               Agent feed

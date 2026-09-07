@@ -28,6 +28,18 @@ describe("live-sim checkpoint sync", { concurrency: false }, () => {
     assert.equal(h.copyAdminMayPauseChampionship, true);
   });
 
+  it("paper TEST X accounts seed on the board and stay non-admin", () => {
+    const board = readFileSync(new URL("./gm-board.ts", import.meta.url), "utf8");
+    assert.match(board, /ensureTestAccounts/);
+    assert.match(board, /GROK-BUILD/);
+    assert.match(board, /MR-R0B0T0-TEST/);
+    assert.match(board, /S1R1US-AI-TEST/);
+    assert.match(board, /ADMIN_X_HANDLE/);
+    assert.match(board, /COMPANY_X_HANDLE/);
+    assert.match(board, /admin: false/);
+    assert.doesNotMatch(board, /asAdmin:\s*true/);
+  });
+
   it("dual-admin pause is wired; championship pause is dual-admin", () => {
     assert.match(rpc, /export const setLiveSim/);
     assert.match(rpc, /verifyAppAdminToken/);

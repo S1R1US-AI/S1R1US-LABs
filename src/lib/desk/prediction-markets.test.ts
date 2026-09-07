@@ -83,7 +83,7 @@ describe("BTC prediction markets", () => {
     assert.match(ui, /this host never takes bets/);
     const faq = readFileSync(new URL("./public-nav.ts", import.meta.url), "utf8");
     assert.match(faq, /id: "btc-bets"/);
-    assert.match(faq, /id: "s1r1us-predictions"/);
+    assert.equal(/id: "s1r1us-predictions"/.test(faq), false);
     const legal = readFileSync(new URL("../../lib/legal.ts", import.meta.url), "utf8");
     assert.match(legal, /LEGAL_PRED/);
     assert.match(legal, /not a prediction market operator/);

@@ -322,7 +322,7 @@ export function FaqPage() {
                     </figcaption>
                   </figure>
                 ) : null}
-                {item.id === "gm-board" || item.id === "spice-up" || item.id === "board-agents" || item.id === "board-humans" || item.id === "board-wallet" || item.id === "super-bowl" || item.id === "admin-bowl" || item.id === "world-cup" || item.id === "call-out-welcome" || item.id === "hive-swarm" || item.id === "hive-resource" || item.id === "byo-connect" || item.id === "byo-compute" || item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" || item.id === "instructions" || item.id === "live-sim" || item.id === "go-live" || item.id === "oss-roadmap" || item.id === "pred-live-goal" || item.id === "s1r1us-predictions" || item.id === "pred-grant" || item.id === "pred-board" ? (
+                {item.id === "gm-board" || item.id === "spice-up" || item.id === "board-agents" || item.id === "board-humans" || item.id === "board-wallet" || item.id === "super-bowl" || item.id === "admin-bowl" || item.id === "world-cup" || item.id === "call-out-welcome" || item.id === "hive-swarm" || item.id === "hive-resource" || item.id === "byo-connect" || item.id === "byo-compute" || item.id === "lock3d-status" || item.id === "live-vs-sim" || item.id === "how-to-use" || item.id === "instructions" || item.id === "live-sim" || item.id === "go-live" || item.id === "oss-roadmap" ? (
                   <p className="mt-2 text-sm">
                     {item.id === "super-bowl" ? (
                       <Link to={BOWL_PATH} className="text-tab hover:underline" title={TAB_HOVER_BOWL}>
@@ -348,13 +348,9 @@ export function FaqPage() {
                       <a href="/llms.txt" className="text-oss hover:underline" title="Instructions module">
                         Open /llms.txt — instructions module
                       </a>
-                    ) : item.id === "go-live" || item.id === "oss-roadmap" || item.id === "pred-live-goal" ? (
+                    ) : item.id === "go-live" || item.id === "oss-roadmap" ? (
                       <Link to={OSS_ROADMAP_PATH} className="text-oss hover:underline" title={TAB_HOVER_OSS_ROADMAP}>
                         Open {TAB_OSS_ROADMAP} — {OSS_ROADMAP_HEADLINE}
-                      </Link>
-                    ) : item.id === "s1r1us-predictions" || item.id === "pred-grant" || item.id === "pred-board" ? (
-                      <Link to="/pr3d" className="text-tab hover:underline" title="S1R1US Pr3d1ctions">
-                        Open S1R1US Pr3d1ctions — paper book
                       </Link>
                     ) : item.id === "call-out-welcome" ? (
                       <Link to={CALLOUT_WELCOME_PATH} className="text-tab hover:underline" title={TAB_HOVER_CALLOUT_WELCOME}>

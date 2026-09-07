@@ -62,8 +62,9 @@ describe("championship security sweep", { concurrency: false }, () => {
     assert.equal(MCP_TOOLS.has("lock_set"), false);
     assert.equal(MCP_TOOLS.has("keys_store"), false);
     assert.equal(MCP_TOOLS.has("vpn_connect"), false);
-    assert.equal(MCP_TOOLS.has("pred_list"), true);
-    assert.equal(MCP_TOOLS.has("pred_bet"), true);
+    assert.equal(MCP_TOOLS.has("pred_list"), false);
+    assert.equal(MCP_TOOLS.has("pred_bet"), false);
+    assert.equal(MCP_TOOLS.has("pred_arm"), false);
     assert.equal(MCP_TOOLS.has("pred_live"), false);
   });
 

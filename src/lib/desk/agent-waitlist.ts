@@ -8,6 +8,7 @@ import { agentBlockedPayload } from "./agent-notice";
 import { mandatePublic } from "./mandate";
 import { listGoLiveNotices } from "./go-live-notices";
 import { isBarredAgent } from "./agent-bar";
+import { ADMIN_X_HANDLE, COMPANY_X_HANDLE } from "./x-admin";
 
 export const AGENT_WAITLIST_PATH = "/api/agent/waitlist";
 
@@ -42,12 +43,45 @@ const KINDS = AGENT_KINDS;
 const PATHS = ["/tmp/agent-waitlist.json", "/workspace/data/agent-waitlist.json"];
 const MAX = 400;
 
+const TEST_WAITLIST: { name: string; kind: AgentKind; handle: string | null }[] = [
+  { name: "GROK-BUILD", kind: "grok", handle: null },
+  { name: "MR-R0B0T0-TEST", kind: "human", handle: ADMIN_X_HANDLE },
+  { name: "S1R1US-AI-TEST", kind: "other", handle: COMPANY_X_HANDLE },
+];
+
+function ensureTestWaitlist(s: Store): Store {
+  const names = new Set(s.rows.map((r) => r.name.toLowerCase()));
+  let added = false;
+  const at = "2026-09-07T04:47:00.000Z";
+  for (const row of TEST_WAITLIST) {
+    if (names.has(row.name.toLowerCase())) continue;
+    s.rows = [
+      {
+        name: row.name,
+        kind: row.kind,
+        handle: row.handle,
+        at,
+        invitedAt: null,
+        inviteId: null,
+        mandate: true,
+        ossSupport: true,
+        goLiveNotice: true,
+      },
+      ...s.rows,
+    ].slice(0, MAX);
+    names.add(row.name.toLowerCase());
+    added = true;
+  }
+  if (added) save(s);
+  return s;
+}
+
 function load(): Store {
   for (const p of PATHS) {
     try {
       const raw = JSON.parse(readFileSync(p, "utf8")) as Store;
       if (Array.isArray(raw?.rows)) {
-        return {
+        return ensureTestWaitlist({
           rows: raw.rows.slice(0, MAX).map((r) => ({
             name: r.name,
             kind: r.kind,
@@ -59,13 +93,13 @@ function load(): Store {
             ossSupport: Boolean(r.ossSupport),
             goLiveNotice: true,
           })),
-        };
+        });
       }
     } catch {
       /* missing */
     }
   }
-  return { rows: [] };
+  return ensureTestWaitlist({ rows: [] });
 }
 
 function save(s: Store) {

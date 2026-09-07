@@ -10,9 +10,8 @@ import { LIVE_SIM_NAME, LIVE_SIM_SEO, LIVE_SIM_TZ, liveSimNote, type LiveSimBy, 
 import { CHECKPOINT_BASELINE_N, CHECKPOINT_BUILD_N, checkpointLabel } from "../launch/checkpoint.ts";
 import { GO_LIVE_DEADLINE } from "./go-live.ts";
 import { stampGoLiveNotice } from "./go-live-notices.ts";
-import { setTapeFrozen, readLastGood, isTapeFrozen } from "./tape-persist.ts";
+import { setTapeFrozen, isTapeFrozen } from "./tape-persist.ts";
 import { writePulse } from "./practice-pulse.ts";
-import { tickPredBook } from "./pred-book.ts";
 
 const PATHS = process.env.NODE_TEST_CONTEXT
   ? ["/tmp/live-sim-test.json"]
@@ -34,21 +33,6 @@ type Store = {
   lastSyncedAt: string | null;
   conflict: LiveSimConflict;
 };
-
-function tickPredFromTape(settleDaily: boolean) {
-  try {
-    const snap = readLastGood()?.snap;
-    tickPredBook({
-      last: snap?.btc?.price ?? null,
-      sma50: snap?.sma50 ?? null,
-      macd50Hist: snap?.macd50?.hist ?? null,
-      macd200Hist: snap?.macd200?.hist ?? null,
-      settleDaily,
-    });
-  } catch {
-    /* paper book optional */
-  }
-}
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -231,7 +215,6 @@ export function healLiveSim() {
   } else if (s.status === "PAUSED" && !frozen) {
     syncPulls(false);
   }
-  if (s.status === "LIVE") tickPredFromTape(false);
   return liveSimPublic();
 }
 
@@ -322,7 +305,6 @@ export function setLiveSimStatus(status: LiveSimStatus, by: Exclude<LiveSimBy, n
   s.practiceKilled = true;
   save(s);
   syncPulls(s.status === "LIVE");
-  tickPredFromTape(s.status === "PAUSED");
   stampGoLiveNotice(
     s.status === "LIVE" ? "SIM_LIVE" : "SIM_PAUSED",
     s.status === "LIVE" ? "G M0D3 AUTO · AI agents simulation LIVE" : "G M0D3 AUTO · AI agents simulation PAUSED",
@@ -379,7 +361,6 @@ export async function tickLiveSimSchedule() {
       s.pausedAt = new Date().toISOString();
       save(s);
       syncPulls(false);
-      tickPredFromTape(true);
       stampGoLiveNotice("SIM_PAUSED", "07:00 ET pause — morning report window", liveSimNote("PAUSED", s.checkpoint));
     } else {
       save(s);
@@ -391,13 +372,11 @@ export async function tickLiveSimSchedule() {
     s.pausedAt = null;
     save(s);
     syncPulls(true);
-    tickPredFromTape(false);
     stampGoLiveNotice("SIM_LIVE", "Simulation resumed — next 24h as-live cycle", liveSimNote("LIVE", s.checkpoint));
   } else {
     save(s);
     if (s.status === "LIVE") {
       syncPulls(true);
-      tickPredFromTape(false);
     }
   }
 }
