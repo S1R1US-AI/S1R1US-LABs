@@ -64,7 +64,7 @@ Donations cover web hosting, s1r1us.ai registration, and operation of the open-s
 
 ## Publish (GitHub + DigitalOcean)
 
-See [DEPLOY.md](DEPLOY.md). App Platform: **Dockerfile**, HTTP **8080**, **1 GB RAM**, autodeploy **off**. Custom domain **s1r1us.ai** is attached. Keep GoDaddy nameservers; A records to DigitalOcean ingress IPs.
+See [DEPLOY.md](DEPLOY.md). App Platform: **Dockerfile**, HTTP **8080**, **1 GB RAM**, autodeploy **on** (`main` → DigitalOcean project **live-production**). Custom domain **s1r1us.ai** is attached. Keep GoDaddy nameservers; A records to DigitalOcean ingress IPs.
 
 Node 22. Host: DigitalOcean App Platform. No Google DNS.
 

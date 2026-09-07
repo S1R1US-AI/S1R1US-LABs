@@ -10,7 +10,7 @@ Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + Pr3d lock + morning p
 | Repo | https://github.com/S1R1US-AI/S1R1US-LABs |
 | Release | https://github.com/S1R1US-AI/S1R1US-LABs/releases/tag/n3w-web-app-install-deploy-68 |
 | Runtime | prebuilt `.output` · `NITRO_PRESET=node-server` |
-| Host | DigitalOcean App Platform · Dockerfile · HTTP 8080 · 1 GB · autodeploy **off** |
+| Host | DigitalOcean App Platform · Dockerfile · HTTP 8080 · 1 GB · autodeploy **on** (`main` → live-production) |
 
 ## What this fold includes
 
@@ -24,13 +24,13 @@ Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + Pr3d lock + morning p
 - As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68 (`CHECKPOINT_FOLD` 2026-09-07T03:44:00.000Z). Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
 - FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use` `#s1r1us-predictions` `#pred-board` `#morning-report`. FinCEN s8 LOCKED.
 - Official X `@S1R1US_AI`. This host never places Coinbase orders.
-- Source for this fold is on **`main`** and **`checkpoint/n3w-web-app-install-deploy-68`** (not the protected tag). DigitalOcean: rebuild copies `.output` — click **Deploy** of that branch. Autodeploy stays **off**. Do not move the tag.
+- Source for this fold is on **`main`** and **`checkpoint/n3w-web-app-install-deploy-68`** (not the protected tag). DigitalOcean live-production: `deploy_on_push: true` on `main` — rebuild copies `.output`, then push. Do not move the tag.
 
 ## Repair / rebuild
 
-1. On GitHub, open branch **`checkpoint/n3w-web-app-install-deploy-68`** or **`main`**.
-2. On DigitalOcean, **Deploy** that branch. Autodeploy stays **off**. Do not compile on the 1 GB box — the image copies `.output`.
+1. On GitHub, open branch **`main`** (live) or **`checkpoint/n3w-web-app-install-deploy-68`** (repair).
+2. DigitalOcean project **live-production**. App Spec `github.deploy_on_push: true` on `S1R1US-AI/S1R1US-LABs` / `main`. Do not compile on the 1 GB box — the image copies `.output`.
 3. Keep encrypted env (`BETTER_AUTH_SECRET`, `GROK_AUTH_CLIENT_SECRET`). `BETTER_AUTH_URL` = `https://s1r1us.ai`.
-4. Env keys do not need to change for this fold.
+4. After the App Spec save, pushes to `main` redeploy. Env keys do not need to change for this fold.
 
 See [LAUNCH.md](LAUNCH.md) and [DEPLOY.md](DEPLOY.md).

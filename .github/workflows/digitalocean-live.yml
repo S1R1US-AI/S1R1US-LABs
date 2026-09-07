@@ -1,0 +1,28 @@
+# Manual backup deploy for DigitalOcean project live-production.
+# Live path is App Platform deploy_on_push: true on main (see .do/app.yaml).
+# Do not add `on: push` here — that would double-deploy against App Platform.
+#
+# First time: GitHub → Settings → Secrets and variables → Actions
+#   DIGITALOCEAN_ACCESS_TOKEN = DigitalOcean personal access token (write)
+# Then Actions → Deploy live-production → Run workflow.
+name: Deploy live-production
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy s1r1us.ai to DigitalOcean live-production
+        uses: digitalocean/app_action/deploy@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          app_spec_location: .do/app.yaml
+          project_id: b0289cfa-8b5c-4661-b433-b8470a1fb120
+          print_build_logs: true
+          print_deploy_logs: true

@@ -1,4 +1,11 @@
-# N3W Web App Installation Build (new theme) — DEPLOY #68. Autodeploy off.
+# s1r1us.ai live production — DigitalOcean App Platform
+# Project: live-production (id b0289cfa-8b5c-4661-b433-b8470a1fb120)
+# Staging project first-project is separate — do not point this spec at staging.
+# GitHub repo format is owner/repo: S1R1US-AI/S1R1US-LABs
+# Never s1r1us.ai/your-repo. deploy_on_push: true = every push to main rebuilds live.
+# Dockerfile copies prebuilt .output (no compile on the 1 GB box).
+# Encrypted env (BETTER_AUTH_SECRET, GROK_AUTH_CLIENT_SECRET) lives on the dashboard.
+# When you Edit App Spec, change only the github block — do not drop SECRET rows.
 name: s1r1us-labs
 region: nyc
 alerts:
@@ -22,7 +29,7 @@ services:
     github:
       repo: S1R1US-AI/S1R1US-LABs
       branch: main
-      deploy_on_push: false
+      deploy_on_push: true
     http_port: 8080
     instance_count: 1
     instance_size_slug: apps-s-1vcpu-1gb-fixed
@@ -51,5 +58,5 @@ services:
         value: "https://auth.grok.me"
         scope: RUN_TIME
       - key: GROK_AUTH_CLIENT_ID
-        value: "grok_a3389f926a0c42b3b1c95fec1287e3ef"
+        value: grok_a3389f926a0c42b3b1c95fec1287e3ef
         scope: RUN_TIME

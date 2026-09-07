@@ -7,9 +7,9 @@ Production baseline after the professional carbon-fiber desk theme. Folded 2026-
 - Branch: `main`
 - Official checkpoint tag: `n3w-web-app-install-deploy-68`
 - Official checkpoint branch: `checkpoint/n3w-web-app-install-deploy-68`
-- Host: DigitalOcean App Platform, Dockerfile, HTTP 8080, 1 GB, autodeploy **off**
+- Host: DigitalOcean App Platform, Dockerfile, HTTP 8080, 1 GB, autodeploy **on** (`main` → live-production)
 
-This tag is the verified live desk. If the site needs repair or rebuild, deploy **this tag** (or the checkpoint branch). After a fold, rebuild `.output` here, push GitHub, then click **Deploy** on DigitalOcean.
+This tag is the verified live desk. If the site needs repair or rebuild, deploy **this tag** (or the checkpoint branch). After a fold, rebuild `.output`, push `main`, and live-production autodeploys.
 
 ## What is on
 
@@ -26,7 +26,6 @@ This tag is the verified live desk. If the site needs repair or rebuild, deploy 
 
 - Live Coinbase orders (`LIVE_UNLOCKED = false`, `LAUNCH_LIVE_TRADES = false`)
 - Paper / practice fills (`fillsAllowed = false`). Extra AUTO ticks off. Live tape still runs.
-- Autodeploy
 - Public source pack / theme test
 
 ## Folded into #68 (6 Sep)
@@ -45,7 +44,7 @@ This tag is the verified live desk. If the site needs repair or rebuild, deploy 
 
 ## DigitalOcean
 
-1. GitHub `main` (or tag `n3w-web-app-install-deploy-68`) has the prebuilt `.output`. Autodeploy stays **off**.
+1. GitHub `main` has the prebuilt `.output`. Autodeploy is **on** (`deploy_on_push: true`) for DigitalOcean project **live-production**. A push to `main` rebuilds https://s1r1us.ai. Rebuild `.output` before that push.
 2. Encrypted env (dashboard only): `BETTER_AUTH_SECRET`, `GROK_AUTH_CLIENT_SECRET`. Use **Add from .env** — see [DEPLOY.md](DEPLOY.md).
 3. `BETTER_AUTH_URL` = `https://s1r1us.ai`
-4. Click **Deploy** after this fold lands on GitHub. Do not compile on the 1 GB box.
+4. Env keys do not need to change for this fold. See [DEPLOY.md](DEPLOY.md) to turn autodeploy on in the Control Panel App Spec.

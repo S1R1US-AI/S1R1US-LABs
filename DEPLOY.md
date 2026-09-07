@@ -1,6 +1,6 @@
 # Publish [ S1R1U$ <<L@B$>> ] — GitHub + DigitalOcean
 
-**Official checkpoint:** tag `n3w-web-app-install-deploy-68` · see [CHECKPOINT.md](CHECKPOINT.md). If the site needs repair, deploy that tag.
+**Official checkpoint:** tag `n3w-web-app-install-deploy-68` · see [CHECKPOINT.md](CHECKPOINT.md). If the site needs repair, deploy that tag or `main`.
 
 **N3W Web App Installation Build (new theme) — DEPLOY #68** — carbon-fiber desk. Live tape on. Live trades off. Paper fills off. Would-accumulate call board on. Read-only agent feed on. W1S3 0WL$ Forum. R0B0T$ ACT1VAT3. Morning report library (admin). Sitemap index.
 
@@ -14,17 +14,52 @@ See [LAUNCH.md](LAUNCH.md).
 Node 22 web desk. Docker build uses `NITRO_PRESET=node-server` and listens on **8080**.  
 Do **not** commit wallets, CDP secrets, Yubi seeds, `.env`, or `*.pass.txt`.
 
-## DigitalOcean App Platform
+## DigitalOcean App Platform — live production
 
-1. GitHub `S1R1US-AI/S1R1US-LABs` branch **`main`**
-2. Source directory **blank** (never `/`)
-3. Dockerfile at repo root, HTTP **8080**
-4. Autodeploy **off**
-5. Size: **1 vCPU / 1 GB**
-6. App spec: use `.do/app.yaml` (service name `web`, no buildpack stack)
-7. `NODE_ENV=production` **run time only**. No `NODE_OPTIONS`. No database.
-The Docker image is **runtime-only** (copies `.output`, no `npm install` on DigitalOcean). A 1 GB App Platform box was killing the compile in ~1 minute. After a source change, the desk must be rebuilt here and `.output` pushed before you click Deploy.
+| | |
+|---|---|
+| Site | https://s1r1us.ai |
+| GitHub | `S1R1US-AI/S1R1US-LABs` (never `s1r1us.ai/your-repo`) |
+| Branch | `main` |
+| Autodeploy | **on** (`deploy_on_push: true`) — a push to `main` rebuilds live |
+| Spec | [`.do/app.yaml`](.do/app.yaml) |
+| App name | `s1r1us-labs` |
+| Live project | **live-production** (`b0289cfa-8b5c-4661-b433-b8470a1fb120`) |
+| Staging project | **first-project** (leave it; do not point this spec at staging) |
+| Dockerfile | root · HTTP **8080** · copies prebuilt `.output` · **1 GB** |
+| Source directory | blank (never `/`) |
 
+The 1 GB box cannot compile. The image copies `.output`. After a source change, rebuild `.output` (`npm run build:do`) and **commit it with the source** before you push `main`. Then DigitalOcean deploys by itself.
+
+Only **one** App Platform app may own `S1R1US-AI/S1R1US-LABs`. If staging in `first-project` already uses that repo, disconnect it or move it off `main` before live-production takes the repo.
+
+### Turn autodeploy on (one Control Panel pass)
+
+DigitalOcean cannot change the GitHub repo from a button — you edit the App Spec. Encrypted env stays on the dashboard. **Change only the `github` block.** Do not delete SECRET rows.
+
+1. Open project **live-production** (not first-project).
+2. Open the **s1r1us-labs** app that serves s1r1us.ai. If the app still lives in first-project, Settings → move it into live-production first.
+3. **Settings → App Spec → Edit**.
+4. Set the `github` block to exactly:
+
+```yaml
+github:
+  repo: S1R1US-AI/S1R1US-LABs
+  branch: main
+  deploy_on_push: true
+```
+
+5. Save / **Upload File**. The app rebuilds.
+6. If DigitalOcean asks to authorize GitHub, approve the DigitalOcean GitHub App on org **S1R1US-AI** for repo **S1R1US-LABs**.
+7. Confirm encrypted **`BETTER_AUTH_SECRET`** and **`GROK_AUTH_CLIENT_SECRET`** are still there after save.
+
+New app (only if live-production has none): Create App → GitHub → `S1R1US-AI/S1R1US-LABs` → branch `main` → Autodeploy **on** → Dockerfile · HTTP 8080 · 1 GB → then **Add from .env** (below) and attach s1r1us.ai.
+
+### Optional GitHub Action (manual backup)
+
+Native autodeploy is the live path. Do **not** also run the Action on every push (that double-deploys).
+
+[`.github/workflows/digitalocean-live.yml`](.github/workflows/digitalocean-live.yml) is **Run workflow** only. Add GitHub secret `DIGITALOCEAN_ACCESS_TOKEN` (DigitalOcean personal access token, write). Then Actions → **Deploy live-production** → Run workflow.
 
 ## GoDaddy DNS (already set)
 
@@ -49,7 +84,7 @@ Then DigitalOcean **Settings → Domains → add s1r1us.ai** (and www). TLS issu
 2. Replace `PASTE_GROK_APP_SETTINGS_CLIENT_SECRET` with the real secret from **Grok App Settings → Auth**.
 3. Confirm `GROK_AUTH_CLIENT_ID` is the full `grok_a3389f926a0c42b3b1c95fec1287e3ef` (no ellipsis). Do not encrypt the client id so you can read it.
 4. If `BETTER_AUTH_SECRET` is already encrypted on the host, keep that row — do not overwrite it.
-5. Save, then Deploy tag `n3w-web-app-install-deploy-68`.
+5. Save. Autodeploy on `main` picks up later pushes.
 
 Template in git: [`.env.example`](.env.example). Filled `.env` is gitignored.
 
@@ -66,7 +101,7 @@ Template in git: [`.env.example`](.env.example). Filled `.env` is gitignored.
 
 X sign-in on https://s1r1us.ai/login uses **Continue with X** (Grok broker → X). The preview OAuth client only allows `*.grok-sandbox.com`. Production needs the `GROK_AUTH_*` pair above so the callback `https://s1r1us.ai/api/auth/oauth2/callback/grok-x` is accepted.
 
-After env is saved: **Redeploy**. Sign in as the operator X account, then name + password. Other X accounts are users only.
+Sign in as the operator X account, then name + password. Other X accounts are users only.
 
 Do not add Google DNS. No `DATABASE_URL` required (PGLite).
 
