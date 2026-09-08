@@ -1,4 +1,4 @@
-/* Gold shimmer — same as .gold-css / godzilla-shift */
+/* Gold shimmer — same as .gold-css */
 .desk-tabs a.pred-nav,
 .pred-nav,
 .pred-title {
@@ -25,9 +25,9 @@
   box-shadow: inset 0 -2px 0 #ffd24a;
 }
 
-/* Kill the old mid-menu text handle. Avatar chip (has img) stays. */
+/* One official chip only (data-x-chip). Hide leftover @S1R1US_AI text links. */
+a.x-handle-nav,
 .desk-tabs a.x-handle-nav,
-header.desk-nav-fiber a.x-handle-nav,
-header.desk-nav-fiber a[href="https://x.com/S1R1US_AI"]:not(:has(img)) {
+header.desk-nav-fiber a[href="https://x.com/S1R1US_AI"]:not([data-x-chip]) {
   display: none !important;
 }
