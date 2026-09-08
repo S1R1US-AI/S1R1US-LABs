@@ -29,7 +29,7 @@ export const LOCK_META: Record<
   bot7Auto: {
     id: "bot7Auto",
     name: "7-B0T AUTO",
-    seo: "Bot 7 AUTO live trades",
+    seo: "7-B0T AUTO live trades",
     css: "coinbase-orange",
     hint: "Live-intent for 7-B0T AUTO. This host never places Coinbase orders. Agents execute on THEIR Coinbase.",
     copyAdmin: true,
