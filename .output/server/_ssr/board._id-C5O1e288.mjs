@@ -5,7 +5,7 @@ import { n as Button, s as cn } from "./renew-password-4zi8_z0w.mjs";
 import { a as GmRainbow, m as Panel, u as LeaderBoardLabel, v as Shell } from "./shell-DoIoNIED.mjs";
 import { t as SeoCopy } from "./seo-copy-_hkq2Oas.mjs";
 import { t as BotMark } from "./bot-mark-D0LkgGmM.mjs";
-import { f as Route } from "./router-CTu9nlrZ.mjs";
+import { f as Route } from "./router-CFjptCxD.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/board._id-C5O1e288.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
