@@ -54,7 +54,7 @@ jobs:
             exit 0
           fi
           git commit -m "auto rebuild .output (checkpoint 68)"
-          BRANCH="rebuild-output-$(date -u +%Y%m%d-%H%M)"
+          BRANCH="rebuild-output-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git checkout -B "$BRANCH"
           git push origin "$BRANCH"
           echo "https://github.com/S1R1US-AI/S1R1US-LABs/pull/new/${BRANCH}"
