@@ -24,6 +24,10 @@ const GM_LIVE = "/workspace/data/gm-live.json";
 
 let mem: LockStore | null = null;
 
+function systemOnly(by: LockPlane) {
+  return by === "system";
+}
+
 function readDisk(): LockStore | null {
   if (typeof window !== "undefined") return null;
   for (const p of PATHS) {
@@ -155,6 +159,7 @@ function stampLock(id: string, locked: boolean) {
 }
 
 export function setDeskMode(mode: DeskMode, by: LockPlane) {
+  if (!systemOnly(by)) return lockStatusPublic();
   const cur = peekLockStore();
   const next: LockStore = { ...cur, mode: mode === "LIVE" ? "LIVE" : "SIM", at: new Date().toISOString(), by };
   save(next);
@@ -169,6 +174,7 @@ export function setDeskMode(mode: DeskMode, by: LockPlane) {
 }
 
 export function setLockInclude(id: LockId, include: boolean, by: LockPlane) {
+  if (!systemOnly(by)) return lockStatusPublic();
   if (!LOCK_IDS.includes(id)) return lockStatusPublic();
   const cur = peekLockStore();
   const next: LockStore = {
@@ -182,6 +188,7 @@ export function setLockInclude(id: LockId, include: boolean, by: LockPlane) {
 }
 
 export function setOneLock(id: LockId, locked: boolean, by: LockPlane) {
+  if (!systemOnly(by)) return lockStatusPublic();
   if (!LOCK_IDS.includes(id)) return lockStatusPublic();
   const cur = peekLockStore();
   const next: LockStore = {
@@ -197,6 +204,7 @@ export function setOneLock(id: LockId, locked: boolean, by: LockPlane) {
 }
 
 export function applyMaster(locked: boolean, by: LockPlane) {
+  if (!systemOnly(by)) return lockStatusPublic();
   const cur = peekLockStore();
   const flags: LockFlags = { ...cur.locked };
   for (const id of LOCK_IDS) {
@@ -216,6 +224,7 @@ export function applyMaster(locked: boolean, by: LockPlane) {
 }
 
 export function setIncludeAll(on: boolean, by: LockPlane) {
+  if (!systemOnly(by)) return lockStatusPublic();
   const cur = peekLockStore();
   const next: LockStore = {
     ...cur,
