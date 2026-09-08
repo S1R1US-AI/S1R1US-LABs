@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -23,7 +24,7 @@ jobs:
         run: npm ci
       - name: Build DigitalOcean bundle
         run: npm run build:do
-      - name: Push branch and open PR
+      - name: Push branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -38,4 +39,7 @@ jobs:
           fi
           git commit -m "rebuild .output from source (PR3D1CT10N$ / checkpoint 68)"
           git push origin "$BRANCH"
-          gh pr create --base main --head "$BRANCH" --title "rebuild .output (checkpoint 68)" --body "Compiled .output from current source. Merge this PR so DigitalOcean can deploy PR3D1CT10N$. Build itself already passed."
+          echo "OPEN_PR=https://github.com/S1R1US-AI/S1R1US-LABs/pull/new/${BRANCH}"
+          echo "Open this URL and merge into main:"
+          echo "https://github.com/S1R1US-AI/S1R1US-LABs/pull/new/${BRANCH}"
+          gh pr create --base main --head "$BRANCH" --title "rebuild .output (checkpoint 68)" --body "Compiled .output from current main. Merge so DigitalOcean deploys PR3D1CT10N$." || echo "PR create blocked — use the pull/new URL above."
