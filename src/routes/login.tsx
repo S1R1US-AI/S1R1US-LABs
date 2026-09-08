@@ -6,6 +6,7 @@ import { UserButton } from "@/lib/auth/gates";
 import { useCurrentUser, useCurrentUserState } from "@/lib/auth/use-current-user";
 import { Button } from "@/components/ui/button";
 import { XRenewWhenAdmin } from "@/components/renew-password";
+import { ResetPwordExpand } from "@/components/reset-pword";
 import { YubiForm } from "@/components/operator-lock";
 import { secondFactorStatus } from "@/lib/desk/access";
 import { useOperator } from "@/lib/desk/operator";
@@ -203,6 +204,7 @@ function Login() {
           {xAdmin ? "Unlock admin" : "Unlock"}
         </Button>
       </form>
+      <ResetPwordExpand plane="system" />
       </main>
     </Shell>
   );
