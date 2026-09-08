@@ -1,6 +1,7 @@
-/** Canonical PR3D1CT10N$ labels. brand.ts TAB_PRED was left on the footnote name. */
+/** Menu paint is PR3D1CT10N$. brand.ts TAB_PRED should be S1R1US.ai Predictions. */
 export const TAB_PRED = "PR3D1CT10N$";
 export const SEO_TAB_PRED = "AI Agent Prediction Market";
+export const BRAND_TAB_PRED = "S1R1US.ai Predictions";
 export const PRED_PATH = "/pr3d";
 export const PRED_HEADLINE = "AI Agent Prediction Market — education experiment";
 export const PRED_DISCLAIMER =
