@@ -1,82 +1,25 @@
-# DEPLOY #68 — system align (2026-09-07)
+# DEPLOY #68
 
-Baseline stays **68**. This fold records SEO / sitemap / schema / roadmap / source alignment before the next prebuilt `.output` rebuild.
+GitHub `main` · live host still needs another `.output` rebuild for the nav tab.
 
-## Source of truth
+## PR3D1CT10N$ in this checkpoint
 
-- GitHub `main`: `S1R1US-AI/S1R1US-LABs`
-- Live host: DigitalOcean App Platform `s1r1us-labs` → `s1r1us.ai`
-- Spec: `.do/app.yaml` `deploy_on_push: true` on `main`
-- Image: `Dockerfile` copies **prebuilt** `.output` (no compile on the 1 GB box)
-- Checkpoint: `src/lib/launch/checkpoint.ts` `CHECKPOINT_BUILD_N = 68`
+- Label **PR3D1CT10N$**. SEO **AI Agent Prediction Market**.
+- Path `/pr3d`. Top nav + footer in `shell.tsx` (restored after placeholder).
+- Page + `GET /api/agent/pred` already on the last live rebuild.
+- Education / proof of concept. Fake token **S1R1U$**. `$` cannot mint a live token. Grant **4,200** paper.
+- Ph0 W@ll3t / ph0 BTC / bets on this host: **off**.
+- Polymarket + Kalshi stay a **7-B0T overlay**.
+- Rank title: **AI AG3NT T0P D0G** (paper).
+- Alignment: no `pred_bet` / `pred_arm` / `orders_create` MCP.
 
-## Mandate rails (must stay green)
+## Rails
 
 - Accumulate bitcoin. Never sell. Never short.
-- `LAUNCH_LIVE_TRADES = false`
-- `PATH_A_LOCKED = true`
-- MCP has no `orders_create`, `hive_withdraw`, `hive_pause`, `lock_set`
-- Alignment Score module: `src/lib/desk/alignment.ts` — score 90+ / fail 0 when rails hold
+- This host never places Coinbase orders.
+- Grey `@S1R1US_AI` mid-nav tab removed. Far-right X chip stays.
+- Unified as-live sim. Morning report 07:30 ET Admin Console.
 
-## SEO + discovery (live 200)
+## Operator
 
-| URL | HTTP |
-| --- | --- |
-| `/` `/roadmap` `/faq` `/pr3d` `/h1v3` | 200 |
-| `/sitemap.xml` `/sitemap-index.xml` `/video-sitemap.xml` | 200 |
-| `/llms.txt` `/.well-known/llms.txt` `/entity.json` `/robots.txt` | 200 |
-| GitHub `S1R1US-AI/S1R1US-LABs` | 200 |
-| X `https://x.com/S1R1US_AI` | 200 |
-
-Live sitemap page locs include home, gm, board, bowl, w0rld, h1v3, pr3d, l0ck, roadmap, agent, forum, compute, app, ios, play, media, search, legal, and agent discovery endpoints.
-
-## Title / copy alignment (source vs live bundle)
-
-Source on `main` (this fold):
-
-- Rank-1 title string: **AI AG3NT T0P D0G** (not GR@Nd M@$T3R)
-- H3LL0 W0RLD comment: `payload` → `/pr3d`, `SW@RM-worm` → `/h1v3`, `ROBOTS ACTIVATE` → `/r0b0ts`
-- Red CSS: `geek greeting only / not a shell`, `BYO C0MPUT3`
-- Top menu: grey `@S1R1US_AI` tab removed from `shell.tsx`; far-right X chip + login stay
-- Hide CSS: `/hide-x-tab.css` + `__root.tsx` stylesheet link
-
-Live DigitalOcean bundle is still an older hashed `.output`:
-
-- `/pr3d` HTML still advertises retired Ph0 W@ll3t / ph0 BTC copy in some crawlers
-- Greeting JS still the pre-payload / pre-red-BYO line
-- Grey handle tab still in live `shell-*.js` until rebuild
-
-**Rebuild gate (required for 100% live match):**
-
-```bash
-npm run build:do
-# commit .output
-# push main → App Platform deploy_on_push
-```
-
-Do not treat a source-only push as a live theme deploy.
-
-## PR3D1CT10N$ posture
-
-- Education / proof-of-concept game. Fake token **S1R1U$**. `$` cannot mint a real token.
-- 7-B0T may read Polymarket / Kalshi as a **sub-analyst overlay only**
-- Alignment check `s-pred-paper`: no `pred_bet` / `pred_arm` / `orders_create` MCP
-- Old paper book / fake wallet must not return in the next `.output`
-
-## Ready / not ready
-
-| Item | Status |
-| --- | --- |
-| Checkpoint number 68 | ready |
-| Mandate + alignment rails in source | ready |
-| Live sitemap + robots + entity + llms | ready (200) |
-| Outbound GitHub + X | ready (200) |
-| Source greeting / menu / hide-x-tab | ready on GitHub |
-| Live `.output` matches GitHub source | **not ready** — rebuild required |
-| DigitalOcean compile-on-box | never — by design |
-
-## Save
-
-Fold stamp: `CHECKPOINT_FOLD = 2026-09-07T17:20:00.000Z`
-Label: `DEPLOY #68`
-Next operator action: `npm run build:do` then push `.output` to `main`.
+Run **Rebuild .output**, open the compare URL if Actions cannot create the PR, merge into `main`, wait DigitalOcean Active, hard-refresh. Then turn rulesets back on.
