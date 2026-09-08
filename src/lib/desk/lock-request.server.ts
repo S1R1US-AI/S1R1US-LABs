@@ -1,55 +1,64 @@
+/** Phone-admin lock change tickets. System admin applies. Never execute from app-admin. */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import {
-  PHONE_REQUESTABLE,
-  type LockChangeRequest,
-  type PhoneRequestId,
-} from "./lock-request.ts";
+import type { LockId } from "./lock-status.ts";
+import { LOCK_IDS } from "./lock-status.ts";
 
-const PATHS = ["/tmp/lock-requests.json", "/workspace/data/lock-requests.json"];
+/** Live-intent rails phone admin may not request-unlock. */
+export const PHONE_REQUEST_BLOCKED: LockId[] = ["bot7Auto", "gmAuto", "gmManual", "agentLive"];
+export const PHONE_REQUEST_OK: LockId[] = ["agents", "hive", "pred"];
 
-function load(): LockChangeRequest[] {
-  for (const p of PATHS) {
-    try {
-      const raw = JSON.parse(readFileSync(p, "utf8")) as LockChangeRequest[];
-      if (Array.isArray(raw)) return raw;
-    } catch {
-      /* missing */
-    }
+export type LockTicket = {
+  id: string;
+  at: string;
+  by: "app-admin";
+  ids: LockId[];
+  locked: boolean;
+  note: string;
+  status: "open" | "applied" | "denied";
+};
+
+const PATH = "/tmp/lock-tickets.json";
+
+function load(): LockTicket[] {
+  try {
+    const raw = JSON.parse(readFileSync(PATH, "utf8")) as LockTicket[];
+    return Array.isArray(raw) ? raw : [];
+  } catch {
+    return [];
   }
-  return [];
 }
 
-function save(rows: LockChangeRequest[]) {
-  const body = JSON.stringify(rows.slice(-80));
-  for (const p of PATHS) {
+function save(rows: LockTicket[]) {
+  try {
+    writeFileSync(PATH, JSON.stringify(rows.slice(-50), null, 2));
+  } catch {
     try {
-      if (p.startsWith("/workspace/data")) mkdirSync("/workspace/data", { recursive: true });
-      writeFileSync(p, body);
+      mkdirSync("/tmp", { recursive: true });
+      writeFileSync(PATH, JSON.stringify(rows.slice(-50), null, 2));
     } catch {
       /* preview */
     }
   }
 }
 
-export function listLockRequests() {
+export function listLockTickets() {
   return load();
 }
 
-export function addLockRequest(input: { ids: string[]; want: "lock" | "unlock"; note?: string }) {
-  const ids = input.ids.filter((id): id is PhoneRequestId =>
-    (PHONE_REQUESTABLE as readonly string[]).includes(id),
-  );
-  if (!ids.length) return { ok: false as const, error: "No requestable rails selected", rows: load() };
-  const row: LockChangeRequest = {
-    id: `req-${Date.now()}`,
+export function fileLockTicket(ids: string[], locked: boolean, note: string): LockTicket | { error: string } {
+  const clean = ids.filter((id): id is LockId => (LOCK_IDS as string[]).includes(id) && (PHONE_REQUEST_OK as string[]).includes(id));
+  if (!clean.length) return { error: "No requestable rails (agents, hive, pred only). Live-intent locks stay system admin." };
+  const row: LockTicket = {
+    id: `t-${Date.now()}`,
     at: new Date().toISOString(),
     by: "app-admin",
-    ids,
-    want: input.want === "unlock" ? "unlock" : "lock",
-    note: (input.note ?? "").slice(0, 280),
+    ids: clean,
+    locked: Boolean(locked),
+    note: String(note || "").slice(0, 240),
     status: "open",
   };
-  const rows = [...load(), row];
+  const rows = load();
+  rows.push(row);
   save(rows);
-  return { ok: true as const, error: null as string | null, rows };
+  return row;
 }
