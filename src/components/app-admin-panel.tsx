@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Lock, LogOut, RefreshCw } from "lucide-react";
 import { AskGrokPanel } from "@/components/ask-grok-panel";
 import { Lock3dStatusPanel } from "@/components/lock3d-status";
+import { LockRequestPanel } from "@/components/lock-request-panel";
 import { MorningReportPdf } from "@/components/morning-report-pdf";
 import { LiveSimPanel } from "@/components/live-sim-panel";
 import { ChampionshipSimPanel } from "@/components/championship-sim-panel";
@@ -235,6 +236,7 @@ function ConsolePane() {
     <div className="mt-6 grid gap-4 lg:grid-cols-2">
       <section className="lg:col-span-2">
         <Lock3dStatusPanel className="mt-0" />
+        <LockRequestPanel />
         <LiveSimPanel token={token} />
         <ChampionshipSimPanel token={token} />
         <MorningReportPdf token={token} canPauseLibrary={false} />
