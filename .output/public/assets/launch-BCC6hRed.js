@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-BWiWt1dD.js";var t=e;export{t as component};
