@@ -7,6 +7,7 @@ import { useCurrentUser, useCurrentUserState } from "@/lib/auth/use-current-user
 import { Button } from "@/components/ui/button";
 import { XRenewWhenAdmin } from "@/components/renew-password";
 import { ResetPwordExpand } from "@/components/reset-pword";
+import { YubiSuggest } from "@/components/yubi-suggest";
 import { YubiForm } from "@/components/operator-lock";
 import { secondFactorStatus } from "@/lib/desk/access";
 import { useOperator } from "@/lib/desk/operator";
@@ -82,6 +83,7 @@ function Login() {
   if (yubiTicket) {
     return (
       <Shell right={<LoginCluster />}>
+        <YubiSuggest />
         <YubiForm />
       </Shell>
     );
@@ -124,6 +126,7 @@ function Login() {
         {idleLocked ? "Idle lock" : "login"}
       </p>
       <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
+      <YubiSuggest />
       {idleLocked ? (
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Screensaver locked the desk. Sign in again with your name and password.
@@ -151,9 +154,8 @@ function Login() {
             </Button>
           ))}
           <p className="text-xs leading-relaxed text-muted">
-            Admin needs the operator X account @_Mr_R0b0t0_, then name and password. Two physical YubiKeys
-            (primary + backup) are the 2FA backup. Other X accounts stay users. They cannot open s1r1us.ai Admin.
-            iOS / Google copy Admin is on the downloaded app.
+            Required: system admin name + password. YubiKey is optional. Operator X @_Mr_R0b0t0_ is still used to bind the session.
+            Other X accounts stay users. iOS / Google copy Admin is on the downloaded app.
           </p>
           {xErr ? <p className="text-sm text-down">{xErr}</p> : null}
         </div>
