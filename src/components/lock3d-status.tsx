@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/shell";
 import { GmRainbow, GoldCss } from "@/components/godzilla-mark";
 import { rainGmBurst } from "@/components/matrix-saver";
+import { LockRequestPanel } from "@/components/lock-request-panel";
 import { fetchLockStatus, setLockStatus } from "@/lib/desk/desk-rpc";
 import { useOperator } from "@/lib/desk/operator";
 import { useAppAdmin } from "@/lib/desk/app-admin-client";
@@ -26,10 +27,11 @@ function useLockAdmin() {
   const sysTok = useOperator((s) => (s.unlocked && s.role === "admin" ? s.token : ""));
   const appTok = useAppAdmin((s) => (s.unlocked ? s.token : ""));
   const token = sysTok || (appTok.startsWith("app.") ? appTok : "");
+  const plane = sysTok ? ("system" as const) : token ? ("app-admin" as const) : null;
   return {
     token,
-    canEdit: Boolean(token),
-    plane: sysTok ? ("system" as const) : token ? ("app-admin" as const) : null,
+    canEdit: plane === "system",
+    plane,
   };
 }
 
@@ -386,7 +388,7 @@ export function Lock3dStatusPanel({ className }: { className?: string }) {
   const { lock, setLock, err, setErr, busy, setBusy } = useLockView();
 
   async function act(input: ActInput) {
-    if (!token) return;
+    if (!token || !canEdit) return;
     setBusy(true);
     setErr(null);
     try {
@@ -413,11 +415,11 @@ export function Lock3dStatusPanel({ className }: { className?: string }) {
       titleClass={masterLocked ? "text-sell" : "text-high"}
     >
       <p className="text-sm leading-relaxed text-muted">
-        System Admin and phone-app Admin share this board. Optional unlocks pick which rails the master lock hits.
-        Live tape is status only. Championship pause stays system Admin. Unlock is live-intent — execute on YOUR
-        Coinbase. This host never places orders.
-        {plane ? ` Signed in as ${plane}.` : " Sign in as Admin to lock or unlock."}
+        System admin is top-level and can change rails. Phone-app admin can view this board and request a change.
+        Live tape is status only. This host never places orders.
+        {plane ? ` Signed in as ${plane}.` : " Sign in as Admin."}
       </p>
+      {plane === "app-admin" ? <LockRequestPanel /> : null}
       {lock ? (
         <div className="mt-3">
           <LockControls lock={lock} canEdit={canEdit} token={token} busy={busy} err={err} onAct={(i) => void act(i)} />
@@ -438,7 +440,7 @@ export function Lock3dRail({
   const { lock, setLock, err, setErr, busy, setBusy } = useLockView();
 
   async function act(input: ActInput) {
-    if (!token) return;
+    if (!token || !canEdit) return;
     setBusy(true);
     setErr(null);
     try {
