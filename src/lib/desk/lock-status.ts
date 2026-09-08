@@ -93,7 +93,7 @@ export type LockStore = {
 };
 
 export const LOCK_GIF_CLOSED = "/lock-closed.gif";
-export const LOCK_GIF_OPEN = "/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif";
+export const LOCK_GIF_OPEN = "/lock-open.gif";
 export const LOCK_GIF_OPEN_ALIAS = "/lock-open.gif";
 export const LOCK_GIF_OPEN_NAME = "AI Agent Lock System for AI Agent BTC Trading Bot";
 
