@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAppAdmin } from "@/lib/desk/app-admin-client";
 import { postLockTicket } from "@/lib/desk/lock-request-rpc";
-import { PHONE_REQUEST_OK } from "@/lib/desk/lock-request.server";
+import { PHONE_REQUEST_OK } from "@/lib/desk/lock-request";
 
 const LABELS: Record<string, string> = {
   agents: "AI Agents",
@@ -19,7 +19,8 @@ export function LockRequestPanel() {
   return (
     <section className="lock-request mt-3 rounded-lg border border-white/10 p-3 text-sm">
       <p className="mb-2">
-        Request a LoCK3D change. System admin applies it. You cannot unlock 7-B0T AUTO / G M0D3 / AI Agents LIVE.
+        Request a LoCK3D change for S1R1US.ai 7-B0T desk rails that phone admin may ask about. System admin applies it.
+        You cannot request unlock of 7-B0T AUTO, G M0D3, or AI Agents LIVE.
       </p>
       <div className="flex flex-wrap gap-3">
         {PHONE_REQUEST_OK.map((id) => (
