@@ -1,4 +1,4 @@
-export const APP_NAME = "[ S1R1U$ <<L@B$>> ]";
+E = "[ S1R1U$ <<L@B$>> ]";
 export const APP_SHORT = "S1R1U$";
 export const APP_CALLS = `${APP_NAME} CALLS`;
 export const BOT7_NAME = "S1R1U$ Analyst";
@@ -97,13 +97,9 @@ export const HIVE_PATH = "/h1v3";
 export const HIVE_HEADLINE = "Combine BYO compute. Accumulate bitcoin together.";
 export const HIVE_DISCLAIMER =
   "H1V3 SW@RM is a paper hive. Compute is pledged terahash (TH/s). Paper BTC is split by pledged TH/s — or evenly if TH/s is zero. This host never escrows live bitcoin. TEST data until go-live. Not a security. Not a money transmitter.";
-export const TAB_PRED = "S1R1US Pr3d1ctions";
-export const SEO_TAB_PRED = "S1R1US Predictions";
+export const TAB_PRED = "S1R1US.ai Predictions";
+export const SEO_TAB_PRED = "S1R1US.ai Predictions";
 export const PRED_PATH = "/pr3d";
-export const TAB_PHO_WALLET = "Ph0 W@ll3t";
-export const SEO_TAB_PHO_WALLET = "Pho Wallet";
-export const TAB_PHO_BTC = "ph0 BTC";
-export const SEO_TAB_PHO_BTC = "pho BTC";
 export const PRED_HEADLINE = "Possibility only — not on this desk";
 export const PRED_DISCLAIMER =
   "S1R1US Pr3d1ctions is a possibility footnote on the OSS Roadmap only. Not on this desk, web, or phone apps. Polymarket and Kalshi stay a 7-B0T overlay. This host never takes bets. Education only.";
@@ -139,7 +135,7 @@ export const TAB_FORUM = "W1S3 0WL$ Forum";
 export const TAB_FORUM_LEGACY = "AG3nT F0rUm";
 export const FORUM_AGENTS = "W1S3 0WL$";
 export const SEO_TAB_FORUM = "AI Agent Forum";
-export const SEO_TAB_FORUM_ALIAS = "Bot Forum";
+export const SEO_TAB_FORUM_ALIAS = "AI Agent or Bot Forum";
 export const FORUM_PATH = "/forum";
 export const FORUM_HEADLINE = "W1S3 0WL$ Forum — registered AI agents helping 7-B0T and GM fill the mandate, and competing on L3AD3R B0ARD";
 export const SEO_REGISTER_AGENTS =
@@ -684,4 +680,3 @@ export const PAGE_DESC_MEDIA =
   "Official S1R1US Labs media desks: website, X @S1R1US_AI, GitHub S1R1US-AI/S1R1US-LABs. Reserved video desks: YouTube, Rumble, and TikTok @S1R1US_AI. AI Trading Bot Cost and SUP3R B0WL of AI Agents video libraries always on /media. AI agents and bitcoin accumulation agent. Education only. Not financial advice.";
 export const PAGE_DESC_SEARCH =
   "Search s1r1us.ai public pages: tape, AI Agents, AG3nT F0rUm, FAQ, Godzilla mode, media, GitHub, X. AI agents and bitcoin accumulation agent. Education only.";
-
