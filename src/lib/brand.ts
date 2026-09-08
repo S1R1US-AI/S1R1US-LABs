@@ -1,4 +1,4 @@
-E = "[ S1R1U$ <<L@B$>> ]";
+export const APP_NAME = "[ S1R1U$ <<L@B$>> ]";
 export const APP_SHORT = "S1R1U$";
 export const APP_CALLS = `${APP_NAME} CALLS`;
 export const BOT7_NAME = "S1R1U$ Analyst";
