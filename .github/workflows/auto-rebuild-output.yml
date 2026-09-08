@@ -1,10 +1,5 @@
 name: Auto rebuild .output
 
-# Builds the DigitalOcean bundle whenever source on main changes.
-# Does not loop on .output-only commits.
-# If AUTO_OUTPUT_TOKEN has ruleset bypass, it pushes .output to main and DO deploys.
-# Otherwise it pushes rebuild-output-* and prints the pull/new URL.
-
 on:
   workflow_dispatch:
   push:
@@ -30,7 +25,6 @@ permissions:
 
 jobs:
   build:
-    if: github.actor != 'github-actions[bot]' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -38,7 +32,7 @@ jobs:
         with:
           fetch-depth: 1
           ref: main
-          token: ${{ secrets.AUTO_OUTPUT_TOKEN || secrets.GITHUB_TOKEN }}
+          persist-credentials: true
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -47,9 +41,9 @@ jobs:
         run: npm ci
       - name: Build DigitalOcean bundle
         run: npm run build:do
-      - name: Commit .output
+      - name: Push .output branch
         env:
-          GH_TOKEN: ${{ secrets.AUTO_OUTPUT_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -e
           git config user.name "github-actions[bot]"
@@ -60,13 +54,8 @@ jobs:
             exit 0
           fi
           git commit -m "auto rebuild .output (checkpoint 68)"
-          if [ -n "${{ secrets.AUTO_OUTPUT_TOKEN }}" ]; then
-            git push origin HEAD:main
-            echo "Pushed .output to main. DigitalOcean deploy_on_push should start."
-            exit 0
-          fi
           BRANCH="rebuild-output-$(date -u +%Y%m%d-%H%M)"
-          git branch -M "$BRANCH"
+          git checkout -B "$BRANCH"
           git push origin "$BRANCH"
           echo "https://github.com/S1R1US-AI/S1R1US-LABs/pull/new/${BRANCH}"
-          gh pr create --base main --head "$BRANCH" --title "auto rebuild .output" --body "Merge so s1r1us.ai gets this compile." || true
+          gh pr create --base main --head "$BRANCH" --title "auto rebuild .output" --body "Merge so s1r1us.ai gets this compile." || echo "Open the pull/new URL above."
