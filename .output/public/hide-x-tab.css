@@ -1,5 +1,7 @@
+a.x-handle-nav,
 .desk-tabs a.x-handle-nav,
 .desk-tabs a.x-handle-nav:hover,
-.desk-tabs a.x-handle-nav:focus {
+.desk-tabs a.x-handle-nav:focus,
+header.desk-nav-fiber a[href="https://x.com/S1R1US_AI"]:not([data-x-chip]) {
   display: none !important;
 }
