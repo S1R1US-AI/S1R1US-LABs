@@ -1,0 +1,72 @@
+name: Auto rebuild .output
+
+# Builds the DigitalOcean bundle whenever source on main changes.
+# Does not loop on .output-only commits.
+# If AUTO_OUTPUT_TOKEN has ruleset bypass, it pushes .output to main and DO deploys.
+# Otherwise it pushes rebuild-output-* and prints the pull/new URL.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "package.json"
+      - "package-lock.json"
+      - "vite.config.*"
+      - "Dockerfile"
+      - ".do/**"
+      - "scripts/**"
+      - "app.config.*"
+
+concurrency:
+  group: auto-rebuild-output
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: main
+          token: ${{ secrets.AUTO_OUTPUT_TOKEN || secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Build DigitalOcean bundle
+        run: npm run build:do
+      - name: Commit .output
+        env:
+          GH_TOKEN: ${{ secrets.AUTO_OUTPUT_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .output
+          if git diff --cached --quiet; then
+            echo "No .output changes"
+            exit 0
+          fi
+          git commit -m "auto rebuild .output (checkpoint 68)"
+          if [ -n "${{ secrets.AUTO_OUTPUT_TOKEN }}" ]; then
+            git push origin HEAD:main
+            echo "Pushed .output to main. DigitalOcean deploy_on_push should start."
+            exit 0
+          fi
+          BRANCH="rebuild-output-$(date -u +%Y%m%d-%H%M)"
+          git branch -M "$BRANCH"
+          git push origin "$BRANCH"
+          echo "https://github.com/S1R1US-AI/S1R1US-LABs/pull/new/${BRANCH}"
+          gh pr create --base main --head "$BRANCH" --title "auto rebuild .output" --body "Merge so s1r1us.ai gets this compile." || true
