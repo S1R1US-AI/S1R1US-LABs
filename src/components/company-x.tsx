@@ -29,7 +29,7 @@ export function CompanyAvatar({
   );
 }
 
-/** Hidden until a live (non-blocked) company handle is set. */
+/** Official far-right X chip only. */
 export function CompanyXChip({ className }: { className?: string }) {
   if (!companyHandleSet() || !COMPANY_X_URL) return null;
   return (
@@ -37,6 +37,7 @@ export function CompanyXChip({ className }: { className?: string }) {
       href={COMPANY_X_URL}
       target="_blank"
       rel="noreferrer"
+      data-x-chip="1"
       className={cn("inline-flex items-center gap-2", className)}
       aria-label={`${COMPANY_X_NAME || COMPANY_X_LABEL} on X · ${LABS_NAME} ${APP_NAME} · AI agents · bitcoin accumulation agent`}
     >
