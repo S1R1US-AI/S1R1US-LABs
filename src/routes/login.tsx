@@ -139,8 +139,11 @@ function Login() {
               type="button"
               onClick={() => {
                 setXErr(null);
-                void signIn(p.providerId, { callbackURL: "/login", errorCallbackURL: "/login" }).catch(() => {
-                  setXErr("X sign-in failed. Try again.");
+                void Promise.race([
+                  signIn(p.providerId, { callbackURL: "/login", errorCallbackURL: "/login" }),
+                  new Promise((_, reject) => setTimeout(() => reject(new Error("x-timeout")), 25_000)),
+                ]).catch(() => {
+                  setXErr("X sign-in hung or failed. Use @_Mr_R0b0t0_. Check GROK_AUTH_CLIENT_SECRET on DigitalOcean. Try again.");
                 });
               }}
             >
