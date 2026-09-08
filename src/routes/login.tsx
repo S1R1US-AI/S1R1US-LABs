@@ -43,7 +43,7 @@ function Login() {
     if (typeof window === "undefined") return;
     const q = new URLSearchParams(window.location.search).get("error");
     if (q) {
-      setXErr("X sign-in did not finish. Add GROK_AUTH_CLIENT_SECRET on the host, redeploy, then Continue with X again.");
+      setXErr("X sign-in did not finish. Allow popups for s1r1us.ai, use @_Mr_R0b0t0_, then try again.");
     }
   }, []);
 
@@ -141,9 +141,9 @@ function Login() {
                 setXErr(null);
                 void Promise.race([
                   signIn(p.providerId, { callbackURL: "/login", errorCallbackURL: "/login" }),
-                  new Promise((_, reject) => setTimeout(() => reject(new Error("x-timeout")), 25_000)),
+                  new Promise((_, reject) => setTimeout(() => reject(new Error("x-timeout")), 90_000)),
                 ]).catch(() => {
-                  setXErr("X sign-in hung or failed. Use @_Mr_R0b0t0_. Check GROK_AUTH_CLIENT_SECRET on DigitalOcean. Try again.");
+                  setXErr("X is still waiting. Allow popups, finish X as @_Mr_R0b0t0_, or use the X chip at the far right of the menu.");
                 });
               }}
             >
