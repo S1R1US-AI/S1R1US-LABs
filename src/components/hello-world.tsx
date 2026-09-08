@@ -28,10 +28,10 @@ const COMMENT = "text-[#6a9955]";
 const COMMENT_LINK =
   "font-semibold tracking-tight text-[#9cdcfe] underline decoration-[#6a9955] underline-offset-2 hover:text-[#ce9178]";
 const RED =
-  "text-sell font-semibold tracking-tight underline decoration-sell underline-offset-2";
+  "font-semibold tracking-tight text-[#e10600] underline decoration-[#e10600] underline-offset-2";
 
 export function HelloWorld() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const greet = `"welcome to ${APP_NAME}"`;
   return (
     <div className="mt-4">
@@ -78,7 +78,7 @@ export function HelloWorld() {
             payload
           </Link>
           <span className={COMMENT}>{" / "}</span>
-          <span className="text-sell">geek greeting only / not a shell</span>
+          <span className="font-semibold text-[#e10600]">geek greeting only / not a shell</span>
           <span className={COMMENT}>{" / "}</span>
           <Link to="/r0b0ts" className={COMMENT_LINK} title={TAB_HOVER_ROBOTS} aria-label={TAB_HOVER_ROBOTS}>
             ROBOTS ACTIVATE
