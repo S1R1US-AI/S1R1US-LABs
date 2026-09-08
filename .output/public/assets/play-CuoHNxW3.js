@@ -1,0 +1,1 @@
+import{t as e}from"./mobile-app-page-BSB2a16e.js";var t=e;export{t as component};
