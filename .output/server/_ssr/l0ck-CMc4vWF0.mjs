@@ -10,7 +10,7 @@ import { i as LockHead, r as LockBoard } from "./lock3d-status-31_qmziL.mjs";
 import { t as SeoCopy } from "./seo-copy-_hkq2Oas.mjs";
 import { t as QuantFlexWelcome } from "./quant-flex-welcome-D4GkLOv9.mjs";
 import { n as CollapseSummary } from "./collapse-summary-BuyvI4TS.mjs";
-import { a as LOCK_BANNER_ASK, c as LOCK_IMG_SEO, d as lockWelcomePublic, i as LOCK_AGENT_WELCOME, k as GITHUB_REPO_URL, l as LOCK_LIVE_VS_SIM, o as LOCK_HEADLINE, s as LOCK_HOW_TO_TOGGLE, u as LOCK_TUTORIAL } from "./router-DOK25ClK.mjs";
+import { a as LOCK_BANNER_ASK, c as LOCK_IMG_SEO, d as lockWelcomePublic, i as LOCK_AGENT_WELCOME, k as GITHUB_REPO_URL, l as LOCK_LIVE_VS_SIM, o as LOCK_HEADLINE, s as LOCK_HOW_TO_TOGGLE, u as LOCK_TUTORIAL } from "./router-Cx9a_rxe.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/l0ck-CMc4vWF0.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

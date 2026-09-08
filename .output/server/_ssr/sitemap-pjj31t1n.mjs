@@ -2,7 +2,7 @@ import { S as require_jsx_runtime, v as Link } from "../_libs/@tanstack/react-ro
 import { Ht as SEO_CANONICAL, Vn as TAB_DESK, k as LABS_NAME, r as APP_NAME } from "./brand-1s5EgS5V.mjs";
 import { h as RainbowGodzillaText, m as Panel, s as GodzillaModeLabel, u as LeaderBoardLabel, v as Shell } from "./shell-DoIoNIED.mjs";
 import { t as SeoCopy } from "./seo-copy-_hkq2Oas.mjs";
-import { M as SITEMAP_LOCK_VIEWS, N as SITEMAP_MACHINE, j as PUBLIC_PAGES } from "./router-DOK25ClK.mjs";
+import { M as SITEMAP_LOCK_VIEWS, N as SITEMAP_MACHINE, j as PUBLIC_PAGES } from "./router-Cx9a_rxe.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/sitemap-pjj31t1n.js
 var import_jsx_runtime = require_jsx_runtime();
 function SitemapPage() {
