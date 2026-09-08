@@ -30,7 +30,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          BRANCH="rebuild-output-$(date -u +%Y%m%d-%H%M)"
+          BRANCH="rebuild-output-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git checkout -b "$BRANCH"
           git add .output
           if git diff --cached --quiet; then
