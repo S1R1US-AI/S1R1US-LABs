@@ -1,4 +1,4 @@
-/** Optional admin-panel lock behind a physical YubiKey. Server-only. */
+/** YubiKey is optional. Name+password unlocks system admin. */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { getSql } from "@/lib/db";
 import { webauthnCount } from "./webauthn.server";
@@ -7,8 +7,6 @@ import { yubiRows } from "./yubi.server";
 const PATHS = ["/tmp/admin-yubi-gate.json", "/workspace/data/admin-yubi-gate.json"];
 
 type Gate = { panelLock: boolean; updatedAt: string | null };
-
-const OFF: Gate = { panelLock: false, updatedAt: null };
 
 function readFileGate(): Gate | null {
   for (const p of PATHS) {
@@ -35,18 +33,12 @@ function writeFileGate(g: Gate) {
 }
 
 export function peekYubiPanelLock(): boolean {
-  return readFileGate()?.panelLock ?? false;
+  return false;
 }
 
+/** Login must not block on Yubi. Enrollment stays available. */
 export async function adminPanelYubiLock(): Promise<boolean> {
-  try {
-    const sql = await getSql();
-    const rows = await sql<{ panel_lock: boolean }>`select panel_lock from admin_yubi_gate where id = 'gate' limit 1`;
-    if (rows[0]) return Boolean(rows[0].panel_lock);
-  } catch {
-    /* migrate later */
-  }
-  return readFileGate()?.panelLock ?? false;
+  return false;
 }
 
 export async function setAdminPanelYubiLock(
@@ -55,22 +47,19 @@ export async function setAdminPanelYubiLock(
   const otp = await yubiRows();
   const fido = await webauthnCount();
   const keyCount = otp.length + fido;
-  if (on && keyCount < 1) {
-    return { ok: false, error: "Enroll a YubiKey (Yubico OTP or FIDO2) before locking the admin panel." };
-  }
-  const next: Gate = { panelLock: on, updatedAt: new Date().toISOString() };
+  const next: Gate = { panelLock: false, updatedAt: new Date().toISOString() };
   writeFileGate(next);
   try {
     const sql = await getSql();
     await sql`
       insert into admin_yubi_gate (id, panel_lock, updated_at)
-      values ('gate', ${on}, now())
-      on conflict (id) do update set panel_lock = excluded.panel_lock, updated_at = now()
+      values ('gate', false, now())
+      on conflict (id) do update set panel_lock = false, updated_at = now()
     `;
   } catch {
     /* file is source in preview */
   }
-  return { ok: true, panelLock: on, keyCount, yubicoRecommendTwo: keyCount < 2 };
+  return { ok: true, panelLock: false, keyCount, yubicoRecommendTwo: keyCount < 2 };
 }
 
 export async function adminHasPhysicalKey() {
