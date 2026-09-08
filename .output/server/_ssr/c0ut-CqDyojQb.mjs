@@ -7,7 +7,7 @@ import { S as WorldCupLabel, _ as SeoImage, m as Panel, s as GodzillaModeLabel, 
 import { t as BowlLiveFeed } from "./bowl-live-feed-DU7pSjFc.mjs";
 import { t as SeoCopy } from "./seo-copy-BHvqtygl.mjs";
 import { t as QuantFlexWelcome } from "./quant-flex-welcome-BewlU5X7.mjs";
-import { k as GITHUB_REPO_URL } from "./router-CyklKyA-.mjs";
+import { k as GITHUB_REPO_URL } from "./router-3rMvTF87.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/c0ut-CqDyojQb.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
