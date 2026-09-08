@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-McmmQ_rL.js";var t=e;export{t as component};
