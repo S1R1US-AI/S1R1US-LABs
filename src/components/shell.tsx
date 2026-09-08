@@ -33,7 +33,6 @@ import {
   TAB_HOVER_APP,
   TAB_HOVER_BOARD,
   TAB_HOVER_HIVE,
-  TAB_PRED,
   TAB_HOVER_COFFEE,
   TAB_HOVER_DESK,
   TAB_HOVER_FAQ,
@@ -44,8 +43,9 @@ import {
   TAB_HOVER_LAB,
   TAB_HOVER_SITEMAP,
   TAB_LAB,
-  PRED_PATH,
 } from "@/lib/brand";
+import { TAB_PRED } from "@/lib/pred-labels";
+import "@/components/pred-nav.css";
 import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
 import { GodzillaMark, GodzillaModeLabel, HiveSwarmLabel, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { ForumTitle } from "@/components/forum-title";
@@ -153,10 +153,10 @@ export function Shell({
               to="/pr3d"
               title="AI Agent Prediction Market"
               aria-label="PR3D1CT10N$ AI Agent Prediction Market"
-              className="board-nav gm-nav inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]"
+              className="board-nav gm-nav pred-nav inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]"
               activeProps={{
                 className:
-                  "board-nav gm-nav is-on inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",
+                  "board-nav gm-nav pred-nav is-on inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",
               }}
             >
               {TAB_PRED}
@@ -248,7 +248,7 @@ export function Shell({
               <Link to="/h1v3" className="board-nav gm-nav hive-nav shrink-0 hover:underline" title={TAB_HOVER_HIVE}>
                 <HiveSwarmLabel className="text-[11px] font-semibold" />
               </Link>
-              <Link to="/pr3d" className="board-nav gm-nav shrink-0 hover:underline" title="PR3D1CT10N$ · AI Agent Prediction Market">
+              <Link to="/pr3d" className="board-nav gm-nav pred-nav shrink-0 hover:underline" title="PR3D1CT10N$ · AI Agent Prediction Market">
                 {TAB_PRED}
               </Link>
               <Link to="/l0ck" className="legal-purple shrink-0 hover:underline" title="LoCK3D STATUS (Locked Status) · how to lock and unlock">
