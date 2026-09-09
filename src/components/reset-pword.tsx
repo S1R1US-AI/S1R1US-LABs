@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 
-/** Expandable reset help. Never prints a live password. */
 export function ResetPwordExpand({ plane }: { plane: "system" | "phone" }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="mt-4 rounded-md border border-rule p-3 text-sm">
-      <button type="button" className="text-expand font-medium" onClick={() => setOpen((v) => !v)}>
-        {open ? "Collapse" : "Expand"} reset p-word
+      <button type="button" className="legal-purple font-medium" onClick={() => setOpen((v) => !v)}>
+        {open ? "collapse" : "expand"} reset p-word
       </button>
       {open ? (
         <div className="mt-2 space-y-2 text-muted">
