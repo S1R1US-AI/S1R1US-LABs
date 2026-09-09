@@ -16,7 +16,7 @@ import { c as callStanceClass, n as CallWords, s as bannerTone, t as CallInk, u 
 import { t as rollBots } from "./roll-bots-DkxE5xXa.mjs";
 import { t as SeoCopy } from "./seo-copy-CWb7FcyH.mjs";
 import { t as LiveTracks } from "./live-tracks-CQ9XRf1-.mjs";
-import { z as usePractice } from "./router-D_X72cGA.mjs";
+import { z as usePractice } from "./router-Co3nELh8.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/gm-S95QZT5g.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
