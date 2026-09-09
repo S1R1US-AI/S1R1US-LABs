@@ -4,7 +4,7 @@ import { Rn as TAB_COFFEE, Wn as TAB_FEED_NOW } from "./brand-1s5EgS5V.mjs";
 import { c as HIVE_NO_PROFIT_SHARE, d as hiveResourcePublic, l as HIVE_RESOURCE_COPY } from "./hive-resource-BThKJHxr.mjs";
 import { m as Panel } from "./shell-ClCx_L5Z.mjs";
 import { t as AskGrokPanel } from "./ask-grok-panel-CY-9GrCe.mjs";
-import { C as BYO_CONNECT_DIALOGUE, S as BYO_CONNECT_AUTO, T as byoConnectPublic, w as BYO_CONNECT_HEADLINE } from "./router-D_X72cGA.mjs";
+import { C as BYO_CONNECT_DIALOGUE, S as BYO_CONNECT_AUTO, T as byoConnectPublic, w as BYO_CONNECT_HEADLINE } from "./router-BF2TKr1D.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/byo-connect-panel-UDd6o2UP.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
