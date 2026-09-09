@@ -11,6 +11,7 @@ import { protocolRows, vulnRows } from "./security";
 import { wafStats } from "./waf";
 import { headerPosture } from "./sec-headers";
 import { cachedIntel } from "./threat-intel";
+import { uriHunterFinding } from "./canonical-origin";
 import { underAttack, listActions } from "./auto-defend";
 import { MCP_TOOLS, agentSecurityStats } from "./agent-security";
 import { TERMS_SECTIONS, PRIVACY_SECTIONS } from "@/lib/legal";
@@ -226,6 +227,7 @@ export function runHunter(): HunterReport {
       "verifyAccessToken rejects app. tokens (4-part HMAC pepper s1r1us-app-admin-v1). SYSTEM_ONLY_PATHS stay /admin. Copy-admin cannot claim @_Mr_R0b0t0_ or @S1R1US_AI. Path /app/admin.",
       "Keep two token formats. Never let an app token mint a 3-part admin HMAC.",
     ),
+    uriHunterFinding(),
     finding(
       "h-cup-sim",
       "WP2 Auth",

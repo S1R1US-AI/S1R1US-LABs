@@ -9,6 +9,7 @@
  */
 import { createHash, createPublicKey, randomBytes, verify as cryptoVerify } from "node:crypto";
 import { getSql } from "@/lib/db";
+import { originAllowedPinned, privilegeHostFromHeaders, rpIdPinned } from "./canonical-origin";
 
 export const YUBICO_DOCS = {
   home: "https://www.yubico.com/",
@@ -41,40 +42,24 @@ export function unb64url(s: string) {
   return Buffer.from(s, "base64url");
 }
 
-export function originAllowed(origin: string, requestHost?: string) {
-  try {
-    const u = new URL(origin);
-    if (u.protocol !== "https:" && u.protocol !== "http:") return false;
-    const host = u.hostname.toLowerCase();
-    if (host === "s1r1us.ai" || host === "www.s1r1us.ai") return u.protocol === "https:";
-    if (host === "localhost" || host === "127.0.0.1") return true;
-    const reqHost = (requestHost ?? "").split(",")[0]?.split(":")[0]?.trim().toLowerCase() ?? "";
-    if (reqHost && host === reqHost) {
-      if (u.protocol === "https:") return true;
-      if (host === "localhost" || host === "127.0.0.1") return true;
-    }
-    return false;
-  } catch {
-    return false;
-  }
+export function originAllowed(origin: string, _requestHost?: string) {
+  // Wave 3: matching a foreign Host is not enough. Canonical / loopback only.
+  return originAllowedPinned(origin);
 }
 
 export function rpIdOf(origin: string) {
-  try {
-    const host = new URL(origin).hostname.toLowerCase();
-    if (host === "www.s1r1us.ai") return "s1r1us.ai";
-    if (host === "s1r1us.ai") return "s1r1us.ai";
-    return host;
-  } catch {
-    return "s1r1us.ai";
-  }
+  return rpIdPinned(origin);
 }
 
 export async function requestHost(): Promise<string> {
   try {
     const { getRequest } = await import("@tanstack/react-start/server");
     const req = getRequest();
-    return (req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? "").split(",")[0]?.trim() ?? "";
+    // Wave 3: X-Forwarded-Host cannot elevate WebAuthn privilege.
+    return privilegeHostFromHeaders({
+      host: req.headers.get("host"),
+      forwardedHost: req.headers.get("x-forwarded-host"),
+    });
   } catch {
     return "";
   }
