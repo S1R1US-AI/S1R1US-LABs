@@ -20,7 +20,7 @@ import { t as TapeFreezeBanner } from "./tape-freeze-DiaBL_Qa.mjs";
 import { t as rollBots } from "./roll-bots-DkxE5xXa.mjs";
 import { t as SeoCopy } from "./seo-copy-CWb7FcyH.mjs";
 import { t as LiveTracks } from "./live-tracks-CQ9XRf1-.mjs";
-import { n as Route } from "./router-D_X72cGA.mjs";
+import { n as Route } from "./router-BF2TKr1D.mjs";
 import { i as TROY_OZ_PER_TONNE } from "./gold-sovereign-BlGdXnIc.mjs";
 import { a as YAxis, c as Line, d as Bar, f as Pie, g as Tooltip, h as ResponsiveContainer, i as LineChart, l as CartesianGrid, m as Cell, n as PieChart, o as XAxis, r as BarChart, s as Area, t as ComposedChart, u as ReferenceLine } from "../_libs/recharts+[...].mjs";
 import { r as TapeChart, t as DeskWorkspace } from "./desk-workspace-Dps-4Jz6.mjs";

@@ -5,7 +5,7 @@ import { _ as SeoImage, m as Panel, s as GodzillaModeLabel, u as LeaderBoardLabe
 import { t as BowlLiveFeed } from "./bowl-live-feed-C3dBmYrP.mjs";
 import { t as SeoCopy } from "./seo-copy-CWb7FcyH.mjs";
 import { t as QuantFlexWelcome } from "./quant-flex-welcome-CEYiIRoG.mjs";
-import { D as BOWL_LIBRARY_ZIP, E as BOWL_LIBRARY_NAME, P as VIDEO_CLIPS, k as GITHUB_REPO_URL } from "./router-D_X72cGA.mjs";
+import { D as BOWL_LIBRARY_ZIP, E as BOWL_LIBRARY_NAME, P as VIDEO_CLIPS, k as GITHUB_REPO_URL } from "./router-BF2TKr1D.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/bowl-lQHEwycv.js
 var import_jsx_runtime = require_jsx_runtime();
 var IMG = "/super-bowl-ai-agents-banner.jpg";
