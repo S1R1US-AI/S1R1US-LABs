@@ -1,30 +1,31 @@
 /**
- * The upstream identity providers this app offers for sign-in (via the broker).
+ * Sign-in providers.
  *
- * Source of truth for BOTH the server (`server.ts`, one `genericOAuth` provider
- * per entry) and the client (`client.ts` / sign-in buttons). Kept in its own
- * dependency-free module so the client can import it without pulling the
- * server-only Better Auth instance (and `pg`) into the browser bundle.
+ * Production (s1r1us.ai): native X OAuth 2.0 (Better Auth `twitter`).
+ * Callback: https://s1r1us.ai/api/auth/callback/twitter
+ * Grok Auth / grok-x / auth.grok.me is DEAD on production (support will not allowlist).
  *
- * Each app federates to the shared **auth broker** (`GROK_AUTH_ISSUER`), which
- * holds the real Google/X secrets. The app never sees them — it only knows its
- * own per-app client id/secret and which upstream to ask the broker for (`idp`).
- *
- * To add an upstream (e.g. GitHub) once the broker supports it: add one entry
- * here (`{ providerId: "grok-github", idp: "github", label: "GitHub" }`). The
- * `providerId` is this app's local id and the OAuth callback path segment
- * (`/api/auth/oauth2/callback/<providerId>`); `idp` is the hint the broker reads
- * to pick the upstream (Better Auth's id for X is still `twitter`).
+ * Sandbox preview (*.grok-sandbox.com): grok-x via the shared preview broker.
  */
 export type GrokProvider = {
-  /** This app's local provider id; also the callback path segment. */
   providerId: string;
-  /** Upstream hint the broker forwards to (Better Auth social id). */
   idp: string;
-  /** Human label for the sign-in button. */
   label: string;
 };
+
+/** Better Auth social id + callback path segment `/api/auth/callback/twitter`. */
+export const NATIVE_X_PROVIDER_ID = "twitter";
 
 export const GROK_PROVIDERS: readonly GrokProvider[] = [
   { providerId: "grok-x", idp: "twitter", label: "X" },
 ];
+
+export function isPublicS1r1usHost(hostname?: string): boolean {
+  const h = (hostname ?? (typeof window !== "undefined" ? window.location.hostname : "")).toLowerCase();
+  return h === "s1r1us.ai" || h === "www.s1r1us.ai";
+}
+
+/** Which Continue with X provider the browser should start. */
+export function xSignInProviderId(hostname?: string): string {
+  return isPublicS1r1usHost(hostname) ? NATIVE_X_PROVIDER_ID : "grok-x";
+}
