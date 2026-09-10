@@ -5,14 +5,14 @@ import {
   TAB_CALLING_BOTS,
   TAB_COMPUTE,
   TAB_HELLO,
+  TAB_HIVE,
   TAB_HOVER_COMPUTE,
   TAB_HOVER_HELLO,
-  TAB_HOVER_MAX_GAINS,
   TAB_HOVER_HIVE,
+  TAB_HOVER_MAX_GAINS,
   TAB_HOVER_PRED,
   TAB_HOVER_ROBOTS,
   TAB_HOVER_SEND_BTC,
-  TAB_HIVE,
   TAB_MAX_GAINS,
   TAB_PRED,
   TAB_SEND_BTC,
@@ -24,14 +24,9 @@ const ORANGE =
 const BLUE =
   "welcome-blue font-semibold tracking-tight underline decoration-tab underline-offset-2";
 const GRAY = "text-[#c8d0cb]";
-const COMMENT = "text-[#6a9955]";
-const COMMENT_LINK =
-  "font-semibold tracking-tight text-[#9cdcfe] underline decoration-[#6a9955] underline-offset-2 hover:text-[#ce9178]";
-const RED =
-  "font-semibold tracking-tight text-[#e10600] underline decoration-[#e10600] underline-offset-2";
 
 export function HelloWorld() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const greet = `"welcome to ${APP_NAME}"`;
   return (
     <div className="mt-4">
@@ -39,9 +34,10 @@ export function HelloWorld() {
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="block w-full rounded-md text-left hover:bg-fg/4"
+        className="flex w-full items-baseline justify-between gap-3 rounded-md text-left hover:bg-fg/4"
       >
         <p className="welcome-blue text-sm">welcome to {APP_NAME}</p>
+        <span className="expand-ctl shrink-0 font-mono text-[11px]">{open ? "collapse" : "expand"}</span>
       </button>
       <a
         href={GITHUB_URL}
@@ -68,31 +64,29 @@ export function HelloWorld() {
           {"\n"}
           <span className="text-muted">{`00000000  48 33 4c 4c 30 20 57 30  52 4c 44              |${TAB_HELLO}|`}</span>
           {"\n"}
-          <span className={COMMENT}>{"// --[ "}</span>
+          <span className="text-[#6a9955]">{`/* --[ `}</span>
           <Link
             to="/pr3d"
-            className={COMMENT_LINK}
-            title={`${TAB_PRED} · ${TAB_HOVER_PRED}`}
-            aria-label={`Open ${TAB_PRED}`}
+            className="text-[#9cdcfe] underline decoration-[#9cdcfe]/70 underline-offset-2 hover:text-high"
+            title={TAB_HOVER_PRED}
+            aria-label={`${TAB_PRED} · open predictions`}
           >
             payload
           </Link>
-          <span className={COMMENT}>{" / "}</span>
-          <span className="font-semibold text-[#e10600]">geek greeting only / not a shell</span>
-          <span className={COMMENT}>{" / "}</span>
-          <Link to="/r0b0ts" className={COMMENT_LINK} title={TAB_HOVER_ROBOTS} aria-label={TAB_HOVER_ROBOTS}>
+          <span className="text-[#6a9955]">{" / geek greeting only / not a shell / "}</span>
+          <Link to="/r0b0ts" className="text-[#ce9178] underline decoration-[#ce9178]/70 underline-offset-2 hover:underline" title={TAB_HOVER_ROBOTS}>
             ROBOTS ACTIVATE
           </Link>
-          <span className={COMMENT}>{" / "}</span>
+          <span className="text-[#6a9955]">{" / "}</span>
           <Link
             to="/h1v3"
-            className={COMMENT_LINK}
-            title={`${TAB_HIVE} · ${TAB_HOVER_HIVE}`}
-            aria-label={`Open ${TAB_HIVE}`}
+            className="text-[#dcdcaa] underline decoration-[#dcdcaa]/70 underline-offset-2 hover:text-high"
+            title={TAB_HOVER_HIVE}
+            aria-label={`${TAB_HIVE} · open hive swarm`}
           >
             SW@RM-worm
           </Link>
-          <span className={COMMENT}>{" ]--"}</span>
+          <span className="text-[#6a9955]">{" ]-- */"}</span>
           {"\n"}
           <span className={GRAY}>function </span>
           <span className="text-high">main</span>
@@ -140,13 +134,13 @@ export function HelloWorld() {
             to="/compute"
             title={TAB_HOVER_COMPUTE}
             aria-label={TAB_HOVER_COMPUTE}
-            className={RED}
+            className={`${BLUE} font-semibold tracking-tight underline decoration-tab underline-offset-2`}
           >
             "{TAB_COMPUTE}"
           </Link>
           <span className="text-muted">);</span>
           {"\n"}
-          <span className="text-muted">{"}"}</span>
+          <span className="text-muted">{"}\}"}</span>
           {"\n"}
           <span className="text-high">variable</span>
           <span className="text-muted">(load full access); return; run=</span>

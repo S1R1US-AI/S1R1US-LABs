@@ -1,8 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-const CTL = "mt-2 inline-flex min-h-11 items-center text-sm font-semibold legal-purple hover:underline";
-
+/** Purple expand / collapse for summaries longer than two rows. Leader board + FAQ. */
 export function CollapseSummary({
   children,
   className,
@@ -18,13 +17,19 @@ export function CollapseSummary({
   return (
     <div className={className}>
       <div className={cn("text-sm leading-relaxed text-muted", open ? "" : "line-clamp-2")}>{children}</div>
-      <button type="button" className={CTL} aria-expanded={open} onClick={() => setOpen((v) => !v)}>
+      <button
+        type="button"
+        className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-expand hover:underline"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
         {open ? "collapse" : "expand"} {label}
       </button>
     </div>
   );
 }
 
+/** Purple expand / collapse for long ranked lists so two-column boards stay even. */
 export function CollapseMore({
   open,
   onToggle,
@@ -40,7 +45,15 @@ export function CollapseMore({
 }) {
   if (!open && more <= 0) return null;
   return (
-    <button type="button" className={cn(CTL, className)} aria-expanded={open} onClick={onToggle}>
+    <button
+      type="button"
+      className={cn(
+        "mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-expand hover:underline",
+        className,
+      )}
+      aria-expanded={open}
+      onClick={onToggle}
+    >
       {open ? `collapse ${label}` : `expand ${label} · ${more} more`}
     </button>
   );

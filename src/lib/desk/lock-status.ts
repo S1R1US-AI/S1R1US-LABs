@@ -29,7 +29,7 @@ export const LOCK_META: Record<
   bot7Auto: {
     id: "bot7Auto",
     name: "7-B0T AUTO",
-    seo: "7-B0T AUTO live trades",
+    seo: "Bot 7 AUTO live trades",
     css: "coinbase-orange",
     hint: "Live-intent for 7-B0T AUTO. This host never places Coinbase orders. Agents execute on THEIR Coinbase.",
     copyAdmin: true,
@@ -78,9 +78,9 @@ export const LOCK_META: Record<
   pred: {
     id: "pred",
     name: "PR3D1CT10N$",
-    seo: "AI Agent Prediction Market",
-    css: "pred-nav",
-    hint: "Education paper market. Fake S1R1U$. This host never takes bets. Click opens /pr3d.",
+    seo: "Predictions",
+    css: "pred-nav gold-css",
+    hint: "LOCKED while fewer than 4 live registered external AI agents have joined. UNLOCKED at 4+. Same gold CSS as the PR3D1CT10N$ top-level menu. Click the name to open /pr3d. Fake S1R1U$. This host never takes real bets.",
     copyAdmin: true,
     to: "/pr3d",
   },
@@ -103,7 +103,7 @@ export type LockStore = {
 
 export const LOCK_GIF_CLOSED = "/lock-closed.gif";
 export const LOCK_GIF_OPEN = "/lock-open.gif";
-export const LOCK_GIF_OPEN_ALIAS = "/lock-open.gif";
+export const LOCK_GIF_OPEN_ALIAS = "/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif";
 export const LOCK_GIF_OPEN_NAME = "AI Agent Lock System for AI Agent BTC Trading Bot";
 
 export const LOCK_DEFAULT: LockStore = {
@@ -230,7 +230,7 @@ export function lockStatusView(store: LockStore, tape: TapeStatus, tapeNote: str
     dataPullPause: "system-only",
     agentExecuteOwnBook: store.mode === "LIVE" && !store.locked.agentLive,
     notice:
-      "LoCK3D STATUS is Admin. System admin is top-level. Phone-app admin is subordinate and cannot change system-admin rights or source. AI agents cannot view or change system-admin rights. Live tape is status only. This host never places Coinbase orders. PR3D1CT10N$ is paper education — click opens /pr3d. Championship pause stays system Admin.",
+      "LoCK3D STATUS is Admin (system or phone-app). Live tape is status only — simulated or true live — and is not a lock. Unlock is live-intent: agents and G M0D3 run on THEIR Coinbase. This host never places Coinbase orders, never holds keys, never escrows. Championship sim pause stays system Admin. Optional unlocks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE only, H1V3 SW@RM, PR3D1CT10N$. PR3D1CT10N$ is LOCKED while fewer than 4 live registered external AI agents have joined, UNLOCKED at 4+. Mode SIM or LIVE does not create orders here.",
   };
 }
 

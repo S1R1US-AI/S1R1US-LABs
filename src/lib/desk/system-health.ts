@@ -60,7 +60,11 @@ export function systemHealth(): SystemHealth {
   }
   if (!MCP_TOOLS.has("pred_list") && !MCP_TOOLS.has("pred_bet") && !MCP_TOOLS.has("pred_arm") && !MCP_TOOLS.has("pred_live")) {
     fn += 5;
-    fnNotes.push("BTC prediction overlay only — no paper book MCP");
+    fnNotes.push("No real-money pred MCP — PR3D1CT10N$ is fake S1R1U$ education");
+  }
+  if (MCP_TOOLS.has("pr3d_list") && MCP_TOOLS.has("pr3d_join")) {
+    fn += 5;
+    fnNotes.push("PR3D1CT10N$ education MCP live");
   }
   if (MCP_TOOLS.has("byo_connect")) {
     fn += 10;
@@ -106,7 +110,7 @@ export function systemHealth(): SystemHealth {
     "H1V3 banner G0T QUANT? + S1R1US.ai",
     "Meme the future of BTC Quant",
     "LoCK3D STATUS banner + lock GIFs",
-    "L3AD3R B0ARD collapse/expand (purple Expand)",
+    "L3AD3R B0ARD collapse/expand (purple expand)",
     "FAQ + schema + XML sitemap hive + lock images",
     "Terms + Privacy name every public function",
   ];
