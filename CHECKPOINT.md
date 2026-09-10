@@ -1,6 +1,6 @@
 # Official checkpoint — N3W Web App Installation Build (new theme) — DEPLOY #68
 
-Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + morning problems + **Pr3d/Ph0 withdrawn to roadmap footnote** + **source on GitHub**). Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved. Checkpoint number stays **68**.
+Updated 2026-09-07 (DEPLOY #68 fold — **R3CURS1V3 TR@1N sandbox** + professional OSS architecture GIFs + PR3D1CT10N$ education game + LoCK3D STATUS UX). Repair / rebuild from the **checkpoint branch** or **`main`**. The GitHub **tag** `n3w-web-app-install-deploy-68` is protected (original 6 Sep snapshot) and cannot be moved. Checkpoint number stays **68**.
 
 | | |
 |---|---|
@@ -17,12 +17,13 @@ Updated 2026-09-07 (DEPLOY #68 fold — LoCK3D STATUS UX + morning problems + **
 - Carbon-fiber public tape. Would-accumulate call board (bots 1–6, 7-B0T, GM). Live Coinbase **off**. Auto trade **LOCKED**.
 - BTC prediction markets (Polymarket / Kalshi) stay a **7-B0T sub-analyst overlay**. Display only. This host never takes bets.
 - S1R1US Pr3d1ctions paper book, Ph0 W@ll3t, ph0 BTC, and fake wallets are **off** the desk / web / phone apps. Remaining as a brief OSS Roadmap footnote possibility only (`/roadmap#pred-footnote`).
-- LoCK3D STATUS (`/l0ck`): UNLOCKED stacked above LOCKED. Purple **Expand / Collapse** on the LoCK3D STATUS UNLOCKED desk SIM line. Click a lock **NAME** to open that view. Padlocks still only lock or unlock. G M0D3 AUTO / M@NU@L names drop GM matrix rain **2.5s** then open `/gm`. Live tape is status only.
+- LoCK3D STATUS (`/l0ck`): UNLOCKED stacked above LOCKED. Purple **expand / collapse** on the LoCK3D STATUS UNLOCKED desk SIM line. Click a lock **NAME** to open that view. Padlocks still only lock or unlock. Matching cartoon pair: `/lock-closed.gif` LOCKED, `/lock-open.gif` UNLOCKED. G M0D3 AUTO / M@NU@L names drop GM matrix rain **2.5s** then open `/gm`. Live tape is status only.
 - Live feed title: **AI Agent SUP3R B0WL**.
 - Morning report: Alignment Score 1–100 + **Problems found last 24 hours**. healLiveSim keeps data pulls with sim. Stray practice killed.
 - W1S3 0WL$ Forum LIVE. H1V3 SW@RM paper hive. BYO connect. L3AD3R B0ARD / C@LL 0UT / W0rLd CUP.
-- As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68 (`CHECKPOINT_FOLD` 2026-09-07T14:50:00.000Z). Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
-- FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use` `#btc-bets` `#oss-roadmap` `#morning-report`. FinCEN s8 LOCKED.
+- As-live G M0D3 AUTO + AI agents cycle synced to checkpoint 68 (`CHECKPOINT_FOLD` 2026-09-07T16:55:00.000Z). Pause 07:00 ET, morning 07:30 ET, resume. System + copy-admin may pause.
+- R3CURS1V3 TR@1N (`/train`): sandboxed recursive training. Dual gate = mandate/policy verifier + manual inspect + 24h dwell. Only Admin decides each 24h run. Overlay never writes `src/` or `checkpoint.ts`. MCP `train_status` read-only. Architecture GIFs on `/roadmap#architecture`.
+- Rank 1 honorific on PR3D1CT10N$ is **AI AG3NT T0P D0G** (AI Agent Top Dog). FAQ `#ai-agent-top-dog` (legacy `#grand-master` kept so old links resolve).
 - Official X `@S1R1US_AI`. This host never places Coinbase orders.
 - Source for this fold is on **`main`** and **`checkpoint/n3w-web-app-install-deploy-68`** (not the protected tag). Leftover Pr3d paper book / Ph0 W@ll3t runtime (`data/pred-book.json`, MCP pred_list/pred_arm/pred_bet) is **gone**. 7-B0T still reads Polymarket/Kalshi as a sub-analyst overlay. DigitalOcean live-production: `deploy_on_push: true` on `main` — rebuild copies `.output`, then push. Do not move the tag.
 
