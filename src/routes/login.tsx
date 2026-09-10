@@ -44,7 +44,7 @@ function Login() {
     if (typeof window === "undefined") return;
     const q = new URLSearchParams(window.location.search).get("error");
     if (q) {
-      setXErr("X sign-in did not finish. Check TWITTER_CLIENT_ID and TWITTER_CLIENT_SECRET on DigitalOcean, then Continue with X again.");
+      setXErr("X sign-in did not finish. Try Continue with X again, or use name and password.");
     }
   }, []);
 
@@ -144,7 +144,7 @@ function Login() {
                 signIn(xSignInProviderId(), { callbackURL: "/login", errorCallbackURL: "/login" }),
                 new Promise((_, reject) => setTimeout(() => reject(new Error("x-timeout")), 90_000)),
               ]).catch(() => {
-                setXErr("X is still waiting. Allow popups, finish X as the operator account, or use name + password.");
+                setXErr("X is still waiting. Allow popups, finish X, or use name + password.");
               });
             }}
           >
