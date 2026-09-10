@@ -68,7 +68,7 @@ export function ByoConnectPanel({ compact = false }: { compact?: boolean }) {
         aria-expanded={howOpen}
         onClick={() => setHowOpen((v) => !v)}
       >
-        {howOpen ? "Collapse" : "Expand"} agent JSON
+        {howOpen ? "collapse" : "expand"} agent JSON
       </button>
       {howOpen ? (
         <pre className="mt-2 overflow-x-auto whitespace-pre-wrap rounded-md border border-rule bg-paper p-3 font-mono text-[11px] leading-relaxed text-muted">
