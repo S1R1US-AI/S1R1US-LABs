@@ -73,7 +73,7 @@ export function LockGif({
   const seo = seoImgAlt(locked ? "Closed padlock. LOCKED." : LOCK_GIF_OPEN_NAME);
   return (
     <img
-      src={`${locked ? LOCK_GIF_CLOSED : LOCK_GIF_OPEN}?v=68`}
+      src={`${locked ? LOCK_GIF_CLOSED : LOCK_GIF_OPEN}?v=102`}
       alt={seo}
       title={short}
       width={px}

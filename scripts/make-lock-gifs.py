@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Professional padlock GIFs. Transparent background. Gold metal. No rainbow."""
+"""Cartoon padlock GIFs matching the good LoCK3D STATUS icons.
+
+Magenta/pink shackle, gold body, black keyhole, dark halo. Transparent bg.
+"""
 from __future__ import annotations
 
 import math
@@ -8,18 +11,31 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter
 
 OUT_DIR = Path("/workspace/public")
-SIZE = 160
+SIZE = 128
 SCALE = 4
-N = 16
-DURATION_MS = 80
+N = 12
+DURATION_MS = 90
 
 
 def clamp(n: float) -> int:
     return max(0, min(255, int(n)))
 
 
-def rgb(r: float, g: float, b: float, a: int = 255) -> tuple[int, int, int, int]:
+def rgba(r: float, g: float, b: float, a: int = 255) -> tuple[int, int, int, int]:
     return (clamp(r), clamp(g), clamp(b), a)
+
+
+def u_shackle(size: int, box: tuple[int, int, int, int], thick: int) -> Image.Image:
+    x0, y0, x1, y1 = box
+    w = x1 - x0
+    mask = Image.new("L", (size, size), 0)
+    d = ImageDraw.Draw(mask)
+    d.pieslice([x0, y0, x1, y0 + w], 180, 0, fill=255)
+    d.rectangle([x0, y0 + w // 2, x0 + thick, y1], fill=255)
+    d.rectangle([x1 - thick, y0 + w // 2, x1, y1], fill=255)
+    d.pieslice([x0 + thick, y0 + thick, x1 - thick, y0 + w - thick], 180, 0, fill=0)
+    d.rectangle([x0 + thick, y0 + w // 2, x1 - thick, y1 + 4], fill=0)
+    return mask
 
 
 def fill_mask(mask: Image.Image, color: tuple[int, int, int, int]) -> Image.Image:
@@ -29,114 +45,69 @@ def fill_mask(mask: Image.Image, color: tuple[int, int, int, int]) -> Image.Imag
     return out
 
 
-def u_shackle_mask(size: int, box: tuple[int, int, int, int], thick: int) -> Image.Image:
-    """U-shaped shackle: top arch + two legs. Transparent interior and open bottom."""
-    x0, y0, x1, y1 = box
-    w = x1 - x0
-    mask = Image.new("L", (size, size), 0)
-    d = ImageDraw.Draw(mask)
-    # Outer arch (top half of a circle sitting on the legs)
-    d.pieslice([x0, y0, x1, y0 + w], 180, 0, fill=255)
-    d.rectangle([x0, y0 + w // 2, x0 + thick, y1], fill=255)
-    d.rectangle([x1 - thick, y0 + w // 2, x1, y1], fill=255)
-    # Punch interior
-    d.pieslice([x0 + thick, y0 + thick, x1 - thick, y0 + w - thick], 180, 0, fill=0)
-    d.rectangle([x0 + thick, y0 + w // 2, x1 - thick, y1 + 4], fill=0)
-    return mask
-
-
 def draw_padlock(open_shackle: bool, t: float) -> Image.Image:
     S = SIZE * SCALE
     canvas = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-
     cx = S // 2
-    body_w = int(S * 0.56)
-    body_h = int(S * 0.42)
+    pulse = 0.5 + 0.5 * math.sin(2 * math.pi * t)
+
+    body_w = int(S * 0.58)
+    body_h = int(S * 0.50)
     x0 = cx - body_w // 2
     x1 = cx + body_w // 2
-    y0 = int(S * 0.46)
+    y0 = int(S * 0.42)
     y1 = y0 + body_h
-    rad = int(S * 0.07)
+    rad = int(S * 0.12)
 
-    thick = int(S * 0.095)
-    inner = int(body_w * 0.42)
+    thick = int(S * 0.12)
+    inner = int(body_w * 0.38)
     sx0 = cx - inner // 2 - thick
     sx1 = cx + inner // 2 + thick
-    sy1 = y0 + int(S * 0.04)
-    sy0 = sy1 - int(S * 0.36)
-    pulse = 0.5 + 0.5 * math.sin(2 * math.pi * t)
-    spec = (math.sin(2 * math.pi * (t + 0.15)) + 1) / 2
+    sy1 = y0 + int(S * 0.06)
+    sy0 = sy1 - int(S * 0.40)
 
-    # --- shackle ---
-    smask = u_shackle_mask(S, (sx0, sy0, sx1, sy1), thick)
-    steel = fill_mask(smask, rgb(186 + 18 * spec, 194 + 14 * spec, 206))
-    # inner edge (darker, inset)
-    inner_mask = u_shackle_mask(S, (sx0 + 6, sy0 + 6, sx1 - 6, sy1 - 2), max(4, thick - 14))
-    steel.alpha_composite(fill_mask(inner_mask, rgb(70, 76, 88, 160)))
-    # highlight on left-top of arch
-    hi = Image.new("L", (S, S), 0)
-    hd = ImageDraw.Draw(hi)
-    hd.arc([sx0 + 10, sy0 + 10, sx1 - 28, sy0 + (sx1 - sx0) - 20], 200, 320, fill=255, width=max(3, thick // 5))
-    steel.alpha_composite(fill_mask(hi, rgb(245, 248, 255, 200)))
+    # dark halo so the icon reads on any desk
+    halo = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    hd = ImageDraw.Draw(halo, "RGBA")
+    hd.ellipse([int(S * 0.08), int(S * 0.10), int(S * 0.92), int(S * 0.96)], fill=(8, 6, 16, 210))
+    canvas.alpha_composite(halo.filter(ImageFilter.GaussianBlur(10)))
+
+    smask = u_shackle(S, (sx0, sy0, sx1, sy1), thick)
+    mag = 220 + 20 * pulse
+    shackle = fill_mask(smask, rgba(mag, 40, 220))
+    rim = u_shackle(S, (sx0 + 4, sy0 + 4, sx1 - 4, sy1 - 2), max(6, thick - 10))
+    shackle.alpha_composite(fill_mask(rim, rgba(255, 120, 255, 160)))
 
     if open_shackle:
-        lift = int(S * 0.015 * math.sin(2 * math.pi * t))
-        steel = steel.rotate(-18, resample=Image.Resampling.BICUBIC, center=(cx + int(S * 0.02), sy1), fillcolor=(0, 0, 0, 0))
+        lift = int(S * 0.01 * math.sin(2 * math.pi * t))
+        shackle = shackle.rotate(
+            -22, resample=Image.Resampling.BICUBIC, center=(cx, sy1), fillcolor=(0, 0, 0, 0)
+        )
         shifted = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-        shifted.alpha_composite(steel, (int(-S * 0.08), int(-S * 0.09) + lift))
-        steel = shifted
-    else:
-        j = int(S * 0.004 * math.sin(2 * math.pi * t))
-        shifted = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-        shifted.alpha_composite(steel, (0, j))
-        steel = shifted
-    canvas.alpha_composite(steel)
+        shifted.alpha_composite(shackle, (int(-S * 0.02), int(-S * 0.08) + lift))
+        shackle = shifted
+    canvas.alpha_composite(shackle)
 
-    # --- brass body (no baked black matte — CSS drop-shadow follows the lock) ---
     body = Image.new("RGBA", (S, S), (0, 0, 0, 0))
     bd = ImageDraw.Draw(body, "RGBA")
-    bd.rounded_rectangle([x0, y0, x1, y1], radius=rad, fill=rgb(118, 82, 18))
-    bd.rounded_rectangle([x0 + 5, y0 + 5, x1 - 5, y1 - 7], radius=rad - 3, fill=rgb(196, 148, 36))
-    # top plate
-    bd.rounded_rectangle([x0 + 10, y0 + 8, x1 - 14, y0 + int(body_h * 0.42)], radius=rad - 6, fill=rgb(228 + 20 * spec, 186 + 10 * spec, 64))
-    # left highlight
-    bd.rectangle([x0 + 12, y0 + 22, x0 + int(body_w * 0.16), y1 - 22], fill=rgb(255, 226, 130, 160))
-    # traveling gold specular (no hue rotate)
-    sx = int(x0 + 24 + spec * (body_w * 0.45))
-    bd.ellipse([sx, y0 + 16, sx + int(S * 0.14), y0 + int(S * 0.18)], fill=rgb(255, 244, 196, 140))
+    bd.rounded_rectangle([x0, y0, x1, y1], radius=rad, fill=rgba(18, 12, 4))
+    bd.rounded_rectangle([x0 + 6, y0 + 6, x1 - 6, y1 - 6], radius=rad - 4, fill=rgba(255, 210, 40))
+    bd.rounded_rectangle(
+        [x0 + 14, y0 + 12, x1 - 22, y0 + int(body_h * 0.42)],
+        radius=rad - 8,
+        fill=rgba(255, 236, 110, 200),
+    )
     canvas.alpha_composite(body)
 
     rd = ImageDraw.Draw(canvas, "RGBA")
-    # rivets
-    for rx, ry in ((x0 + 26, y0 + 26), (x1 - 26, y0 + 26), (x0 + 26, y1 - 26), (x1 - 26, y1 - 26)):
-        rd.ellipse([rx - 8, ry - 8, rx + 8, ry + 8], fill=rgb(92, 64, 16), outline=rgb(232, 192, 78), width=3)
-        rd.ellipse([rx - 3, ry - 4, rx + 1, ry], fill=rgb(255, 230, 140, 180))
-
-    # keyhole
     kx, ky = cx, int(y0 + body_h * 0.58)
-    rd.ellipse([kx - 18, ky - 24, kx + 18, ky + 12], fill=rgb(24, 16, 8), outline=rgb(78, 52, 14), width=4)
-    rd.polygon([(kx - 9, ky + 6), (kx + 9, ky + 6), (kx + 7, ky + 40), (kx - 7, ky + 40)], fill=rgb(24, 16, 8))
-    rd.ellipse([kx - 8, ky - 18, kx + 5, ky - 4], fill=rgb(90, 68, 28, 160))
-
-    # LED — red locked / green unlocked. Pulse only. Never rainbow.
-    led_y = y0 + int(S * 0.065)
-    led_r = int(S * 0.032 + pulse * S * 0.01)
-    if open_shackle:
-        glow_c = (36, 220, 88, int(36 + 50 * pulse))
-        core = rgb(90 + 50 * pulse, 255, 120)
-        rim = rgb(16, 92, 36)
-    else:
-        glow_c = (255, 36, 36, int(36 + 50 * pulse))
-        core = rgb(255, 48 + 36 * pulse, 48)
-        rim = rgb(120, 16, 16)
-    glow = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-    gd = ImageDraw.Draw(glow, "RGBA")
-    gr = led_r * 2
-    gd.ellipse([cx - gr, led_y - gr, cx + gr, led_y + gr], fill=glow_c)
-    canvas.alpha_composite(glow.filter(ImageFilter.GaussianBlur(6)))
-    rd = ImageDraw.Draw(canvas, "RGBA")
-    rd.ellipse([cx - led_r, led_y - led_r, cx + led_r, led_y + led_r], fill=core, outline=rim, width=3)
-    rd.ellipse([cx - led_r // 2, led_y - led_r // 2 - 2, cx + 1, led_y], fill=(255, 255, 255, 200))
+    kr = int(S * 0.07)
+    rd.ellipse([kx - kr, ky - kr, kx + kr, ky + kr], fill=rgba(12, 8, 8))
+    rd.polygon(
+        [(kx - int(kr * 0.45), ky + int(kr * 0.4)), (kx + int(kr * 0.45), ky + int(kr * 0.4)),
+         (kx + int(kr * 0.32), ky + int(kr * 1.55)), (kx - int(kr * 0.32), ky + int(kr * 1.55))],
+        fill=rgba(12, 8, 8),
+    )
 
     return canvas.resize((SIZE, SIZE), Image.Resampling.LANCZOS)
 
@@ -177,6 +148,9 @@ def write_gif(open_shackle: bool, dest: Path) -> None:
 def main() -> None:
     write_gif(False, OUT_DIR / "lock-closed.gif")
     write_gif(True, OUT_DIR / "lock-open.gif")
+    alias = OUT_DIR / "AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif"
+    alias.write_bytes((OUT_DIR / "lock-open.gif").read_bytes())
+    print("alias", alias.name, alias.stat().st_size, "bytes")
 
 
 if __name__ == "__main__":

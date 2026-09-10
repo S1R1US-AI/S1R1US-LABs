@@ -212,7 +212,7 @@ export function LockPage() {
           />
           <figcaption className="pointer-events-none absolute inset-0">
             <img
-              src="/lock-closed.gif?v=68"
+              src="/lock-closed.gif?v=102"
               alt={LOCK_IMG_SEO}
               title={LOCK_IMG_SEO}
               width={128}
@@ -220,7 +220,7 @@ export function LockPage() {
               className="lock-gif-banner absolute left-[8%] top-1/2 -translate-y-1/2 sm:left-[10%]"
             />
             <img
-              src={`${LOCK_GIF_OPEN}?v=68`}
+              src={`${LOCK_GIF_OPEN}?v=102`}
               alt={seoImgAlt(LOCK_GIF_OPEN_NAME)}
               title={seoImgAlt(LOCK_GIF_OPEN_NAME)}
               width={128}
