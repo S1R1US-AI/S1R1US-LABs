@@ -1,8 +1,8 @@
 /**
  * Self-hosted Better Auth for THIS app (server-only).
  *
- * Production s1r1us.ai: native X OAuth 2.0 (TWITTER_CLIENT_*).
- * Sandbox preview: grok-x broker. Do not use grok-x on production.
+ * Production s1r1us.ai: native X OAuth 2.0 only (TWITTER_CLIENT_*).
+ * Sandbox preview: grok-x broker. Never register grok-x on s1r1us.ai.
  */
 import { betterAuth } from "better-auth";
 import { bearer, genericOAuth } from "better-auth/plugins";
@@ -49,10 +49,12 @@ const grokClientSecret = env("GROK_AUTH_CLIENT_SECRET") ?? (publicSite ? undefin
 const twitterClientId = env("TWITTER_CLIENT_ID") ?? env("X_CLIENT_ID");
 const twitterClientSecret = env("TWITTER_CLIENT_SECRET") ?? env("X_CLIENT_SECRET");
 const nativeXConfigured = Boolean(twitterClientId && twitterClientSecret);
-const useGrokBroker = Boolean(grokClientId && grokClientSecret) && !(publicSite && nativeXConfigured);
+/** Grok broker never on s1r1us.ai, even if leftover GROK_AUTH_* remain on the host. */
+const useGrokBroker =
+  !authDisabled && !publicSite && Boolean(grokClientId && grokClientSecret);
 
 export const authConfigured =
-  !authDisabled && (nativeXConfigured || Boolean(grokClientId && grokClientSecret));
+  !authDisabled && (publicSite ? nativeXConfigured : nativeXConfigured || Boolean(grokClientId && grokClientSecret));
 
 const explicitBaseURL = env("BETTER_AUTH_URL");
 const previewAllowedHosts: string[] = [...PREVIEW_ALLOWED_HOSTS];
@@ -159,7 +161,7 @@ export const auth = betterAuth({
   baseURL,
   secret: env("BETTER_AUTH_SECRET") ?? previewAuthSecret(),
   database,
-  ...(nativeXConfigured
+  ...(!authDisabled && nativeXConfigured
     ? {
         socialProviders: {
           twitter: {
