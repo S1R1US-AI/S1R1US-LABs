@@ -1,7 +1,7 @@
 import { useEffect, useState, type ClipboardEvent, type FormEvent } from "react";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
 import { Lock } from "lucide-react";
-import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
+import { authEnabled, signIn, xSignInProviderId } from "@/lib/auth/client";
 import { UserButton } from "@/lib/auth/gates";
 import { useCurrentUser, useCurrentUserState } from "@/lib/auth/use-current-user";
 import { Button } from "@/components/ui/button";
@@ -44,7 +44,7 @@ function Login() {
     if (typeof window === "undefined") return;
     const q = new URLSearchParams(window.location.search).get("error");
     if (q) {
-      setXErr("X sign-in did not finish. Allow popups for s1r1us.ai, use @_Mr_R0b0t0_, then try again.");
+      setXErr("X sign-in did not finish. Check TWITTER_CLIENT_ID and TWITTER_CLIENT_SECRET on DigitalOcean, then Continue with X again.");
     }
   }, []);
 
@@ -134,27 +134,24 @@ function Login() {
       ) : null}
       {authEnabled && !user ? (
         <div className="mt-6 space-y-2">
-          {GROK_PROVIDERS.map((p) => (
-            <Button
-              key={p.providerId}
-              variant="primary"
-              className="w-full"
-              type="button"
-              onClick={() => {
-                setXErr(null);
-                void Promise.race([
-                  signIn(p.providerId, { callbackURL: "/login", errorCallbackURL: "/login" }),
-                  new Promise((_, reject) => setTimeout(() => reject(new Error("x-timeout")), 90_000)),
-                ]).catch(() => {
-                  setXErr("X is still waiting. Allow popups, finish X as @_Mr_R0b0t0_, or use the X chip at the far right of the menu.");
-                });
-              }}
-            >
-              Continue with X
-            </Button>
-          ))}
+          <Button
+            variant="primary"
+            className="w-full"
+            type="button"
+            onClick={() => {
+              setXErr(null);
+              void Promise.race([
+                signIn(xSignInProviderId(), { callbackURL: "/login", errorCallbackURL: "/login" }),
+                new Promise((_, reject) => setTimeout(() => reject(new Error("x-timeout")), 90_000)),
+              ]).catch(() => {
+                setXErr("X is still waiting. Allow popups, finish X as the operator account, or use name + password.");
+              });
+            }}
+          >
+            Continue with X
+          </Button>
           <p className="text-xs leading-relaxed text-muted">
-            Required: system admin name + password. YubiKey is optional. Operator X @_Mr_R0b0t0_ is still used to bind the session.
+            Required: system admin name + password. YubiKey is optional. Operator X is still used to bind the session.
             Other X accounts stay users. iOS / Google copy Admin is on the downloaded app.
           </p>
           {xErr ? <p className="text-sm text-down">{xErr}</p> : null}
@@ -168,8 +165,7 @@ function Login() {
             </p>
           ) : (
             <p className="text-sm text-muted">
-              This X session is not the operator account. Sign out, then Continue with X again as
-              the operator handle @_Mr_R0b0t0_ — the desk reads the handle from X, not the display name.
+              This X session is not the operator account. Sign out, then Continue with X again as the operator.
               iOS / Google copy Admin is a separate lock on the downloaded app.
             </p>
           )}
