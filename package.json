@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "node scripts/with-app-env.mjs vite dev --host 0.0.0.0 --port 8080",
     "build": "node scripts/with-app-env.mjs vite build && npm run db:migrate",
-    "build:do": "NITRO_PRESET=node-server node scripts/with-app-env.mjs vite build && npm run db:migrate && node scripts/copy-pglite.mjs",
+    "build:do": "NITRO_PRESET=node-server node scripts/with-app-env.mjs vite build && npm run db:migrate && node scripts/copy-pglite.mjs && node scripts/alias-ssr-css.mjs",
     "db:migrate": "node scripts/migrate.mjs",
     "build:dev": "node scripts/with-app-env.mjs vite build --mode development",
     "preview": "node scripts/with-app-env.mjs vite preview",
