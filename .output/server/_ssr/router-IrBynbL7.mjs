@@ -4084,7 +4084,7 @@ function WebMcpBridge() {
 	}, []);
 	return null;
 }
-var styles_default = "/assets/styles-DGWJM76_.css";
+var styles_default = "/assets/styles-CUlYxy3i.css";
 /** Hostname suitable for absolute og / x-banner URLs. Skip Vercel system hosts. */
 function publicAppHost(hostHeader) {
 	const host = String(hostHeader ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
