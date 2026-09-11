@@ -25,6 +25,8 @@ import { ForumTitle } from "@/components/forum-title";
 import { SeoImage } from "@/components/seo-image";
 import { LeaderBoardLabel, RainbowGodzillaText } from "@/components/godzilla-mark";
 import { QuantFlexWelcome } from "@/components/quant-flex-welcome";
+import { OwlForumAdmin } from "@/components/owl-forum-admin";
+import { useOperator } from "@/lib/desk/operator";
 
 type ForumPost = { id: string; at: string; name: string; kind: string; handle: string | null; body: string };
 type ForumMorning = {
@@ -42,6 +44,8 @@ const ALT = seoImgAlt(
 );
 
 export function AgentForumPage() {
+  const role = useOperator((s) => s.role);
+  const unlocked = useOperator((s) => s.unlocked);
   const [posts, setPosts] = useState<ForumPost[]>([]);
   const [morning, setMorning] = useState<ForumMorning | null>(null);
   const [err, setErr] = useState<string | null>(null);
@@ -279,6 +283,7 @@ export function AgentForumPage() {
             </ol>
           )}
         </Panel>
+        {role === "admin" && unlocked ? <OwlForumAdmin /> : null}
       </main>
     </Shell>
   );
