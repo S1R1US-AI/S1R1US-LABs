@@ -1,5 +1,5 @@
 import { c as BOT7_NAME } from "./brand-zDAneT0C.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/prediction-markets-BXpIiy7X.js
+//#region node_modules/.nitro/vite/services/ssr/assets/prediction-markets-BXpIiy7X.js
 var RISK_RULES = [
 	{
 		id: "rsi-buy",

@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/disclaimer-BUZ1ShSW.js
+//#region node_modules/.nitro/vite/services/ssr/assets/disclaimer-BUZ1ShSW.js
 /** Unified public DISCLAIMER. Banner, SEO, schema, roadmap, instructions. Not Terms/Privacy. Client-safe. */
 var LEGAL_DISCLAIMER_UPDATED = "2026-09-10";
 var LEGAL_DISCLAIMER_PARAS = [

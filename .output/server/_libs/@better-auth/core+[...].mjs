@@ -1,5 +1,5 @@
 import { t as __commonJSMin } from "../../_runtime.mjs";
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/error-codes.mjs
+//#region node_modules/@better-auth/core/dist/utils/error-codes.mjs
 function defineErrorCodes(codes) {
 	return Object.fromEntries(Object.entries(codes).map(([key, value]) => [key, {
 		code: key,
@@ -8,7 +8,7 @@ function defineErrorCodes(codes) {
 	}]));
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/error/codes.mjs
+//#region node_modules/@better-auth/core/dist/error/codes.mjs
 var BASE_ERROR_CODES = defineErrorCodes({
 	USER_NOT_FOUND: "User not found",
 	FAILED_TO_CREATE_USER: "Failed to create user",
@@ -61,7 +61,7 @@ var BASE_ERROR_CODES = defineErrorCodes({
 	PASSWORD_ALREADY_SET: "User already has a password set"
 });
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/error.mjs
+//#region node_modules/better-call/dist/error.mjs
 function isErrorStackTraceLimitWritable() {
 	const desc = Object.getOwnPropertyDescriptor(Error, "stackTraceLimit");
 	if (desc === void 0) return Object.isExtensible(Error);
@@ -197,7 +197,7 @@ var BetterCallError = class extends Error {
 var kAPIErrorHeaderSymbol = Symbol.for("better-call:api-error-headers");
 var APIError$1 = makeErrorForHideStackFrame(InternalAPIError, Error);
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/error/index.mjs
+//#region node_modules/@better-auth/core/dist/error/index.mjs
 var BetterAuthError = class extends Error {
 	constructor(message, options) {
 		super(message, options);
@@ -221,7 +221,7 @@ var APIError = class APIError extends APIError$1 {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/env/env-impl.mjs
+//#region node_modules/@better-auth/core/dist/env/env-impl.mjs
 var _envShim = Object.create(null);
 var _getEnv = (useShim) => globalThis.process?.env || globalThis.Deno?.env.toObject() || globalThis.__env__ || (useShim ? _envShim : globalThis);
 var env = new Proxy(_envShim, {
@@ -301,7 +301,7 @@ var ENV = Object.freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/env/color-depth.mjs
+//#region node_modules/@better-auth/core/dist/env/color-depth.mjs
 var COLORS_2 = 1;
 var COLORS_16 = 4;
 var COLORS_256 = 8;
@@ -385,7 +385,7 @@ function getColorDepth() {
 	return COLORS_2;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/env/logger.mjs
+//#region node_modules/@better-auth/core/dist/env/logger.mjs
 var TTY_COLORS = {
 	reset: "\x1B[0m",
 	bright: "\x1B[1m",
@@ -462,7 +462,7 @@ var createLogger = (options) => {
 };
 var logger = createLogger();
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/url.mjs
+//#region node_modules/@better-auth/core/dist/utils/url.mjs
 /**
 * Normalizes a request pathname by removing the basePath prefix and trailing slashes.
 * This is useful for matching paths against configured path lists.
@@ -522,7 +522,7 @@ function isSafeUrlScheme(value) {
 	return !DANGEROUS_URL_SCHEMES.includes(parsed.protocol);
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-fetch/fetch/dist/index.js
+//#region node_modules/@better-fetch/fetch/dist/index.js
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
 var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
@@ -998,7 +998,7 @@ var betterFetch = async (url, options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/string.mjs
+//#region node_modules/@better-auth/core/dist/utils/string.mjs
 function capitalizeFirstLetter(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -1011,7 +1011,7 @@ function toKebabCase(input) {
 	return splitWords(input).map((word) => word.toLowerCase()).join("-");
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/adapter/get-default-model-name.mjs
+//#region node_modules/@better-auth/core/dist/db/adapter/get-default-model-name.mjs
 var initGetDefaultModelName = ({ usePlural, schema }) => {
 	/**
 	* This function helps us get the default model name from the schema defined by devs.
@@ -1040,7 +1040,7 @@ var initGetDefaultModelName = ({ usePlural, schema }) => {
 	return getDefaultModelName;
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/adapter/get-default-field-name.mjs
+//#region node_modules/@better-auth/core/dist/db/adapter/get-default-field-name.mjs
 var initGetDefaultFieldName = ({ schema, usePlural }) => {
 	const getDefaultModelName = initGetDefaultModelName({
 		schema,
@@ -1073,7 +1073,7 @@ var initGetDefaultFieldName = ({ schema, usePlural }) => {
 	return getDefaultFieldName;
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/utils/dist/random.mjs
+//#region node_modules/@better-auth/utils/dist/random.mjs
 function expandAlphabet(alphabet) {
 	switch (alphabet) {
 		case "a-z": return "abcdefghijklmnopqrstuvwxyz";
@@ -1113,12 +1113,12 @@ function createRandomStringGenerator(...baseAlphabets) {
 	};
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/id.mjs
+//#region node_modules/@better-auth/core/dist/utils/id.mjs
 var generateId = (size) => {
 	return createRandomStringGenerator("a-z", "A-Z", "0-9")(size || 32);
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/adapter/get-id-field.mjs
+//#region node_modules/@better-auth/core/dist/db/adapter/get-id-field.mjs
 var initGetIdField = ({ usePlural, schema, disableIdGeneration, options, customIdGenerator, supportsUUIDs }) => {
 	const getDefaultModelName = initGetDefaultModelName({
 		usePlural,
@@ -1178,7 +1178,7 @@ var initGetIdField = ({ usePlural, schema, disableIdGeneration, options, customI
 	return idField;
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/adapter/get-field-attributes.mjs
+//#region node_modules/@better-auth/core/dist/db/adapter/get-field-attributes.mjs
 var initGetFieldAttributes = ({ usePlural, schema, options, customIdGenerator, disableIdGeneration }) => {
 	const getDefaultModelName = initGetDefaultModelName({
 		usePlural,
@@ -1210,7 +1210,7 @@ var initGetFieldAttributes = ({ usePlural, schema, options, customIdGenerator, d
 	return getFieldAttributes;
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/adapter/get-field-name.mjs
+//#region node_modules/@better-auth/core/dist/db/adapter/get-field-name.mjs
 var initGetFieldName = ({ schema, usePlural }) => {
 	const getDefaultModelName = initGetDefaultModelName({
 		schema,
@@ -1238,7 +1238,7 @@ var initGetFieldName = ({ schema, usePlural }) => {
 	return getFieldName;
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/adapter/get-model-name.mjs
+//#region node_modules/@better-auth/core/dist/db/adapter/get-model-name.mjs
 var initGetModelName = ({ usePlural, schema }) => {
 	const getDefaultModelName = initGetDefaultModelName({
 		schema,
@@ -1257,7 +1257,7 @@ var initGetModelName = ({ usePlural, schema }) => {
 	return getModelName;
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/adapter/utils.mjs
+//#region node_modules/@better-auth/core/dist/db/adapter/utils.mjs
 function withApplyDefault(value, field, action) {
 	if (action === "update") {
 		if (value === void 0 && field.onUpdate !== void 0) {
@@ -1277,7 +1277,7 @@ function withApplyDefault(value, field, action) {
 	return value;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/context/global.mjs
+//#region node_modules/@better-auth/core/dist/context/global.mjs
 var symbol = Symbol.for("better-auth:global");
 var bind = null;
 var __context = {};
@@ -1312,7 +1312,7 @@ function getBetterAuthVersion() {
 	return __getBetterAuthGlobal().version;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/async_hooks/index.mjs
+//#region node_modules/@better-auth/core/dist/async_hooks/index.mjs
 var AsyncLocalStoragePromise = import(
 	/* @vite-ignore */
 	/* webpackIgnore: true */
@@ -1331,7 +1331,7 @@ async function getAsyncLocalStorage() {
 	else return mod;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/context/transaction.mjs
+//#region node_modules/@better-auth/core/dist/context/transaction.mjs
 var ensureAsyncStorage$2 = async () => {
 	const betterAuthGlobal = __getBetterAuthGlobal();
 	const existing = betterAuthGlobal.context.adapterAsyncStorage;
@@ -1416,7 +1416,7 @@ var queueAfterTransactionHook = async (hook) => {
 	});
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/get-tables.mjs
+//#region node_modules/@better-auth/core/dist/db/get-tables.mjs
 var getAuthTables = (options) => {
 	const pluginSchema = (options.plugins ?? []).reduce((acc, plugin) => {
 		const schema = plugin.schema;
@@ -1681,7 +1681,7 @@ var getAuthTables = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/json.mjs
+//#region node_modules/@better-auth/core/dist/utils/json.mjs
 var iso8601Regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/;
 function reviveDate(value) {
 	if (typeof value === "string" && iso8601Regex.test(value)) {
@@ -1720,7 +1720,7 @@ function safeJSONParse(data) {
 	}
 }
 //#endregion
-//#region ../../workspace/node_modules/@opentelemetry/semantic-conventions/build/src/internal/utils.js
+//#region node_modules/@opentelemetry/semantic-conventions/build/src/internal/utils.js
 var require_utils = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.createConstMap = void 0;
@@ -1742,7 +1742,7 @@ var require_utils = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.createConstMap = createConstMap;
 }));
 //#endregion
-//#region ../../workspace/node_modules/@opentelemetry/semantic-conventions/build/src/trace/SemanticAttributes.js
+//#region node_modules/@opentelemetry/semantic-conventions/build/src/trace/SemanticAttributes.js
 var require_SemanticAttributes = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.SEMATTRS_NET_HOST_CARRIER_ICC = exports.SEMATTRS_NET_HOST_CARRIER_MNC = exports.SEMATTRS_NET_HOST_CARRIER_MCC = exports.SEMATTRS_NET_HOST_CARRIER_NAME = exports.SEMATTRS_NET_HOST_CONNECTION_SUBTYPE = exports.SEMATTRS_NET_HOST_CONNECTION_TYPE = exports.SEMATTRS_NET_HOST_NAME = exports.SEMATTRS_NET_HOST_PORT = exports.SEMATTRS_NET_HOST_IP = exports.SEMATTRS_NET_PEER_NAME = exports.SEMATTRS_NET_PEER_PORT = exports.SEMATTRS_NET_PEER_IP = exports.SEMATTRS_NET_TRANSPORT = exports.SEMATTRS_FAAS_INVOKED_REGION = exports.SEMATTRS_FAAS_INVOKED_PROVIDER = exports.SEMATTRS_FAAS_INVOKED_NAME = exports.SEMATTRS_FAAS_COLDSTART = exports.SEMATTRS_FAAS_CRON = exports.SEMATTRS_FAAS_TIME = exports.SEMATTRS_FAAS_DOCUMENT_NAME = exports.SEMATTRS_FAAS_DOCUMENT_TIME = exports.SEMATTRS_FAAS_DOCUMENT_OPERATION = exports.SEMATTRS_FAAS_DOCUMENT_COLLECTION = exports.SEMATTRS_FAAS_EXECUTION = exports.SEMATTRS_FAAS_TRIGGER = exports.SEMATTRS_EXCEPTION_ESCAPED = exports.SEMATTRS_EXCEPTION_STACKTRACE = exports.SEMATTRS_EXCEPTION_MESSAGE = exports.SEMATTRS_EXCEPTION_TYPE = exports.SEMATTRS_DB_SQL_TABLE = exports.SEMATTRS_DB_MONGODB_COLLECTION = exports.SEMATTRS_DB_REDIS_DATABASE_INDEX = exports.SEMATTRS_DB_HBASE_NAMESPACE = exports.SEMATTRS_DB_CASSANDRA_COORDINATOR_DC = exports.SEMATTRS_DB_CASSANDRA_COORDINATOR_ID = exports.SEMATTRS_DB_CASSANDRA_SPECULATIVE_EXECUTION_COUNT = exports.SEMATTRS_DB_CASSANDRA_IDEMPOTENCE = exports.SEMATTRS_DB_CASSANDRA_TABLE = exports.SEMATTRS_DB_CASSANDRA_CONSISTENCY_LEVEL = exports.SEMATTRS_DB_CASSANDRA_PAGE_SIZE = exports.SEMATTRS_DB_CASSANDRA_KEYSPACE = exports.SEMATTRS_DB_MSSQL_INSTANCE_NAME = exports.SEMATTRS_DB_OPERATION = exports.SEMATTRS_DB_STATEMENT = exports.SEMATTRS_DB_NAME = exports.SEMATTRS_DB_JDBC_DRIVER_CLASSNAME = exports.SEMATTRS_DB_USER = exports.SEMATTRS_DB_CONNECTION_STRING = exports.SEMATTRS_DB_SYSTEM = exports.SEMATTRS_AWS_LAMBDA_INVOKED_ARN = void 0;
@@ -3984,7 +3984,7 @@ var require_SemanticAttributes = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.MessageTypeValues = /*#__PURE__*/ (0, utils_1.createConstMap)([TMP_MESSAGETYPEVALUES_SENT, TMP_MESSAGETYPEVALUES_RECEIVED]);
 }));
 //#endregion
-//#region ../../workspace/node_modules/@opentelemetry/semantic-conventions/build/src/trace/index.js
+//#region node_modules/@opentelemetry/semantic-conventions/build/src/trace/index.js
 var require_trace = /* @__PURE__ */ __commonJSMin(((exports) => {
 	var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
 		if (k2 === void 0) k2 = k;
@@ -4007,7 +4007,7 @@ var require_trace = /* @__PURE__ */ __commonJSMin(((exports) => {
 	__exportStar(require_SemanticAttributes(), exports);
 }));
 //#endregion
-//#region ../../workspace/node_modules/@opentelemetry/semantic-conventions/build/src/resource/SemanticResourceAttributes.js
+//#region node_modules/@opentelemetry/semantic-conventions/build/src/resource/SemanticResourceAttributes.js
 var require_SemanticResourceAttributes = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.SEMRESATTRS_K8S_STATEFULSET_NAME = exports.SEMRESATTRS_K8S_STATEFULSET_UID = exports.SEMRESATTRS_K8S_DEPLOYMENT_NAME = exports.SEMRESATTRS_K8S_DEPLOYMENT_UID = exports.SEMRESATTRS_K8S_REPLICASET_NAME = exports.SEMRESATTRS_K8S_REPLICASET_UID = exports.SEMRESATTRS_K8S_CONTAINER_NAME = exports.SEMRESATTRS_K8S_POD_NAME = exports.SEMRESATTRS_K8S_POD_UID = exports.SEMRESATTRS_K8S_NAMESPACE_NAME = exports.SEMRESATTRS_K8S_NODE_UID = exports.SEMRESATTRS_K8S_NODE_NAME = exports.SEMRESATTRS_K8S_CLUSTER_NAME = exports.SEMRESATTRS_HOST_IMAGE_VERSION = exports.SEMRESATTRS_HOST_IMAGE_ID = exports.SEMRESATTRS_HOST_IMAGE_NAME = exports.SEMRESATTRS_HOST_ARCH = exports.SEMRESATTRS_HOST_TYPE = exports.SEMRESATTRS_HOST_NAME = exports.SEMRESATTRS_HOST_ID = exports.SEMRESATTRS_FAAS_MAX_MEMORY = exports.SEMRESATTRS_FAAS_INSTANCE = exports.SEMRESATTRS_FAAS_VERSION = exports.SEMRESATTRS_FAAS_ID = exports.SEMRESATTRS_FAAS_NAME = exports.SEMRESATTRS_DEVICE_MODEL_NAME = exports.SEMRESATTRS_DEVICE_MODEL_IDENTIFIER = exports.SEMRESATTRS_DEVICE_ID = exports.SEMRESATTRS_DEPLOYMENT_ENVIRONMENT = exports.SEMRESATTRS_CONTAINER_IMAGE_TAG = exports.SEMRESATTRS_CONTAINER_IMAGE_NAME = exports.SEMRESATTRS_CONTAINER_RUNTIME = exports.SEMRESATTRS_CONTAINER_ID = exports.SEMRESATTRS_CONTAINER_NAME = exports.SEMRESATTRS_AWS_LOG_STREAM_ARNS = exports.SEMRESATTRS_AWS_LOG_STREAM_NAMES = exports.SEMRESATTRS_AWS_LOG_GROUP_ARNS = exports.SEMRESATTRS_AWS_LOG_GROUP_NAMES = exports.SEMRESATTRS_AWS_EKS_CLUSTER_ARN = exports.SEMRESATTRS_AWS_ECS_TASK_REVISION = exports.SEMRESATTRS_AWS_ECS_TASK_FAMILY = exports.SEMRESATTRS_AWS_ECS_TASK_ARN = exports.SEMRESATTRS_AWS_ECS_LAUNCHTYPE = exports.SEMRESATTRS_AWS_ECS_CLUSTER_ARN = exports.SEMRESATTRS_AWS_ECS_CONTAINER_ARN = exports.SEMRESATTRS_CLOUD_PLATFORM = exports.SEMRESATTRS_CLOUD_AVAILABILITY_ZONE = exports.SEMRESATTRS_CLOUD_REGION = exports.SEMRESATTRS_CLOUD_ACCOUNT_ID = exports.SEMRESATTRS_CLOUD_PROVIDER = void 0;
@@ -5198,7 +5198,7 @@ var require_SemanticResourceAttributes = /* @__PURE__ */ __commonJSMin(((exports
 	]);
 }));
 //#endregion
-//#region ../../workspace/node_modules/@opentelemetry/semantic-conventions/build/src/resource/index.js
+//#region node_modules/@opentelemetry/semantic-conventions/build/src/resource/index.js
 var require_resource = /* @__PURE__ */ __commonJSMin(((exports) => {
 	var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
 		if (k2 === void 0) k2 = k;
@@ -5221,7 +5221,7 @@ var require_resource = /* @__PURE__ */ __commonJSMin(((exports) => {
 	__exportStar(require_SemanticResourceAttributes(), exports);
 }));
 //#endregion
-//#region ../../workspace/node_modules/@opentelemetry/semantic-conventions/build/src/stable_attributes.js
+//#region node_modules/@opentelemetry/semantic-conventions/build/src/stable_attributes.js
 var require_stable_attributes = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.DOTNET_GC_HEAP_GENERATION_VALUE_GEN1 = exports.DOTNET_GC_HEAP_GENERATION_VALUE_GEN0 = exports.ATTR_DOTNET_GC_HEAP_GENERATION = exports.DEPLOYMENT_ENVIRONMENT_NAME_VALUE_TEST = exports.DEPLOYMENT_ENVIRONMENT_NAME_VALUE_STAGING = exports.DEPLOYMENT_ENVIRONMENT_NAME_VALUE_PRODUCTION = exports.DEPLOYMENT_ENVIRONMENT_NAME_VALUE_DEVELOPMENT = exports.ATTR_DEPLOYMENT_ENVIRONMENT_NAME = exports.DB_SYSTEM_NAME_VALUE_POSTGRESQL = exports.DB_SYSTEM_NAME_VALUE_MYSQL = exports.DB_SYSTEM_NAME_VALUE_MICROSOFT_SQL_SERVER = exports.DB_SYSTEM_NAME_VALUE_MARIADB = exports.ATTR_DB_SYSTEM_NAME = exports.ATTR_DB_STORED_PROCEDURE_NAME = exports.ATTR_DB_RESPONSE_STATUS_CODE = exports.ATTR_DB_QUERY_TEXT = exports.ATTR_DB_QUERY_SUMMARY = exports.ATTR_DB_OPERATION_NAME = exports.ATTR_DB_OPERATION_BATCH_SIZE = exports.ATTR_DB_NAMESPACE = exports.ATTR_DB_COLLECTION_NAME = exports.ATTR_CONTAINER_IMAGE_TAGS = exports.ATTR_CONTAINER_IMAGE_REPO_DIGESTS = exports.ATTR_CONTAINER_IMAGE_NAME = exports.ATTR_CONTAINER_ID = exports.ATTR_CODE_STACKTRACE = exports.ATTR_CODE_LINE_NUMBER = exports.ATTR_CODE_FUNCTION_NAME = exports.ATTR_CODE_FILE_PATH = exports.ATTR_CODE_COLUMN_NUMBER = exports.ATTR_CLIENT_PORT = exports.ATTR_CLIENT_ADDRESS = exports.ATTR_ASPNETCORE_USER_IS_AUTHENTICATED = exports.ASPNETCORE_ROUTING_MATCH_STATUS_VALUE_SUCCESS = exports.ASPNETCORE_ROUTING_MATCH_STATUS_VALUE_FAILURE = exports.ATTR_ASPNETCORE_ROUTING_MATCH_STATUS = exports.ATTR_ASPNETCORE_ROUTING_IS_FALLBACK = exports.ATTR_ASPNETCORE_REQUEST_IS_UNHANDLED = exports.ASPNETCORE_RATE_LIMITING_RESULT_VALUE_REQUEST_CANCELED = exports.ASPNETCORE_RATE_LIMITING_RESULT_VALUE_GLOBAL_LIMITER = exports.ASPNETCORE_RATE_LIMITING_RESULT_VALUE_ENDPOINT_LIMITER = exports.ASPNETCORE_RATE_LIMITING_RESULT_VALUE_ACQUIRED = exports.ATTR_ASPNETCORE_RATE_LIMITING_RESULT = exports.ATTR_ASPNETCORE_RATE_LIMITING_POLICY = exports.ATTR_ASPNETCORE_DIAGNOSTICS_HANDLER_TYPE = exports.ASPNETCORE_DIAGNOSTICS_EXCEPTION_RESULT_VALUE_UNHANDLED = exports.ASPNETCORE_DIAGNOSTICS_EXCEPTION_RESULT_VALUE_SKIPPED = exports.ASPNETCORE_DIAGNOSTICS_EXCEPTION_RESULT_VALUE_HANDLED = exports.ASPNETCORE_DIAGNOSTICS_EXCEPTION_RESULT_VALUE_ABORTED = exports.ATTR_ASPNETCORE_DIAGNOSTICS_EXCEPTION_RESULT = void 0;
@@ -6975,7 +6975,7 @@ var require_stable_attributes = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.ATTR_USER_AGENT_ORIGINAL = "user_agent.original";
 }));
 //#endregion
-//#region ../../workspace/node_modules/@opentelemetry/semantic-conventions/build/src/stable_metrics.js
+//#region node_modules/@opentelemetry/semantic-conventions/build/src/stable_metrics.js
 var require_stable_metrics = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.METRIC_SIGNALR_SERVER_ACTIVE_CONNECTIONS = exports.METRIC_KESTREL_UPGRADED_CONNECTIONS = exports.METRIC_KESTREL_TLS_HANDSHAKE_DURATION = exports.METRIC_KESTREL_REJECTED_CONNECTIONS = exports.METRIC_KESTREL_QUEUED_REQUESTS = exports.METRIC_KESTREL_QUEUED_CONNECTIONS = exports.METRIC_KESTREL_CONNECTION_DURATION = exports.METRIC_KESTREL_ACTIVE_TLS_HANDSHAKES = exports.METRIC_KESTREL_ACTIVE_CONNECTIONS = exports.METRIC_JVM_THREAD_COUNT = exports.METRIC_JVM_MEMORY_USED_AFTER_LAST_GC = exports.METRIC_JVM_MEMORY_USED = exports.METRIC_JVM_MEMORY_LIMIT = exports.METRIC_JVM_MEMORY_COMMITTED = exports.METRIC_JVM_GC_DURATION = exports.METRIC_JVM_CPU_TIME = exports.METRIC_JVM_CPU_RECENT_UTILIZATION = exports.METRIC_JVM_CPU_COUNT = exports.METRIC_JVM_CLASS_UNLOADED = exports.METRIC_JVM_CLASS_LOADED = exports.METRIC_JVM_CLASS_COUNT = exports.METRIC_HTTP_SERVER_REQUEST_DURATION = exports.METRIC_HTTP_CLIENT_REQUEST_DURATION = exports.METRIC_DOTNET_TIMER_COUNT = exports.METRIC_DOTNET_THREAD_POOL_WORK_ITEM_COUNT = exports.METRIC_DOTNET_THREAD_POOL_THREAD_COUNT = exports.METRIC_DOTNET_THREAD_POOL_QUEUE_LENGTH = exports.METRIC_DOTNET_PROCESS_MEMORY_WORKING_SET = exports.METRIC_DOTNET_PROCESS_CPU_TIME = exports.METRIC_DOTNET_PROCESS_CPU_COUNT = exports.METRIC_DOTNET_MONITOR_LOCK_CONTENTIONS = exports.METRIC_DOTNET_JIT_COMPILED_METHODS = exports.METRIC_DOTNET_JIT_COMPILED_IL_SIZE = exports.METRIC_DOTNET_JIT_COMPILATION_TIME = exports.METRIC_DOTNET_GC_PAUSE_TIME = exports.METRIC_DOTNET_GC_LAST_COLLECTION_MEMORY_COMMITTED_SIZE = exports.METRIC_DOTNET_GC_LAST_COLLECTION_HEAP_SIZE = exports.METRIC_DOTNET_GC_LAST_COLLECTION_HEAP_FRAGMENTATION_SIZE = exports.METRIC_DOTNET_GC_HEAP_TOTAL_ALLOCATED = exports.METRIC_DOTNET_GC_COLLECTIONS = exports.METRIC_DOTNET_EXCEPTIONS = exports.METRIC_DOTNET_ASSEMBLY_COUNT = exports.METRIC_DB_CLIENT_OPERATION_DURATION = exports.METRIC_ASPNETCORE_ROUTING_MATCH_ATTEMPTS = exports.METRIC_ASPNETCORE_RATE_LIMITING_REQUESTS = exports.METRIC_ASPNETCORE_RATE_LIMITING_REQUEST_LEASE_DURATION = exports.METRIC_ASPNETCORE_RATE_LIMITING_REQUEST_TIME_IN_QUEUE = exports.METRIC_ASPNETCORE_RATE_LIMITING_QUEUED_REQUESTS = exports.METRIC_ASPNETCORE_RATE_LIMITING_ACTIVE_REQUEST_LEASES = exports.METRIC_ASPNETCORE_DIAGNOSTICS_EXCEPTIONS = void 0;
@@ -7289,7 +7289,7 @@ var require_stable_metrics = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.METRIC_SIGNALR_SERVER_CONNECTION_DURATION = "signalr.server.connection.duration";
 }));
 //#endregion
-//#region ../../workspace/node_modules/@opentelemetry/semantic-conventions/build/src/stable_events.js
+//#region node_modules/@opentelemetry/semantic-conventions/build/src/stable_events.js
 var require_stable_events = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.EVENT_EXCEPTION = void 0;
@@ -7299,7 +7299,7 @@ var require_stable_events = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.EVENT_EXCEPTION = "exception";
 }));
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/instrumentation/attributes.mjs
+//#region node_modules/@better-auth/core/dist/instrumentation/attributes.mjs
 var import_src = (/* @__PURE__ */ __commonJSMin(((exports) => {
 	var __createBinding = exports && exports.__createBinding || (Object.create ? (function(o, m, k, k2) {
 		if (k2 === void 0) k2 = k;
@@ -7332,7 +7332,7 @@ var ATTR_HOOK_TYPE = "better_auth.hook.type";
 /** Execution context (e.g. user, plugin:id). */
 var ATTR_CONTEXT = "better_auth.context";
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/instrumentation/noop.mjs
+//#region node_modules/@better-auth/core/dist/instrumentation/noop.mjs
 function createNoopSpan() {
 	const span = {
 		end() {},
@@ -7373,7 +7373,7 @@ function createNoopOpenTelemetryAPI() {
 }
 var noopOpenTelemetryAPI = createNoopOpenTelemetryAPI();
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/instrumentation/api.mjs
+//#region node_modules/@better-auth/core/dist/instrumentation/api.mjs
 var openTelemetryAPIPromise;
 var openTelemetryAPI;
 function getOpenTelemetryAPI() {
@@ -7383,7 +7383,7 @@ function getOpenTelemetryAPI() {
 	return openTelemetryAPI ?? noopOpenTelemetryAPI;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/instrumentation/tracer.mjs
+//#region node_modules/@better-auth/core/dist/instrumentation/tracer.mjs
 var INSTRUMENTATION_SCOPE = "better-auth";
 var INSTRUMENTATION_VERSION = "1.6.30";
 /**
@@ -7433,7 +7433,7 @@ function withSpan(name, attributes, fn) {
 	});
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/db/adapter/factory.mjs
+//#region node_modules/@better-auth/core/dist/db/adapter/factory.mjs
 var debugLogs = [];
 var transactionId = -1;
 var createAsIsTransaction = (adapter) => (fn) => fn(adapter);
@@ -8323,7 +8323,7 @@ function formatAction(action) {
 	return `${TTY_COLORS.dim}(${action})${TTY_COLORS.reset}`;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/buffer_utils.js
+//#region node_modules/jose/dist/webapi/lib/buffer_utils.js
 var encoder = new TextEncoder();
 var decoder = new TextDecoder();
 var strictDecoder = new TextDecoder("utf-8", { fatal: true });
@@ -8370,7 +8370,7 @@ function encode$2(string) {
 	return bytes;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/crypto_key.js
+//#region node_modules/jose/dist/webapi/lib/crypto_key.js
 var unusable = (name, prop = "algorithm.name") => /* @__PURE__ */ new TypeError(`CryptoKey does not support this operation, its ${prop} must be ${name}`);
 function checkUsage(key, usage) {
 	if (usage && !key.usages.includes(usage)) throw new TypeError(`CryptoKey does not support this operation, its usages must include ${usage}.`);
@@ -8388,7 +8388,7 @@ function checkCryptoKey(key, expected, usage) {
 	checkUsage(key, usage);
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/invalid_key_input.js
+//#region node_modules/jose/dist/webapi/lib/invalid_key_input.js
 function message(msg, actual, ...types) {
 	if (types.length > 2) {
 		const last = types.pop();
@@ -8405,7 +8405,7 @@ function message(msg, actual, ...types) {
 var invalidKeyInput = (actual, ...types) => message("Key must be ", actual, ...types);
 var withAlg = (alg, actual, ...types) => message(`Key for the ${alg} algorithm must be `, actual, ...types);
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/util/errors.js
+//#region node_modules/jose/dist/webapi/util/errors.js
 var JOSEError = class extends Error {
 	static code = "ERR_JOSE_GENERIC";
 	code = "ERR_JOSE_GENERIC";
@@ -8514,7 +8514,7 @@ var JWSSignatureVerificationFailed = class extends JOSEError {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/is_key_like.js
+//#region node_modules/jose/dist/webapi/lib/is_key_like.js
 function assertCryptoKey(key) {
 	if (!isCryptoKey(key)) throw new Error("CryptoKey instance expected");
 }
@@ -8529,7 +8529,7 @@ var isCryptoKey = (key) => {
 var isKeyObject = (key) => key?.[Symbol.toStringTag] === "KeyObject";
 var isKeyLike = (key) => isCryptoKey(key) || isKeyObject(key);
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/base64.js
+//#region node_modules/jose/dist/webapi/lib/base64.js
 function encodeBase64(input) {
 	if (Uint8Array.prototype.toBase64) return input.toBase64();
 	const CHUNK_SIZE = 32768;
@@ -8545,7 +8545,7 @@ function decodeBase64(encoded) {
 	return bytes;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/util/base64url.js
+//#region node_modules/jose/dist/webapi/util/base64url.js
 var invalid = "The input to be decoded is not correctly encoded.";
 function decode$1(input) {
 	if (Uint8Array.fromBase64) try {
@@ -8573,7 +8573,7 @@ function encode$1(input) {
 	return encodeBase64(unencoded).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/type_checks.js
+//#region node_modules/jose/dist/webapi/lib/type_checks.js
 function isObject$1(input) {
 	if (typeof input !== "object" || input === null || Object.prototype.toString.call(input) !== "[object Object]") return false;
 	const prototype = Object.getPrototypeOf(input);
@@ -8598,7 +8598,7 @@ var isPrivateJWK = (key) => key.kty !== "oct" && (key.kty === "AKP" && typeof ke
 var isPublicJWK = (key) => key.kty !== "oct" && key.d === void 0 && key.priv === void 0;
 var isSecretJWK = (key) => key.kty === "oct" && typeof key.k === "string";
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/helpers.js
+//#region node_modules/jose/dist/webapi/lib/helpers.js
 var unprotected = Symbol();
 function assertNotSet(value, name) {
 	if (value) throw new TypeError(`${name} can only be called once`);
@@ -8632,7 +8632,7 @@ function parseJoseHeader(b64, ErrorClass, message) {
 	return parsed;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/jwk_to_key.js
+//#region node_modules/jose/dist/webapi/lib/jwk_to_key.js
 async function jwkToKey(entry, jwk) {
 	if (jwk.kty === "RSA" && "oth" in jwk && jwk.oth !== void 0) throw new JOSENotSupported("RSA JWK \"oth\" (Other Primes Info) Parameter value is not supported");
 	if (!entry.kty.includes(jwk.kty)) throw new JOSENotSupported("Invalid or unsupported JWK \"alg\" (Algorithm) Parameter value");
@@ -8647,7 +8647,7 @@ async function jwkToKey(entry, jwk) {
 	return crypto.subtle.importKey("jwk", keyData, algorithm, jwk.ext ?? !isPrivate, jwk.key_ops ?? entry.usages[isPrivate ? 1 : 0]);
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/key.js
+//#region node_modules/jose/dist/webapi/lib/key.js
 var tag = (key) => key[Symbol.toStringTag];
 var jwkMatchesOp = (entry, key, usage) => {
 	const { alg } = entry;
@@ -8747,7 +8747,7 @@ async function prepareKey(entry, key, usage) {
 	}
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/key_descriptor.js
+//#region node_modules/jose/dist/webapi/lib/key_descriptor.js
 function table(entries) {
 	const out = { __proto__: null };
 	for (const alg in entries) out[alg] = {
@@ -8757,7 +8757,7 @@ function table(entries) {
 	return out;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/jwe_algorithms.js
+//#region node_modules/jose/dist/webapi/lib/jwe_algorithms.js
 var wrap = [["encrypt", "wrapKey"], ["decrypt", "unwrapKey"]];
 var derive = [[], ["deriveBits"]];
 var none = [[], []];
@@ -8869,7 +8869,7 @@ function jweEncryption(enc) {
 	return (typeof enc === "string" ? ENC[enc] : void 0) ?? unsupported("enc", "Encryption Algorithm");
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/options.js
+//#region node_modules/jose/dist/webapi/lib/options.js
 var JWS_RECOGNIZED = {
 	__proto__: null,
 	b64: true
@@ -8901,7 +8901,7 @@ function validateCrit(Err, recognizedDefault, recognizedOption, protectedHeader,
 	return protectedHeader.crit;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/signing.js
+//#region node_modules/jose/dist/webapi/lib/signing.js
 async function getSigKey(entry, key, usage) {
 	if (key instanceof Uint8Array) return crypto.subtle.importKey("raw", key, entry.subtle, false, [usage]);
 	checkCryptoKey(key, entry.subtle, usage);
@@ -8922,7 +8922,7 @@ async function verify(entry, key, signature, data) {
 	}
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/jws_algorithms.js
+//#region node_modules/jose/dist/webapi/lib/jws_algorithms.js
 var sig = [["verify"], ["sign"]];
 function hmac(bits) {
 	const subtle = {
@@ -9012,7 +9012,7 @@ function jwsAlgorithm(alg) {
 	return entry;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/jws_verify.js
+//#region node_modules/jose/dist/webapi/lib/jws_verify.js
 function prepareVerify(options) {
 	return [options && validateAlgorithms("algorithms", options.algorithms), options?.crit];
 }
@@ -9074,7 +9074,7 @@ async function verifyCompact(jws, shared, key) {
 	}, shared, key);
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/jwt_claims_set.js
+//#region node_modules/jose/dist/webapi/lib/jwt_claims_set.js
 var epoch = (date) => Math.floor(date.getTime() / 1e3);
 var multipliers = {
 	s: 1,
@@ -9209,7 +9209,7 @@ var JWTClaimsBuilder = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/jwt/verify.js
+//#region node_modules/jose/dist/webapi/jwt/verify.js
 async function jwtVerify(jwt, key, options) {
 	const verified = await verifyCompact(jwt, prepareVerify(options), key);
 	if (!verified[2]) throw new JWTInvalid("JWTs MUST NOT use unencoded payload");
@@ -9224,7 +9224,7 @@ async function jwtVerify(jwt, key, options) {
 	return result;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/lib/key_algorithm.js
+//#region node_modules/jose/dist/webapi/lib/key_algorithm.js
 function unsupportedAlg(source = "JWK \"alg\" (Algorithm) Parameter") {
 	throw new JOSENotSupported(`Invalid or unsupported ${source} value`);
 }
@@ -9232,7 +9232,7 @@ function keyAlgorithm(alg, source) {
 	return (typeof alg === "string" ? JWS[alg] ?? JWE[alg] : void 0) ?? unsupportedAlg(source);
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/jwks/local.js
+//#region node_modules/jose/dist/webapi/jwks/local.js
 function signatureAlgorithm(alg) {
 	const entry = typeof alg === "string" ? JWS[alg] : void 0;
 	if (!entry || entry.secret) throw new JOSENotSupported("Unsupported \"alg\" value for a JSON Web Key Set");
@@ -9295,7 +9295,7 @@ function createLocalJWKSet(jwks) {
 	return localJWKSet;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/jwks/remote.js
+//#region node_modules/jose/dist/webapi/jwks/remote.js
 function isCloudflareWorkers() {
 	return typeof WebSocketPair !== "undefined" || typeof navigator !== "undefined" && navigator.userAgent === "Cloudflare-Workers" || typeof EdgeRuntime !== "undefined" && EdgeRuntime === "vercel";
 }
@@ -9432,7 +9432,7 @@ function createRemoteJWKSet(url, options) {
 	return remoteJWKSet;
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/key/import.js
+//#region node_modules/jose/dist/webapi/key/import.js
 async function importJWK(jwk, alg, options) {
 	if (!isObject$1(jwk)) throw new TypeError("JWK must be an object");
 	alg ??= jwk.alg;
@@ -9464,7 +9464,7 @@ async function importJWK(jwk, alg, options) {
 	}
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/util/decode_protected_header.js
+//#region node_modules/jose/dist/webapi/util/decode_protected_header.js
 function decodeProtectedHeader(token) {
 	let protectedB64u;
 	if (typeof token === "string") {
@@ -9479,7 +9479,7 @@ function decodeProtectedHeader(token) {
 	return parseJoseHeader(protectedB64u, TypeError, invalid);
 }
 //#endregion
-//#region ../../workspace/node_modules/jose/dist/webapi/util/decode_jwt.js
+//#region node_modules/jose/dist/webapi/util/decode_jwt.js
 function decodeJwt(jwt) {
 	if (typeof jwt !== "string") throw new JWTInvalid("JWTs must use Compact JWS serialization, JWT must be a string");
 	const { 1: payload, length } = jwt.split(".");
@@ -9502,7 +9502,7 @@ function decodeJwt(jwt) {
 	return result;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/utils/dist/base64.mjs
+//#region node_modules/@better-auth/utils/dist/base64.mjs
 function getAlphabet(urlSafe) {
 	return urlSafe ? "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_" : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 }
@@ -9565,7 +9565,7 @@ var base64Url = {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/core.js
+//#region node_modules/zod/v4/core/core.js
 var _a$1;
 function $constructor(name, initializer, params) {
 	function init(inst, def) {
@@ -9624,7 +9624,7 @@ function config(newConfig) {
 	return globalConfig;
 }
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/util.js
+//#region node_modules/zod/v4/core/util.js
 function getEnumValues(entries) {
 	const numericValues = Object.values(entries).filter((v) => typeof v === "number");
 	return Object.entries(entries).filter(([k, _]) => numericValues.indexOf(+k) === -1).map(([_, v]) => v);
@@ -9938,7 +9938,7 @@ function issue(...args) {
 	return { ...iss };
 }
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/errors.js
+//#region node_modules/zod/v4/core/errors.js
 var initializer$1 = (inst, def) => {
 	inst.name = "$ZodError";
 	Object.defineProperty(inst, "_zod", {
@@ -9998,7 +9998,7 @@ function formatError(error, mapper = (issue) => issue.message) {
 	return fieldErrors;
 }
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/parse.js
+//#region node_modules/zod/v4/core/parse.js
 var _parse = (_Err) => (schema, value, _ctx, _params) => {
 	const ctx = _ctx ? {
 		..._ctx,
@@ -10112,7 +10112,7 @@ var _safeDecodeAsync = (_Err) => async (schema, value, _ctx) => {
 	return _safeParseAsync(_Err)(schema, value, _ctx);
 };
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/regexes.js
+//#region node_modules/zod/v4/core/regexes.js
 /**
 * @deprecated CUID v1 is deprecated by its authors due to information leakage
 * (timestamps embedded in the id). Use {@link cuid2} instead.
@@ -10176,7 +10176,7 @@ var boolean$1 = /^(?:true|false)$/i;
 var lowercase = /^[^A-Z]*$/;
 var uppercase = /^[^a-z]*$/;
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/checks.js
+//#region node_modules/zod/v4/core/checks.js
 var $ZodCheck = /*@__PURE__*/ $constructor("$ZodCheck", (inst, def) => {
 	var _a;
 	inst._zod ?? (inst._zod = {});
@@ -10538,7 +10538,7 @@ var $ZodCheckOverwrite = /*@__PURE__*/ $constructor("$ZodCheckOverwrite", (inst,
 	};
 });
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/doc.js
+//#region node_modules/zod/v4/core/doc.js
 var Doc = class {
 	constructor(args = []) {
 		this.content = [];
@@ -10569,14 +10569,14 @@ var Doc = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/versions.js
+//#region node_modules/zod/v4/core/versions.js
 var version = {
 	major: 4,
 	minor: 4,
 	patch: 3
 };
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/schemas.js
+//#region node_modules/zod/v4/core/schemas.js
 var $ZodType = /*@__PURE__*/ $constructor("$ZodType", (inst, def) => {
 	var _a;
 	inst ?? (inst = {});
@@ -11810,7 +11810,7 @@ function handleRefineResult(result, payload, input, inst) {
 	}
 }
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/registries.js
+//#region node_modules/zod/v4/core/registries.js
 var _a;
 var $ZodRegistry = class {
 	constructor() {
@@ -11857,7 +11857,7 @@ function registry() {
 (_a = globalThis).__zod_globalRegistry ?? (_a.__zod_globalRegistry = registry());
 var globalRegistry = globalThis.__zod_globalRegistry;
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/api.js
+//#region node_modules/zod/v4/core/api.js
 // @__NO_SIDE_EFFECTS__
 function _string(Class, params) {
 	return new Class({
@@ -12382,7 +12382,7 @@ function _check(fn, params) {
 	return ch;
 }
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/to-json-schema.js
+//#region node_modules/zod/v4/core/to-json-schema.js
 function initializeContext(params) {
 	let target = params?.target ?? "draft-2020-12";
 	if (target === "draft-4") target = "draft-04";
@@ -12677,7 +12677,7 @@ var createStandardJSONSchemaMethod = (schema, io, processors = {}) => (params) =
 	return finalize(ctx, schema);
 };
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/core/json-schema-processors.js
+//#region node_modules/zod/v4/core/json-schema-processors.js
 var formatMap = {
 	guid: "uuid",
 	url: "uri",
@@ -12942,7 +12942,7 @@ var optionalProcessor = (schema, ctx, _json, params) => {
 	seen.ref = def.innerType;
 };
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/classic/iso.js
+//#region node_modules/zod/v4/classic/iso.js
 var ZodISODateTime = /*@__PURE__*/ $constructor("ZodISODateTime", (inst, def) => {
 	$ZodISODateTime.init(inst, def);
 	ZodStringFormat.init(inst, def);
@@ -12972,7 +12972,7 @@ function duration(params) {
 	return /* @__PURE__ */ _isoDuration(ZodISODuration, params);
 }
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/classic/errors.js
+//#region node_modules/zod/v4/classic/errors.js
 var initializer = (inst, issues) => {
 	$ZodError.init(inst, issues);
 	inst.name = "ZodError";
@@ -12994,7 +12994,7 @@ var initializer = (inst, issues) => {
 };
 var ZodRealError = /*@__PURE__*/ $constructor("ZodError", initializer, { Parent: Error });
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/classic/parse.js
+//#region node_modules/zod/v4/classic/parse.js
 var parse = /* @__PURE__ */ _parse(ZodRealError);
 var parseAsync = /* @__PURE__ */ _parseAsync(ZodRealError);
 var safeParse = /* @__PURE__ */ _safeParse(ZodRealError);
@@ -13008,7 +13008,7 @@ var safeDecode = /* @__PURE__ */ _safeDecode(ZodRealError);
 var safeEncodeAsync = /* @__PURE__ */ _safeEncodeAsync(ZodRealError);
 var safeDecodeAsync = /* @__PURE__ */ _safeDecodeAsync(ZodRealError);
 //#endregion
-//#region ../../workspace/node_modules/zod/v4/classic/schemas.js
+//#region node_modules/zod/v4/classic/schemas.js
 var _installedGroups = /* @__PURE__ */ new WeakMap();
 function _installLazyMethods(inst, group, methods) {
 	const proto = Object.getPrototypeOf(inst);
@@ -13826,7 +13826,7 @@ function superRefine(fn, params) {
 	return /* @__PURE__ */ _superRefine(fn, params);
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/db.mjs
+//#region node_modules/@better-auth/core/dist/utils/db.mjs
 /**
 * Filters output data by removing fields with the `returned: false` attribute.
 * This ensures sensitive fields are not exposed in API responses.
@@ -13840,14 +13840,14 @@ function filterOutputFields(data, additionalFields) {
 	}), {});
 }
 //#endregion
-//#region ../../workspace/node_modules/better-call/node_modules/@better-auth/utils/dist/index.mjs
+//#region node_modules/better-call/node_modules/@better-auth/utils/dist/index.mjs
 function getWebcryptoSubtle() {
 	const cr = typeof globalThis !== "undefined" && globalThis.crypto;
 	if (cr && typeof cr.subtle === "object" && cr.subtle != null) return cr.subtle;
 	throw new Error("crypto.subtle must be defined");
 }
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/crypto.mjs
+//#region node_modules/better-call/dist/crypto.mjs
 var algorithm = {
 	name: "HMAC",
 	hash: "SHA-256"
@@ -13878,7 +13878,7 @@ var signCookieValue = async (value, secret) => {
 	return value;
 };
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/utils.mjs
+//#region node_modules/better-call/dist/utils.mjs
 var jsonContentTypeRegex = /^application\/([a-z0-9.+-]*\+)?json/i;
 async function getBody(request, allowedMediaTypes) {
 	const contentType = request.headers.get("content-type") || "";
@@ -13963,7 +13963,7 @@ function isRequest(obj) {
 	return obj instanceof Request || Object.prototype.toString.call(obj) === "[object Request]";
 }
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/cookies.mjs
+//#region node_modules/better-call/dist/cookies.mjs
 var getCookieKey = (key, prefix) => {
 	let finalKey = key;
 	if (prefix) if (prefix === "secure") finalKey = "__Secure-" + key;
@@ -14041,7 +14041,7 @@ var serializeSignedCookie = async (key, value, secret, opt) => {
 	return _serialize(key, value, opt);
 };
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/validator.mjs
+//#region node_modules/better-call/dist/validator.mjs
 /**
 * Runs validation on body and query
 * @returns error and data object
@@ -14095,7 +14095,7 @@ function fromError(error, validating) {
 	};
 }
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/context.mjs
+//#region node_modules/better-call/dist/context.mjs
 var createInternalContext = async (context, { options, path }) => {
 	const headers = new Headers();
 	let responseStatus = void 0;
@@ -14189,7 +14189,7 @@ var createInternalContext = async (context, { options, path }) => {
 	return internalContext;
 };
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/to-response.mjs
+//#region node_modules/better-call/dist/to-response.mjs
 function isJSONSerializable(value) {
 	if (value === void 0) return false;
 	const t = typeof value;
@@ -14349,7 +14349,7 @@ function toResponse(data, init) {
 	});
 }
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/endpoint.mjs
+//#region node_modules/better-call/dist/endpoint.mjs
 function createEndpoint(pathOrOptions, handlerOrOptions, handlerOrNever) {
 	const path = typeof pathOrOptions === "string" ? pathOrOptions : void 0;
 	const options = typeof handlerOrOptions === "object" ? handlerOrOptions : pathOrOptions;
@@ -14423,7 +14423,7 @@ createEndpoint.create = (opts) => {
 	return createConfiguredEndpoint;
 };
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/middleware.mjs
+//#region node_modules/better-call/dist/middleware.mjs
 function createMiddleware(optionsOrHandler, handler) {
 	const internalHandler = async (inputCtx) => {
 		const context = inputCtx;
@@ -14467,7 +14467,7 @@ createMiddleware.create = (opts) => {
 	return fn;
 };
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/openapi.mjs
+//#region node_modules/better-call/dist/openapi.mjs
 var paths = {};
 function getTypeFromZodType(zodType) {
 	switch (zodType.constructor.name) {
@@ -14651,7 +14651,7 @@ var getHTML = (apiReference, config) => `<!doctype html>
   </body>
 </html>`;
 //#endregion
-//#region ../../workspace/node_modules/rou3/dist/index.mjs
+//#region node_modules/rou3/dist/index.mjs
 var NullProtoObj = /* @__PURE__ */ (() => {
 	const e = function() {};
 	return e.prototype = Object.create(null), Object.freeze(e.prototype), e;
@@ -15063,7 +15063,7 @@ function pushSorted(matches, match, dynamicTerminal) {
 	for (const m of match) matches.push(m);
 }
 //#endregion
-//#region ../../workspace/node_modules/better-call/dist/router.mjs
+//#region node_modules/better-call/dist/router.mjs
 var createRouter$1 = (endpoints, config) => {
 	if (!config?.openapi?.disabled) {
 		const openapi = {
@@ -15171,7 +15171,7 @@ var createRouter$1 = (endpoints, config) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/context/endpoint-context.mjs
+//#region node_modules/@better-auth/core/dist/context/endpoint-context.mjs
 var ensureAsyncStorage$1 = async () => {
 	const betterAuthGlobal = __getBetterAuthGlobal();
 	const existing = betterAuthGlobal.context.endpointContextAsyncStorage;
@@ -15189,7 +15189,7 @@ async function runWithEndpointContext(context, fn) {
 	return (await ensureAsyncStorage$1()).run(context, fn);
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/context/request-state.mjs
+//#region node_modules/@better-auth/core/dist/context/request-state.mjs
 var ensureAsyncStorage = async () => {
 	const betterAuthGlobal = __getBetterAuthGlobal();
 	const existing = betterAuthGlobal.context.requestStateAsyncStorage;
@@ -15230,12 +15230,12 @@ function defineRequestState(initFn) {
 	};
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/is-api-error.mjs
+//#region node_modules/@better-auth/core/dist/utils/is-api-error.mjs
 function isAPIError(error) {
 	return error instanceof APIError$1 || error instanceof APIError || error?.name === "APIError";
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/api/index.mjs
+//#region node_modules/@better-auth/core/dist/api/index.mjs
 /**
 * Better-call's createEndpoint re-throws APIError without exposing the headers
 * accumulated on ctx.responseHeaders (e.g. Set-Cookie from deleteSessionCookie
@@ -15319,7 +15319,7 @@ function withServerOnly(options) {
 */
 createAuthEndpoint.serverOnly = (options, handler) => createAuthEndpoint(withServerOnly(options), handler);
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/deprecate.mjs
+//#region node_modules/@better-auth/core/dist/utils/deprecate.mjs
 /**
 * Wraps a function to log a deprecation warning at once.
 */
@@ -15334,7 +15334,7 @@ function deprecate(fn, message, logger) {
 	};
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/ip.mjs
+//#region node_modules/@better-auth/core/dist/utils/ip.mjs
 /**
 * Checks if an IP is valid IPv4 or IPv6
 */
@@ -15561,7 +15561,7 @@ function createRateLimitKey(ip, path) {
 	return `${ip}|${path}`;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/utils/host.mjs
+//#region node_modules/@better-auth/core/dist/utils/host.mjs
 /**
 * Cloud provider instance metadata service FQDNs. These resolve to link-local
 * IPs (usually `169.254.169.254`) inside their respective clouds and are
@@ -15804,7 +15804,7 @@ function isLoopbackHost(host) {
 	return kind === "loopback" || kind === "localhost";
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/oauth2/utils.mjs
+//#region node_modules/@better-auth/core/dist/oauth2/utils.mjs
 function getOAuth2Tokens(data) {
 	const getDate = (seconds) => {
 		return new Date((/* @__PURE__ */ new Date()).getTime() + seconds * 1e3);
@@ -15849,7 +15849,7 @@ async function generateCodeChallenge(codeVerifier) {
 	return base64Url.encode(new Uint8Array(hash), { padding: false });
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/oauth2/create-authorization-url.mjs
+//#region node_modules/@better-auth/core/dist/oauth2/create-authorization-url.mjs
 async function createAuthorizationURL({ id, options, authorizationEndpoint, state, codeVerifier, scopes, claims, redirectURI, duration, prompt, accessType, responseType, display, loginHint, hd, responseMode, additionalParams, scopeJoiner }) {
 	options = typeof options === "function" ? await options() : options;
 	const url = new URL(options.authorizationEndpoint || authorizationEndpoint);
@@ -15888,7 +15888,7 @@ async function createAuthorizationURL({ id, options, authorizationEndpoint, stat
 	return url;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/oauth2/reject-redirects.mjs
+//#region node_modules/@better-auth/core/dist/oauth2/reject-redirects.mjs
 var HTTP_REDIRECT_STATUSES = /* @__PURE__ */ new Set([
 	301,
 	302,
@@ -15937,7 +15937,7 @@ async function fetchRefusingRedirects(url, options) {
 	return result;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/oauth2/refresh-access-token.mjs
+//#region node_modules/@better-auth/core/dist/oauth2/refresh-access-token.mjs
 /**
 * @deprecated use async'd refreshAccessTokenRequest instead
 */
@@ -15991,7 +15991,7 @@ async function refreshAccessToken({ refreshToken, options, tokenEndpoint, authen
 	return tokens;
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/oauth2/validate-authorization-code.mjs
+//#region node_modules/@better-auth/core/dist/oauth2/validate-authorization-code.mjs
 async function authorizationCodeRequest({ code, codeVerifier, redirectURI, options, authentication, deviceId, headers, additionalParams = {}, resource }) {
 	options = typeof options === "function" ? await options() : options;
 	return createAuthorizationCodeRequest({
@@ -16059,7 +16059,7 @@ async function validateAuthorizationCode({ code, codeVerifier, redirectURI, opti
 	return getOAuth2Tokens(data);
 }
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/apple.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/apple.mjs
 async function sha256Hex(value) {
 	const data = new TextEncoder().encode(value);
 	const digest = await crypto.subtle.digest("SHA-256", data);
@@ -16168,7 +16168,7 @@ var getApplePublicKey = async (kid) => {
 	return await importJWK(jwk, jwk.alg);
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/atlassian.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/atlassian.mjs
 var atlassian = (options) => {
 	const tokenEndpoint = "https://auth.atlassian.com/oauth/token";
 	return {
@@ -16241,7 +16241,7 @@ var atlassian = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/cognito.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/cognito.mjs
 var cognito = (options) => {
 	if (!options.domain || !options.region || !options.userPoolId) {
 		logger.error("Domain, region and userPoolId are required for Amazon Cognito. Make sure to provide them in the options.");
@@ -16394,7 +16394,7 @@ var getCognitoPublicKey = async (kid, region, userPoolId) => {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/discord.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/discord.mjs
 var discord = (options) => {
 	const tokenEndpoint = "https://discord.com/api/oauth2/token";
 	return {
@@ -16452,7 +16452,7 @@ var discord = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/dropbox.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/dropbox.mjs
 var dropbox = (options) => {
 	const tokenEndpoint = "https://api.dropboxapi.com/oauth2/token";
 	return {
@@ -16519,7 +16519,7 @@ var dropbox = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/facebook.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/facebook.mjs
 /**
 * Validate an opaque Facebook access token against the configured app.
 *
@@ -16667,7 +16667,7 @@ var facebook = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/figma.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/figma.mjs
 var figma = (options) => {
 	const tokenEndpoint = "https://api.figma.com/v1/oauth/token";
 	return {
@@ -16743,7 +16743,7 @@ var figma = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/github.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/github.mjs
 var github = (options) => {
 	const tokenEndpoint = "https://github.com/login/oauth/access_token";
 	return {
@@ -16828,7 +16828,7 @@ var github = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/gitlab.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/gitlab.mjs
 var cleanDoubleSlashes = (input = "") => {
 	return input.split("://").map((str) => str.replace(/\/{2,}/g, "/")).join("://");
 };
@@ -16902,7 +16902,7 @@ var gitlab = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/google.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/google.mjs
 var GOOGLE_ID_TOKEN_MAX_AGE = "1h";
 /**
 * Verifies a Google ID token against Google's issuer, audience, signature,
@@ -17030,7 +17030,7 @@ var getGooglePublicKey = async (kid) => {
 	return await importJWK(jwk, jwk.alg);
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/huggingface.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/huggingface.mjs
 var huggingface = (options) => {
 	const tokenEndpoint = "https://huggingface.co/oauth/token";
 	return {
@@ -17098,7 +17098,7 @@ var huggingface = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/kakao.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/kakao.mjs
 var kakao = (options) => {
 	const tokenEndpoint = "https://kauth.kakao.com/oauth/token";
 	return {
@@ -17163,7 +17163,7 @@ var kakao = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/kick.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/kick.mjs
 var kick = (options) => {
 	return {
 		id: "kick",
@@ -17226,7 +17226,7 @@ var kick = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/line.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/line.mjs
 /**
 * LINE Login v2.1
 * - Authorization endpoint: https://access.line.me/oauth2/v2.1/authorize
@@ -17330,7 +17330,7 @@ var line = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/linear.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/linear.mjs
 var linear = (options) => {
 	const tokenEndpoint = "https://api.linear.app/oauth/token";
 	return {
@@ -17410,7 +17410,7 @@ var linear = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/linkedin.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/linkedin.mjs
 var linkedin = (options) => {
 	const authorizationEndpoint = "https://www.linkedin.com/oauth/v2/authorization";
 	const tokenEndpoint = "https://www.linkedin.com/oauth/v2/accessToken";
@@ -17478,7 +17478,7 @@ var linkedin = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/microsoft-entra-id.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/microsoft-entra-id.mjs
 /**
 * Microsoft's fixed tenant id for personal (consumer) Microsoft accounts. Every
 * personal-account token carries it as the `tid` claim, so it distinguishes the
@@ -17620,7 +17620,7 @@ var getMicrosoftPublicKey = async (kid, tenant, authority) => {
 	return await importJWK(jwk, jwk.alg);
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/naver.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/naver.mjs
 var naver = (options) => {
 	const tokenEndpoint = "https://nid.naver.com/oauth2.0/token";
 	return {
@@ -17680,7 +17680,7 @@ var naver = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/notion.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/notion.mjs
 var notion = (options) => {
 	const tokenEndpoint = "https://api.notion.com/v1/oauth/token";
 	return {
@@ -17747,7 +17747,7 @@ var notion = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/paybin.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/paybin.mjs
 var paybin = (options) => {
 	const issuer = options.issuer || "https://idp.paybin.io";
 	const authorizationEndpoint = `${issuer}/oauth2/authorize`;
@@ -17821,7 +17821,7 @@ var paybin = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/paypal.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/paypal.mjs
 /**
 * ID token signing algorithms advertised by PayPal's OpenID configuration.
 * Anything outside this allowlist is rejected so each token is only ever
@@ -18002,7 +18002,7 @@ var getPayPalPublicKey = async (kid, jwksUri) => {
 	return await importJWK(jwk, jwk.alg);
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/polar.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/polar.mjs
 var polar = (options) => {
 	const tokenEndpoint = "https://api.polar.sh/v1/oauth2/token";
 	return {
@@ -18068,7 +18068,7 @@ var polar = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/railway.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/railway.mjs
 var authorizationEndpoint = "https://backboard.railway.com/oauth/auth";
 var tokenEndpoint = "https://backboard.railway.com/oauth/token";
 var userinfoEndpoint = "https://backboard.railway.com/oauth/me";
@@ -18137,7 +18137,7 @@ var railway = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/reddit.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/reddit.mjs
 var reddit = (options) => {
 	return {
 		id: "reddit",
@@ -18212,7 +18212,7 @@ var reddit = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/roblox.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/roblox.mjs
 var roblox = (options) => {
 	const tokenEndpoint = "https://apis.roblox.com/oauth/v1/token";
 	return {
@@ -18265,7 +18265,7 @@ var roblox = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/salesforce.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/salesforce.mjs
 var salesforce = (options) => {
 	const isSandbox = (options.environment ?? "production") === "sandbox";
 	const authorizationEndpoint = options.loginUrl ? `https://${options.loginUrl}/services/oauth2/authorize` : isSandbox ? "https://test.salesforce.com/services/oauth2/authorize" : "https://login.salesforce.com/services/oauth2/authorize";
@@ -18345,7 +18345,7 @@ var salesforce = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/slack.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/slack.mjs
 var slack = (options) => {
 	const tokenEndpoint = "https://slack.com/api/openid.connect.token";
 	return {
@@ -18407,7 +18407,7 @@ var slack = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/spotify.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/spotify.mjs
 var spotify = (options) => {
 	const tokenEndpoint = "https://accounts.spotify.com/api/token";
 	return {
@@ -18471,7 +18471,7 @@ var spotify = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/tiktok.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/tiktok.mjs
 var tiktok = (options) => {
 	const tokenEndpoint = "https://open.tiktokapis.com/v2/oauth/token/";
 	return {
@@ -18527,7 +18527,7 @@ var tiktok = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/twitch.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/twitch.mjs
 var twitch = (options) => {
 	const tokenEndpoint = "https://id.twitch.tv/oauth2/token";
 	return {
@@ -18596,7 +18596,7 @@ var twitch = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/twitter.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/twitter.mjs
 var twitter = (options) => {
 	const tokenEndpoint = "https://api.x.com/2/oauth2/token";
 	return {
@@ -18676,7 +18676,7 @@ var twitter = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/vercel.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/vercel.mjs
 var vercel = (options) => {
 	return {
 		id: "vercel",
@@ -18729,7 +18729,7 @@ var vercel = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/vk.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/vk.mjs
 var vk = (options) => {
 	const tokenEndpoint = "https://id.vk.com/oauth2/auth";
 	return {
@@ -18804,7 +18804,7 @@ var vk = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/wechat.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/wechat.mjs
 var wechat = (options) => {
 	return {
 		id: "wechat",
@@ -18883,7 +18883,7 @@ var wechat = (options) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/zoom.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/zoom.mjs
 var zoom = (userOptions) => {
 	const options = {
 		pkce: true,
@@ -18947,7 +18947,7 @@ var zoom = (userOptions) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/core/dist/social-providers/index.mjs
+//#region node_modules/@better-auth/core/dist/social-providers/index.mjs
 var socialProviders = {
 	apple,
 	atlassian,
