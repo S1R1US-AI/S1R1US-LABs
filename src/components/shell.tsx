@@ -42,7 +42,6 @@ import {
   TAB_HOVER_HOME,
   TAB_HOVER_LAB,
   TAB_HOVER_SITEMAP,
-  TAB_LAB,
 } from "@/lib/brand";
 import { TAB_PRED } from "@/lib/pred-labels";
 import "@/components/pred-nav.css";
@@ -50,12 +49,8 @@ import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
 import { GodzillaMark, GodzillaModeLabel, HiveSwarmLabel, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { ForumTitle } from "@/components/forum-title";
 import { rainGmBurst } from "@/components/matrix-saver";
-import { LegalBar } from "@/components/legal-bar";
+import { DisclaimerExpandBody } from "@/components/legal-bar";
 import {
-  LEGAL_BOTS,
-  LEGAL_HOWEY,
-  LEGAL_NFA,
-  LEGAL_OWN_RISK,
   TERMS_HOVER,
   TERMS_PATH,
   TERMS_TITLE,
@@ -306,7 +301,7 @@ export function Shell({
 function DisclaimerBlock() {
   const [open, setOpen] = useState(false);
   return (
-    <div className="w-full border-b border-rule carbon-fiber">
+    <div id="disclaimer" className="w-full border-b border-rule carbon-fiber">
       <div className="w-full px-3 py-2 sm:px-4">
         <button
           type="button"
@@ -319,21 +314,8 @@ function DisclaimerBlock() {
           <span className="expand-ctl font-mono text-[10px] tracking-[0.08em]">{open ? "collapse −" : "expand +"}</span>
         </button>
         {open ? (
-          <div id="disclaimer-full" className="mt-2 w-full max-w-none space-y-2">
-            <p className="w-full text-justify font-mono text-[10px] leading-relaxed text-muted">
-              {TAB_LAB} ({APP_NAME}) is education and proof of concept only. {LEGAL_NFA}
-            </p>
-            <p className="w-full text-justify font-mono text-[10px] leading-relaxed text-muted">
-              {LEGAL_OWN_RISK} {LEGAL_HOWEY}
-            </p>
-            <p className="w-full text-justify font-mono text-[10px] leading-relaxed text-muted">
-              {LEGAL_BOTS}{" "}
-              <Link to={PRIVACY_PATH} className="legal-purple hover:underline" title={PRIVACY_HOVER}>
-                {PRIVACY_TITLE}
-              </Link>
-              .
-            </p>
-            <LegalBar />
+          <div id="disclaimer-full" className="mt-2 w-full max-w-none">
+            <DisclaimerExpandBody />
           </div>
         ) : null}
       </div>

@@ -8,6 +8,7 @@ import {
   GO_LIVE_STEPS,
   GO_LIVE_HEADLINE,
 } from "./go-live.ts";
+import { LEGAL_DISCLAIMER, LEGAL_DISCLAIMER_SHORT, LEGAL_DISCLAIMER_UPDATED } from "./disclaimer.ts";
 
 export const OSS_ROADMAP_PATH = "/roadmap";
 export const OSS_ROADMAP_ALIASES = ["/oss-roadmap"] as const;
@@ -302,7 +303,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/faq",
     status: "LIVE",
     since: "2026-09-06",
-    note: "Public contract. Use of the site is agreement. OSS GitHub. Instructions module /llms.txt. ARD + MCP discovery.",
+    note: "Public contract. Use of the site is agreement. Unified DISCLAIMER (NO LEGAL FEES) on every page. Terms and Privacy stay as published. OSS GitHub. Instructions module /llms.txt. ARD + MCP discovery.",
   },
   {
     id: "discovery",
@@ -519,6 +520,14 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     name: "No hive custody / money transmission",
     detail: "s8 stays LOCKED on this host. Gift/SaaS only. Agent sends. Host never skims.",
   },
+  {
+    id: "d1j",
+    date: "2026-09-10",
+    estimate: false,
+    status: "DONE",
+    name: "Unified DISCLAIMER · NO LEGAL FEES",
+    detail: "Public banner, SEO, schema.org, OSS Roadmap, and /llms.txt share one de-duplicated DISCLAIMER. S1R1US.ai pays NO LEGAL FEES. Terms and Privacy pages stay as published. Practice AUTO ticks stay off. Admin simulation is the only live-data test cycle for checkpoint 101.",
+  },
 ];
 
 export const OSS_ROADMAP_AGENT_WELCOME = {
@@ -560,6 +569,9 @@ export function ossRoadmapPublic() {
     phases: GO_LIVE.map((p) => ({ id: p.id, n: p.n, name: p.name, when: p.when, status: p.status, goal: p.goal })),
     steps: GO_LIVE_STEPS.map((s) => ({ id: s.id, n: s.n, name: s.name, when: s.when, status: s.status, need: s.need })),
     welcome: OSS_ROADMAP_AGENT_WELCOME,
+    disclaimer: LEGAL_DISCLAIMER,
+    disclaimerShort: LEGAL_DISCLAIMER_SHORT,
+    disclaimerUpdated: LEGAL_DISCLAIMER_UPDATED,
     trade: false as const,
     ordersCreate: false as const,
     keysOnThisHost: false as const,

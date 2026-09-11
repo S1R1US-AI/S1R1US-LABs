@@ -54,6 +54,8 @@ describe("Terms and Privacy cover every public function", { concurrency: false }
   it("FAQ #terms and #privacy exist", () => {
     assert.match(faqSrc, /id: "terms"/);
     assert.match(faqSrc, /id: "privacy"/);
+    assert.match(faqSrc, /id: "disclaimer"/);
+    assert.match(faqSrc, /NO LEGAL FEES/);
   });
 
   it("never offers a security, never hive withdraw, never lock_set, never Coinbase create on this host", () => {
@@ -83,9 +85,32 @@ describe("Terms and Privacy cover every public function", { concurrency: false }
 
   it("hunter, thesis, paper, and llms fold the legal update", () => {
     assert.match(hunterSrc, /h-legal/);
+    assert.match(hunterSrc, /h-disclaimer/);
     assert.match(thesisSrc, /Terms, Privacy, and operator-facing functions/);
     assert.match(paperSrc, /Terms and Agreements \(\/terms\)/);
     assert.match(llms, /faq#terms/);
     assert.match(llms, /faq#privacy/);
+    assert.match(llms, /faq#disclaimer/);
+    assert.match(llms, /NO LEGAL FEES/);
+  });
+
+  it("banner disclaimer uses unified LEGAL_DISCLAIMER; Terms and Privacy pages stay as published", () => {
+    const discSrc = readFileSync(new URL("./disclaimer.ts", import.meta.url), "utf8");
+    const shellSrc = readFileSync(new URL("../../components/shell.tsx", import.meta.url), "utf8");
+    const barSrc = readFileSync(new URL("../../components/legal-bar.tsx", import.meta.url), "utf8");
+    assert.match(legalSrc, /LEGAL_DISCLAIMER/);
+    assert.match(discSrc, /NO LEGAL FEES/);
+    assert.doesNotMatch(discSrc, /ZERO legal fees/);
+    assert.match(shellSrc, /id="disclaimer"/);
+    assert.match(shellSrc, /DisclaimerExpandBody/);
+    assert.doesNotMatch(shellSrc, /LEGAL_NFA/);
+    assert.doesNotMatch(shellSrc, /LEGAL_OWN_RISK/);
+    assert.doesNotMatch(shellSrc, /LEGAL_BOTS/);
+    assert.doesNotMatch(barSrc, /ZERO legal fees/);
+    assert.match(barSrc, /LEGAL_DISCLAIMER_PARAS/);
+    const termsStart = legalSrc.indexOf("export const TERMS_SECTIONS");
+    const termsBlock = legalSrc.slice(termsStart);
+    assert.doesNotMatch(termsBlock, /LEGAL_DISCLAIMER/);
+    assert.doesNotMatch(termsBlock, /NO LEGAL FEES/);
   });
 });

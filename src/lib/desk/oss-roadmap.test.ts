@@ -55,6 +55,9 @@ describe("OSS Roadmap", { concurrency: false }, () => {
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1e"));
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1f"));
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1g"));
+    assert.ok(DATED_MILESTONES.some((m) => m.id === "d1j"));
+    assert.match(String(snap.disclaimer ?? ""), /NO LEGAL FEES/);
+    assert.match(String(snap.disclaimerShort ?? ""), /NO LEGAL FEES/);
     assert.ok(snap.predMonetization?.some((m) => m.id === "rake" && m.status === "NEVER"));
     assert.ok(snap.predMonetization?.some((m) => m.id === "sell-btc" && m.status === "NEVER"));
     assert.match(String(snap.predFootnote ?? ""), /Possibility only/);

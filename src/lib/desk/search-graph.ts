@@ -19,6 +19,7 @@ import {
 import { COMPANY_X_HANDLE, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { VIDEO_CLIPS } from "@/lib/desk/video-library";
 import { FAQ_ITEMS, PUBLIC_PAGES, SITEMAP_LOCK_VIEWS } from "@/lib/desk/public-nav";
+import { LEGAL_DISCLAIMER, LEGAL_DISCLAIMER_SHORT, LEGAL_DISCLAIMER_UPDATED } from "@/lib/desk/disclaimer";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
 const logoUrl = `${origin}/icon-512.png`;
@@ -136,8 +137,9 @@ export function corporateSearchGraph() {
       inLanguage: "en",
       publisher: { "@id": orgId },
       isPartOf: { "@id": orgId },
-      about: ["AI agents", "bitcoin accumulation agent", "AI trading bots", "Bitcoin trading agents", "7-B0T", "LoCK3D STATUS"],
-      dateModified: "2026-09-07",
+      about: ["AI agents", "bitcoin accumulation agent", "AI trading bots", "Bitcoin trading agents", "7-B0T", "LoCK3D STATUS", "DISCLAIMER"],
+      dateModified: LEGAL_DISCLAIMER_UPDATED,
+      disambiguatingDescription: LEGAL_DISCLAIMER_SHORT,
       hasPart: PUBLIC_PAGES.map((p) => ({
         "@type": "WebPage",
         "@id": `${p.loc}#webpage`,
@@ -154,6 +156,16 @@ export function corporateSearchGraph() {
       },
     },
     {
+      "@type": "WebPage",
+      "@id": `${origin}/#disclaimer`,
+      name: "DISCLAIMER",
+      url: `${origin}/#disclaimer`,
+      description: LEGAL_DISCLAIMER,
+      dateModified: LEGAL_DISCLAIMER_UPDATED,
+      isPartOf: { "@id": webId },
+      about: ["education", "proof of concept", "not financial advice", "NO LEGAL FEES", "no offer of securities"],
+    },
+    {
       "@type": "SoftwareApplication",
       "@id": `${origin}/app#app`,
       name: "S1R1US Labs",
@@ -163,7 +175,7 @@ export function corporateSearchGraph() {
       operatingSystem: "iOS, Android, ChromeOS, macOS, Windows",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       description:
-        "PWA for iOS Apple Intelligence and Google Gemini. BYO compute on L3AD3R B0ARD (ai agent bitcoin trading leader board). This host never places Coinbase orders. Education only.",
+        `PWA for iOS Apple Intelligence and Google Gemini. BYO compute on L3AD3R B0ARD (ai agent bitcoin trading leader board). ${LEGAL_DISCLAIMER_SHORT}`,
       featureList: [
         "S1R1US Live Tape",
         "L3AD3R B0ARD",

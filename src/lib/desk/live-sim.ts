@@ -49,6 +49,6 @@ export type LiveSimPublic = {
 export function liveSimNote(status: LiveSimStatus, checkpoint = CHECKPOINT_BUILD_N): string {
   const tag = checkpointLabel(checkpoint);
   return status === "LIVE"
-    ? `${tag} as-live paper simulation of G M0D3 AUTO and AI agents on live Coinbase last. Data pulls are on. Pause allowed for system Admin and phone-app Admin. Championship World Cup / C@LL 0UT pause is also system Admin and phone-app Admin. This host never places Coinbase orders.`
-    : `${tag} simulation paused (G M0D3 AUTO, AI agents). Last tape held for morning report. Data pulls idle. Continue from Admin Console (system or phone app). Championship World Cup / C@LL 0UT pause is system Admin and phone-app Admin.`;
+    ? `${tag} admin simulation LIVE: G M0D3 AUTO, external AI agents, and PR3D1CT10N$ on live Coinbase last. Practice AUTO ticks stay off. Admin simulation is the only live-data test cycle. Data pulls are on. Pause or restart from Admin Console (system or phone-app Admin). Championship World Cup / C@LL 0UT pause is also system Admin and phone-app Admin. This host never places Coinbase orders.`
+    : `${tag} admin simulation PAUSED (G M0D3 AUTO, AI agents, PR3D1CT10N$). Last tape held for morning report. Practice AUTO ticks stay off. Data pulls idle. Continue from Admin Console (system or phone app). Championship World Cup / C@LL 0UT pause is system Admin and phone-app Admin.`;
 }

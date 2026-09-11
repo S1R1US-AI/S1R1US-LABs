@@ -14,6 +14,7 @@ import { cachedIntel } from "./threat-intel";
 import { underAttack, listActions } from "./auto-defend";
 import { MCP_TOOLS, agentSecurityStats } from "./agent-security";
 import { TERMS_SECTIONS, PRIVACY_SECTIONS } from "@/lib/legal";
+import { LEGAL_DISCLAIMER } from "@/lib/desk/disclaimer";
 
 export type HunterSev = "CRITICAL" | "HIGH" | "MED" | "LOW" | "INFO";
 export type HunterStatus = "PASS" | "OPEN" | "OPERATOR";
@@ -318,6 +319,22 @@ export function runHunter(): HunterReport {
         : "OPEN",
       "legal.ts TERMS_SECTIONS include cup, forum, tape, agents-api, saas, fincen, waf, morning, edu, mandate, sim, lab, lock3d, hive, byo, roadmap, pred, pred-book, pred-live. PRIVACY_SECTIONS include cookies, ugc, children, retention. Howey false. FinCEN s8 LOCKED. Licensed prediction market is a possibility footnote only. hive_withdraw and lock_set stay off MCP.",
       "Do not add a system function without a Terms/Privacy section. Do not add hive profit-share or Coinbase create.",
+    ),
+    finding(
+      "h-disclaimer",
+      "WP2 Auth",
+      "Unified public DISCLAIMER is de-duplicated; Terms and Privacy stay as published",
+      "HIGH",
+      /NO LEGAL FEES/.test(LEGAL_DISCLAIMER) &&
+        !/ZERO legal fees/i.test(LEGAL_DISCLAIMER) &&
+        /100 percent at your own risk/.test(LEGAL_DISCLAIMER) &&
+        /not a financial advisor/i.test(LEGAL_DISCLAIMER) &&
+        /offer to sell/.test(LEGAL_DISCLAIMER) &&
+        /never places Coinbase orders/.test(LEGAL_DISCLAIMER)
+        ? "PASS"
+        : "OPEN",
+      "LEGAL_DISCLAIMER is the banner/SEO/schema/roadmap/llms copy. NO LEGAL FEES. One own-risk claim. Terms and Privacy sections are not rewritten by this banner.",
+      "Do not paste LEGAL_NFA twice in the banner. Do not change /terms or /privacy from DISCLAIMER updates.",
     ),
     finding(
       "h-yubi-panel",
