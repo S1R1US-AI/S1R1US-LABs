@@ -10,14 +10,14 @@ function lazyService(loader) {
 }
 var viteServices = { ["ssr"]: lazyService(() => import("../_ssr/ssr.mjs").then((n) => n.s)) };
 //#endregion
-//#region ../../workspace/node_modules/nitro/dist/runtime/vite.mjs
+//#region node_modules/nitro/dist/runtime/vite.mjs
 function fetchViteEnv(viteEnvName, input, init) {
 	const viteEnv = viteServices[viteEnvName];
 	if (!viteEnv) throw HTTPError.status(404);
 	return Promise.resolve(viteEnv.fetch(toRequest(input, init)));
 }
 //#endregion
-//#region ../../workspace/node_modules/nitro/dist/runtime/internal/vite/ssr-renderer.mjs
+//#region node_modules/nitro/dist/runtime/internal/vite/ssr-renderer.mjs
 /** @param {{ req: Request }} HTTPEvent */
 function ssrRenderer({ req }) {
 	return fetchViteEnv("ssr", req);

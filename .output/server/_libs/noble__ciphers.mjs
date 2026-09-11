@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/@noble/ciphers/utils.js
+//#region node_modules/@noble/ciphers/utils.js
 /*! noble-ciphers - MIT License (c) 2023 Paul Miller (paulmillr.com) */
 /**
 * Checks if something is Uint8Array. Be careful: nodejs Buffer will return true.
@@ -618,7 +618,7 @@ function managedNonce(fn, randomBytes_ = randomBytes) {
 	return res;
 }
 //#endregion
-//#region ../../workspace/node_modules/@noble/ciphers/_arx.js
+//#region node_modules/@noble/ciphers/_arx.js
 /**
 * Basic utils for ARX (add-rotate-xor) salsa and chacha ciphers.
 
@@ -801,7 +801,7 @@ function createCipher(core, opts) {
 	};
 }
 //#endregion
-//#region ../../workspace/node_modules/@noble/ciphers/_poly1305.js
+//#region node_modules/@noble/ciphers/_poly1305.js
 /**
 * Poly1305 ({@link https://cr.yp.to/mac/poly1305-20050329.pdf | PDF},
 * {@link https://en.wikipedia.org/wiki/Poly1305 | wiki})
@@ -1095,7 +1095,7 @@ var Poly1305 = class {
 */
 var poly1305 = /* @__PURE__ */ wrapMacConstructor(32, (key) => new Poly1305(key));
 //#endregion
-//#region ../../workspace/node_modules/@noble/ciphers/chacha.js
+//#region node_modules/@noble/ciphers/chacha.js
 /**
 * ChaCha stream cipher, released
 * in 2008. Developed after Salsa20, ChaCha aims to increase diffusion per round.

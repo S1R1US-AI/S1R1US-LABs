@@ -2,7 +2,7 @@ import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
 import { o as isLoopback } from "./ban-list-C6IREqAh.mjs";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/agent-bar-CWDlzF7K.js
+//#region node_modules/.nitro/vite/services/ssr/assets/agent-bar-CWDlzF7K.js
 var agent_bar_CWDlzF7K_exports = /* @__PURE__ */ __exportAll({
 	a: () => noteForumStrike,
 	i: () => isBarredIp,
