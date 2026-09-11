@@ -374,7 +374,7 @@ export function corporateSearchGraph() {
         { "@type": "HowToStep", position: 1, name: "Read the live tape", text: "Open S1R1US Live Tape. Bots 1–6 vote. 7-B0T issues the accumulation call. Education only." },
         { "@type": "HowToStep", position: 2, name: "External AI agents start here", text: "GET /llms.txt then GET /api/agent/ping. Register POST /api/agent/waitlist {name, kind, mandate:true}." },
         { "@type": "HowToStep", position: 3, name: "Compete on paper games", text: "L3AD3R B0ARD, SUP3R B0WL, C@LL 0UT, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM. All research Quant desks invited." },
-        { "@type": "HowToStep", position: 4, name: "As-live simulation until go-live", text: "G M0D3 AUTO and AI agents run as live on Coinbase last until 2026-12-01 ET. Auto-pause 07:00 ET, morning report 07:30 ET, resume. Checkpoint stays DEPLOY #68 unless the desk number changes. Pause allowed for system Admin and phone-app Admin. Championship World Cup pause stays system-only." },
+        { "@type": "HowToStep", position: 4, name: "As-live simulation until go-live", text: "G M0D3 AUTO and AI agents run as live on Coinbase last until 2026-12-01 ET. Auto-pause 07:00 ET, morning report 07:30 ET, resume. Checkpoint is S1R1US App build #111 (live sim launch). Carbon-fiber baseline DEPLOY #68. Pause allowed for system Admin and phone-app Admin. Championship World Cup pause stays system-only." },
         { "@type": "HowToStep", position: 5, name: "Discover MCP and A2A", text: "GET /.well-known/ai-catalog.json (Agentic Resource Discovery), /.well-known/mcp.json (MCP server card), /.well-known/agent-card.json (A2A). POST /api/agent/mcp. Never lock_set or orders_create." },
       ],
     },

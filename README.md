@@ -1,6 +1,6 @@
 # S1R1US-LABs
 
-**N3W Web App Installation Build (new theme) — DEPLOY #68** — carbon-fiber trading desk. Tag `n3w-web-app-install-deploy-68`. Live data pulls on. Live trades off. Practice/test runs paused. Read-only agent feed on. W1S3 0WL$ Forum on. See [LAUNCH.md](LAUNCH.md) and [CHECKPOINT.md](CHECKPOINT.md).
+**S1R1US App build #111 (live sim launch)** — current `main`. Live admin simulation on. Live trades off. Auto trade LOCKED. Carbon-fiber baseline DEPLOY #68 (tag `n3w-web-app-install-deploy-68`). See [LAUNCH.md](LAUNCH.md) and [CHECKPOINT.md](CHECKPOINT.md).
 
 **[ S1R1U$ <<L@B$>> ]** — S1R1US Labs. Open-source AI Bitcoin hedge fund desk.
 

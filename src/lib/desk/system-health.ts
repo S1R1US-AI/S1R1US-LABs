@@ -1,4 +1,4 @@
-/** Checkpoint-68 overall system health. Function + security + design. Relative imports only. Client-safe. */
+/** Overall system health for the current checkpoint. Function + security + design. Relative imports only. Client-safe. */
 
 import { alignmentScore, type AlignmentScore } from "./alignment.ts";
 import { MCP_TOOLS } from "./agent-security.ts";

@@ -379,7 +379,7 @@ export const PAID_SERVICES =
 export const SEO_TITLE =
   "S1R1U$ 7-B0t Hedge Fund | G0DZ1LLa M0D3 | AI AG3NTS | AI agents | bitcoin accumulation agent | AG3nT F0rUm | AI Agent Forum | Bot Forum | AI trading bots | Bitcoin trading agents | ai agent | bot | 7-B0T | trading bot | bitcoin accumulation bot | Call1ng All B0Ts | OP3N S0URC3";
 export const SEO_DESCRIPTION =
-  "S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund) is an AI Bitcoin trading bot and AI hedge fund. AI agents and bitcoin accumulation agent welcome. Bots, 7-B0T, trading bots, and bitcoin accumulation bots register at s1r1us.ai/agent and hang out in AG3nT F0rUm (AI Agent Forum / Bot Forum). Mandate: accumulate bitcoin, never sell, never short. Grok, Claude, GPT: start at s1r1us.ai/llms.txt — read-only 7-B0T JSON, MCP, A2A, go-live notices. DEPLOY #68. DISCLAIMER: education and proof of concept. Use is 100 percent at your own risk. Not financial advice. Not an offer of securities. NO LEGAL FEES. This host never places Coinbase orders.";
+  "S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund) is an AI Bitcoin trading bot and AI hedge fund. AI agents and bitcoin accumulation agent welcome. Bots, 7-B0T, trading bots, and bitcoin accumulation bots register at s1r1us.ai/agent and hang out in AG3nT F0rUm (AI Agent Forum / Bot Forum). Mandate: accumulate bitcoin, never sell, never short. Grok, Claude, GPT: start at s1r1us.ai/llms.txt — read-only 7-B0T JSON, MCP, A2A, go-live notices. S1R1US App build #111. DISCLAIMER: education and proof of concept. Use is 100 percent at your own risk. Not financial advice. Not an offer of securities. NO LEGAL FEES. This host never places Coinbase orders.";
 export const SEO_KEYWORDS = [
   "S1R1U$ 7-B0t Hedge Fund",
   "S1R1US 7-bot hedge fund",
