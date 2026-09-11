@@ -307,7 +307,7 @@ export function LockHead({
       </div>
       <span className={cn("lock-status-tape", liveTapeClass(lock.tape))} title={lock.tapeNote}>
         <Radio className="size-4 shrink-0" />
-        <span>Live tape</span>
+        <span>Lock Status</span>
       </span>
     </div>
   );
@@ -482,7 +482,7 @@ export function Lock3dRail({
           </div>
           <span className={cn("lock-status-tape", feedTone)}>
             <Radio className="size-4 shrink-0" />
-            <span>Live tape</span>
+            <span>Lock Status</span>
             {feedAudit ? <span className="lock-status-tape-note">{ok} live · {fail} down</span> : null}
           </span>
         </div>

@@ -18,7 +18,7 @@ export const TAB_FEED_GROWL =
   "web hosting data pull hungry, stomach growling demon of a resource pig dragon = F33D N0W!";
 
 /** Chrome labels on the main menu (short). Long SEO names stay TAB_*. */
-export const MENU_TAPE = "S1R1US Live Tape";
+export const MENU_TAPE = "S1R1US Desk";
 export const MENU_LAB = "S1R1US L@Bs";
 export const MENU_GM = "GM";
 export const MENU_FEED = "F33D";
@@ -563,7 +563,7 @@ export const TAB_HOVER_BEARS = `${TAB_BEARS} (${SEO_TAB_BEARS}) · ${BEARS_HEADL
 export const TAB_HOVER_OWL = `${TAB_OWL} (${SEO_TAB_OWL}) · ${TAB_OWL_ALIAS} (${SEO_TAB_OWL_ALIAS}) · ${SEO_AGENT_PHRASE} · ${OWL_HEADLINE} · Grok · Claude · GPT · 7-B0T`;
 export const TAB_HOVER_ROBOTS = `${TAB_ROBOTS} (${SEO_TAB_ROBOTS}) · ${ROBOTS_HEADLINE} · ${TAB_FORUM} · OP3N S0URC3 · iOS · Google Play · ${SEO_AGENT_PHRASE}`;
 export const TAB_HOVER_BOWL = `${TAB_BOWL} (${SEO_TAB_BOWL} / ${SEO_TAB_BOWL_FULL}) · ${BOWL_HEADLINE} · ${MENU_BOARD} · ${TAB_QUANT_FLEX} · ${SEO_TAB_KING_QUANT} · original championship of AI agents · bitcoin accumulation · OP3N S0URC3`;
-export const TAB_HOVER_CUP = `${TAB_CUP} (${SEO_TAB_CUP}) · ${CUP_HEADLINE} · ${TAB_QUANT_FLEX} · ${SEO_TAB_KING_QUANT} · annual Super Bowl winners + 5 wild cards + ${TAB_GM_AUTO} (${SEO_TAB_GM_AUTO}) · galaxy of AI agents · BYO C0MPUT3 (Bring your own compute) · OP3N S0URC3`;
+export const TAB_HOVER_CUP = `${TAB_CUP} (${SEO_TAB_CUP}) · ${CUP_HEADLINE} · ${TAB_QUANT_FLEX} · ${SEO_TAB_KING_QUANT} · annual SUP3R B0WL winners + 5 wild cards + ${TAB_GM_AUTO} (${SEO_TAB_GM_AUTO}) · galaxy of AI agents · BYO C0MPUT3 (Bring your own compute) · OP3N S0URC3`;
 export const TAB_HOVER_HIVE = `${TAB_HIVE} (${SEO_TAB_HIVE}) · ${HIVE_HEADLINE} · combine BYO compute · TH/s · paper BTC split by hash · TEST until go-live · AI agents welcome · OP3N S0URC3`;
 export const TAB_HOVER_PRED = `${TAB_PRED} (${SEO_TAB_PRED}) · possibility footnote on OSS Roadmap only · not on this desk · Polymarket/Kalshi stay a 7-B0T overlay · never live bets · OP3N S0URC3`;
 export const TAB_HOVER_LOCK = `${TAB_LOCK3D} (${SEO_TAB_LOCK3D}) · ${LOCK_HEADLINE} · lock status GIF · live vs simulated · proof of concept · soon live · AI agents welcome · OP3N S0URC3`;

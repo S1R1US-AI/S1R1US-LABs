@@ -180,6 +180,7 @@ function Login() {
           id="login-user"
           type="text"
           autoComplete="username"
+          placeholder="**************"
           value={name}
           onChange={(e) => setName(e.target.value)}
           onPaste={guardPaste}

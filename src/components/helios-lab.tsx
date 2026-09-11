@@ -191,7 +191,7 @@ export function HeliosLab() {
         <div className="mb-6">
           <p className="text-xs font-medium tracking-[0.08em] text-accum uppercase">{TAB_LAB}</p>
           <h1 className="mt-1 max-w-2xl text-2xl font-bold tracking-tight text-medium sm:text-3xl">
-            {APP_NAME}
+            <span className="title-shimmer">{APP_NAME}</span>
           </h1>
         </div>
 

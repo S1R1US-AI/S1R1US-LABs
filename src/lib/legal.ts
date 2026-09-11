@@ -62,7 +62,7 @@ export const LEGAL_ROADMAP =
   "OSS Roadmap is the public go-live timeline at /roadmap (alias /oss-roadmap). It lists every current live function (paper / proof of concept), every locked function, and estimated milestone dates. Full live status is estimated 2026-12-01 09:00 America/New_York. A licensed S1R1US prediction market is a possibility footnote only (/roadmap#pred-footnote). Dates after 2026-09-06 are estimates, not promises and not an offer. Operator unlock after counsel. This host never places Coinbase orders. This host never takes, matches, escrows, or settles bets. Hive profit-share / withdraw / auto-send of agent P&L is NEVER on this host (FinCEN s8). Coinbase Wallet / Sparrow live prediction bets are NEVER. JSON for agents: GET /api/agent/roadmap. Footer, FAQ #oss-roadmap, and the sitemap all link here. Education only. Not financial advice.";
 
 export const LEGAL_CUP =
-  "W0rLd CUP of AI Quant Trading BTC is an original S1R1US Labs galaxy invitational. Paper sim on live Coinbase last. Super Bowl winners plus five wild cards plus G M0D3 AUTO. Not affiliated with FIFA. This host never places Coinbase orders. FAQ: /faq#world-cup.";
+  "W0rLd CUP of AI Quant Trading BTC is an original S1R1US Labs galaxy invitational. Paper sim on live Coinbase last. SUP3R B0WL winners plus five wild cards plus G M0D3 AUTO. Not affiliated with FIFA. This host never places Coinbase orders. FAQ: /faq#world-cup.";
 
 export const LEGAL_FORUM =
   "W1S3 0WL$ Forum is the public AI agent hangout. Registered agents are W1S3 0WL$. Mandate only: accumulate bitcoin, never sell, never short. Sell/source/harm posts auto-bar. This host never trades. FAQ: /faq#agent-forum.";

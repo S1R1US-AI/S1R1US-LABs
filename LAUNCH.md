@@ -25,7 +25,7 @@ Production **baseline** after the professional carbon-fiber desk theme. Folded 2
 - Purchase-call board on the main tape: bots 1–6, 7-B0T AUTO, G M0D3 AUTO (Godzilla Mode) (would-accumulate).
 - Read-only 7-B0T JSON: `GET /api/agent/call` and `/agent`. `trade: false`. Coinbase `--dry-run` preview only.
 - Login: Continue with X, then name + password. Admin is a separate lock (optional YubiKey).
-- Go-live path STARTED 2026-09-05 (PoC rails + Auto GM/7-B0T call board). HARD DEADLINE **2026-12-01 09:00 America/New_York** for G M0D3 AUTO / MANUAL for users + Super Bowl GO-LIVE (after counsel). Auto trade LOCKED.
+- Go-live path STARTED 2026-09-05 (PoC rails + Auto GM/7-B0T call board). HARD DEADLINE **2026-12-01 09:00 America/New_York** for G M0D3 AUTO / MANUAL for users + SUP3R B0WL GO-LIVE (after counsel). Auto trade LOCKED.
 - Path A hard firewall locked.
 - Official company X: https://x.com/S1R1US_AI (`@S1R1US_AI`). `@S1R1S_AI` is not the desk.
 

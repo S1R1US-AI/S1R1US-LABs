@@ -2,7 +2,7 @@
 import { CHECKPOINT_BASELINE_N, CHECKPOINT_BUILD_N, checkpointLabel } from "../launch/checkpoint.ts";
 
 export const LIVE_SIM_NAME = "G M0D3 AUTO · AI agents live simulation";
-export const LIVE_SIM_SEO = "GM Mode AUTO live simulation";
+export const LIVE_SIM_SEO = "G-M0de AUTO live simulation";
 export const LIVE_SIM_TZ = "America/New_York";
 export const LIVE_SIM_PAUSE_LABEL = "07:00";
 export const LIVE_SIM_REPORT_LABEL = "07:30";

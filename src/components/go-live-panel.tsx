@@ -38,7 +38,7 @@ export function GoLivePanel() {
           <p className="mt-2 text-sm text-muted">
             Current: S1R1US App build #111 (live sim launch). Carbon-fiber baseline: N3W Web App Installation Build
             (new theme) DEPLOY #68. Users, system Admin, and iOS/Google
-            copy-admin compete on SUP3R B0WL with a separate board token. Live Super Bowl stats run as-if-live until
+            copy-admin compete on SUP3R B0WL with a separate board token. Live SUP3R B0WL stats run as-if-live until
             the deadline. Auto GM practice next. Auto AI agent access queued. Auto trade LOCKED — this host never
             creates Coinbase orders. Use is 100 percent at your own risk. Seek a licensed professional. Seek a
             licensed attorney before live trading. Copycats get a dashboard and a formula, not the BTC book.
