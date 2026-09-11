@@ -7,7 +7,7 @@ import { i as wafStats, t as WAF_RULES } from "./waf-B_PDEz1d.mjs";
 import { n as agentSecurityStats, t as MCP_TOOLS } from "./agent-security-IAhNJMHV.mjs";
 import { t as LEGAL_DISCLAIMER } from "./disclaimer-BUZ1ShSW.mjs";
 import { l as PRIVACY_SECTIONS, m as TERMS_SECTIONS } from "./legal-C9kCrUBb.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/hunter-7a3CSkUn.js
+//#region node_modules/.nitro/vite/services/ssr/assets/hunter-7a3CSkUn.js
 var hunter_7a3CSkUn_exports = /* @__PURE__ */ __exportAll({
 	a: () => cachedIntel,
 	c: () => firewallLayers,

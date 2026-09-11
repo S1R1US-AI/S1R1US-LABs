@@ -1,7 +1,7 @@
 import { c as COMPANY_X_HANDLE, m as companyHandleSet, s as COMPANY_X_BIO, t as ADMIN_X_HANDLE } from "./x-admin-CALKyy-K.mjs";
 import { Hn as TAB_FEED, Or as TAB_LAB, Vn as TAB_DESK, qn as TAB_GM, r as APP_NAME } from "./brand-zDAneT0C.mjs";
 import { s as SUPPORT_GIFT_RECEIPT } from "./support-BXjqAIfh.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/model-BXTEaS12.js
+//#region node_modules/.nitro/vite/services/ssr/assets/model-BXTEaS12.js
 var COIN_TICKER = "s1r1us";
 var COIN_DOMAIN = "s1r1us.ai";
 var COIN_STANDARD = "Solana SPL via pump.fun bonding curve · USDC pair";

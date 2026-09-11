@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/support-BXjqAIfh.js
+//#region node_modules/.nitro/vite/services/ssr/assets/support-BXjqAIfh.js
 /** Public operating-cost donations only — not the trading book. */
 var SUPPORT_BTC = "33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8";
 var SUPPORT_USDC = "0x551163f5d4c0361155d16131459afa5c936a60ad";

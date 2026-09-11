@@ -1,6 +1,6 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/morning-lib-D4ZKOXow.js
+//#region node_modules/.nitro/vite/services/ssr/assets/morning-lib-D4ZKOXow.js
 var morning_lib_D4ZKOXow_exports = /* @__PURE__ */ __exportAll({
 	i: () => morning_lib_exports,
 	n: () => morningInlineHref,

@@ -5,7 +5,7 @@ import { d as hiveResourcePublic, r as HIVE_AGENT_WELCOME } from "./hive-resourc
 import { r as stampGoLiveNotice } from "./go-live-notices-y5KTHj_G.mjs";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/hive-swarm-DY1fJwzJ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/hive-swarm-DY1fJwzJ.js
 /** H1V3 SW@RM — combined BYO compute paper hive. Never escrow. Never Coinbase create. */
 var hive_swarm_exports = /* @__PURE__ */ __exportAll({
 	HIVE_API: () => HIVE_API,

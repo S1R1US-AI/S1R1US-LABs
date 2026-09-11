@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/decimal.js-light/decimal.mjs
+//#region node_modules/decimal.js-light/decimal.mjs
 var MAX_DIGITS = 1e9;
 var defaults = {
 	precision: 20,
