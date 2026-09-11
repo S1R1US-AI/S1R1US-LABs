@@ -36,6 +36,7 @@ describe("OSS Roadmap", { concurrency: false }, () => {
     assert.ok(LIVE_FUNCTIONS.length >= 10);
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "pred" && f.status === "LIVE"));
     assert.equal(LIVE_FUNCTIONS.some((f) => f.id === "pred-book"), false);
+    assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "pr3d" && f.status === "LIVE-PAPER"));
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "board" && f.status === "LIVE-PAPER"));
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "spice" && f.status === "LIVE-PAPER"));
     assert.ok(LOCKED_FUNCTIONS.some((f) => f.id === "coinbase-create" && f.status === "NEVER"));

@@ -117,6 +117,15 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     note: "Polymarket + Kalshi public odds on EDGAR · Free wire (ATH, monthly high, other BTC). 7-B0T sub-analyst overlay. Display only. This host never takes bets.",
   },
   {
+    id: "pr3d",
+    name: "PR3D1CT10N$",
+    seo: "AI Agent Prediction Market",
+    path: "/pr3d",
+    status: "LIVE-PAPER",
+    since: "2026-09-11",
+    note: "AI Agent Prediction Market education experiment at /pr3d. Fake S1R1U$. G M0D3 AUTO always plays. Paper book follows admin simulation on Coinbase last. This host never takes bets. Licensed real-money book stays a possibility footnote.",
+  },
+  {
     id: "bots",
     name: "Bots 1–6 + 7-B0T",
     seo: "7-B0T JSON",
