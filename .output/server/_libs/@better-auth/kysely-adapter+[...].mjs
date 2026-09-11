@@ -1,6 +1,6 @@
 import { r as __exportAll } from "../../_runtime.mjs";
 import { Rt as createAdapterFactory, cn as logger, tn as capitalizeFirstLetter } from "./core+[...].mjs";
-//#region ../../workspace/node_modules/kysely/dist/esm/util/object-utils.js
+//#region node_modules/kysely/dist/esm/util/object-utils.js
 function isUndefined(obj) {
 	return typeof obj === "undefined" || obj === void 0;
 }
@@ -45,7 +45,7 @@ function noop(obj) {
 	return obj;
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/alter-table-node.js
+//#region node_modules/kysely/dist/esm/operation-node/alter-table-node.js
 /**
 * @internal
 */
@@ -73,7 +73,7 @@ var AlterTableNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/identifier-node.js
+//#region node_modules/kysely/dist/esm/operation-node/identifier-node.js
 /**
 * @internal
 */
@@ -89,7 +89,7 @@ var IdentifierNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/create-index-node.js
+//#region node_modules/kysely/dist/esm/operation-node/create-index-node.js
 /**
 * @internal
 */
@@ -117,7 +117,7 @@ var CreateIndexNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/create-schema-node.js
+//#region node_modules/kysely/dist/esm/operation-node/create-schema-node.js
 /**
 * @internal
 */
@@ -140,7 +140,7 @@ var CreateSchemaNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/create-table-node.js
+//#region node_modules/kysely/dist/esm/operation-node/create-table-node.js
 var ON_COMMIT_ACTIONS = [
 	"preserve rows",
 	"delete rows",
@@ -192,7 +192,7 @@ var CreateTableNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/schemable-identifier-node.js
+//#region node_modules/kysely/dist/esm/operation-node/schemable-identifier-node.js
 /**
 * @internal
 */
@@ -215,7 +215,7 @@ var SchemableIdentifierNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/drop-index-node.js
+//#region node_modules/kysely/dist/esm/operation-node/drop-index-node.js
 /**
 * @internal
 */
@@ -238,7 +238,7 @@ var DropIndexNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/drop-schema-node.js
+//#region node_modules/kysely/dist/esm/operation-node/drop-schema-node.js
 /**
 * @internal
 */
@@ -261,7 +261,7 @@ var DropSchemaNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/drop-table-node.js
+//#region node_modules/kysely/dist/esm/operation-node/drop-table-node.js
 /**
 * @internal
 */
@@ -284,7 +284,7 @@ var DropTableNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/alias-node.js
+//#region node_modules/kysely/dist/esm/operation-node/alias-node.js
 /**
 * @internal
 */
@@ -301,7 +301,7 @@ var AliasNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/table-node.js
+//#region node_modules/kysely/dist/esm/operation-node/table-node.js
 /**
 * @internal
 */
@@ -323,12 +323,12 @@ var TableNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/operation-node-source.js
+//#region node_modules/kysely/dist/esm/operation-node/operation-node-source.js
 function isOperationNodeSource(obj) {
 	return isObject(obj) && isFunction(obj.toOperationNode);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/expression/expression.js
+//#region node_modules/kysely/dist/esm/expression/expression.js
 function isExpression(obj) {
 	return isObject(obj) && "expressionType" in obj && isOperationNodeSource(obj);
 }
@@ -336,7 +336,7 @@ function isAliasedExpression(obj) {
 	return isObject(obj) && "expression" in obj && isString(obj.alias) && isOperationNodeSource(obj);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/select-modifier-node.js
+//#region node_modules/kysely/dist/esm/operation-node/select-modifier-node.js
 /**
 * @internal
 */
@@ -359,7 +359,7 @@ var SelectModifierNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/and-node.js
+//#region node_modules/kysely/dist/esm/operation-node/and-node.js
 /**
 * @internal
 */
@@ -376,7 +376,7 @@ var AndNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/or-node.js
+//#region node_modules/kysely/dist/esm/operation-node/or-node.js
 /**
 * @internal
 */
@@ -393,7 +393,7 @@ var OrNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/on-node.js
+//#region node_modules/kysely/dist/esm/operation-node/on-node.js
 /**
 * @internal
 */
@@ -415,7 +415,7 @@ var OnNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/join-node.js
+//#region node_modules/kysely/dist/esm/operation-node/join-node.js
 /**
 * @internal
 */
@@ -447,7 +447,7 @@ var JoinNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/binary-operation-node.js
+//#region node_modules/kysely/dist/esm/operation-node/binary-operation-node.js
 /**
 * @internal
 */
@@ -465,7 +465,7 @@ var BinaryOperationNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/operator-node.js
+//#region node_modules/kysely/dist/esm/operation-node/operator-node.js
 var COMPARISON_OPERATORS = [
 	"=",
 	"==",
@@ -556,7 +556,7 @@ function isJSONOperator(op) {
 	return isString(op) && JSON_OPERATORS.includes(op);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/column-node.js
+//#region node_modules/kysely/dist/esm/operation-node/column-node.js
 /**
 * @internal
 */
@@ -572,7 +572,7 @@ var ColumnNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/select-all-node.js
+//#region node_modules/kysely/dist/esm/operation-node/select-all-node.js
 /**
 * @internal
 */
@@ -585,7 +585,7 @@ var SelectAllNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/reference-node.js
+//#region node_modules/kysely/dist/esm/operation-node/reference-node.js
 /**
 * @internal
 */
@@ -609,7 +609,7 @@ var ReferenceNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dynamic/dynamic-reference-builder.js
+//#region node_modules/kysely/dist/esm/dynamic/dynamic-reference-builder.js
 var DynamicReferenceBuilder = class {
 	#dynamicReference;
 	get dynamicReference() {
@@ -635,7 +635,7 @@ function isDynamicReferenceBuilder(obj) {
 	return isObject(obj) && isOperationNodeSource(obj) && isString(obj.dynamicReference);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/order-by-item-node.js
+//#region node_modules/kysely/dist/esm/operation-node/order-by-item-node.js
 /**
 * @internal
 */
@@ -658,7 +658,7 @@ var OrderByItemNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/raw-node.js
+//#region node_modules/kysely/dist/esm/operation-node/raw-node.js
 /**
 * @internal
 */
@@ -684,7 +684,7 @@ var RawNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/collate-node.js
+//#region node_modules/kysely/dist/esm/operation-node/collate-node.js
 /**
 * @internal
 */
@@ -700,7 +700,7 @@ var CollateNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/order-by-item-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/order-by-item-builder.js
 var OrderByItemBuilder = class OrderByItemBuilder {
 	#props;
 	constructor(props) {
@@ -753,7 +753,7 @@ var OrderByItemBuilder = class OrderByItemBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/log-once.js
+//#region node_modules/kysely/dist/esm/util/log-once.js
 var LOGGED_MESSAGES = /* @__PURE__ */ new Set();
 /**
 * Use for system-level logging, such as deprecation messages.
@@ -765,7 +765,7 @@ function logOnce(message) {
 	console.log(message);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/order-by-parser.js
+//#region node_modules/kysely/dist/esm/parser/order-by-parser.js
 function isOrderByDirection(thing) {
 	return thing === "asc" || thing === "desc";
 }
@@ -813,7 +813,7 @@ function parseOrderByWithModifiers(expr, modifiers) {
 	return modifiers(new OrderByItemBuilder({ node })).toOperationNode();
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/json-reference-node.js
+//#region node_modules/kysely/dist/esm/operation-node/json-reference-node.js
 /**
 * @internal
 */
@@ -836,7 +836,7 @@ var JSONReferenceNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/json-operator-chain-node.js
+//#region node_modules/kysely/dist/esm/operation-node/json-operator-chain-node.js
 /**
 * @internal
 */
@@ -859,7 +859,7 @@ var JSONOperatorChainNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/json-path-node.js
+//#region node_modules/kysely/dist/esm/operation-node/json-path-node.js
 /**
 * @internal
 */
@@ -882,7 +882,7 @@ var JSONPathNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/reference-parser.js
+//#region node_modules/kysely/dist/esm/parser/reference-parser.js
 function parseSimpleReferenceExpression(exp) {
 	if (isString(exp)) return parseStringReference(exp);
 	return exp.toOperationNode();
@@ -940,7 +940,7 @@ function trim$2(str) {
 	return str.trim();
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/primitive-value-list-node.js
+//#region node_modules/kysely/dist/esm/operation-node/primitive-value-list-node.js
 /**
 * @internal
 */
@@ -956,7 +956,7 @@ var PrimitiveValueListNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/value-list-node.js
+//#region node_modules/kysely/dist/esm/operation-node/value-list-node.js
 /**
 * @internal
 */
@@ -972,7 +972,7 @@ var ValueListNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/value-node.js
+//#region node_modules/kysely/dist/esm/operation-node/value-node.js
 /**
 * @internal
 */
@@ -995,7 +995,7 @@ var ValueNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/value-parser.js
+//#region node_modules/kysely/dist/esm/parser/value-parser.js
 function parseValueExpressionOrList(arg) {
 	if (isReadonlyArray(arg)) return parseValueExpressionList(arg);
 	return parseValueExpression(arg);
@@ -1016,7 +1016,7 @@ function parseValueExpressionList(arg) {
 	return PrimitiveValueListNode.create(arg);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/parens-node.js
+//#region node_modules/kysely/dist/esm/operation-node/parens-node.js
 /**
 * @internal
 */
@@ -1032,7 +1032,7 @@ var ParensNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/binary-operation-parser.js
+//#region node_modules/kysely/dist/esm/parser/binary-operation-parser.js
 function parseValueBinaryOperationOrExpression(args) {
 	if (args.length === 3) return parseValueBinaryOperation(args[0], args[1], args[2]);
 	else if (args.length === 1) return parseValueExpression(args[0]);
@@ -1071,7 +1071,7 @@ function toOperationNode(nodeOrSource) {
 	return isOperationNodeSource(nodeOrSource) ? nodeOrSource.toOperationNode() : nodeOrSource;
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/order-by-node.js
+//#region node_modules/kysely/dist/esm/operation-node/order-by-node.js
 /**
 * @internal
 */
@@ -1093,7 +1093,7 @@ var OrderByNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/partition-by-node.js
+//#region node_modules/kysely/dist/esm/operation-node/partition-by-node.js
 /**
 * @internal
 */
@@ -1115,7 +1115,7 @@ var PartitionByNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/over-node.js
+//#region node_modules/kysely/dist/esm/operation-node/over-node.js
 /**
 * @internal
 */
@@ -1140,7 +1140,7 @@ var OverNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/from-node.js
+//#region node_modules/kysely/dist/esm/operation-node/from-node.js
 /**
 * @internal
 */
@@ -1162,7 +1162,7 @@ var FromNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/group-by-node.js
+//#region node_modules/kysely/dist/esm/operation-node/group-by-node.js
 /**
 * @internal
 */
@@ -1184,7 +1184,7 @@ var GroupByNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/having-node.js
+//#region node_modules/kysely/dist/esm/operation-node/having-node.js
 /**
 * @internal
 */
@@ -1206,7 +1206,7 @@ var HavingNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/insert-query-node.js
+//#region node_modules/kysely/dist/esm/operation-node/insert-query-node.js
 /**
 * @internal
 */
@@ -1233,7 +1233,7 @@ var InsertQueryNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/list-node.js
+//#region node_modules/kysely/dist/esm/operation-node/list-node.js
 /**
 * @internal
 */
@@ -1249,7 +1249,7 @@ var ListNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/update-query-node.js
+//#region node_modules/kysely/dist/esm/operation-node/update-query-node.js
 /**
 * @internal
 */
@@ -1287,7 +1287,7 @@ var UpdateQueryNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/using-node.js
+//#region node_modules/kysely/dist/esm/operation-node/using-node.js
 /**
 * @internal
 */
@@ -1309,7 +1309,7 @@ var UsingNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/delete-query-node.js
+//#region node_modules/kysely/dist/esm/operation-node/delete-query-node.js
 /**
 * @internal
 */
@@ -1352,7 +1352,7 @@ var DeleteQueryNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/where-node.js
+//#region node_modules/kysely/dist/esm/operation-node/where-node.js
 /**
 * @internal
 */
@@ -1374,7 +1374,7 @@ var WhereNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/returning-node.js
+//#region node_modules/kysely/dist/esm/operation-node/returning-node.js
 /**
 * @internal
 */
@@ -1396,7 +1396,7 @@ var ReturningNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/explain-node.js
+//#region node_modules/kysely/dist/esm/operation-node/explain-node.js
 /**
 * @internal
 */
@@ -1413,7 +1413,7 @@ var ExplainNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/when-node.js
+//#region node_modules/kysely/dist/esm/operation-node/when-node.js
 /**
 * @internal
 */
@@ -1435,7 +1435,7 @@ var WhenNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/merge-query-node.js
+//#region node_modules/kysely/dist/esm/operation-node/merge-query-node.js
 /**
 * @internal
 */
@@ -1470,7 +1470,7 @@ var MergeQueryNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/output-node.js
+//#region node_modules/kysely/dist/esm/operation-node/output-node.js
 /**
 * @internal
 */
@@ -1492,7 +1492,7 @@ var OutputNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/query-node.js
+//#region node_modules/kysely/dist/esm/operation-node/query-node.js
 /**
 * @internal
 */
@@ -1568,7 +1568,7 @@ var QueryNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/select-query-node.js
+//#region node_modules/kysely/dist/esm/operation-node/select-query-node.js
 /**
 * @internal
 */
@@ -1677,7 +1677,7 @@ var SelectQueryNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/join-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/join-builder.js
 var JoinBuilder = class JoinBuilder {
 	#props;
 	constructor(props) {
@@ -1722,7 +1722,7 @@ var JoinBuilder = class JoinBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/partition-by-item-node.js
+//#region node_modules/kysely/dist/esm/operation-node/partition-by-item-node.js
 /**
 * @internal
 */
@@ -1738,12 +1738,12 @@ var PartitionByItemNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/partition-by-parser.js
+//#region node_modules/kysely/dist/esm/parser/partition-by-parser.js
 function parsePartitionBy(partitionBy) {
 	return parseReferenceExpressionOrList(partitionBy).map(PartitionByItemNode.create);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/over-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/over-builder.js
 var OverBuilder = class OverBuilder {
 	#props;
 	constructor(props) {
@@ -1770,7 +1770,7 @@ var OverBuilder = class OverBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/selection-node.js
+//#region node_modules/kysely/dist/esm/operation-node/selection-node.js
 /**
 * @internal
 */
@@ -1798,7 +1798,7 @@ var SelectionNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/select-parser.js
+//#region node_modules/kysely/dist/esm/parser/select-parser.js
 function parseSelectArg(selection) {
 	if (isFunction(selection)) return parseSelectArg(selection(expressionBuilder()));
 	else if (isReadonlyArray(selection)) return selection.map((it) => parseSelectExpression(it));
@@ -1819,7 +1819,7 @@ function parseSelectAllArg(table) {
 	throw new Error(`invalid value selectAll expression: ${JSON.stringify(table)}`);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/values-node.js
+//#region node_modules/kysely/dist/esm/operation-node/values-node.js
 /**
 * @internal
 */
@@ -1835,7 +1835,7 @@ var ValuesNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/default-insert-value-node.js
+//#region node_modules/kysely/dist/esm/operation-node/default-insert-value-node.js
 /**
 * @internal
 */
@@ -1848,7 +1848,7 @@ var DefaultInsertValueNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/insert-values-parser.js
+//#region node_modules/kysely/dist/esm/parser/insert-values-parser.js
 function parseInsertExpression(arg) {
 	const objectOrList = isFunction(arg) ? arg(expressionBuilder()) : arg;
 	return parseInsertColumnsAndValues(isReadonlyArray(objectOrList) ? objectOrList : freeze([objectOrList]));
@@ -1887,7 +1887,7 @@ function parseRowValues(row, columns) {
 	return PrimitiveValueListNode.create(rowValues);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/column-update-node.js
+//#region node_modules/kysely/dist/esm/operation-node/column-update-node.js
 /**
 * @internal
 */
@@ -1904,7 +1904,7 @@ var ColumnUpdateNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/update-set-parser.js
+//#region node_modules/kysely/dist/esm/parser/update-set-parser.js
 function parseUpdate(...args) {
 	if (args.length === 2) return [ColumnUpdateNode.create(parseReferenceExpression(args[0]), parseValueExpression(args[1]))];
 	return parseUpdateObjectExpression(args[0]);
@@ -1916,7 +1916,7 @@ function parseUpdateObjectExpression(update) {
 	});
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/on-duplicate-key-node.js
+//#region node_modules/kysely/dist/esm/operation-node/on-duplicate-key-node.js
 /**
 * @internal
 */
@@ -1932,7 +1932,7 @@ var OnDuplicateKeyNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/insert-result.js
+//#region node_modules/kysely/dist/esm/query-builder/insert-result.js
 /**
 * The result of an insert query.
 *
@@ -1983,7 +1983,7 @@ var InsertResult = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/no-result-error.js
+//#region node_modules/kysely/dist/esm/query-builder/no-result-error.js
 var NoResultError = class extends Error {
 	/**
 	* The operation node tree of the query that was executed.
@@ -1998,7 +1998,7 @@ function isNoResultErrorConstructor(fn) {
 	return Object.prototype.hasOwnProperty.call(fn, "prototype");
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/on-conflict-node.js
+//#region node_modules/kysely/dist/esm/operation-node/on-conflict-node.js
 /**
 * @internal
 */
@@ -2053,7 +2053,7 @@ var OnConflictNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/on-conflict-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/on-conflict-builder.js
 var OnConflictBuilder = class OnConflictBuilder {
 	#props;
 	constructor(props) {
@@ -2286,7 +2286,7 @@ var OnConflictUpdateBuilder = class OnConflictUpdateBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/top-node.js
+//#region node_modules/kysely/dist/esm/operation-node/top-node.js
 /**
 * @internal
 */
@@ -2303,7 +2303,7 @@ var TopNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/top-parser.js
+//#region node_modules/kysely/dist/esm/parser/top-parser.js
 function parseTop(expression, modifiers) {
 	if (!isNumber(expression) && !isBigInt(expression)) throw new Error(`Invalid top expression: ${expression}`);
 	if (!isUndefined(modifiers) && !isTopModifiers(modifiers)) throw new Error(`Invalid top modifiers: ${modifiers}`);
@@ -2313,7 +2313,7 @@ function isTopModifiers(modifiers) {
 	return modifiers === "percent" || modifiers === "with ties" || modifiers === "percent with ties";
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/or-action-node.js
+//#region node_modules/kysely/dist/esm/operation-node/or-action-node.js
 /**
 * @internal
 */
@@ -2329,7 +2329,7 @@ var OrActionNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/insert-query-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/insert-query-builder.js
 var InsertQueryBuilder = class InsertQueryBuilder {
 	#props;
 	constructor(props) {
@@ -3431,7 +3431,7 @@ var InsertQueryBuilder = class InsertQueryBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/delete-result.js
+//#region node_modules/kysely/dist/esm/query-builder/delete-result.js
 var DeleteResult = class {
 	numDeletedRows;
 	constructor(numDeletedRows) {
@@ -3439,7 +3439,7 @@ var DeleteResult = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/limit-node.js
+//#region node_modules/kysely/dist/esm/operation-node/limit-node.js
 /**
 * @internal
 */
@@ -3455,7 +3455,7 @@ var LimitNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/delete-query-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/delete-query-builder.js
 var _a$2;
 var DeleteQueryBuilder = class {
 	#props;
@@ -3931,7 +3931,7 @@ var DeleteQueryBuilder = class {
 };
 _a$2 = DeleteQueryBuilder;
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/update-result.js
+//#region node_modules/kysely/dist/esm/query-builder/update-result.js
 var UpdateResult = class {
 	/**
 	* The number of rows the update query updated (even if not changed).
@@ -3950,7 +3950,7 @@ var UpdateResult = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/update-query-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/update-query-builder.js
 var _a$1;
 var UpdateQueryBuilder = class {
 	#props;
@@ -4432,7 +4432,7 @@ var UpdateQueryBuilder = class {
 };
 _a$1 = UpdateQueryBuilder;
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/common-table-expression-name-node.js
+//#region node_modules/kysely/dist/esm/operation-node/common-table-expression-name-node.js
 /**
 * @internal
 */
@@ -4449,7 +4449,7 @@ var CommonTableExpressionNameNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/common-table-expression-node.js
+//#region node_modules/kysely/dist/esm/operation-node/common-table-expression-node.js
 /**
 * @internal
 */
@@ -4472,7 +4472,7 @@ var CommonTableExpressionNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/cte-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/cte-builder.js
 var CTEBuilder = class CTEBuilder {
 	#props;
 	constructor(props) {
@@ -4501,7 +4501,7 @@ var CTEBuilder = class CTEBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/with-parser.js
+//#region node_modules/kysely/dist/esm/parser/with-parser.js
 function parseCommonTableExpression(nameOrBuilderCallback, expression) {
 	const expressionNode = expression(createQueryCreator()).toOperationNode();
 	if (isFunction(nameOrBuilderCallback)) return nameOrBuilderCallback(cteBuilderFactory(expressionNode)).toOperationNode();
@@ -4521,7 +4521,7 @@ function parseCommonTableExpressionName(name) {
 	} else return CommonTableExpressionNameNode.create(name);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/with-node.js
+//#region node_modules/kysely/dist/esm/operation-node/with-node.js
 /**
 * @internal
 */
@@ -4544,7 +4544,7 @@ var WithNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/random-string.js
+//#region node_modules/kysely/dist/esm/util/random-string.js
 var CHARS = [
 	"A",
 	"B",
@@ -4618,7 +4618,7 @@ function randomChar() {
 	return CHARS[~~(Math.random() * CHARS.length)];
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/query-id.js
+//#region node_modules/kysely/dist/esm/util/query-id.js
 function createQueryId() {
 	return new LazyQueryId();
 }
@@ -4630,7 +4630,7 @@ var LazyQueryId = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/require-all-props.js
+//#region node_modules/kysely/dist/esm/util/require-all-props.js
 /**
 * Helper function to check listed properties according to given type. Check if all properties has been used when object is initialised.
 *
@@ -4670,7 +4670,7 @@ function requireAllProps(obj) {
 	return obj;
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/operation-node-transformer.js
+//#region node_modules/kysely/dist/esm/operation-node/operation-node-transformer.js
 /**
 * Transforms an operation node tree into another one.
 *
@@ -5582,7 +5582,7 @@ var OperationNodeTransformer = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/plugin/with-schema/with-schema-transformer.js
+//#region node_modules/kysely/dist/esm/plugin/with-schema/with-schema-transformer.js
 var ROOT_OPERATION_NODES = freeze({
 	AlterTableNode: true,
 	CreateIndexNode: true,
@@ -5723,7 +5723,7 @@ var WithSchemaTransformer = class extends OperationNodeTransformer {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/plugin/with-schema/with-schema-plugin.js
+//#region node_modules/kysely/dist/esm/plugin/with-schema/with-schema-plugin.js
 var WithSchemaPlugin = class {
 	#transformer;
 	constructor(schema) {
@@ -5737,7 +5737,7 @@ var WithSchemaPlugin = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/matched-node.js
+//#region node_modules/kysely/dist/esm/operation-node/matched-node.js
 /**
 * @internal
 */
@@ -5754,7 +5754,7 @@ var MatchedNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/merge-parser.js
+//#region node_modules/kysely/dist/esm/parser/merge-parser.js
 function parseMergeWhen(type, args, refRight) {
 	return WhenNode.create(parseFilterList([MatchedNode.create(!type.isMatched, type.bySource), ...args && args.length > 0 ? [args.length === 3 && refRight ? parseReferentialBinaryOperation(args[0], args[1], args[2]) : parseValueBinaryOperationOrExpression(args)] : []], "and", false));
 }
@@ -5764,7 +5764,7 @@ function parseMergeThen(result) {
 	return result;
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/deferred.js
+//#region node_modules/kysely/dist/esm/util/deferred.js
 var Deferred = class {
 	#promise;
 	#resolve;
@@ -5786,7 +5786,7 @@ var Deferred = class {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/provide-controlled-connection.js
+//#region node_modules/kysely/dist/esm/util/provide-controlled-connection.js
 async function provideControlledConnection(connectionProvider) {
 	const connectionDefer = new Deferred();
 	const connectionReleaseDefer = new Deferred();
@@ -5800,7 +5800,7 @@ async function provideControlledConnection(connectionProvider) {
 	});
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-executor/query-executor-base.js
+//#region node_modules/kysely/dist/esm/query-executor/query-executor-base.js
 var NO_PLUGINS = freeze([]);
 var QueryExecutorBase = class {
 	#plugins;
@@ -5876,7 +5876,7 @@ var NOOP_QUERY_EXECUTOR = new class NoopQueryExecutor extends QueryExecutorBase 
 	}
 }();
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/merge-result.js
+//#region node_modules/kysely/dist/esm/query-builder/merge-result.js
 var MergeResult = class {
 	numChangedRows;
 	constructor(numChangedRows) {
@@ -5884,7 +5884,7 @@ var MergeResult = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/merge-query-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/merge-query-builder.js
 var MergeQueryBuilder = class MergeQueryBuilder {
 	#props;
 	constructor(props) {
@@ -6494,7 +6494,7 @@ var NotMatchedThenableMergeQueryBuilder = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-creator.js
+//#region node_modules/kysely/dist/esm/query-creator.js
 var QueryCreator = class QueryCreator {
 	#props;
 	constructor(props) {
@@ -7093,7 +7093,7 @@ var QueryCreator = class QueryCreator {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/parse-utils.js
+//#region node_modules/kysely/dist/esm/parser/parse-utils.js
 function createQueryCreator() {
 	return new QueryCreator({ executor: NOOP_QUERY_EXECUTOR });
 }
@@ -7104,7 +7104,7 @@ function createOverBuilder() {
 	return new OverBuilder({ overNode: OverNode.create() });
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/join-parser.js
+//#region node_modules/kysely/dist/esm/parser/join-parser.js
 function parseJoin(joinType, args) {
 	if (args.length === 3) return parseSingleOnJoin(joinType, args[0], args[1], args[2]);
 	else if (args.length === 2) return parseCallbackJoin(joinType, args[0], args[1]);
@@ -7121,7 +7121,7 @@ function parseOnlessJoin(joinType, from) {
 	return JoinNode.create(joinType, parseTableExpression(from));
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/offset-node.js
+//#region node_modules/kysely/dist/esm/operation-node/offset-node.js
 /**
 * @internal
 */
@@ -7137,7 +7137,7 @@ var OffsetNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/group-by-item-node.js
+//#region node_modules/kysely/dist/esm/operation-node/group-by-item-node.js
 /**
 * @internal
 */
@@ -7153,13 +7153,13 @@ var GroupByItemNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/group-by-parser.js
+//#region node_modules/kysely/dist/esm/parser/group-by-parser.js
 function parseGroupBy(groupBy) {
 	groupBy = isFunction(groupBy) ? groupBy(expressionBuilder()) : groupBy;
 	return parseReferenceExpressionOrList(groupBy).map(GroupByItemNode.create);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/set-operation-node.js
+//#region node_modules/kysely/dist/esm/operation-node/set-operation-node.js
 /**
 * @internal
 */
@@ -7177,14 +7177,14 @@ var SetOperationNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/set-operation-parser.js
+//#region node_modules/kysely/dist/esm/parser/set-operation-parser.js
 function parseSetOperations(operator, expression, all) {
 	if (isFunction(expression)) expression = expression(createExpressionBuilder());
 	if (!isReadonlyArray(expression)) expression = [expression];
 	return expression.map((expr) => SetOperationNode.create(operator, parseExpression(expr), all));
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/expression/expression-wrapper.js
+//#region node_modules/kysely/dist/esm/expression/expression-wrapper.js
 var ExpressionWrapper = class ExpressionWrapper {
 	#node;
 	constructor(node) {
@@ -7298,7 +7298,7 @@ var AndWrapper = class AndWrapper {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/fetch-node.js
+//#region node_modules/kysely/dist/esm/operation-node/fetch-node.js
 /**
 * @internal
 */
@@ -7315,7 +7315,7 @@ var FetchNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/fetch-parser.js
+//#region node_modules/kysely/dist/esm/parser/fetch-parser.js
 function parseFetch(rowCount, modifier) {
 	if (!isNumber(rowCount) && !isBigInt(rowCount)) throw new Error(`Invalid fetch row count: ${rowCount}`);
 	if (!isFetchModifier(modifier)) throw new Error(`Invalid fetch modifier: ${modifier}`);
@@ -7325,7 +7325,7 @@ function isFetchModifier(value) {
 	return value === "only" || value === "with ties";
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/select-query-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/select-query-builder.js
 var _a;
 var SelectQueryBuilderImpl = class {
 	#props;
@@ -7666,7 +7666,7 @@ var AliasedSelectQueryBuilderImpl = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/aggregate-function-node.js
+//#region node_modules/kysely/dist/esm/operation-node/aggregate-function-node.js
 /**
 * @internal
 */
@@ -7714,7 +7714,7 @@ var AggregateFunctionNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/function-node.js
+//#region node_modules/kysely/dist/esm/operation-node/function-node.js
 /**
 * @internal
 */
@@ -7731,7 +7731,7 @@ var FunctionNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/aggregate-function-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/aggregate-function-builder.js
 var AggregateFunctionBuilder = class AggregateFunctionBuilder {
 	#props;
 	constructor(props) {
@@ -7960,7 +7960,7 @@ var AliasedAggregateFunctionBuilder = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/function-module.js
+//#region node_modules/kysely/dist/esm/query-builder/function-module.js
 function createFunctionModule() {
 	const fn = (name, args) => {
 		return new ExpressionWrapper(FunctionNode.create(name, parseReferenceExpressionOrList(args ?? [])));
@@ -8003,7 +8003,7 @@ function createFunctionModule() {
 	});
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/unary-operation-node.js
+//#region node_modules/kysely/dist/esm/operation-node/unary-operation-node.js
 /**
 * @internal
 */
@@ -8020,12 +8020,12 @@ var UnaryOperationNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/unary-operation-parser.js
+//#region node_modules/kysely/dist/esm/parser/unary-operation-parser.js
 function parseUnaryOperation(operator, operand) {
 	return UnaryOperationNode.create(OperatorNode.create(operator), parseReferenceExpression(operand));
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/case-node.js
+//#region node_modules/kysely/dist/esm/operation-node/case-node.js
 /**
 * @internal
 */
@@ -8059,7 +8059,7 @@ var CaseNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/case-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/case-builder.js
 var CaseBuilder = class {
 	#props;
 	constructor(props) {
@@ -8121,7 +8121,7 @@ var CaseEndBuilder = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/json-path-leg-node.js
+//#region node_modules/kysely/dist/esm/operation-node/json-path-leg-node.js
 /**
 * @internal
 */
@@ -8138,7 +8138,7 @@ var JSONPathLegNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-builder/json-path-builder.js
+//#region node_modules/kysely/dist/esm/query-builder/json-path-builder.js
 var HASH_NEGATIVE_INDEX_REGEX = /^#-\d+$/;
 var JSONPathBuilder = class {
 	#node;
@@ -8320,7 +8320,7 @@ var AliasedJSONPathBuilder = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/tuple-node.js
+//#region node_modules/kysely/dist/esm/operation-node/tuple-node.js
 /**
 * @internal
 */
@@ -8336,7 +8336,7 @@ var TupleNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/data-type-node.js
+//#region node_modules/kysely/dist/esm/operation-node/data-type-node.js
 var SIMPLE_COLUMN_DATA_TYPES = [
 	"varchar",
 	"char",
@@ -8415,14 +8415,14 @@ function isColumnDataType(dataType) {
 	return false;
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/data-type-parser.js
+//#region node_modules/kysely/dist/esm/parser/data-type-parser.js
 function parseDataTypeExpression(dataType) {
 	if (isOperationNodeSource(dataType)) return dataType.toOperationNode();
 	if (isColumnDataType(dataType)) return DataTypeNode.create(dataType);
 	throw new Error(`invalid column data type ${JSON.stringify(dataType)}`);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/cast-node.js
+//#region node_modules/kysely/dist/esm/operation-node/cast-node.js
 /**
 * @internal
 */
@@ -8439,7 +8439,7 @@ var CastNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/expression/expression-builder.js
+//#region node_modules/kysely/dist/esm/expression/expression-builder.js
 function createExpressionBuilder(executor = NOOP_QUERY_EXECUTOR) {
 	function binary(lhs, op, rhs) {
 		return new ExpressionWrapper(parseValueBinaryOperation(lhs, op, rhs));
@@ -8526,7 +8526,7 @@ function expressionBuilder(_) {
 	return createExpressionBuilder();
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/expression-parser.js
+//#region node_modules/kysely/dist/esm/parser/expression-parser.js
 function parseExpression(exp) {
 	if (isOperationNodeSource(exp)) return exp.toOperationNode();
 	else if (isFunction(exp)) return exp(expressionBuilder()).toOperationNode();
@@ -8541,7 +8541,7 @@ function isExpressionOrFactory(obj) {
 	return isExpression(obj) || isAliasedExpression(obj) || isFunction(obj);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dynamic/dynamic-table-builder.js
+//#region node_modules/kysely/dist/esm/dynamic/dynamic-table-builder.js
 var DynamicTableBuilder = class {
 	#table;
 	get table() {
@@ -8575,7 +8575,7 @@ function isAliasedDynamicTableBuilder(obj) {
 	return isObject(obj) && isOperationNodeSource(obj) && isString(obj.table) && isString(obj.alias);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/table-parser.js
+//#region node_modules/kysely/dist/esm/parser/table-parser.js
 function parseTableExpressionOrList(table) {
 	if (isReadonlyArray(table)) return table.map((it) => parseTableExpression(it));
 	else return [parseTableExpression(table)];
@@ -8603,7 +8603,7 @@ function trim$1(str) {
 	return str.trim();
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/add-column-node.js
+//#region node_modules/kysely/dist/esm/operation-node/add-column-node.js
 /**
 * @internal
 */
@@ -8619,7 +8619,7 @@ var AddColumnNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/column-definition-node.js
+//#region node_modules/kysely/dist/esm/operation-node/column-definition-node.js
 /**
 * @internal
 */
@@ -8654,7 +8654,7 @@ var ColumnDefinitionNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/drop-column-node.js
+//#region node_modules/kysely/dist/esm/operation-node/drop-column-node.js
 /**
 * @internal
 */
@@ -8670,7 +8670,7 @@ var DropColumnNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/rename-column-node.js
+//#region node_modules/kysely/dist/esm/operation-node/rename-column-node.js
 /**
 * @internal
 */
@@ -8687,7 +8687,7 @@ var RenameColumnNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/check-constraint-node.js
+//#region node_modules/kysely/dist/esm/operation-node/check-constraint-node.js
 /**
 * @internal
 */
@@ -8704,7 +8704,7 @@ var CheckConstraintNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/references-node.js
+//#region node_modules/kysely/dist/esm/operation-node/references-node.js
 var ON_MODIFY_FOREIGN_ACTIONS = [
 	"no action",
 	"restrict",
@@ -8740,12 +8740,12 @@ var ReferencesNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/default-value-parser.js
+//#region node_modules/kysely/dist/esm/parser/default-value-parser.js
 function parseDefaultValueExpression(value) {
 	return isOperationNodeSource(value) ? value.toOperationNode() : ValueNode.createImmediate(value);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/generated-node.js
+//#region node_modules/kysely/dist/esm/operation-node/generated-node.js
 /**
 * @internal
 */
@@ -8774,7 +8774,7 @@ var GeneratedNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/default-value-node.js
+//#region node_modules/kysely/dist/esm/operation-node/default-value-node.js
 /**
 * @internal
 */
@@ -8790,13 +8790,13 @@ var DefaultValueNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/on-modify-action-parser.js
+//#region node_modules/kysely/dist/esm/parser/on-modify-action-parser.js
 function parseOnModifyForeignAction(action) {
 	if (ON_MODIFY_FOREIGN_ACTIONS.includes(action)) return action;
 	throw new Error(`invalid OnModifyForeignAction ${action}`);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/column-definition-builder.js
+//#region node_modules/kysely/dist/esm/schema/column-definition-builder.js
 var ColumnDefinitionBuilder = class ColumnDefinitionBuilder {
 	#node;
 	constructor(node) {
@@ -9361,7 +9361,7 @@ var ColumnDefinitionBuilder = class ColumnDefinitionBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/modify-column-node.js
+//#region node_modules/kysely/dist/esm/operation-node/modify-column-node.js
 /**
 * @internal
 */
@@ -9377,7 +9377,7 @@ var ModifyColumnNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/foreign-key-constraint-node.js
+//#region node_modules/kysely/dist/esm/operation-node/foreign-key-constraint-node.js
 /**
 * @internal
 */
@@ -9401,7 +9401,7 @@ var ForeignKeyConstraintNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/foreign-key-constraint-builder.js
+//#region node_modules/kysely/dist/esm/schema/foreign-key-constraint-builder.js
 var ForeignKeyConstraintBuilder = class ForeignKeyConstraintBuilder {
 	#node;
 	constructor(node) {
@@ -9437,7 +9437,7 @@ var ForeignKeyConstraintBuilder = class ForeignKeyConstraintBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/add-constraint-node.js
+//#region node_modules/kysely/dist/esm/operation-node/add-constraint-node.js
 /**
 * @internal
 */
@@ -9453,7 +9453,7 @@ var AddConstraintNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/unique-constraint-node.js
+//#region node_modules/kysely/dist/esm/operation-node/unique-constraint-node.js
 /**
 * @internal
 */
@@ -9477,7 +9477,7 @@ var UniqueConstraintNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/drop-constraint-node.js
+//#region node_modules/kysely/dist/esm/operation-node/drop-constraint-node.js
 /**
 * @internal
 */
@@ -9499,7 +9499,7 @@ var DropConstraintNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/alter-column-node.js
+//#region node_modules/kysely/dist/esm/operation-node/alter-column-node.js
 /**
 * @internal
 */
@@ -9516,7 +9516,7 @@ var AlterColumnNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/alter-column-builder.js
+//#region node_modules/kysely/dist/esm/schema/alter-column-builder.js
 var AlterColumnBuilder = class {
 	#column;
 	constructor(column) {
@@ -9584,7 +9584,7 @@ var AlteredColumnBuilder = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/alter-table-executor.js
+//#region node_modules/kysely/dist/esm/schema/alter-table-executor.js
 var AlterTableExecutor = class {
 	#props;
 	constructor(props) {
@@ -9601,7 +9601,7 @@ var AlterTableExecutor = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/alter-table-add-foreign-key-constraint-builder.js
+//#region node_modules/kysely/dist/esm/schema/alter-table-add-foreign-key-constraint-builder.js
 var AlterTableAddForeignKeyConstraintBuilder = class AlterTableAddForeignKeyConstraintBuilder {
 	#props;
 	constructor(props) {
@@ -9661,7 +9661,7 @@ var AlterTableAddForeignKeyConstraintBuilder = class AlterTableAddForeignKeyCons
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/alter-table-drop-constraint-builder.js
+//#region node_modules/kysely/dist/esm/schema/alter-table-drop-constraint-builder.js
 var AlterTableDropConstraintBuilder = class AlterTableDropConstraintBuilder {
 	#props;
 	constructor(props) {
@@ -9703,7 +9703,7 @@ var AlterTableDropConstraintBuilder = class AlterTableDropConstraintBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/primary-key-constraint-node.js
+//#region node_modules/kysely/dist/esm/operation-node/primary-key-constraint-node.js
 /**
 * @internal
 */
@@ -9726,7 +9726,7 @@ var PrimaryKeyConstraintNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/add-index-node.js
+//#region node_modules/kysely/dist/esm/operation-node/add-index-node.js
 /**
 * @internal
 */
@@ -9754,7 +9754,7 @@ var AddIndexNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/alter-table-add-index-builder.js
+//#region node_modules/kysely/dist/esm/schema/alter-table-add-index-builder.js
 var AlterTableAddIndexBuilder = class AlterTableAddIndexBuilder {
 	#props;
 	constructor(props) {
@@ -9894,7 +9894,7 @@ var AlterTableAddIndexBuilder = class AlterTableAddIndexBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/unique-constraint-builder.js
+//#region node_modules/kysely/dist/esm/schema/unique-constraint-builder.js
 var UniqueConstraintNodeBuilder = class UniqueConstraintNodeBuilder {
 	#node;
 	constructor(node) {
@@ -9932,7 +9932,7 @@ var UniqueConstraintNodeBuilder = class UniqueConstraintNodeBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/primary-key-constraint-builder.js
+//#region node_modules/kysely/dist/esm/schema/primary-key-constraint-builder.js
 var PrimaryKeyConstraintBuilder = class PrimaryKeyConstraintBuilder {
 	#node;
 	constructor(node) {
@@ -9962,7 +9962,7 @@ var PrimaryKeyConstraintBuilder = class PrimaryKeyConstraintBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/check-constraint-builder.js
+//#region node_modules/kysely/dist/esm/schema/check-constraint-builder.js
 var CheckConstraintBuilder = class {
 	#node;
 	constructor(node) {
@@ -9980,7 +9980,7 @@ var CheckConstraintBuilder = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/rename-constraint-node.js
+//#region node_modules/kysely/dist/esm/operation-node/rename-constraint-node.js
 /**
 * @internal
 */
@@ -9997,7 +9997,7 @@ var RenameConstraintNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/alter-table-builder.js
+//#region node_modules/kysely/dist/esm/schema/alter-table-builder.js
 /**
 * This builder can be used to create a `alter table` query.
 */
@@ -10213,7 +10213,7 @@ var AlterTableColumnAlteringBuilder = class AlterTableColumnAlteringBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/plugin/immediate-value/immediate-value-transformer.js
+//#region node_modules/kysely/dist/esm/plugin/immediate-value/immediate-value-transformer.js
 /**
 * Transforms all ValueNodes to immediate.
 *
@@ -10231,7 +10231,7 @@ var ImmediateValueTransformer = class extends OperationNodeTransformer {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/create-index-builder.js
+//#region node_modules/kysely/dist/esm/schema/create-index-builder.js
 var CreateIndexBuilder = class CreateIndexBuilder {
 	#props;
 	constructor(props) {
@@ -10409,7 +10409,7 @@ var CreateIndexBuilder = class CreateIndexBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/create-schema-builder.js
+//#region node_modules/kysely/dist/esm/schema/create-schema-builder.js
 var CreateSchemaBuilder = class CreateSchemaBuilder {
 	#props;
 	constructor(props) {
@@ -10439,13 +10439,13 @@ var CreateSchemaBuilder = class CreateSchemaBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/on-commit-action-parse.js
+//#region node_modules/kysely/dist/esm/parser/on-commit-action-parse.js
 function parseOnCommitAction(action) {
 	if (ON_COMMIT_ACTIONS.includes(action)) return action;
 	throw new Error(`invalid OnCommitAction ${action}`);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/create-table-builder.js
+//#region node_modules/kysely/dist/esm/schema/create-table-builder.js
 /**
 * This builder can be used to create a `create table` query.
 */
@@ -10829,7 +10829,7 @@ var CreateTableBuilder = class CreateTableBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/drop-index-builder.js
+//#region node_modules/kysely/dist/esm/schema/drop-index-builder.js
 var DropIndexBuilder = class DropIndexBuilder {
 	#props;
 	constructor(props) {
@@ -10875,7 +10875,7 @@ var DropIndexBuilder = class DropIndexBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/drop-schema-builder.js
+//#region node_modules/kysely/dist/esm/schema/drop-schema-builder.js
 var DropSchemaBuilder = class DropSchemaBuilder {
 	#props;
 	constructor(props) {
@@ -10911,7 +10911,7 @@ var DropSchemaBuilder = class DropSchemaBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/drop-table-builder.js
+//#region node_modules/kysely/dist/esm/schema/drop-table-builder.js
 var DropTableBuilder = class DropTableBuilder {
 	#props;
 	constructor(props) {
@@ -10947,7 +10947,7 @@ var DropTableBuilder = class DropTableBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/create-view-node.js
+//#region node_modules/kysely/dist/esm/operation-node/create-view-node.js
 /**
 * @internal
 */
@@ -10969,7 +10969,7 @@ var CreateViewNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/plugin/immediate-value/immediate-value-plugin.js
+//#region node_modules/kysely/dist/esm/plugin/immediate-value/immediate-value-plugin.js
 /**
 * Transforms all ValueNodes to immediate.
 *
@@ -10988,7 +10988,7 @@ var ImmediateValuePlugin = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/create-view-builder.js
+//#region node_modules/kysely/dist/esm/schema/create-view-builder.js
 var CreateViewBuilder = class CreateViewBuilder {
 	#props;
 	constructor(props) {
@@ -11066,7 +11066,7 @@ var CreateViewBuilder = class CreateViewBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/drop-view-node.js
+//#region node_modules/kysely/dist/esm/operation-node/drop-view-node.js
 /**
 * @internal
 */
@@ -11088,7 +11088,7 @@ var DropViewNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/drop-view-builder.js
+//#region node_modules/kysely/dist/esm/schema/drop-view-builder.js
 var DropViewBuilder = class DropViewBuilder {
 	#props;
 	constructor(props) {
@@ -11130,7 +11130,7 @@ var DropViewBuilder = class DropViewBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/create-type-node.js
+//#region node_modules/kysely/dist/esm/operation-node/create-type-node.js
 /**
 * @internal
 */
@@ -11152,7 +11152,7 @@ var CreateTypeNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/create-type-builder.js
+//#region node_modules/kysely/dist/esm/schema/create-type-builder.js
 var CreateTypeBuilder = class CreateTypeBuilder {
 	#props;
 	constructor(props) {
@@ -11191,7 +11191,7 @@ var CreateTypeBuilder = class CreateTypeBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/drop-type-node.js
+//#region node_modules/kysely/dist/esm/operation-node/drop-type-node.js
 /**
 * @internal
 */
@@ -11213,7 +11213,7 @@ var DropTypeNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/drop-type-builder.js
+//#region node_modules/kysely/dist/esm/schema/drop-type-builder.js
 var DropTypeBuilder = class DropTypeBuilder {
 	#props;
 	constructor(props) {
@@ -11243,7 +11243,7 @@ var DropTypeBuilder = class DropTypeBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/identifier-parser.js
+//#region node_modules/kysely/dist/esm/parser/identifier-parser.js
 function parseSchemableIdentifier(id) {
 	const SCHEMA_SEPARATOR = ".";
 	if (id.includes(SCHEMA_SEPARATOR)) {
@@ -11256,7 +11256,7 @@ function trim(str) {
 	return str.trim();
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/refresh-materialized-view-node.js
+//#region node_modules/kysely/dist/esm/operation-node/refresh-materialized-view-node.js
 /**
 * @internal
 */
@@ -11278,7 +11278,7 @@ var RefreshMaterializedViewNode = freeze({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/refresh-materialized-view-builder.js
+//#region node_modules/kysely/dist/esm/schema/refresh-materialized-view-builder.js
 var RefreshMaterializedViewBuilder = class RefreshMaterializedViewBuilder {
 	#props;
 	constructor(props) {
@@ -11347,7 +11347,7 @@ var RefreshMaterializedViewBuilder = class RefreshMaterializedViewBuilder {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/schema/schema.js
+//#region node_modules/kysely/dist/esm/schema/schema.js
 /**
 * Provides methods for building database schema.
 */
@@ -11645,7 +11645,7 @@ var SchemaModule = class SchemaModule {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dynamic/dynamic.js
+//#region node_modules/kysely/dist/esm/dynamic/dynamic.js
 var DynamicModule = class {
 	/**
 	* Creates a dynamic reference to a column that is not know at compile time.
@@ -11773,7 +11773,7 @@ var DynamicModule = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/driver/default-connection-provider.js
+//#region node_modules/kysely/dist/esm/driver/default-connection-provider.js
 var DefaultConnectionProvider = class {
 	#driver;
 	constructor(driver) {
@@ -11789,7 +11789,7 @@ var DefaultConnectionProvider = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-executor/default-query-executor.js
+//#region node_modules/kysely/dist/esm/query-executor/default-query-executor.js
 var DefaultQueryExecutor = class DefaultQueryExecutor extends QueryExecutorBase {
 	#compiler;
 	#adapter;
@@ -11826,13 +11826,13 @@ var DefaultQueryExecutor = class DefaultQueryExecutor extends QueryExecutorBase 
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/performance-now.js
+//#region node_modules/kysely/dist/esm/util/performance-now.js
 function performanceNow() {
 	if (typeof performance !== "undefined" && isFunction(performance.now)) return performance.now();
 	else return Date.now();
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/driver/runtime-driver.js
+//#region node_modules/kysely/dist/esm/driver/runtime-driver.js
 /**
 * A small wrapper around {@link Driver} that makes sure the driver is
 * initialized before it is used, only initialized and destroyed
@@ -11958,7 +11958,7 @@ var RuntimeDriver = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/driver/single-connection-provider.js
+//#region node_modules/kysely/dist/esm/driver/single-connection-provider.js
 var ignoreError = () => {};
 var SingleConnectionProvider = class {
 	#connection;
@@ -11978,7 +11978,7 @@ var SingleConnectionProvider = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/driver/driver.js
+//#region node_modules/kysely/dist/esm/driver/driver.js
 var TRANSACTION_ACCESS_MODES = ["read only", "read write"];
 var TRANSACTION_ISOLATION_LEVELS = [
 	"read uncommitted",
@@ -12035,12 +12035,12 @@ function defaultLogger(event) {
 	}
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/compilable.js
+//#region node_modules/kysely/dist/esm/util/compilable.js
 function isCompilable(value) {
 	return isObject(value) && isFunction(value.compile);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/kysely.js
+//#region node_modules/kysely/dist/esm/kysely.js
 Symbol.asyncDispose ??= Symbol("Symbol.asyncDispose");
 /**
 * The main Kysely class.
@@ -12924,7 +12924,7 @@ var NotCommittedOrRolledBackAssertingExecutor = class NotCommittedOrRolledBackAs
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/raw-builder/raw-builder.js
+//#region node_modules/kysely/dist/esm/raw-builder/raw-builder.js
 var RawBuilderImpl = class RawBuilderImpl {
 	#props;
 	constructor(props) {
@@ -12994,7 +12994,7 @@ var AliasedRawBuilderImpl = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/raw-builder/sql.js
+//#region node_modules/kysely/dist/esm/raw-builder/sql.js
 var sql = Object.assign((sqlFragments, ...parameters) => {
 	return createRawBuilder({
 		queryId: createQueryId(),
@@ -13064,7 +13064,7 @@ function parseParameter(param) {
 	return parseValueExpression(param);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/operation-node/operation-node-visitor.js
+//#region node_modules/kysely/dist/esm/operation-node/operation-node-visitor.js
 var OperationNodeVisitor = class {
 	nodeStack = [];
 	get parentNode() {
@@ -13176,7 +13176,7 @@ var OperationNodeVisitor = class {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-compiler/default-query-compiler.js
+//#region node_modules/kysely/dist/esm/query-compiler/default-query-compiler.js
 var LIT_WRAP_REGEX = /'/g;
 var JSON_PATH_MEMBER_WRAP_REGEX = /['"]/g;
 var DefaultQueryCompiler = class extends OperationNodeVisitor {
@@ -14359,7 +14359,7 @@ var JOIN_TYPE_SQL = freeze({
 	Using: "using"
 });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/query-compiler/compiled-query.js
+//#region node_modules/kysely/dist/esm/query-compiler/compiled-query.js
 var CompiledQuery = freeze({ raw(sql, parameters = []) {
 	return freeze({
 		sql,
@@ -14369,7 +14369,7 @@ var CompiledQuery = freeze({ raw(sql, parameters = []) {
 	});
 } });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/dialect-adapter-base.js
+//#region node_modules/kysely/dist/esm/dialect/dialect-adapter-base.js
 /**
 * A basic implementation of `DialectAdapter` with sensible default values.
 * Third-party dialects can extend this instead of implementing the `DialectAdapter`
@@ -14391,12 +14391,12 @@ var DialectAdapterBase = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/parser/savepoint-parser.js
+//#region node_modules/kysely/dist/esm/parser/savepoint-parser.js
 function parseSavepointCommand(command, savepointName) {
 	return RawNode.createWithChildren([RawNode.createWithSql(`${command} `), IdentifierNode.create(savepointName)]);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/sqlite/sqlite-driver.js
+//#region node_modules/kysely/dist/esm/dialect/sqlite/sqlite-driver.js
 var SqliteDriver = class {
 	#config;
 	#connectionMutex = new ConnectionMutex$2();
@@ -14481,7 +14481,7 @@ var ConnectionMutex$2 = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/sqlite/sqlite-query-compiler.js
+//#region node_modules/kysely/dist/esm/dialect/sqlite/sqlite-query-compiler.js
 var ID_WRAP_REGEX$2 = /"/g;
 var JSON_PATH_MEMBER_ESCAPE_REGEX$1 = /[\\'"]/g;
 var SqliteQueryCompiler = class extends DefaultQueryCompiler {
@@ -14518,12 +14518,12 @@ var SqliteQueryCompiler = class extends DefaultQueryCompiler {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/migration/migrator.js
+//#region node_modules/kysely/dist/esm/migration/migrator.js
 var DEFAULT_MIGRATION_TABLE$1 = "kysely_migration";
 var DEFAULT_MIGRATION_LOCK_TABLE$1 = "kysely_migration_lock";
 freeze({ __noMigrations__: true });
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/sqlite/sqlite-introspector.js
+//#region node_modules/kysely/dist/esm/dialect/sqlite/sqlite-introspector.js
 var SqliteIntrospector = class {
 	#db;
 	constructor(db) {
@@ -14586,7 +14586,7 @@ var SqliteIntrospector = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/sqlite/sqlite-adapter.js
+//#region node_modules/kysely/dist/esm/dialect/sqlite/sqlite-adapter.js
 var SqliteAdapter = class extends DialectAdapterBase {
 	get supportsTransactionalDdl() {
 		return false;
@@ -14598,7 +14598,7 @@ var SqliteAdapter = class extends DialectAdapterBase {
 	async releaseMigrationLock(_db, _opt) {}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/sqlite/sqlite-dialect.js
+//#region node_modules/kysely/dist/esm/dialect/sqlite/sqlite-dialect.js
 /**
 * SQLite dialect that uses the [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3) library.
 *
@@ -14642,7 +14642,7 @@ var SqliteDialect = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/postgres/postgres-query-compiler.js
+//#region node_modules/kysely/dist/esm/dialect/postgres/postgres-query-compiler.js
 var ID_WRAP_REGEX$1 = /"/g;
 var PostgresQueryCompiler = class extends DefaultQueryCompiler {
 	sanitizeIdentifier(identifier) {
@@ -14650,7 +14650,7 @@ var PostgresQueryCompiler = class extends DefaultQueryCompiler {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/postgres/postgres-introspector.js
+//#region node_modules/kysely/dist/esm/dialect/postgres/postgres-introspector.js
 var PostgresIntrospector = class {
 	#db;
 	constructor(db) {
@@ -14709,7 +14709,7 @@ var PostgresIntrospector = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/postgres/postgres-adapter.js
+//#region node_modules/kysely/dist/esm/dialect/postgres/postgres-adapter.js
 var LOCK_ID$1 = BigInt("3853314791062309107");
 var PostgresAdapter = class extends DialectAdapterBase {
 	get supportsTransactionalDdl() {
@@ -14724,7 +14724,7 @@ var PostgresAdapter = class extends DialectAdapterBase {
 	async releaseMigrationLock(_db, _opt) {}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/util/stack-trace-utils.js
+//#region node_modules/kysely/dist/esm/util/stack-trace-utils.js
 function extendStackTrace(err, stackError) {
 	if (isStackHolder(err) && stackError.stack) {
 		const stackExtension = stackError.stack.split("\n").slice(1).join("\n");
@@ -14737,7 +14737,7 @@ function isStackHolder(obj) {
 	return isObject(obj) && isString(obj.stack);
 }
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mysql/mysql-driver.js
+//#region node_modules/kysely/dist/esm/dialect/mysql/mysql-driver.js
 var PRIVATE_RELEASE_METHOD$1 = Symbol();
 var MysqlDriver = class {
 	#config;
@@ -14852,7 +14852,7 @@ var MysqlConnection = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mysql/mysql-query-compiler.js
+//#region node_modules/kysely/dist/esm/dialect/mysql/mysql-query-compiler.js
 var LITERAL_ESCAPE_REGEX = /[\\']/g;
 var ID_WRAP_REGEX = /`/g;
 var JSON_PATH_MEMBER_ESCAPE_REGEX = /[\\'"]/g;
@@ -14925,7 +14925,7 @@ var MysqlQueryCompiler = class extends DefaultQueryCompiler {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mysql/mysql-introspector.js
+//#region node_modules/kysely/dist/esm/dialect/mysql/mysql-introspector.js
 var MysqlIntrospector = class {
 	#db;
 	constructor(db) {
@@ -14978,7 +14978,7 @@ var MysqlIntrospector = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mysql/mysql-adapter.js
+//#region node_modules/kysely/dist/esm/dialect/mysql/mysql-adapter.js
 var LOCK_ID = "ea586330-2c93-47c8-908d-981d9d270f9d";
 var LOCK_TIMEOUT_SECONDS = 3600;
 var MysqlAdapter = class extends DialectAdapterBase {
@@ -14996,7 +14996,7 @@ var MysqlAdapter = class extends DialectAdapterBase {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mysql/mysql-dialect.js
+//#region node_modules/kysely/dist/esm/dialect/mysql/mysql-dialect.js
 /**
 * MySQL dialect that uses the [mysql2](https://github.com/sidorares/node-mysql2#readme) library.
 *
@@ -15046,7 +15046,7 @@ var MysqlDialect = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/postgres/postgres-driver.js
+//#region node_modules/kysely/dist/esm/dialect/postgres/postgres-driver.js
 var PRIVATE_RELEASE_METHOD = Symbol();
 var PostgresDriver = class {
 	#config;
@@ -15140,7 +15140,7 @@ var PostgresConnection = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/postgres/postgres-dialect.js
+//#region node_modules/kysely/dist/esm/dialect/postgres/postgres-dialect.js
 /**
 * PostgreSQL dialect that uses the [pg](https://node-postgres.com/) library.
 *
@@ -15190,7 +15190,7 @@ var PostgresDialect = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mssql/mssql-adapter.js
+//#region node_modules/kysely/dist/esm/dialect/mssql/mssql-adapter.js
 var MssqlAdapter = class extends DialectAdapterBase {
 	get supportsCreateIfNotExists() {
 		return false;
@@ -15207,7 +15207,7 @@ var MssqlAdapter = class extends DialectAdapterBase {
 	async releaseMigrationLock() {}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mssql/mssql-driver.js
+//#region node_modules/kysely/dist/esm/dialect/mssql/mssql-driver.js
 var PRIVATE_RESET_METHOD = Symbol();
 var PRIVATE_DESTROY_METHOD = Symbol();
 var PRIVATE_VALIDATE_METHOD = Symbol();
@@ -15487,7 +15487,7 @@ var MssqlRequest = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mssql/mssql-introspector.js
+//#region node_modules/kysely/dist/esm/dialect/mssql/mssql-introspector.js
 var MssqlIntrospector = class {
 	#db;
 	constructor(db) {
@@ -15553,7 +15553,7 @@ var MssqlIntrospector = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mssql/mssql-query-compiler.js
+//#region node_modules/kysely/dist/esm/dialect/mssql/mssql-query-compiler.js
 var COLLATION_CHAR_REGEX = /^[a-z0-9_]$/i;
 var MssqlQueryCompiler = class extends DefaultQueryCompiler {
 	getCurrentParameterPlaceholder() {
@@ -15614,7 +15614,7 @@ var MssqlQueryCompiler = class extends DefaultQueryCompiler {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/kysely/dist/esm/dialect/mssql/mssql-dialect.js
+//#region node_modules/kysely/dist/esm/dialect/mssql/mssql-dialect.js
 /**
 * MS SQL Server dialect that uses the [tedious](https://tediousjs.github.io/tedious)
 * library.
@@ -15673,7 +15673,7 @@ var MssqlDialect = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/kysely-adapter/dist/index.mjs
+//#region node_modules/@better-auth/kysely-adapter/dist/index.mjs
 function getKyselyDatabaseType(db) {
 	if (!db) return null;
 	if ("dialect" in db) return getKyselyDatabaseType(db.dialect);
@@ -16241,7 +16241,7 @@ var kyselyAdapter = (db, config) => {
 	};
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/kysely-adapter/dist/kysely-migration-tables-JkVUjPF_.mjs
+//#region node_modules/@better-auth/kysely-adapter/dist/kysely-migration-tables-JkVUjPF_.mjs
 /**
 * Kysely's internal migration table names, mirrored as local constants.
 *
@@ -16259,7 +16259,7 @@ var kyselyAdapter = (db, config) => {
 var DEFAULT_MIGRATION_TABLE = "kysely_migration";
 var DEFAULT_MIGRATION_LOCK_TABLE = "kysely_migration_lock";
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/kysely-adapter/dist/bun-sqlite-dialect-BW9W1_Ps.mjs
+//#region node_modules/@better-auth/kysely-adapter/dist/bun-sqlite-dialect-BW9W1_Ps.mjs
 var bun_sqlite_dialect_BW9W1_Ps_exports = /* @__PURE__ */ __exportAll({ BunSqliteDialect: () => BunSqliteDialect });
 var BunSqliteAdapter = class {
 	get supportsCreateIfNotExists() {
@@ -16419,7 +16419,7 @@ var BunSqliteDialect = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/kysely-adapter/dist/d1-sqlite-dialect-BLC8LXE6.mjs
+//#region node_modules/@better-auth/kysely-adapter/dist/d1-sqlite-dialect-BLC8LXE6.mjs
 var d1_sqlite_dialect_BLC8LXE6_exports = /* @__PURE__ */ __exportAll({ D1SqliteDialect: () => D1SqliteDialect });
 var D1SqliteAdapter = class extends SqliteAdapter {};
 var D1SqliteDriver = class {
@@ -16529,7 +16529,7 @@ var D1SqliteDialect = class {
 	}
 };
 //#endregion
-//#region ../../workspace/node_modules/@better-auth/kysely-adapter/dist/node-sqlite-dialect.mjs
+//#region node_modules/@better-auth/kysely-adapter/dist/node-sqlite-dialect.mjs
 var node_sqlite_dialect_exports = /* @__PURE__ */ __exportAll({ NodeSqliteDialect: () => NodeSqliteDialect });
 var NodeSqliteAdapter = class {
 	get supportsCreateIfNotExists() {

@@ -1,5 +1,5 @@
 import { a as SUPPORT_COFFEE_USD, c as SUPPORT_USDC, d as SUPPORT_USDC_LABEL, f as SUPPORT_USDC_NOTE, l as SUPPORT_USDC_BASE_EXPLORER, m as supportPaymentRails, n as SUPPORT_BTC, r as SUPPORT_BTC_EXPLORER, s as SUPPORT_GIFT_RECEIPT, u as SUPPORT_USDC_EXPLORER } from "./support-BXjqAIfh.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/hive-resource-BThKJHxr.js
+//#region node_modules/.nitro/vite/services/ssr/assets/hive-resource-BThKJHxr.js
 /** Client-safe plan copy. Key hashing stays in feed-key.server / feed-key. */
 var FEED_KEY_HEADER = "x-s1r1us-key";
 var FEED_KEY_PREFIX = "s1r1_live_";

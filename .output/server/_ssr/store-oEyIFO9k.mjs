@@ -1,5 +1,5 @@
 import { n as create, t as persist } from "../_libs/zustand.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/store-oEyIFO9k.js
+//#region node_modules/.nitro/vite/services/ssr/assets/store-oEyIFO9k.js
 var STOP_MAX = .1;
 var STOP_STEP = .0025;
 var STOP_DEFAULT = .015;

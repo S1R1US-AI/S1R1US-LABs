@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/nanostores/atom/index.js
+//#region node_modules/nanostores/atom/index.js
 var listenerQueue = [];
 var lqIndex = 0;
 var batchSeen = null;
@@ -64,7 +64,7 @@ var atom = /* @__NO_SIDE_EFFECTS__ */ (initialValue) => {
 	return $atom;
 };
 //#endregion
-//#region ../../workspace/node_modules/nanostores/lifecycle/index.js
+//#region node_modules/nanostores/lifecycle/index.js
 var SET = 2;
 var MOUNT = 5;
 var UNMOUNT = 6;
@@ -158,7 +158,7 @@ var onMount = ($store, initialize) => {
 	});
 };
 //#endregion
-//#region ../../workspace/node_modules/nanostores/deep-map/path.js
+//#region node_modules/nanostores/deep-map/path.js
 function getPath(obj, path) {
 	let allKeys = getAllKeysFromPath(path);
 	let res = obj;
@@ -180,7 +180,7 @@ function getKeyAndIndicesFromKey(key) {
 	return [key];
 }
 //#endregion
-//#region ../../workspace/node_modules/nanostores/listen-keys/index.js
+//#region node_modules/nanostores/listen-keys/index.js
 function listenKeys($store, keys, listener) {
 	let keysSet = new Set(keys);
 	return $store.listen((value, oldValue, changed) => {

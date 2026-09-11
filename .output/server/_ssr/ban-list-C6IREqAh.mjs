@@ -1,6 +1,6 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/ban-list-C6IREqAh.js
+//#region node_modules/.nitro/vite/services/ssr/assets/ban-list-C6IREqAh.js
 var ban_list_C6IREqAh_exports = /* @__PURE__ */ __exportAll({
 	a: () => isBanned,
 	c: () => noteStrike,

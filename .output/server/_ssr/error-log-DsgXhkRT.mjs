@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/error-log-DsgXhkRT.js
+//#region node_modules/.nitro/vite/services/ssr/assets/error-log-DsgXhkRT.js
 var MAX = 100;
 var RING = [];
 var LOG_PATH = "/tmp/desk-errors.json";

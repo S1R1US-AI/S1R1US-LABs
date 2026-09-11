@@ -1,6 +1,6 @@
 import { a as LOCK_IDS } from "./lock-status-A0BH-v5S.mjs";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/lock-request.server-fU56dgSx.js
+//#region node_modules/.nitro/vite/services/ssr/assets/lock-request.server-fU56dgSx.js
 /** Phone-admin lock change tickets. System admin applies. Never execute from app-admin. */
 var PHONE_REQUEST_OK = [
 	"agents",
