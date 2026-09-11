@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/shell";
 import { GmRainbow, GoldCss } from "@/components/godzilla-mark";
 import { rainGmBurst } from "@/components/matrix-saver";
-import { LockRequestPanel } from "@/components/lock-request-panel";
 import { fetchLockStatus, setLockStatus } from "@/lib/desk/desk-rpc";
 import { useOperator } from "@/lib/desk/operator";
 import { useAppAdmin } from "@/lib/desk/app-admin-client";
@@ -15,6 +14,7 @@ import {
   LOCK_GIF_OPEN_NAME,
   TAB_LOCK3D,
   groupLockRows,
+  lockGifSrc,
   type LockId,
   type LockStatusPublic,
 } from "@/lib/desk/lock-status";
@@ -27,11 +27,10 @@ function useLockAdmin() {
   const sysTok = useOperator((s) => (s.unlocked && s.role === "admin" ? s.token : ""));
   const appTok = useAppAdmin((s) => (s.unlocked ? s.token : ""));
   const token = sysTok || (appTok.startsWith("app.") ? appTok : "");
-  const plane = sysTok ? ("system" as const) : token ? ("app-admin" as const) : null;
   return {
     token,
-    canEdit: plane === "system",
-    plane,
+    canEdit: Boolean(token),
+    plane: sysTok ? ("system" as const) : token ? ("app-admin" as const) : null,
   };
 }
 
@@ -73,7 +72,7 @@ export function LockGif({
   const seo = seoImgAlt(locked ? "Closed padlock. LOCKED." : LOCK_GIF_OPEN_NAME);
   return (
     <img
-      src={`${locked ? LOCK_GIF_CLOSED : LOCK_GIF_OPEN}?v=68`}
+      src={lockGifSrc(locked ? LOCK_GIF_CLOSED : LOCK_GIF_OPEN)}
       alt={seo}
       title={short}
       width={px}
@@ -87,8 +86,8 @@ export function LockName({ name, css, className }: { name: string; css: string; 
   if (css === "gm-rainbow" || css === "hive-nav") {
     return <GmRainbow text={name} className={cn("font-semibold", className)} />;
   }
-  if (css === "gold-css") {
-    return <GoldCss text={name} className={cn("font-semibold", className)} />;
+  if (css.includes("gold-css") || css.includes("pred-nav")) {
+    return <GoldCss text={name} className={cn("font-semibold pred-nav gold-css", className)} />;
   }
   return <span className={cn("font-semibold", css, className)}>{name}</span>;
 }
@@ -149,7 +148,7 @@ function LockCell({
           <Link
             to={row.to}
             hash={row.hash}
-            className="lock-cell-link"
+            className={cn("lock-cell-link", row.css)}
             title={`${row.seo} — open view`}
             aria-label={`Open ${row.name}`}
             onClick={() => {
@@ -302,7 +301,7 @@ export function LockHead({
             aria-expanded={Boolean(expanded)}
             onClick={onToggle}
           >
-            {expanded ? "Collapse" : "Expand"}
+            {expanded ? "collapse" : "expand"}
           </button>
         ) : null}
       </div>
@@ -388,7 +387,7 @@ export function Lock3dStatusPanel({ className }: { className?: string }) {
   const { lock, setLock, err, setErr, busy, setBusy } = useLockView();
 
   async function act(input: ActInput) {
-    if (!token || !canEdit) return;
+    if (!token) return;
     setBusy(true);
     setErr(null);
     try {
@@ -415,11 +414,11 @@ export function Lock3dStatusPanel({ className }: { className?: string }) {
       titleClass={masterLocked ? "text-sell" : "text-high"}
     >
       <p className="text-sm leading-relaxed text-muted">
-        System admin is top-level and can change rails. Phone-app admin can view this board and request a change.
-        Live tape is status only. This host never places orders.
-        {plane ? ` Signed in as ${plane}.` : " Sign in as Admin."}
+        System Admin and phone-app Admin share this board. Optional unlocks pick which rails the master lock hits.
+        Live tape is status only. Championship pause stays system Admin. Unlock is live-intent — execute on YOUR
+        Coinbase. This host never places orders.
+        {plane ? ` Signed in as ${plane}.` : " Sign in as Admin to lock or unlock."}
       </p>
-      {plane === "app-admin" ? <LockRequestPanel /> : null}
       {lock ? (
         <div className="mt-3">
           <LockControls lock={lock} canEdit={canEdit} token={token} busy={busy} err={err} onAct={(i) => void act(i)} />
@@ -440,7 +439,7 @@ export function Lock3dRail({
   const { lock, setLock, err, setErr, busy, setBusy } = useLockView();
 
   async function act(input: ActInput) {
-    if (!token || !canEdit) return;
+    if (!token) return;
     setBusy(true);
     setErr(null);
     try {

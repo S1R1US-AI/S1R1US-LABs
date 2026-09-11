@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import type { BotBrief, DeskSnapshot, HeliosCall } from "@/lib/desk/types";
@@ -205,25 +205,7 @@ export function DeskWorkspace({
             </div>
           ) : null}
           </div>
-          <div className="gm-holo mt-2 flex-1">
-            <Link
-              to="/gm"
-              hash="auto"
-              className="block h-full min-h-11"
-              title={GIF_AI_BTC_BOT_EQ}
-              aria-label={`${GIF_AI_BTC_BOT_EQ} · open G M0D3 AUTO`}
-            >
-              <SeoImage
-                src={GIF_AI_BTC_BOT}
-                alt={GIF_AI_BTC_BOT_NAME}
-                title={GIF_AI_BTC_BOT_EQ}
-                desc={GIF_AI_BTC_BOT_EQ}
-                width={640}
-                height={960}
-                className="h-full w-full cursor-pointer object-cover object-center"
-              />
-            </Link>
-          </div>
+          <HoloGifExpand />
         </aside>
       </div>
 
@@ -370,5 +352,81 @@ export function DeskWorkspace({
         {" · dry-run only until unlock"}
       </p>
     </div>
+  );
+}
+
+function HoloGifExpand() {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+  return (
+    <>
+      <div className="gm-holo mt-2 flex-1">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-expanded={open}
+          aria-controls="holo-gif-expand"
+          title={`${GIF_AI_BTC_BOT_EQ} · expand`}
+          aria-label={`${GIF_AI_BTC_BOT_EQ} · expand`}
+          className="relative block h-full min-h-11 w-full"
+        >
+          <SeoImage
+            src={GIF_AI_BTC_BOT}
+            alt={GIF_AI_BTC_BOT_NAME}
+            title={GIF_AI_BTC_BOT_EQ}
+            desc={GIF_AI_BTC_BOT_EQ}
+            width={640}
+            height={960}
+            className="h-full w-full object-cover object-center"
+          />
+          <span className="expand-ctl pointer-events-none absolute right-2 top-2 z-10 font-mono text-[11px] drop-shadow">
+            expand
+          </span>
+        </button>
+      </div>
+      {open ? (
+        <div
+          id="holo-gif-expand"
+          className="gif-expand-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label={GIF_AI_BTC_BOT_NAME}
+          onClick={() => setOpen(false)}
+        >
+          <div className="gif-expand-panel" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between gap-3">
+              <Link
+                to="/gm"
+                hash="auto"
+                className="min-h-11 text-sm font-semibold text-oss hover:underline"
+                title={`${GIF_AI_BTC_BOT_EQ} · open G M0D3 AUTO`}
+                aria-label={`${GIF_AI_BTC_BOT_EQ} · open G M0D3 AUTO`}
+              >
+                {GIF_AI_BTC_BOT_EQ}
+              </Link>
+              <button type="button" className="expand-ctl min-h-11 font-mono text-[11px]" onClick={() => setOpen(false)}>
+                collapse
+              </button>
+            </div>
+            <SeoImage
+              src={GIF_AI_BTC_BOT}
+              alt={GIF_AI_BTC_BOT_NAME}
+              title={GIF_AI_BTC_BOT_EQ}
+              desc={GIF_AI_BTC_BOT_EQ}
+              width={640}
+              height={960}
+              className="gif-expand-img mt-2"
+            />
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }

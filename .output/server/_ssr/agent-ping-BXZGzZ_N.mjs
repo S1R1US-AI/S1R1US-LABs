@@ -1,6 +1,6 @@
 import { r as __exportAll$1 } from "../_runtime.mjs";
 import { createRequire } from "node:module";
-//#region node_modules/.nitro/vite/services/ssr/assets/agent-ping-BXZGzZ_N.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/agent-ping-BXZGzZ_N.js
 var agent_ping_BXZGzZ_N_exports = /* @__PURE__ */ __exportAll$1({
 	i: () => __exportAll,
 	n: () => peekAgentFlags,

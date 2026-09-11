@@ -28,7 +28,7 @@ import {
   LOCK_TUTORIAL,
   lockWelcomePublic,
 } from "@/lib/desk/lock-welcome";
-import { SEO_TAB_LOCK3D, TAB_LOCK3D, LOCK_GIF_OPEN, LOCK_GIF_OPEN_NAME, LOCK_IDS, LOCK_META, lockViewPath, type LockStatusPublic } from "@/lib/desk/lock-status";
+import { SEO_TAB_LOCK3D, TAB_LOCK3D, LOCK_GIF_CLOSED, LOCK_GIF_OPEN, LOCK_GIF_OPEN_NAME, LOCK_IDS, LOCK_META, lockGifSrc, lockViewPath, type LockStatusPublic } from "@/lib/desk/lock-status";
 import { GITHUB_REPO_URL } from "@/lib/desk/official-presence";
 import { COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { cn } from "@/lib/utils";
@@ -94,6 +94,7 @@ export function LockPage() {
           "Bitcoin trading agents",
           "7-B0T AUTO",
           "G M0D3 AUTO",
+          "PR3D1CT10N$",
         ],
         hasPart: LOCK_IDS.map((id) => ({
           "@type": "WebPage",
@@ -212,7 +213,7 @@ export function LockPage() {
           />
           <figcaption className="pointer-events-none absolute inset-0">
             <img
-              src="/lock-closed.gif?v=68"
+              src={lockGifSrc(LOCK_GIF_CLOSED)}
               alt={LOCK_IMG_SEO}
               title={LOCK_IMG_SEO}
               width={128}
@@ -220,7 +221,7 @@ export function LockPage() {
               className="lock-gif-banner absolute left-[8%] top-1/2 -translate-y-1/2 sm:left-[10%]"
             />
             <img
-              src={`${LOCK_GIF_OPEN}?v=68`}
+              src={lockGifSrc(LOCK_GIF_OPEN)}
               alt={seoImgAlt(LOCK_GIF_OPEN_NAME)}
               title={seoImgAlt(LOCK_GIF_OPEN_NAME)}
               width={128}
@@ -340,6 +341,9 @@ export function LockPage() {
             </Link>
             <Link to="/h1v3" className="board-nav gm-nav hive-nav hover:underline" title={TAB_HOVER_HIVE}>
               H1V3 SW@RM
+            </Link>
+            <Link to="/pr3d" className="pred-nav gold-css hover:underline">
+              PR3D1CT10N$
             </Link>
             <Link to="/agent" className="text-oss hover:underline">
               Agent feed

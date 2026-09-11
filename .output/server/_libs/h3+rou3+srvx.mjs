@@ -3,7 +3,7 @@ import { PassThrough, Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import nodeHTTPS from "node:https";
 import nodeHTTP2 from "node:http2";
-//#region node_modules/srvx/dist/_chunks/_url.mjs
+//#region ../../workspace/node_modules/srvx/dist/_chunks/_url.mjs
 function lazyInherit(target, source, sourceKey) {
 	for (const key of [...Object.getOwnPropertyNames(source), ...Object.getOwnPropertySymbols(source)]) {
 		if (key === "constructor") continue;
@@ -138,7 +138,7 @@ var FastURL = /* @__PURE__ */ (() => {
 	return FastURL;
 })();
 //#endregion
-//#region node_modules/srvx/dist/_chunks/_utils2.mjs
+//#region ../../workspace/node_modules/srvx/dist/_chunks/_utils2.mjs
 function resolvePortAndHost(opts) {
 	const _port = opts.port ?? globalThis.process?.env.PORT ?? 3e3;
 	const port = typeof _port === "number" ? _port : Number.parseInt(_port, 10);
@@ -209,7 +209,7 @@ function createWaitUntil() {
 	};
 }
 //#endregion
-//#region node_modules/srvx/dist/_chunks/_utils.mjs
+//#region ../../workspace/node_modules/srvx/dist/_chunks/_utils.mjs
 var noColor = /* @__PURE__ */ (() => {
 	const env = globalThis.process?.env ?? {};
 	return env.NO_COLOR === "1" || env.TERM === "dumb";
@@ -220,7 +220,7 @@ var red = /* @__PURE__ */ _c(31);
 var green = /* @__PURE__ */ _c(32);
 var gray = /* @__PURE__ */ _c(90);
 //#endregion
-//#region node_modules/srvx/dist/_chunks/_plugins.mjs
+//#region ../../workspace/node_modules/srvx/dist/_chunks/_plugins.mjs
 function wrapFetch(server) {
 	const fetchHandler = server.options.fetch;
 	const middleware = server.options.middleware || [];
@@ -276,7 +276,7 @@ var gracefulShutdownPlugin = (server) => {
 	for (const sig of ["SIGINT", "SIGTERM"]) globalThis.process.on(sig, shutdown);
 };
 //#endregion
-//#region node_modules/srvx/dist/_chunks/_trust-proxy.mjs
+//#region ../../workspace/node_modules/srvx/dist/_chunks/_trust-proxy.mjs
 function isTrustedProxy(trustProxy, remoteAddress) {
 	if (trustProxy === void 0 || trustProxy === false) return false;
 	if (trustProxy === true) return true;
@@ -298,7 +298,7 @@ function firstForwardedValue(value) {
 	return (Array.isArray(value) ? value[0] : value).split(",")[0].trim() || void 0;
 }
 //#endregion
-//#region node_modules/srvx/dist/_chunks/_body-limit.mjs
+//#region ../../workspace/node_modules/srvx/dist/_chunks/_body-limit.mjs
 function createBodyTooLargeError(maxRequestBodySize) {
 	return Object.assign(/* @__PURE__ */ new Error(`Request body exceeds the maximum allowed size of ${maxRequestBodySize} bytes.`), {
 		code: "ERR_BODY_TOO_LARGE",
@@ -331,7 +331,7 @@ function limitBodyStream(stream, maxRequestBodySize) {
 	});
 }
 //#endregion
-//#region node_modules/srvx/dist/adapters/node.mjs
+//#region ../../workspace/node_modules/srvx/dist/adapters/node.mjs
 function sendNodeResponseDetached(nodeRes, webRes) {
 	try {
 		return _sendNodeResponse(nodeRes, webRes, true);
@@ -952,13 +952,13 @@ var NodeServer = class {
 	}
 };
 //#endregion
-//#region node_modules/h3/node_modules/rou3/dist/index.mjs
+//#region ../../workspace/node_modules/h3/node_modules/rou3/dist/index.mjs
 var NullProtoObj = /* @__PURE__ */ (() => {
 	const e = function() {};
 	return e.prototype = Object.create(null), Object.freeze(e.prototype), e;
 })();
 //#endregion
-//#region node_modules/h3/dist/h3.mjs
+//#region ../../workspace/node_modules/h3/dist/h3.mjs
 function decodePathname(pathname) {
 	return decodeURI(pathname.includes("%25") ? pathname.replace(/%25/g, "%2525") : pathname);
 }
