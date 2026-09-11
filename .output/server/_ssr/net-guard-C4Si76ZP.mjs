@@ -1,6 +1,6 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/net-guard-C4Si76ZP.js
+//#region node_modules/.nitro/vite/services/ssr/assets/net-guard-C4Si76ZP.js
 var net_guard_C4Si76ZP_exports = /* @__PURE__ */ __exportAll({
 	n: () => guardedFetch,
 	r: () => net_guard_exports,

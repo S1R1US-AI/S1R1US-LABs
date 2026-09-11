@@ -1,6 +1,6 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { U as require_react } from "./@tanstack/react-router+[...].mjs";
-//#region ../../workspace/node_modules/lucide-react/dist/esm/shared/src/utils.js
+//#region node_modules/lucide-react/dist/esm/shared/src/utils.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 /**
 * @license lucide-react v0.510.0 - ISC
@@ -21,7 +21,7 @@ var hasA11yProp = (props) => {
 	for (const prop in props) if (prop.startsWith("aria-") || prop === "role" || prop === "title") return true;
 };
 //#endregion
-//#region ../../workspace/node_modules/lucide-react/dist/esm/defaultAttributes.js
+//#region node_modules/lucide-react/dist/esm/defaultAttributes.js
 /**
 * @license lucide-react v0.510.0 - ISC
 *
@@ -40,7 +40,7 @@ var defaultAttributes = {
 	strokeLinejoin: "round"
 };
 //#endregion
-//#region ../../workspace/node_modules/lucide-react/dist/esm/Icon.js
+//#region node_modules/lucide-react/dist/esm/Icon.js
 /**
 * @license lucide-react v0.510.0 - ISC
 *
@@ -59,7 +59,7 @@ var Icon = (0, import_react.forwardRef)(({ color = "currentColor", size = 24, st
 	...rest
 }, [...iconNode.map(([tag, attrs]) => (0, import_react.createElement)(tag, attrs)), ...Array.isArray(children) ? children : [children]]));
 //#endregion
-//#region ../../workspace/node_modules/lucide-react/dist/esm/createLucideIcon.js
+//#region node_modules/lucide-react/dist/esm/createLucideIcon.js
 /**
 * @license lucide-react v0.510.0 - ISC
 *

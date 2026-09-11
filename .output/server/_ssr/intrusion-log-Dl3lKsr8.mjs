@@ -1,6 +1,6 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/intrusion-log-Dl3lKsr8.js
+//#region node_modules/.nitro/vite/services/ssr/assets/intrusion-log-Dl3lKsr8.js
 var intrusion_log_Dl3lKsr8_exports = /* @__PURE__ */ __exportAll({
 	a: () => intrusion_log_exports,
 	i: () => intrusionSummary,

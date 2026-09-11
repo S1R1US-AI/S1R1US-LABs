@@ -2,7 +2,7 @@ import { c as COMPANY_X_HANDLE } from "./x-admin-CALKyy-K.mjs";
 import { Hn as TAB_FEED, Ht as SEO_CANONICAL, In as TAB_CALLOUT, N as MENU_BOARD, Or as TAB_LAB, Pn as TAB_BOWL, Rn as TAB_COFFEE, Rr as TAB_SPICE, Vn as TAB_DESK, k as LABS_NAME, nn as SEO_TAB_COFFEE, qn as TAB_GM, r as APP_NAME } from "./brand-1s5EgS5V.mjs";
 import { a as SUPPORT_COFFEE_USD, s as SUPPORT_GIFT_RECEIPT } from "./support-BXjqAIfh.mjs";
 import { m as GITHUB_URL } from "./model-DhC-vhtl.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/legal-h_q7W0h2.js
+//#region node_modules/.nitro/vite/services/ssr/assets/legal-h_q7W0h2.js
 var TERMS_PATH = "/terms";
 var TERMS_TITLE = "Terms and Agreements";
 var TERMS_HOVER = `${TERMS_TITLE} · 100 percent at your own risk · not financial advice · not legal advice`;
