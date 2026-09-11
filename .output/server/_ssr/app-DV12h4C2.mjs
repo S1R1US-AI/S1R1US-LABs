@@ -1,0 +1,5 @@
+import { t as MobileAppPage } from "./mobile-app-page-DZNlO4c1.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/app-DV12h4C2.js
+var SplitComponent = MobileAppPage;
+//#endregion
+export { SplitComponent as component };
