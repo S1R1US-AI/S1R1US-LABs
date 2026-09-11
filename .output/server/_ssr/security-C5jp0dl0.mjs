@@ -1,7 +1,7 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
 import { Or as TAB_LAB, Vn as TAB_DESK } from "./brand-1s5EgS5V.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/security-C5jp0dl0.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/security-C5jp0dl0.js
 var security_C5jp0dl0_exports = /* @__PURE__ */ __exportAll({
 	a: () => MCP_REMOTE,
 	c: () => grokRateLimit,

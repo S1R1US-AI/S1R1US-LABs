@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/reset-mail.server-C-m6odmn.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/reset-mail.server-C-m6odmn.js
 /**
 * Server-only. Do not import from client components or re-export the mailbox.
 * Destination is never returned from a server function.

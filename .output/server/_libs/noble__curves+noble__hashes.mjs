@@ -1,5 +1,5 @@
 import * as nc from "node:crypto";
-//#region node_modules/@noble/curves/node_modules/@noble/hashes/esm/cryptoNode.js
+//#region ../../workspace/node_modules/@noble/curves/node_modules/@noble/hashes/esm/cryptoNode.js
 /**
 * Internal webcrypto alias.
 * We prefer WebCrypto aka globalThis.crypto, which exists in node.js 16+.
@@ -9,7 +9,7 @@ import * as nc from "node:crypto";
 */
 var crypto = nc && typeof nc === "object" && "webcrypto" in nc ? nc.webcrypto : nc && typeof nc === "object" && "randomBytes" in nc ? nc : void 0;
 //#endregion
-//#region node_modules/@noble/curves/node_modules/@noble/hashes/esm/utils.js
+//#region ../../workspace/node_modules/@noble/curves/node_modules/@noble/hashes/esm/utils.js
 /**
 * Utilities for hex, bytes, CSPRNG.
 * @module
@@ -157,7 +157,7 @@ function randomBytes$1(bytesLength = 32) {
 	throw new Error("crypto.getRandomValues must be defined");
 }
 //#endregion
-//#region node_modules/@noble/curves/node_modules/@noble/hashes/esm/_md.js
+//#region ../../workspace/node_modules/@noble/curves/node_modules/@noble/hashes/esm/_md.js
 /**
 * Internal Merkle-Damgard hash utils.
 * @module
@@ -286,7 +286,7 @@ var SHA256_IV = /* @__PURE__ */ Uint32Array.from([
 	1541459225
 ]);
 //#endregion
-//#region node_modules/@noble/curves/node_modules/@noble/hashes/esm/sha2.js
+//#region ../../workspace/node_modules/@noble/curves/node_modules/@noble/hashes/esm/sha2.js
 /**
 * SHA2 hash function. A.k.a. sha256, sha384, sha512, sha512_224, sha512_256.
 * SHA256 is the fastest hash implementable in JS, even faster than Blake3.
@@ -451,7 +451,7 @@ var SHA256 = class extends HashMD {
 */
 var sha256 = /* @__PURE__ */ createHasher(() => new SHA256());
 //#endregion
-//#region node_modules/@noble/curves/node_modules/@noble/hashes/esm/hmac.js
+//#region ../../workspace/node_modules/@noble/curves/node_modules/@noble/hashes/esm/hmac.js
 /**
 * HMAC: RFC2104 message authentication code.
 * @module
@@ -530,7 +530,7 @@ var HMAC = class extends Hash {
 var hmac = (hash, key, message) => new HMAC(hash, key).update(message).digest();
 hmac.create = (hash, key) => new HMAC(hash, key);
 //#endregion
-//#region node_modules/@noble/curves/esm/utils.js
+//#region ../../workspace/node_modules/@noble/curves/esm/utils.js
 /**
 * Hex, bytes and number utilities.
 * @module
@@ -712,7 +712,7 @@ function memoized(fn) {
 	};
 }
 //#endregion
-//#region node_modules/@noble/curves/esm/abstract/modular.js
+//#region ../../workspace/node_modules/@noble/curves/esm/abstract/modular.js
 /**
 * Utils for modular division and fields.
 * Field over 11 is a finite (Galois) field is integer number operations `mod 11`.
@@ -1101,7 +1101,7 @@ function mapHashToField(key, fieldOrder, isLE = false) {
 	return isLE ? numberToBytesLE(reduced, fieldLen) : numberToBytesBE(reduced, fieldLen);
 }
 //#endregion
-//#region node_modules/@noble/curves/esm/abstract/curve.js
+//#region ../../workspace/node_modules/@noble/curves/esm/abstract/curve.js
 /**
 * Methods for elliptic curve multiplication by scalars.
 * Contains wNAF, pippenger.
@@ -1415,7 +1415,7 @@ function _createCurveFields(type, CURVE, curveOpts = {}, FpFnLE) {
 	};
 }
 //#endregion
-//#region node_modules/@noble/curves/esm/abstract/weierstrass.js
+//#region ../../workspace/node_modules/@noble/curves/esm/abstract/weierstrass.js
 /**
 * Short Weierstrass curve methods. The formula is: y² = x³ + ax + b.
 *
@@ -2485,7 +2485,7 @@ function weierstrass(c) {
 	return _ecdsa_new_output_to_legacy(c, ecdsa(weierstrassN(CURVE, curveOpts), hash, ecdsaOpts));
 }
 //#endregion
-//#region node_modules/@noble/curves/esm/_shortw_utils.js
+//#region ../../workspace/node_modules/@noble/curves/esm/_shortw_utils.js
 /**
 * Utilities for short weierstrass curves, combined with noble-hashes.
 * @module
@@ -2503,7 +2503,7 @@ function createCurve(curveDef, defHash) {
 	};
 }
 //#endregion
-//#region node_modules/@noble/curves/esm/secp256k1.js
+//#region ../../workspace/node_modules/@noble/curves/esm/secp256k1.js
 /**
 * SECG secp256k1. See [pdf](https://www.secg.org/sec2-v2.pdf).
 *

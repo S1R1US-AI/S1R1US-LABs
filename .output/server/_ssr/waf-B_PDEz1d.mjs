@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/waf-B_PDEz1d.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/waf-B_PDEz1d.js
 var SCORE = {
 	CRITICAL: 5,
 	ERROR: 4,

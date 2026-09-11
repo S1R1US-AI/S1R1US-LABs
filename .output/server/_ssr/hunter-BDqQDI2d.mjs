@@ -6,7 +6,7 @@ import { n as guardedFetch } from "./net-guard-C4Si76ZP.mjs";
 import { i as wafStats, t as WAF_RULES } from "./waf-B_PDEz1d.mjs";
 import { n as agentSecurityStats, t as MCP_TOOLS } from "./agent-security-IAhNJMHV.mjs";
 import { l as PRIVACY_SECTIONS, m as TERMS_SECTIONS } from "./legal-h_q7W0h2.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/hunter-BDqQDI2d.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/hunter-BDqQDI2d.js
 var hunter_BDqQDI2d_exports = /* @__PURE__ */ __exportAll({
 	a: () => cachedIntel,
 	c: () => firewallLayers,

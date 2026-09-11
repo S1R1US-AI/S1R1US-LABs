@@ -1,6 +1,6 @@
 import { c as noteStrike, o as isLoopback } from "./ban-list-C6IREqAh.mjs";
 import { s as recordIntrusion } from "./intrusion-log-Dl3lKsr8.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/auto-defend-CiARGVXy.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/auto-defend-CiARGVXy.js
 /**
 * Auto-response: block → log → score IP → tighten rate limits → virtual-patch.
 * Inspired by Wordfence firewall + CrowdSec scenarios + PCI 6.2.4 WAF.

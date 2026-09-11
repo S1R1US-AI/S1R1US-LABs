@@ -51,7 +51,18 @@ import { GodzillaMark, GodzillaModeLabel, HiveSwarmLabel, LeaderBoardLabel } fro
 import { ForumTitle } from "@/components/forum-title";
 import { rainGmBurst } from "@/components/matrix-saver";
 import { LegalBar } from "@/components/legal-bar";
-import { TERMS_HOVER, TERMS_PATH, TERMS_TITLE, PRIVACY_HOVER, PRIVACY_PATH, PRIVACY_TITLE } from "@/lib/legal";
+import {
+  LEGAL_BOTS,
+  LEGAL_HOWEY,
+  LEGAL_NFA,
+  LEGAL_OWN_RISK,
+  TERMS_HOVER,
+  TERMS_PATH,
+  TERMS_TITLE,
+  PRIVACY_HOVER,
+  PRIVACY_PATH,
+  PRIVACY_TITLE,
+} from "@/lib/legal";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
@@ -303,22 +314,21 @@ function DisclaimerBlock() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="disclaimer-full"
-          className="legal-purple flex w-full items-center justify-between gap-3 text-left text-[11px] font-bold tracking-[0.16em] uppercase"
+          className="flex w-full items-center justify-between gap-3 text-left"
         >
-          <span>DISCLAIMER</span>
-          <span className="font-mono text-[10px] tracking-[0.08em]">{open ? "collapse −" : "expand +"}</span>
+          <span className="legal-purple text-[11px] font-bold tracking-[0.16em] uppercase">DISCLAIMER</span>
+          <span className="expand-ctl font-mono text-[10px] tracking-[0.08em]">{open ? "collapse −" : "expand +"}</span>
         </button>
         {open ? (
           <div id="disclaimer-full" className="mt-2 w-full max-w-none space-y-2">
             <p className="w-full text-justify font-mono text-[10px] leading-relaxed text-muted">
-              {TAB_LAB} is NOT considered financial advice or a financial recommendation. S1R1US.ai
-              and the 7-B0T H3DG3 Fund and any related systems are NOT LICENSED for financial advice.
-              If you need real financial advice seek a licensed professional. {TAB_LAB} and all related
-              entities such as Desk, Lab, website or systems are for EDUCATION purpose ONLY. Invest at
-              your own risk and only upon the advice of your licensed advisor. Using this website is
-              agreement to the Terms and Agreements. Nothing here is an offer of securities. A cultural
-              ticker, if one exists, is not a claim on bitcoin and is not how the desk is funded. No bot
-              may retain system information or reverse engineer source without S1R1US.ai authorization.{" "}
+              {TAB_LAB} ({APP_NAME}) is education and proof of concept only. {LEGAL_NFA}
+            </p>
+            <p className="w-full text-justify font-mono text-[10px] leading-relaxed text-muted">
+              {LEGAL_OWN_RISK} {LEGAL_HOWEY}
+            </p>
+            <p className="w-full text-justify font-mono text-[10px] leading-relaxed text-muted">
+              {LEGAL_BOTS}{" "}
               <Link to={PRIVACY_PATH} className="legal-purple hover:underline" title={PRIVACY_HOVER}>
                 {PRIVACY_TITLE}
               </Link>

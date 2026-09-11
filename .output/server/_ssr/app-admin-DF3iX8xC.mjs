@@ -3,7 +3,7 @@ import { a as isAppAdminKind, r as APP_ADMIN_PATH, t as APP_ADMIN_KINDS } from "
 import { o as inspectAgentInput } from "./agent-security-IAhNJMHV.mjs";
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region node_modules/.nitro/vite/services/ssr/assets/app-admin-DF3iX8xC.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/app-admin-DF3iX8xC.js
 /** Server-only tenants for the iOS / Google copy-admin. Not system admin. */
 var PATHS = ["/tmp/app-admins.json", "/workspace/data/app-admins.json"];
 var MAX = 400;

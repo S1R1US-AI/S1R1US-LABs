@@ -73,7 +73,7 @@ export function HelloWorld() {
           >
             payload
           </Link>
-          <span className="text-[#6a9955]">{" / geek greeting only / not a shell / "}</span>
+          <span className="geek-not-shell">{" / geek greeting only / not a shell / "}</span>
           <Link to="/r0b0ts" className="text-[#ce9178] underline decoration-[#ce9178]/70 underline-offset-2 hover:underline" title={TAB_HOVER_ROBOTS}>
             ROBOTS ACTIVATE
           </Link>
@@ -140,7 +140,7 @@ export function HelloWorld() {
           </Link>
           <span className="text-muted">);</span>
           {"\n"}
-          <span className="text-muted">{"}\}"}</span>
+          <span className="text-muted">{"}"}</span>
           {"\n"}
           <span className="text-high">variable</span>
           <span className="text-muted">(load full access); return; run=</span>

@@ -1,7 +1,7 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region node_modules/.nitro/vite/services/ssr/assets/go-live-notices-y5KTHj_G.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/go-live-notices-y5KTHj_G.js
 var go_live_notices_y5KTHj_G_exports = /* @__PURE__ */ __exportAll({
 	n: () => listGoLiveNotices,
 	r: () => stampGoLiveNotice,
