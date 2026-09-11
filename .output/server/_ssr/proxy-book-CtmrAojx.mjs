@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/proxy-book-CtmrAojx.js
+//#region node_modules/.nitro/vite/services/ssr/assets/proxy-book-CtmrAojx.js
 function rsiWilder(closes, period = 14) {
 	const series = rsiSeries(closes, period);
 	for (let i = series.length - 1; i >= 0; i--) if (series[i] != null) return series[i];

@@ -1,5 +1,5 @@
 import { C as GLOBAL_TSR, E as createInlineCssStyleAsset, F as decodePath, I as dehydrateSsrMatchId, N as invariant, O as getStylesheetHref, P as createLRUCache, T as createInlineCssPlaceholderAsset, V as rootRouteId, j as _getRenderedMatches, w as TSR_SCRIPT_BARRIER_ID } from "./react-router+[...].mjs";
-//#region ../../workspace/node_modules/seroval/dist/index.js
+//#region node_modules/seroval/dist/index.js
 var SYM_ASYNC_ITERATOR = Symbol.asyncIterator;
 var SYM_HAS_INSTANCE = Symbol.hasInstance;
 var SYM_IS_CONCAT_SPREADABLE = Symbol.isConcatSpreadable;
@@ -2594,7 +2594,7 @@ function fromJSON(source, options = {}) {
 	}), source.t);
 }
 //#endregion
-//#region ../../workspace/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js
+//#region node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js
 /**
 * Create a strongly-typed serialization adapter for SSR hydration.
 * Use to register custom types with the router serializer.
@@ -2642,7 +2642,7 @@ function makeSerovalPlugin(serializationAdapter) {
 	});
 }
 //#endregion
-//#region ../../workspace/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStream.js
+//#region node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStream.js
 /**
 * Marker class for ReadableStream<Uint8Array> that should be serialized
 * with base64 encoding (SSR) or binary framing (server functions).
@@ -2910,7 +2910,7 @@ function createRawStreamRPCPlugin(onRawStream) {
 	});
 }
 //#endregion
-//#region ../../workspace/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/ShallowErrorPlugin.js
+//#region node_modules/@tanstack/router-core/dist/esm/ssr/serializer/ShallowErrorPlugin.js
 /**
 * this plugin serializes only the `message` part of an Error
 * this helps with serializing e.g. a ZodError which has functions attached that cannot be serialized
@@ -2939,7 +2939,7 @@ var ShallowErrorPlugin = /* @__PURE__ */ createPlugin({
 	}
 });
 //#endregion
-//#region ../../workspace/node_modules/seroval-plugins/dist/web-43VA2W_p.js
+//#region node_modules/seroval-plugins/dist/web-43VA2W_p.js
 var READABLE_STREAM_FACTORY = {};
 var READABLE_STREAM_FACTORY_CONSTRUCTOR = (stream) => new ReadableStream({ start(controller) {
 	stream.on({
@@ -3007,7 +3007,7 @@ function toStream(value) {
 	return [stream, cleanup];
 }
 //#endregion
-//#region ../../workspace/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/seroval-plugins.js
+//#region node_modules/@tanstack/router-core/dist/esm/ssr/serializer/seroval-plugins.js
 var defaultSerovalPlugins = [
 	ShallowErrorPlugin,
 	RawStreamSSRPlugin,
@@ -3049,10 +3049,10 @@ var defaultSerovalPlugins = [
 	})
 ];
 //#endregion
-//#region ../../workspace/node_modules/@tanstack/router-core/dist/esm/ssr/tsrScript.js
+//#region node_modules/@tanstack/router-core/dist/esm/ssr/tsrScript.js
 var tsrScript_default = "self.$_TSR={h(){this.hydrated=!0,this.c()},e(){this.streamEnded=!0,this.c()},c(){this.hydrated&&this.streamEnded&&(delete self.$_TSR,delete self.$R.tsr)},p(e){this.initialized?e():this.buffer.push(e)},buffer:[]}";
 //#endregion
-//#region ../../workspace/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-server.js
+//#region node_modules/@tanstack/router-core/dist/esm/ssr/ssr-server.js
 var SCOPE_ID = "tsr";
 var TSR_PREFIX = GLOBAL_TSR + ".router=";
 var P_PREFIX = GLOBAL_TSR + ".p(()=>";
@@ -3530,7 +3530,7 @@ function getNormalizedURL(url, base) {
 	};
 }
 //#endregion
-//#region ../../workspace/node_modules/cookie-es/dist/index.mjs
+//#region node_modules/cookie-es/dist/index.mjs
 function splitSetCookieString(cookiesString) {
 	if (Array.isArray(cookiesString)) return cookiesString.flatMap((c) => splitSetCookieString(c));
 	if (typeof cookiesString !== "string") return [];
@@ -3573,7 +3573,7 @@ function splitSetCookieString(cookiesString) {
 	return cookiesStrings;
 }
 //#endregion
-//#region ../../workspace/node_modules/@tanstack/router-core/dist/esm/ssr/headers.js
+//#region node_modules/@tanstack/router-core/dist/esm/ssr/headers.js
 function toHeadersInstance(init) {
 	if (init instanceof Headers) return init;
 	else if (Array.isArray(init)) return new Headers(init);
@@ -3590,7 +3590,7 @@ function mergeHeaders(...headers) {
 	}, new Headers());
 }
 //#endregion
-//#region ../../workspace/node_modules/@tanstack/router-core/dist/esm/ssr/createRequestHandler.js
+//#region node_modules/@tanstack/router-core/dist/esm/ssr/createRequestHandler.js
 var requestWaiters = /* @__PURE__ */ new WeakMap();
 function removeRequestWaiter(waiters, index, reject) {
 	if (waiters[index] !== reject) return;

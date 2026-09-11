@@ -5,7 +5,7 @@ import { i as setTapeFrozen, t as isTapeFrozen } from "./tape-persist-CHN2yE-V.m
 import { r as stampGoLiveNotice } from "./go-live-notices-y5KTHj_G.mjs";
 import { writePulse } from "./practice-pulse-DsIXMyE2.mjs";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/live-sim.server-DIHNBqON.js
+//#region node_modules/.nitro/vite/services/ssr/assets/live-sim.server-DIHNBqON.js
 /**
 * As-live G M0D3 AUTO + AI-agent simulation until go-live.
 * Daily: run until 07:00 ET, pause, morning report 07:30 ET, resume.

@@ -1,6 +1,6 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/agent-security-IAhNJMHV.js
+//#region node_modules/.nitro/vite/services/ssr/assets/agent-security-IAhNJMHV.js
 var agent_security_IAhNJMHV_exports = /* @__PURE__ */ __exportAll({
 	a: () => hasAgentWebhook,
 	c: () => mcpMethodAllowed,
