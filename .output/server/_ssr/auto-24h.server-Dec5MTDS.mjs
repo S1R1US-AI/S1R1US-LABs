@@ -1,6 +1,6 @@
 import { a as AUTO_RUN_UNTIL_MS, i as AUTO_RUN_START_MS, n as AUTO_RUN_ID, t as AUTO_RUN_CASH } from "./auto-window-DE1-Xqe3.mjs";
 import { readFileSync } from "node:fs";
-//#region node_modules/.nitro/vite/services/ssr/assets/auto-24h.server-Dec5MTDS.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/auto-24h.server-Dec5MTDS.js
 var PATH = `/workspace/data/auto-24h.json`;
 var mem = null;
 function emptyBook() {

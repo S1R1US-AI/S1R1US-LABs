@@ -5,6 +5,7 @@ import {
   LOCK_DEFAULT,
   LOCK_GIF_CLOSED,
   LOCK_GIF_OPEN,
+  LOCK_GIF_V,
   LOCK_IDS,
   LOCK_META,
   TAB_LOCK3D,
@@ -39,7 +40,7 @@ describe("LoCK3D STATUS", () => {
     assert.equal(view.name, TAB_LOCK3D);
     assert.equal(LOCK_IDS.includes("tape" as (typeof LOCK_IDS)[number]), false);
     assert.equal(view.rows.every((r) => r.gif === LOCK_GIF_CLOSED || r.gif === LOCK_GIF_OPEN), true);
-    assert.equal(LOCK_GIF_OPEN, "/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif");
+    assert.equal(LOCK_GIF_OPEN, "/lock-open.gif");
     assert.equal(view.rows.length, LOCK_IDS.length);
   });
 
@@ -130,7 +131,13 @@ describe("LoCK3D STATUS", () => {
     const grouped = groupLockRows(lockStatusView(LOCK_DEFAULT, "TRUE LIVE", "live").rows);
     assert.equal(grouped.unlocked.every((r) => r.locked === false), true);
     assert.equal(grouped.locked.every((r) => r.locked === true), true);
-    assert.equal(grouped.unlocked.length + grouped.locked.length, 6);
-    assert.equal(LOCK_IDS.includes("pred" as (typeof LOCK_IDS)[number]), false);
+    assert.equal(grouped.unlocked.length + grouped.locked.length, 7);
+    assert.equal(LOCK_IDS.includes("pred"), true);
+    assert.ok(closedGif.length < 70_000, "transparent cartoon closed padlock");
+    assert.ok(openGif.length < 70_000, "transparent cartoon open padlock");
+    assert.equal(Buffer.compare(openGif, openAlias), 0);
+    assert.equal(LOCK_GIF_V, "104");
+    assert.match(css, /width: 1\.375rem/);
+    assert.match(css, /width: 3\.75rem/);
   });
 });

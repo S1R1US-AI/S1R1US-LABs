@@ -1,7 +1,7 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
 import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
-//#region node_modules/.nitro/vite/services/ssr/assets/tape-persist-CHN2yE-V.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/tape-persist-CHN2yE-V.js
 var tape_persist_CHN2yE_V_exports = /* @__PURE__ */ __exportAll({
 	a: () => tape_persist_exports,
 	i: () => setTapeFrozen,

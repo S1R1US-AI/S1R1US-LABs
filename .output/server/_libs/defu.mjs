@@ -1,4 +1,4 @@
-//#region node_modules/defu/dist/defu.mjs
+//#region ../../workspace/node_modules/defu/dist/defu.mjs
 function isPlainObject(value) {
 	if (value === null || typeof value !== "object") return false;
 	const prototype = Object.getPrototypeOf(value);

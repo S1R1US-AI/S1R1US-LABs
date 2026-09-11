@@ -1,5 +1,5 @@
 import { $ as validateAlgorithms, At as checkCryptoKey, Ct as JWEInvalid, Et as JWTClaimValidationFailed, Ft as encode, It as uint32be, J as validateClaimsSet, Lt as uint64be, Mt as checkUsage, Nt as concat, Ot as JWTInvalid, Pt as decoder, Q as JWS_RECOGNIZED, St as JWEDecryptionFailed, Tt as JWSInvalid, X as sign, Y as jwsAlgorithm, Z as JWE_RECOGNIZED, _t as isCryptoKey, at as jwkToKey, bt as JOSEAlgNotAllowed, ct as digest, dt as unprotected, et as validateCrit, ft as isDisjoint, gt as assertCryptoKey, ht as encode$1, it as prepareKey, jt as checkModulusLength, kt as invalidKeyInput, lt as encodeBase64url, mt as isObject, nt as jweAlgorithm, ot as assertNotSet, pt as isJWK, q as JWTClaimsBuilder, rt as jweEncryption, st as decodeBase64url, tt as validateCritDuplicates, ut as parseJoseHeader, vt as isKeyLike, wt as JWKInvalid, xt as JOSENotSupported, yt as isKeyObject } from "./@better-auth/core+[...].mjs";
-//#region node_modules/jose/dist/webapi/lib/content_encryption.js
+//#region ../../workspace/node_modules/jose/dist/webapi/lib/content_encryption.js
 var generateCek = (enc) => crypto.getRandomValues(new Uint8Array(enc.cekBits >> 3));
 function checkCekLength(cek, expected) {
 	const actual = cek.byteLength << 3;
@@ -107,7 +107,7 @@ async function decrypt(enc, cek, ciphertext, iv, tag, aad) {
 	return enc.cbc ? cbcDecrypt(enc, cek, ciphertext, iv, tag, aad) : gcmDecrypt(enc, cek, ciphertext, iv, tag, aad);
 }
 //#endregion
-//#region node_modules/jose/dist/webapi/lib/key_management.js
+//#region ../../workspace/node_modules/jose/dist/webapi/lib/key_management.js
 function checkEcdhCryptoKey(key, usage) {
 	if (key.algorithm.name !== "ECDH" && key.algorithm.name !== "X25519") throw new TypeError("CryptoKey does not support this operation, its algorithm.name must be ECDH or X25519");
 	checkUsage(key, usage);
@@ -328,7 +328,7 @@ async function encryptKeyManagement(alg, enc, key, providedCek, providedParamete
 	];
 }
 //#endregion
-//#region node_modules/jose/dist/webapi/lib/deflate.js
+//#region ../../workspace/node_modules/jose/dist/webapi/lib/deflate.js
 function supported(name) {
 	if (typeof globalThis[name] === "undefined") throw new JOSENotSupported(`JWE "zip" (Compression Algorithm) Header Parameter requires the ${name} API.`);
 }
@@ -366,7 +366,7 @@ async function decompress(input, maxLength) {
 	return concat(...chunks);
 }
 //#endregion
-//#region node_modules/jose/dist/webapi/lib/jwe_decrypt.js
+//#region ../../workspace/node_modules/jose/dist/webapi/lib/jwe_decrypt.js
 function shareJWE(jwe) {
 	const { protected: encodedProtected, ciphertext, iv, tag, aad } = jwe;
 	let parsedProt;
@@ -459,7 +459,7 @@ async function decryptCompact(jwe, shared, key) {
 	}, shared, key);
 }
 //#endregion
-//#region node_modules/jose/dist/webapi/lib/jwe_encrypt.js
+//#region ../../workspace/node_modules/jose/dist/webapi/lib/jwe_encrypt.js
 function checkDisjoint(protectedHeader, unprotectedHeader, sharedUnprotectedHeader) {
 	if (!isDisjoint(protectedHeader, unprotectedHeader, sharedUnprotectedHeader)) throw new JWEInvalid("JWE Protected, JWE Shared Unprotected and JWE Per-Recipient Header Parameter names must be disjoint");
 }
@@ -537,7 +537,7 @@ async function createJWE(input, key) {
 	return encryptJWE(input, checkEncryptHeaders(input), key);
 }
 //#endregion
-//#region node_modules/jose/dist/webapi/jwe/flattened/encrypt.js
+//#region ../../workspace/node_modules/jose/dist/webapi/jwe/flattened/encrypt.js
 var FlattenedEncrypt = class {
 	#plaintext;
 	#protectedHeader;
@@ -603,7 +603,7 @@ var FlattenedEncrypt = class {
 	}
 };
 //#endregion
-//#region node_modules/jose/dist/webapi/jwt/decrypt.js
+//#region ../../workspace/node_modules/jose/dist/webapi/jwt/decrypt.js
 async function jwtDecrypt(jwt, key, options) {
 	const decrypted = await decryptCompact(jwt, prepareDecrypt(options), key);
 	const protectedHeader = decrypted[1];
@@ -622,7 +622,7 @@ async function jwtDecrypt(jwt, key, options) {
 	return result;
 }
 //#endregion
-//#region node_modules/jose/dist/webapi/jwe/compact/encrypt.js
+//#region ../../workspace/node_modules/jose/dist/webapi/jwe/compact/encrypt.js
 var CompactEncrypt = class {
 	#flattened;
 	constructor(plaintext) {
@@ -656,7 +656,7 @@ var CompactEncrypt = class {
 	}
 };
 //#endregion
-//#region node_modules/jose/dist/webapi/lib/jws_sign.js
+//#region ../../workspace/node_modules/jose/dist/webapi/lib/jws_sign.js
 function unencodedPayload(protectedHeader) {
 	return protectedHeader?.b64 === false && Array.isArray(protectedHeader.crit) && protectedHeader.crit.includes("b64");
 }
@@ -711,7 +711,7 @@ async function createSignature(input, key) {
 	return jws;
 }
 //#endregion
-//#region node_modules/jose/dist/webapi/jws/flattened/sign.js
+//#region ../../workspace/node_modules/jose/dist/webapi/jws/flattened/sign.js
 var FlattenedSign = class {
 	#payload;
 	#protectedHeader;
@@ -740,7 +740,7 @@ var FlattenedSign = class {
 	}
 };
 //#endregion
-//#region node_modules/jose/dist/webapi/jws/compact/sign.js
+//#region ../../workspace/node_modules/jose/dist/webapi/jws/compact/sign.js
 var CompactSign = class {
 	#flattened;
 	#protectedHeader;
@@ -759,7 +759,7 @@ var CompactSign = class {
 	}
 };
 //#endregion
-//#region node_modules/jose/dist/webapi/jwt/sign.js
+//#region ../../workspace/node_modules/jose/dist/webapi/jwt/sign.js
 var SignJWT = class {
 	#protectedHeader;
 	#jwt;
@@ -806,7 +806,7 @@ var SignJWT = class {
 	}
 };
 //#endregion
-//#region node_modules/jose/dist/webapi/jwt/encrypt.js
+//#region ../../workspace/node_modules/jose/dist/webapi/jwt/encrypt.js
 var EncryptJWT = class {
 	#cek;
 	#iv;
@@ -895,7 +895,7 @@ var EncryptJWT = class {
 	}
 };
 //#endregion
-//#region node_modules/jose/dist/webapi/key/export.js
+//#region ../../workspace/node_modules/jose/dist/webapi/key/export.js
 function omitUndefinedProperties(jwk) {
 	return Object.fromEntries(Object.entries(jwk).filter(([, value]) => value !== void 0));
 }
@@ -918,7 +918,7 @@ function exportJWK(key) {
 	return keyToJWK(key);
 }
 //#endregion
-//#region node_modules/jose/dist/webapi/jwk/thumbprint.js
+//#region ../../workspace/node_modules/jose/dist/webapi/jwk/thumbprint.js
 var check = (value, description) => {
 	if (typeof value !== "string" || !value) throw new JWKInvalid(`${description} missing or invalid`);
 };

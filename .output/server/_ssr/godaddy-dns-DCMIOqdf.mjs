@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/godaddy-dns-DCMIOqdf.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/godaddy-dns-DCMIOqdf.js
 /** GoDaddy DNS for s1r1us.ai → DigitalOcean App Platform ingress. Leave nameservers on GoDaddy. */
 var DO_INGRESS_A = ["162.159.140.98", "172.66.0.96"];
 var GODADDY_DNS_ROWS = [

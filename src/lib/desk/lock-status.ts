@@ -105,8 +105,8 @@ export const LOCK_GIF_CLOSED = "/lock-closed.gif";
 export const LOCK_GIF_OPEN = "/lock-open.gif";
 export const LOCK_GIF_OPEN_ALIAS = "/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif";
 export const LOCK_GIF_OPEN_NAME = "AI Agent Lock System for AI Agent BTC Trading Bot";
-/** Cache-bust so live CDNs drop the old purple LOCKED/UNLOCKED overlay GIFs. */
-export const LOCK_GIF_V = "103";
+/** Cache-bust so live CDNs drop the old purple overlay / black-halo GIFs. */
+export const LOCK_GIF_V = "104";
 export function lockGifSrc(path: string) {
   return `${path}?v=${LOCK_GIF_V}`;
 }

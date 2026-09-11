@@ -1,4 +1,4 @@
-//#region node_modules/@tanstack/history/dist/esm/index.js
+//#region ../../workspace/node_modules/@tanstack/history/dist/esm/index.js
 var stateIndexKey = "__TSR_index";
 var popStateEvent = "popstate";
 var beforeUnloadEvent = "beforeunload";

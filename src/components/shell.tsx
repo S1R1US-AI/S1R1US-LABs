@@ -5,7 +5,7 @@ import { UserButton } from "@/lib/auth/gates";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
 import { secondFactorStatus } from "@/lib/desk/access";
 import { looksLikeCompanyX, COMPANY_X_HANDLE, COMPANY_X_NAME } from "@/lib/desk/x-admin";
-import { CompanyAvatar, CompanyXChip } from "@/components/company-x";
+import { CompanyAvatar } from "@/components/company-x";
 import { AdminAuthControl } from "@/components/operator-lock";
 import { useOperator } from "@/lib/desk/operator";
 import {
@@ -199,7 +199,6 @@ export function Shell({
             <AdminNavLink />
           </nav>
           <div className="ml-auto flex flex-wrap items-center gap-2">
-            <CompanyXChip className="hidden sm:inline-flex" />
             {right}
           </div>
         </div>

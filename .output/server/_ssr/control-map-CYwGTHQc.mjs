@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/control-map-CYwGTHQc.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/control-map-CYwGTHQc.js
 function owaspRows() {
 	return [
 		{
