@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/tailwind-merge/dist/bundle-mjs.mjs
+//#region node_modules/tailwind-merge/dist/bundle-mjs.mjs
 /**
 * Concatenates two arrays faster than the array spread operator.
 */

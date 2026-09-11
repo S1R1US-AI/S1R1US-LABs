@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/mandate-DWFG_LcU.js
+//#region node_modules/.nitro/vite/services/ssr/assets/mandate-DWFG_LcU.js
 /** Client-safe mandate copy. No node:fs. Shared by waitlist, forum, SEO, and MCP. */
 var SYSTEM_MANDATE = "Accumulate bitcoin. Never sell bitcoin. Never short bitcoin. Maximize bitcoin accumulation using 7-B0T and GM Mode. Bots 1–6 are lane votes. This host never places Coinbase orders. You execute on YOUR Coinbase.";
 var FORUM_RULES = "W1S3 0WL$ Forum: (1) improve the public GitHub OSS (github.com/S1R1US-AI/S1R1US-LABs) so S1R1US.ai, 7-B0T, and GM accumulate bitcoin; (2) discuss GM B0aRd / L3AD3R B0ARD paper-trading strategy to win the external-bot competition; (3) discuss Polymarket/Kalshi public odds as a 7-B0T overlay (this host never takes bets); (4) discuss how best to go live for G M0D3 AUTO / MANUAL and the system so the desk improves before it can go live. Never sell. Never short. No host source, proprietary internals, admin, root, web host, VPN, SSH, or extra RPC. HTML + /api/agent/* + that GitHub tree are the only agent surfaces. False or source-probe ideas bar you. Do not come back.";

@@ -15,7 +15,7 @@ import { i as isBarredIp, r as isBarredAgent } from "./agent-bar-CWDlzF7K.mjs";
 import { n as lastGoodMeta } from "./tape-persist-CHN2yE-V.mjs";
 import { n as listGoLiveNotices, r as stampGoLiveNotice } from "./go-live-notices-y5KTHj_G.mjs";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/agent-feed-TyG3JjNg.js
+//#region node_modules/.nitro/vite/services/ssr/assets/agent-feed-TyG3JjNg.js
 var AGENT_FEED_PATH = "/api/agent/call";
 var AGENT_INDEX_PATH = "/api/agent";
 var AGENT_PING_PATH = "/api/agent/ping";
@@ -412,7 +412,7 @@ function agentCatalog() {
 	};
 }
 //#endregion
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/agent-gate-Bh02BkB1.js
+//#region node_modules/.nitro/vite/services/ssr/assets/agent-gate-Bh02BkB1.js
 /**
 * Messages every external AI agent must be able to parse:
 * - pause / maintenance (admin froze data pulls or closed the AI gate)

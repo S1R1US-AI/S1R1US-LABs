@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/@noble/hashes/utils.js
+//#region node_modules/@noble/hashes/utils.js
 /**
 * Checks if something is Uint8Array. Be careful: nodejs Buffer will return true.
 * @param a - value to test
@@ -446,7 +446,7 @@ var oidNist = (suffix) => ({ oid: Uint8Array.from([
 	suffix
 ]) });
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/_blake.js
+//#region node_modules/@noble/hashes/_blake.js
 /**
 * Internal blake permutation table.
 * Rows `0..9` serve BLAKE2s, rows `0..11` serve BLAKE2b with `10..11 = 0..1`, and Blake1 also
@@ -712,7 +712,7 @@ var BSIGMA = /* @__PURE__ */ Uint8Array.from([
 	9
 ]);
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/_u64.js
+//#region node_modules/@noble/hashes/_u64.js
 var U32_MASK64 = /* @__PURE__ */ (() => BigInt(2 ** 32 - 1))();
 var _32n = /* @__PURE__ */ BigInt(32);
 function fromBig(n, le = false) {
@@ -759,7 +759,7 @@ function add(Ah, Al, Bh, Bl) {
 var add3L = (Al, Bl, Cl) => (Al >>> 0) + (Bl >>> 0) + (Cl >>> 0);
 var add3H = (low, Ah, Bh, Ch) => Ah + Bh + Ch + (low / 2 ** 32 | 0) | 0;
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/_md.js
+//#region node_modules/@noble/hashes/_md.js
 /**
 * Internal Merkle-Damgard hash utils.
 * @module
@@ -923,7 +923,7 @@ var SHA256_IV = /* @__PURE__ */ Uint32Array.from([
 	1541459225
 ]);
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/blake2.js
+//#region node_modules/@noble/hashes/blake2.js
 /**
 * blake2b (64-bit) & blake2s (8 to 32-bit) hash functions.
 * b could have been faster, but there is no fast u64 in js, so s is 1.5x faster.
@@ -1291,7 +1291,7 @@ var _BLAKE2b = class extends _BLAKE2 {
 */
 var blake2b = /* @__PURE__ */ createHasher((opts) => new _BLAKE2b(opts));
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/argon2.js
+//#region node_modules/@noble/hashes/argon2.js
 /**
 * Argon2 KDF from RFC 9106. Can be used to create a key from password and salt.
 * We suggest to use Scrypt. JS Argon is 2-10x slower than native code because of 64-bitness:
@@ -1647,7 +1647,7 @@ function argon2(type, password, salt, opts) {
 */
 var argon2id = (password, salt, opts = {}) => argon2(AT.Argon2id, password, salt, opts);
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/sha3.js
+//#region node_modules/@noble/hashes/sha3.js
 /**
 * SHA3 (keccak) hash function, based on a new "Sponge function" design.
 * Different from older hashes, the internal state is bigger than output size.
@@ -1910,7 +1910,7 @@ var genKeccak = (suffix, blockLen, outputLen, info = {}) => createHasher(() => n
 */
 var keccak_256 = /* @__PURE__ */ genKeccak(1, 136, 32);
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/hmac.js
+//#region node_modules/@noble/hashes/hmac.js
 /**
 * HMAC: RFC2104 message authentication code.
 * @module
@@ -1993,7 +1993,7 @@ var hmac = /* @__PURE__ */ (() => {
 	return hmac_;
 })();
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/hkdf.js
+//#region node_modules/@noble/hashes/hkdf.js
 /**
 * HKDF (RFC 5869): extract + expand in one step.
 * See {@link https://soatok.blog/2021/11/17/understanding-hkdf/}.
@@ -2093,7 +2093,7 @@ var hkdf = (hash, ikm, salt, info, length) => {
 	return expand(hash, HMAC.digest(), info, length, HMAC);
 };
 //#endregion
-//#region ../../workspace/node_modules/@noble/hashes/sha2.js
+//#region node_modules/@noble/hashes/sha2.js
 /**
 * SHA2 hash function. A.k.a. sha256, sha384, sha512, sha512_224, sha512_256.
 * SHA256 is the fastest hash implementable in JS, even faster than Blake3.
