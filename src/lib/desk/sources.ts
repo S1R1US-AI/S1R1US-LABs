@@ -984,8 +984,24 @@ async function mempoolSpaceHash(): Promise<{ eh: number; height: number | null }
     getText("https://mempool.space/api/blocks/tip/height", 1200),
   ]);
   const hs = hR.status === "fulfilled" ? Number(hR.value.currentHashrate) : NaN;
-  const eh = Number.isFinite(hs) ? hs / 1e18 : NaN;
-  const height = tipR.status === "fulfilled" ? Number(tipR.value) : NaN;
+  let eh = Number.isFinite(hs) ? hs / 1e18 : NaN;
+  let height = tipR.status === "fulfilled" ? Number(tipR.value) : NaN;
+  if (!Number.isFinite(eh)) {
+    try {
+      const ghs = Number(await getText("https://api.blockchain.info/q/hashrate", 1600));
+      if (Number.isFinite(ghs) && ghs > 0) eh = ghs / 1e9;
+    } catch {
+      /* fallback optional */
+    }
+  }
+  if (!Number.isFinite(height)) {
+    try {
+      const tip = Number(await getText("https://blockstream.info/api/blocks/tip/height", 1400));
+      if (Number.isFinite(tip) && tip > 0) height = tip;
+    } catch {
+      /* fallback optional */
+    }
+  }
   if (!Number.isFinite(eh) && !Number.isFinite(height)) throw new Error("mempool hash empty");
   return {
     eh: Number.isFinite(eh) ? eh : 0,

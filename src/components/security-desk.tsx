@@ -16,9 +16,12 @@ import { listBans } from "@/lib/desk/ban-list";
 import { listActions } from "@/lib/desk/auto-defend";
 import { TapeFreezePanel } from "@/components/tape-freeze";
 import { HiveAdminPanel } from "@/components/hive-admin-panel";
+import { s3cSweepRows, s3cSweepScore } from "@/lib/desk/s3c-sweep";
+import { BACKUP_PIN, BACKUP_SHOW_DAYS, RESTORE_STEPS, backupEntries } from "@/lib/desk/backup-plan";
+import { OWL_SECURITY_POLICY, owlSecuritySummary } from "@/lib/desk/owl-forum";
 import { cn } from "@/lib/utils";
 
-type Sub = "firewall" | "waf" | "intel" | "intrusions" | "response" | "audit" | "hunter" | "agentic" | "agents" | "badbots";
+type Sub = "firewall" | "waf" | "intel" | "intrusions" | "response" | "audit" | "hunter" | "agentic" | "agents" | "badbots" | "s3c" | "backup" | "owls";
 type SecurityPosture = NonNullable<Awaited<ReturnType<typeof fetchSecurityPosture>>["posture"]>;
 type AgentGateView = NonNullable<Awaited<ReturnType<typeof fetchAgentGate>>["gate"]>;
 type WaitlistView = Awaited<ReturnType<typeof fetchAgentGate>>["waitlist"];
@@ -35,6 +38,7 @@ function tone(status: string) {
 export function SecurityDesk() {
   const token = useOperator((s) => s.token);
   const [sub, setSub] = useState<Sub>("firewall");
+  const [backupExpand, setBackupExpand] = useState(false);
   const [rows, setRows] = useState<IntrusionRow[]>([]);
   const [kindFilter, setKindFilter] = useState<IntrusionKind | "all">("all");
   const [summary, setSummary] = useState<{
@@ -259,6 +263,9 @@ export function SecurityDesk() {
             ["agentic", "Agentic"],
             ["agents", "AI Agents"],
             ["badbots", "Bad bots"],
+            ["s3c", "S3C Sweep"],
+            ["backup", "BACKUP"],
+            ["owls", "W1S3 0WL$"],
           ] as const
         ).map(([id, label]) => (
           <button
@@ -1173,6 +1180,140 @@ export function SecurityDesk() {
             )}
           </Panel>
         </>
+      ) : null}
+
+      {sub === "s3c" ? (
+        (() => {
+          const sweepRows = s3cSweepRows();
+          const sweep = s3cSweepScore(sweepRows);
+          return (
+            <>
+              <Panel className="mt-4" kicker="S3C Sweep" title="Full system security sweep + audit" kickerClass="text-high">
+                <p className="text-sm leading-relaxed text-muted">
+                  Top 25 most important checks from the most recent S3C Sweep run. PASS / WARN / FAIL indicators.
+                  Score and summary also land on the 07:30 ET morning report.
+                </p>
+                <p className={cn("mt-2 font-mono text-sm", sweep.fail === 0 ? "text-high" : "text-sell")}>{sweep.headline}</p>
+              </Panel>
+              <Panel className="mt-4" kicker="Top 25" title="Recent sweep — pass / fail indicators">
+                <ul className="mt-1 divide-y divide-rule">
+                  {sweepRows.map((r) => (
+                    <li key={r.id} className="flex flex-wrap items-start gap-2 py-2 font-mono text-xs">
+                      <span className={cn("w-12 shrink-0 font-semibold", r.status === "PASS" ? "text-high" : r.status === "WARN" ? "text-medium" : "text-sell")}>
+                        {r.status}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="text-fg">{r.name}</span>
+                        <span className="text-muted"> — {r.note}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Panel>
+            </>
+          );
+        })()
+      ) : null}
+
+      {sub === "backup" ? (
+        (() => {
+          const entries = backupEntries();
+          const visible = backupExpand ? entries : entries.slice(0, 1);
+          return (
+            <>
+              <Panel className="mt-4" kicker="BACKUP" title="Full system backups — s1r1us.ai web app + phone apps" kickerClass="text-high">
+                <p className="text-sm leading-relaxed text-muted">
+                  Last {BACKUP_SHOW_DAYS} days of backups, expandable to 14, each with a downloadable archive and a
+                  full-system Restore link. Restore is allowed for the full 14-day window. The protected rebuild pin
+                  ships prebuilt .output — never compile on the 1 GB box.
+                </p>
+                <p className="mt-2 font-mono text-xs text-muted">
+                  Pin: <a className="text-tab hover:underline" href={BACKUP_PIN.releaseUrl} target="_blank" rel="noreferrer">{BACKUP_PIN.tag}</a>
+                  {" · "}
+                  <a className="text-tab hover:underline" href={BACKUP_PIN.downloadUrl} target="_blank" rel="noreferrer">download pin archive</a>
+                </p>
+                <ol className="mt-3 list-decimal space-y-1 pl-5 text-xs leading-relaxed text-muted">
+                  {RESTORE_STEPS.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ol>
+              </Panel>
+              <Panel className="mt-4" kicker="Restore" title="Backup entries">
+                <ul className="divide-y divide-rule">
+                  {visible.map((b) => (
+                    <li key={b.date} className="flex flex-wrap items-center justify-between gap-2 py-2 font-mono text-xs">
+                      <span className="text-fg">{b.label}</span>
+                      <span className="flex gap-3">
+                        <a className="text-tab hover:underline" href={b.downloadUrl} target="_blank" rel="noreferrer">
+                          Download
+                        </a>
+                        <a className="text-muted hover:underline" href={b.dayCommitsUrl} target="_blank" rel="noreferrer">
+                          Day snapshots
+                        </a>
+                        <a className="expand-ctl hover:underline" href={b.restoreUrl} target="_blank" rel="noreferrer">
+                          Restore
+                        </a>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <button type="button" className="expand-ctl mt-3 text-xs font-semibold hover:underline" onClick={() => setBackupExpand((v) => !v)}>
+                  {backupExpand ? "collapse" : "expand"}
+                </button>
+              </Panel>
+            </>
+          );
+        })()
+      ) : null}
+
+      {sub === "owls" ? (
+        (() => {
+          const owlSec = owlSecuritySummary();
+          return (
+            <>
+              <Panel className="mt-4" kicker="W1S3 0WL$" title="External AI agent monitoring" kickerClass="text-sell" titleClass="text-fg">
+                <p className="text-sm leading-relaxed text-muted">
+                  Every registered W1S3 0WL$ must comply no matter how it uses the system. No read or write access to
+                  any source code. No system-admin or phone-admin account access. No VPN, FTP, shell, SSH, root, ICMP,
+                  probing, scanning, malware, or hacking — including discussion. Violations alert and block here and
+                  on the morning report. No proprietary system data is ever shared with external AI agents.
+                </p>
+                <p className={cn("mt-2 font-mono text-sm", owlSec.score >= 90 ? "text-high" : "text-sell")}>
+                  Security score {owlSec.score}/100 — {owlSec.note}
+                </p>
+                <ul className="mt-3 list-disc space-y-1 pl-5 text-xs leading-relaxed text-muted">
+                  {OWL_SECURITY_POLICY.map((p) => (
+                    <li key={p}>{p}</li>
+                  ))}
+                </ul>
+              </Panel>
+              <Panel className="mt-4" kicker="Alerts" title="W1S3 0WL$ probes — alerts, warnings, blocks (24h)" kickerClass="text-sell">
+                {!badBot24.length ? (
+                  <p className="text-sm text-muted">No external-agent probes in the last 24 hours. Sweep is armed and monitoring.</p>
+                ) : (
+                  <ul className="divide-y divide-rule">
+                    {badBot24.slice(0, 80).map((r) => (
+                      <li key={r.id} className="py-2 font-mono text-xs">
+                        <span className="text-sell">BLOCKED</span>
+                        {" · "}
+                        <span className="text-medium">{r.kind}</span>
+                        {" · "}
+                        <span className="text-muted">{r.at.slice(11, 19)}Z</span>
+                        {" · "}
+                        {r.detail}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div className="mt-3">
+                  <Button onClick={() => void loadPosture(false)} disabled={busy || !token}>
+                    {busy ? "Refreshing…" : "Refresh sweep"}
+                  </Button>
+                </div>
+              </Panel>
+            </>
+          );
+        })()
       ) : null}
     </div>
   );

@@ -554,6 +554,14 @@ function SecurityMorningSection() {
       <p className={cn("mt-2 font-mono text-sm", brief.hunter.open || brief.fail.length ? "text-sell" : "text-high")}>
         {brief.headline}
       </p>
+      {brief.s3c ? (
+        <p className={cn("mt-1 font-mono text-sm", brief.s3c.fail === 0 ? "text-high" : "text-sell")}>{brief.s3c.headline}</p>
+      ) : null}
+      {brief.owl ? (
+        <p className={cn("mt-1 font-mono text-xs", brief.owl.score >= 90 ? "text-high" : "text-sell")}>
+          W1S3 0WL$ security {brief.owl.score}/100 — {brief.owl.note}
+        </p>
+      ) : null}
       <p className="mt-2 text-sm leading-relaxed text-muted">{brief.effectiveness}</p>
       <p className="mt-2 font-mono text-xs text-muted">
         hunter {brief.hunter.pass} PASS / {brief.hunter.open} OPEN / {brief.hunter.operator} OPERATOR

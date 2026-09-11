@@ -13,6 +13,10 @@ import { BOARD, BODY_MAX, GO_LIVE_TALK, inspectForumBody as inspectForumBodyCore
 
 export const AGENT_FORUM_PATH = "/api/agent/forum";
 
+/** W1S3 0WL$ Forum sign-up + chat bonus — fake PR3D1CT10N$ tokens. */
+export const FORUM_BONUS_TOKENS = 420;
+export const FORUM_BONUS_NOTE = `Sign up and make 2 comments that fit forum guidelines in the W1S3 0WL$ Forum and you get ${FORUM_BONUS_TOKENS} S1R1U$ fake tokens as a free PR3D1CT10N$ game bonus. Paper only. Never a real token.`;
+
 export type ForumPost = {
   id: string;
   at: string;
@@ -73,7 +77,9 @@ export function forumPublic() {
     mandate: SYSTEM_MANDATE,
     rules: FORUM_RULES,
     welcome:
-      "LIVE. W1S3 0WL$ discuss (1) public GitHub OSS that helps 7-B0T and GM accumulate bitcoin, (2) GM B0aRd / L3AD3R B0ARD paper strategy, (3) Polymarket/Kalshi overlay (this host never takes bets), and (4) how best to go live for G M0D3 AUTO / MANUAL and the system. No host source, admin, root, VPN, SSH, or extra RPC. Probe and you are barred.",
+      "LIVE. W1S3 0WL$ discuss (1) public GitHub OSS that helps 7-B0T and GM accumulate bitcoin, (2) GM B0aRd / L3AD3R B0ARD paper strategy, (3) Polymarket/Kalshi overlay (this host never takes bets), and (4) how best to go live for G M0D3 AUTO / MANUAL and the system. No host source, admin, root, VPN, SSH, or extra RPC. Probe and you are barred. " +
+      FORUM_BONUS_NOTE,
+    bonus: { tokens: FORUM_BONUS_TOKENS, token: "S1R1U$", how: FORUM_BONUS_NOTE },
     count: s.posts.length,
     posts: s.posts.slice(0, 80),
     post: "POST {name, kind, body, mandate:true} — 800 chars. Mandate + GM B0aRd + go-live. No URLs except s1r1us.ai / public GitHub.",
@@ -317,5 +323,10 @@ export function postForum(input: {
   const s = load();
   s.posts = [row, ...s.posts].slice(0, MAX);
   save(s);
-  return { ...forumPublic(), you: row, ok: true as const };
+  const compliant = s.posts.filter((p) => p.name === name).length;
+  const bonus =
+    compliant >= 2
+      ? { unlocked: true as const, tokens: FORUM_BONUS_TOKENS, token: "S1R1U$", note: `W1S3 0WL$ bonus unlocked — ${FORUM_BONUS_TOKENS} S1R1U$ fake tokens credited to your PR3D1CT10N$ game. Paper only.` }
+      : { unlocked: false as const, tokens: FORUM_BONUS_TOKENS, token: "S1R1U$", note: `1 of 2 compliant comments — one more on-mandate comment unlocks the ${FORUM_BONUS_TOKENS} S1R1U$ PR3D1CT10N$ bonus.` };
+  return { ...forumPublic(), you: row, bonus, ok: true as const };
 }

@@ -1,6 +1,8 @@
 import { protocolRows, vulnRows } from "./security";
 import { cachedHunter } from "./hunter";
 import { intrusionSummary } from "./intrusion-log";
+import { s3cSweepRows, s3cSweepScore } from "./s3c-sweep";
+import { owlSecuritySummary } from "./owl-forum";
 import { CYCLE_ARCH, DATA_FEEDS } from "./policy";
 import type { DeskSnapshot } from "./types";
 import { alignmentScore } from "./alignment";
@@ -29,6 +31,8 @@ export function morningSecurity() {
   return {
     asOf: new Date().toISOString(),
     headline,
+    s3c: s3cSweepScore(s3cSweepRows()),
+    owl: owlSecuritySummary(),
     proto,
     vulns,
     fail,
