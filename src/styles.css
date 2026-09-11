@@ -641,9 +641,14 @@ button.coinbase-orange:focus {
   color: transparent;
 }
 .lock-cell-gif {
-  width: 1.575rem;
-  height: 1.575rem;
-  padding: 0.06rem;
+  width: 1.375rem;
+  height: 1.375rem;
+  min-width: 1.375rem;
+  min-height: 1.375rem;
+  max-width: 1.375rem;
+  max-height: 1.375rem;
+  padding: 0.05rem;
+  box-sizing: border-box;
 }
 .lock-cell-gif .lock-gif {
   width: 100%;

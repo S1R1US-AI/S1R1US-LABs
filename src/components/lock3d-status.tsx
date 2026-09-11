@@ -128,7 +128,7 @@ function LockCell({
       type="button"
       disabled={busy || !token}
       onClick={() => onAct({ op: "one", id: row.id, locked: !row.locked })}
-      className="lock-cell-gif inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-rule bg-paper-raised transition-transform duration-150 ease-out active:scale-[0.96]"
+      className="lock-cell-gif inline-flex items-center justify-center rounded-md border border-rule bg-paper-raised transition-transform duration-150 ease-out active:scale-[0.96]"
       aria-pressed={row.locked}
       aria-label={`${row.name} ${row.label} — toggle`}
       title={row.hint}
@@ -136,7 +136,7 @@ function LockCell({
       <LockGif locked={row.locked} />
     </button>
   ) : (
-    <span className="lock-cell-gif inline-flex min-h-11 min-w-11 items-center justify-center" title={row.hint}>
+    <span className="lock-cell-gif inline-flex items-center justify-center" title={row.hint}>
       <LockGif locked={row.locked} />
     </span>
   );

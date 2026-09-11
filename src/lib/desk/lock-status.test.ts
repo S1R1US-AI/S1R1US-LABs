@@ -139,5 +139,7 @@ describe("LoCK3D STATUS", () => {
     assert.equal(LOCK_GIF_V, "104");
     assert.match(css, /width: 1\.375rem/);
     assert.match(css, /width: 3\.75rem/);
+    assert.match(css, /\.lock-cell-gif \{[^}]*max-width: 1\.375rem/);
+    assert.doesNotMatch(ui, /lock-cell-gif[^"]*min-h-11/);
   });
 });
