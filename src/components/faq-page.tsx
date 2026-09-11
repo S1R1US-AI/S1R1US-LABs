@@ -6,6 +6,7 @@ import { SeoImage } from "@/components/seo-image";
 import { SupportDonate } from "@/components/support-donate";
 import { GodzillaModeLabel, RainbowGodzillaText } from "@/components/godzilla-mark";
 import { FAQ_ITEMS } from "@/lib/desk/public-nav";
+import { LOCK_GIF_CLOSED, LOCK_GIF_OPEN, LOCK_GIF_OPEN_NAME, lockGifSrc } from "@/lib/desk/lock-status";
 import {
   APP_NAME,
   BEARS_HEADLINE,
@@ -311,8 +312,8 @@ export function FaqPage() {
                       className="h-40 w-full object-cover object-center sm:h-52"
                     />
                     <figcaption className="pointer-events-none absolute inset-0">
-                      <img src="/lock-closed.gif?v=103" alt="Locked Status" title="Locked Status" className="lock-gif-banner absolute left-[10%] top-1/2 -translate-y-1/2" />
-                      <img src="/lock-open.gif?v=103" alt="AI Agent Lock System for AI Agent BTC Trading Bot" title="AI Agent Lock System for AI Agent BTC Trading Bot" className="lock-gif-banner absolute right-[10%] top-1/2 -translate-y-1/2" />
+                      <img src={lockGifSrc(LOCK_GIF_CLOSED)} alt="Locked Status" title="Locked Status" className="lock-gif-banner absolute left-[10%] top-1/2 -translate-y-1/2" />
+                      <img src={lockGifSrc(LOCK_GIF_OPEN)} alt={LOCK_GIF_OPEN_NAME} title={LOCK_GIF_OPEN_NAME} className="lock-gif-banner absolute right-[10%] top-1/2 -translate-y-1/2" />
                       <p className="absolute left-1/2 top-[10%] w-[86%] -translate-x-1/2 text-center text-2xl font-black tracking-tight text-tbill drop-shadow sm:text-4xl">
                         LoCK3D STATUS
                       </p>

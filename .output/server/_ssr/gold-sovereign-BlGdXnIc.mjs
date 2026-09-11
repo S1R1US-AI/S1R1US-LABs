@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/gold-sovereign-BlGdXnIc.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/gold-sovereign-BlGdXnIc.js
 var GOLD_REGIONS = [
 	{
 		id: "us",

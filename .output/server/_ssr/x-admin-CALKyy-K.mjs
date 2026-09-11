@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/x-admin-CALKyy-K.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/x-admin-CALKyy-K.js
 /** Canonical admin X account. Login matches this handle or its snowflake — nothing else. */
 var ADMIN_X_NAME = "Mr. R0b0t0";
 var ADMIN_X_HANDLE = "@_Mr_R0b0t0_";

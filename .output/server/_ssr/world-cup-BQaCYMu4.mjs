@@ -2,7 +2,7 @@ import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
 import { r as stampGoLiveNotice } from "./go-live-notices-y5KTHj_G.mjs";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region node_modules/.nitro/vite/services/ssr/assets/world-cup-BQaCYMu4.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/world-cup-BQaCYMu4.js
 var world_cup_BQaCYMu4_exports = /* @__PURE__ */ __exportAll({
 	a: () => SYSTEM_KING_NAME,
 	c: () => honorCallout,

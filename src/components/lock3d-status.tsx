@@ -67,7 +67,7 @@ export function LockGif({
   size?: "sm" | "md" | "lg";
   className?: string;
 }) {
-  const px = size === "lg" ? 56 : size === "sm" ? 32 : 44;
+  const px = size === "lg" ? 28 : size === "sm" ? 16 : 22;
   const short = locked ? "LOCKED" : "UNLOCKED";
   const seo = seoImgAlt(locked ? "Closed padlock. LOCKED." : LOCK_GIF_OPEN_NAME);
   return (

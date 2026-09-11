@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/treasury-VcYm63db.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/treasury-VcYm63db.js
 /** Operator Coinbase.com BTC Receive — TRIM destination. Not a desk-held key. */
 var PROFIT_BTC_RECEIVE = "33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8";
 var PROFIT_BTC_EXPLORER = `https://www.blockchain.com/explorer/addresses/btc/${PROFIT_BTC_RECEIVE}`;

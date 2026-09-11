@@ -3,14 +3,14 @@ import fs from "node:fs";
 import path from "node:path";
 import fsPromises from "node:fs/promises";
 import os from "node:os";
-//#region node_modules/@better-auth/utils/dist/index.mjs
+//#region ../../workspace/node_modules/@better-auth/utils/dist/index.mjs
 function getWebcryptoSubtle() {
 	const cr = typeof globalThis !== "undefined" && globalThis.crypto;
 	if (cr && typeof cr.subtle === "object" && cr.subtle != null) return cr.subtle;
 	throw new Error("crypto.subtle must be defined");
 }
 //#endregion
-//#region node_modules/@better-auth/utils/dist/hash.mjs
+//#region ../../workspace/node_modules/@better-auth/utils/dist/hash.mjs
 function createHash(algorithm, encoding) {
 	return { digest: async (input) => {
 		const encoder = new TextEncoder();
@@ -25,7 +25,7 @@ function createHash(algorithm, encoding) {
 	} };
 }
 //#endregion
-//#region node_modules/@better-auth/telemetry/dist/node.mjs
+//#region ../../workspace/node_modules/@better-auth/telemetry/dist/node.mjs
 async function getTelemetryAuthConfig(options, context) {
 	return {
 		database: context?.database,

@@ -523,7 +523,7 @@ export function sitemapIndexXml(lastmod = SITEMAP_LASTMOD) {
 export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     q: `What is the main menu?`,
-    a: `The top menu is ${MENU_TAPE} (live tape / ${TAB_DESK}), ${MENU_LAB} (${TAB_LAB} / ${SEO_TAB_LAB}), ${MENU_GM} (${TAB_GM} / Godzilla mode), ${MENU_FEED} (${TAB_FEED} / ${SEO_TAB_FEED}), ${MENU_AGENTS} (${TAB_AGENT} / ${SEO_TAB_AGENT} / Call1ng All B0Ts), ${MENU_BOARD} (${SEO_TAB_LEADERBOARD} / ai agent bitcoin trading leader board / ${TAB_CALLOUT} / ${TAB_SPICE}), ${TAB_HIVE} (${SEO_TAB_HIVE}), ${TAB_LOCK3D} (${SEO_TAB_LOCK3D}), ${MENU_FORUM} (${TAB_FORUM} / ${SEO_TAB_FORUM} / ${SEO_TAB_FORUM_ALIAS}), ${MENU_FAQ}, and official company X ${COMPANY_X_HANDLE} (https://x.com/S1R1US_AI). @S1R1S_AI is not the desk.`,
+    a: `The top menu is ${MENU_TAPE} (live tape / ${TAB_DESK}), ${MENU_LAB} (${TAB_LAB} / ${SEO_TAB_LAB}), ${MENU_GM} (${TAB_GM} / Godzilla mode), ${MENU_FEED} (${TAB_FEED} / ${SEO_TAB_FEED}), ${MENU_AGENTS} (${TAB_AGENT} / ${SEO_TAB_AGENT} / Call1ng All B0Ts), ${MENU_BOARD} (${SEO_TAB_LEADERBOARD} / ai agent bitcoin trading leader board / ${TAB_CALLOUT} / ${TAB_SPICE}), ${TAB_HIVE} (${SEO_TAB_HIVE}), ${TAB_LOCK3D} (${SEO_TAB_LOCK3D}), ${MENU_FORUM} (${TAB_FORUM} / ${SEO_TAB_FORUM} / ${SEO_TAB_FORUM_ALIAS}), ${MENU_FAQ}. Official company X is ${COMPANY_X_HANDLE} (https://x.com/S1R1US_AI) — not a top-level menu tab. @S1R1S_AI is not the desk.`,
   },
   {
     q: `What is ${TAB_DESK} (S1R1US 7-bot hedge fund)?`,

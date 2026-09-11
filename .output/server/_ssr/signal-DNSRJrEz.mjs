@@ -1,6 +1,6 @@
 import { c as predAnalyst, t as BOT_ROSTER } from "./prediction-markets-B383LH4K.mjs";
 import { a as MINER_TICKERS, d as clipForNav, i as MAG7_TICKERS } from "./proxy-book-CtmrAojx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/signal-DNSRJrEz.js
+//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/signal-DNSRJrEz.js
 function roster(id) {
 	const row = BOT_ROSTER.find((b) => b.id === id);
 	return {
