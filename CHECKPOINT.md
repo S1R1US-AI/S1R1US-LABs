@@ -1,6 +1,6 @@
 # Official checkpoint — S1R1US App build #111 (live sim launch)
 
-Updated 2026-09-11. Checkpoint 101 is finalized and **renamed**. Repair / rebuild from **`main`**. Carbon-fiber origin tag `n3w-web-app-install-deploy-68` stays protected and is **not** moved.
+Updated 2026-09-11. Checkpoint 101 is finalized, **renamed**, and **pinned** for rebuild. Carbon-fiber origin tag `n3w-web-app-install-deploy-68` stays protected and is **not** moved.
 
 | | |
 |---|---|
@@ -9,7 +9,10 @@ Updated 2026-09-11. Checkpoint 101 is finalized and **renamed**. Repair / rebuil
 | Save path | [`Project BTD/S1R1US L@Bs/checkpoint S1R1US App build #111.md`](Project%20BTD/S1R1US%20L@Bs/checkpoint%20S1R1US%20App%20build%20%23111.md) |
 | Number | **111** (`CHECKPOINT_BUILD_N`) |
 | Baseline | DEPLOY #68 (carbon-fiber N3W Web App Installation Build) |
-| Git branch | `main` |
+| Git tag | **`s1r1us-app-build-111`** (pinned — do not move) |
+| Git branch | `checkpoint/s1r1us-app-build-111` (pinned) **and** `main` |
+| Commit | `d7cb6fe30b91d733662a3c870cd819e6bb0d20ac` |
+| Release | https://github.com/S1R1US-AI/S1R1US-LABs/releases/tag/s1r1us-app-build-111 |
 | Repo | https://github.com/S1R1US-AI/S1R1US-LABs |
 | Origin tag | `n3w-web-app-install-deploy-68` (protected 6 Sep snapshot — do not move) |
 | Runtime | prebuilt `.output` · `NITRO_PRESET=node-server` |
@@ -28,11 +31,13 @@ Updated 2026-09-11. Checkpoint 101 is finalized and **renamed**. Repair / rebuil
 - W1S3 0WL$ Forum LIVE. H1V3 SW@RM paper hive. BYO connect. L3AD3R B0ARD / C@LL 0UT / W0rLd CUP.
 - Official X `@S1R1US_AI`. This host never places Coinbase orders.
 
-## Repair / rebuild
+## Repair / rebuild if live is corrupt
 
-1. On GitHub, open branch **`main`**.
-2. DigitalOcean project **live-production**. App Spec `github.deploy_on_push: true` on `S1R1US-AI/S1R1US-LABs` / `main`. Do not compile on the 1 GB box — the image copies `.output`.
-3. Keep encrypted env (`BETTER_AUTH_SECRET`, `GROK_AUTH_CLIENT_SECRET`). `BETTER_AUTH_URL` = `https://s1r1us.ai`.
-4. After a source change: `npm run build:do`, commit `.output` with source, push `main`. Live autodeploys.
+The pin is tag **`s1r1us-app-build-111`** and branch **`checkpoint/s1r1us-app-build-111`**. Both include `.output`. Do not compile on the 1 GB box.
+
+1. Keep encrypted env (`BETTER_AUTH_SECRET`, `GROK_AUTH_CLIENT_SECRET`). `BETTER_AUTH_URL` = `https://s1r1us.ai`.
+2. DigitalOcean project **live-production**. App Spec `github.deploy_on_push` may stay on. Set `github.branch` to **`checkpoint/s1r1us-app-build-111`**. Wait Healthy. Hard-refresh https://s1r1us.ai.
+3. After restore, set `github.branch` back to `main` only when `main` matches commit `d7cb6fe`.
+4. Do not move the tag. Do not merge empty `rebuild-output-*` PRs over this pin.
 
 See [LAUNCH.md](LAUNCH.md) and [DEPLOY.md](DEPLOY.md).

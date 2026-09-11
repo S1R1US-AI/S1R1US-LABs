@@ -1,6 +1,6 @@
 # Publish [ S1R1U$ <<L@B$>> ] — GitHub + DigitalOcean
 
-**Official checkpoint:** [CHECKPOINT.md](CHECKPOINT.md) — **S1R1US App build #111 (live sim launch)** on `main`. Carbon-fiber origin tag `n3w-web-app-install-deploy-68` stays protected.
+**Official checkpoint:** [CHECKPOINT.md](CHECKPOINT.md) — **S1R1US App build #111 (live sim launch)**. Pin: tag `s1r1us-app-build-111` · branch `checkpoint/s1r1us-app-build-111`. Carbon-fiber origin tag `n3w-web-app-install-deploy-68` stays protected.
 
 **S1R1US App build #111 (live sim launch)** — live admin simulation on Coinbase last. G M0D3 AUTO, AI agents, and PR3D1CT10N$ paper tick while LIVE. Live trades off. Auto trade LOCKED. Carbon-fiber baseline DEPLOY #68.
 

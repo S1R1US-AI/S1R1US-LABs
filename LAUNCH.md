@@ -5,17 +5,17 @@ Current **`main`** fold. Live admin simulation on Coinbase last. Carbon-fiber or
 - Site: https://s1r1us.ai
 - Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 - Branch: `main`
+- Official rebuild pin: tag `s1r1us-app-build-111` · branch `checkpoint/s1r1us-app-build-111`
 - Project save: `Project BTD/S1R1US L@Bs/checkpoint S1R1US App build #111.md`
 - Host: DigitalOcean App Platform, Dockerfile, HTTP 8080, 1 GB, autodeploy **on** (`main` → live-production)
 
-If the site needs repair or rebuild, deploy **`main`**. After a fold, rebuild `.output`, push `main`, and live-production autodeploys.
+If the site is corrupted, restore from tag **`s1r1us-app-build-111`** / branch **`checkpoint/s1r1us-app-build-111`** (includes `.output`). After a new fold, rebuild `.output`, push `main`, and live-production autodeploys.
 
 # N3W Web App Installation Build (new theme) — DEPLOY #68
 
 Production **baseline** after the professional carbon-fiber desk theme. Folded 2026-09-06: FAQ admin/visitor/agent, morning-report library, Security tab, sitemap index. Kept as origin; live number is now **111**.
 
-- Official checkpoint tag: `n3w-web-app-install-deploy-68`
-- Official checkpoint branch: `checkpoint/n3w-web-app-install-deploy-68`
+- Official origin tag: `n3w-web-app-install-deploy-68` (protected — do not move)
 
 
 ## What is on
