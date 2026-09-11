@@ -89,7 +89,7 @@ export function Shell({
                     "coinbase-orange is-on inline-flex min-h-10 max-w-[11.5rem] items-center rounded-md px-2.5 py-1.5 text-left text-[0.825rem] font-medium leading-tight sm:max-w-none sm:px-3 sm:text-[0.9625rem]",
                 }}
               >
-                {l.label}
+                <span className="tab-shimmer">{l.label}</span>
               </Link>
             ))}
             <Link
@@ -117,7 +117,7 @@ export function Shell({
                   "gm-tab coinbase-orange is-on inline-flex min-h-10 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",
               }}
             >
-              {MENU_FEED}
+              <span className="tab-shimmer">{MENU_FEED}</span>
             </Link>
             <Link
               to="/agent"
@@ -129,7 +129,7 @@ export function Shell({
                   "coinbase-orange is-on inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",
               }}
             >
-              {MENU_AGENTS}
+              <span className="tab-shimmer">{MENU_AGENTS}</span>
             </Link>
             <Link
               to="/board"
@@ -189,7 +189,7 @@ export function Shell({
                   "faq-kicker is-on inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",
               }}
             >
-              {MENU_FAQ}
+              <span className="tab-shimmer">{MENU_FAQ}</span>
             </Link>
             <AdminNavLink />
           </nav>
@@ -364,7 +364,7 @@ function AdminNavLink() {
           "coinbase-orange is-on inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium",
       }}
     >
-      Admin
+      <span className="tab-shimmer">Admin</span>
     </Link>
   );
 }

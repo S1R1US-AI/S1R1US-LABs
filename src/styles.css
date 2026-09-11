@@ -789,6 +789,10 @@ footer a[href] {
 .faq-title * {
   color: var(--color-wait) !important;
 }
+/* Balanced, even FAQ question lines. */
+.faq-title {
+  text-wrap: balance;
+}
 .indicator-title,
 .indicator-title *,
 button.indicator-title,
@@ -907,6 +911,12 @@ footer a.gm-nav,
 footer a.board-nav,
 footer a.hive-nav {
   color: inherit !important;
+}
+/* Per-letter inline-block spans create wrap points after every character.
+   Keep branded names (L3AD3R B0ARD, SUP3R B0WL, …) on one line — one word. */
+.gm-rainbow,
+.forum-rainbow {
+  white-space: nowrap;
 }
 .gm-rainbow > span,
 .forum-rainbow > span {
@@ -1114,27 +1124,24 @@ footer a[href]:not(.call1ng-bots):not(.welcome-blue):not(.forum-nav) {
   }
 }
 
-/* Top-level menu tabs: shimmer (rotating shine) like the PR3D1CT10N$ tab.
+/* Top-level menu tabs: shimmer on the letters only — never the whole tab.
    pred-nav.css and the PR3D1CT10N$ tab stay untouched — .pred-nav is excluded.
-   Each tab keeps its own name color scheme; the sheen sweeps over it and the
-   bottom of the active tab is highlighted the same way as the PR3D1CT10N$ tab. */
-.desk-nav-fiber .desk-tabs a:not(.pred-nav) {
-  position: relative;
-  overflow: hidden;
-}
-.desk-nav-fiber .desk-tabs a:not(.pred-nav)::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+   The sheen is clipped to the tab-name glyphs (.tab-shimmer); each tab keeps
+   its own name color scheme (currentColor base) and the bottom of the active
+   tab stays highlighted the same way as the PR3D1CT10N$ tab. */
+.desk-nav-fiber .desk-tabs a:not(.pred-nav) .tab-shimmer {
+  display: inline-block;
   background-image: linear-gradient(
     100deg,
-    transparent 32%,
-    rgba(255, 246, 194, 0.28) 50%,
-    transparent 68%
+    currentColor 32%,
+    color-mix(in srgb, currentColor 45%, #fff6c2) 50%,
+    currentColor 68%
   );
   background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   animation: godzilla-shift 3.6s linear infinite;
-  pointer-events: none;
 }
 .desk-nav-fiber .desk-tabs a.is-on:not(.pred-nav),
 .desk-nav-fiber .desk-tabs a[data-status="active"]:not(.pred-nav),

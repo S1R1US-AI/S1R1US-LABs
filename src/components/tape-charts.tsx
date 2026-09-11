@@ -124,6 +124,49 @@ async function fetchRangeCandles(range: RangeKey): Promise<Candle[]> {
     .sort((a, b) => a.t - b.t);
 }
 
+/** Overlay assets selectable next to the BTC last price. GOLD uses Coinbase PAXG-USD (1 token = 1 oz gold). */
+const TAPE_ASSETS = ["GOLD", "SOL", "ICP", "ETH", "USDC"] as const;
+type TapeAsset = (typeof TAPE_ASSETS)[number];
+const ASSET_PRODUCT: Record<TapeAsset, string> = {
+  GOLD: "PAXG-USD",
+  SOL: "SOL-USD",
+  ICP: "ICP-USD",
+  ETH: "ETH-USD",
+  USDC: "USDC-USD",
+};
+type AssetQuote = { last: number; open: number | null };
+
+/** Coinbase public 24h stats with a v2 spot fallback. Read-only, no keys. */
+async function fetchAssetQuote(asset: TapeAsset): Promise<AssetQuote | null> {
+  const product = ASSET_PRODUCT[asset];
+  try {
+    const res = await fetch(`https://api.exchange.coinbase.com/products/${product}/stats`, {
+      headers: { accept: "application/json" },
+    });
+    if (res.ok) {
+      const j = (await res.json()) as { last?: string; open?: string };
+      const lastPx = Number(j.last);
+      const openPx = Number(j.open);
+      if (Number.isFinite(lastPx) && lastPx > 0) {
+        return { last: lastPx, open: Number.isFinite(openPx) && openPx > 0 ? openPx : null };
+      }
+    }
+  } catch {
+    /* fall through to v2 spot */
+  }
+  try {
+    const res = await fetch(`https://api.coinbase.com/v2/prices/${product}/spot`, {
+      headers: { accept: "application/json" },
+    });
+    if (!res.ok) return null;
+    const j = (await res.json()) as { data?: { amount?: string } };
+    const lastPx = Number(j.data?.amount);
+    return Number.isFinite(lastPx) && lastPx > 0 ? { last: lastPx, open: null } : null;
+  } catch {
+    return null;
+  }
+}
+
 function IndicatorBtn({ on, onClick, label }: { on: boolean; onClick: () => void; label: string }) {
   return (
     <button
@@ -334,6 +377,26 @@ export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
   const [showVol, setShowVol] = useState(true);
   const [showMacd50, setShowMacd50] = useState(false);
   const [showMacd200, setShowMacd200] = useState(false);
+  const [asset, setAsset] = useState<TapeAsset>("GOLD");
+  const [assetOpen, setAssetOpen] = useState(false);
+  const [quotes, setQuotes] = useState<Partial<Record<TapeAsset, AssetQuote>>>({});
+
+  useEffect(() => {
+    let live = true;
+    const load = () => {
+      for (const a of TAPE_ASSETS) {
+        void fetchAssetQuote(a).then((q) => {
+          if (live && q) setQuotes((prev) => ({ ...prev, [a]: q }));
+        });
+      }
+    };
+    load();
+    const timer = setInterval(load, 300_000);
+    return () => {
+      live = false;
+      clearInterval(timer);
+    };
+  }, []);
   const data = useMemo(() => overlayBars(snap?.candles ?? []), [snap?.candles]);
   const rsiData = data.filter((d) => d.rsi != null);
   const last = data[data.length - 1];
@@ -361,10 +424,53 @@ export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
           <Toggle on={showMacd200} onClick={() => setShowMacd200((v) => !v)} label="MACD 200" />
         </div>
         {last ? (
-          <p className={cn("font-mono text-base tabular-nums sm:text-lg", last.up ? "text-high" : "text-sell")}>
-            {money(last.close, 0)} {last.up ? "▲" : "▼"} {last.close >= last.open ? "+" : ""}
-            {(((last.close - last.open) / last.open) * 100).toFixed(2)}%
-          </p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <p className={cn("font-mono text-base tabular-nums sm:text-lg", last.up ? "text-high" : "text-sell")}>
+              {money(last.close, 0)} {last.up ? "▲" : "▼"} {last.close >= last.open ? "+" : ""}
+              {(((last.close - last.open) / last.open) * 100).toFixed(2)}%
+            </p>
+            <div className="relative">
+              <button
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded={assetOpen}
+                aria-label="Select overlay asset"
+                onClick={() => setAssetOpen((v) => !v)}
+                className="indicator-title h-8 rounded-sm border border-rule px-2 font-mono text-xs font-semibold tracking-[0.08em]"
+              >
+                {asset} ▾
+              </button>
+              {assetOpen ? (
+                <ul
+                  role="listbox"
+                  aria-label="Overlay asset"
+                  className="absolute right-0 z-20 mt-1 w-24 rounded-md border border-rule bg-surface p-1 shadow-lg"
+                >
+                  {TAPE_ASSETS.map((a) => (
+                    <li key={a}>
+                      <button
+                        type="button"
+                        role="option"
+                        aria-selected={a === asset}
+                        onClick={() => {
+                          setAsset(a);
+                          setAssetOpen(false);
+                        }}
+                        className={cn(
+                          "w-full rounded-sm px-2 py-1 text-left font-mono text-xs",
+                          a === asset ? "bg-tab/20 text-fg" : "text-muted hover:text-fg",
+                        )}
+                      >
+                        {a}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+            <AssetQuoteChip asset={asset} quote={quotes[asset]} />
+            <GoldBtcRatio btc={last.close} gold={quotes.GOLD?.last} />
+          </div>
         ) : null}
       </div>
       <div className="tape-main">
@@ -705,6 +811,46 @@ function OscPane({
       </p>
       <div className="min-h-0 min-w-0 flex-1">{children}</div>
     </div>
+  );
+}
+
+function assetMoney(v: number) {
+  return money(v, v >= 100 ? 0 : v >= 2 ? 2 : 4);
+}
+
+/** Selected overlay asset quote: last price plus 24h change when Coinbase stats are available. */
+function AssetQuoteChip({ asset, quote }: { asset: TapeAsset; quote?: AssetQuote }) {
+  if (!quote) {
+    return (
+      <p className="font-mono text-xs text-muted">
+        {asset} <span className="tabular-nums">—</span>
+      </p>
+    );
+  }
+  const pct = quote.open != null ? ((quote.last - quote.open) / quote.open) * 100 : null;
+  const up = pct != null ? pct >= 0 : null;
+  return (
+    <p className="font-mono text-xs tabular-nums text-fg">
+      <span className="text-muted">{asset} </span>
+      {assetMoney(quote.last)}
+      {pct != null ? (
+        <span className={up ? "text-high" : "text-sell"}>
+          {" "}
+          {up ? "▲" : "▼"} {up ? "+" : ""}
+          {pct.toFixed(2)}%
+        </span>
+      ) : null}
+    </p>
+  );
+}
+
+/** Gold-to-BTC ratio indicator — oz of gold per 1 BTC via Coinbase PAXG-USD. */
+function GoldBtcRatio({ btc, gold }: { btc: number; gold?: number }) {
+  if (!gold || !Number.isFinite(btc) || btc <= 0) return null;
+  return (
+    <p className="rounded-sm border border-rule px-2 py-0.5 font-mono text-xs tabular-nums text-muted" title="Gold to BTC ratio — Coinbase PAXG-USD (1 PAXG = 1 oz gold)">
+      <span className="gold-css">GOLD:BTC</span> {(gold / btc).toFixed(4)} · 1 BTC = {(btc / gold).toFixed(1)} oz
+    </p>
   );
 }
 

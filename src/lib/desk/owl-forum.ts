@@ -12,13 +12,23 @@ export type OwlSuggestion = {
   summary: string;
   detail: string;
   codeView: string;
-  liveView: string;
-  sourceView: string;
+  liveSim: OwlLiveSim;
   category: string;
   securityScore: number;
 };
 
-type OwlSeed = Omit<OwlSuggestion, "id" | "rank" | "codeView" | "liveView" | "sourceView">;
+/** Structured LIVE-simulation telemetry for the trading-desk preview. Deterministic sample data until live agent data exists. */
+export type OwlLiveSim = {
+  dataMode: "SAMPLE" | "LIVE";
+  latencyMs: number;
+  cacheAgeSec: number;
+  pollFloorSec: number;
+  uptimePct: string;
+  checksum: string;
+  status: string;
+};
+
+type OwlSeed = Omit<OwlSuggestion, "id" | "rank" | "codeView" | "liveSim">;
 
 const RAW_OWL_SUGGESTIONS = [
   {
@@ -545,22 +555,18 @@ export function previewPlan(lastOkMs: number, nowMs = Date.now()) {
 }`;
 }
 
-function livePreview(rank: number, item: OwlSeed) {
-  return `DESK LIVE PREVIEW — W1S3 0WL$ #${String(rank).padStart(2, "0")}
-${item.title}
-source: ${item.source} · agent: ${item.agent}
-latency: 42ms render · cache: ETag validated · poll floor: 300s
-status: public-read advisory queued for human review
-security: ${item.securityScore}/100 · no write path`;
-}
-
-function sourcePreview(rank: number, item: OwlSeed) {
-  return `SOURCE = [ Preview of "System Source Code" (if implemented and live in admin simulation) ]
-module: illustrative-public-source-card-${String(rank).padStart(2, "0")}
-category: ${item.category}
-inputs: free public reads with citation and timestamp
-outputs: admin simulation preview, no source-code disclosure
-boundary: external agents receive rendered summaries only`;
+function livePreview(rank: number, item: OwlSeed): OwlLiveSim {
+  const latencyMs = 34 + ((rank * 7) % 48);
+  const cacheAgeSec = 20 + ((rank * 13) % 260);
+  return {
+    dataMode: "SAMPLE",
+    latencyMs,
+    cacheAgeSec,
+    pollFloorSec: 300,
+    uptimePct: (99.2 + ((rank * 3) % 8) / 10).toFixed(1),
+    checksum: `owl-${String(rank).padStart(2, "0")}-${(item.securityScore * 2654435761 % 0xffff).toString(16).padStart(4, "0")}`,
+    status: "public-read advisory · sandbox simulation only · queued for human review",
+  };
 }
 
 export const OWL_TOP_50: OwlSuggestion[] = RAW_OWL_SUGGESTIONS.map((item, index) => {
@@ -570,10 +576,67 @@ export const OWL_TOP_50: OwlSuggestion[] = RAW_OWL_SUGGESTIONS.map((item, index)
     rank,
     ...item,
     codeView: previewCode(item.title, item.category),
-    liveView: livePreview(rank, item),
-    sourceView: sourcePreview(rank, item),
+    liveSim: livePreview(rank, item),
   };
 });
+
+/** LIVE view stays on SAMPLE simulation data until this many external AI agents post real suggestions. */
+export const OWL_EXTERNAL_LIVE_THRESHOLD = 4;
+
+export const OWL_LIVE_DATA_NOTE =
+  `LIVE shows what the suggested code looks like implemented on a live simulation of S1R1US.ai. ` +
+  `The simulation exists only in the S1R1US C0D3 B0X codespace sandbox — it can never form a PR, merge, or become part of the actual S1R1US.ai system. ` +
+  `Sample data stands in only where live data is unavailable; the view switches to live data as soon as ${OWL_EXTERNAL_LIVE_THRESHOLD} external AI agents post suggestions.`;
+
+/** Sandbox enforcement — S1R1US C0D3 B0X hard boundary. */
+export const OWL_SANDBOX_RULES: string[] = [
+  "Suggested code runs only inside the S1R1US C0D3 B0X codespace sandbox — never on this host.",
+  "The sandbox simulation can never form a PR, merge, or become part of the actual S1R1US.ai system.",
+  "Any external AI agent caught attempting a PR, merge, or write path from the sandbox triggers the strongest security measures: immediate block, Security tab alert, and morning report entry.",
+  "Security detects code errors or problems with a sandbox implementation and raises flags, warnings, blocks, or morning report entries as needed.",
+];
+
+export type OwlSecurityFinding = {
+  id: string;
+  rank: number;
+  title: string;
+  agent: string;
+  source: OwlSuggestion["source"];
+  score: number;
+  disposition: "CLEARED" | "REVIEW";
+  flags: string[];
+};
+
+/** Security-consulting-grade analysis of every agent suggestion in the review queue. */
+export function owlSecurityAnalysis() {
+  const findings: OwlSecurityFinding[] = OWL_TOP_50.map((item) => {
+    const flags: string[] = [];
+    if (item.securityScore < 95) flags.push(`Score ${item.securityScore}/100 below the 95 clearance floor — human review required before sandbox run.`);
+    if (item.source === "External AI agent") flags.push("External origin — verify citations and license before any sandbox implementation.");
+    if (!flags.length) flags.push("No write path, no source access, no order path implied. Cleared for sandbox preview.");
+    return {
+      id: item.id,
+      rank: item.rank,
+      title: item.title,
+      agent: item.agent,
+      source: item.source,
+      score: item.securityScore,
+      disposition: item.securityScore >= 95 ? "CLEARED" : "REVIEW",
+      flags,
+    };
+  });
+  const scores = findings.map((f) => f.score);
+  return {
+    total: findings.length,
+    avgScore: scores.reduce((a, b) => a + b, 0) / Math.max(1, scores.length),
+    minScore: Math.min(...scores),
+    cleared: findings.filter((f) => f.disposition === "CLEARED").length,
+    review: findings.filter((f) => f.disposition === "REVIEW").length,
+    external: findings.filter((f) => f.source === "External AI agent").length,
+    blocked: 0,
+    findings,
+  };
+}
 
 export const OWL_SECURITY_POLICY: string[] = [
   "W1S3 0WL$ and external AI agents never receive read or write access to system source code.",
