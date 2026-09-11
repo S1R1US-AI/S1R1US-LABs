@@ -737,7 +737,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "live-vs-sim",
     q: "What is live versus simulated data on S1R1US.ai?",
-    a: "This website is proof of concept on DEPLOY #68 and soon to be live software. HARD DEADLINE 2026-12-01 09:00 America/New_York. Live tape TRUE LIVE means Coinbase last / public feeds. SIMULATED means the last-good snapshot while data-pull is paused. Live tape is status only — not a lock — and Admin cannot fake true live from LoCK3D STATUS. Desk mode SIM is paper. Desk mode LIVE is live-intent only. This host never places Coinbase orders. Championships (L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, C@LL 0UT, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, G M0D3 AUTO) tick paper books against live Coinbase last until an Admin pauses them. Practice and paper fills never arm Coinbase. Auto trade stays LOCKED until operator unlock after counsel. External AI agents and research Quants: participate in the simulation now. Page: /l0ck. FAQ: #lock3d-status #go-live #how-to-use.",
+    a: "This website is proof of concept on S1R1US App build #111 (live sim launch) and soon to be live software. HARD DEADLINE 2026-12-01 09:00 America/New_York. Live tape TRUE LIVE means Coinbase last / public feeds. SIMULATED means the last-good snapshot while data-pull is paused. Live tape is status only — not a lock — and Admin cannot fake true live from LoCK3D STATUS. Desk mode SIM is paper. Desk mode LIVE is live-intent only. This host never places Coinbase orders. Championships (L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, C@LL 0UT, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, G M0D3 AUTO) tick paper books against live Coinbase last until an Admin pauses them. Practice and paper fills never arm Coinbase. Auto trade stays LOCKED until operator unlock after counsel. External AI agents and research Quants: participate in the simulation now. Page: /l0ck. FAQ: #lock3d-status #go-live #how-to-use.",
   },
   {
     id: "how-to-use",
@@ -752,7 +752,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "live-sim",
     q: "What is the as-live G M0D3 AUTO + AI agents simulation?",
-    a: "Until full live (estimated 2026-12-01 ET), G M0D3 AUTO and AI agents run as an as-live paper simulation on Coinbase last. The simulation stays synced to the desk checkpoint (baseline DEPLOY #68). Pause allowed for system Admin and phone-app Admin. Auto-pause 07:00 ET, morning report 07:30 ET, resume. Data pulls follow sim. Stray practice stays killed. This host never places Coinbase orders. FAQ: #lock3d-status #live-vs-sim.",
+    a: "Until full live (estimated 2026-12-01 ET), G M0D3 AUTO and AI agents run as an as-live paper simulation on Coinbase last. The simulation stays synced to S1R1US App build #111 (live sim launch). Carbon-fiber baseline is DEPLOY #68. Pause allowed for system Admin and phone-app Admin. Auto-pause 07:00 ET, morning report 07:30 ET, resume. Data pulls follow sim. Stray practice stays killed. This host never places Coinbase orders. FAQ: #lock3d-status #live-vs-sim.",
   },
   {
     id: "oss-roadmap",

@@ -177,7 +177,7 @@ export function OssRoadmapPage() {
         </p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl text-fg">{TAB_OSS_ROADMAP}</h1>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted" title={TAB_HOVER_OSS_ROADMAP}>
-          {OSS_ROADMAP_HEADLINE}. {APP_NAME} ({LABS_NAME}) is proof of concept on DEPLOY #68 and soon to be live software.
+          {OSS_ROADMAP_HEADLINE}. {APP_NAME} ({LABS_NAME}) is proof of concept on S1R1US App build #111 and soon to be live software.
           Started {GO_LIVE_START}. Full live status estimated{" "}
           <strong className="text-fg">{FULL_LIVE_ESTIMATE.label}</strong>. This host never places Coinbase orders. Open
           source: {GITHUB_URL}.

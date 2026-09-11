@@ -176,7 +176,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
   },
 ];
 
-export const GO_LIVE_HEADLINE = `GO-LIVE PATH STARTED ${GO_LIVE_START} — HARD DEADLINE ${GO_LIVE_DEADLINE_LABEL}. Full live status estimated ${GO_LIVE_DEADLINE_LABEL}. PoC rails + Auto GM/7-B0T would-accumulate + SUP3R B0WL paper LIVE. DEPLOY #68. Coinbase create LOCKED. Public OSS Roadmap: /roadmap. Seek a licensed professional and a licensed attorney before live use.`;
+export const GO_LIVE_HEADLINE = `GO-LIVE PATH STARTED ${GO_LIVE_START} — HARD DEADLINE ${GO_LIVE_DEADLINE_LABEL}. Full live status estimated ${GO_LIVE_DEADLINE_LABEL}. PoC rails + Auto GM/7-B0T would-accumulate + SUP3R B0WL paper LIVE. S1R1US App build #111 (live sim launch). Carbon-fiber baseline DEPLOY #68. Coinbase create LOCKED. Public OSS Roadmap: /roadmap. Seek a licensed professional and a licensed attorney before live use.`;
 
 export function goLiveBrief() {
   const now = [...GO_LIVE].reverse().find((p) => p.status === "STARTED") ?? GO_LIVE[0]!;

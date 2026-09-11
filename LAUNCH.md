@@ -1,15 +1,22 @@
-# N3W Web App Installation Build (new theme) — DEPLOY #68
+# S1R1US App build #111 (live sim launch)
 
-Production baseline after the professional carbon-fiber desk theme. Folded 2026-09-06: FAQ admin/visitor/agent, morning-report library, Security tab, sitemap index.
+Current **`main`** fold. Live admin simulation on Coinbase last. Carbon-fiber origin remains **DEPLOY #68** (tag `n3w-web-app-install-deploy-68`, protected — do not move).
 
 - Site: https://s1r1us.ai
 - Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 - Branch: `main`
-- Official checkpoint tag: `n3w-web-app-install-deploy-68`
-- Official checkpoint branch: `checkpoint/n3w-web-app-install-deploy-68`
+- Project save: `Project BTD/S1R1US L@Bs/checkpoint S1R1US App build #111.md`
 - Host: DigitalOcean App Platform, Dockerfile, HTTP 8080, 1 GB, autodeploy **on** (`main` → live-production)
 
-This tag is the verified live desk. If the site needs repair or rebuild, deploy **this tag** (or the checkpoint branch). After a fold, rebuild `.output`, push `main`, and live-production autodeploys.
+If the site needs repair or rebuild, deploy **`main`**. After a fold, rebuild `.output`, push `main`, and live-production autodeploys.
+
+# N3W Web App Installation Build (new theme) — DEPLOY #68
+
+Production **baseline** after the professional carbon-fiber desk theme. Folded 2026-09-06: FAQ admin/visitor/agent, morning-report library, Security tab, sitemap index. Kept as origin; live number is now **111**.
+
+- Official checkpoint tag: `n3w-web-app-install-deploy-68`
+- Official checkpoint branch: `checkpoint/n3w-web-app-install-deploy-68`
+
 
 ## What is on
 
