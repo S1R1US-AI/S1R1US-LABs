@@ -29,6 +29,7 @@ import {
   ossRoadmapPublic,
 } from "@/lib/desk/oss-roadmap";
 import { GO_LIVE, GO_LIVE_DEADLINE_LABEL, GO_LIVE_START, GO_LIVE_STEPS } from "@/lib/desk/go-live";
+import { LEGAL_DISCLAIMER, LEGAL_DISCLAIMER_SHORT, LEGAL_DISCLAIMER_UPDATED } from "@/lib/desk/disclaimer";
 import { GITHUB_URL } from "@/lib/launch/model";
 import { cn } from "@/lib/utils";
 
@@ -57,7 +58,7 @@ function schema() {
         url: `${origin}${OSS_ROADMAP_PATH}`,
         description: PAGE_DESC_OSS_ROADMAP,
         isPartOf: { "@id": `${origin}/#website` },
-        about: ["go-live", "OSS Roadmap", "proof of concept", "BTC Quant", "AI agents", "AI Bitcoin Trading Bot", "LoCK3D STATUS"],
+        about: ["go-live", "OSS Roadmap", "proof of concept", "BTC Quant", "AI agents", "AI Bitcoin Trading Bot", "LoCK3D STATUS", "DISCLAIMER"],
         image: [`${origin}/AI-Bitcoin-Trading-Bot.gif`, `${origin}/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif`],
       },
       {
@@ -126,6 +127,14 @@ function schema() {
         mainEntity: [
           {
             "@type": "Question",
+            name: "What is the unified DISCLAIMER on S1R1US.ai?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: LEGAL_DISCLAIMER,
+            },
+          },
+          {
+            "@type": "Question",
             name: "When is S1R1US.ai fully live?",
             acceptedAnswer: {
               "@type": "Answer",
@@ -179,6 +188,10 @@ export function OssRoadmapPage() {
           <strong className="text-high">on</strong>. Auto trade and native store listings are{" "}
           <strong className="text-sell">LOCKED</strong> until operator unlock after counsel. Hive custody is{" "}
           <strong className="legal-purple">NEVER</strong>. Estimates below are dates, not promises.
+        </p>
+        <p id="disclaimer" className="mt-3 rounded-md border border-rule px-3 py-2 font-mono text-[11px] leading-relaxed text-muted">
+          <strong className="legal-purple tracking-[0.12em]">DISCLAIMER</strong>
+          <span className="ml-2 text-muted">updated {LEGAL_DISCLAIMER_UPDATED}.</span> {LEGAL_DISCLAIMER_SHORT} Terms and Privacy stay as published.
         </p>
 
         <QuantFlexWelcome compact />
@@ -340,8 +353,7 @@ export function OssRoadmapPage() {
           </Link>
         </p>
         <p className="seo-copy">
-          {PAGE_TITLE_OSS_ROADMAP}. Full live estimated {GO_LIVE_DEADLINE_LABEL}. Proof of concept. Education only. Not
-          financial advice.
+          {PAGE_TITLE_OSS_ROADMAP}. Full live estimated {GO_LIVE_DEADLINE_LABEL}. {LEGAL_DISCLAIMER_SHORT}
         </p>
       </main>
     </Shell>

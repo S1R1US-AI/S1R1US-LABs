@@ -109,6 +109,16 @@ export const LEGAL_LAB =
 export const LEGAL_HOWEY =
   "Nothing on this website is an offer to sell or a solicitation to buy a security. A cultural ticker, if one exists on a public pad, is not shares of the desk, not a claim on bitcoin, not a share of profit, and not how the trading book is funded. The desk is funded only by operator cash and unconditional gifts that receive nothing back. Do not buy any ticker because bots, a treasury, or a bitcoin stack exist.";
 
+export {
+  LEGAL_DISCLAIMER_UPDATED,
+  LEGAL_DISCLAIMER_P1,
+  LEGAL_DISCLAIMER_P2,
+  LEGAL_DISCLAIMER_P3,
+  LEGAL_DISCLAIMER_PARAS,
+  LEGAL_DISCLAIMER,
+  LEGAL_DISCLAIMER_SHORT,
+} from "./desk/disclaimer.ts";
+
 export const LEGAL_USE_IS_AGREEMENT =
   "By accessing or using this website you agree to the Terms and Agreements and the Privacy Policy. If you do not agree, do not use the site. Use is 100 percent at your own risk. S1R1US.ai is not a financial advisor. Always seek a licensed professional. Always seek a licensed attorney before live trading.";
 

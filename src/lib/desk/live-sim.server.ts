@@ -188,7 +188,7 @@ export function killStrayPractice() {
     mkdirSync(dir, { recursive: true });
     writeFileSync(
       PRACTICE_KILL,
-      JSON.stringify({ killed: true, at: new Date().toISOString(), note: "Old AUTO 24h practice and extra paper ticks stay off. Live-sim is the only as-live cycle." }, null, 2),
+      JSON.stringify({ killed: true, at: new Date().toISOString(), note: "Old AUTO 24h practice and extra paper ticks stay off. Admin simulation is the only live-data test cycle." }, null, 2),
     );
   } catch {
     /* preview */

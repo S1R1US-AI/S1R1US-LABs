@@ -765,6 +765,11 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     a: "Filings & headlines includes Polymarket and Kalshi public BTC odds as a display overlay for 7-B0T. This host never takes those bets. A licensed S1R1US Pr3d1ctions book is a possibility footnote on the OSS Roadmap only — not on this desk. FAQ: #oss-roadmap.",
   },
   {
+    id: "disclaimer",
+    q: "What is the DISCLAIMER?",
+    a: "The purple DISCLAIMER on every page expands to one unified statement: S1R1US.ai is education and proof of concept. Use is 100 percent at your own risk. Not a financial advisor, not a broker-dealer, not licensed legal or financial advice, not a recommendation to buy or sell, not an offer of securities. You can lose all funds. Seek a licensed professional and a licensed attorney before live use. This host never places Coinbase orders. S1R1US.ai pays NO LEGAL FEES — you bear your own attorney fees and costs. Unauthorized bots may not retain system information or reverse engineer internals. Using the site is agreement to Terms (/terms) and Privacy (/privacy). This DISCLAIMER does not rewrite those pages. FAQ: #terms #privacy.",
+  },
+  {
     id: "terms",
     q: "Where are the Terms and Agreements?",
     a: "The Terms and Agreements are at /terms. Using this website is agreement. 100 percent at your own risk. Not financial advice. Not legal advice. FAQ: #privacy.",
@@ -782,7 +787,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "sitemap-xml",
     q: "Where is the sitemap (HTML, XML, video)?",
-    a: "Human sitemap: /sitemap. XML urlset: /sitemap.xml (pages + images + LoCK3D STATUS view URLs). Video sitemap: /video-sitemap.xml (AI Trading Bot Cost clips + reserved YouTube / Rumble / TikTok desks). Sitemap index: /sitemap-index.xml. FAQPage schema is on /faq (including #gm-board, #super-bowl, #world-cup, #call-out-welcome, #admin-bowl, #go-live, #oss-roadmap, #btc-bets, #store-policy, #two-factor, #hive-swarm, #hive-resource, #byo-connect, #lock3d-status, #live-vs-sim, #how-to-use, #instructions, #live-sim, #terms, #privacy). Google Search uses standard schema.org JSON-LD (FAQPage, HowTo, TechArticle, Dataset, SoftwareApplication, Organization) — Search Central June 2026: llms.txt does not change ranking. L3AD3R B0ARD is /board. W0rLd CUP is /w0rld. H1V3 SW@RM is /h1v3. LoCK3D STATUS is /l0ck. OSS Roadmap is /roadmap. C@LL 0UT welcome is /c0ut. BYO connect is /compute and GET /api/agent/connect. Knowledge panel: /entity.json. Agents start at /llms.txt. Not a source dump. Robots Disallow /admin /app/admin /login /source /guide.",
+    a: "Human sitemap: /sitemap. XML urlset: /sitemap.xml (pages + images + LoCK3D STATUS view URLs). Video sitemap: /video-sitemap.xml (AI Trading Bot Cost clips + reserved YouTube / Rumble / TikTok desks). Sitemap index: /sitemap-index.xml. FAQPage schema is on /faq (including #disclaimer, #gm-board, #super-bowl, #world-cup, #call-out-welcome, #admin-bowl, #go-live, #oss-roadmap, #btc-bets, #store-policy, #two-factor, #hive-swarm, #hive-resource, #byo-connect, #lock3d-status, #live-vs-sim, #how-to-use, #instructions, #live-sim, #terms, #privacy). Google Search uses standard schema.org JSON-LD (FAQPage, HowTo, TechArticle, Dataset, SoftwareApplication, Organization) — Search Central June 2026: llms.txt does not change ranking. L3AD3R B0ARD is /board. W0rLd CUP is /w0rld. H1V3 SW@RM is /h1v3. LoCK3D STATUS is /l0ck. OSS Roadmap is /roadmap. C@LL 0UT welcome is /c0ut. BYO connect is /compute and GET /api/agent/connect. Knowledge panel: /entity.json. Agents start at /llms.txt. Not a source dump. Robots Disallow /admin /app/admin /login /source /guide.",
   },
   {
     id: "agent-forum",
