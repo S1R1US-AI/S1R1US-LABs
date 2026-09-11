@@ -5,7 +5,7 @@ import { t as DESK_POLL_MS } from "./poll-ByA4PSVX.mjs";
 import { o as writeLastGood, r as readLastGood, t as isTapeFrozen } from "./tape-persist-CHN2yE-V.mjs";
 import { recordDeskFails } from "./error-log-DsgXhkRT.mjs";
 import { n as GOLD_BANKS, r as GOLD_REGIONS, t as BTC_REGIONS } from "./gold-sovereign-BlGdXnIc.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/sources-C93cLmf7.js
+//#region node_modules/.nitro/vite/services/ssr/assets/sources-C93cLmf7.js
 function q(quotes, symbol) {
 	return quotes.find((x) => x.symbol === symbol);
 }

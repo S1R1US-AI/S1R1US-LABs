@@ -5,7 +5,7 @@ import { i as intrusionSummary } from "./intrusion-log-Dl3lKsr8.mjs";
 import { c as predAnalyst, n as CYCLE_ARCH, r as DATA_FEEDS } from "./prediction-markets-Bk_9V8gL.mjs";
 import { n as cachedHunter } from "./hunter-zP1dNhi3.mjs";
 import { t as alignmentScore } from "./alignment-CAFkh8RJ.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/morning-ops-Cl4qXLHI.js
+//#region node_modules/.nitro/vite/services/ssr/assets/morning-ops-Cl4qXLHI.js
 var morning_ops_Cl4qXLHI_exports = /* @__PURE__ */ __exportAll({
 	a: () => morningPred,
 	i: () => morningHtmlLinks,

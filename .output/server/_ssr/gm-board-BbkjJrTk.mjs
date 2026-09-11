@@ -12,7 +12,7 @@ import { a as cupPublic, c as placeFightWager, d as tickCallout, i as calloutPub
 import { t as secp256k1 } from "../_libs/noble__curves+noble__hashes.mjs";
 import { createHash, randomBytes } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/gm-board-BbkjJrTk.js
+//#region node_modules/.nitro/vite/services/ssr/assets/gm-board-BbkjJrTk.js
 var PATHS$2 = ["/tmp/board-daily.json", "/workspace/data/board-daily.json"];
 var START_USD = 1e4;
 var TAGS = [

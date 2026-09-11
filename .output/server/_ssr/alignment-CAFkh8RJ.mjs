@@ -6,7 +6,7 @@ import { p as mandatePublic } from "./mandate-DWFG_LcU.mjs";
 import { d as hiveResourcePublic } from "./hive-resource-BThKJHxr.mjs";
 import { f as lockStatusView, t as LOCK_DEFAULT } from "./lock-status-A0BH-v5S.mjs";
 import { i as LOCKED_FUNCTIONS } from "./oss-roadmap-DCvheBM-.mjs";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/alignment-CAFkh8RJ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/alignment-CAFkh8RJ.js
 var alignment_CAFkh8RJ_exports = /* @__PURE__ */ __exportAll({
 	n: () => alignment_exports,
 	t: () => alignmentScore

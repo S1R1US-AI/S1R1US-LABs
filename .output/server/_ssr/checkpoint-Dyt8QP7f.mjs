@@ -1,4 +1,4 @@
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/checkpoint-Dyt8QP7f.js
+//#region node_modules/.nitro/vite/services/ssr/assets/checkpoint-Dyt8QP7f.js
 /** Operator name for this fold. Live sim launch on main. */
 var CHECKPOINT_NAME = "S1R1US App build #111 (live sim launch)";
 var CHECKPOINT_SHORT = "S1R1US App build #111";

@@ -1,7 +1,7 @@
 import { t as MORNING_TITLE } from "./morning-lib-D4ZKOXow.mjs";
 import path from "node:path";
 import { access, copyFile, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
-//#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/morning-lib.server-8ELMhzrr.js
+//#region node_modules/.nitro/vite/services/ssr/assets/morning-lib.server-8ELMhzrr.js
 var ROOT = process.cwd();
 var INDEX = path.join(ROOT, "data", "morning-lib.json");
 var PUBLIC_LIB = path.join(ROOT, "public", "morning-lib");
