@@ -296,7 +296,7 @@ export function runHunter(): HunterReport {
       "As-live simulation stays on the desk checkpoint with pause allowed",
       "HIGH",
       "PASS",
-      "G M0D3 AUTO + AI agents run as-live on S1R1US App build #111. Conflict rebases to baseline 68 LIVE with pause allowed for system and copy-admin. Championship pause stays system-only. Morning report 07:30 ET. Data pulls follow sim. Practice ticks stay killed. Coinbase create stays off.",
+      "G M0D3 AUTO + AI agents run as-live on S1R1US App build #113. Conflict rebases to baseline 68 LIVE with pause allowed for system and copy-admin. Championship pause stays system-only. Morning report 07:30 ET. Data pulls follow sim. Practice ticks stay killed. Coinbase create stays off.",
       "If the checkpoint number changes, retarget the simulation and retest. If anything conflicts, run baseline 68 LIVE with pause allowed.",
     ),
     finding(

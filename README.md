@@ -1,6 +1,6 @@
 # S1R1US-LABs
 
-**S1R1US App build #111 (live sim launch)** — current `main`. Rebuild pin: tag `s1r1us-app-build-111`. Live admin simulation on. Live trades off. Auto trade LOCKED. Carbon-fiber baseline DEPLOY #68 (tag `n3w-web-app-install-deploy-68`). See [LAUNCH.md](LAUNCH.md) and [CHECKPOINT.md](CHECKPOINT.md).
+**S1R1US App build #113 (live sim launch)** — current `main`. Rebuild pin: tag `s1r1us-app-build-111`. Live admin simulation on. Live trades off. Auto trade LOCKED. Carbon-fiber baseline DEPLOY #68 (tag `n3w-web-app-install-deploy-68`). See [LAUNCH.md](LAUNCH.md) and [CHECKPOINT.md](CHECKPOINT.md).
 
 **[ S1R1U$ <<L@B$>> ]** — S1R1US Labs. Open-source AI Bitcoin hedge fund desk.
 

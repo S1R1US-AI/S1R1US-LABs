@@ -1,5 +1,6 @@
-import { APP_CALLS, APP_NAME, BOT7_NAME, PAID_SERVICES, TAB_DESK, TAB_GM, TAB_LAB } from "@/lib/brand";
+import { APP_CALLS, APP_NAME, BOT7_NAME, PAID_SERVICES, TAB_DESK, TAB_GM, TAB_LAB, TAB_WHITE, WHITE_LABEL_PATH } from "@/lib/brand";
 import { COIN_DOMAIN, GITHUB_STARTED, GITHUB_URL, MINT_FLOOR, OSS_NEEDS, ROADMAP, TOKEN_LAUNCHED } from "@/lib/launch/model";
+import { OSS_LICENSE_NOTICE } from "./white-label";
 import { BOT_ROSTER, CYCLE_ARCH, SYSTEM_REVIEWED } from "./policy";
 import { MANDATE } from "./system-logic";
 
@@ -284,6 +285,17 @@ export const GUIDE: GuideSection[] = [
       "AI crawlers: robots.txt Allow /agent /forum /api/agent /llms.txt /.well-known/. GPTBot, ClaudeBot, Grok, PerplexityBot, Google-Extended are told to start at /llms.txt. Search Console + Bing: submit https://s1r1us.ai/sitemap.xml.",
       "Attach s1r1us.ai on DigitalOcean App Settings → Domains. Confirm https://s1r1us.ai/ returns the public tape. Share company X with existing og/x-banner — do not change og:* in root (injector owns those).",
       "Go-live and paper stay in lockstep: DEPLOY #68 carbon-fiber desk is the Phase 0+1 baseline. Call board lists bots 1–6, 7-B0T, and GM would-accumulate. Paper fills off. Paper §VI, FAQ #go-live, #go-live-notice, #agent-waitlist, #agent-forum, #agent-maintenance, #morning-report, #admin-panel, #who-uses-this, #world-cup, #call-out-welcome, #terms, #privacy, morning report, sitemap, Terms, Privacy, and this guide cite the same four phases plus POST /api/agent/waitlist {mandate:true} (poll goLiveNotice/live/goLive/gate.invite, no webhooks). Admin → Security can close external AI communication (maintenance 503; ping + waitlist + notices + forum stay; invite on reopen) and can Continue/Pause championship simulation (World Cup + C@LL 0UT sim). Copy-admin cannot pause sim and cannot see the system Admin research paper. Terms and Privacy name every public function.",
+    ],
+  },
+  {
+    id: "white-label",
+    title: `20. ${TAB_WHITE} + screensavers`,
+    body: [
+      `${TAB_WHITE} at ${WHITE_LABEL_PATH}: any phone app or website user can download the stripped OSS system and relaunch it as system admin under a domain THEY control — never under S1R1US.ai. Before download, ALL s1r1us.ai system admin rights, privileges, games, rolls, simulations, access tokens (including any encrypted data), web host information, and GitHub admin rights are stripped. No roadmap or licensing is handed over — white-label users discover and populate the OSS information, terms, and privacy policy manually. The go-live check fails closed if any S1R1US.ai system admin data is found in the config, and reports the failure on screen.`,
+      "White-label config dialog boxes: domain name, top-level menu names (+/−), x accounts (system admin + phone app user), webhost IP / DNS 1–2, encrypted token id + secret pairs (+/−, e.g. better_auth id + secret), GitHub repository + GitHub system admin. https://github.com/S1R1US-AI/S1R1US-LABs (main or any branch) is never accepted as a white-label repository. Proprietary s1r1us.ai info is blocked from every dialog box.",
+      "White label can never take over s1r1us.ai system admin rights — 100 percent security match, no compromise. External AI agents can never take over the s1r1us.ai system admin. S3C Sweep, the Security tab, and the morning report are linked to white label and share data; bad actors (human or external AI agent) are blocked from download, their dialog boxes lock, and their white-label software locks permanently. Only @_Mr_R0b0t0_ — the main s1r1us.ai system admin — can override.",
+      OSS_LICENSE_NOTICE,
+      "Screensavers: opening /gm plays the Matrix rain burst for 2.5 seconds. Matrix classic runs after 5 minutes of no user activity anywhere on s1r1us.ai and does not lock the screen. The system admin locks or unlocks all screensavers in Admin → Security → Screensavers: LOCKED signs the operator out on idle and requires login; UNLOCKED just displays the saver.",
     ],
   },
 ];

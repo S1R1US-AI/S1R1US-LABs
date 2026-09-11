@@ -31,7 +31,7 @@ export const INDEX_TERMS = [
   "7-B0T HTTP SaaS",
   "go-live path",
   "DEPLOY #68",
-  "S1R1US App build #111",
+  "S1R1US App build #113",
   "morning report",
   "admin panel",
   "W1S3 0WL$ Forum",

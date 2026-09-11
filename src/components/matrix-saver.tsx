@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { signOut } from "@/lib/auth/client";
 import { useOperator } from "@/lib/desk/operator";
+import { GM_BURST_MS, SAVER_IDLE_MS, saverLockEnabled } from "@/lib/desk/saver-lock";
 import { APP_NAME } from "@/lib/brand";
 
-const IDLE_MS = 5 * 60 * 1000;
-const BURST_MS = 3_000;
+const IDLE_MS = SAVER_IDLE_MS;
+const BURST_MS = GM_BURST_MS;
 const GM_SEQ = "G0DZ1LLa M0D3";
 const CLASSIC =
   "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789";
@@ -19,12 +20,12 @@ type Column = {
   hold: number;
   glyphs: string[];
 };
-type Mode = "off" | "lock" | "burst";
+type Mode = "off" | "lock" | "burst" | "saver";
 type Rain = "classic" | "gm";
 
 const burstFns = new Set<(ms: number) => void>();
 
-/** 3s Matrix rain on the GM tab — does not lock the session. */
+/** 2.5s Matrix rain every time the GM tab opens — does not lock the session. */
 export function rainGmBurst(ms = BURST_MS) {
   for (const fn of burstFns) fn(ms);
 }
@@ -59,16 +60,15 @@ export function MatrixSaver() {
     async function trip() {
       const useGmRain = gmRainActive();
       const session = useOperator.getState();
-      if (!session.unlocked) {
+      const lockPolicy = saverLockEnabled();
+      if (!lockPolicy || !session.unlocked) {
+        // UNLOCKED policy (or no session to lock): Matrix classic screensaver.
+        // Runs until the user moves — never locks the system.
         setRain(useGmRain ? "gm" : "classic");
-        setMode("burst");
-        window.clearTimeout(burstTimer);
-        burstTimer = window.setTimeout(() => {
-          if (modeRef.current === "burst") setMode("off");
-        }, 8_000);
-        idleTimer = window.setTimeout(trip, IDLE_MS);
+        setMode("saver");
         return;
       }
+      // LOCKED policy: sign the session out and require login again.
       void session.lockFromIdle();
       try {
         void signOut("/login");
@@ -100,6 +100,12 @@ export function MatrixSaver() {
     }
 
     function poke(ev: Event) {
+      if (modeRef.current === "saver") {
+        setMode("off");
+        window.clearTimeout(idleTimer);
+        idleTimer = window.setTimeout(trip, IDLE_MS);
+        return;
+      }
       if (modeRef.current === "lock") {
         const authed = useOperator.getState().unlocked;
         if (!authed) {
@@ -269,14 +275,15 @@ export function MatrixSaver() {
   if (mode === "off") return null;
 
   const burst = mode === "burst";
+  const saver = mode === "saver";
 
   return (
     <div
       className={burst ? "pointer-events-none fixed inset-0 z-[90] bg-bg/80" : "fixed inset-0 z-[90] bg-bg"}
       role="presentation"
-      aria-label={burst ? "G0DZ1LLa M0D3" : "Locked. Sign in again to continue."}
-      onPointerDown={burst ? undefined : () => window.location.assign("/login")}
-      onKeyDown={burst ? undefined : () => window.location.assign("/login")}
+      aria-label={burst ? "G0DZ1LLa M0D3" : saver ? "Matrix classic screensaver. Move to continue." : "Locked. Sign in again to continue."}
+      onPointerDown={burst || saver ? undefined : () => window.location.assign("/login")}
+      onKeyDown={burst || saver ? undefined : () => window.location.assign("/login")}
     >
       <canvas ref={canvasRef} className="block h-full w-full" />
     </div>

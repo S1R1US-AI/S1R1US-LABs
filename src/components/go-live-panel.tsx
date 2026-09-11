@@ -36,7 +36,7 @@ export function GoLivePanel() {
         <div className="mt-3">
           <p className="font-mono text-xs text-high">{GO_LIVE_HEADLINE}</p>
           <p className="mt-2 text-sm text-muted">
-            Current: S1R1US App build #111 (live sim launch). Carbon-fiber baseline: N3W Web App Installation Build
+            Current: S1R1US App build #113 (live sim launch). Carbon-fiber baseline: N3W Web App Installation Build
             (new theme) DEPLOY #68. Users, system Admin, and iOS/Google
             copy-admin compete on SUP3R B0WL with a separate board token. Live SUP3R B0WL stats run as-if-live until
             the deadline. Auto GM practice next. Auto AI agent access queued. Auto trade LOCKED — this host never

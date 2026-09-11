@@ -1722,6 +1722,10 @@ function PasswordPanel({
         Current admin: <span className="font-mono text-fg">{adminName || "—"}</span>. Change name, password,
         or both. Current password is required. New password 12+ characters if you set one.
       </p>
+      <p className="mt-2 text-xs leading-relaxed text-muted">
+        Extra layer 2FA: enroll YubiKey slots 1 and 2 in the Yubi panel beside this one — two hardware slots
+        wherever Yubico standards call for them.
+      </p>
       <form onSubmit={(e) => void onSubmit(e)} className="mt-4 space-y-3">
         <label className="block text-sm" htmlFor="new-admin">
           New admin name

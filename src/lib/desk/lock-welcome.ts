@@ -104,7 +104,7 @@ export const LOCK_TUTORIAL = [
   {
     id: "go-live",
     title: "6. Proof of concept → soon live",
-    body: "S1R1US App build #111 (live sim launch) is proof of concept. Carbon-fiber baseline DEPLOY #68. Auto trade LOCKED. Practice cannot arm Coinbase. Go-live path started 2026-09-05. HARD DEADLINE 2026-12-01 09:00 America/New_York after counsel. Until then, G M0D3 AUTO and AI agents run as-live on live tape (auto-pause 07:00 ET, morning report 07:30 ET, resume). Championship World Cup pause stays system Admin.",
+    body: "S1R1US App build #113 (live sim launch) is proof of concept. Carbon-fiber baseline DEPLOY #68. Auto trade LOCKED. Practice cannot arm Coinbase. Go-live path started 2026-09-05. HARD DEADLINE 2026-12-01 09:00 America/New_York after counsel. Until then, G M0D3 AUTO and AI agents run as-live on live tape (auto-pause 07:00 ET, morning report 07:30 ET, resume). Championship World Cup pause stays system Admin.",
   },
   {
     id: "discover",

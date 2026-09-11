@@ -23,6 +23,7 @@ import {
   OSS_ROADMAP_AGENT_WELCOME,
   OSS_ROADMAP_HEADLINE,
   OSS_ROADMAP_PATH,
+  OSS_LICENSE_NOTICE,
   PRED_FOOTNOTE,
   REAL_MONEY_PRED_ESTIMATE,
   STATUS_LEGEND,
@@ -177,7 +178,7 @@ export function OssRoadmapPage() {
         </p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl text-fg">{TAB_OSS_ROADMAP}</h1>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted" title={TAB_HOVER_OSS_ROADMAP}>
-          {OSS_ROADMAP_HEADLINE}. {APP_NAME} ({LABS_NAME}) is proof of concept on S1R1US App build #111 and soon to be live software.
+          {OSS_ROADMAP_HEADLINE}. {APP_NAME} ({LABS_NAME}) is proof of concept on S1R1US App build #113 and soon to be live software.
           Started {GO_LIVE_START}. Full live status estimated{" "}
           <strong className="text-fg">{FULL_LIVE_ESTIMATE.label}</strong>. This host never places Coinbase orders. Open
           source: {GITHUB_URL}.
@@ -192,6 +193,10 @@ export function OssRoadmapPage() {
         <p id="disclaimer" className="mt-3 rounded-md border border-rule px-3 py-2 font-mono text-[11px] leading-relaxed text-muted">
           <strong className="legal-purple tracking-[0.12em]">DISCLAIMER</strong>
           <span className="ml-2 text-muted">updated {LEGAL_DISCLAIMER_UPDATED}.</span> {LEGAL_DISCLAIMER_SHORT} Terms and Privacy stay as published.
+        </p>
+        <p id="oss-license" className="mt-3 rounded-md border border-rule px-3 py-2 font-mono text-[11px] leading-relaxed text-muted">
+          <strong className="text-tab tracking-[0.12em]">OSS LICENSE</strong>
+          <span className="ml-2">{OSS_LICENSE_NOTICE}</span>
         </p>
 
         <QuantFlexWelcome compact />

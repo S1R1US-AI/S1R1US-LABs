@@ -14,15 +14,15 @@ const morning = readFileSync(new URL("../../components/morning-report-pdf.tsx", 
 const server = readFileSync(new URL("./live-sim.server.ts", import.meta.url), "utf8");
 
 describe("live-sim checkpoint sync", { concurrency: false }, () => {
-  it("baseline stays 68 and current checkpoint is 111 live-sim launch", () => {
+  it("baseline stays 68 and current checkpoint is 113 live-sim launch", () => {
     assert.equal(CHECKPOINT_BASELINE_N, 68);
-    assert.equal(CHECKPOINT_BUILD_N, 111);
-    assert.equal(checkpointId(), "111");
-    assert.equal(checkpointLabel(), "S1R1US App build #111");
+    assert.equal(CHECKPOINT_BUILD_N, 113);
+    assert.equal(checkpointId(), "113");
+    assert.equal(checkpointLabel(), "S1R1US App build #113");
     assert.match(CHECKPOINT_FOLD, /^2026-09-11/);
-    assert.match(liveSimNote("LIVE"), /S1R1US App build #111/);
+    assert.match(liveSimNote("LIVE"), /S1R1US App build #113/);
     const h = systemHealth();
-    assert.equal(h.checkpoint, "111");
+    assert.equal(h.checkpoint, "113");
     assert.equal(h.liveUnlocked, false);
     assert.equal(h.copyAdminCannotPauseChampionship, false);
     assert.equal(h.copyAdminMayPauseChampionship, true);

@@ -17,6 +17,8 @@ import { listActions } from "@/lib/desk/auto-defend";
 import { TapeFreezePanel } from "@/components/tape-freeze";
 import { HiveAdminPanel } from "@/components/hive-admin-panel";
 import { s3cSweepRows, s3cSweepScore } from "@/lib/desk/s3c-sweep";
+import { useSaverLock, saverLockLabel } from "@/lib/desk/saver-lock";
+import { WHITE_LABEL_NAME, WHITE_LABEL_PATH, WHITE_LABEL_WATCH } from "@/lib/desk/white-label";
 import { BACKUP_PIN, BACKUP_SHOW_DAYS, RESTORE_STEPS, backupEntries } from "@/lib/desk/backup-plan";
 import { OWL_SECURITY_POLICY, owlSecuritySummary } from "@/lib/desk/owl-forum";
 import { cn } from "@/lib/utils";
@@ -37,6 +39,8 @@ function tone(status: string) {
 
 export function SecurityDesk() {
   const token = useOperator((s) => s.token);
+  const saverLocked = useSaverLock((s) => s.locked);
+  const setSaverLocked = useSaverLock((s) => s.setLocked);
   const [sub, setSub] = useState<Sub>("firewall");
   const [backupExpand, setBackupExpand] = useState(false);
   const [rows, setRows] = useState<IntrusionRow[]>([]);
@@ -345,6 +349,12 @@ export function SecurityDesk() {
           ok
         />
         <Stat
+          kicker="Saver lock"
+          value={saverLocked ? "LOCKED" : "UNLOCKED"}
+          hint="idle screensaver · sign-out on trip"
+          ok
+        />
+        <Stat
           kicker="Data pulls"
           value={pullPaused ? "PAUSED" : "LIVE"}
           hint={pullPaused ? "last-good snapshot · APIs idle" : "5-minute mandate clock"}
@@ -415,6 +425,44 @@ export function SecurityDesk() {
       </Panel>
 
       <TapeFreezePanel onChange={setPullPaused} />
+
+      <Panel
+        className="mt-4"
+        kicker="Screensavers"
+        title={saverLocked ? "Screensaver lock — LOCKED" : "Screensaver lock — UNLOCKED"}
+        kickerClass={saverLocked ? "text-high" : "text-medium"}
+        titleClass={saverLocked ? "text-high" : "text-medium"}
+      >
+        <p className="text-sm leading-relaxed text-muted">
+          Two screensavers run on this site: the 2.5 s G0DZ1LLa M0D3 matrix rain every time /gm opens (never locks),
+          and the Matrix classic rain after 5 minutes of no user activity. This switch controls whether the idle
+          screensaver locks. {saverLockLabel(saverLocked)}
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Button
+            variant={saverLocked ? undefined : "primary"}
+            onClick={() => setSaverLocked(!saverLocked)}
+            disabled={!token}
+          >
+            {saverLocked ? "Unlock screensavers — display only" : "Lock screensavers — sign out on idle"}
+          </Button>
+        </div>
+        {!token ? <p className="mt-2 text-xs text-muted">System admin session required to change this.</p> : null}
+      </Panel>
+
+      <Panel
+        className="mt-4"
+        kicker="White label"
+        title={`${WHITE_LABEL_NAME} — watch`}
+        kickerClass="text-high"
+      >
+        <p className="text-sm leading-relaxed text-muted">{WHITE_LABEL_WATCH}</p>
+        <p className="mt-2 font-mono text-xs text-muted">
+          Download + config: <a className="text-tab hover:underline" href={WHITE_LABEL_PATH}>{WHITE_LABEL_PATH}</a>
+          {" · "}bad actors flagged by S3C Sweep, this tab, or the morning report are blocked from download and
+          config — their white label locks permanently. Only @_Mr_R0b0t0_ can override.
+        </p>
+      </Panel>
 
       <Panel
         className="mt-4"
@@ -1190,12 +1238,12 @@ export function SecurityDesk() {
             <>
               <Panel className="mt-4" kicker="S3C Sweep" title="Full system security sweep + audit" kickerClass="text-high">
                 <p className="text-sm leading-relaxed text-muted">
-                  Top 25 most important checks from the most recent S3C Sweep run. PASS / WARN / FAIL indicators.
+                  Top 28 most important checks from the most recent S3C Sweep run. PASS / WARN / FAIL indicators.
                   Score and summary also land on the 07:30 ET morning report.
                 </p>
                 <p className={cn("mt-2 font-mono text-sm", sweep.fail === 0 ? "text-high" : "text-sell")}>{sweep.headline}</p>
               </Panel>
-              <Panel className="mt-4" kicker="Top 25" title="Recent sweep — pass / fail indicators">
+              <Panel className="mt-4" kicker="Top 28" title="Recent sweep — pass / fail indicators">
                 <ul className="mt-1 divide-y divide-rule">
                   {sweepRows.map((r) => (
                     <li key={r.id} className="flex flex-wrap items-start gap-2 py-2 font-mono text-xs">
