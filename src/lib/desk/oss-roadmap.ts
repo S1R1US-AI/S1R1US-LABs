@@ -24,7 +24,7 @@ export const FULL_LIVE_ESTIMATE = {
   time: "09:00",
   tz: GO_LIVE_DEADLINE_TZ,
   label: GO_LIVE_DEADLINE_LABEL,
-  what: "G M0D3 AUTO and G M0D3 M@NU@L for users, Super Bowl GO-LIVE (paper titles stay paper here), native iOS App Store and Google Play education wrap. Operator unlock after counsel. This host still never places Coinbase orders. Live BTC stays on YOUR Coinbase.",
+  what: "G M0D3 AUTO and G M0D3 M@NU@L for users, SUP3R B0WL GO-LIVE (paper titles stay paper here), native iOS App Store and Google Play education wrap. Operator unlock after counsel. This host still never places Coinbase orders. Live BTC stays on YOUR Coinbase.",
   proofOfConceptUntil: true,
   thisHostCreates: false as const,
   hiveCustody: false as const,
@@ -186,7 +186,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/w0rld",
     status: "LIVE-PAPER",
     since: "2026-09-05",
-    note: "Galaxy invitational. Super Bowl winners + 5 wild cards + G M0D3 AUTO. Paper sim.",
+    note: "Galaxy invitational. SUP3R B0WL winners + 5 wild cards + G M0D3 AUTO. Paper sim.",
   },
   {
     id: "hive",
@@ -272,7 +272,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
   {
     id: "live-sim",
     name: "As-live G M0D3 AUTO + AI agents",
-    seo: "GM Mode AUTO live simulation",
+    seo: "G-M0de AUTO live simulation",
     path: "/gm",
     status: "LIVE-PAPER",
     since: "2026-09-06",
@@ -423,7 +423,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: false,
     status: "DONE",
     name: "PoC desk · DEPLOY #68",
-    detail: "Carbon-fiber desk, 7-B0T JSON, Forum, Leader Board, Super Bowl page, waitlist, dual-admin. Go-live path STARTED.",
+    detail: "Carbon-fiber desk, 7-B0T JSON, Forum, Leader Board, SUP3R B0WL page, waitlist, dual-admin. Go-live path STARTED.",
   },
   {
     id: "d1",
@@ -486,7 +486,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-09-06",
     estimate: false,
     status: "DONE",
-    name: "Super Bowl desks for Admins",
+    name: "SUP3R B0WL desks for Admins",
     detail: "System Admin and iOS/Google copy-admin compete with a separate board token. Public paper stats feed.",
   },
   {

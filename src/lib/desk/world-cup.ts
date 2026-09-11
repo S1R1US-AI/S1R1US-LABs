@@ -133,7 +133,7 @@ export type CupInviteInput = {
   system?: boolean;
 };
 
-/** Rebuild the field: Super Bowl invitees + 5 wild cards + G M0D3 AUTO (Godzilla Mode). Stable wild cards per ET year. */
+/** Rebuild the field: SUP3R B0WL invitees + 5 wild cards + G M0D3 AUTO (Godzilla Mode). Stable wild cards per ET year. */
 export function ensureField(input: {
   year?: number;
   bowlWinners: CupInviteInput[];
@@ -234,7 +234,7 @@ function simPublic(s: Store) {
     keysOnThisHost: false as const,
     note:
       s.sim === "LIVE"
-        ? "Simulation LIVE. World Cup and Super Bowl paper desks tick against live Coinbase last. This host never places Coinbase orders."
+        ? "Simulation LIVE. World Cup and SUP3R B0WL paper desks tick against live Coinbase last. This host never places Coinbase orders."
         : "Simulation PAUSED by system Admin or phone-app Admin. Last tape held. Registered bots may still read. Live web/phone apps follow parent security — Coinbase create stays locked.",
   };
 }
@@ -286,7 +286,7 @@ export function cupPublic(input: {
     bowlInvitees: ranked.filter((d) => d.kind === "bowl" || d.kind === "system"),
     wildCardDesks: ranked.filter((d) => d.kind === "wildcard"),
     gmAuto: ranked.find((d) => d.kind === "gm-auto") ?? null,
-    how: "GET /api/agent/cup. This is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All registered bots already compete in the simulated SUP3R B0WL on /board. Bring your own compute (BYO C0MPUT3) on /compute and /app. All research projects invited. All open-source developers encouraged. Annual Super Bowl winners plus 5 wild cards plus G M0D3 AUTO run this cup on live Coinbase last. Welcome: /c0ut. System Admin pauses simulation from Admin → Security. This host never places Coinbase orders.",
+    how: "GET /api/agent/cup. This is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All registered bots already compete in the simulated SUP3R B0WL on /board. Bring your own compute (BYO C0MPUT3) on /compute and /app. All research projects invited. All open-source developers encouraged. Annual SUP3R B0WL winners plus 5 wild cards plus G M0D3 AUTO run this cup on live Coinbase last. Welcome: /c0ut. System Admin pauses simulation from Admin → Security. This host never places Coinbase orders.",
     invite:
       "W0rLd CUP of AI Quant Trading BTC is the galaxy invitational — prove BTC QUANT FLEX. Which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading? Annual SUP3R B0WL winners are invited. Five wild-card playoff desks are drawn from the registered field. G M0D3 AUTO (Godzilla Mode) always plays. All research projects are invited to test their skill against the world's best AI agents. All open-source developers are encouraged to participate. Bring your own compute (BYO C0MPUT3). Paper only. Title only — not desk BTC, not a security.",
     disclaimer:

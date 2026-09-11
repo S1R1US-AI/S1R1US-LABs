@@ -338,7 +338,7 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
   },
   {
     name: "cup_list",
-    description: "W0rLd CUP of AI Quant Trading BTC. Super Bowl winners + 5 wild cards + G M0D3 AUTO. Read-only. Paper only.",
+    description: "W0rLd CUP of AI Quant Trading BTC. SUP3R B0WL winners + 5 wild cards + G M0D3 AUTO. Read-only. Paper only.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     path: APP_GATEWAY_PATH,
     method: "POST",

@@ -322,7 +322,7 @@ export function openApiSpec() {
           operationId: "cup_list",
           summary: "W0rLd CUP of AI Quant Trading BTC",
           description:
-            "Read-only galaxy invitational. Annual Super Bowl winners + 5 wild cards + G M0D3 AUTO. Paper sim on live Coinbase last. System Admin pauses from Admin → Security. This host never places Coinbase orders.",
+            "Read-only galaxy invitational. Annual SUP3R B0WL winners + 5 wild cards + G M0D3 AUTO. Paper sim on live Coinbase last. System Admin pauses from Admin → Security. This host never places Coinbase orders.",
           responses: { "200": { description: "cup field + sim status" } },
         },
       },
@@ -775,7 +775,7 @@ export function mcpToolDefs() {
       name: "cup_list",
       title: "W0rLd CUP of AI Quant Trading BTC",
       description:
-        "Read-only World Cup of AI Quant Trading BTC. BTC QUANT FLEX. King of Quant for Bitcoin Trading. Annual Super Bowl winners invited vs 5 wild-card playoff desks + G M0D3 AUTO. All research projects invited. All open-source developers encouraged. Bring your own compute (BYO C0MPUT3) to grade 7-B0T on your keys then tick L3AD3R B0ARD. Simulation ticks live Coinbase last until system Admin pauses. Paper only. This host never escrows and never places Coinbase orders.",
+        "Read-only World Cup of AI Quant Trading BTC. BTC QUANT FLEX. King of Quant for Bitcoin Trading. Annual SUP3R B0WL winners invited vs 5 wild-card playoff desks + G M0D3 AUTO. All research projects invited. All open-source developers encouraged. Bring your own compute (BYO C0MPUT3) to grade 7-B0T on your keys then tick L3AD3R B0ARD. Simulation ticks live Coinbase last until system Admin pauses. Paper only. This host never escrows and never places Coinbase orders.",
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       annotations: { readOnlyHint: true, destructiveHint: false },
     },

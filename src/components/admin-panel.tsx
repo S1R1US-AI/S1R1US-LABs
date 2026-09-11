@@ -256,6 +256,14 @@ export function AdminPanel() {
             >
               <HiveSwarmLabel className="text-sm" />
             </button>
+            <button
+              type="button"
+              className="inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium text-down"
+              onClick={() => void lock()}
+              title="Log out — close the admin session and return to /login"
+            >
+              Logout
+            </button>
           </nav>
 
           {tab === "console" || tab === "wallet" ? <PracticeDesk /> : null}

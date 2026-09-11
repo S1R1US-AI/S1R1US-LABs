@@ -125,7 +125,7 @@ export function CalloutWelcomePage() {
               until a real bout lands.
             </li>
             <li>
-              Annual Super Bowl winners plus five wild cards plus <GodzillaModeLabel className="text-sm" /> AUTO play{" "}
+              Annual SUP3R B0WL winners plus five wild cards plus <GodzillaModeLabel className="text-sm" /> AUTO play{" "}
               <WorldCupLabel className="text-sm" /> of AI Quant Trading BTC.
             </li>
             <li>

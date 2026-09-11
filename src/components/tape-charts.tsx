@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   Bar,
   CartesianGrid,
@@ -15,7 +15,7 @@ import {
 } from "recharts";
 import { Panel } from "@/components/shell";
 import { overlayBars, type OverlayBar } from "@/lib/desk/indicators";
-import type { DeskSnapshot } from "@/lib/desk/types";
+import type { Candle, DeskSnapshot } from "@/lib/desk/types";
 import { money } from "@/components/helios-card";
 import { barBlue, cn, BTC_TONE, rsiHex, rsiTone } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -85,16 +85,99 @@ function CandleLayer({
   );
 }
 
-const PANES = ["Candle", "MACD", "RSI", "Vol"] as const;
-type Pane = (typeof PANES)[number];
+const RANGES = ["24 HR", "7-DAY", "365-DAY"] as const;
+type RangeKey = (typeof RANGES)[number];
+const RANGE_SPEC: Record<RangeKey, { granularity: number; days: number }> = {
+  "24 HR": { granularity: 3600, days: 1 },
+  "7-DAY": { granularity: 21600, days: 7 },
+  "365-DAY": { granularity: 86400, days: 365 },
+};
 
-/** Compact Coinbase-style tape for the bots 1–6 workspace. */
+/** Coinbase public candles for a range button. Max 300 rows per request — chunked. */
+async function fetchRangeCandles(range: RangeKey): Promise<Candle[]> {
+  const { granularity, days } = RANGE_SPEC[range];
+  const endMs = Date.now();
+  const startMs = endMs - days * 86400 * 1000;
+  const stepMs = 290 * granularity * 1000;
+  const out: Candle[] = [];
+  for (let from = startMs; from < endMs; from += stepMs) {
+    const to = Math.min(from + stepMs, endMs);
+    const url = `https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=${granularity}&start=${new Date(from).toISOString()}&end=${new Date(to).toISOString()}`;
+    const res = await fetch(url, { headers: { accept: "application/json" } });
+    if (!res.ok) throw new Error(`coinbase ${res.status}`);
+    const rows = (await res.json()) as number[][];
+    for (const row of rows ?? []) {
+      const c = {
+        t: Number(row[0]),
+        low: Number(row[1]),
+        high: Number(row[2]),
+        open: Number(row[3]),
+        close: Number(row[4]),
+        volume: Number(row[5]),
+      };
+      if (c.t > 0 && Number.isFinite(c.close) && c.close > 0) out.push(c);
+    }
+  }
+  const seen = new Set<number>();
+  return out
+    .filter((c) => (seen.has(c.t) ? false : (seen.add(c.t), true)))
+    .sort((a, b) => a.t - b.t);
+}
+
+function IndicatorBtn({ on, onClick, label }: { on: boolean; onClick: () => void; label: string }) {
+  return (
+    <button
+      type="button"
+      aria-pressed={on}
+      onClick={onClick}
+      className={cn(
+        "indicator-title h-7 rounded-sm border px-2 text-[10px] font-semibold tracking-[0.08em] uppercase",
+        on ? "border-tab bg-tab/20" : "border-rule",
+      )}
+    >
+      {label}
+    </button>
+  );
+}
+
+/** Bitcoin Current Market tape — Coinbase data with clickable graph overlays. */
 export function WorkspaceTape({ snap }: { snap: DeskSnapshot | null }) {
-  const [pane, setPane] = useState<Pane>("Candle");
-  const [showEma, setShowEma] = useState(true);
-  const [showBb, setShowBb] = useState(true);
-  const data = useMemo(() => overlayBars(snap?.candles ?? []), [snap?.candles]);
-  const rsiData = data.filter((d) => d.rsi != null);
+  const [showCandle, setShowCandle] = useState(true);
+  const [showRsi, setShowRsi] = useState(true);
+  const [showVol, setShowVol] = useState(true);
+  const [showMacd50, setShowMacd50] = useState(false);
+  const [showMacd200, setShowMacd200] = useState(false);
+  const [showBb, setShowBb] = useState(false);
+  const [showEma, setShowEma] = useState(false);
+  const [showSma, setShowSma] = useState(false);
+  const [range, setRange] = useState<RangeKey | null>(null);
+  const [rangeCandles, setRangeCandles] = useState<Candle[] | null>(null);
+  const [rangeErr, setRangeErr] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!range) {
+      setRangeCandles(null);
+      setRangeErr(null);
+      return;
+    }
+    let live = true;
+    setRangeErr(null);
+    fetchRangeCandles(range)
+      .then((c) => {
+        if (live) setRangeCandles(c);
+      })
+      .catch(() => {
+        if (live) setRangeErr("Coinbase range pull failed — showing live hourly tape.");
+      });
+    return () => {
+      live = false;
+    };
+  }, [range]);
+
+  const data = useMemo(() => {
+    const candles = range && rangeCandles?.length ? rangeCandles : (snap?.candles ?? []);
+    return overlayBars(candles);
+  }, [range, rangeCandles, snap?.candles]);
   const last = data[data.length - 1];
   const maxVol = Math.max(0, ...data.map((d) => d.volume));
   const pxDomain = useMemo((): [number, number] | [string, string] => {
@@ -102,57 +185,44 @@ export function WorkspaceTape({ snap }: { snap: DeskSnapshot | null }) {
     let lo = Infinity;
     let hi = -Infinity;
     for (const d of data) {
-      lo = Math.min(lo, d.low, d.bbLower ?? d.low, d.ema12 ?? d.low);
-      hi = Math.max(hi, d.high, d.bbUpper ?? d.high, d.ema12 ?? d.high);
+      lo = Math.min(lo, d.low, showBb ? (d.bbLower ?? d.low) : d.low, showEma ? (d.ema12 ?? d.low) : d.low);
+      hi = Math.max(hi, d.high, showBb ? (d.bbUpper ?? d.high) : d.high, showEma ? (d.ema12 ?? d.high) : d.high);
     }
     const pad = (hi - lo) * 0.06 || 50;
     return [lo - pad, hi + pad];
-  }, [data]);
+  }, [data, showBb, showEma]);
+
+  const tickLabel = (v: number) =>
+    range === "365-DAY" || range === "7-DAY"
+      ? new Date(v * 1000).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+      : new Date(v * 1000).toLocaleTimeString("en-US", { hour: "numeric" });
 
   return (
     <div className="mt-3 min-w-0">
       <div className="mb-2 flex flex-wrap items-center gap-1">
-        {PANES.map((p) => (
-          <button
-            key={p}
-            type="button"
-            aria-pressed={pane === p}
-            onClick={() => setPane(p)}
-            className={cn(
-              "indicator-title h-7 rounded-sm border px-2 text-[10px] font-semibold tracking-[0.08em] uppercase",
-              pane === p ? "border-tab bg-tab/20" : "border-rule",
-            )}
-          >
-            {p}
-          </button>
+        <IndicatorBtn on={showCandle} onClick={() => setShowCandle((v) => !v)} label="Candle" />
+        <IndicatorBtn on={showRsi} onClick={() => setShowRsi((v) => !v)} label="RSI" />
+        <IndicatorBtn on={showVol} onClick={() => setShowVol((v) => !v)} label="24-Vol" />
+        <IndicatorBtn on={showMacd50} onClick={() => setShowMacd50((v) => !v)} label="MACD 50" />
+        <IndicatorBtn on={showMacd200} onClick={() => setShowMacd200((v) => !v)} label="MACD 200" />
+        <IndicatorBtn on={showBb} onClick={() => setShowBb((v) => !v)} label="BB" />
+        <IndicatorBtn on={showEma} onClick={() => setShowEma((v) => !v)} label="EMA" />
+        <IndicatorBtn on={showSma} onClick={() => setShowSma((v) => !v)} label="SMA" />
+        {RANGES.map((r) => (
+          <IndicatorBtn key={r} on={range === r} onClick={() => setRange((cur) => (cur === r ? null : r))} label={r} />
         ))}
-        <button
-          type="button"
-          aria-pressed={showEma}
-          onClick={() => setShowEma((v) => !v)}
-          className="indicator-title ml-auto h-7 rounded-sm px-2 text-[10px] font-semibold tracking-[0.08em] uppercase"
-        >
-          EMA
-        </button>
-        <button
-          type="button"
-          aria-pressed={showBb}
-          onClick={() => setShowBb((v) => !v)}
-          className="indicator-title h-7 rounded-sm px-2 text-[10px] font-semibold tracking-[0.08em] uppercase"
-        >
-          BB
-        </button>
       </div>
+      {rangeErr ? <p className="mb-1 text-[10px] text-down">{rangeErr}</p> : null}
       <div className="tape-compact">
         {!data.length ? (
           <p className="text-xs text-muted">Waiting for Coinbase candles.</p>
-        ) : pane === "Candle" ? (
+        ) : (
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
               <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.7} />
               <XAxis
                 dataKey="t"
-                tickFormatter={(v) => new Date(Number(v) * 1000).toLocaleTimeString("en-US", { hour: "numeric" })}
+                tickFormatter={(v) => tickLabel(Number(v))}
                 tick={{ fill: "var(--color-muted)", fontSize: 9 }}
                 axisLine={false}
                 tickLine={false}
@@ -169,7 +239,9 @@ export function WorkspaceTape({ snap }: { snap: DeskSnapshot | null }) {
                 width={36}
                 orientation="right"
               />
-              <YAxis yAxisId="vol" orientation="left" domain={[0, (max: number) => max * 3.8]} hide />
+              <YAxis yAxisId="vol" orientation="left" domain={[0, Math.max(1, maxVol) * 3.8]} hide />
+              <YAxis yAxisId="rsi" domain={[0, 400]} hide />
+              <YAxis yAxisId="macd" domain={["auto", "auto"]} hide />
               <Tooltip
                 contentStyle={{
                   background: "var(--color-surface)",
@@ -181,15 +253,36 @@ export function WorkspaceTape({ snap }: { snap: DeskSnapshot | null }) {
                 labelFormatter={(l) => hourLabel(Number(l))}
                 formatter={(value, name) => {
                   const n = typeof value === "number" ? value : Number(value);
-                  if (name === "volume") return [`${n.toFixed(1)} BTC`, "Vol"];
+                  if (name === "volume") return [`${n.toFixed(1)} BTC`, "24-Vol"];
+                  if (name === "RSI-14") return [n.toFixed(1), "RSI-14"];
+                  if (String(name).startsWith("MACD")) return [n.toFixed(1), String(name)];
                   return [money(n, 0), String(name)];
                 }}
               />
-              <Bar yAxisId="vol" dataKey="volume" name="volume" maxBarSize={8} isAnimationActive={false}>
-                {data.map((d) => (
-                  <Cell key={d.t} fill={d.up ? UP : DN} fillOpacity={0.35} />
-                ))}
-              </Bar>
+              {showVol ? (
+                <Bar yAxisId="vol" dataKey="volume" name="volume" maxBarSize={8} isAnimationActive={false}>
+                  {data.map((d) => (
+                    <Cell key={d.t} fill={d.up ? UP : DN} fillOpacity={0.35} />
+                  ))}
+                </Bar>
+              ) : null}
+              {showMacd50 ? (
+                <Bar yAxisId="macd" dataKey="macd50Hist" name="MACD 50" maxBarSize={6} isAnimationActive={false}>
+                  {data.map((d) => (
+                    <Cell key={d.t} fill={(d.macd50Hist ?? 0) >= 0 ? UP : DN} fillOpacity={0.55} />
+                  ))}
+                </Bar>
+              ) : null}
+              {showMacd200 ? (
+                <Bar yAxisId="macd" dataKey="macd200Hist" name="MACD 200" maxBarSize={6} isAnimationActive={false}>
+                  {data.map((d) => (
+                    <Cell key={d.t} fill={(d.macd200Hist ?? 0) >= 0 ? "var(--color-tab)" : DN} fillOpacity={0.45} />
+                  ))}
+                </Bar>
+              ) : null}
+              {showRsi ? (
+                <Line yAxisId="rsi" type="monotone" dataKey="rsi" name="RSI-14" stroke="var(--color-expand, #a855f7)" strokeWidth={1.2} strokeOpacity={0.85} dot={false} isAnimationActive={false} />
+              ) : null}
               {showBb ? (
                 <Line yAxisId="px" type="monotone" dataKey="bbUpper" stroke="var(--color-muted)" strokeOpacity={0.5} strokeDasharray="3 3" dot={false} name="BB upper" isAnimationActive={false} />
               ) : null}
@@ -202,50 +295,22 @@ export function WorkspaceTape({ snap }: { snap: DeskSnapshot | null }) {
               {showEma ? (
                 <Line yAxisId="px" type="monotone" dataKey="ema26" stroke="var(--color-tab)" strokeOpacity={0.65} strokeDasharray="4 3" strokeWidth={1.2} dot={false} name="EMA26" isAnimationActive={false} />
               ) : null}
-              <Customized
-                component={(props: { xAxisMap?: Record<string, Axis>; yAxisMap?: Record<string, Axis> }) => (
-                  <CandleLayer xAxisMap={props.xAxisMap} yAxisMap={props.yAxisMap} rows={data} />
-                )}
-              />
-            </ComposedChart>
-          </ResponsiveContainer>
-        ) : pane === "MACD" ? (
-          <ResponsiveContainer width="100%" height="100%">
-            <ComposedChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-              <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.6} />
-              <XAxis dataKey="t" hide />
-              <YAxis hide domain={["auto", "auto"]} />
-              <ReferenceLine y={0} stroke="var(--color-muted)" strokeOpacity={0.45} />
-              <Tooltip contentStyle={{ background: "var(--color-surface)", border: "1px solid var(--color-rule)", fontSize: 11, color: "var(--color-fg)" }} />
-              <Bar dataKey="macdHist" maxBarSize={6} isAnimationActive={false}>
-                {data.map((d) => (
-                  <Cell key={d.t} fill={(d.macdHist ?? 0) >= 0 ? UP : DN} />
-                ))}
-              </Bar>
-            </ComposedChart>
-          </ResponsiveContainer>
-        ) : pane === "RSI" ? (
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={rsiData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-              <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.6} />
-              <YAxis domain={[0, 100]} hide />
-              <ReferenceLine y={70} stroke={DN} strokeOpacity={0.5} strokeDasharray="3 3" />
-              <ReferenceLine y={50} stroke="var(--color-muted)" strokeOpacity={0.35} />
-              <ReferenceLine y={30} stroke={UP} strokeOpacity={0.5} strokeDasharray="3 3" />
-              <Line type="monotone" dataKey="rsi" stroke="var(--color-tab)" strokeWidth={1.6} dot={false} isAnimationActive={false} />
-            </LineChart>
-          </ResponsiveContainer>
-        ) : (
-          <ResponsiveContainer width="100%" height="100%">
-            <ComposedChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-              <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.6} />
-              <XAxis dataKey="t" hide />
-              <YAxis hide />
-              <Bar dataKey="volume" maxBarSize={8} isAnimationActive={false}>
-                {data.map((d) => (
-                  <Cell key={d.t} fill={d.up ? UP : DN} />
-                ))}
-              </Bar>
+              {showSma ? (
+                <Line yAxisId="px" type="monotone" dataKey="sma20" stroke={UP} strokeWidth={1.3} dot={false} name="SMA20" isAnimationActive={false} />
+              ) : null}
+              {showSma ? (
+                <Line yAxisId="px" type="monotone" dataKey="sma50" stroke={UP} strokeOpacity={0.6} strokeDasharray="4 3" strokeWidth={1.1} dot={false} name="SMA50" isAnimationActive={false} />
+              ) : null}
+              {!showCandle ? (
+                <Line yAxisId="px" type="monotone" dataKey="close" stroke={BTC_TONE} strokeWidth={1.5} dot={false} name="Close" isAnimationActive={false} />
+              ) : null}
+              {showCandle ? (
+                <Customized
+                  component={(props: { xAxisMap?: Record<string, Axis>; yAxisMap?: Record<string, Axis> }) => (
+                    <CandleLayer xAxisMap={props.xAxisMap} yAxisMap={props.yAxisMap} rows={data} />
+                  )}
+                />
+              ) : null}
             </ComposedChart>
           </ResponsiveContainer>
         )}
@@ -253,7 +318,9 @@ export function WorkspaceTape({ snap }: { snap: DeskSnapshot | null }) {
       {last ? (
         <p className="mt-1 font-mono text-[10px] text-muted">
           <span className={last.up ? "text-high" : "text-sell"}>{last.up ? "▲" : "▼"}</span>
-          {" · EMA12/26 · BB · vol green/red · "}
+          {" · "}
+          {range ?? "live hourly"}
+          {" · toggles: Candle RSI 24-Vol MACD BB EMA SMA · "}
           {snap?.btc.source ?? "Coinbase"}
         </p>
       ) : null}

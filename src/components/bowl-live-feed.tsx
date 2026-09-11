@@ -50,7 +50,7 @@ function usd(n: number | null | undefined) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 }
 
-/** Public Super Bowl / AI-agent stats. Paper live until the go-live deadline. */
+/** Public SUP3R B0WL / AI-agent stats. Paper live until the go-live deadline. */
 export function BowlLiveFeed({ compact = false, className }: { compact?: boolean; className?: string }) {
   const [feed, setFeed] = useState<Feed | null>(null);
 

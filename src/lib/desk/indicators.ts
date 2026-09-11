@@ -125,6 +125,17 @@ export function smaLast(values: number[], period: number): number | null {
   return s / period;
 }
 
+export function smaSeries(values: number[], period: number): (number | null)[] {
+  const out: (number | null)[] = values.map(() => null);
+  let sum = 0;
+  for (let i = 0; i < values.length; i++) {
+    sum += values[i]!;
+    if (i >= period) sum -= values[i - period]!;
+    if (i >= period - 1) out[i] = sum / period;
+  }
+  return out;
+}
+
 export function emaLast(values: number[], period: number): number | null {
   const s = ema(values, period);
   for (let i = s.length - 1; i >= 0; i--) if (s[i] != null) return s[i];
@@ -197,6 +208,8 @@ export type OverlayBar = {
   macd200Hist: number | null;
   ema50: number | null;
   ema200: number | null;
+  sma20: number | null;
+  sma50: number | null;
   up: boolean;
 };
 
@@ -209,6 +222,8 @@ export function overlayBars(candles: Candle[]): OverlayBar[] {
   const e200 = ema(closes, 200);
   const bb = bollinger(closes, 20, 2);
   const rsi = rsiSeries(closes, 14);
+  const s20 = smaSeries(closes, 20);
+  const s50 = smaSeries(closes, 50);
   const hist = macdHistSeries(closes, 12, 26, 9);
   const hist50 = macdHistSeries(closes, 50, 100, 9);
   const hist200 = macdHistSeries(closes, 50, 200, 9);
@@ -229,6 +244,8 @@ export function overlayBars(candles: Candle[]): OverlayBar[] {
     macdHist: hist[i] ?? null,
     macd50Hist: hist50[i] ?? null,
     macd200Hist: hist200[i] ?? null,
+    sma20: s20[i] ?? null,
+    sma50: s50[i] ?? null,
     up: c.close >= c.open,
   }));
 }

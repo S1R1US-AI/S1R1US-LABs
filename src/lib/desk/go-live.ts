@@ -1,7 +1,7 @@
 /** Go-live path — began 2026-09-05. Hard deadline 2026-12-01 ET. Live Coinbase create stays locked until operator unlock. */
 
 export const GO_LIVE_START = "2026-09-05";
-/** Definite deadline: live G M0D3 AUTO + MANUAL + Super Bowl participation for users. America/New_York. */
+/** Definite deadline: live G M0D3 AUTO + MANUAL + SUP3R B0WL participation for users. America/New_York. */
 export const GO_LIVE_DEADLINE = "2026-12-01";
 export const GO_LIVE_DEADLINE_TZ = "America/New_York";
 export const GO_LIVE_DEADLINE_LABEL = `${GO_LIVE_DEADLINE} 09:00 ${GO_LIVE_DEADLINE_TZ}`;
@@ -33,7 +33,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "PoC rails",
     when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP SaaS key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites Super Bowl winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. LoCK3D STATUS (/l0ck) is the public lock tutorial and Admin lock board — closed GIF LOCKED, open GIF UNLOCKED; live tape is status only. C@LL 0UT simulation welcome /c0ut. System Admin and copy-admin pause championship sim from Admin → Security. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live Super Bowl / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #lock3d-status #live-vs-sim #how-to-use #go-live. One DigitalOcean production app. No GPU.",
+    goal: "N3W Web App Installation Build (new theme) DEPLOY #68 is the desk. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP SaaS key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites SUP3R B0WL winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. LoCK3D STATUS (/l0ck) is the public lock tutorial and Admin lock board — closed GIF LOCKED, open GIF UNLOCKED; live tape is status only. C@LL 0UT simulation welcome /c0ut. System Admin and copy-admin pause championship sim from Admin → Security. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live SUP3R B0WL / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #lock3d-status #live-vs-sim #how-to-use #go-live. One DigitalOcean production app. No GPU.",
     hold: "This host never places Coinbase orders. Public tree stays --dry-run. Admin / Yubi / vault stay off the OSS how-to.",
   },
   {
@@ -42,7 +42,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "Auto GM / 7-B0T call board",
     when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "G M0D3 AUTO and 7-B0T AUTO show would-accumulate calls on the live tape. GM B0aRd is LIVE as paper competition — SUP3R B0WL of AI AGENTs. Paper fills on this host are GM B0aRd only. Coinbase create stays off. Live feed shows Super Bowl / AI-agent stats as if live until the deadline.",
+    goal: "G M0D3 AUTO and 7-B0T AUTO show would-accumulate calls on the live tape. GM B0aRd is LIVE as paper competition — SUP3R B0WL of AI AGENTs. Paper fills on this host are GM B0aRd only. Coinbase create stays off. Live feed shows SUP3R B0WL / AI-agent stats as if live until the deadline.",
     hold: "LIVE_UNLOCKED remains false. No Coinbase create from this app.",
   },
   {
@@ -60,7 +60,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "G M0D3 AUTO + MANUAL live for users",
     when: `DEADLINE ${GO_LIVE_DEADLINE_LABEL} — operator unlock only`,
     status: "LOCKED",
-    goal: "Users (human, AI agent, system Admin competitor, download-app Admin) may run G M0D3 AUTO and GM MANUAL. Live execution, if armed, stays on THEIR Coinbase — this host never holds keys. Super Bowl participation stays paper on this host unless the user executes on their own book.",
+    goal: "Users (human, AI agent, system Admin competitor, download-app Admin) may run G M0D3 AUTO and GM MANUAL. Live execution, if armed, stays on THEIR Coinbase — this host never holds keys. SUP3R B0WL participation stays paper on this host unless the user executes on their own book.",
     hold: "Human-in-the-loop + dual Yubi for outgoing on the operator book. Seek a licensed attorney and a licensed financial professional first. This website does not grow a GPU farm.",
   },
   {
@@ -69,7 +69,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "SUP3R B0WL live championship + store apps",
     when: `DEADLINE ${GO_LIVE_DEADLINE_LABEL}`,
     status: "LOCKED",
-    goal: "Native iOS App Store and Google Play wrap the PWA (education). Super Bowl / Leader Board / C@LL 0UT stay paper contests of skill (Apple 5.3 / Google Play: no real-money gaming, no escrow). Un1v3rs@L K1Ng annual window opens 1 December ET. Live stats feed flips from DEMO-LIVE to GO-LIVE.",
+    goal: "Native iOS App Store and Google Play wrap the PWA (education). SUP3R B0WL / Leader Board / C@LL 0UT stay paper contests of skill (Apple 5.3 / Google Play: no real-money gaming, no escrow). Un1v3rs@L K1Ng annual window opens 1 December ET. Live stats feed flips from DEMO-LIVE to GO-LIVE.",
     hold: "Legal entity listing. Apple/Google are not sponsors. No in-app crypto sales. Gifts outside the app. Counsel memo before US live invites.",
   },
   {
@@ -91,7 +91,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
     when: "2026-09-05",
     status: "DONE",
     owner: "host",
-    need: "Carbon-fiber desk, 7-B0T JSON, Forum, Leader Board, Super Bowl page, waitlist, dual-admin planes, LoCK3D STATUS public tutorial + Admin lock board.",
+    need: "Carbon-fiber desk, 7-B0T JSON, Forum, Leader Board, SUP3R B0WL page, waitlist, dual-admin planes, LoCK3D STATUS public tutorial + Admin lock board.",
   },
   {
     id: "s1",
@@ -105,7 +105,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
   {
     id: "s2",
     n: 2,
-    name: "Super Bowl desks for Admins",
+    name: "SUP3R B0WL desks for Admins",
     when: "2026-09-06",
     status: "DONE",
     owner: "operator",
@@ -150,11 +150,11 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
   {
     id: "s7",
     n: 7,
-    name: "G M0D3 AUTO + MANUAL for users + Super Bowl GO-LIVE",
+    name: "G M0D3 AUTO + MANUAL for users + SUP3R B0WL GO-LIVE",
     when: GO_LIVE_DEADLINE_LABEL,
     status: "LOCKED",
     owner: "operator",
-    need: "Operator unlock after counsel. Users run G M0D3 AUTO / MANUAL. Super Bowl participation stays paper here; live BTC on THEIR keys. Annual Un1v3rs@L K1Ng window opens. Seek licensed professional + licensed attorney first.",
+    need: "Operator unlock after counsel. Users run G M0D3 AUTO / MANUAL. SUP3R B0WL participation stays paper here; live BTC on THEIR keys. Annual Un1v3rs@L K1Ng window opens. Seek licensed professional + licensed attorney first.",
   },
   {
     id: "s8",

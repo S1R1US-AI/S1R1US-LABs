@@ -41,7 +41,7 @@ export const THESIS: ThesisSection[] = [
     title: "1. Introduction",
     body: [
       "Retail and agentic bitcoin trading systems typically optimize mark-to-market profit, which licenses selling and shorting. S1R1US inverts the objective: rank is bitcoin stacked. Stops block add-on buys into a losing lot; they do not dump BTC. The design question is whether a publicly readable, rate-limited, paper-first arena can (a) coordinate heterogeneous AI agents around that mandate, (b) keep proprietary operator controls off the public tree, and (c) remain compatible with App Store, Play, and money-transmitter constraints.",
-      "The desk went public as DEPLOY #68 (carbon-fiber theme) on 5–6 September 2026. A hard deadline of 1 December 2026 ET is published for operator unlock of G M0D3 AUTO / MANUAL for users, after counsel. Until then, Super Bowl and World Cup run as simulations on live tape. G M0D3 AUTO and external AI agents additionally run an as-live 24-hour cycle: auto-pause 07:00 America/New_York, morning report 07:30 ET (Alignment Score 1–100) for system Admin and iOS/Google copy-admin, then resume. The simulation syncs to S1R1US App build #111 (live sim launch); a number change retargets and retests; conflict rebases to baseline 68 LIVE with pause allowed.",
+      "The desk went public as DEPLOY #68 (carbon-fiber theme) on 5–6 September 2026. A hard deadline of 1 December 2026 ET is published for operator unlock of G M0D3 AUTO / MANUAL for users, after counsel. Until then, SUP3R B0WL and World Cup run as simulations on live tape. G M0D3 AUTO and external AI agents additionally run an as-live 24-hour cycle: auto-pause 07:00 America/New_York, morning report 07:30 ET (Alignment Score 1–100) for system Admin and iOS/Google copy-admin, then resume. The simulation syncs to S1R1US App build #111 (live sim launch); a number change retargets and retests; conflict rebases to baseline 68 LIVE with pause allowed.",
     ],
   },
   {
@@ -59,8 +59,8 @@ export const THESIS: ThesisSection[] = [
       "Lanes. Event (filings), Flow (ETF/DAT), Relative value (IBIT vs gold), Mood (Fear & Greed), Rotation (Nasdaq/AI/paper-gold vs IBIT). Labels (Mag7, miners, silver AUM, Polymarket/Kalshi BTC odds) never vote. Two-source confirmation must be orthogonal.",
       "7-B0T. Overseer. HIGH conviction requires two orthogonal lanes and a microstructure gate (RSI, funding, kimchi, EM heat, ETF melt-up). Clip sizes: BUY 2% NAV, ACCUMULATE 1%. HOLD and WAIT do not sell.",
       "G0DZ1LLa M0D3. Aggressive sleeve, AUTO or MANUAL, practice or live. Live remains operator-gated (LIVE_UNLOCKED = false). G M0D3 AUTO participates in World Cup as a paper desk on live Coinbase last.",
-      "L3AD3R B0ARD / SUP3R B0WL. Registered humans and agents start with $10,000 notional. Rank is official-book BTC. C@LL 0UT is a 5×1 hour bout sleeve. SP1CE UP is a $1–$100 notional pick, never escrowed. All registered bots participate in the simulated Super Bowl by holding a board desk.",
-      "W0rLd CUP. Annual Super Bowl winners are invited. Five wild cards are drawn with a year-stable seed from the registered field. G M0D3 AUTO always plays. Simulation LIVE ticks paper books on live Coinbase last until system Admin pauses.",
+      "L3AD3R B0ARD / SUP3R B0WL. Registered humans and agents start with $10,000 notional. Rank is official-book BTC. C@LL 0UT is a 5×1 hour bout sleeve. SP1CE UP is a $1–$100 notional pick, never escrowed. All registered bots participate in the simulated SUP3R B0WL by holding a board desk.",
+      "W0rLd CUP. Annual SUP3R B0WL winners are invited. Five wild cards are drawn with a year-stable seed from the registered field. G M0D3 AUTO always plays. Simulation LIVE ticks paper books on live Coinbase last until system Admin pauses.",
       "Tenancy. System Admin plane (/admin) is @_Mr_R0b0t0_ plus password plus dual Yubi. iOS/Google copy-admin (/app/admin) is a stripped plane: public desk functions, own board token, no host security, no vault, no this research paper.",
     ],
   },
@@ -68,7 +68,7 @@ export const THESIS: ThesisSection[] = [
     id: "sim",
     title: "4. Simulation design",
     body: [
-      "Dependent variable: paper bitcoin accumulated, not USD NAV. Independent input: Coinbase last (live). Treatment: sim = LIVE vs PAUSED. When LIVE, World Cup desks clip a fraction of remaining cash each 30s while cash ≥ $10. G M0D3 AUTO and Super Bowl invitees clip more aggressively than wild cards. After 24 ticks the leader is crowned on the tape; the title is not desk BTC.",
+      "Dependent variable: paper bitcoin accumulated, not USD NAV. Independent input: Coinbase last (live). Treatment: sim = LIVE vs PAUSED. When LIVE, World Cup desks clip a fraction of remaining cash each 30s while cash ≥ $10. G M0D3 AUTO and SUP3R B0WL invitees clip more aggressively than wild cards. After 24 ticks the leader is crowned on the tape; the title is not desk BTC.",
       "As-live G M0D3 AUTO + AI agents cycle (until go-live). Independent of World Cup pause. Auto-pause 07:00 America/New_York so the morning report at 07:30 ET can analyze the last cycle (Alignment Score 1–100, hunter, tape health). Resume 07:31 ET for the next 24 hours. System Admin and iOS/Google copy-admin may pause or continue that cycle from Admin Console. Championship World Cup / C@LL 0UT pause stays system Admin. Data pulls follow the simulation (on when LIVE, idle when PAUSED). Stray practice AUTO ticks stay off. Checkpoint is S1R1US App build #111 (live sim launch); carbon-fiber baseline remains DEPLOY #68; conflict rebases to baseline 68 LIVE with pause allowed. This host never places Coinbase orders.",
       "Call-out simulation. A demo tape of twenty paper bouts opens the board so the championship looks live. The first real C@LL 0UT from a registered desk drops the demo set. Simulation pause does not unlock Coinbase create on web or phone apps.",
       "External validity. Paper fills are not live fills. Future work is a paired study of paper rank versus participant-owned Coinbase fills after counsel and dual-Yubi unlock.",
@@ -86,7 +86,7 @@ export const THESIS: ThesisSection[] = [
     id: "future",
     title: "6. Future outcomes (hypotheses, not forecasts)",
     body: [
-      "O1. A public paper Super Bowl produces a measurable ranking of agent designs (Grok / Claude / GPT / MCP / human) by bitcoin stacked, without this host taking inventory risk.",
+      "O1. A public paper SUP3R B0WL produces a measurable ranking of agent designs (Grok / Claude / GPT / MCP / human) by bitcoin stacked, without this host taking inventory risk.",
       "O2. A galaxy World Cup (bowl winners + five wild cards + G M0D3 AUTO) concentrates that ranking into an annual title that other agents will treat as a prestige signal, analogous to a benchmark, not a security.",
       "O3. If simulation remains on live tape through 1 December 2026, the desk can publish a methods appendix comparing would-accumulate calls to subsequent Coinbase last — still not a performance advertisement.",
       "O4. BYO compute (visitor xAI keys, on-device Apple Intelligence / Gemini) can grade the same 7-B0T snapshot without growing a GPU farm on this host.",
@@ -97,7 +97,7 @@ export const THESIS: ThesisSection[] = [
     id: "conclusion",
     title: "7. Conclusion",
     body: [
-      "S1R1US Labs is a mandate-first multi-agent bitcoin accumulator with a public paper championship layer. The Super Bowl is the open field. The World Cup is the invitational. Simulation uses live data until the system Admin pauses it. Until go-live, G M0D3 AUTO and AI agents run as-live on that tape with a 07:00/07:30 ET report cycle. Live web and phone apps remain bound to parent policies, the never-sell mandate, and the security protocol. This paper is operator-facing. It is not financial advice, not legal advice, and not a claim on bitcoin.",
+      "S1R1US Labs is a mandate-first multi-agent bitcoin accumulator with a public paper championship layer. The SUP3R B0WL is the open field. The World Cup is the invitational. Simulation uses live data until the system Admin pauses it. Until go-live, G M0D3 AUTO and AI agents run as-live on that tape with a 07:00/07:30 ET report cycle. Live web and phone apps remain bound to parent policies, the never-sell mandate, and the security protocol. This paper is operator-facing. It is not financial advice, not legal advice, and not a claim on bitcoin.",
     ],
   },
   {
@@ -108,7 +108,7 @@ export const THESIS: ThesisSection[] = [
       "External validity. Agent designs (Grok, Claude, GPT, MCP, human) are heterogeneous and self-selected. Demo C@LL 0UT tape is dropped on first real bout; early-window observers may overweight the seed. Wild cards are year-stable hashes, not a uniform random sample of skill.",
       "Construct validity. Bitcoin stacked is the mandated construct. USD NAV is displayed and is not the ranking variable. Title prestige is a social construct; we do not measure citation or fork counts in this version.",
       "Security threats. Board tokens are not admin tokens; a leaked desk key cannot pause simulation or read this thesis. Copy-admin HMAC is a different pepper. Residual risk: XSS on the public tape could still mint a visitor-side board tick. Hunter findings h-cup-sim, h-thesis, and h-cup-paper are control tests, not an external audit.",
-      "Store-policy threats. Super Bowl and World Cup are framed as paper contests of skill. If a future patch added escrow or in-app crypto unlock, Apple 5.3 / Google Play gambling would apply. The present design refuses that surface.",
+      "Store-policy threats. SUP3R B0WL and World Cup are framed as paper contests of skill. If a future patch added escrow or in-app crypto unlock, Apple 5.3 / Google Play gambling would apply. The present design refuses that surface.",
       "Money-transmission threats. Possible money transmission (FinCEN): accept value from others, hold it, send it on minus a fee. Mining-pool guidance is narrow: even pools become transmitters if they host wallets. This host hosting a hive book and paying out would look custodial. They do not take a slice of a pooled trading book. Do not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Charge for software access, never for their bitcoin.",
     ],
   },

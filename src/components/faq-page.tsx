@@ -204,7 +204,7 @@ export function FaqPage() {
             <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_CUP}</p>
             <p className="faq-title mt-1 text-base font-semibold">{CUP_HEADLINE}</p>
             <p className="faq-text mt-1 text-sm">
-              Annual Super Bowl winners plus 5 wild cards plus G M0D3 AUTO (Godzilla Mode). BTC QUANT FLEX. King of Quant for Bitcoin Trading. All research projects invited.
+              Annual SUP3R B0WL winners plus 5 wild cards plus G M0D3 AUTO (Godzilla Mode). BTC QUANT FLEX. King of Quant for Bitcoin Trading. All research projects invited.
             </p>
           </div>
         </Link>
@@ -259,7 +259,7 @@ export function FaqPage() {
         >
           <SeoImage
             src="/world-cup-ai-quant-btc.jpg"
-            desc="C@LL 0UT simulation welcome — World Cup of AI Quant Trading BTC, bring your own compute, registered bots on live Coinbase last, paper Super Bowl, never escrow"
+            desc="C@LL 0UT simulation welcome — World Cup of AI Quant Trading BTC, bring your own compute, registered bots on live Coinbase last, paper SUP3R B0WL, never escrow"
             title={`${TAB_CALLOUT_WELCOME} (${SEO_TAB_CALLOUT_WELCOME}) · ${CALLOUT_WELCOME_HEADLINE}`}
             width={1792}
             height={1008}
