@@ -1001,6 +1001,13 @@ var public_assets_data_default = {
 		"size": 71471,
 		"path": "../public/assets/styles-CUlYxy3i.css"
 	},
+	"/assets/styles-DGWJM76_.css": {
+		"type": "text/css; charset=utf-8",
+		"etag": "\"1172f-7K09mDgtJCeRrR4A1X+jjEO0zVQ\"",
+		"mtime": "2026-09-11T00:28:41.253Z",
+		"size": 71471,
+		"path": "../public/assets/styles-CUlYxy3i.css"
+	},
 	"/assets/support-donate-CM1C2XS-.js": {
 		"type": "text/javascript; charset=utf-8",
 		"etag": "\"e57-qu6C4hFDCUXCF3R5QFAK+4paT4U\"",
