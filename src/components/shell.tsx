@@ -97,7 +97,7 @@ export function Shell({
               title={TAB_HOVER_GM}
               aria-label={TAB_HOVER_GM}
               className="gm-tab gm-nav inline-flex min-h-10 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]"
-              onClick={() => rainGmBurst(3000)}
+              onClick={() => rainGmBurst(2500)}
               activeProps={{
                 className:
                   "gm-tab gm-nav is-on inline-flex min-h-10 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",

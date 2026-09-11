@@ -3,6 +3,8 @@ import { money, CallWords, bannerTone, callStanceClass, CallInk } from "@/compon
 import { GodzillaMark, GmRainbow, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { Button } from "@/components/ui/button";
 import { Panel, Shell, LoginCluster } from "@/components/shell";
+import { rainGmBurst } from "@/components/matrix-saver";
+import { GM_BURST_MS } from "@/lib/desk/saver-lock";
 import { TAB_BOARD, TAB_BOARD_LEADER, TAB_GM, GIF_AI_BTC_BOT, GIF_AI_BTC_BOT_EQ, GIF_AI_BTC_BOT_NAME } from "@/lib/brand";
 import { SeoCopy } from "@/components/seo-copy";
 import { SeoImage } from "@/components/seo-image";
@@ -70,6 +72,11 @@ export function GmDesk() {
   const [now, setNow] = useState(() => Date.now());
   const [liveAt, setLiveAt] = useState<string | null>(null);
   const [liveErr, setLiveErr] = useState<string | null>(null);
+
+  useEffect(() => {
+    // 2.5s G0DZ1LLa M0D3 matrix rain every time /gm opens. Never locks.
+    rainGmBurst(GM_BURST_MS);
+  }, []);
 
   useEffect(() => {
     void getGmLive().then((s) => {

@@ -11,9 +11,12 @@ import {
   TAB_APP,
   TAB_BOARD,
   TAB_COMPUTE,
+  TAB_WHITE,
+  WHITE_LABEL_PATH,
   SEO_CANONICAL,
   seoImgAlt,
 } from "@/lib/brand";
+import { OSS_LICENSE_NOTICE } from "@/lib/desk/white-label";
 import {
   APP_GATEWAY_PATH,
   APP_SURFACES,
@@ -270,6 +273,23 @@ export function MobileAppPage() {
         <p className="mt-4 rounded-md border border-rule bg-surface px-3 py-2 font-mono text-xs text-medium">
           {call ?? "Reading 7-B0T…"} · detected {plat}
         </p>
+
+        <section className="mt-4 rounded-lg border border-rule bg-surface p-4">
+          <p className="text-xs font-medium tracking-[0.08em] text-tab uppercase">Upgrade to system admin</p>
+          <h2 className="mt-1 text-base font-semibold text-fg">{TAB_WHITE}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            Download this entire open-source system and relaunch it under a domain name YOU control — never under
+            S1R1US.ai. All S1R1US.ai system admin rights, games, rolls, simulations, access tokens, and web host
+            information are stripped before download. Connect Grok, Claude, or GitHub Copilot to help you build it.
+            {" "}{OSS_LICENSE_NOTICE}
+          </p>
+          <Link
+            to={WHITE_LABEL_PATH}
+            className="mt-3 inline-flex min-h-10 items-center rounded-md border border-rule bg-bg px-4 text-sm font-semibold text-fg hover:border-fg/30"
+          >
+            Open the WHITE LABEL download + config
+          </Link>
+        </section>
 
         <div className="mt-4 flex flex-wrap gap-1">
           {PANES.map((p) => (

@@ -1148,6 +1148,38 @@ footer a[href]:not(.call1ng-bots):not(.welcome-blue):not(.forum-nav) {
 .desk-nav-fiber .desk-tabs a[aria-current="page"]:not(.pred-nav) {
   box-shadow: inset 0 -2px 0 currentColor;
 }
+/* Selected-tab highlight matches the tab's own name color (PR3D1CT10N$ untouched).
+   Rainbow-named tabs (G0DZ1LLa M0D3, L3AD3R B0ARD, H1V3 SW@RM) get the same
+   rainbow as their letters; W1S3 0WL$ Forum gets its amber owl color. */
+.desk-nav-fiber .desk-tabs a.gm-nav.is-on,
+.desk-nav-fiber .desk-tabs a.gm-nav[data-status="active"],
+.desk-nav-fiber .desk-tabs a.gm-nav[aria-current="page"],
+.desk-nav-fiber .desk-tabs a.board-nav.is-on,
+.desk-nav-fiber .desk-tabs a.board-nav[data-status="active"],
+.desk-nav-fiber .desk-tabs a.board-nav[aria-current="page"],
+.desk-nav-fiber .desk-tabs a.hive-nav.is-on,
+.desk-nav-fiber .desk-tabs a.hive-nav[data-status="active"],
+.desk-nav-fiber .desk-tabs a.hive-nav[aria-current="page"] {
+  box-shadow: none;
+  background-image: linear-gradient(
+    90deg,
+    #ff1f1f,
+    #ff8a1f,
+    #f4e14b,
+    #3dff1a,
+    #5eb3e4,
+    #9b6bdb,
+    #e879b0
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: left bottom;
+}
+.desk-nav-fiber .desk-tabs a.forum-nav.is-on,
+.desk-nav-fiber .desk-tabs a.forum-nav[data-status="active"],
+.desk-nav-fiber .desk-tabs a.forum-nav[aria-current="page"] {
+  box-shadow: inset 0 -2px 0 var(--color-tab, #f59e0b);
+}
 
 /* Page title shimmer for [ S1R1U$ <<L@B$>> ] — same gold sweep as .pred-title. */
 .title-shimmer {

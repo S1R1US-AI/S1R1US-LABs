@@ -63,6 +63,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThemeRouteImport } from './routes/theme'
 import { Route as VideoSitemapDotxmlRouteImport } from './routes/video-sitemap[.]xml'
 import { Route as W0rldRouteImport } from './routes/w0rld'
+import { Route as Wh1t3RouteImport } from './routes/wh1t3'
 import { Route as WorldCupRouteImport } from './routes/world-cup'
 import { Route as DotwellKnownAgentCardDotjsonRouteImport } from './routes/[.]well-known/agent-card[.]json'
 import { Route as DotwellKnownAgentDotjsonRouteImport } from './routes/[.]well-known/agent[.]json'
@@ -377,6 +378,11 @@ const W0rldRoute = W0rldRouteImport.update({
   path: '/w0rld',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Wh1t3Route = Wh1t3RouteImport.update({
+  id: '/wh1t3',
+  path: '/wh1t3',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorldCupRoute = WorldCupRouteImport.update({
   id: '/world-cup',
   path: '/world-cup',
@@ -656,6 +662,7 @@ export interface FileRoutesByFullPath {
   '/theme': typeof ThemeRoute
   '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
   '/w0rld': typeof W0rldRoute
+  '/wh1t3': typeof Wh1t3Route
   '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
@@ -755,6 +762,7 @@ export interface FileRoutesByTo {
   '/theme': typeof ThemeRoute
   '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
   '/w0rld': typeof W0rldRoute
+  '/wh1t3': typeof Wh1t3Route
   '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
@@ -855,6 +863,7 @@ export interface FileRoutesById {
   '/theme': typeof ThemeRoute
   '/video-sitemap.xml': typeof VideoSitemapDotxmlRoute
   '/w0rld': typeof W0rldRoute
+  '/wh1t3': typeof Wh1t3Route
   '/world-cup': typeof WorldCupRoute
   '/.well-known/agent-card.json': typeof DotwellKnownAgentCardDotjsonRoute
   '/.well-known/agent.json': typeof DotwellKnownAgentDotjsonRoute
@@ -956,6 +965,7 @@ export interface FileRouteTypes {
     | '/theme'
     | '/video-sitemap.xml'
     | '/w0rld'
+    | '/wh1t3'
     | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
@@ -1055,6 +1065,7 @@ export interface FileRouteTypes {
     | '/theme'
     | '/video-sitemap.xml'
     | '/w0rld'
+    | '/wh1t3'
     | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
@@ -1154,6 +1165,7 @@ export interface FileRouteTypes {
     | '/theme'
     | '/video-sitemap.xml'
     | '/w0rld'
+    | '/wh1t3'
     | '/world-cup'
     | '/.well-known/agent-card.json'
     | '/.well-known/agent.json'
@@ -1254,6 +1266,7 @@ export interface RootRouteChildren {
   ThemeRoute: typeof ThemeRoute
   VideoSitemapDotxmlRoute: typeof VideoSitemapDotxmlRoute
   W0rldRoute: typeof W0rldRoute
+  Wh1t3Route: typeof Wh1t3Route
   WorldCupRoute: typeof WorldCupRoute
   DotwellKnownAgentCardDotjsonRoute: typeof DotwellKnownAgentCardDotjsonRoute
   DotwellKnownAgentDotjsonRoute: typeof DotwellKnownAgentDotjsonRoute
@@ -1649,6 +1662,13 @@ declare module '@tanstack/react-router' {
       path: '/w0rld'
       fullPath: '/w0rld'
       preLoaderRoute: typeof W0rldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wh1t3': {
+      id: '/wh1t3'
+      path: '/wh1t3'
+      fullPath: '/wh1t3'
+      preLoaderRoute: typeof Wh1t3RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/world-cup': {
@@ -2094,6 +2114,7 @@ const rootRouteChildren: RootRouteChildren = {
   ThemeRoute: ThemeRoute,
   VideoSitemapDotxmlRoute: VideoSitemapDotxmlRoute,
   W0rldRoute: W0rldRoute,
+  Wh1t3Route: Wh1t3Route,
   WorldCupRoute: WorldCupRoute,
   DotwellKnownAgentCardDotjsonRoute: DotwellKnownAgentCardDotjsonRoute,
   DotwellKnownAgentDotjsonRoute: DotwellKnownAgentDotjsonRoute,

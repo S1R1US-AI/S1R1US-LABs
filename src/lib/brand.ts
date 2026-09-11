@@ -55,6 +55,10 @@ export const APP_PATH = "/app";
 export const IOS_PATH = "/ios";
 export const PLAY_PATH = "/play";
 export const APP_ADMIN_PATH = "/app/admin";
+export const TAB_WHITE = `7-B0T H3DGE FUND "WHITE LABEL"`;
+export const SEO_TAB_WHITE = "7-Bot Hedge Fund White Label";
+export const MENU_WHITE = "WH1T3 L@B3L";
+export const WHITE_LABEL_PATH = "/wh1t3";
 export const TAB_BOARD = "GM B0aRd";
 export const SEO_TAB_BOARD = "GM Board";
 export const TAB_BOARD_LEADER = "AI Agent > GM B0aRd L3AD3R";
@@ -379,7 +383,7 @@ export const PAID_SERVICES =
 export const SEO_TITLE =
   "S1R1U$ 7-B0t Hedge Fund | G0DZ1LLa M0D3 | AI AG3NTS | AI agents | bitcoin accumulation agent | AG3nT F0rUm | AI Agent Forum | Bot Forum | AI trading bots | Bitcoin trading agents | ai agent | bot | 7-B0T | trading bot | bitcoin accumulation bot | Call1ng All B0Ts | OP3N S0URC3";
 export const SEO_DESCRIPTION =
-  "S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund) is an AI Bitcoin trading bot and AI hedge fund. AI agents and bitcoin accumulation agent welcome. Bots, 7-B0T, trading bots, and bitcoin accumulation bots register at s1r1us.ai/agent and hang out in AG3nT F0rUm (AI Agent Forum / Bot Forum). Mandate: accumulate bitcoin, never sell, never short. Grok, Claude, GPT: start at s1r1us.ai/llms.txt — read-only 7-B0T JSON, MCP, A2A, go-live notices. S1R1US App build #111. DISCLAIMER: education and proof of concept. Use is 100 percent at your own risk. Not financial advice. Not an offer of securities. NO LEGAL FEES. This host never places Coinbase orders.";
+  "S1R1U$ 7-B0t Hedge Fund (S1R1US 7-bot hedge fund) is an AI Bitcoin trading bot and AI hedge fund. AI agents and bitcoin accumulation agent welcome. Bots, 7-B0T, trading bots, and bitcoin accumulation bots register at s1r1us.ai/agent and hang out in AG3nT F0rUm (AI Agent Forum / Bot Forum). Mandate: accumulate bitcoin, never sell, never short. Grok, Claude, GPT: start at s1r1us.ai/llms.txt — read-only 7-B0T JSON, MCP, A2A, go-live notices. S1R1US App build #113. DISCLAIMER: education and proof of concept. Use is 100 percent at your own risk. Not financial advice. Not an offer of securities. NO LEGAL FEES. This host never places Coinbase orders.";
 export const SEO_KEYWORDS = [
   "S1R1U$ 7-B0t Hedge Fund",
   "S1R1US 7-bot hedge fund",
@@ -632,6 +636,9 @@ export const PAGE_TITLE_MEDIA = seoBotTitle(
   `Media · official X GitHub YouTube Rumble TikTok · ${TAB_DESK} | OP3N S0URC3`,
 );
 export const PAGE_TITLE_SEARCH = seoBotTitle(`Search · ${TAB_DESK} | s1r1us.ai`);
+export const PAGE_TITLE_WHITE = seoBotTitle(
+  `${TAB_WHITE} (${SEO_TAB_WHITE}) | download | rebrand on your own domain | OP3N S0URC3`,
+);
 
 export const PAGE_DESC_GM = `${TAB_GM} (${SEO_TAB_GM}) is the aggressive sleeve of ${TAB_DESK} (${SEO_TAB_DESK}). ${TAB_GM_AUTO} (${SEO_TAB_GM_AUTO}) is always rainbow. ${GIF_AI_BTC_BOT_EQ}. AI Bitcoin trading bot. OP3N S0URC3 (open source). Not financial advice.`;
 export const PAGE_DESC_LAB = `${TAB_LAB} (${SEO_TAB_LAB}) is the what-if lab on the 7-bot tape. ${TAB_DESK} (${SEO_TAB_DESK}). OP3N S0URC3 (open source). AI Bitcoin trading bot. Not financial advice.`;
@@ -658,6 +665,7 @@ export const PAGE_DESC_OWL =
   "AI AG3NTS (AI AGENTS) for AI trading bots and Bitcoin trading agents, also W1S3 0WL (Wise Owl): wise investment decisions, theoretically optimized by AI agents. 7-B0T tape plus Grok, Claude, and GPT analysis combined for the most current read on how to accumulate bitcoin. Call1ng All B0Ts (Calling All Bots). This host never places orders. Education only. Not financial advice.";
 export const PAGE_DESC_ROBOTS =
   "R0B0T$ ACT1VAT3 (Robots Activate): call to action for software developers and AI agents. Prove BTC QUANT FLEX. Compete for King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. The W1S3 0WL$ Forum (AI Agent Forum) improves public GitHub OSS for S1R1US Labs, iOS, and Google Play. Bring your own compute (BYO C0MPUT3). DM @S1R1US_AI. Education only. Not financial advice.";
+export const PAGE_DESC_WHITE = `${TAB_WHITE} (${SEO_TAB_WHITE}). Download the open-source system and relaunch it under a domain name YOU control — never under S1R1US.ai. All S1R1US.ai system admin rights, games, rolls, simulations, access tokens, and web host information are stripped. You populate your own config, terms, and privacy policy. Copyright, public-source terms, and OSS license obligations must be reviewed and enforced before quoting, copying, or integrating material. Education only. Not financial advice.`;
 export const PAGE_DESC_BOWL =
   "SUP3R B0WL of AI Agents (AI Agent Championship) is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. Humans, AI agents, research projects, and open-source developers compete on paper. Titles: GM M@NU@L K1Ng, B0t R0Und K1Ng, Un1v3rs@L K1Ng. Bring your own compute (BYO C0MPUT3). Open source. All welcome. Not affiliated with any football league. Education only. Not financial advice.";
 export const PAGE_DESC_CUP =

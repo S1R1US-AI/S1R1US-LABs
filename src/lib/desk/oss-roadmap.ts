@@ -9,6 +9,9 @@ import {
   GO_LIVE_HEADLINE,
 } from "./go-live.ts";
 import { LEGAL_DISCLAIMER, LEGAL_DISCLAIMER_SHORT, LEGAL_DISCLAIMER_UPDATED } from "./disclaimer.ts";
+import { OSS_LICENSE_NOTICE, WHITE_LABEL_PATH } from "./white-label.ts";
+
+export { OSS_LICENSE_NOTICE };
 
 export const OSS_ROADMAP_PATH = "/roadmap";
 export const OSS_ROADMAP_ALIASES = ["/oss-roadmap"] as const;
@@ -75,7 +78,7 @@ export const STATUS_LEGEND: { status: RoadmapStatus; tone: "green" | "cyan" | "g
   { status: "LIVE", tone: "green", meaning: "On now for visitors, Admins, and AI agents." },
   { status: "LIVE-PAPER", tone: "cyan", meaning: "Runs as paper on live Coinbase last. Titles, not desk BTC." },
   { status: "LIVE-TEST", tone: "gold", meaning: "On TEST data until go-live." },
-  { status: "STARTED", tone: "green", meaning: "Phase in progress on S1R1US App build #111." },
+  { status: "STARTED", tone: "green", meaning: "Phase in progress on S1R1US App build #113." },
   { status: "DONE", tone: "green", meaning: "Milestone completed." },
   { status: "NOW", tone: "cyan", meaning: "Work happening now." },
   { status: "NEXT", tone: "gold", meaning: "Next estimated date." },
@@ -96,7 +99,7 @@ export type RoadmapFunction = {
   note: string;
 };
 
-/** Functions that are on for visitors, Admins, and AI agents right now (S1R1US App build #111). */
+/** Functions that are on for visitors, Admins, and AI agents right now (S1R1US App build #113). */
 export const LIVE_FUNCTIONS: RoadmapFunction[] = [
   {
     id: "tape",
@@ -276,7 +279,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/gm",
     status: "LIVE-PAPER",
     since: "2026-09-06",
-    note: "Runs as live until go-live on S1R1US App build #111 (carbon-fiber baseline DEPLOY #68). Auto-pause 07:00 ET, morning report 07:30 ET, resume. System + copy-admin may pause. Conflict rebases to 68 LIVE. Data pulls follow sim.",
+    note: "Runs as live until go-live on S1R1US App build #113 (carbon-fiber baseline DEPLOY #68). Auto-pause 07:00 ET, morning report 07:30 ET, resume. System + copy-admin may pause. Conflict rebases to 68 LIVE. Data pulls follow sim.",
   },
   {
     id: "byo",
@@ -331,6 +334,15 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     status: "LIVE",
     since: "2026-09-05",
     note: "System: HMAC + dual Yubi. Copy-admin: /app/admin. Championship pause is system + copy-admin.",
+  },
+  {
+    id: "white-label",
+    name: `7-B0T H3DGE FUND "WHITE LABEL"`,
+    seo: "7-Bot Hedge Fund White Label download",
+    path: WHITE_LABEL_PATH,
+    status: "LIVE",
+    since: "2026-09-11",
+    note: `Download the stripped OSS system and relaunch under a domain YOU control — never under S1R1US.ai. Zero s1r1us.ai admin rights, games, rolls, simulations, tokens, or host info ship in the download. Discover and populate the OSS information, terms, and privacy policy manually. Connect Grok, Claude, or GitHub Copilot to build it. ${OSS_LICENSE_NOTICE}`,
   },
 ];
 
@@ -542,7 +554,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-09-11",
     estimate: false,
     status: "DONE",
-    name: "S1R1US App build #111 (live sim launch)",
+    name: "S1R1US App build #113 (live sim launch)",
     detail: "Checkpoint 101 finalized and renamed. Main-branch fold for live admin simulation (G M0D3 AUTO, AI agents, PR3D1CT10N$ paper). Carbon-fiber baseline remains DEPLOY #68. Saved in Project BTD / S1R1US L@Bs. This host never places Coinbase orders.",
   },
 ];

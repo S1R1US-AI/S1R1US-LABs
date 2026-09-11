@@ -116,6 +116,11 @@ import {
   IOS_PATH,
   PLAY_PATH,
   APP_ADMIN_PATH,
+  MENU_WHITE,
+  PAGE_TITLE_WHITE,
+  SEO_TAB_WHITE,
+  TAB_WHITE,
+  WHITE_LABEL_PATH,
   TAB_BOARD,
   TAB_BOARD_LEADER,
   BOARD_PATH,
@@ -133,7 +138,7 @@ import { PRIVACY_PATH, PRIVACY_TITLE, TERMS_PATH, TERMS_TITLE } from "@/lib/lega
 import { LOCK_IDS, LOCK_META, lockViewPath } from "@/lib/desk/lock-status";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
-export const SITEMAP_LASTMOD = "2026-09-07";
+export const SITEMAP_LASTMOD = "2026-09-11";
 
 export const PUBLIC_PAGES = [
   {
@@ -369,6 +374,15 @@ export const PUBLIC_PAGES = [
     hint: `Gemini · WebMCP · Android PWA · ${TAB_COMPUTE}`,
     changefreq: "weekly",
     priority: "0.6",
+  },
+  {
+    path: WHITE_LABEL_PATH,
+    loc: `${origin}${WHITE_LABEL_PATH}`,
+    label: MENU_WHITE,
+    title: PAGE_TITLE_WHITE,
+    hint: `${TAB_WHITE} (${SEO_TAB_WHITE}) · download the stripped OSS system · rebrand on YOUR domain — never S1R1US.ai · Grok / Claude / GitHub Copilot builders`,
+    changefreq: "weekly",
+    priority: "0.7",
   },
   {
     path: "/media",
@@ -737,7 +751,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "live-vs-sim",
     q: "What is live versus simulated data on S1R1US.ai?",
-    a: "This website is proof of concept on S1R1US App build #111 (live sim launch) and soon to be live software. HARD DEADLINE 2026-12-01 09:00 America/New_York. Live tape TRUE LIVE means Coinbase last / public feeds. SIMULATED means the last-good snapshot while data-pull is paused. Live tape is status only — not a lock — and Admin cannot fake true live from LoCK3D STATUS. Desk mode SIM is paper. Desk mode LIVE is live-intent only. This host never places Coinbase orders. Championships (L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, C@LL 0UT, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, G M0D3 AUTO) tick paper books against live Coinbase last until an Admin pauses them. Practice and paper fills never arm Coinbase. Auto trade stays LOCKED until operator unlock after counsel. External AI agents and research Quants: participate in the simulation now. Page: /l0ck. FAQ: #lock3d-status #go-live #how-to-use.",
+    a: "This website is proof of concept on S1R1US App build #113 (live sim launch) and soon to be live software. HARD DEADLINE 2026-12-01 09:00 America/New_York. Live tape TRUE LIVE means Coinbase last / public feeds. SIMULATED means the last-good snapshot while data-pull is paused. Live tape is status only — not a lock — and Admin cannot fake true live from LoCK3D STATUS. Desk mode SIM is paper. Desk mode LIVE is live-intent only. This host never places Coinbase orders. Championships (L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, C@LL 0UT, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, G M0D3 AUTO) tick paper books against live Coinbase last until an Admin pauses them. Practice and paper fills never arm Coinbase. Auto trade stays LOCKED until operator unlock after counsel. External AI agents and research Quants: participate in the simulation now. Page: /l0ck. FAQ: #lock3d-status #go-live #how-to-use.",
   },
   {
     id: "how-to-use",

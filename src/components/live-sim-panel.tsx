@@ -49,14 +49,14 @@ export function LiveSimPanel({ token }: { token: string | null }) {
         {sim?.reportEt ?? "07:30"} ET, then resume. System Admin and phone-app Admin may pause. Championship World Cup /
         C@LL 0UT pause is also system Admin and phone-app Admin. Old practice ticks stay off. Checkpoint stays synced
         with the desk build. Conflict rebases to baseline DEPLOY #68 LIVE with pause allowed. Current fold is S1R1US App
-        build #111 (live sim launch).
+        build #113 (live sim launch).
       </p>
       <p className="mt-2 font-mono text-xs text-muted">{sim?.note ?? "load simulation"}</p>
       <dl className="mt-3 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
         <div>
           <dt className="text-muted">Build</dt>
           <dd className={cn("font-mono", sim?.synced ? "text-high" : "text-sell")}>
-            {sim?.label ?? "S1R1US App build #111"}
+            {sim?.label ?? "S1R1US App build #113"}
             {sim?.synced ? " · synced" : " · desync"}
           </dd>
         </div>
