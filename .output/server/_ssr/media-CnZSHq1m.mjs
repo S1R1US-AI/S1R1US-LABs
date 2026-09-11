@@ -3,7 +3,7 @@ import { c as COMPANY_X_HANDLE } from "./x-admin-CALKyy-K.mjs";
 import { Ht as SEO_CANONICAL, Ot as PAGE_TITLE_MEDIA, it as PAGE_DESC_MEDIA } from "./brand-1s5EgS5V.mjs";
 import { _ as SeoImage, m as Panel, v as Shell } from "./shell-DPpJkkER.mjs";
 import { t as SeoCopy } from "./seo-copy-gAC7AGUF.mjs";
-import { A as OFFICIAL_PROPERTIES, F as VIDEO_PACKS, P as VIDEO_CLIPS } from "./router-BwRj66mY.mjs";
+import { A as OFFICIAL_PROPERTIES, F as VIDEO_PACKS, P as VIDEO_CLIPS } from "./router-inOTzLKE.mjs";
 //#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/media-CnZSHq1m.js
 var import_jsx_runtime = require_jsx_runtime();
 function MediaPage() {

@@ -5,7 +5,7 @@ import { d as lockGifSrc, i as LOCK_GIF_OPEN_NAME, n as LOCK_GIF_CLOSED, r as LO
 import { _ as SeoImage, h as RainbowGodzillaText, m as Panel, s as GodzillaModeLabel, v as Shell } from "./shell-DPpJkkER.mjs";
 import { t as SeoCopy } from "./seo-copy-gAC7AGUF.mjs";
 import { n as SupportDonate } from "./support-donate-C0XUJ0aY.mjs";
-import { O as FAQ_ITEMS } from "./router-BwRj66mY.mjs";
+import { O as FAQ_ITEMS } from "./router-inOTzLKE.mjs";
 //#region ../../workspace/node_modules/.nitro/vite/services/ssr/assets/faq-B4inohyq.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
