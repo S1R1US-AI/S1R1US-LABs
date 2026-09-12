@@ -6,6 +6,7 @@ Allow: /owl
 Allow: /r0b0ts
 Allow: /f33d
 Allow: /c0ff33
+Allow: /sponsor-ai-bitcoin-trading-bot
 Allow: /labs
 Allow: /s1r1us
 Allow: /faq
@@ -48,6 +49,9 @@ Allow: /icon-192.png
 Allow: /icon-512.png
 Allow: /AI-Bitcoin-Trading-Bot.gif
 Allow: /AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif
+Allow: /Sponsor-AI-Bitcoin-Trading-Bot.gif
+Allow: /Buy-Me-a-Coffee-Bitcoin-USDC-Gift.gif
+Allow: /Feed-Hosting-Donation-AI-Bitcoin-Trading-Bot.gif
 Allow: /.well-known/
 # Agentic Resource Discovery (Google + industry, 17 June 2026): /.well-known/ai-catalog.json
 # MCP server cards: /.well-known/mcp.json (SEP-2127) and /.well-known/mcp/server-card.json (SEP-1649)
@@ -107,6 +111,7 @@ Allow: /compute
 Allow: /app
 Allow: /ios
 Allow: /play
+Allow: /sponsor-ai-bitcoin-trading-bot
 Allow: /terms
 Allow: /privacy
 Allow: /api/agent
@@ -118,6 +123,9 @@ Allow: /sitemap-index.xml
 Allow: /video-sitemap.xml
 Allow: /AI-Bitcoin-Trading-Bot.gif
 Allow: /AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif
+Allow: /Sponsor-AI-Bitcoin-Trading-Bot.gif
+Allow: /Buy-Me-a-Coffee-Bitcoin-USDC-Gift.gif
+Allow: /Feed-Hosting-Donation-AI-Bitcoin-Trading-Bot.gif
 Allow: /.well-known/
 Disallow: /source
 Disallow: /guide

@@ -59,6 +59,8 @@ import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as SitemapIndexDotxmlRouteImport } from './routes/sitemap-index[.]xml'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SourceRouteImport } from './routes/source'
+import { Route as Sp0ns0rRouteImport } from './routes/sp0ns0r'
+import { Route as SponsorAiBitcoinTradingBotRouteImport } from './routes/sponsor-ai-bitcoin-trading-bot'
 import { Route as SwarmRouteImport } from './routes/swarm'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ThemeRouteImport } from './routes/theme'
@@ -359,6 +361,17 @@ const SourceRoute = SourceRouteImport.update({
   path: '/source',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Sp0ns0rRoute = Sp0ns0rRouteImport.update({
+  id: '/sp0ns0r',
+  path: '/sp0ns0r',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorAiBitcoinTradingBotRoute =
+  SponsorAiBitcoinTradingBotRouteImport.update({
+    id: '/sponsor-ai-bitcoin-trading-bot',
+    path: '/sponsor-ai-bitcoin-trading-bot',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SwarmRoute = SwarmRouteImport.update({
   id: '/swarm',
   path: '/swarm',
@@ -664,6 +677,8 @@ export interface FileRoutesByFullPath {
   '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
+  '/sp0ns0r': typeof Sp0ns0rRoute
+  '/sponsor-ai-bitcoin-trading-bot': typeof SponsorAiBitcoinTradingBotRoute
   '/swarm': typeof SwarmRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
@@ -765,6 +780,8 @@ export interface FileRoutesByTo {
   '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
+  '/sp0ns0r': typeof Sp0ns0rRoute
+  '/sponsor-ai-bitcoin-trading-bot': typeof SponsorAiBitcoinTradingBotRoute
   '/swarm': typeof SwarmRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
@@ -867,6 +884,8 @@ export interface FileRoutesById {
   '/sitemap-index.xml': typeof SitemapIndexDotxmlRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/source': typeof SourceRoute
+  '/sp0ns0r': typeof Sp0ns0rRoute
+  '/sponsor-ai-bitcoin-trading-bot': typeof SponsorAiBitcoinTradingBotRoute
   '/swarm': typeof SwarmRoute
   '/terms': typeof TermsRoute
   '/theme': typeof ThemeRoute
@@ -970,6 +989,8 @@ export interface FileRouteTypes {
     | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
+    | '/sp0ns0r'
+    | '/sponsor-ai-bitcoin-trading-bot'
     | '/swarm'
     | '/terms'
     | '/theme'
@@ -1071,6 +1092,8 @@ export interface FileRouteTypes {
     | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
+    | '/sp0ns0r'
+    | '/sponsor-ai-bitcoin-trading-bot'
     | '/swarm'
     | '/terms'
     | '/theme'
@@ -1172,6 +1195,8 @@ export interface FileRouteTypes {
     | '/sitemap-index.xml'
     | '/sitemap.xml'
     | '/source'
+    | '/sp0ns0r'
+    | '/sponsor-ai-bitcoin-trading-bot'
     | '/swarm'
     | '/terms'
     | '/theme'
@@ -1274,6 +1299,8 @@ export interface RootRouteChildren {
   SitemapIndexDotxmlRoute: typeof SitemapIndexDotxmlRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourceRoute: typeof SourceRoute
+  Sp0ns0rRoute: typeof Sp0ns0rRoute
+  SponsorAiBitcoinTradingBotRoute: typeof SponsorAiBitcoinTradingBotRoute
   SwarmRoute: typeof SwarmRoute
   TermsRoute: typeof TermsRoute
   ThemeRoute: typeof ThemeRoute
@@ -1647,6 +1674,20 @@ declare module '@tanstack/react-router' {
       path: '/source'
       fullPath: '/source'
       preLoaderRoute: typeof SourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sp0ns0r': {
+      id: '/sp0ns0r'
+      path: '/sp0ns0r'
+      fullPath: '/sp0ns0r'
+      preLoaderRoute: typeof Sp0ns0rRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsor-ai-bitcoin-trading-bot': {
+      id: '/sponsor-ai-bitcoin-trading-bot'
+      path: '/sponsor-ai-bitcoin-trading-bot'
+      fullPath: '/sponsor-ai-bitcoin-trading-bot'
+      preLoaderRoute: typeof SponsorAiBitcoinTradingBotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/swarm': {
@@ -2130,6 +2171,8 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapIndexDotxmlRoute: SitemapIndexDotxmlRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourceRoute: SourceRoute,
+  Sp0ns0rRoute: Sp0ns0rRoute,
+  SponsorAiBitcoinTradingBotRoute: SponsorAiBitcoinTradingBotRoute,
   SwarmRoute: SwarmRoute,
   TermsRoute: TermsRoute,
   ThemeRoute: ThemeRoute,
