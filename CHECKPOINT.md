@@ -27,6 +27,7 @@ Updated 2026-09-11. Checkpoint 101 is finalized, **renamed**, and **pinned** for
 - Live admin simulation stays **launched** on Coinbase last (or last-good tape). Carbon-fiber public tape. Live Coinbase **off**. Auto trade **LOCKED**. PR3D1CT10N$ stays paper. This host never takes bets.
 - Unified DISCLAIMER (education / PoC / 100% own risk / NFA / never Coinbase / no offer of securities / **NO LEGAL FEES**). Terms and Privacy pages stay as published.
 - SEO, search schema, XML sitemap, website sitemap, OSS Roadmap, instruction module (guide), research paper, and morning report updated for the fold.
+- **FUNDING.yml donation SEO addendum (2026-09-12)**: `.github/FUNDING.yml` maps every GitHub funding platform to the s1r1us.ai gift rails (`custom:` → `/sponsor-ai-bitcoin-trading-bot`, `/f33d`, `/c0ff33`, `/api/agent/fee`); new **SP0NS0R TH3 B0T$** page at `/sponsor-ai-bitcoin-trading-bot` (alias `/sp0ns0r`); 9 keyword-named donation GIFs (1 large + 2 medium per donation page) embedded on `/c0ff33`, `/f33d`, and the sponsor page and registered in the image sitemap + search schema; robots.txt, llms.txt, FAQ, footer, XML + website sitemaps updated with current URLs only.
 
 ## Repair / rebuild if live is corrupt
 

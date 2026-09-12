@@ -42,6 +42,9 @@ import {
   TAB_HOVER_HOME,
   TAB_HOVER_LAB,
   TAB_HOVER_SITEMAP,
+  TAB_HOVER_SPONSOR,
+  TAB_SPONSOR,
+  SPONSOR_PATH,
 } from "@/lib/brand";
 import { TAB_PRED } from "@/lib/pred-labels";
 import "@/components/pred-nav.css";
@@ -232,6 +235,9 @@ export function Shell({
               </a>
               <Link to="/c0ff33" className="shrink-0 text-oss hover:underline" title={TAB_HOVER_COFFEE}>
                 {TAB_COFFEE}
+              </Link>
+              <Link to={SPONSOR_PATH} className="shrink-0 text-oss hover:underline" title={TAB_HOVER_SPONSOR}>
+                {TAB_SPONSOR}
               </Link>
               <Link to="/faq" className="faq-kicker shrink-0 hover:underline" title={TAB_HOVER_FAQ}>
                 FAQ

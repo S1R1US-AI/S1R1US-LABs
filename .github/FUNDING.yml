@@ -1,0 +1,24 @@
+# These are supported funding model platforms
+#
+# S1R1US L@Bs FUNDING analysis — checkpoint S1R1US App build #113.
+# Every donation to this project is a direct, unconditional on-chain gift
+# (Bitcoin BTC or native Circle USDC on Ethereum/Base) received on s1r1us.ai.
+# No tokens. No upside. Not an investment. This host never places orders.
+# There are NO third-party funding platform accounts, so every platform
+# username below stays empty on purpose. Each line maps that platform's
+# donation type to the closest live s1r1us.ai page from the current XML
+# sitemap (https://s1r1us.ai/sitemap.xml) — new URLs only, no old aliases.
+
+github: # No GitHub Sponsors profile — sponsor-style gifts: https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot
+patreon: # No Patreon — recurring patron-style gifts: https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot
+open_collective: # No Open Collective — transparent on-chain funding (public explorer wallets): https://s1r1us.ai/f33d
+ko_fi: # No Ko-fi — coffee-style $4.20 tip (Buy M3 a Cup of C0FF33): https://s1r1us.ai/c0ff33
+tidelift: # No Tidelift — sustain the open-source hosting + apps: https://s1r1us.ai/f33d
+community_bridge: # No Community Bridge — project crowdfunding goal: https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot
+liberapay: # No Liberapay — recurrent donation equivalent: https://s1r1us.ai/f33d
+issuehunt: # No IssueHunt — OSS bounty-style gifts: https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot
+lfx_crowdfunding: # No LFX Crowdfunding — crowdfund the 7-B0T desk: https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot
+polar: # No Polar — open-source funding hub equivalent: https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot
+buy_me_a_coffee: # No Buy Me a Coffee account — on-site Buy M3 a Cup of C0FF33 ($4.20 BTC/USDC): https://s1r1us.ai/c0ff33
+thanks_dev: # No thanks.dev — gratitude gifts for the OSS desk: https://s1r1us.ai/f33d
+custom: ['https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot', 'https://s1r1us.ai/f33d', 'https://s1r1us.ai/c0ff33', 'https://s1r1us.ai/api/agent/fee']
