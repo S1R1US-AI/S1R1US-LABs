@@ -49,6 +49,7 @@ import { OSS_LINK, OSS_LINK_LABEL } from "@/lib/launch/model";
 import { GodzillaMark, GodzillaModeLabel, HiveSwarmLabel, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { ForumTitle } from "@/components/forum-title";
 import { rainGmBurst } from "@/components/matrix-saver";
+import { GM_BURST_MS } from "@/lib/desk/saver-lock";
 import { DisclaimerExpandBody } from "@/components/legal-bar";
 import {
   TERMS_HOVER,
@@ -62,7 +63,7 @@ import { cn } from "@/lib/utils";
 
 const LINKS = [
   { to: "/", label: MENU_TAPE, title: TAB_HOVER_DESK },
-  { to: "/helios", label: MENU_LAB, title: TAB_HOVER_LAB },
+  { to: "/labs", label: MENU_LAB, title: TAB_HOVER_LAB },
 ] as const;
 
 export function Shell({
@@ -97,7 +98,7 @@ export function Shell({
               title={TAB_HOVER_GM}
               aria-label={TAB_HOVER_GM}
               className="gm-tab gm-nav inline-flex min-h-10 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]"
-              onClick={() => rainGmBurst(2500)}
+              onClick={() => rainGmBurst(GM_BURST_MS)}
               activeProps={{
                 className:
                   "gm-tab gm-nav is-on inline-flex min-h-10 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]",

@@ -6,7 +6,7 @@ Allow: /owl
 Allow: /r0b0ts
 Allow: /f33d
 Allow: /c0ff33
-Allow: /helios
+Allow: /labs
 Allow: /s1r1us
 Allow: /faq
 Allow: /terms

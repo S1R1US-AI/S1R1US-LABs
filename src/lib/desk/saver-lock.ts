@@ -2,7 +2,7 @@
  * Screensaver lock policy. System-admin controlled from Admin → Security.
  *
  * Two savers exist:
- *  - GM rain: 2.5 s G0DZ1LLa M0D3 burst every time /gm opens. Never locks.
+ *  - GM rain: 3 s G0DZ1LLa M0D3 burst on every G0DZ1LLa M0D3 tab click / /gm open. Never locks.
  *  - Matrix classic: full-screen rain after 5 minutes of no user activity.
  *
  * LOCKED   → an idle trip signs the operator out and requires login again.
@@ -13,7 +13,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export const SAVER_IDLE_MS = 5 * 60 * 1000;
-export const GM_BURST_MS = 2_500;
+export const GM_BURST_MS = 3_000;
 
 type SaverLockState = {
   /** true = idle saver logs the session out and requires re-login. */

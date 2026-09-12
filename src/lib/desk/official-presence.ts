@@ -101,7 +101,7 @@ export function sitelinkPages() {
     { name: "OSS Roadmap", url: `${SEO_CANONICAL}roadmap` },
     { name: "C@LL 0UT sim", url: `${SEO_CANONICAL}c0ut` },
     { name: "iOS · Google App", url: `${SEO_CANONICAL}app` },
-    { name: "S1R1US L@Bs", url: `${SEO_CANONICAL}helios` },
+    { name: "S1R1US L@Bs", url: `${SEO_CANONICAL}labs` },
     { name: "Media", url: `${SEO_CANONICAL}media` },
     { name: "GitHub", url: GITHUB_REPO_URL },
     { name: "X", url: COMPANY_X_URL },

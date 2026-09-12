@@ -434,7 +434,7 @@ export function SecurityDesk() {
         titleClass={saverLocked ? "text-high" : "text-medium"}
       >
         <p className="text-sm leading-relaxed text-muted">
-          Two screensavers run on this site: the 2.5 s G0DZ1LLa M0D3 matrix rain every time /gm opens (never locks),
+          Two screensavers run on this site: the 3 s G0DZ1LLa M0D3 matrix rain on every G0DZ1LLa M0D3 tab click (never locks),
           and the Matrix classic rain after 5 minutes of no user activity. This switch controls whether the idle
           screensaver locks. {saverLockLabel(saverLocked)}
         </p>

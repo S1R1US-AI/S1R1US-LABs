@@ -186,7 +186,7 @@ export function morningHtmlLinks() {
     { url: "https://x.com/S1R1US_AI", code: 200, note: "Official X" },
     { url: "https://s1r1us.ai/", code: 200, note: "Live home" },
     { url: "https://s1r1us.ai/gm", code: 200, note: "GM" },
-    { url: "https://s1r1us.ai/helios", code: 200, note: "Lab" },
+    { url: "https://s1r1us.ai/labs", code: 200, note: "Lab" },
     { url: "https://s1r1us.ai/faq", code: 200, note: "FAQ" },
     { url: "https://s1r1us.ai/agent", code: 200, note: "AI Agents" },
     { url: "https://s1r1us.ai/llms.txt", code: 200, note: "llms.txt root" },

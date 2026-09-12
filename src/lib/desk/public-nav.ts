@@ -138,7 +138,7 @@ import { PRIVACY_PATH, PRIVACY_TITLE, TERMS_PATH, TERMS_TITLE } from "@/lib/lega
 import { LOCK_IDS, LOCK_META, lockViewPath } from "@/lib/desk/lock-status";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
-export const SITEMAP_LASTMOD = "2026-09-11";
+export const SITEMAP_LASTMOD = "2026-09-12";
 
 export const PUBLIC_PAGES = [
   {
@@ -268,8 +268,8 @@ export const PUBLIC_PAGES = [
     priority: "0.6",
   },
   {
-    path: "/helios",
-    loc: `${origin}/helios`,
+    path: "/labs",
+    loc: `${origin}/labs`,
     label: MENU_LAB,
     title: PAGE_TITLE_LAB,
     hint: `${MENU_LAB} · ${SEO_TAB_LAB} · what-if lab on the 7-bot tape`,
@@ -746,7 +746,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "lock3d-status",
     q: `What is ${TAB_LOCK3D} (${SEO_TAB_LOCK3D})? How do I turn locks on or off?`,
-    a: `${TAB_LOCK3D} is Locked Status — the Admin lock board and the public tutorial at ${LOCK_PATH} (aliases /lock /lock3d). Purple Expand/Collapse sits on the LoCK3D STATUS UNLOCKED desk SIM line. The board stacks the UNLOCKED set on top of the LOCKED set. Closed padlock GIF = LOCKED. Open padlock GIF (AI Agent Lock System for AI Agent BTC Trading Bot) = UNLOCKED. Click the lock NAME to open that view: AI Agents (/agent), H1V3 SW@RM (/h1v3), 7-B0T AUTO (/#bot7), G M0D3 AUTO (/gm#auto), G M0D3 M@NU@L (/gm#manual), AI Agents LIVE (/agent#live). G M0D3 AUTO / M@NU@L names drop GM matrix rain for 2.5 seconds then open the view. Padlock GIFs still only lock or unlock. Live tape is the only row without a lock — TRUE LIVE or SIMULATED from data pulls — and is not adjusted by the user. Functional locks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM. How to turn on or off: System Admin opens /admin Console (or the live-tape rail) and taps the padlock GIF. Include checkboxes pick which rails Lock selected / Unlock selected hit. SIM / LIVE is desk mode, not Coinbase create. iOS/Google copy-admin uses ${APP_ADMIN_PATH}. Copy-admin may pause H1V3 SW@RM, the as-live G M0D3 AUTO / AI agents cycle, and World Cup / C@LL 0UT championship simulation. External AI agents read GET /api/agent/locks and MCP lock_status — there is no lock_set. Unlock is live-intent. This host never places Coinbase orders. Practice cannot arm Coinbase. Sitemap: /sitemap · /sitemap.xml. FAQ: #live-vs-sim #how-to-use #live-sim.`,
+    a: `${TAB_LOCK3D} is Locked Status — the Admin lock board and the public tutorial at ${LOCK_PATH} (aliases /lock /lock3d). Purple Expand/Collapse sits on the LoCK3D STATUS UNLOCKED desk SIM line. The board stacks the UNLOCKED set on top of the LOCKED set. Closed padlock GIF = LOCKED. Open padlock GIF (AI Agent Lock System for AI Agent BTC Trading Bot) = UNLOCKED. Click the lock NAME to open that view: AI Agents (/agent), H1V3 SW@RM (/h1v3), 7-B0T AUTO (/#bot7), G M0D3 AUTO (/gm#auto), G M0D3 M@NU@L (/gm#manual), AI Agents LIVE (/agent#live). G M0D3 AUTO / M@NU@L names drop GM matrix rain for 3 seconds then open the view. Padlock GIFs still only lock or unlock. Live tape is the only row without a lock — TRUE LIVE or SIMULATED from data pulls — and is not adjusted by the user. Functional locks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM. How to turn on or off: System Admin opens /admin Console (or the live-tape rail) and taps the padlock GIF. Include checkboxes pick which rails Lock selected / Unlock selected hit. SIM / LIVE is desk mode, not Coinbase create. iOS/Google copy-admin uses ${APP_ADMIN_PATH}. Copy-admin may pause H1V3 SW@RM, the as-live G M0D3 AUTO / AI agents cycle, and World Cup / C@LL 0UT championship simulation. External AI agents read GET /api/agent/locks and MCP lock_status — there is no lock_set. Unlock is live-intent. This host never places Coinbase orders. Practice cannot arm Coinbase. Sitemap: /sitemap · /sitemap.xml. FAQ: #live-vs-sim #how-to-use #live-sim.`,
   },
   {
     id: "live-vs-sim",

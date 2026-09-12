@@ -112,7 +112,7 @@ describe("LoCK3D STATUS", () => {
     assert.match(css, /godzilla-shift/);
     assert.match(ui, /lock-cell-link/);
     assert.match(ui, /text-expand/);
-    assert.match(ui, /rainGmBurst\(2500\)/);
+    assert.match(ui, /rainGmBurst\(GM_BURST_MS\)/);
     assert.match(ui, /gmAuto/);
     assert.match(ui, /gmManual/);
     assert.match(ui, /hash=\{row\.hash\}/);

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/shell";
 import { GmRainbow, GoldCss } from "@/components/godzilla-mark";
 import { rainGmBurst } from "@/components/matrix-saver";
+import { GM_BURST_MS } from "@/lib/desk/saver-lock";
 import { fetchLockStatus, setLockStatus } from "@/lib/desk/desk-rpc";
 import { useOperator } from "@/lib/desk/operator";
 import { useAppAdmin } from "@/lib/desk/app-admin-client";
@@ -152,7 +153,7 @@ function LockCell({
             title={`${row.seo} — open view`}
             aria-label={`Open ${row.name}`}
             onClick={() => {
-              if (row.id === "gmAuto" || row.id === "gmManual") rainGmBurst(2500);
+              if (row.id === "gmAuto" || row.id === "gmManual") rainGmBurst(GM_BURST_MS);
             }}
           >
             <LockName name={row.name} css={row.css} />
