@@ -36,7 +36,7 @@ Checkpoint **#113** folds the white-label + screensaver + security update on `ma
 ### Matrix screensavers
 
 - Clicking the **G0DZ1LLa M0D3 tab** (or opening `/gm`) plays the Matrix rain burst for **3 seconds** (`GM_SEQ = "G0DZ1LLa M0D3"`). The burst never locks the screen.
-- Matrix charset (shared by classic saver and GM burst) ends in `420420420420420420420420420420420420420420` — each glyph distinct and recognizable.
+- Matrix charset (shared by classic saver and GM burst) is `AI搭載のビットコイン蓄積器へようこそ、R0B0T0氏。私たちはAIビットコインヘッジトレーディングデスクです。バイ、コンピュート。420420420420420420420420420` — each glyph distinct and recognizable.
 - **Matrix classic** runs after **5 minutes** of no user activity anywhere on s1r1us.ai; with the LOCKED policy it is the security lock for a user who stepped away — the idle trip signs the session out and requires login.
 - System admin locks / unlocks all screensavers in Admin → Security → Screensavers. LOCKED = logs out when triggered and requires login to sign back in. UNLOCKED = display only.
 
