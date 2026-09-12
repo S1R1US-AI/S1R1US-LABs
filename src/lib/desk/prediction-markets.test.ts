@@ -78,7 +78,7 @@ describe("BTC prediction markets", () => {
   it("allows Polymarket and Kalshi hosts and wires the wire panel", () => {
     assert.equal(hostAllowed("gamma-api.polymarket.com"), true);
     assert.equal(hostAllowed("api.elections.kalshi.com"), true);
-    const ui = readFileSync(new URL("../../components/desk-app.tsx", import.meta.url), "utf8");
+    const ui = readFileSync(new URL("../../components/desk-tape-panels.tsx", import.meta.url), "utf8");
     assert.match(ui, /BTC prediction markets/);
     assert.match(ui, /this host never takes bets/);
     const faq = readFileSync(new URL("./public-nav.ts", import.meta.url), "utf8");

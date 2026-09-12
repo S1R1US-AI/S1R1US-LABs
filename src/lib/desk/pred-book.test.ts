@@ -32,7 +32,11 @@ describe("PR3D1CT10N$ paper book", { concurrency: false }, () => {
   });
 
   it("ticks paper play on LIVE Coinbase last and freezes when admin sim is PAUSED", () => {
-    mkdirSync("/workspace/data", { recursive: true });
+    try {
+      mkdirSync("/workspace/data", { recursive: true });
+    } catch {
+      // /workspace may be read-only outside the production box; the test only needs /tmp under NODE_TEST_CONTEXT
+    }
     writeFileSync("/tmp/live-sim.json", JSON.stringify({ status: "LIVE", practiceKilled: true, checkpoint: 68 }));
     resetPredBookForTest();
     const a = predBookPublic({ px: 108_000 });
