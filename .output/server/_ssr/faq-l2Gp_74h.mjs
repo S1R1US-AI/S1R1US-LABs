@@ -5,7 +5,7 @@ import { S as Shell, _ as Panel, s as GodzillaModeLabel, v as RainbowGodzillaTex
 import { d as lockGifSrc, i as LOCK_GIF_OPEN_NAME, n as LOCK_GIF_CLOSED, r as LOCK_GIF_OPEN } from "./lock-status-A0BH-v5S.mjs";
 import { t as SeoCopy } from "./seo-copy-B8jdDX2r.mjs";
 import { n as SupportDonate } from "./support-donate-Bq2fcpFN.mjs";
-import { A as FAQ_ITEMS } from "./router-BJ5x8CQn.mjs";
+import { A as FAQ_ITEMS } from "./router-DJmWpPR-.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/faq-l2Gp_74h.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

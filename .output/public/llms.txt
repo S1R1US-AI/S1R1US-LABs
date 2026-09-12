@@ -212,6 +212,7 @@ Go-live: PoC rails STARTED (DEPLOY #68), Auto GM practice NEXT, Auto AI agent ac
 - Grok, Claude, or GitHub Copilot can help build the white label from your domain + config. Go-live check fails closed if any S1R1US.ai system admin data is detected.
 - Copyright, public-source terms, and OSS license obligations must be reviewed and enforced before quoting, copying, or integrating material.
 - BTC M1N3Rz miner information is NEVER stripped: white-label admins enter their own solo CKPool stratum + BTC receive address in the BTC M1N3Rz dialogue boxes; blank save populates S1R1US.ai CKPool defaults.
+- DISCLOSURES: every downloaded free copy of the S1R1US.ai White Label product (Education and Experimental Stage Product) must include the DISCLOSURE LINKS — Original Creation distributed by: S1R1US.ai · Terms: https://s1r1us.ai/terms · Privacy Policy: https://s1r1us.ai/privacy. Links always remain active in the distribution readme and in the White Label owner's Terms of Agreement and Privacy Policy. NO EXCEPTIONS — violators are blocked from access to system. Proof of concept; Educational, Research, and Experimental; no guarantee of success; an external-AI hack is an act-of-God type disaster; NO LEGAL FEES per terms.
 
 ## BTC M1N3Rz (BTC Miners View)
 
