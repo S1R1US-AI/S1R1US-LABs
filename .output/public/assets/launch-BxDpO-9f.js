@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-DEOSUjo2.js";var t=e;export{t as component};
