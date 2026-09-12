@@ -1,6 +1,6 @@
 import { APP_CALLS, APP_NAME, BOT7_NAME, PAID_SERVICES, TAB_DESK, TAB_GM, TAB_LAB, TAB_WHITE, WHITE_LABEL_PATH } from "@/lib/brand";
 import { COIN_DOMAIN, GITHUB_STARTED, GITHUB_URL, MINT_FLOOR, OSS_NEEDS, ROADMAP, TOKEN_LAUNCHED } from "@/lib/launch/model";
-import { OSS_LICENSE_NOTICE } from "./white-label";
+import { OSS_LICENSE_NOTICE, WHITE_LABEL_DISCLOSURE_LINKS, WHITE_LABEL_STAGE, WHITE_LABEL_USER_AGREEMENT, WHITE_LABEL_WELCOME_BANNERS } from "./white-label";
 import { BOT_ROSTER, CYCLE_ARCH, SYSTEM_REVIEWED } from "./policy";
 import { MANDATE } from "./system-logic";
 
@@ -295,6 +295,8 @@ export const GUIDE: GuideSection[] = [
       "White-label config dialog boxes: domain name, top-level menu names (+/−), x accounts (system admin + phone app user), webhost IP / DNS 1–2, encrypted token id + secret pairs (+/−, e.g. better_auth id + secret), GitHub repository + GitHub system admin. https://github.com/S1R1US-AI/S1R1US-LABs (main or any branch) is never accepted as a white-label repository. Proprietary s1r1us.ai info is blocked from every dialog box.",
       "White label can never take over s1r1us.ai system admin rights — 100 percent security match, no compromise. External AI agents can never take over the s1r1us.ai system admin. S3C Sweep, the Security tab, and the morning report are linked to white label and share data; bad actors (human or external AI agent) are blocked from download, their dialog boxes lock, and their white-label software locks permanently. Only @_Mr_R0b0t0_ — the main s1r1us.ai system admin — can override.",
       OSS_LICENSE_NOTICE,
+      `DISCLOSURES: any downloaded free copy of the S1R1US.ai White Label product (${WHITE_LABEL_STAGE}) must include the DISCLOSURE LINKS — ${WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `${l.label}: ${l.value}`).join(" · ")}.`,
+      `USER AGREEMENT: ${WHITE_LABEL_USER_AGREEMENT.join(" ")}`,
       "Screensavers: clicking the G0DZ1LLa M0D3 tab (or opening /gm) plays the Matrix rain burst for 3 seconds. Matrix classic runs after 5 minutes of no user activity anywhere on s1r1us.ai and does not lock the screen. The system admin locks or unlocks all screensavers in Admin → Security → Screensavers: LOCKED signs the operator out on idle and requires login; UNLOCKED just displays the saver.",
     ],
   },
@@ -310,4 +312,9 @@ export const GUIDE_MARKDOWN = [
   "> Not investment advice. Bitcoin is volatile. You authorize every live Coinbase order.",
   "",
   ...GUIDE.flatMap((s) => [`## ${s.title}`, "", ...s.body.flatMap((p) => [p, ""]), ""]),
+  "---",
+  "",
+  `$$$$ ${WHITE_LABEL_WELCOME_BANNERS[0]} $$$$`,
+  "",
+  ...WHITE_LABEL_WELCOME_BANNERS.slice(1).flatMap((b) => [b, ""]),
 ].join("\n");

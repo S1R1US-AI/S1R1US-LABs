@@ -7,10 +7,13 @@ import {
   OSS_LICENSE_NOTICE,
   SYSTEM_ADMIN_OVERRIDE,
   WHITE_LABEL_BUILDERS,
+  WHITE_LABEL_DISCLOSURE_LINKS,
   WHITE_LABEL_DOWNLOAD_URL,
   WHITE_LABEL_KEEP_MINERS,
   WHITE_LABEL_PRIVILEGES,
+  WHITE_LABEL_STAGE,
   WHITE_LABEL_STRIP,
+  WHITE_LABEL_USER_AGREEMENT,
   WHITE_LABEL_WATCH,
   builderPrompt,
   emptyWhiteLabelConfig,
@@ -156,6 +159,29 @@ export function WhiteLabelPage() {
               Download the stripped OSS system
             </a>
           </div>
+        </Panel>
+
+        <Panel className="mt-4" kicker="Disclosures" title={`DISCLOSURE LINKS + USER AGREEMENT (${WHITE_LABEL_STAGE})`}>
+          <p className="text-sm leading-relaxed text-muted">
+            Any downloaded free copy of the S1R1US.ai White Label product ({WHITE_LABEL_STAGE}) must include these
+            DISCLOSURE LINKS:
+          </p>
+          <ul className="mt-2 space-y-1 font-mono text-xs">
+            {WHITE_LABEL_DISCLOSURE_LINKS.map((l) => (
+              <li key={l.label}>
+                <span className="text-muted">{l.label}: </span>
+                <a href={l.url} target="_blank" rel="noreferrer" className="text-oss hover:underline">
+                  {l.value}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-sm font-semibold text-fg">USER AGREEMENT</p>
+          <ul className="mt-1 list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted">
+            {WHITE_LABEL_USER_AGREEMENT.map((s) => (
+              <li key={s}>{s}</li>
+            ))}
+          </ul>
         </Panel>
 
         <Panel className="mt-4" kicker="Rebrand config" title="Domain · web host · account access">

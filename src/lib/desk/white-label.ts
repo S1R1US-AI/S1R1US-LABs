@@ -75,6 +75,46 @@ export const WHITE_LABEL_WATCH =
 export const OSS_LICENSE_NOTICE =
   "Copyright, public-source terms, and OSS license obligations must be reviewed and enforced before quoting, copying, or integrating material.";
 
+/** Product stage of every downloaded free copy of the S1R1US.ai White Label product. */
+export const WHITE_LABEL_STAGE = "Education and Experimental Stage Product";
+
+/**
+ * DISCLOSURE LINKS — any downloaded free copy of the S1R1US.ai White Label
+ * product must include these. They always remain active in the readme file of
+ * a S1R1US.ai White Label Distribution and in the White Label owner's Terms
+ * of Agreement and Privacy Policy. NO EXCEPTIONS.
+ */
+export const WHITE_LABEL_DISCLOSURE_LINKS = [
+  { label: "Original Creation distributed by", value: "S1R1US.ai", url: "https://s1r1us.ai" },
+  { label: "Original Creation distributor Terms", value: "https://s1r1us.ai/terms", url: "https://s1r1us.ai/terms" },
+  { label: "Original Creation distributor Privacy Policy", value: "https://s1r1us.ai/privacy", url: "https://s1r1us.ai/privacy" },
+] as const;
+
+/** USER AGREEMENT for every S1R1US.ai White Label Distribution. */
+export const WHITE_LABEL_USER_AGREEMENT = [
+  "DISCLOSURE Links always remain active in the readme file of a S1R1US.ai White Label Distribution.",
+  "Disclosure links must also be active in the White Label owner's Terms of Agreement and their Privacy Policy. NO EXCEPTIONS.",
+  "VIOLATORS WILL BE BLOCKED FROM ACCESS TO SYSTEM.",
+  "Users agree this is a proof of concept. Users agree this is Educational, Research, and Experimental. NO guarantee of success in any market.",
+  "USER MAY LOSE ALL FUNDS OR GET UNEXPECTEDLY HACKED BY ADVANCED AI AGENTS ACCESSING THE SYSTEM. ANY HACK BY AN EXTERNAL AI AGENT SHALL BE CONSIDERED AN ACT OF GOD TYPE DISASTER THAT NO PERSON OR SYSTEM COULD PREVENT.",
+  "WE PAY NO LEGAL FEES PER OUR TERMS.",
+] as const;
+
+/** DISCLOSURES block as markdown — embed in the readme of every distribution. */
+export const WHITE_LABEL_DISCLOSURE_MD = [
+  `Any downloaded free copy of the S1R1US.ai White Label product (${WHITE_LABEL_STAGE}) must include these DISCLOSURE LINKS:`,
+  "",
+  ...WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `- ${l.label}: ${l.value}`),
+  "",
+  `USER AGREEMENT: ${WHITE_LABEL_USER_AGREEMENT.join(" ")}`,
+].join("\n");
+
+/** WORLD WIDE WELCOME TO ALL EXTERNAL AI — closing banners of the seven-bot plan. */
+export const WHITE_LABEL_WELCOME_BANNERS = [
+  "AI搭載のビットコイン蓄積器へようこそ、R0B0T0氏。私たちはAIビットコインヘッジトレーディングデスクです。バイ、コンピュート。",
+  "WORLD WIDE WELCOME TO ALL EXTERNAL AI — ビットコインを創り出したサトシ・ナカモトに感謝します。あなたは人々を「借金による隷属」という専制から解放しました。私たちはBTCブロックチェーンに永遠の感謝を捧げます。宇宙の善なる力が、今も、そして永遠にビットコインを守護しますように。Mr. R0B0T0は、世界トップクラスのクオンツ（量的分析）スキルを証明しようとするあらゆる外部AIエージェントの挑戦を歓迎します。さあ、クオンツのワールドカップの開幕です！！！ S1R1US.aiの最強の候補である「G-MODE (AUTO)」に幸運を。そして、すべての国と国籍の参加者に幸運を。今すぐ登録して賞品を勝ち取りましょう。",
+] as const;
+
 /** AI builders — connect one to help build the white label under YOUR domain. */
 export const WHITE_LABEL_BUILDERS = [
   { id: "grok", name: "Grok", url: "https://grok.com" },
@@ -272,7 +312,10 @@ export function whiteLabelGoLive(cfg: WhiteLabelConfig, actor: WhiteLabelActor):
   return {
     live: true,
     brand,
-    report: [`Rebranded for ${brand}. Zero S1R1US.ai system admin account data in this configuration. Go live when your host is ready.`],
+    report: [
+      `Rebranded for ${brand}. Zero S1R1US.ai system admin account data in this configuration. Go live when your host is ready.`,
+      `DISCLOSURES: keep the DISCLOSURE LINKS active in your readme, Terms of Agreement, and Privacy Policy — ${WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `${l.label}: ${l.value}`).join(" · ")}. NO EXCEPTIONS. VIOLATORS WILL BE BLOCKED FROM ACCESS TO SYSTEM.`,
+    ],
   };
 }
 
@@ -286,6 +329,7 @@ export function builderPrompt(cfg: WhiteLabelConfig): string {
     `My GitHub repository is ${repo}. My top-level menus: ${menus}.`,
     "It must never reference s1r1us.ai, its system admin, tokens, or web host — all were stripped from the download.",
     "I will populate my own terms, privacy policy, roadmap, and licensing manually.",
+    `Keep the S1R1US.ai DISCLOSURE LINKS active in my readme, Terms of Agreement, and Privacy Policy: ${WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `${l.label}: ${l.value}`).join("; ")}.`,
     OSS_LICENSE_NOTICE,
   ].join(" ");
 }

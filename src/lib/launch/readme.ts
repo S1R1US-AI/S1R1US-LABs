@@ -60,4 +60,14 @@ Coinbase for Agents is dry-run in this repo. Never commit CDP JSON, seeds, admin
 ## Disclaimer
 
 s1r1us.ai and this desk are not licensed for financial advice and are not a recommendation to buy or sell bitcoin. Education only.
+
+## DISCLOSURES (White Label Distribution)
+
+Any downloaded free copy of the S1R1US.ai White Label product (Education and Experimental Stage Product) must include these DISCLOSURE LINKS:
+
+- Original Creation distributed by: S1R1US.ai (https://s1r1us.ai)
+- Original Creation distributor Terms: https://s1r1us.ai/terms
+- Original Creation distributor Privacy Policy: https://s1r1us.ai/privacy
+
+USER AGREEMENT: DISCLOSURE Links always remain active in the readme file of a S1R1US.ai White Label Distribution. Disclosure links must also be active in the White Label owner's Terms of Agreement and their Privacy Policy. NO EXCEPTIONS. VIOLATORS WILL BE BLOCKED FROM ACCESS TO SYSTEM. Users agree this is a proof of concept. Users agree this is Educational, Research, and Experimental. NO guarantee of success in any market. USER MAY LOSE ALL FUNDS OR GET UNEXPECTEDLY HACKED BY ADVANCED AI AGENTS ACCESSING THE SYSTEM. ANY HACK BY AN EXTERNAL AI AGENT SHALL BE CONSIDERED AN ACT OF GOD TYPE DISASTER THAT NO PERSON OR SYSTEM COULD PREVENT. WE PAY NO LEGAL FEES PER OUR TERMS.
 `;
