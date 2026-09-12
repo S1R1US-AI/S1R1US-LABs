@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Shell } from "@/components/shell";
 import { TAB_BOARD, TAB_COMPUTE, TAB_HIVE } from "@/lib/brand";
 import { BoardPlayPanel } from "@/components/board-play-panel";
+import { BtcMinersPanel } from "@/components/btc-miners-panel";
 import { HiveAdminPanel } from "@/components/hive-admin-panel";
 import { HiveSwarmLabel } from "@/components/godzilla-mark";
 import { useAppAdmin } from "@/lib/desk/app-admin-client";
@@ -21,7 +22,7 @@ import { STARTING_CASH, usePaper } from "@/lib/desk/store";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { cn } from "@/lib/utils";
 
-type Tab = "console" | "wallet" | "paper" | "coin" | "website" | "access" | "security" | "bowl" | "hive";
+type Tab = "console" | "wallet" | "paper" | "coin" | "website" | "access" | "security" | "bowl" | "hive" | "miners";
 
 export function AppAdminPanel() {
   const unlocked = useAppAdmin((s) => s.unlocked);
@@ -78,6 +79,7 @@ export function AppAdminPanel() {
               ["security", "Security"],
               ["bowl", "SUP3R B0WL"],
               ["hive", "H1V3 SW@RM"],
+              ["miners", "BTC M1N3Rz"],
             ] as const
           ).map(([id, label]) => (
             <button
@@ -107,6 +109,7 @@ export function AppAdminPanel() {
           />
         ) : null}
         {tab === "hive" ? <HivePane /> : null}
+        {tab === "miners" && token ? <BtcMinersPanel token={token} /> : null}
       </main>
     </Shell>
   );

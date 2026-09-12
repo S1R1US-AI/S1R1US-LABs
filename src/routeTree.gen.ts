@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BitcoinMinersRouteImport } from './routes/Bitcoin-Miners'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AgentRouteImport } from './routes/agent'
 import { Route as AiCatalogDotjsonRouteImport } from './routes/ai-catalog[.]json'
@@ -114,6 +115,11 @@ import { Route as ApiAgentBoardPicIdRouteImport } from './routes/api/agent.board
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BitcoinMinersRoute = BitcoinMinersRouteImport.update({
+  id: '/Bitcoin-Miners',
+  path: '/Bitcoin-Miners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -628,6 +634,7 @@ const ApiAgentBoardPicIdRoute = ApiAgentBoardPicIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/Bitcoin-Miners': typeof BitcoinMinersRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
   '/ai-catalog.json': typeof AiCatalogDotjsonRoute
@@ -731,6 +738,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/Bitcoin-Miners': typeof BitcoinMinersRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
   '/ai-catalog.json': typeof AiCatalogDotjsonRoute
@@ -835,6 +843,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/Bitcoin-Miners': typeof BitcoinMinersRoute
   '/admin': typeof AdminRoute
   '/agent': typeof AgentRoute
   '/ai-catalog.json': typeof AiCatalogDotjsonRoute
@@ -940,6 +949,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/Bitcoin-Miners'
     | '/admin'
     | '/agent'
     | '/ai-catalog.json'
@@ -1043,6 +1053,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/Bitcoin-Miners'
     | '/admin'
     | '/agent'
     | '/ai-catalog.json'
@@ -1146,6 +1157,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/Bitcoin-Miners'
     | '/admin'
     | '/agent'
     | '/ai-catalog.json'
@@ -1250,6 +1262,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BitcoinMinersRoute: typeof BitcoinMinersRoute
   AdminRoute: typeof AdminRoute
   AgentRoute: typeof AgentRoute
   AiCatalogDotjsonRoute: typeof AiCatalogDotjsonRoute
@@ -1331,6 +1344,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/Bitcoin-Miners': {
+      id: '/Bitcoin-Miners'
+      path: '/Bitcoin-Miners'
+      fullPath: '/Bitcoin-Miners'
+      preLoaderRoute: typeof BitcoinMinersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -2122,6 +2142,7 @@ const ApiAgentRouteWithChildren = ApiAgentRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BitcoinMinersRoute: BitcoinMinersRoute,
   AdminRoute: AdminRoute,
   AgentRoute: AgentRoute,
   AiCatalogDotjsonRoute: AiCatalogDotjsonRoute,

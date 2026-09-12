@@ -92,6 +92,11 @@ import {
   HIVE_PATH,
   HIVE_HEADLINE,
   SEO_TAB_HIVE,
+  TAB_MINERS,
+  MINERS_PATH,
+  MINERS_HEADLINE,
+  SEO_TAB_MINERS,
+  PAGE_TITLE_MINERS,
   TAB_LOCK3D,
   LOCK_PATH,
   LOCK_HEADLINE,
@@ -139,6 +144,7 @@ import {
 import { COMPANY_X_HANDLE, companyHandleSet } from "@/lib/desk/x-admin";
 import { MORNING_KEEP, MORNING_TITLE, MORNING_VISIBLE } from "@/lib/desk/morning-lib";
 import { SUPPORT_BTC, SUPPORT_COFFEE_PATH, SUPPORT_COFFEE_USD, SUPPORT_COFFEE_WHY, SUPPORT_GIFT_RECEIPT, SUPPORT_USDC, SUPPORT_USDC_LABEL } from "@/lib/desk/support";
+import { MINERS_FAQ_ITEMS } from "@/lib/desk/btc-miners";
 import { PRIVACY_PATH, PRIVACY_TITLE, TERMS_PATH, TERMS_TITLE } from "@/lib/legal";
 import { LOCK_IDS, LOCK_META, lockViewPath } from "@/lib/desk/lock-status";
 
@@ -225,6 +231,15 @@ export const PUBLIC_PAGES = [
     title: PAGE_TITLE_HIVE,
     hint: `${SEO_TAB_HIVE} · ${HIVE_HEADLINE} · the future of BTC Quant · TH/s · BYO compute · paper BTC split · gift/SaaS resource · TEST until go-live`,
     changefreq: "hourly",
+    priority: "0.8",
+  },
+  {
+    path: MINERS_PATH,
+    loc: `${origin}${MINERS_PATH}`,
+    label: TAB_MINERS,
+    title: PAGE_TITLE_MINERS,
+    hint: `${SEO_TAB_MINERS} · ${MINERS_HEADLINE} · solo CKPool stratum · miner hash power graph by hour day month year · connecting bitcoin miners to an AI hive swarm · free public stats`,
+    changefreq: "daily",
     priority: "0.8",
   },
   {
@@ -586,6 +601,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     q: `Does ${TAB_HIVE} take a slice of hive profits?`,
     a: `No. They do not take a slice of a pooled trading book. This host does not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Charge for software access, never for their bitcoin. Optional resource payment: Pay for HTTP / hive seat / hosting. Send BTC or USDC from a wallet you control to the published receive address. This host never deducts hive share, never escrows, never withdraws for you. Gifts unlock nothing extra. SaaS keys only change poll rate. Not a share of hive BTC. Coffee $${SUPPORT_COFFEE_USD.toFixed(2)} and HTTP $9 / $29 already designed. Optional flat hive seat later. Agent sends. Host never skims. Possible money transmission (FinCEN) if this host accepted value, held it, and sent it on minus a fee — that path is LOCKED. FAQ #hive-swarm.`,
   },
+  ...MINERS_FAQ_ITEMS,
   {
     id: "byo-connect",
     q: "How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources)",

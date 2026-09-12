@@ -10,6 +10,7 @@ import {
 } from "./go-live.ts";
 import { LEGAL_DISCLAIMER, LEGAL_DISCLAIMER_SHORT, LEGAL_DISCLAIMER_UPDATED } from "./disclaimer.ts";
 import { OSS_LICENSE_NOTICE, WHITE_LABEL_PATH } from "./white-label.ts";
+import { MINERS_HEADLINE, MINERS_PATH, SEO_TAB_MINERS, TAB_MINERS } from "./btc-miners.ts";
 
 export { OSS_LICENSE_NOTICE };
 
@@ -343,6 +344,15 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     status: "LIVE",
     since: "2026-09-11",
     note: `Download the stripped OSS system and relaunch under a domain YOU control — never under S1R1US.ai. Zero s1r1us.ai admin rights, games, rolls, simulations, tokens, or host info ship in the download. Discover and populate the OSS information, terms, and privacy policy manually. Connect Grok, Claude, or GitHub Copilot to build it. ${OSS_LICENSE_NOTICE}`,
+  },
+  {
+    id: "btc-miners",
+    name: TAB_MINERS,
+    seo: SEO_TAB_MINERS,
+    path: MINERS_PATH,
+    status: "LIVE",
+    since: "2026-09-12",
+    note: `${MINERS_HEADLINE}. Free public solo CKPool stats in a pro trading desk view — hash power graph by hour, day, month, and year. System and copy admins save their own stratum + BTC receive address; blank save restores S1R1US.ai defaults. Miner info is never stripped from the White Label download. Read-only — this host never pools hash or holds keys.`,
   },
 ];
 
