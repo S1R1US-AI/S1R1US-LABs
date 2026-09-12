@@ -10,6 +10,7 @@ import {
   WHITE_LABEL_DISCLOSURE_LINKS,
   WHITE_LABEL_DOWNLOAD_URL,
   WHITE_LABEL_KEEP_MINERS,
+  WHITE_LABEL_LEGAL_STATUS,
   WHITE_LABEL_PRIVILEGES,
   WHITE_LABEL_STAGE,
   WHITE_LABEL_STRIP,
@@ -104,6 +105,7 @@ export function WhiteLabelPage() {
           use of S1R1US.ai system admin account data — the white label does not go live if the check fails.
         </p>
         <p className="mt-2 max-w-3xl text-sm font-semibold leading-relaxed text-fg">{OSS_LICENSE_NOTICE}</p>
+        <p className="legal-purple mt-2 max-w-3xl text-sm font-semibold leading-relaxed">LEGAL STATUS: {WHITE_LABEL_LEGAL_STATUS}</p>
 
         <Panel className="mt-5" kicker="Build with AI" title="Connect Grok, Claude, or GitHub Copilot">
           <p className="text-sm leading-relaxed text-muted">
@@ -182,6 +184,8 @@ export function WhiteLabelPage() {
               <li key={s}>{s}</li>
             ))}
           </ul>
+          <p className="mt-3 text-sm font-semibold text-fg">LEGAL STATUS</p>
+          <p className="mt-1 text-sm leading-relaxed text-muted">{WHITE_LABEL_LEGAL_STATUS}</p>
         </Panel>
 
         <Panel className="mt-4" kicker="Rebrand config" title="Domain · web host · account access">

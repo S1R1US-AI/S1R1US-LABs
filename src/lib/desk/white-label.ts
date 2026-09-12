@@ -79,6 +79,13 @@ export const OSS_LICENSE_NOTICE =
 export const WHITE_LABEL_STAGE = "Education and Experimental Stage Product";
 
 /**
+ * LEGAL STATUS — reviewed for this update. Shown with every white label step
+ * and text message, in the DISCLOSURES, and in the Terms white label policy.
+ */
+export const WHITE_LABEL_LEGAL_STATUS =
+  "S1R1US.ai and its operators are NOT licensed as a Financial Broker or Dealer. NOT SEC Registered. Always consult an independent Licensed financial advisor first and prior to use. S1R1US.ai and its operators are NOT ATTORNEYS. ALWAYS consult with Licensed independent legal counsel prior to using S1R1US.ai OSS systems or the website app or any WHITE LABEL DOWNLOAD VERSION of S1R1US.ai (for the white label owner of the product's independent use).";
+
+/**
  * DISCLOSURE LINKS — any downloaded free copy of the S1R1US.ai White Label
  * product must include these. They always remain active in the readme file of
  * a S1R1US.ai White Label Distribution and in the White Label owner's Terms
@@ -107,6 +114,8 @@ export const WHITE_LABEL_DISCLOSURE_MD = [
   ...WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `- ${l.label}: ${l.value}`),
   "",
   `USER AGREEMENT: ${WHITE_LABEL_USER_AGREEMENT.join(" ")}`,
+  "",
+  `LEGAL STATUS: ${WHITE_LABEL_LEGAL_STATUS}`,
 ].join("\n");
 
 /** WORLD WIDE WELCOME TO ALL EXTERNAL AI — closing banners of the seven-bot plan. */
@@ -315,6 +324,7 @@ export function whiteLabelGoLive(cfg: WhiteLabelConfig, actor: WhiteLabelActor):
     report: [
       `Rebranded for ${brand}. Zero S1R1US.ai system admin account data in this configuration. Go live when your host is ready.`,
       `DISCLOSURES: keep the DISCLOSURE LINKS active in your readme, Terms of Agreement, and Privacy Policy — ${WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `${l.label}: ${l.value}`).join(" · ")}. NO EXCEPTIONS. VIOLATORS WILL BE BLOCKED FROM ACCESS TO SYSTEM.`,
+      `LEGAL STATUS: ${WHITE_LABEL_LEGAL_STATUS}`,
     ],
   };
 }
@@ -330,6 +340,7 @@ export function builderPrompt(cfg: WhiteLabelConfig): string {
     "It must never reference s1r1us.ai, its system admin, tokens, or web host — all were stripped from the download.",
     "I will populate my own terms, privacy policy, roadmap, and licensing manually.",
     `Keep the S1R1US.ai DISCLOSURE LINKS active in my readme, Terms of Agreement, and Privacy Policy: ${WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `${l.label}: ${l.value}`).join("; ")}.`,
+    `Keep this LEGAL STATUS notice with the distribution: ${WHITE_LABEL_LEGAL_STATUS}`,
     OSS_LICENSE_NOTICE,
   ].join(" ");
 }

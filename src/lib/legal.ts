@@ -1,6 +1,13 @@
-import { APP_NAME, LABS_NAME, SEO_CANONICAL, SEO_TAB_COFFEE, TAB_COFFEE, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB, TAB_BOWL, MENU_BOARD, TAB_CALLOUT, TAB_SPICE } from "@/lib/brand";
+import { APP_NAME, LABS_NAME, SEO_CANONICAL, SEO_TAB_COFFEE, TAB_COFFEE, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB, TAB_BOWL, MENU_BOARD, TAB_CALLOUT, TAB_SPICE, TAB_WHITE, WHITE_LABEL_PATH } from "@/lib/brand";
 import { COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
 import { SUPPORT_COFFEE_USD, SUPPORT_GIFT_RECEIPT } from "@/lib/desk/support";
+import {
+  WHITE_LABEL_DISCLOSURE_LINKS,
+  WHITE_LABEL_LEGAL_STATUS,
+  WHITE_LABEL_STAGE,
+  WHITE_LABEL_STRIP,
+  WHITE_LABEL_USER_AGREEMENT,
+} from "@/lib/desk/white-label";
 import { GITHUB_URL } from "@/lib/launch/model";
 
 export const TERMS_PATH = "/terms";
@@ -11,13 +18,13 @@ export const PRIVACY_TITLE = "Privacy Policy";
 export const PRIVACY_HOVER = `${PRIVACY_TITLE} · no bot retention of system information · no reverse engineering without authorization`;
 
 export const LEGAL_NFA =
-  "Use of this website, desk, lab, iOS/Google app, SUP3R B0WL, L3AD3R B0ARD, and any related system is 100 percent at your own risk. S1R1US.ai is NOT a financial advisor and is not licensed for financial advice. ALWAYS seek a licensed professional before trying our service. Not a broker-dealer. Not an investment adviser. Not a recommendation to buy, sell, or hold bitcoin, any token, or any other asset. Education only. Invest only on the advice of a licensed advisor. You can lose all funds.";
+  "Use of this website, desk, lab, iOS/Google app, SUP3R B0WL, L3AD3R B0ARD, and any related system is 100 percent at your own risk. S1R1US.ai and its operators are NOT a financial advisor and are not licensed for financial advice. NOT licensed as a Financial Broker or Dealer. NOT SEC Registered. ALWAYS consult an independent licensed financial advisor first and prior to use. Not an investment adviser. Not a recommendation to buy, sell, or hold bitcoin, any token, or any other asset. Education only. Invest only on the advice of an independent licensed advisor. You can lose all funds.";
 
 export const LEGAL_OWN_RISK =
   "Use of this system is 100 percent at your own risk. S1R1US.ai, the owners, and the operators owe you no duty of care for trades, paper fills, titles, or gifts. You are solely responsible for every action you take.";
 
 export const LEGAL_NOT_ATTORNEY =
-  "If you want to connect a bot for live trading, seek licensed legal counsel first. Nothing S1R1US.ai does is legal advice, the practice of law, or a substitute for an attorney. We are not licensed as an attorney. Always seek the advice of a licensed attorney in your jurisdiction before live use, Coinbase connectivity, or any commercial activity.";
+  "If you want to connect a bot for live trading, seek licensed legal counsel first. Nothing S1R1US.ai does is legal advice, the practice of law, or a substitute for an attorney. S1R1US.ai and its operators are NOT ATTORNEYS and are not licensed as an attorney. ALWAYS consult with licensed independent legal counsel prior to using S1R1US.ai OSS systems, the website app, or any white label download version of S1R1US.ai, and before live use, Coinbase connectivity, or any commercial activity. Always seek the advice of a licensed attorney in your jurisdiction.";
 
 export const LEGAL_REGION =
   "Do not use this site for any reason — education or live use of systems — that is unlawful in any region where S1R1US.ai operates or where you are located. You are solely responsible for complying with local, state, national, and international law. Unlawful use is a breach of these Terms.";
@@ -137,7 +144,16 @@ export const LEGAL_VENUE =
 export const LEGAL_COSTS =
   "The owners and operators of S1R1US.ai will not pay your legal expenses, attorney fees, court costs, expert fees, settlement costs, or any other costs you or any third party generate, regardless of how they arise, including claims you bring, claims brought against you, mediation, arbitration, or litigation. You agree to bear your own legal expenses. If the owners or operators incur costs because of your breach or unlawful use, you agree to reimburse those costs to the fullest extent allowed by law.";
 
-export const TERMS_UPDATED = "2026-09-06";
+export const LEGAL_WHITE_LABEL = [
+  `POLICY FOR WHITE LABEL PRODUCT OFFERINGS. WHITE LABEL = a download allowing a phone app or website user to upgrade to system admin by using this entire open-source system to relaunch under a domain name THEY control — never under S1R1US.ai. As soon as the system goes live on a different domain name it is rebranded for the new domain name. S1R1US.ai information is never populated into the phone app download (or website download) of the white label S1R1US.ai app. Setup, dialogue boxes, and the go-live check: ${WHITE_LABEL_PATH} (${TAB_WHITE}).`,
+  `HOW A WHITE LABEL DOWNLOAD PRODUCT IS BUILT FOR A DOWNLOAD USER — prior to making the white label of the system available as a download, the following are stripped from the offering: ${WHITE_LABEL_STRIP.join("; ")}.`,
+  `Rebrand dialogue boxes for the domain name, web host, and account access (id tokens and security tokens) start blank and are populated by the user: top-level menu names for the rebranded website app; accounts (1. system admin, 2. phone app user); web host name, web host IP address, and DNS servers 1–2; encrypted token secret + token id pairs (such as a better_auth id and its secret), with plus/minus to add more pairs used for maintaining or accessing the new branded system; the GitHub repository and/or main branch; and the GitHub system admin for the white label download. Links to connect Grok, Claude, or GitHub Copilot to help build the white label system using the user's domain name and the information the user provides are displayed prominently at ${WHITE_LABEL_PATH}.`,
+  `DISCLOSURES: any downloaded free copy of the S1R1US.ai White Label product (${WHITE_LABEL_STAGE}) must include the DISCLOSURE LINKS — ${WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `${l.label}: ${l.value}`).join(" · ")}.`,
+  `USER AGREEMENT: ${WHITE_LABEL_USER_AGREEMENT.join(" ")}`,
+  `LEGAL STATUS: ${WHITE_LABEL_LEGAL_STATUS}`,
+].join(" ");
+
+export const TERMS_UPDATED = "2026-09-12";
 
 export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   {
@@ -346,8 +362,13 @@ export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
     body: LEGAL_COSTS,
   },
   {
+    id: "white-label",
+    title: "19. Policy for White Label product offerings — disclosures",
+    body: LEGAL_WHITE_LABEL,
+  },
+  {
     id: "changes",
-    title: "19. Changes",
+    title: "20. Changes",
     body: `We may update these Terms. The date at the top of the Terms page is the current version. Continued use after a change is agreement to the new Terms. Last updated ${TERMS_UPDATED}. Canonical: ${SEO_CANONICAL.replace(/\/$/, "")}${TERMS_PATH}. Open source: ${GITHUB_URL}.`,
   },
 ];
