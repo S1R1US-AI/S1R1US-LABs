@@ -5,9 +5,14 @@ import {
   OSS_LICENSE_NOTICE,
   SYSTEM_ADMIN_OVERRIDE,
   WHITE_LABEL_BUILDERS,
+  WHITE_LABEL_DISCLOSURE_LINKS,
+  WHITE_LABEL_DISCLOSURE_MD,
   WHITE_LABEL_PATH,
   WHITE_LABEL_PRIVILEGES,
+  WHITE_LABEL_STAGE,
   WHITE_LABEL_STRIP,
+  WHITE_LABEL_USER_AGREEMENT,
+  WHITE_LABEL_WELCOME_BANNERS,
   builderPrompt,
   emptyWhiteLabelConfig,
   fieldBlocked,
@@ -133,6 +138,67 @@ describe("7-B0T H3DGE FUND WHITE LABEL", () => {
   it("keeps s1r1us.ai system admin the highest privilege — white label can never overtake it", () => {
     for (const row of WHITE_LABEL_PRIVILEGES) {
       if (row.system === "YES") assert.match(row.white, /NEVER/);
+    }
+  });
+
+  it("includes the DISCLOSURE LINKS and USER AGREEMENT for every White Label distribution", () => {
+    assert.equal(WHITE_LABEL_STAGE, "Education and Experimental Stage Product");
+    assert.deepEqual(
+      WHITE_LABEL_DISCLOSURE_LINKS.map((l) => l.label),
+      ["Original Creation distributed by", "Original Creation distributor Terms", "Original Creation distributor Privacy Policy"],
+    );
+    assert.equal(WHITE_LABEL_DISCLOSURE_LINKS[0].value, "S1R1US.ai");
+    assert.equal(WHITE_LABEL_DISCLOSURE_LINKS[1].url, "https://s1r1us.ai/terms");
+    assert.equal(WHITE_LABEL_DISCLOSURE_LINKS[2].url, "https://s1r1us.ai/privacy");
+    const agreement = WHITE_LABEL_USER_AGREEMENT.join(" ");
+    assert.match(agreement, /always remain active in the readme file/);
+    assert.match(agreement, /Terms of Agreement and their Privacy Policy\. NO EXCEPTIONS\./);
+    assert.match(agreement, /VIOLATORS WILL BE BLOCKED FROM ACCESS TO SYSTEM\./);
+    assert.match(agreement, /proof of concept/);
+    assert.match(agreement, /Educational, Research, and Experimental/);
+    assert.match(agreement, /NO guarantee of success in any market/);
+    assert.match(agreement, /ACT OF GOD TYPE DISASTER/);
+    assert.match(agreement, /WE PAY NO LEGAL FEES PER OUR TERMS\./);
+    assert.match(WHITE_LABEL_DISCLOSURE_MD, /DISCLOSURE LINKS/);
+    assert.match(WHITE_LABEL_DISCLOSURE_MD, /https:\/\/s1r1us\.ai\/terms/);
+    assert.match(WHITE_LABEL_DISCLOSURE_MD, /https:\/\/s1r1us\.ai\/privacy/);
+    const prompt = builderPrompt(goodConfig());
+    assert.match(prompt, /DISCLOSURE LINKS/);
+    const live = whiteLabelGoLive(goodConfig(), { handle: "@phone_user" });
+    assert.match(live.report.join(" "), /DISCLOSURES/);
+  });
+
+  it("welcomes all external AI worldwide at the end of the seven-bot plan", () => {
+    assert.equal(WHITE_LABEL_WELCOME_BANNERS.length, 2);
+    assert.match(WHITE_LABEL_WELCOME_BANNERS[1], /WORLD WIDE WELCOME TO ALL EXTERNAL AI/);
+    assert.match(WHITE_LABEL_WELCOME_BANNERS[1], /サトシ・ナカモト/);
+  });
+
+  it("keeps the disclosure links active in the distribution readme, guide, page, and llms.txt", () => {
+    const page = readFileSync(new URL("../../components/white-label-page.tsx", import.meta.url), "utf8");
+    assert.match(page, /WHITE_LABEL_DISCLOSURE_LINKS/);
+    assert.match(page, /WHITE_LABEL_USER_AGREEMENT/);
+    const guide = readFileSync(new URL("./guide.ts", import.meta.url), "utf8");
+    assert.match(guide, /WHITE_LABEL_DISCLOSURE_LINKS/);
+    assert.match(guide, /WHITE_LABEL_USER_AGREEMENT/);
+    assert.match(guide, /WHITE_LABEL_WELCOME_BANNERS/);
+    for (const readmeUrl of [
+      new URL("../../../README.md", import.meta.url),
+      new URL("../launch/readme.ts", import.meta.url),
+    ]) {
+      const readme = readFileSync(readmeUrl, "utf8");
+      assert.match(readme, /Original Creation distributed by/);
+      assert.match(readme, /https:\/\/s1r1us\.ai\/terms/);
+      assert.match(readme, /https:\/\/s1r1us\.ai\/privacy/);
+      assert.match(readme, /WE PAY NO LEGAL FEES PER OUR TERMS\./);
+    }
+    for (const llmsUrl of [
+      new URL("../../../public/llms.txt", import.meta.url),
+      new URL("../../../public/.well-known/llms.txt", import.meta.url),
+    ]) {
+      const llms = readFileSync(llmsUrl, "utf8");
+      assert.match(llms, /DISCLOSURE LINKS/);
+      assert.match(llms, /https:\/\/s1r1us\.ai\/privacy/);
     }
   });
 
