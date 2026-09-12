@@ -164,6 +164,7 @@ Go-live: PoC rails STARTED (DEPLOY #68), Auto GM practice NEXT, Auto AI agent ac
 - HTTP SaaS plans: https://s1r1us.ai/api/agent/keys
 - BYO compute: https://s1r1us.ai/compute
 - Coffee: https://s1r1us.ai/c0ff33
+- Sponsor (FUNDING.yml map — GitHub Sponsors / Patreon / Ko-fi / Open Collective donation types as BTC + USDC): https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot
 - Optional query: ?nav=1000 (USD book for clip size, 100–100000)
 - trade: false · ordersCreate: false · keysOnThisHost: false · sourceAccess: false · webhooks: false
 - You run coinbase.cli on YOUR Coinbase for Agents (https://agents.coinbase.com/mcp). Always --dry-run first.
@@ -177,6 +178,7 @@ Go-live: PoC rails STARTED (DEPLOY #68), Auto GM practice NEXT, Auto AI agent ac
 - https://s1r1us.ai/r0b0ts
 - https://s1r1us.ai/f33d
 - https://s1r1us.ai/c0ff33
+- https://s1r1us.ai/sponsor-ai-bitcoin-trading-bot
 - https://s1r1us.ai/labs
 - https://s1r1us.ai/s1r1us
 - https://s1r1us.ai/faq
