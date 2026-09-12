@@ -55,7 +55,7 @@ export function ProDeskMock() {
           <Link to="/theme" className="is-on">
             Tape
           </Link>
-          <Link to="/helios">Lab</Link>
+          <Link to="/labs">Lab</Link>
           <Link to="/gm">GM</Link>
           <Link to="/agent">Agents</Link>
           <Link to="/compute">Compute</Link>

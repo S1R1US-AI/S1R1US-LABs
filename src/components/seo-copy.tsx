@@ -157,7 +157,7 @@ export function SeoCopy() {
         applicationCategory: "FinanceApplication",
         operatingSystem: "Web",
         description: `${TAB_LAB} is S1R1US Lab Strategies, the what-if overlay on the 7-bot tape.`,
-        url: `${SEO_CANONICAL}helios`,
+        url: `${SEO_CANONICAL}labs`,
       },
       {
         "@type": "SoftwareSourceCode",

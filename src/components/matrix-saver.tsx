@@ -8,7 +8,7 @@ const IDLE_MS = SAVER_IDLE_MS;
 const BURST_MS = GM_BURST_MS;
 const GM_SEQ = "G0DZ1LLa M0D3";
 const CLASSIC =
-  "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789";
+  "ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ420420420420420420420420420420420420420420";
 
 const RAINBOW = ["#ff1f1f", "#ff8a1f", "#f4e14b", "#3dff1a", "#5eb3e4", "#9b6bdb", "#e879b0"];
 
@@ -25,7 +25,7 @@ type Rain = "classic" | "gm";
 
 const burstFns = new Set<(ms: number) => void>();
 
-/** 2.5s Matrix rain every time the GM tab opens — does not lock the session. */
+/** 3 s Matrix rain on every G0DZ1LLa M0D3 tab click / /gm open — never locks the session. */
 export function rainGmBurst(ms = BURST_MS) {
   for (const fn of burstFns) fn(ms);
 }

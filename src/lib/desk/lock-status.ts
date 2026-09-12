@@ -11,7 +11,7 @@ export type LockId = "agents" | "bot7Auto" | "gmAuto" | "gmManual" | "agentLive"
 
 export const LOCK_IDS: LockId[] = ["agents", "bot7Auto", "gmAuto", "gmManual", "agentLive", "hive", "pred"];
 
-export type LockHref = "/" | "/gm" | "/agent" | "/h1v3" | "/helios" | "/pr3d";
+export type LockHref = "/" | "/gm" | "/agent" | "/h1v3" | "/labs" | "/pr3d";
 
 export const LOCK_META: Record<
   LockId,

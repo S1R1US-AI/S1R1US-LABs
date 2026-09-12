@@ -1,16 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { HeliosLab } from "@/components/helios-lab";
-import { PAGE_DESC_LAB, PAGE_TITLE_LAB, SEO_KEYWORDS } from "@/lib/brand";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
+/** Old Helios-era path. S1R1US L@Bs (S1R1US Lab Strategies) lives at /labs. */
 export const Route = createFileRoute("/helios")({
-  component: HeliosLab,
-  head: () => ({
-    meta: [
-      { title: PAGE_TITLE_LAB },
-      { name: "description", content: PAGE_DESC_LAB },
-      { name: "keywords", content: SEO_KEYWORDS },
-      { name: "robots", content: "index,follow" },
-    ],
-    links: [{ rel: "canonical", href: "https://s1r1us.ai/helios" }],
-  }),
+  beforeLoad: () => {
+    throw redirect({ to: "/labs", replace: true });
+  },
 });

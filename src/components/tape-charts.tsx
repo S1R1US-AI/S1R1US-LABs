@@ -136,6 +136,40 @@ const ASSET_PRODUCT: Record<TapeAsset, string> = {
 };
 type AssetQuote = { last: number; open: number | null };
 
+/** Ratio semantics per pair. GOLD charts BTC needed for 1 oz gold; the rest chart units per 1 BTC. */
+const RATIO_LABEL: Record<Exclude<TapeAsset, "USDC">, string> = {
+  GOLD: "GOLD:BTC",
+  SOL: "BTC:SOL",
+  ICP: "BTC:ICP",
+  ETH: "BTC:ETH",
+};
+
+/** Coinbase public hourly candles for an overlay pair product — feeds the ratio chart. */
+async function fetchAssetCandles(asset: TapeAsset): Promise<Candle[]> {
+  const product = ASSET_PRODUCT[asset];
+  const res = await fetch(`https://api.exchange.coinbase.com/products/${product}/candles?granularity=3600`, {
+    headers: { accept: "application/json" },
+  });
+  if (!res.ok) throw new Error(`coinbase ${res.status}`);
+  const rows = (await res.json()) as number[][];
+  const out: Candle[] = [];
+  for (const row of rows ?? []) {
+    const c = {
+      t: Number(row[0]),
+      low: Number(row[1]),
+      high: Number(row[2]),
+      open: Number(row[3]),
+      close: Number(row[4]),
+      volume: Number(row[5]),
+    };
+    if (c.t > 0 && Number.isFinite(c.close) && c.close > 0) out.push(c);
+  }
+  const seen = new Set<number>();
+  return out
+    .filter((c) => (seen.has(c.t) ? false : (seen.add(c.t), true)))
+    .sort((a, b) => a.t - b.t);
+}
+
 /** Coinbase public 24h stats with a v2 spot fallback. Read-only, no keys. */
 async function fetchAssetQuote(asset: TapeAsset): Promise<AssetQuote | null> {
   const product = ASSET_PRODUCT[asset];
@@ -377,9 +411,28 @@ export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
   const [showVol, setShowVol] = useState(true);
   const [showMacd50, setShowMacd50] = useState(false);
   const [showMacd200, setShowMacd200] = useState(false);
-  const [asset, setAsset] = useState<TapeAsset>("GOLD");
+  const [asset, setAsset] = useState<TapeAsset>("USDC");
   const [assetOpen, setAssetOpen] = useState(false);
   const [quotes, setQuotes] = useState<Partial<Record<TapeAsset, AssetQuote>>>({});
+  const [pairCandles, setPairCandles] = useState<Candle[] | null>(null);
+  const [pairErr, setPairErr] = useState<string | null>(null);
+
+  useEffect(() => {
+    setPairCandles(null);
+    setPairErr(null);
+    if (asset === "USDC") return;
+    let live = true;
+    fetchAssetCandles(asset)
+      .then((c) => {
+        if (live) setPairCandles(c);
+      })
+      .catch(() => {
+        if (live) setPairErr(`Coinbase ${ASSET_PRODUCT[asset]} pull failed — showing the BTC tape.`);
+      });
+    return () => {
+      live = false;
+    };
+  }, [asset]);
 
   useEffect(() => {
     let live = true;
@@ -398,6 +451,25 @@ export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
     };
   }, []);
   const data = useMemo(() => overlayBars(snap?.candles ?? []), [snap?.candles]);
+
+  /** Independent ratio series for the selected pair — one dropdown value at a time, never overlaid. */
+  const ratioData = useMemo(() => {
+    if (asset === "USDC" || !pairCandles?.length) return null;
+    const byT = new Map(pairCandles.map((c) => [c.t, c.close]));
+    const rows: { t: number; ratio: number }[] = [];
+    for (const d of data) {
+      const px = byT.get(d.t);
+      if (!px || px <= 0 || d.close <= 0) continue;
+      rows.push({ t: d.t, ratio: asset === "GOLD" ? px / d.close : d.close / px });
+    }
+    return rows.length ? rows : null;
+  }, [asset, pairCandles, data]);
+  const ratioLast = ratioData?.[ratioData.length - 1];
+  const ratioFirst = ratioData?.[0];
+  const ratioPct =
+    ratioLast && ratioFirst && ratioFirst.ratio > 0
+      ? ((ratioLast.ratio - ratioFirst.ratio) / ratioFirst.ratio) * 100
+      : null;
   const rsiData = data.filter((d) => d.rsi != null);
   const last = data[data.length - 1];
   const maxVol = Math.max(0, ...data.map((d) => d.volume));
@@ -417,18 +489,42 @@ export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
     <Panel kicker="Coinbase hourly" title="BTC tape + overlays" className="flex w-full min-h-0 flex-col" kickerClass="coinbase-orange" titleClass="text-high">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap gap-2">
-          <Toggle on={showEma} onClick={() => setShowEma((v) => !v)} label="EMA 12/26" />
-          <Toggle on={showBb} onClick={() => setShowBb((v) => !v)} label="Bollinger" />
-          <Toggle on={showVol} onClick={() => setShowVol((v) => !v)} label="Volume" />
-          <Toggle on={showMacd50} onClick={() => setShowMacd50((v) => !v)} label="MACD 50" />
-          <Toggle on={showMacd200} onClick={() => setShowMacd200((v) => !v)} label="MACD 200" />
+          {ratioData ? null : (
+            <>
+              <Toggle on={showEma} onClick={() => setShowEma((v) => !v)} label="EMA 12/26" />
+              <Toggle on={showBb} onClick={() => setShowBb((v) => !v)} label="Bollinger" />
+              <Toggle on={showVol} onClick={() => setShowVol((v) => !v)} label="Volume" />
+              <Toggle on={showMacd50} onClick={() => setShowMacd50((v) => !v)} label="MACD 50" />
+              <Toggle on={showMacd200} onClick={() => setShowMacd200((v) => !v)} label="MACD 200" />
+            </>
+          )}
         </div>
         {last ? (
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <p className={cn("font-mono text-base tabular-nums sm:text-lg", last.up ? "text-high" : "text-sell")}>
-              {money(last.close, 0)} {last.up ? "▲" : "▼"} {last.close >= last.open ? "+" : ""}
-              {(((last.close - last.open) / last.open) * 100).toFixed(2)}%
-            </p>
+            {ratioData && ratioLast ? (
+              <p
+                className={cn(
+                  "font-mono text-base tabular-nums sm:text-lg",
+                  ratioPct == null || ratioPct >= 0 ? "text-high" : "text-sell",
+                )}
+              >
+                {asset === "GOLD"
+                  ? `${fmtRatio(ratioLast.ratio)} BTC = 1 oz gold`
+                  : `1 BTC = ${fmtRatio(ratioLast.ratio)} ${asset}`}
+                {ratioPct != null ? (
+                  <>
+                    {" "}
+                    {ratioPct >= 0 ? "▲" : "▼"} {ratioPct >= 0 ? "+" : ""}
+                    {ratioPct.toFixed(2)}%
+                  </>
+                ) : null}
+              </p>
+            ) : (
+              <p className={cn("font-mono text-base tabular-nums sm:text-lg", last.up ? "text-high" : "text-sell")}>
+                {money(last.close, 0)} {last.up ? "▲" : "▼"} {last.close >= last.open ? "+" : ""}
+                {(((last.close - last.open) / last.open) * 100).toFixed(2)}%
+              </p>
+            )}
             <div className="relative">
               <button
                 type="button"
@@ -469,12 +565,62 @@ export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
               ) : null}
             </div>
             <AssetQuoteChip asset={asset} quote={quotes[asset]} />
-            <GoldBtcRatio btc={last.close} gold={quotes.GOLD?.last} />
+            <PairRatioChip asset={asset} btc={last.close} px={quotes[asset]?.last} />
           </div>
         ) : null}
       </div>
+      {pairErr ? <p className="mb-1 text-[10px] text-down">{pairErr}</p> : null}
       <div className="tape-main">
-        {data.length ? (
+        {ratioData ? (
+          <ResponsiveContainer width="100%" height="100%">
+            <ComposedChart data={ratioData} margin={{ top: 6, right: 12, left: 0, bottom: 0 }}>
+              <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.9} />
+              <XAxis
+                dataKey="t"
+                tickFormatter={(v) =>
+                  new Date(Number(v) * 1000).toLocaleTimeString("en-US", { hour: "numeric" })
+                }
+                tick={{ fill: "var(--color-muted)", fontSize: 10 }}
+                axisLine={false}
+                tickLine={false}
+                minTickGap={28}
+                height={22}
+              />
+              <YAxis
+                domain={["auto", "auto"]}
+                tickFormatter={(v) => fmtRatio(Number(v))}
+                tick={{ fill: "var(--color-muted)", fontSize: 10 }}
+                axisLine={false}
+                tickLine={false}
+                width={56}
+                orientation="right"
+              />
+              <Tooltip
+                contentStyle={{
+                  background: "var(--color-surface)",
+                  border: "1px solid var(--color-rule)",
+                  borderRadius: 8,
+                  fontSize: 12,
+                  color: "var(--color-fg)",
+                }}
+                labelFormatter={(l) => hourLabel(Number(l))}
+                formatter={(value) => [
+                  fmtRatio(typeof value === "number" ? value : Number(value)),
+                  asset === "USDC" ? "ratio" : RATIO_LABEL[asset],
+                ]}
+              />
+              <Line
+                type="monotone"
+                dataKey="ratio"
+                stroke="var(--color-medium)"
+                strokeWidth={1.8}
+                dot={false}
+                name={asset === "USDC" ? "ratio" : RATIO_LABEL[asset]}
+                isAnimationActive={false}
+              />
+            </ComposedChart>
+          </ResponsiveContainer>
+        ) : data.length ? (
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={data} margin={{ top: 6, right: 12, left: 0, bottom: 0 }}>
               <CartesianGrid stroke="var(--color-rule)" vertical={false} strokeOpacity={0.9} />
@@ -844,12 +990,38 @@ function AssetQuoteChip({ asset, quote }: { asset: TapeAsset; quote?: AssetQuote
   );
 }
 
-/** Gold-to-BTC ratio indicator — oz of gold per 1 BTC via Coinbase PAXG-USD. */
-function GoldBtcRatio({ btc, gold }: { btc: number; gold?: number }) {
-  if (!gold || !Number.isFinite(btc) || btc <= 0) return null;
+/** Ratio display: 34.4k / 512 / 15.2 / 2.05 / 0.0291 depending on magnitude. */
+function fmtRatio(v: number) {
+  if (!Number.isFinite(v)) return "—";
+  if (v >= 100_000) return `${Math.round(v / 1000)}k`;
+  if (v >= 1000) return `${(v / 1000).toFixed(1)}k`;
+  if (v >= 100) return v.toFixed(0);
+  if (v >= 10) return v.toFixed(1);
+  if (v >= 1) return v.toFixed(2);
+  return v.toFixed(4);
+}
+
+/** Selected-pair BTC ratio chip — only the dropdown pick shows, never all pairs at once.
+    GOLD = BTC required for 1 oz gold (Coinbase PAXG-USD, 1 PAXG = 1 oz). Others = units per 1 BTC. */
+function PairRatioChip({ asset, btc, px }: { asset: TapeAsset; btc: number; px?: number }) {
+  if (asset === "USDC" || !px || px <= 0 || !Number.isFinite(btc) || btc <= 0) return null;
+  const label = RATIO_LABEL[asset];
+  if (asset === "GOLD") {
+    return (
+      <p
+        className="rounded-sm border border-rule px-2 py-0.5 font-mono text-xs tabular-nums text-muted"
+        title="Gold to BTC ratio — BTC required to purchase 1 oz of gold (Coinbase PAXG-USD, 1 PAXG = 1 oz gold)"
+      >
+        <span className="gold-css">{label}</span> {(px / btc).toFixed(4)} · 1 BTC = {(btc / px).toFixed(1)} oz
+      </p>
+    );
+  }
   return (
-    <p className="rounded-sm border border-rule px-2 py-0.5 font-mono text-xs tabular-nums text-muted" title="Gold to BTC ratio — Coinbase PAXG-USD (1 PAXG = 1 oz gold)">
-      <span className="gold-css">GOLD:BTC</span> {(gold / btc).toFixed(4)} · 1 BTC = {(btc / gold).toFixed(1)} oz
+    <p
+      className="rounded-sm border border-rule px-2 py-0.5 font-mono text-xs tabular-nums text-muted"
+      title={`${asset} to BTC ratio — how many ${asset} one bitcoin purchases (Coinbase ${ASSET_PRODUCT[asset]})`}
+    >
+      <span className="text-fg">{label}</span> 1 BTC = {fmtRatio(btc / px)} {asset}
     </p>
   );
 }

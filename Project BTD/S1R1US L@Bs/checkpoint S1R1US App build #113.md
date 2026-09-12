@@ -1,5 +1,6 @@
 # checkpoint S1R1US App build #113
 
+**Save name:** C-P Build S1R1US.ai APP Build #113
 **Name:** S1R1US App build #113 (live sim launch)
 **Project:** Project BTD
 **Sub-folder:** S1R1US L@Bs
@@ -8,7 +9,7 @@
 | | |
 |---|---|
 | Number | 113 |
-| Fold | 2026-09-11T22:34:00.000Z |
+| Fold | 2026-09-12T00:20:00.000Z |
 | Branch | `main` |
 | Live | https://s1r1us.ai |
 | Repo | https://github.com/S1R1US-AI/S1R1US-LABs |
@@ -34,9 +35,17 @@ Checkpoint **#113** folds the white-label + screensaver + security update on `ma
 
 ### Matrix screensavers
 
-- Opening `/gm` (Godzilla mode) plays the Matrix rain burst for **2.5 seconds**.
-- **Matrix classic** runs after **5 minutes** of no user activity anywhere on s1r1us.ai; it does **not** lock the screen.
+- Clicking the **G0DZ1LLa M0D3 tab** (or opening `/gm`) plays the Matrix rain burst for **3 seconds** (`GM_SEQ = "G0DZ1LLa M0D3"`). The burst never locks the screen.
+- Matrix charset (shared by classic saver and GM burst) ends in `420420420420420420420420420420420420420420` — each glyph distinct and recognizable.
+- **Matrix classic** runs after **5 minutes** of no user activity anywhere on s1r1us.ai; with the LOCKED policy it is the security lock for a user who stepped away — the idle trip signs the session out and requires login.
 - System admin locks / unlocks all screensavers in Admin → Security → Screensavers. LOCKED = logs out when triggered and requires login to sign back in. UNLOCKED = display only.
+
+### #113 addendum (2026-09-12)
+
+- **S1R1US L@Bs URL**: the lab page moved from `/helios` to **`/labs`** — sitemap, XML sitemap, search schema, llms.txt instruction module, robots.txt, phone-app bridge, guide, research paper, and morning-report link audit all updated; `/helios` 301-redirects to `/labs`.
+- **PR3D1CT10N$ tab CSS reverted**: the selected-tab rainbow highlight now excludes `.pred-nav`; the PR3D1CT10N$ tab keeps its original gold shimmer + gold underline from pred-nav.css.
+- **Coinbase hourly pair ratios**: the USDC ▾ dropdown reprices the BTC tape per pair — GOLD (BTC required for 1 oz gold), SOL / ICP / ETH (units purchased with 1 BTC). Each selection charts its own independent ratio; pairs are never overlaid together. USDC keeps the BTC tape.
+- **llms.txt** instruction module lists `/wh1t3` (white label), `/labs`, `/ios`, `/play`, `/media`, `/search` and a white-label section.
 
 ### Menu repair
 

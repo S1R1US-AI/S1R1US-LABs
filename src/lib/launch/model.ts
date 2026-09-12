@@ -380,7 +380,7 @@ export const OSS_NEEDS = [
   { id: "security-md", need: "SECURITY.md: report vulns privately. No CDP/Yubi/vault in issues.", minUsd: 0, maxUsd: 0, done: true },
   { id: "no-secrets", need: "Strip factory passwords, live Argon2 hashes, Yubi public ids, portfolio UUIDs. Env-only.", minUsd: 0, maxUsd: 0 },
   { id: "stealth-readme", need: "README is the desk brand + how to run. No pump.fun create steps until mint tx.", minUsd: 0, maxUsd: 0, done: true },
-  { id: "faq-sitemap", need: "Public FAQ + HTML sitemap + sitemap.xml + sitemap-index.xml + video-sitemap.xml. Footer Sitemap | FAQ | OP3N S0URC3. robots Allow /gm /helios /faq /sitemap /forum /media /search. Disallow admin/login/launch/renew/source/guide.", minUsd: 0, maxUsd: 0, done: true },
+  { id: "faq-sitemap", need: "Public FAQ + HTML sitemap + sitemap.xml + sitemap-index.xml + video-sitemap.xml. Footer Sitemap | FAQ | OP3N S0URC3. robots Allow /gm /labs /faq /sitemap /forum /media /search. Disallow admin/login/launch/renew/source/guide.", minUsd: 0, maxUsd: 0, done: true },
   { id: "config", need: "Operator config (X admin id, profit address, GitHub) via env, not hardcoded spend keys.", minUsd: 0, maxUsd: 400 },
   { id: "repro", need: "npm run dev / build / typecheck. SuperGrok optional. Free feeds work without keys.", minUsd: 0, maxUsd: 0, done: true },
   { id: "contrib", need: "CONTRIBUTING: PRs cannot add Google DNS, live Coinbase create, or client-held secrets.", minUsd: 0, maxUsd: 0, done: true },

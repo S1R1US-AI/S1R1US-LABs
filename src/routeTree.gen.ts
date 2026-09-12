@@ -34,6 +34,7 @@ import { Route as HeliosbotRouteImport } from './routes/heliosbot'
 import { Route as HiveRouteImport } from './routes/hive'
 import { Route as IosRouteImport } from './routes/ios'
 import { Route as L0ckRouteImport } from './routes/l0ck'
+import { Route as LabsRouteImport } from './routes/labs'
 import { Route as LaunchRouteImport } from './routes/launch'
 import { Route as LockRouteImport } from './routes/lock'
 import { Route as Lock3dRouteImport } from './routes/lock3d'
@@ -231,6 +232,11 @@ const IosRoute = IosRouteImport.update({
 const L0ckRoute = L0ckRouteImport.update({
   id: '/l0ck',
   path: '/l0ck',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabsRoute = LabsRouteImport.update({
+  id: '/labs',
+  path: '/labs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaunchRoute = LaunchRouteImport.update({
@@ -633,6 +639,7 @@ export interface FileRoutesByFullPath {
   '/hive': typeof HiveRoute
   '/ios': typeof IosRoute
   '/l0ck': typeof L0ckRoute
+  '/labs': typeof LabsRoute
   '/launch': typeof LaunchRoute
   '/lock': typeof LockRoute
   '/lock3d': typeof Lock3dRoute
@@ -733,6 +740,7 @@ export interface FileRoutesByTo {
   '/hive': typeof HiveRoute
   '/ios': typeof IosRoute
   '/l0ck': typeof L0ckRoute
+  '/labs': typeof LabsRoute
   '/launch': typeof LaunchRoute
   '/lock': typeof LockRoute
   '/lock3d': typeof Lock3dRoute
@@ -834,6 +842,7 @@ export interface FileRoutesById {
   '/hive': typeof HiveRoute
   '/ios': typeof IosRoute
   '/l0ck': typeof L0ckRoute
+  '/labs': typeof LabsRoute
   '/launch': typeof LaunchRoute
   '/lock': typeof LockRoute
   '/lock3d': typeof Lock3dRoute
@@ -936,6 +945,7 @@ export interface FileRouteTypes {
     | '/hive'
     | '/ios'
     | '/l0ck'
+    | '/labs'
     | '/launch'
     | '/lock'
     | '/lock3d'
@@ -1036,6 +1046,7 @@ export interface FileRouteTypes {
     | '/hive'
     | '/ios'
     | '/l0ck'
+    | '/labs'
     | '/launch'
     | '/lock'
     | '/lock3d'
@@ -1136,6 +1147,7 @@ export interface FileRouteTypes {
     | '/hive'
     | '/ios'
     | '/l0ck'
+    | '/labs'
     | '/launch'
     | '/lock'
     | '/lock3d'
@@ -1237,6 +1249,7 @@ export interface RootRouteChildren {
   HiveRoute: typeof HiveRoute
   IosRoute: typeof IosRoute
   L0ckRoute: typeof L0ckRoute
+  LabsRoute: typeof LabsRoute
   LaunchRoute: typeof LaunchRoute
   LockRoute: typeof LockRoute
   Lock3dRoute: typeof Lock3dRoute
@@ -1459,6 +1472,13 @@ declare module '@tanstack/react-router' {
       path: '/l0ck'
       fullPath: '/l0ck'
       preLoaderRoute: typeof L0ckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/labs': {
+      id: '/labs'
+      path: '/labs'
+      fullPath: '/labs'
+      preLoaderRoute: typeof LabsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch': {
@@ -2085,6 +2105,7 @@ const rootRouteChildren: RootRouteChildren = {
   HiveRoute: HiveRoute,
   IosRoute: IosRoute,
   L0ckRoute: L0ckRoute,
+  LabsRoute: LabsRoute,
   LaunchRoute: LaunchRoute,
   LockRoute: LockRoute,
   Lock3dRoute: Lock3dRoute,
