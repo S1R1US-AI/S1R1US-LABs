@@ -46,6 +46,7 @@ describe("Terms and Privacy cover every public function", { concurrency: false }
       "ugc",
       "children",
       "retention",
+      "white-label",
     ]) {
       assert.equal(termIds.has(id), true, `missing legal section ${id}`);
     }

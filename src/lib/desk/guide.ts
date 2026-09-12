@@ -1,6 +1,6 @@
 import { APP_CALLS, APP_NAME, BOT7_NAME, PAID_SERVICES, TAB_DESK, TAB_GM, TAB_LAB, TAB_WHITE, WHITE_LABEL_PATH } from "@/lib/brand";
 import { COIN_DOMAIN, GITHUB_STARTED, GITHUB_URL, MINT_FLOOR, OSS_NEEDS, ROADMAP, TOKEN_LAUNCHED } from "@/lib/launch/model";
-import { OSS_LICENSE_NOTICE, WHITE_LABEL_DISCLOSURE_LINKS, WHITE_LABEL_STAGE, WHITE_LABEL_USER_AGREEMENT, WHITE_LABEL_WELCOME_BANNERS } from "./white-label";
+import { OSS_LICENSE_NOTICE, WHITE_LABEL_DISCLOSURE_LINKS, WHITE_LABEL_LEGAL_STATUS, WHITE_LABEL_STAGE, WHITE_LABEL_USER_AGREEMENT, WHITE_LABEL_WELCOME_BANNERS } from "./white-label";
 import { BOT_ROSTER, CYCLE_ARCH, SYSTEM_REVIEWED } from "./policy";
 import { MANDATE } from "./system-logic";
 
@@ -297,6 +297,7 @@ export const GUIDE: GuideSection[] = [
       OSS_LICENSE_NOTICE,
       `DISCLOSURES: any downloaded free copy of the S1R1US.ai White Label product (${WHITE_LABEL_STAGE}) must include the DISCLOSURE LINKS — ${WHITE_LABEL_DISCLOSURE_LINKS.map((l) => `${l.label}: ${l.value}`).join(" · ")}.`,
       `USER AGREEMENT: ${WHITE_LABEL_USER_AGREEMENT.join(" ")}`,
+      `LEGAL STATUS: ${WHITE_LABEL_LEGAL_STATUS} The white label page, the Terms white label policy (/terms#white-label), the distribution readme, and every white label step and text message carry this notice.`,
       "Screensavers: clicking the G0DZ1LLa M0D3 tab (or opening /gm) plays the Matrix rain burst for 3 seconds. Matrix classic runs after 5 minutes of no user activity anywhere on s1r1us.ai and does not lock the screen. The system admin locks or unlocks all screensavers in Admin → Security → Screensavers: LOCKED signs the operator out on idle and requires login; UNLOCKED just displays the saver.",
     ],
   },

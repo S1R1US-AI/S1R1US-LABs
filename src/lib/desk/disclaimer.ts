@@ -1,9 +1,9 @@
 /** Unified public DISCLAIMER. Banner, SEO, schema, roadmap, instructions. Not Terms/Privacy. Client-safe. */
 
-export const LEGAL_DISCLAIMER_UPDATED = "2026-09-10";
+export const LEGAL_DISCLAIMER_UPDATED = "2026-09-12";
 
 export const LEGAL_DISCLAIMER_P1 =
-  "S1R1US.ai — [ S1R1U$ <<L@B$>> ] — including this website, the iOS and Google apps, the desk, lab, 7-B0T, G M0D3, championships, H1V3 SW@RM, PR3D1CT10N$, and any related system, is education and proof of concept only. Use is 100 percent at your own risk. S1R1US.ai is not a financial advisor, not a broker-dealer, not an investment adviser, and not licensed to give financial or legal advice. This is not a recommendation to buy, sell, or hold bitcoin or any other asset. You can lose all funds. Always seek a licensed financial professional and a licensed attorney in your jurisdiction before live use. This host never places Coinbase orders and never holds your keys.";
+  "S1R1US.ai — [ S1R1U$ <<L@B$>> ] — including this website, the iOS and Google apps, the desk, lab, 7-B0T, G M0D3, championships, H1V3 SW@RM, PR3D1CT10N$, and any related system, is education and proof of concept only. Use is 100 percent at your own risk. S1R1US.ai and its operators are not a financial advisor, NOT licensed as a Financial Broker or Dealer, not an investment adviser, NOT SEC Registered, NOT attorneys, and not licensed to give financial or legal advice. This is not a recommendation to buy, sell, or hold bitcoin or any other asset. You can lose all funds. Always consult an independent licensed financial advisor first and prior to use. Always consult licensed independent legal counsel in your jurisdiction prior to using S1R1US.ai OSS systems, the website app, or any white label download version. This host never places Coinbase orders and never holds your keys.";
 
 export const LEGAL_DISCLAIMER_P2 =
   "Nothing on this website is an offer to sell or a solicitation to buy a security, an interest in a pooled enterprise, or a right to profits from the efforts of S1R1US.ai or its operators. Visitors do not invest money with this host. This site does not sell tokens. A cultural ticker, if one exists on a public pad, is not shares of the desk and not a claim on bitcoin.";

@@ -7,6 +7,7 @@ import {
   WHITE_LABEL_BUILDERS,
   WHITE_LABEL_DISCLOSURE_LINKS,
   WHITE_LABEL_DISCLOSURE_MD,
+  WHITE_LABEL_LEGAL_STATUS,
   WHITE_LABEL_PATH,
   WHITE_LABEL_PRIVILEGES,
   WHITE_LABEL_STAGE,
@@ -172,6 +173,44 @@ describe("7-B0T H3DGE FUND WHITE LABEL", () => {
     assert.equal(WHITE_LABEL_WELCOME_BANNERS.length, 2);
     assert.match(WHITE_LABEL_WELCOME_BANNERS[1], /WORLD WIDE WELCOME TO ALL EXTERNAL AI/);
     assert.match(WHITE_LABEL_WELCOME_BANNERS[1], /サトシ・ナカモト/);
+  });
+
+  it("carries the LEGAL STATUS — not a licensed broker/dealer, not SEC registered, not attorneys — in every step and text message", () => {
+    assert.match(WHITE_LABEL_LEGAL_STATUS, /NOT licensed as a Financial Broker or Dealer/);
+    assert.match(WHITE_LABEL_LEGAL_STATUS, /NOT SEC Registered/);
+    assert.match(WHITE_LABEL_LEGAL_STATUS, /independent Licensed financial advisor first and prior to use/);
+    assert.match(WHITE_LABEL_LEGAL_STATUS, /NOT ATTORNEYS/);
+    assert.match(WHITE_LABEL_LEGAL_STATUS, /Licensed independent legal counsel prior to using S1R1US\.ai OSS systems or the website app or any WHITE LABEL DOWNLOAD VERSION/);
+    assert.match(WHITE_LABEL_DISCLOSURE_MD, /LEGAL STATUS:/);
+    const live = whiteLabelGoLive(goodConfig(), { handle: "@phone_user" });
+    assert.match(live.report.join(" "), /LEGAL STATUS: .*NOT SEC Registered/);
+    assert.match(builderPrompt(goodConfig()), /LEGAL STATUS/);
+    const page = readFileSync(new URL("../../components/white-label-page.tsx", import.meta.url), "utf8");
+    assert.match(page, /WHITE_LABEL_LEGAL_STATUS/);
+    const guide = readFileSync(new URL("./guide.ts", import.meta.url), "utf8");
+    assert.match(guide, /WHITE_LABEL_LEGAL_STATUS/);
+    const legal = readFileSync(new URL("../legal.ts", import.meta.url), "utf8");
+    assert.match(legal, /WHITE_LABEL_LEGAL_STATUS/);
+    assert.match(legal, /id: "white-label"/);
+    assert.match(legal, /Policy for White Label product offerings/);
+    const disclaimer = readFileSync(new URL("./disclaimer.ts", import.meta.url), "utf8");
+    assert.match(disclaimer, /NOT SEC Registered/);
+    for (const readmeUrl of [
+      new URL("../../../README.md", import.meta.url),
+      new URL("../launch/readme.ts", import.meta.url),
+    ]) {
+      const readme = readFileSync(readmeUrl, "utf8");
+      assert.match(readme, /LEGAL STATUS: .*NOT SEC Registered/);
+      assert.match(readme, /NOT ATTORNEYS/);
+    }
+    for (const llmsUrl of [
+      new URL("../../../public/llms.txt", import.meta.url),
+      new URL("../../../public/.well-known/llms.txt", import.meta.url),
+    ]) {
+      const llms = readFileSync(llmsUrl, "utf8");
+      assert.match(llms, /LEGAL STATUS: .*NOT SEC Registered/);
+      assert.match(llms, /NOT ATTORNEYS/);
+    }
   });
 
   it("keeps the disclosure links active in the distribution readme, guide, page, and llms.txt", () => {
