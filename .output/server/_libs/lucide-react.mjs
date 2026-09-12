@@ -379,6 +379,30 @@ var Pause = createLucideIcon("pause", [["rect", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Pickaxe = createLucideIcon("pickaxe", [
+	["path", {
+		d: "M14.531 12.469 6.619 20.38a1 1 0 1 1-3-3l7.912-7.912",
+		key: "we99rg"
+	}],
+	["path", {
+		d: "M15.686 4.314A12.5 12.5 0 0 0 5.461 2.958 1 1 0 0 0 5.58 4.71a22 22 0 0 1 6.318 3.393",
+		key: "1w6hck"
+	}],
+	["path", {
+		d: "M17.7 3.7a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4l2.6 2.6a1 1 0 0 0 1.4 0l4.6-4.6a1 1 0 0 0 0-1.4z",
+		key: "15hgfx"
+	}],
+	["path", {
+		d: "M19.686 8.314a12.501 12.501 0 0 1 1.356 10.225 1 1 0 0 1-1.751-.119 22 22 0 0 0-3.393-6.319",
+		key: "452b4h"
+	}]
+]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Play = createLucideIcon("play", [["polygon", {
 	points: "6 3 20 12 6 21 6 3",
 	key: "1oa8hb"
@@ -435,6 +459,26 @@ var RefreshCw = createLucideIcon("refresh-cw", [
 	["path", {
 		d: "M8 16H3v5",
 		key: "1cv678"
+	}]
+]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Save = createLucideIcon("save", [
+	["path", {
+		d: "M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z",
+		key: "1c8476"
+	}],
+	["path", {
+		d: "M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7",
+		key: "1ydtos"
+	}],
+	["path", {
+		d: "M7 3v4a1 1 0 0 0 1 1h7",
+		key: "t51u73"
 	}]
 ]);
 /**
@@ -502,4 +546,4 @@ var TriangleAlert = createLucideIcon("triangle-alert", [
 	}]
 ]);
 //#endregion
-export { Activity as S, ChevronLeft as _, Radio as a, ArrowUpRight as b, Paperclip as c, Lock as d, LoaderCircle as f, ChevronRight as g, Copy as h, RefreshCw as i, LogOut as l, Download as m, Shield as n, Play as o, ExternalLink as p, ScanSearch as r, Pause as s, TriangleAlert as t, LogIn as u, Bot as v, ArrowDownRight as x, BotOff as y };
+export { ArrowDownRight as C, ArrowUpRight as S, Copy as _, RefreshCw as a, Bot as b, Pickaxe as c, LogOut as d, LogIn as f, Download as g, ExternalLink as h, Save as i, Pause as l, LoaderCircle as m, Shield as n, Radio as o, Lock as p, ScanSearch as r, Play as s, TriangleAlert as t, Paperclip as u, ChevronRight as v, Activity as w, BotOff as x, ChevronLeft as y };
