@@ -30,6 +30,9 @@ function goodConfig(): WhiteLabelConfig {
     secrets: [{ id: "better_auth_id", secret: "better_auth_secret_name" }],
     githubRepo: "new-admin/example-fund",
     githubAdmin: "@new_admin",
+    minerStratum: "solo.ckpool.org:3333",
+    minerBackup: "solo.ckpool.org:443",
+    minerBtcAddress: "",
   };
 }
 

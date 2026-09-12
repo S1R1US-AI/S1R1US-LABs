@@ -18,6 +18,7 @@ import { YubiApprove } from "@/components/yubi-approve";
 import { OperatorGate } from "@/components/operator-lock";
 import { XRenewWhenAdmin } from "@/components/renew-password";
 import { BoardPlayPanel } from "@/components/board-play-panel";
+import { BtcMinersPanel } from "@/components/btc-miners-panel";
 import { HiveAdminPanel } from "@/components/hive-admin-panel";
 import { HiveSwarmLabel } from "@/components/godzilla-mark";
 import { Button } from "@/components/ui/button";
@@ -62,7 +63,7 @@ export function AdminPanel() {
   const [loading, setLoading] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [tab, setTab] = useState<"console" | "wallet" | "paper" | "coin" | "website" | "access" | "security" | "bowl" | "hive">("wallet");
+  const [tab, setTab] = useState<"console" | "wallet" | "paper" | "coin" | "website" | "access" | "security" | "bowl" | "hive" | "miners">("wallet");
 
   useEffect(() => setMounted(true), []);
   useEffect(() => {
@@ -72,15 +73,16 @@ export function AdminPanel() {
     if (h === "security") setTab("security");
     if (h === "bowl") setTab("bowl");
     if (h === "hive") setTab("hive");
+    if (h === "miners") setTab("miners");
   }, []);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (tab === "access" || tab === "security" || tab === "bowl" || tab === "hive") {
+    if (tab === "access" || tab === "security" || tab === "bowl" || tab === "hive" || tab === "miners") {
       const want = `#${tab}`;
       if (window.location.hash !== want) {
         window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${want}`);
       }
-    } else if (window.location.hash === "#access" || window.location.hash === "#security" || window.location.hash === "#bowl" || window.location.hash === "#hive") {
+    } else if (window.location.hash === "#access" || window.location.hash === "#security" || window.location.hash === "#bowl" || window.location.hash === "#hive" || window.location.hash === "#miners") {
       window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
     }
   }, [tab]);
@@ -159,7 +161,9 @@ export function AdminPanel() {
                         ? "Firewall, intrusion log, Electrovolt audit, Hacktron-style hunter. Admin only."
                         : tab === "bowl"
                           ? "SUP3R B0WL / L3AD3R B0ARD / C@LL 0UT — compete as a separate board token. Not Yubi. Not vault."
-                          : tab === "hive"
+                          : tab === "miners"
+                            ? "BTC M1N3Rz (BTC Miners View) — free public solo CKPool stats for your miners. Update only your own stratum + BTC receive address. Blank + Save = S1R1US.ai CKPool defaults. Read-only data — never Coinbase."
+                            : tab === "hive"
                             ? "H1V3 SW@RM — combine BYO compute (TH/s). Paper BTC split by pledged terahash. TEST until go-live. Pause/continue. Copy-admin may pause hive and championship sim."
                 : `Fund control for ${APP_NAME}. Session, Grok cap, two YubiKeys, risk rules, Coinbase MCP posture.`}
           </p>
@@ -258,6 +262,17 @@ export function AdminPanel() {
             </button>
             <button
               type="button"
+              className={cn(
+                "inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium",
+                tab === "miners" && "is-on",
+              )}
+              onClick={() => setTab("miners")}
+              title="BTC M1N3Rz (BTC Miners View) — solo CKPool miner stats + your own stratum"
+            >
+              BTC M1N3Rz
+            </button>
+            <button
+              type="button"
               className="inline-flex h-10 min-h-10 items-center rounded-md px-3 text-sm font-medium text-down"
               onClick={() => void lock()}
               title="Log out — close the admin session and return to /login"
@@ -308,6 +323,8 @@ export function AdminPanel() {
             <BoardPlayPanel plane="system" defaultName="S1R1US-ADMIN" defaultKind="admin" adminToken={token} />
           ) : tab === "hive" ? (
             token ? <HiveAdminPanel token={token} /> : null
+          ) : tab === "miners" ? (
+            token ? <BtcMinersPanel token={token} /> : null
           ) : tab === "wallet" ? (
             <>
               <TreasuryPanel />

@@ -36,6 +36,7 @@ Machine:
 - https://s1r1us.ai/bowl
 - https://s1r1us.ai/w0rld
 - https://s1r1us.ai/h1v3
+- https://s1r1us.ai/Bitcoin-Miners
 - https://s1r1us.ai/l0ck
 - https://s1r1us.ai/c0ut
 - https://s1r1us.ai/search?q=

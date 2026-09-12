@@ -13,6 +13,16 @@
  * privilege — that can never be violated. Client-safe. No secrets here.
  */
 import { MENU_WHITE, TAB_WHITE, WHITE_LABEL_PATH } from "../brand.ts";
+import {
+  MINERS_DEFAULT_ADDRESS,
+  MINERS_DEFAULT_BACKUP,
+  MINERS_DEFAULT_STRATUM,
+  MINERS_PATH,
+  SEO_TAB_MINERS,
+  TAB_MINERS,
+  withMinerDefaults,
+  type MinerConfig,
+} from "./btc-miners.ts";
 
 export const WHITE_LABEL_NAME = TAB_WHITE;
 export const WHITE_LABEL_MENU = MENU_WHITE;
@@ -34,6 +44,13 @@ export const WHITE_LABEL_STRIP = [
   "Roadmap and licensing — discover and populate the OSS information manually",
   "Terms and Agreement and Privacy Policy — populate manually; never from s1r1us.ai data",
 ] as const;
+
+/**
+ * NEVER stripped: BTC M1N3Rz miner information for the Miner operation of the
+ * S1R1US.ai system admin. The defaults are free public CKPool data and ship
+ * with every download as the default entry for all systems.
+ */
+export const WHITE_LABEL_KEEP_MINERS = `${TAB_MINERS} (${SEO_TAB_MINERS}) miner information is NOT stripped. The download ships the free public solo CKPool defaults — stratum+tcp://${MINERS_DEFAULT_STRATUM}, backup stratum+tcp://${MINERS_DEFAULT_BACKUP}, BTC receive ${MINERS_DEFAULT_ADDRESS} (the S1R1US.ai system admin BTC key) — as the default entry for all systems. The white label admin enters their own CKPool stratum + BTC receive address below to rebuild the ${TAB_MINERS} data and view; blank + Save keeps the S1R1US.ai CKPool data in the dialogue boxes. Setup page: ${MINERS_PATH}.`;
 
 /**
  * System admin vs white label admin. 100 percent match on security — no
@@ -90,6 +107,14 @@ export type WhiteLabelConfig = {
   /** GitHub repository for the white label + its GitHub system admin. */
   githubRepo: string;
   githubAdmin: string;
+  /**
+   * BTC M1N3Rz — personal CKPool miner info for the white label admin's own
+   * stratum. Blank + Save = S1R1US.ai CKPool data populates the dialogue
+   * boxes (free public defaults; never stripped).
+   */
+  minerStratum: string;
+  minerBackup: string;
+  minerBtcAddress: string;
 };
 
 export function emptyWhiteLabelConfig(): WhiteLabelConfig {
@@ -105,7 +130,23 @@ export function emptyWhiteLabelConfig(): WhiteLabelConfig {
     secrets: [{ id: "", secret: "" }],
     githubRepo: "",
     githubAdmin: "",
+    minerStratum: "",
+    minerBackup: "",
+    minerBtcAddress: "",
   };
+}
+
+/**
+ * Effective BTC M1N3Rz config for a white label — the admin's own stratum if
+ * entered and saved, otherwise the S1R1US.ai CKPool data (default entry for
+ * all systems). This is what rebuilds the "BTC M1N3Rz" data and view.
+ */
+export function whiteLabelMinerConfig(cfg: Pick<WhiteLabelConfig, "minerStratum" | "minerBackup" | "minerBtcAddress">): MinerConfig {
+  return withMinerDefaults({
+    stratum: cfg?.minerStratum ?? "",
+    backup: cfg?.minerBackup ?? "",
+    address: cfg?.minerBtcAddress ?? "",
+  });
 }
 
 /**
@@ -162,6 +203,9 @@ export function verifyWhiteLabelConfig(cfg: WhiteLabelConfig): { ok: boolean; fa
     ["DNS server 1", cfg.dns1],
     ["DNS server 2", cfg.dns2],
     ["GitHub admin", cfg.githubAdmin],
+    [`${TAB_MINERS} stratum`, cfg.minerStratum],
+    [`${TAB_MINERS} backup pool`, cfg.minerBackup],
+    [`${TAB_MINERS} BTC receive address`, cfg.minerBtcAddress],
     ...(cfg.menus ?? []).map((m, i) => [`Menu name ${i + 1}`, m] as [string, string]),
     ...(cfg.secrets ?? []).flatMap((s, i) => [
       [`Token id ${i + 1}`, s.id] as [string, string],

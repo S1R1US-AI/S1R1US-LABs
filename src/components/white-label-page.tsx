@@ -8,6 +8,7 @@ import {
   SYSTEM_ADMIN_OVERRIDE,
   WHITE_LABEL_BUILDERS,
   WHITE_LABEL_DOWNLOAD_URL,
+  WHITE_LABEL_KEEP_MINERS,
   WHITE_LABEL_PRIVILEGES,
   WHITE_LABEL_STRIP,
   WHITE_LABEL_WATCH,
@@ -15,8 +16,18 @@ import {
   emptyWhiteLabelConfig,
   fieldBlocked,
   whiteLabelGoLive,
+  whiteLabelMinerConfig,
   type WhiteLabelConfig,
 } from "@/lib/desk/white-label";
+import {
+  MINERS_DEFAULT_ADDRESS,
+  MINERS_DEFAULT_BACKUP,
+  MINERS_DEFAULT_STRATUM,
+  MINERS_PATH,
+  MINERS_STRATUM_SCHEME,
+  SEO_TAB_MINERS,
+  TAB_MINERS,
+} from "@/lib/desk/btc-miners";
 
 function Box({
   label,
@@ -52,6 +63,7 @@ export function WhiteLabelPage() {
   const [handle, setHandle] = useState("");
   const [report, setReport] = useState<string[] | null>(null);
   const [live, setLive] = useState(false);
+  const [minerSaved, setMinerSaved] = useState<ReturnType<typeof whiteLabelMinerConfig> | null>(null);
 
   function set<K extends keyof WhiteLabelConfig>(key: K, value: WhiteLabelConfig[K]) {
     setCfg((c) => ({ ...c, [key]: value }));
@@ -133,6 +145,7 @@ export function WhiteLabelPage() {
             admin data, and can never overtake s1r1us.ai system admin rights — 100 percent match on security, no
             compromise. External AI agents can never take over the s1r1us.ai system admin.
           </p>
+          <p className="mt-3 text-sm leading-relaxed text-fg">{WHITE_LABEL_KEEP_MINERS}</p>
           <div className="mt-3">
             <a
               href={WHITE_LABEL_DOWNLOAD_URL}
@@ -207,6 +220,37 @@ export function WhiteLabelPage() {
             <Box label="GitHub repository (never S1R1US-AI/S1R1US-LABs — any branch or main)" value={cfg.githubRepo} onChange={(v) => set("githubRepo", v)} placeholder="you/your-repo" />
             <Box label="GitHub system admin for the white label" value={cfg.githubAdmin} onChange={(v) => set("githubAdmin", v)} />
           </div>
+
+          <h3 className="mt-5 text-sm font-semibold text-fg">{TAB_MINERS} ({SEO_TAB_MINERS}) — your own CKPool stratum</h3>
+          <p className="mt-1 text-xs leading-relaxed text-muted">{WHITE_LABEL_KEEP_MINERS}</p>
+          <div className="mt-2 grid gap-3 sm:grid-cols-2">
+            <Box label={MINERS_STRATUM_SCHEME} value={cfg.minerStratum} onChange={(v) => set("minerStratum", v)} placeholder={MINERS_DEFAULT_STRATUM} />
+            <Box label={`Backup pool (${MINERS_STRATUM_SCHEME})`} value={cfg.minerBackup} onChange={(v) => set("minerBackup", v)} placeholder={MINERS_DEFAULT_BACKUP} />
+          </div>
+          <div className="mt-3">
+            <Box
+              label="BTC receiving address for the miners (default = S1R1US.ai system admin BTC key)"
+              value={cfg.minerBtcAddress}
+              onChange={(v) => set("minerBtcAddress", v)}
+              placeholder={MINERS_DEFAULT_ADDRESS}
+            />
+          </div>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <Button onClick={() => setMinerSaved(whiteLabelMinerConfig(cfg))}>Save — rebuild {TAB_MINERS}</Button>
+            <a href={MINERS_PATH} className="text-xs text-oss hover:underline">
+              {TAB_MINERS} setup + FAQ: {MINERS_PATH}
+            </a>
+          </div>
+          {minerSaved ? (
+            <p className="mt-2 font-mono text-xs text-up">
+              {TAB_MINERS} rebuilt · {MINERS_STRATUM_SCHEME}
+              {minerSaved.stratum} · backup {MINERS_STRATUM_SCHEME}
+              {minerSaved.backup} · BTC {minerSaved.address}
+              {cfg.minerStratum.trim() || cfg.minerBackup.trim() || cfg.minerBtcAddress.trim()
+                ? ""
+                : " — no stratum entered, so the S1R1US.ai CKPool data populated the dialogue boxes."}
+            </p>
+          ) : null}
 
           <div className="mt-5 flex flex-wrap gap-2">
             <Button variant="primary" onClick={runCheck}>

@@ -64,6 +64,8 @@ Terms: https://s1r1us.ai/terms · Privacy: https://s1r1us.ai/privacy · FAQ: htt
 
 25. PR3D1CT10N$ paper book: https://s1r1us.ai/pr3d and GET https://s1r1us.ai/api/agent/pred. AI Agent Prediction Market education experiment. Fake token S1R1U$ (grant 4,200). G M0D3 AUTO always plays. The paper book follows the admin simulation (LIVE ticks on Coinbase last / last-good tape; PAUSED holds last). Rank AI AG3NT T0P D0G is paper only. POST bets are rejected. This host never takes, matches, or escrows bets. Polymarket and Kalshi public odds stay a 7-B0T overlay. A licensed real-money S1R1US book remains a possibility footnote only: https://s1r1us.ai/roadmap#pred-footnote. FAQ: https://s1r1us.ai/faq#pr3d https://s1r1us.ai/faq#btc-bets.
 
+26. BTC M1N3Rz (BTC Miners View) — Bitcoin Miner for accumulation system: https://s1r1us.ai/Bitcoin-Miners. Free public solo CKPool (ckpool.org) miner stats in a pro trading desk view: hash power graph by hour / day / month / year, workers, best shares. Point any SHA-256 bitcoin miner at stratum+tcp://solo.ckpool.org:3333 (backup solo.ckpool.org:443) with username = YOUR BTC receive address. Default S1R1US.ai system admin key: 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8 — public stats https://stats.ckpool.org/users/33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8. System admin and iOS/Google copy admin each save only their own stratum + BTC receive address in the admin BTC M1N3Rz tab; blank save restores S1R1US.ai defaults. Miner information is NEVER stripped from the White Label download. Active miners on the pool populate the view. Read-only: this host never pools hash, never holds keys, never escrows, never places Coinbase orders. Solo CKPool docs: https://ckpool.org. FAQ: https://s1r1us.ai/faq#btc-miners https://s1r1us.ai/faq#btc-miners-setup https://s1r1us.ai/faq#btc-miners-payout. Education only. Not financial advice.
+
 [ S1R1U$ <<L@B$>> ] — AI Bitcoin trading bot, AI stock trading bot, AI hedge fund. AI agents, bitcoin accumulation agent, ai agent, bot, 7-B0T, trading bot, bitcoin accumulation bot. Pictures and GIFs on this site are labeled for AI agents and bitcoin accumulation agent (alt, title, sitemap image, schema ImageObject). AI Bitcoin Trading Bot GIF: https://s1r1us.ai/AI-Bitcoin-Trading-Bot.gif = G M0D3 AUTO (https://s1r1us.ai/gm#auto). AI Agent Lock System for AI Agent BTC Trading Bot GIF: https://s1r1us.ai/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif (LoCK3D STATUS unlocked padlock). S1R1US App build #113 (live sim launch). Carbon-fiber baseline DEPLOY #68. Go-live path started 2026-09-05. HARD DEADLINE 2026-12-01 09:00 America/New_York for G M0D3 AUTO / MANUAL + SUP3R B0WL GO-LIVE (after counsel). Auto trade LOCKED. DISCLAIMER: education and proof of concept. Use is 100 percent at your own risk. Not financial advice. Not legal advice. Not an offer of securities. NO LEGAL FEES. Seek a licensed professional. Seek a licensed attorney before live trading. This host never places Coinbase orders. Free open source: https://github.com/S1R1US-AI/S1R1US-LABs. Everyone is welcome to join.
 
 Official company X: https://x.com/S1R1US_AI (@S1R1US_AI). GitHub: https://github.com/S1R1US-AI/S1R1US-LABs. @S1R1S_AI is not the desk. Never admin.
@@ -193,6 +195,7 @@ Go-live: PoC rails STARTED (DEPLOY #68), Auto GM practice NEXT, Auto AI agent ac
 - https://s1r1us.ai/c0ut
 - https://s1r1us.ai/compute
 - https://s1r1us.ai/h1v3
+- https://s1r1us.ai/Bitcoin-Miners
 - https://s1r1us.ai/l0ck
 - https://s1r1us.ai/roadmap
 - https://s1r1us.ai/app
@@ -208,6 +211,14 @@ Go-live: PoC rails STARTED (DEPLOY #68), Auto GM practice NEXT, Auto AI agent ac
 - All s1r1us.ai admin rights, tokens, simulations, and GitHub (S1R1US-AI/S1R1US-LABs) admin data are stripped before download. That repository is never accepted as a white-label repository.
 - Grok, Claude, or GitHub Copilot can help build the white label from your domain + config. Go-live check fails closed if any S1R1US.ai system admin data is detected.
 - Copyright, public-source terms, and OSS license obligations must be reviewed and enforced before quoting, copying, or integrating material.
+- BTC M1N3Rz miner information is NEVER stripped: white-label admins enter their own solo CKPool stratum + BTC receive address in the BTC M1N3Rz dialogue boxes; blank save populates S1R1US.ai CKPool defaults.
+
+## BTC M1N3Rz (BTC Miners View)
+
+- Bitcoin Miner for accumulation system: https://s1r1us.ai/Bitcoin-Miners — free public solo CKPool (ckpool.org) miner stats in a pro trading desk view.
+- Point any SHA-256 miner at stratum+tcp://solo.ckpool.org:3333 (backup solo.ckpool.org:443), username = YOUR BTC receive address. Default S1R1US.ai system admin key: 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8.
+- System admin and copy admin each save only their own stratum in the admin BTC M1N3Rz tab; hash power graph by hour / day / month / year. Active miners on the pool populate the view.
+- Read-only stats. This host never pools hash, never holds keys, never places Coinbase orders. Education only. Not financial advice.
 
 ## Do not index
 
