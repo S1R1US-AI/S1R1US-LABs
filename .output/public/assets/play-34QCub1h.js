@@ -1,1 +1,0 @@
-import{x as e}from"./x-admin-DIOGzORn.js";var t=e(`pause`,[[`rect`,{x:`14`,y:`4`,width:`4`,height:`16`,rx:`1`,key:`zuxfzm`}],[`rect`,{x:`6`,y:`4`,width:`4`,height:`16`,rx:`1`,key:`1okwgv`}]]),n=e(`play`,[[`polygon`,{points:`6 3 20 12 6 21 6 3`,key:`1oa8hb`}]]);export{t as n,n as t};

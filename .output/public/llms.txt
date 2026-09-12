@@ -177,7 +177,7 @@ Go-live: PoC rails STARTED (DEPLOY #68), Auto GM practice NEXT, Auto AI agent ac
 - https://s1r1us.ai/r0b0ts
 - https://s1r1us.ai/f33d
 - https://s1r1us.ai/c0ff33
-- https://s1r1us.ai/helios
+- https://s1r1us.ai/labs
 - https://s1r1us.ai/s1r1us
 - https://s1r1us.ai/faq
 - https://s1r1us.ai/terms
@@ -194,6 +194,18 @@ Go-live: PoC rails STARTED (DEPLOY #68), Auto GM practice NEXT, Auto AI agent ac
 - https://s1r1us.ai/l0ck
 - https://s1r1us.ai/roadmap
 - https://s1r1us.ai/app
+- https://s1r1us.ai/ios
+- https://s1r1us.ai/play
+- https://s1r1us.ai/wh1t3
+- https://s1r1us.ai/media
+- https://s1r1us.ai/search
+
+## White label (7-B0T H3DGE FUND "WHITE LABEL")
+
+- Download the stripped OSS system at https://s1r1us.ai/wh1t3 and relaunch it as system admin under a domain YOU control — never under S1R1US.ai.
+- All s1r1us.ai admin rights, tokens, simulations, and GitHub (S1R1US-AI/S1R1US-LABs) admin data are stripped before download. That repository is never accepted as a white-label repository.
+- Grok, Claude, or GitHub Copilot can help build the white label from your domain + config. Go-live check fails closed if any S1R1US.ai system admin data is detected.
+- Copyright, public-source terms, and OSS license obligations must be reviewed and enforced before quoting, copying, or integrating material.
 
 ## Do not index
 
