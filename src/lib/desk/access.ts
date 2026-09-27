@@ -32,7 +32,7 @@ import {
 } from "./access.server";
 import { isBtcReceiveAddress, looksLikeSecret, usdcReceiveError } from "./security";
 import { handleAuthAbuse } from "./auto-defend";
-import { ADMIN_X_HANDLE, ADMIN_X_LABEL } from "./x-admin";
+import { getAdminXHandle, getAdminXLabel } from "./x-admin.server.ts";
 import { clearYubi, consumeYubiOtp, maskYubiId, saveYubi, verifyYubicoOtp, yubiPublicId, yubiRows } from "./yubi.server";
 
 const optionalXSession = createMiddleware({ type: "function" })
@@ -341,7 +341,7 @@ export const secondFactorStatus = createServerFn({ method: "POST" })
       match: row?.user_id === context.userId,
       passwordless: Boolean(row?.passwordless),
       handle: allowed ? (row?.handle ?? null) : null,
-      adminX: allowed ? ADMIN_X_LABEL : null,
+      adminX: allowed ? getAdminXLabel() : null,
       adminName: allowed ? await storedAdminName() : null,
       allowed,
       yubi: allowed ? keys.length > 0 : false,
@@ -364,7 +364,7 @@ export const unlockBoundX = createServerFn({ method: "POST" })
     if (who) return { ok: false as const, error: who };
     const enrolled = await enrolled2fa();
     try {
-      if (!enrolled) await enroll2fa(context.userId, ADMIN_X_HANDLE);
+      if (!enrolled) await enroll2fa(context.userId, getAdminXHandle());
     } catch {
       return { ok: false as const, error: "Could not bind X admin." };
     }
@@ -381,11 +381,11 @@ export const connectXAdmin = createServerFn({ method: "POST" })
     const who = await assertAdminX(context.userId);
     if (who) return { ok: false as const, error: who };
     try {
-      await setXBind(context.userId, ADMIN_X_HANDLE, false);
+      await setXBind(context.userId, getAdminXHandle(), false);
     } catch {
       return { ok: false as const, error: "Could not connect X admin." };
     }
-    return { ok: true as const, handle: ADMIN_X_HANDLE };
+    return { ok: true as const, handle: getAdminXHandle() };
   });
 
 export const disconnectXAdmin = createServerFn({ method: "POST" })

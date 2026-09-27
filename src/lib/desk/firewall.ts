@@ -95,14 +95,14 @@ export function firewallLayers(): FirewallLayer[] {
       name: "Admin AND lock",
       zone: "auth",
       status: "ARMED",
-      detail: "Operator X (@_Mr_R0b0t0_) AND name+password. X alone or password alone cannot mint admin. Dual Yubi on outgoing BTC/USDC. Optional physical-key lock on Admin (default OFF). Two YubiKey slots (primary + backup).",
+      detail: "Operator X (the system operator) AND name+password. X alone or password alone cannot mint admin. Dual Yubi on outgoing BTC/USDC. Optional physical-key lock on Admin (default OFF). Two YubiKey slots (primary + backup).",
     },
     {
       id: "tenancy",
       name: "System vs copy Admin",
       zone: "auth",
       status: "ARMED",
-      detail: "s1r1us.ai /admin is @_Mr_R0b0t0_ + name + password + two YubiKeys. iOS/Play copy-admin tokens are 4-part app.{exp}.{id}.{hmac} and never satisfy verifyAccessToken. Path /app/admin. Host hunter, WAF, Yubi, vault, source, morning-report library stay system-only.",
+      detail: "s1r1us.ai /admin is the system operator + name + password + two YubiKeys. iOS/Play copy-admin tokens are 4-part app.{exp}.{id}.{hmac} and never satisfy verifyAccessToken. Path /app/admin. Host hunter, WAF, Yubi, vault, source, morning-report library stay system-only.",
     },
     {
       id: "yubi-panel",

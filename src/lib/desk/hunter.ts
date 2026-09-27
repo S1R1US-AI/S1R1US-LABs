@@ -224,7 +224,7 @@ export function runHunter(): HunterReport {
       "System admin is isolated from iOS/Play copy-admin",
       "HIGH",
       "PASS",
-      "verifyAccessToken rejects app. tokens (4-part HMAC pepper s1r1us-app-admin-v1). SYSTEM_ONLY_PATHS stay /admin. Copy-admin cannot claim @_Mr_R0b0t0_ or @S1R1US_AI. Path /app/admin.",
+      "verifyAccessToken rejects app. tokens (4-part HMAC pepper s1r1us-app-admin-v1). SYSTEM_ONLY_PATHS stay /admin. Copy-admin cannot claim the system operator or @S1R1US_AI. Path /app/admin.",
       "Keep two token formats. Never let an app token mint a 3-part admin HMAC.",
     ),
     finding(

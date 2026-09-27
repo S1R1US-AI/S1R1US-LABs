@@ -21,7 +21,7 @@ import {
   PREVIEW_CLIENT_ID,
   PREVIEW_CLIENT_SECRET,
 } from "./preview";
-import { looksLikeAdminX, preferredXAccountId } from "../desk/x-admin";
+import { looksLikeAdminX, preferredXAccountId } from "../desk/x-admin.server.ts";
 
 void ensureDbReady();
 

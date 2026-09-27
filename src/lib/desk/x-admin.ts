@@ -1,11 +1,9 @@
-/** Canonical admin X account. Login matches this handle or its snowflake — nothing else. */
-export const ADMIN_X_NAME = "Mr. R0b0t0";
-export const ADMIN_X_HANDLE = "@_Mr_R0b0t0_";
-export const ADMIN_X_HANDLE_CORE = "_Mr_R0b0t0_";
-export const ADMIN_X_ID = "2093335535146131456";
-export const ADMIN_X_LABEL = `${ADMIN_X_NAME} (${ADMIN_X_HANDLE})`;
+/**
+ * Client-safe company / public X helpers.
+ * System-admin X identity lives in `x-admin.server.ts` (env-only, never bundled for browsers).
+ */
 
-/** Only these Better Auth / broker provider ids count as X for admin. */
+/** Only these Better Auth / broker provider ids count as X for admin (provider id list is not secret). */
 export const ADMIN_X_PROVIDERS = ["grok-x", "twitter", "x"] as const;
 
 /**
@@ -37,8 +35,6 @@ export const COMPANY_X_LOGO_FILE = "/S1R!US-Godzilla-Logo.jpg";
 export const COMPANY_X_BANNER = "/s1r1us-x-banner.jpg";
 /** Full G0DZ1LLa vs bear frame. */
 export const COMPANY_X_ART = "/s1r1us-x-art.png";
-
-const HANDLE = ADMIN_X_HANDLE_CORE.toLowerCase();
 
 function handleCore(s: string | null | undefined) {
   const raw = (s ?? "").trim();
@@ -73,20 +69,6 @@ export function normalizeXIdentity(s: string | null | undefined) {
   if (raw.startsWith("@")) raw = raw.slice(1);
   if (!raw || raw.includes("@") || /[*?/\s.]/.test(raw)) return "";
   return raw;
-}
-
-/**
- * True only for the live @_Mr_R0b0t0_ account:
- * - snowflake 2093335535146131456 (OAuth sub of that same account)
- * - handle @_Mr_R0b0t0_ or _Mr_R0b0t0_ (one leading @, case-insensitive)
- * Display name "Mr. R0b0t0", emails, URLs, extra @, company/dead handles — all false.
- */
-export function looksLikeAdminX(s: string | null | undefined) {
-  const core = normalizeXIdentity(s);
-  if (!core) return false;
-  if (core === ADMIN_X_ID) return true;
-  if (isDeadCompanyHandle(core)) return false;
-  return core.toLowerCase() === HANDLE;
 }
 
 const PROFILE_ID_KEYS = new Set([
@@ -145,28 +127,10 @@ export function collectXIdentityStrings(value: unknown, depth = 0): string[] {
   return out;
 }
 
-export function profileLooksLikeAdminX(value: unknown) {
-  return collectXIdentityStrings(value).some((s) => looksLikeAdminX(s));
-}
-
-/** Stable accountId: operator handle/snowflake when present, else a twitter id/handle, else empty. */
-export function preferredXAccountId(value: unknown): string {
-  const all = collectXIdentityStrings(value);
-  if (all.some((s) => looksLikeAdminX(s))) {
-    const snow = all.map(normalizeXIdentity).find((c) => c === ADMIN_X_ID);
-    return snow || ADMIN_X_HANDLE_CORE;
-  }
-  const snow = all.map(normalizeXIdentity).find((c) => /^\d{15,20}$/.test(c));
-  if (snow) return snow;
-  const handle = all.map(normalizeXIdentity).find((c) => c.length >= 2 && c.length <= 15 && /[a-z]/i.test(c));
-  return handle || "";
-}
-
-/** Live official company handle @S1R1US_AI only. Blocked @S1R1US / @_S1R1US_ and accidental @S1R1S_AI never match. Never admin. */
+/** Live official company handle @S1R1US_AI only. Blocked / accidental handles never match. Never admin. */
 export function looksLikeCompanyX(s: string | null | undefined) {
   if (!companyHandleSet()) return false;
   const core = handleCore(s);
   if (!core || isDeadCompanyHandle(core)) return false;
-  if (looksLikeAdminX(core)) return false;
   return core === COMPANY_X_HANDLE_CORE.toLowerCase();
 }

@@ -4,7 +4,7 @@ import { AsyncLocalStorage } from "node:async_hooks";
 import { argon2id } from "@noble/hashes/argon2.js";
 import { getSql } from "@/lib/db";
 import { ADMIN_LOGIN_NAME } from "./admin-name";
-import { isAdminXProvider, looksLikeAdminX, profileLooksLikeAdminX } from "./x-admin";
+import { isAdminXProvider, looksLikeAdminX, profileLooksLikeAdminX } from "./x-admin.server.ts";
 import { looksLikeSecret } from "./security";
 
 export const DEFAULT_ADMIN = ADMIN_LOGIN_NAME;

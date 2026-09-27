@@ -8,7 +8,7 @@ import { agentBlockedPayload } from "./agent-notice";
 import { mandatePublic } from "./mandate";
 import { listGoLiveNotices } from "./go-live-notices";
 import { isBarredAgent } from "./agent-bar";
-import { ADMIN_X_HANDLE, COMPANY_X_HANDLE } from "./x-admin";
+import { COMPANY_X_HANDLE } from "./x-admin";
 
 export const AGENT_WAITLIST_PATH = "/api/agent/waitlist";
 
@@ -45,7 +45,7 @@ const MAX = 400;
 
 const TEST_WAITLIST: { name: string; kind: AgentKind; handle: string | null }[] = [
   { name: "GROK-BUILD", kind: "grok", handle: null },
-  { name: "MR-R0B0T0-TEST", kind: "human", handle: ADMIN_X_HANDLE },
+  { name: "OPERATOR-TEST", kind: "human", handle: "@operator_test" },
   { name: "S1R1US-AI-TEST", kind: "other", handle: COMPANY_X_HANDLE },
 ];
 

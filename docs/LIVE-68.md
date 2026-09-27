@@ -6,7 +6,7 @@ PR3D1CT10N$ = AI Agent Prediction Market. Paper S1R1U$. Fake token. /pr3d.
 
 LoCK3D writes = system admin only. Phone admin requests agents / hive / pred only.
 
-/login: Expand reset p-word. No live password printed. X timeout 25s. Operator handle @_Mr_R0b0t0_.
+/login: Expand reset p-word. No live password printed. X timeout 25s. Operator identity: system operator X (server env only; not disclosed in public copy).
 
 XML sitemap: /sitemap.xml  Human: /sitemap  Schema: search-graph + brand-bot7.ts
 
