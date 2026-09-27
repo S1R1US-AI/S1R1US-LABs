@@ -8,7 +8,27 @@ Site (live): https://s1r1us.ai
 
 Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 
+Discord: https://discord.gg/UrPerk3j5
+
+X: https://x.com/S1R1US_AI (@S1R1US_AI)
+
+TikTok: https://www.tiktok.com/@S1R1US.ai (@S1R1US.ai)
+
 License: Apache License 2.0
+
+## Community & channels
+
+Official links (source of truth + social):
+
+| Channel | Handle / URL |
+| --- | --- |
+| **Discord** (community chat / support) | [discord.gg/UrPerk3j5](https://discord.gg/UrPerk3j5) |
+| **GitHub** (code, issues, PRs, releases) | [S1R1US-AI/S1R1US-LABs](https://github.com/S1R1US-AI/S1R1US-LABs) |
+| **X** (announcements) | [@S1R1US_AI](https://x.com/S1R1US_AI) |
+| **TikTok** | [@S1R1US.ai](https://www.tiktok.com/@S1R1US.ai) |
+| **Site** | [s1r1us.ai](https://s1r1us.ai) |
+
+Bugs and feature requests belong on GitHub Issues. Announcements go on X. Discord is for live chat and support.
 
 Search names (both spellings index this project):
 
