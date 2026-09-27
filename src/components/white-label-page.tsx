@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PAGE_DESC_WHITE, TAB_WHITE } from "@/lib/brand";
 import {
   OSS_LICENSE_NOTICE,
-  SYSTEM_ADMIN_OVERRIDE,
+  SYSTEM_ADMIN_OVERRIDE_LABEL,
   WHITE_LABEL_BUILDERS,
   WHITE_LABEL_DISCLOSURE_LINKS,
   WHITE_LABEL_DOWNLOAD_URL,
@@ -309,7 +309,7 @@ export function WhiteLabelPage() {
             ))}
           </ul>
           <p className="mt-3 text-sm leading-relaxed text-muted">{WHITE_LABEL_WATCH}</p>
-          <p className="mt-2 font-mono text-xs text-muted">Override authority: {SYSTEM_ADMIN_OVERRIDE} — main system admin for S1R1US.ai.</p>
+          <p className="mt-2 font-mono text-xs text-muted">Override authority: {SYSTEM_ADMIN_OVERRIDE_LABEL} — main system admin for S1R1US.ai.</p>
         </Panel>
 
         <p className="mt-6 text-xs leading-relaxed text-muted">{PAGE_DESC_WHITE}</p>

@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import {
   OSS_LICENSE_NOTICE,
-  SYSTEM_ADMIN_OVERRIDE,
+  SYSTEM_ADMIN_OVERRIDE_LABEL,
+  systemAdminOverrideHandle,
   WHITE_LABEL_BUILDERS,
   WHITE_LABEL_DISCLOSURE_LINKS,
   WHITE_LABEL_DISCLOSURE_MD,
@@ -60,7 +61,16 @@ describe("7-B0T H3DGE FUND WHITE LABEL", () => {
     assert.match(fieldBlocked("S1R1US-ADMIN") ?? "", /Blocked/);
     assert.match(fieldBlocked("S1R1uSxadm") ?? "", /Blocked/);
     assert.match(fieldBlocked("github.com/S1R1US-AI/S1R1US-LABs") ?? "", /Blocked/);
-    assert.match(fieldBlocked("@_Mr_R0b0t0_") ?? "", /Blocked/);
+    {
+      const prev = process.env.S1R1US_ADMIN_X_HANDLE;
+      process.env.S1R1US_ADMIN_X_HANDLE = "aid_test_admin_x";
+      try {
+        assert.match(fieldBlocked("@aid_test_admin_x") ?? "", /Blocked/);
+      } finally {
+        if (prev === undefined) delete process.env.S1R1US_ADMIN_X_HANDLE;
+        else process.env.S1R1US_ADMIN_X_HANDLE = prev;
+      }
+    }
     assert.match(fieldBlocked("shop.s1r1u$.io") ?? "", /Blocked/);
   });
 
@@ -114,11 +124,20 @@ describe("7-B0T H3DGE FUND WHITE LABEL", () => {
     }
   });
 
-  it("lets @_Mr_R0b0t0_ override anything — even an accidental ban", () => {
-    assert.equal(SYSTEM_ADMIN_OVERRIDE, "@_Mr_R0b0t0_");
-    const gate = whiteLabelGate({ handle: "_Mr_R0b0t0_", flaggedBy: "s3c-sweep" });
-    assert.equal(gate.allowed, true);
-    assert.equal(gate.lockedForever, false);
+  it("lets the system operator override anything — even an accidental ban", () => {
+    const prev = process.env.S1R1US_ADMIN_X_HANDLE;
+    process.env.S1R1US_ADMIN_X_HANDLE = "aid_test_admin_x";
+    try {
+      assert.equal(SYSTEM_ADMIN_OVERRIDE_LABEL, "system operator");
+      assert.equal(systemAdminOverrideHandle(), "@aid_test_admin_x");
+      const gate = whiteLabelGate({ handle: "aid_test_admin_x", flaggedBy: "s3c-sweep" });
+      assert.equal(gate.allowed, true);
+      assert.equal(gate.lockedForever, false);
+      assert.match(gate.reason, /System operator override/);
+    } finally {
+      if (prev === undefined) delete process.env.S1R1US_ADMIN_X_HANDLE;
+      else process.env.S1R1US_ADMIN_X_HANDLE = prev;
+    }
   });
 
   it("offers Grok, Claude, and GitHub Copilot builder links and the OSS obligation notice", () => {

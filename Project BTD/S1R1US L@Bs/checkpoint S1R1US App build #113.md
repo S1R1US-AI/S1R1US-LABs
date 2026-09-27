@@ -29,7 +29,7 @@ Checkpoint **#113** folds the white-label + screensaver + security update on `ma
 - `https://github.com/S1R1US-AI/S1R1US-LABs` (main or any branch) is **never** accepted as a white-label repository. Proprietary s1r1us.ai info is blocked in every dialog box. `S1R1US-ADMIN` and system admin data never populate.
 - Go-live check verifies zero use of S1R1US.ai system admin account data — **fails closed**, reports on screen, and asks the user to double-check the config or redownload and try again.
 - White label can never take over s1r1us.ai system admin rights — 100 percent security match, no compromise. External AI agents can never take over the s1r1us.ai system admin.
-- S3C Sweep + Security tab + morning report are linked to white label, share all data, and watch for bad / suspicious actors. Bad actors (human or external AI agent) are blocked from download, all dialog boxes lock, and their white-label software locks **permanently** — no second chances unless @_Mr_R0b0t0_ is accidentally banned; **@_Mr_R0b0t0_ can override anything** and is the main system admin for S1R1US.ai.
+- S3C Sweep + Security tab + morning report are linked to white label, share all data, and watch for bad / suspicious actors. Bad actors (human or external AI agent) are blocked from download, all dialog boxes lock, and their white-label software locks **permanently** — no second chances unless the system operator is accidentally banned; **the system operator can override anything** and is the main system admin for S1R1US.ai.
 - Prominent links to connect **Grok, Claude, or GitHub Copilot** to help build the white label from the user's domain + config.
 - Displayed in white label, roadmap, and instruction module: *"Copyright, public-source terms, and OSS license obligations must be reviewed and enforced before quoting, copying, or integrating material."*
 
@@ -63,7 +63,7 @@ Checkpoint **#113** folds the white-label + screensaver + security update on `ma
 - S3C Sweep grows to **28** checks: white-label strip + isolation, external-AI-agent admin lockdown, W1S3 0WL$ sandbox cage monitoring.
 - Wise owls stay **caged** in the sandbox dev environment (simulated live S1R1US.ai data) — never let out, zero escape possibility; owl discussions and breach talk are monitored and surfaced in the Security tab; live view + code view for wise-owl suggestions are security-wired.
 - Security tab and morning report share all data sources and analyze security strength / weakness / breach / warning / need. Visible to system admin in the Security tab.
-- S1R1US.ai system admin and @_Mr_R0b0t0_ (unless changed by system admin) hold the **highest** privilege — top system mandate, never violated. Accumulate bitcoin sits under this mandate.
+- S1R1US.ai system admin and the system operator (unless changed by system admin) hold the **highest** privilege — top system mandate, never violated. Accumulate bitcoin sits under this mandate.
 - YubiKey slots 1–2 (extra layer 2FA) enroll next to the change-password section, per Yubico standards.
 
 ### Carried forward from #111

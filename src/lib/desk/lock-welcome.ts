@@ -38,7 +38,7 @@ export const LOCK_HOW_TO_TOGGLE = [
     who: "System Admin",
     where: "s1r1us.ai Admin → Console (LoCK3D STATUS) or the live-tape rail",
     steps: [
-      "Unlock Admin (X @_Mr_R0b0t0_ + name + password + dual Yubi).",
+      "Unlock Admin (X the system operator + name + password + dual Yubi).",
       "Open Console. The padlock GIF is the control.",
       "Tap a padlock to toggle that rail LOCKED / UNLOCKED.",
       "Click the lock NAME to open that view (AI Agents, H1V3 SW@RM, 7-B0T AUTO, G M0D3 AUTO / M@NU@L, AI Agents LIVE).",

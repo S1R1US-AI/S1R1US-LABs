@@ -32,9 +32,9 @@ describe("live-sim checkpoint sync", { concurrency: false }, () => {
     const board = readFileSync(new URL("./gm-board.ts", import.meta.url), "utf8");
     assert.match(board, /ensureTestAccounts/);
     assert.match(board, /GROK-BUILD/);
-    assert.match(board, /MR-R0B0T0-TEST/);
+    assert.match(board, /OPERATOR-TEST/);
     assert.match(board, /S1R1US-AI-TEST/);
-    assert.match(board, /ADMIN_X_HANDLE/);
+    assert.match(board, /@operator_test/);
     assert.match(board, /COMPANY_X_HANDLE/);
     assert.match(board, /admin: false/);
     assert.doesNotMatch(board, /asAdmin:\s*true/);

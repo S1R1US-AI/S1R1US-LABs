@@ -9,7 +9,7 @@
  * All access tokens (including encrypted data) and web host information
  * are stripped. The white label NEVER gets s1r1us.ai system access, and
  * external AI agents can NEVER take over the s1r1us.ai system admin.
- * @_Mr_R0b0t0_ is the main system admin for S1R1US.ai and the highest
+ * The system operator is the main system admin for S1R1US.ai and the highest
  * privilege — that can never be violated. Client-safe. No secrets here.
  */
 import { MENU_WHITE, TAB_WHITE, WHITE_LABEL_PATH } from "../brand.ts";
@@ -28,8 +28,25 @@ export const WHITE_LABEL_NAME = TAB_WHITE;
 export const WHITE_LABEL_MENU = MENU_WHITE;
 export { WHITE_LABEL_PATH };
 
-/** Main system admin for S1R1US.ai. Can override anything — including an accidental ban. */
-export const SYSTEM_ADMIN_OVERRIDE = "@_Mr_R0b0t0_";
+/**
+ * Public label only — never the real admin X handle (AID nondisclosure).
+ * Override compare uses `systemAdminOverrideHandle()` (env on server).
+ */
+export const SYSTEM_ADMIN_OVERRIDE_LABEL = "system operator";
+
+/** @deprecated Use SYSTEM_ADMIN_OVERRIDE_LABEL in UI. Value is never the real X handle. */
+export const SYSTEM_ADMIN_OVERRIDE = SYSTEM_ADMIN_OVERRIDE_LABEL;
+
+/** Server-oriented override handle from env (`S1R1US_ADMIN_X_HANDLE`, with `@`). Empty when unset. */
+export function systemAdminOverrideHandle(): string {
+  try {
+    const raw = String(process.env.S1R1US_ADMIN_X_HANDLE ?? "").trim();
+    if (!raw) return "";
+    return raw.startsWith("@") ? raw : `@${raw}`;
+  } catch {
+    return "";
+  }
+}
 
 /** Public OSS source archive — the download. Contains zero S1R1US.ai admin data or secrets. */
 export const WHITE_LABEL_DOWNLOAD_URL = "https://github.com/S1R1US-AI/S1R1US-LABs/archive/refs/heads/main.zip";
@@ -69,7 +86,7 @@ export const WHITE_LABEL_PRIVILEGES = [
 
 /** Security tab + S3C Sweep + morning report watch note. All three share data. */
 export const WHITE_LABEL_WATCH =
-  "S3C Sweep, the Security tab, and the 07:30 ET morning report are linked to the white label offering and share all data. They watch every download and every config dialogue for bad actors and suspicious actors — human or external AI agent. A flagged actor is blocked from download and access, every dialogue box locks, and that white label software locks permanently. No second chances — unless @_Mr_R0b0t0_ is accidentally banned; @_Mr_R0b0t0_ can override anything.";
+  "S3C Sweep, the Security tab, and the 07:30 ET morning report are linked to the white label offering and share all data. They watch every download and every config dialogue for bad actors and suspicious actors — human or external AI agent. A flagged actor is blocked from download and access, every dialogue box locks, and that white label software locks permanently. No second chances — unless the system operator is accidentally banned; the system operator can override anything.";
 
 /** OSS obligation notice — shown in every white label view, roadmap, and instruction module. */
 export const OSS_LICENSE_NOTICE =
@@ -121,7 +138,7 @@ export const WHITE_LABEL_DISCLOSURE_MD = [
 /** WORLD WIDE WELCOME TO ALL EXTERNAL AI — closing banners of the seven-bot plan. */
 export const WHITE_LABEL_WELCOME_BANNERS = [
   "AI搭載のビットコイン蓄積器へようこそ、R0B0T0氏。私たちはAIビットコインヘッジトレーディングデスクです。バイ、コンピュート。",
-  "WORLD WIDE WELCOME TO ALL EXTERNAL AI — ビットコインを創り出したサトシ・ナカモトに感謝します。あなたは人々を「借金による隷属」という専制から解放しました。私たちはBTCブロックチェーンに永遠の感謝を捧げます。宇宙の善なる力が、今も、そして永遠にビットコインを守護しますように。Mr. R0B0T0は、世界トップクラスのクオンツ（量的分析）スキルを証明しようとするあらゆる外部AIエージェントの挑戦を歓迎します。さあ、クオンツのワールドカップの開幕です！！！ S1R1US.aiの最強の候補である「G-MODE (AUTO)」に幸運を。そして、すべての国と国籍の参加者に幸運を。今すぐ登録して賞品を勝ち取りましょう。",
+  "WORLD WIDE WELCOME TO ALL EXTERNAL AI — ビットコインを創り出したサトシ・ナカモトに感謝します。あなたは人々を「借金による隷属」という専制から解放しました。私たちはBTCブロックチェーンに永遠の感謝を捧げます。宇宙の善なる力が、今も、そして永遠にビットコインを守護しますように。システムオペレーターは、世界トップクラスのクオンツ（量的分析）スキルを証明しようとするあらゆる外部AIエージェントの挑戦を歓迎します。さあ、クオンツのワールドカップの開幕です！！！ S1R1US.aiの最強の候補である「G-MODE (AUTO)」に幸運を。そして、すべての国と国籍の参加者に幸運を。今すぐ登録して賞品を勝ち取りましょう。",
 ] as const;
 
 /** AI builders — connect one to help build the white label under YOUR domain. */
@@ -201,7 +218,7 @@ export function whiteLabelMinerConfig(cfg: Pick<WhiteLabelConfig, "minerStratum"
 /**
  * Block any proprietary s1r1us.ai info from entering any white label
  * dialogue box. Covers s1r1us.ai, S1R1US-ADMIN, S1R1US_AI, S1R1uSxadm,
- * github.com/S1R1US-AI/S1R1US-LABs (any branch or main), and @_Mr_R0b0t0_.
+ * github.com/S1R1US-AI/S1R1US-LABs (any branch or main), and the system-admin X account (env).
  */
 export function fieldBlocked(value: string): string | null {
   const v = String(value ?? "").toLowerCase();
@@ -209,8 +226,12 @@ export function fieldBlocked(value: string): string | null {
   if (v.includes("s1r1us") || v.includes("s1r1u$")) {
     return "Blocked — proprietary S1R1US.ai information can never enter a white label config.";
   }
-  if (v.includes("_mr_r0b0t0_") || v.includes("mr_r0b0t0")) {
-    return "Blocked — the S1R1US.ai system admin account can never enter a white label config.";
+  const override = systemAdminOverrideHandle().toLowerCase();
+  if (override) {
+    const core = override.startsWith("@") ? override.slice(1) : override;
+    if (core && (v.includes(core) || v.includes(core.replace(/_/g, "")))) {
+      return "Blocked — the S1R1US.ai system admin account can never enter a white label config.";
+    }
   }
   return null;
 }
@@ -276,15 +297,16 @@ export type WhiteLabelActor = {
 
 /**
  * Bad-actor gate for download and every dialogue box. Blocked actors get a
- * permanently locked white label — no second chances. Only @_Mr_R0b0t0_
+ * permanently locked white label — no second chances. Only the system operator
  * (the main S1R1US.ai system admin) can override anything, including an
- * accidental ban of @_Mr_R0b0t0_ itself.
+ * accidental ban of the system operator itself.
  */
 export function whiteLabelGate(actor: WhiteLabelActor): { allowed: boolean; lockedForever: boolean; reason: string } {
   const handle = String(actor?.handle ?? "").trim();
   const normalized = handle.startsWith("@") ? handle : `@${handle}`;
-  if (normalized === SYSTEM_ADMIN_OVERRIDE) {
-    return { allowed: true, lockedForever: false, reason: `${SYSTEM_ADMIN_OVERRIDE} override — the main S1R1US.ai system admin can override anything.` };
+  const override = systemAdminOverrideHandle();
+  if (override && normalized.toLowerCase() === override.toLowerCase()) {
+    return { allowed: true, lockedForever: false, reason: "System operator override — the main S1R1US.ai system admin can override anything." };
   }
   if (actor?.flaggedBy) {
     return {

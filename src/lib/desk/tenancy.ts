@@ -1,7 +1,7 @@
 /**
  * Two admin planes. Never mix tokens or RPCs.
  *
- * SYSTEM — s1r1us.ai host. Only @_Mr_R0b0t0_ + admin name + password
+ * SYSTEM — s1r1us.ai host. Only the system operator + admin name + password
  *   (+ two physical YubiKeys: primary + backup). Path /admin.
  *
  * APP    — free iOS / Google download copy. The phone user is admin of

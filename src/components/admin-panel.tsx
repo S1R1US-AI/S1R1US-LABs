@@ -35,7 +35,6 @@ import { peekDeskTape, useDeskTape } from "@/lib/desk/tape-client";
 import { DESK_POLL_MS } from "@/lib/desk/poll";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { STARTING_CASH, usePaper } from "@/lib/desk/store";
-import { ADMIN_X_LABEL } from "@/lib/desk/x-admin";
 import { cn, BTC_TONE, USD_TONE } from "@/lib/utils";
 
 export function AdminPanel() {
@@ -137,7 +136,7 @@ export function AdminPanel() {
             <h1 className="mt-1 text-2xl font-semibold tracking-tight text-brand">Admin</h1>
             <p className="mt-3 text-sm leading-relaxed text-muted">
               Signed in as desk user <span className="font-mono text-fg">{operatorName || "—"}</span>.
-              s1r1us.ai Admin is only @_Mr_R0b0t0_ plus name and password (two YubiKeys). iOS / Google copy
+              s1r1us.ai Admin is only the system operator (X identity) plus name and password (two YubiKeys). iOS / Google copy
               Admin is on the downloaded app. Open the desk, or sign in as system admin.
             </p>
             <Link
@@ -1254,10 +1253,10 @@ function FactorPanel() {
     void Promise.resolve().then(() => refresh());
   }, []);
 
-  const handle = st?.handle ?? ADMIN_X_LABEL;
+  const handle = st?.handle ?? st?.adminX ?? "system operator";
 
   return (
-    <Panel className="mt-4" kicker="Two-factor" title={`${ADMIN_X_LABEL} admin`} titleClass="x-admin-name">
+    <Panel className="mt-4" kicker="Two-factor" title="System operator admin" titleClass="x-admin-name">
       <p className="text-sm leading-relaxed text-muted">
         First login is admin name + password. Then enroll two YubiKeys (panel above). X is optional.
         Connect records this X session as a passwordless admin path.
@@ -1289,13 +1288,13 @@ function FactorPanel() {
                 setErr(res.error);
                 return;
               }
-              log("password", `${ADMIN_X_LABEL} connected as X admin`);
-              setOk(`${ADMIN_X_LABEL} connected. Next X login unlocks the desk.`);
+              log("password", `${st?.adminX ?? "system operator"} connected as X admin`);
+              setOk(`${st?.adminX ?? "system operator"} connected. Next X login unlocks the desk.`);
               await refresh();
             })();
           }}
         >
-          Connect {ADMIN_X_LABEL}
+          Connect {st?.adminX ?? "system operator"}
         </Button>
         <Button
           disabled={busy || !st?.passwordless}
@@ -1310,7 +1309,7 @@ function FactorPanel() {
                 setErr(res.error);
                 return;
               }
-              log("password", `${ADMIN_X_LABEL} disconnected`);
+              log("password", `${st?.adminX ?? "system operator"} disconnected`);
               setOk("Disconnected. X + admin password required again.");
               await refresh();
             })();
@@ -1320,7 +1319,7 @@ function FactorPanel() {
         </Button>
       </div>
       {!st?.allowed ? (
-        <p className="mt-2 text-sm text-muted">Sign in with {ADMIN_X_LABEL} to connect.</p>
+        <p className="mt-2 text-sm text-muted">Sign in with {st?.adminX ?? "system operator"} to connect.</p>
       ) : null}
       <form
         className="mt-4 flex flex-wrap items-end gap-2"

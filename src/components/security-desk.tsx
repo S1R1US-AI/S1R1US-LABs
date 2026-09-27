@@ -464,7 +464,7 @@ export function SecurityDesk() {
         <p className="mt-2 font-mono text-xs text-muted">
           Download + config: <a className="text-tab hover:underline" href={WHITE_LABEL_PATH}>{WHITE_LABEL_PATH}</a>
           {" · "}bad actors flagged by S3C Sweep, this tab, or the morning report are blocked from download and
-          config — their white label locks permanently. Only @_Mr_R0b0t0_ can override.
+          config — their white label locks permanently. Only the system operator can override.
         </p>
       </Panel>
 

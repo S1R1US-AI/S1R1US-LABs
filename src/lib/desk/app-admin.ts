@@ -2,7 +2,8 @@
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
-import { looksLikeAdminX, looksLikeCompanyX } from "./x-admin.ts";
+import { looksLikeCompanyX } from "./x-admin.ts";
+import { looksLikeAdminX } from "./x-admin.server.ts";
 import { inspectAgentInput } from "./agent-security.ts";
 import { APP_ADMIN_KINDS, APP_ADMIN_PATH, isAppAdminKind, type AppAdminKind } from "./tenancy.ts";
 

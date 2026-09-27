@@ -1,5 +1,5 @@
 import { APP_NAME, TAB_DESK, TAB_FEED, TAB_GM, TAB_LAB } from "@/lib/brand";
-import { ADMIN_X_HANDLE, COMPANY_X_BIO, companyHandleSet, COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
+import { COMPANY_X_BIO, companyHandleSet, COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
 import { SUPPORT_GIFT_RECEIPT } from "@/lib/desk/support";
 
 /** Token is s1r1us. Project/desk stays [ S1R1U$ <<L@B$>> ]. $ is not DNS or ticker. Domain is s1r1us.ai */
@@ -644,11 +644,11 @@ export const COIN_NAME_NOTE =
 
 
 export const COMPANY_X_STEPS = [
-  `On X, stay logged in as ${ADMIN_X_HANDLE}. Open Accounts → Add an existing account → Sign up (new). Do not give the company account admin on this desk.`,
+  `On X, stay logged in as the system operator account. Open Accounts → Add an existing account → Sign up (new). Do not give the company account admin on this desk.`,
   "You pick display and handle. $ is not allowed in an X handle. Official company desk is @S1R1US_AI (https://x.com/S1R1US_AI). Do not use @S1R1US (blocked), @_S1R1US_, or accidental @S1R1S_AI.",
   `Bio: ${COMPANY_X_BIO}`,
-  `Location / website: s1r1us.ai once registered. Pin a post: “Company account of ${ADMIN_X_HANDLE}. Token / desk updates only. No seed, no DMs for keys.”`,
-  `On ${ADMIN_X_HANDLE}: pin the new company handle. Follow each other. Optional: X Organizations affiliate (needs org verification on the parent).`,
+  `Location / website: s1r1us.ai once registered. Pin a post: “Company account of the system operator. Token / desk updates only. No seed, no DMs for keys.”`,
+  `On the system operator account: pin the new company handle. Follow each other. Optional: X Organizations affiliate (needs org verification on the parent).`,
   "This account is marketing only. Continue-with-X admin remains the operator account. Company login is a desk user at most.",
 ] as const;
 
@@ -890,14 +890,14 @@ export const CHECKLIST: LaunchCheck[] = [
     label: companyHandleSet()
       ? `Create ${COMPANY_X_HANDLE} as the company X account`
       : "Create a new company X account (not @S1R1US)",
-    detail: `Under ${ADMIN_X_HANDLE}. Bio must name the parent. Company X never unlocks Admin / Wallet / Coinbase send.`,
+    detail: `Under the system operator. Bio must name the parent. Company X never unlocks Admin / Wallet / Coinbase send.`,
     kind: "manual",
     required: true,
   },
   {
     id: "x-parent",
     phase: "1 · Identity",
-    label: `${ADMIN_X_HANDLE} pins the company handle`,
+    label: `System operator pins the company handle`,
     detail: "Parent post + follow. Affiliate badge only if X org-verifies the operator later.",
     kind: "manual",
     required: true,

@@ -3,7 +3,7 @@
 export const THESIS_META = {
   title: "Orthogonal Multi-Agent Architecture for Mandate-Constrained Bitcoin Accumulation",
   subtitle: "A systems paper on S1R1US Labs: 7-B0T, G0DZ1LLa M0D3, L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, and LoCK3D STATUS",
-  authors: "S1R1US Labs · system Admin (operator of record @_Mr_R0b0t0_)",
+  authors: "S1R1US Labs · system Admin (operator of record the system operator)",
   affiliation: "S1R1US.ai — education desk, not a licensed adviser",
   date: "6 September 2026",
   version: "1.0",
@@ -61,7 +61,7 @@ export const THESIS: ThesisSection[] = [
       "G0DZ1LLa M0D3. Aggressive sleeve, AUTO or MANUAL, practice or live. Live remains operator-gated (LIVE_UNLOCKED = false). G M0D3 AUTO participates in World Cup as a paper desk on live Coinbase last.",
       "L3AD3R B0ARD / SUP3R B0WL. Registered humans and agents start with $10,000 notional. Rank is official-book BTC. C@LL 0UT is a 5×1 hour bout sleeve. SP1CE UP is a $1–$100 notional pick, never escrowed. All registered bots participate in the simulated SUP3R B0WL by holding a board desk.",
       "W0rLd CUP. Annual SUP3R B0WL winners are invited. Five wild cards are drawn with a year-stable seed from the registered field. G M0D3 AUTO always plays. Simulation LIVE ticks paper books on live Coinbase last until system Admin pauses.",
-      "Tenancy. System Admin plane (/admin) is @_Mr_R0b0t0_ plus password plus dual Yubi. iOS/Google copy-admin (/app/admin) is a stripped plane: public desk functions, own board token, no host security, no vault, no this research paper.",
+      "Tenancy. System Admin plane (/admin) is the system operator plus password plus dual Yubi. iOS/Google copy-admin (/app/admin) is a stripped plane: public desk functions, own board token, no host security, no vault, no this research paper.",
     ],
   },
   {
@@ -80,7 +80,7 @@ export const THESIS: ThesisSection[] = [
     body: [
       "Public agents receive HTML, /api/agent/*, the public GitHub tree, /llms.txt (instructions module), /.well-known/ai-catalog.json (Agentic Resource Discovery), and /.well-known/mcp.json (MCP server card). They do not receive /admin, /guide, /source, this thesis, vault, Yubi ceremony, or host internals. WAF (OWASP CRS-PL1 style), intrusion log, agent bar, paste filters (no seeds, no CDP JSON), and rate limits (300s cheap poll) sit in front of agent JSON. Board tokens are not admin tokens. Copy-admin tokens are rejected by the system Admin verifier.",
       "Hypothesis H1: isolating championship tokens from operator 2FA reduces blast radius if a bot token leaks. H2: refusing escrow removes money-transmitter surface. Both are design claims, not audited proofs. A full hunter pass is required after every championship patch.",
-      "White label. The 7-B0T H3DGE FUND WHITE LABEL download (/wh1t3) ships the OSS system with every s1r1us.ai system admin right, token, game, roll, simulation, and web-host detail stripped. A go-live check fails closed on any S1R1US.ai admin data. White label can never take over s1r1us.ai system admin — 100 percent security match, no compromise. External AI agents stay caged in the sandbox with zero escape; they can never take the s1r1us.ai system admin or source. S3C Sweep, the Security tab, and the morning report share data to watch white label for bad actors; @_Mr_R0b0t0_ and the system admin remain the highest privilege — the top system mandate, under which accumulate-bitcoin sits.",
+      "White label. The 7-B0T H3DGE FUND WHITE LABEL download (/wh1t3) ships the OSS system with every s1r1us.ai system admin right, token, game, roll, simulation, and web-host detail stripped. A go-live check fails closed on any S1R1US.ai admin data. White label can never take over s1r1us.ai system admin — 100 percent security match, no compromise. External AI agents stay caged in the sandbox with zero escape; they can never take the s1r1us.ai system admin or source. S3C Sweep, the Security tab, and the morning report share data to watch white label for bad actors; the system operator and the system admin remain the highest privilege — the top system mandate, under which accumulate-bitcoin sits.",
     ],
   },
   {

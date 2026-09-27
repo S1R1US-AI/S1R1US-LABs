@@ -12,7 +12,7 @@ import { APP_NAME, TAB_DESK, TAB_LAB } from "@/lib/brand";
 import { LIVE_UNLOCKED } from "@/lib/desk/practice";
 import { useOperator } from "@/lib/desk/operator";
 import { BUDGET, CHECKLIST, COIN_CHAIN_REC, COIN_DOMAIN, COIN_NAME_NOTE, COIN_STANDARD, COIN_TICKER, COMPANY_X_STEPS, DNS_STEPS, DOMAINS, FUND_INTEGRATION, FUND_LANES, GIFT_RECEIPT, GODADDY_IO, HOWEY_POSTURE, ICP_NOTE, LIQ_BANDS, MINT_STEPS, PATH_A_LOCKED, PATH_A_NAME, PATH_A_ORDER, PLATFORM_ROWS, RH_NOTE, TIERS, TOKEN_LAUNCHED, TOKEN_UTILITY, type LaunchCheck } from "@/lib/launch/model";
-import { ADMIN_X_HANDLE, ADMIN_X_LABEL, COMPANY_X_ART, COMPANY_X_AVATAR_X400, COMPANY_X_BANNER, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_LOGO_FILE, COMPANY_X_LOGO_NAME, COMPANY_X_URL } from "@/lib/desk/x-admin";
+import { COMPANY_X_ART, COMPANY_X_AVATAR_X400, COMPANY_X_BANNER, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_LOGO_FILE, COMPANY_X_LOGO_NAME, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { CompanyAvatar } from "@/components/company-x";
 import { probeLaunch, type DomainProbe } from "@/lib/launch/probes";
 import { probeSiteHealth, type SiteHealth } from "@/lib/launch/site-health";
@@ -421,7 +421,7 @@ export function LaunchDesk() {
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-sm text-muted">
-              New company account under {ADMIN_X_LABEL}. You pick display and handle. Do not use{" "}
+              New company account under system operator. You pick display and handle. Do not use{" "}
               <span className="font-mono text-fg">@S1R1US</span> (blocked) or{" "}
               <span className="font-mono text-fg">@_S1R1US_</span>
               {COMPANY_X_HANDLE ? (
@@ -429,7 +429,7 @@ export function LaunchDesk() {
                   . Live handle <span className="font-mono text-fg">{COMPANY_X_HANDLE}</span>
                 </>
               ) : null}
-              . This login cannot open Admin, Wallet, or copy outgoing BTC/USDC. Operator stays {ADMIN_X_HANDLE}.
+              . This login cannot open Admin, Wallet, or copy outgoing BTC/USDC. Operator stays the system operator.
             </p>
             <SeoImage
               src={COMPANY_X_BANNER}
@@ -488,7 +488,7 @@ export function LaunchDesk() {
             <>Pick the handle on X, then tell this desk. </>
           )}
           Tick the Identity boxes when the handle is live and the parent has pinned it. This desk
-          cannot create the X account — only {ADMIN_X_HANDLE} can.
+          cannot create the X account — only the system operator can.
         </p>
       </Panel>
 

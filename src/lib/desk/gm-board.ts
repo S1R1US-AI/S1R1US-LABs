@@ -22,7 +22,7 @@ import { boardDailyPublic, type BoardDaily } from "./board-daily";
 import { hasBoardPic, saveBoardPic } from "./board-pics";
 import { placeWager, settleOpenRounds, wagerAdmin, wagerPublic, wagerSleeve } from "./board-wager";
 import { calloutPublic, issueCallout, placeFightWager, tickCallout, honorCallout, setCalloutPref, calloutPrefOf, SYSTEM_KING_ID, SYSTEM_KING_NAME } from "./board-callout";
-import { ADMIN_X_HANDLE, COMPANY_X_HANDLE } from "./x-admin";
+import { COMPANY_X_HANDLE } from "./x-admin";
 import { cupPublic, simAdmin } from "./world-cup";
 import {
   WALLET_CHALLENGE_MS,
@@ -179,10 +179,10 @@ const TEST_FIELD: { id: string; name: string; kind: AgentKind; handle: string | 
     purpose: "TEST paper. External Grok agent. Accumulate bitcoin on GM MANUAL paper. Never sell. Never short. Not admin.",
   },
   {
-    id: "ag_test_mr_r0b0t0",
-    name: "MR-R0B0T0-TEST",
+    id: "ag_test_operator",
+    name: "OPERATOR-TEST",
     kind: "human",
-    handle: ADMIN_X_HANDLE,
+    handle: "@operator_test",
     designer: "operator X · paper TEST",
     purpose: "TEST paper. Operator X as a human desk on the sim board. Board token is not admin. Never sell. Never short.",
   },
