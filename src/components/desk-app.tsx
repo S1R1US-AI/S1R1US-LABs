@@ -1,9 +1,5 @@
-import { useEffect, useMemo, useState, type ReactNode } from "react";
-import {
-  Activity,
-  ArrowDownRight,
-  ArrowUpRight,
-} from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { useIsClient } from "@/lib/react/client";
 import { CapitalTapeChart } from "@/components/capital-tape";
 import { SlowPoolsBoard } from "@/components/slow-pools";
 import { HashrateBoard } from "@/components/hashrate-board";
@@ -21,7 +17,7 @@ import { GoLivePanel } from "@/components/go-live-panel";
 import { BowlLiveFeed } from "@/components/bowl-live-feed";
 import { SeoCopy } from "@/components/seo-copy";
 import { TapeFreezeBanner } from "@/components/tape-freeze";
-import { Panel, Shell } from "@/components/shell";
+import { Shell } from "@/components/shell";
 import { TapeChart } from "@/components/tape-charts";
 import { LeverageWhaleRow } from "@/components/whale-tape";
 import {
@@ -41,10 +37,8 @@ import { useDeskTape } from "@/lib/desk/tape-client";
 import { rollBots, DESK_POLL_MS } from "@/lib/desk/roll-bots";
 import { initialStop, STOP_DEFAULT } from "@/lib/desk/stops";
 import { STARTING_CASH, usePaper } from "@/lib/desk/store";
-import { GOLD_TICKERS, SILVER_TICKERS } from "@/lib/desk/proxy-book";
-import type { DeskSnapshot, HeliosCall, PredictionKind, PredictionMarket } from "@/lib/desk/types";
-import { PRED_KIND_LABEL } from "@/lib/desk/prediction-markets";
-import { cn, BTC_TONE, USD_TONE, fgTone, kimchiHex, kimchiTone, rsiTone } from "@/lib/utils";
+import type { HeliosCall } from "@/lib/desk/types";
+import { BTC_TONE, USD_TONE, fgTone, kimchiTone, rsiTone } from "@/lib/utils";
 import { APP_CALLS } from "@/lib/brand";
 
 export function DeskApp() {
@@ -53,7 +47,7 @@ export function DeskApp() {
   const [grokErr, setGrokErr] = useState<string | null>(null);
   const [asking, setAsking] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsClient();
   const [confirm, setConfirm] = useState(false);
   const [copyAsk, setCopyAsk] = useState(false);
 
@@ -68,7 +62,6 @@ export function DeskApp() {
   const role = useOperator((s) => s.role);
   const isAdmin = unlocked && role === "admin";
 
-  useEffect(() => setMounted(true), []);
   useEffect(() => {
     const admin = useOperator.getState().unlocked && useOperator.getState().role === "admin";
     void rollBots({ force: true, admin });

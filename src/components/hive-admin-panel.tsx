@@ -22,7 +22,8 @@ export function HiveAdminPanel({ token }: { token: string }) {
   }
 
   useEffect(() => {
-    void load();
+    void Promise.resolve().then(() => load());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- token-driven refresh
   }, [token]);
 
   async function toggle(status: "LIVE" | "PAUSED") {

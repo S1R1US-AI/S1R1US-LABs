@@ -170,7 +170,7 @@ export const useGm = create<GmState>()(
         }
         if (get().busy) return;
         try {
-          let snap = peekDeskTape();
+          const snap = peekDeskTape();
           if (!snap) {
             set({ lastTick: new Date().toISOString() });
             return;

@@ -15,10 +15,17 @@ export default tseslint.config(
       ".nitro/**",
       "node_modules/**",
       "src/routeTree.gen.ts",
+      // Vendor / generated browser assets — not app source.
+      "public/**",
     ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  // eslint-plugin-react-hooks v7 flat recommended (React Compiler rules).
+  {
+    files: ["**/*.{ts,tsx,js,jsx}"],
+    ...reactHooks.configs.flat.recommended,
+  },
   {
     files: ["**/*.{ts,tsx,js,jsx,mjs,cjs}"],
     languageOptions: {
@@ -26,14 +33,29 @@ export default tseslint.config(
       globals: { ...globals.browser, ...globals.node },
     },
     plugins: {
-      "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": [
         "warn",
-        { allowConstantExport: true },
+        {
+          allowConstantExport: true,
+          // Shared presentational helpers colocated with UI components.
+          allowExportNames: [
+            "money",
+            "stanceClass",
+            "callStanceClass",
+            "convictionClass",
+            "bannerTone",
+            "callTone",
+            "callHeadline",
+            "rainGmBurst",
+            "gmRainActive",
+            "downloadOssPdf",
+            "downloadMorningPdf",
+            "isOutgoingCli",
+          ],
+        },
       ],
       "@typescript-eslint/no-unused-vars": [
         "warn",

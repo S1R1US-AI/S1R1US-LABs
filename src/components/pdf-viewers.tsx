@@ -32,12 +32,8 @@ export function downloadOssPdf() {
 }
 
 function usePdfBlob() {
-  const [url, setUrl] = useState<string | null>(null);
-  useEffect(() => {
-    const u = URL.createObjectURL(new Blob([pdfBytes()], { type: "application/pdf" }));
-    setUrl(u);
-    return () => URL.revokeObjectURL(u);
-  }, []);
+  const url = useMemo(() => URL.createObjectURL(new Blob([pdfBytes()], { type: "application/pdf" })), []);
+  useEffect(() => () => URL.revokeObjectURL(url), [url]);
   return url;
 }
 

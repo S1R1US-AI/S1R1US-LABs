@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { DeskApp } from "@/components/desk-app";
 import { S1r1usSite } from "@/components/s1r1us-site";
 import { isMarketingHost } from "@/lib/launch/host";
 import { SEO_CANONICAL, SEO_DESCRIPTION, SEO_KEYWORDS, SEO_TITLE } from "@/lib/brand";
+import { useWindowHostname } from "@/lib/react/client";
 
 export const Route = createFileRoute("/")({
   beforeLoad: async () => isMarketingHost(),
@@ -21,11 +21,8 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const { marketing } = Route.useRouteContext();
-  const [hostPub, setHostPub] = useState(marketing);
-  useEffect(() => {
-    const h = window.location.hostname.toLowerCase();
-    setHostPub(h === "s1r1us.ai" || h === "www.s1r1us.ai");
-  }, []);
+  const host = useWindowHostname().toLowerCase();
+  const hostPub = host === "s1r1us.ai" || host === "www.s1r1us.ai";
   if (marketing || hostPub) return <S1r1usSite />;
   return <DeskApp />;
 }

@@ -23,12 +23,12 @@ export function OrderBookPanel({
   mode: "practice" | "live";
 }) {
   const { snap } = useDeskTape();
-  const book = snap?.heatmap ?? [];
+  const book = snap?.heatmap;
   const last = snap?.btc.price ?? null;
 
-  const maxUsd = useMemo(() => Math.max(1, ...book.map((b) => b.bidUsd + b.askUsd)), [book]);
-  const bidUsd = book.reduce((s, b) => s + b.bidUsd, 0);
-  const askUsd = book.reduce((s, b) => s + b.askUsd, 0);
+  const maxUsd = useMemo(() => Math.max(1, ...(book ?? []).map((b) => b.bidUsd + b.askUsd)), [book]);
+  const bidUsd = (book ?? []).reduce((s, b) => s + b.bidUsd, 0);
+  const askUsd = (book ?? []).reduce((s, b) => s + b.askUsd, 0);
   const buyBias = bidUsd + askUsd > 0 ? bidUsd / (bidUsd + askUsd) : 0.5;
   const buys = fills.filter((f) => f.side === "BUY");
   const sells = fills.filter((f) => f.side === "SELL");
@@ -72,7 +72,7 @@ export function OrderBookPanel({
           <p className="mt-2 text-xs text-down">{snap.errors.join(" · ")}</p>
         ) : null}
         <ul className="mt-3 max-h-56 space-y-1 overflow-auto">
-          {[...book].reverse().map((b) => (
+          {[...(book ?? [])].reverse().map((b) => (
             <li key={b.price} className="grid grid-cols-[1fr_auto_1fr] items-center gap-1 text-[11px]">
               <div className="flex justify-end">
                 <span
@@ -98,7 +98,7 @@ export function OrderBookPanel({
             </li>
           ))}
         </ul>
-        {!book.length ? <p className="mt-2 text-sm text-muted">Pulling Coinbase L2…</p> : null}
+        {!(book ?? []).length ? <p className="mt-2 text-sm text-muted">Pulling Coinbase L2…</p> : null}
       </Panel>
 
       <Panel kicker={mode === "live" ? "Live book" : "Practice book"} title="Buy / sell history">

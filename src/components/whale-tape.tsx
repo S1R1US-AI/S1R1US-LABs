@@ -64,7 +64,8 @@ export function WhaleTape({
   onToggle?: () => void;
 }) {
   const rows = [...(snap?.whales ?? [])].sort((a, b) => b.t - a.t || Number(b.side === "buy") - Number(a.side === "buy"));
-  const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+  const latest = rows[0]?.t ?? 0;
+  const cutoff = latest - 24 * 60 * 60 * 1000;
   const day = rows.filter((w) => w.t >= cutoff);
   const buyUsd = day.filter((w) => w.side === "buy").reduce((s, w) => s + w.usd, 0);
   const sellUsd = day.filter((w) => w.side === "sell").reduce((s, w) => s + w.usd, 0);

@@ -4,7 +4,7 @@ import { Radio } from "lucide-react";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { SeoImage } from "@/components/seo-image";
-import { LockBoard, LockGif, LockHead } from "@/components/lock3d-status";
+import { LockBoard, LockHead } from "@/components/lock3d-status";
 import { QuantFlexWelcome } from "@/components/quant-flex-welcome";
 import { CollapseSummary } from "@/components/collapse-summary";
 import {

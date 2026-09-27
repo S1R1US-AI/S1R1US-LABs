@@ -51,7 +51,7 @@ function useLockView() {
   }
 
   useEffect(() => {
-    void load();
+    void Promise.resolve().then(() => load());
     const t = window.setInterval(() => void load(), POLL_MS);
     return () => window.clearInterval(t);
   }, []);

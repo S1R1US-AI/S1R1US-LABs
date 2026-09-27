@@ -78,7 +78,7 @@ try {
   await page.waitForTimeout(1500);
   report.pages["/security"] = { status: sec?.status() ?? 0, url: page.url() };
 
-  const nav = await page.goto(`${BASE}/`, { waitUntil: "domcontentloaded" });
+  await page.goto(`${BASE}/`, { waitUntil: "domcontentloaded" });
   await page.waitForTimeout(2000);
   const navText = await page.locator("nav").innerText().catch(() => "");
   report.pages["nav"] = {

@@ -93,8 +93,8 @@ export function BtcMinersPanel({ token }: { token: string }) {
   }
 
   useEffect(() => {
-    void load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    void Promise.resolve().then(() => load());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- token-driven refresh
   }, [token]);
 
   async function save() {

@@ -55,7 +55,7 @@ const THRESHOLD = 5;
 const MAX_HITS = 300;
 const LOG_PATH = "/tmp/desk-waf.json";
 
-let HITS: WafHit[] = [];
+const HITS: WafHit[] = [];
 const COUNTS = new Map<string, number>();
 
 function rule(id: string, crs: string, family: WafFamily, title: string, sev: WafSev, owasp: string): WafRule {

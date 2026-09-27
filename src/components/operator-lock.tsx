@@ -1,4 +1,5 @@
 import { useEffect, useState, type ClipboardEvent, type FormEvent, type ReactNode } from "react";
+import { useIsClient } from "@/lib/react/client";
 import { Link } from "@tanstack/react-router";
 import { Lock, LogIn, LogOut } from "lucide-react";
 import { authEnabled, signIn, xSignInProviderId } from "@/lib/auth/client";
@@ -12,11 +13,10 @@ import { APP_NAME } from "@/lib/brand";
 import { XRenewWhenAdmin } from "@/components/renew-password";
 
 export function OperatorGate({ children }: { children: ReactNode }) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsClient();
   const unlocked = useOperator((s) => s.unlocked);
   const role = useOperator((s) => s.role);
   const yubiTicket = useOperator((s) => s.yubiTicket);
-  useEffect(() => setMounted(true), []);
   if (!mounted) return <LockForm pending />;
   if (yubiTicket) return <YubiForm />;
   if (!unlocked || role !== "admin") {
@@ -36,11 +36,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
   const [xAdmin, setXAdmin] = useState(false);
 
   useEffect(() => {
-    if (pending || !user) {
-      setXAdmin(false);
-      return;
-    }
-    setXAdmin(false);
+    if (pending || !user) return;
     let gone = false;
     void (async () => {
       try {
@@ -55,6 +51,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
       gone = true;
     };
   }, [pending, user]);
+  const xAdminOk = Boolean(user) && !pending && xAdmin;
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -129,7 +126,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
       {user ? (
         <div className="mt-6 space-y-3">
           <UserButton />
-          {xAdmin ? (
+          {xAdminOk ? (
             <p className="text-sm text-high">
               Operator X verified. Enter name and password to finish.
             </p>

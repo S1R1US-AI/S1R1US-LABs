@@ -81,9 +81,9 @@ function StackTable({ title, rows }: { title: string; rows: DatHolding[] }) {
 }
 
 export function CapitalTapeChart({ snap }: { snap: DeskSnapshot | null }) {
-  const bars = snap?.capital.bars ?? [];
+  const bars = snap?.capital.bars;
   const data = useMemo(() => {
-    const rows = bars.map((b) => ({
+    const rows = (bars ?? []).map((b) => ({
       ...b,
       value: b.usd ?? 0,
       plot: b.usd != null && b.usd > 0 ? b.usd : null,

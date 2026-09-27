@@ -55,12 +55,12 @@ export function HashrateBoard({ snap }: { snap: DeskSnapshot | null }) {
   const [qty, setQty] = useState("100");
   const [unit, setUnit] = useState<Unit>("TH");
   const network = snap?.onchain.hashrateEh ?? null;
-  const regions = snap?.onchain.regions ?? [];
+  const regions = snap?.onchain.regions;
   const mineEh = toEh(Number(qty) || 0, unit);
   const share = network && network > 0 ? mineEh / network : 0;
   const btcDay = share * SUBSIDY * BLOCKS_DAY;
   const pie = useMemo(() => {
-    const rows = regions.map((r) => ({ ...r, pct: r.share * 100 }));
+    const rows = (regions ?? []).map((r) => ({ ...r, pct: r.share * 100 }));
     if (rows.length > 0 && !rows.some((r) => r.id === "na")) {
       rows.unshift({ id: "na", name: "North America", share: 0, eh: 0, pct: 0 });
     }

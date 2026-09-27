@@ -12,12 +12,7 @@ export function XRenewWhenAdmin() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (isPending) return;
-    if (!user) {
-      setAllowed(false);
-      setReady(true);
-      return;
-    }
+    if (isPending || !user) return;
     let gone = false;
     void secondFactorStatus()
       .then((st) => {
@@ -37,7 +32,7 @@ export function XRenewWhenAdmin() {
     };
   }, [user, isPending]);
 
-  if (isPending || !ready || !user || !allowed) return null;
+  if (isPending || !user || !ready || !allowed) return null;
   return <XRenewBlock allowed adminName={adminName} />;
 }
 
@@ -52,15 +47,13 @@ export function XRenewBlock({
 }) {
   const renewWithX = useOperator((s) => s.renewWithX);
   const [open, setOpen] = useState(false);
-  const [nextName, setNextName] = useState(adminName);
+  const [nextNameOverride, setNextNameOverride] = useState<string | null>(null);
+  const nextName = nextNameOverride ?? adminName;
+  const setNextName = setNextNameOverride;
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-
-  useEffect(() => {
-    if (adminName && !nextName) setNextName(adminName);
-  }, [adminName, nextName]);
 
   if (!allowed) return xErr ? <p className="mt-4 text-sm text-down">{xErr}</p> : null;
 

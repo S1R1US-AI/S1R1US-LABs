@@ -233,12 +233,14 @@ export function WorkspaceTape({ snap }: { snap: DeskSnapshot | null }) {
 
   useEffect(() => {
     if (!range) {
-      setRangeCandles(null);
-      setRangeErr(null);
+      void Promise.resolve().then(() => {
+        setRangeCandles(null);
+        setRangeErr(null);
+      });
       return;
     }
     let live = true;
-    setRangeErr(null);
+    void Promise.resolve().then(() => setRangeErr(null));
     fetchRangeCandles(range)
       .then((c) => {
         if (live) setRangeCandles(c);
@@ -418,8 +420,10 @@ export function TapeChart({ snap }: { snap: DeskSnapshot | null }) {
   const [pairErr, setPairErr] = useState<string | null>(null);
 
   useEffect(() => {
-    setPairCandles(null);
-    setPairErr(null);
+    void Promise.resolve().then(() => {
+      setPairCandles(null);
+      setPairErr(null);
+    });
     if (asset === "USDC") return;
     let live = true;
     fetchAssetCandles(asset)

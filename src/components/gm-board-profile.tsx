@@ -76,17 +76,16 @@ export function GmBoardProfile({ id }: { id: string }) {
   }, [id]);
 
   useEffect(() => {
-    const t = sessionStorage.getItem(TOKEN_KEY) ?? "";
-    if (t) setToken(t);
-    void load();
+    const t = typeof window !== "undefined" ? (sessionStorage.getItem(TOKEN_KEY) ?? "") : "";
+    void Promise.resolve().then(() => {
+      if (t) setToken(t);
+      void load();
+    });
   }, [load]);
 
   useEffect(() => {
-    const t = token || sessionStorage.getItem(TOKEN_KEY) || "";
-    if (!t || !view?.agent) {
-      setMine(false);
-      return;
-    }
+    const t = token || (typeof window !== "undefined" ? sessionStorage.getItem(TOKEN_KEY) || "" : "");
+    if (!t || !view?.agent) return;
     void fetch("/api/agent/board", { headers: { "x-s1r1us-agent": t } })
       .then((r) => r.json())
       .then((d: { you?: { id?: string } }) => setMine(d.you?.id === id))

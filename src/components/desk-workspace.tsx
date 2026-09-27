@@ -11,7 +11,7 @@ import { Lock3dRail } from "@/components/lock3d-status";
 import { AUTO_RUN_CASH, AUTO_RUN_LABEL } from "@/lib/desk/auto-run";
 import { DEFAULT_GM_VARS, GM_NAME, gmCall } from "@/lib/desk/gm";
 import { SeoImage } from "@/components/seo-image";
-import { GIF_AI_BTC_BOT, GIF_AI_BTC_BOT_EQ, GIF_AI_BTC_BOT_NAME, SEO_TAB_GM_AUTO, TAB_BOT7, TAB_GM_AUTO, TAB_GM_AUTO_TAIL } from "@/lib/brand";
+import { GIF_AI_BTC_BOT, GIF_AI_BTC_BOT_EQ, GIF_AI_BTC_BOT_NAME, SEO_TAB_GM_AUTO, TAB_GM_AUTO, TAB_GM_AUTO_TAIL } from "@/lib/brand";
 
 function isPurchase(stance: string | undefined) {
   if (!stance) return false;

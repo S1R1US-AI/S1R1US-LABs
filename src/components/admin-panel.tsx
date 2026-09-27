@@ -1,7 +1,8 @@
 import { useEffect, useState, type ClipboardEvent, type FormEvent } from "react";
+import { useIsClient, useWindowHash } from "@/lib/react/client";
 import { Link } from "@tanstack/react-router";
 import { Copy, Lock, RefreshCw, Shield } from "lucide-react";
-import { money, CallWords, bannerTone } from "@/components/helios-card";
+import { money, CallWords } from "@/components/helios-card";
 import { AccessDesk } from "@/components/security-page";
 import { SecurityDesk } from "@/components/security-desk";
 import { DeskErrorLog } from "@/components/desk-error-log";
@@ -28,7 +29,7 @@ import { addDeskAccount, connectXAdmin, deleteDeskAccount, disconnectXAdmin, enr
 import { adminStatus } from "@/lib/desk/grok";
 import { useOperator } from "@/lib/desk/operator";
 import { BOT_ROSTER, CYCLE_ARCH, DATA_FEEDS, RISK_RULES, SYSTEM_REVIEWED } from "@/lib/desk/policy";
-import { ANALYSIS_AS_OF, CDP_KEYS, CDP_REVOKE, MCP_DOCS, MCP_REMOTE, SPARROW_SITE, isEvmAddress, looksLikeSecret, protocolRows, usdcReceiveError, vulnRows } from "@/lib/desk/security";
+import { ANALYSIS_AS_OF, CDP_KEYS, CDP_REVOKE, MCP_DOCS, MCP_REMOTE, isEvmAddress, looksLikeSecret, protocolRows, usdcReceiveError, vulnRows } from "@/lib/desk/security";
 import { buyBtcPreview, isPortfolioUuid, PROFIT_BTC_EXPLORER, PROFIT_BTC_RECEIVE, takeProfitPreviewUsd, transferPreview } from "@/lib/desk/treasury";
 import { peekDeskTape, useDeskTape } from "@/lib/desk/tape-client";
 import { DESK_POLL_MS } from "@/lib/desk/poll";
@@ -62,19 +63,23 @@ export function AdminPanel() {
   const [err, setErr] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const [tab, setTab] = useState<"console" | "wallet" | "paper" | "coin" | "website" | "access" | "security" | "bowl" | "hive" | "miners">("wallet");
-
-  useEffect(() => setMounted(true), []);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+  const mounted = useIsClient();
+  const hash = useWindowHash();
+  const [tab, setTab] = useState<"console" | "wallet" | "paper" | "coin" | "website" | "access" | "security" | "bowl" | "hive" | "miners">(() => {
+    if (typeof window === "undefined") return "wallet";
     const h = window.location.hash.replace(/^#/, "");
-    if (h === "access") setTab("access");
-    if (h === "security") setTab("security");
-    if (h === "bowl") setTab("bowl");
-    if (h === "hive") setTab("hive");
-    if (h === "miners") setTab("miners");
-  }, []);
+    if (h === "access" || h === "security" || h === "bowl" || h === "hive" || h === "miners") return h;
+    return "wallet";
+  });
+
+  // Keep tab in sync if hash changes externally after mount.
+  useEffect(() => {
+    if (!mounted) return;
+    const tabs = new Set(["access", "security", "bowl", "hive", "miners"]);
+    if (tabs.has(hash)) {
+      void Promise.resolve().then(() => setTab(hash as typeof tab));
+    }
+  }, [mounted, hash]);
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (tab === "access" || tab === "security" || tab === "bowl" || tab === "hive" || tab === "miners") {
@@ -106,7 +111,8 @@ export function AdminPanel() {
   }
 
   useEffect(() => {
-    if (unlocked && token) void refresh();
+    if (unlocked && token) void Promise.resolve().then(() => refresh());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- session-driven refresh
   }, [unlocked, token]);
 
   const px = snap?.btc.price ?? 0;
@@ -674,7 +680,7 @@ function TreasuryPanel() {
       stop = true;
       window.clearInterval(id);
     };
-  }, [token]);
+  }, [token, paperCash, paperBtc, paperProfit]);
 
   async function persistVault(nextAddr = addr, nextMain = main, nextAgent = agent, nextUsdc = usdc) {
     if (!token) {
@@ -1245,7 +1251,7 @@ function FactorPanel() {
   }
 
   useEffect(() => {
-    void refresh();
+    void Promise.resolve().then(() => refresh());
   }, []);
 
   const handle = st?.handle ?? ADMIN_X_LABEL;
@@ -1393,7 +1399,7 @@ function YubiPanel() {
   }
 
   useEffect(() => {
-    void refresh();
+    void Promise.resolve().then(() => refresh());
     void import("@/lib/desk/webauthn-client").then((m) => setFidoOk(m.webauthnAvailable()));
   }, []);
 
@@ -1827,7 +1833,8 @@ function UsersPanel() {
 
   useEffect(() => {
     if (!token) return;
-    void refresh();
+    void Promise.resolve().then(() => refresh());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- token-driven refresh
   }, [token]);
 
   function guardPaste(e: ClipboardEvent<HTMLInputElement>) {

@@ -8,7 +8,7 @@ import { DESK_POLL_MS } from "./poll";
 import { guardedFetch } from "./net-guard";
 import { isTapeFrozen, readLastGood, writeLastGood } from "./tape-persist";
 import { fetchPredictionMarkets } from "./prediction-markets";
-import type { AsiaTape, AsiaVenue, BtcHolder, Candle, CapitalTape, DatHolding, DeskSnapshot, EmRegion, EmTape, EmVenue, Filing, Flow, GoldBtcPoint, GoldBtcTape, Headline, HoldersTape, LeverageVenue, MacroTape, MetalHolding, Quote, RateSeries, StableYield, StrategyProduct, StrategyTape, WhalePrint } from "./types";
+import type { AsiaTape, AsiaVenue, BtcHolder, Candle, CapitalTape, DatHolding, DeskSnapshot, EmRegion, EmTape, EmVenue, Filing, Flow, GoldBtcTape, Headline, HoldersTape, LeverageVenue, MacroTape, MetalHolding, Quote, RateSeries, StableYield, StrategyProduct, StrategyTape, WhalePrint } from "./types";
 
 const UA =
   "S1R1US-Lab/1.0 (bitcoin accumulator research; admin@s1rius.local)";
@@ -365,8 +365,8 @@ type CoinbaseStats = {
   last?: string;
   volume?: string;
 };
-type OkxList = { data?: string[][] };
-type OkxObj = { data?: Record<string, string>[] };
+type _OkxList = { data?: string[][] };
+type _OkxObj = { data?: Record<string, string>[] };
 
 const CIKS = FILING_CIKS;
 
@@ -565,7 +565,7 @@ async function positioning() {
     };
   }
 
-  async function binanceVenue(): Promise<LeverageVenue> {
+  async function _binanceVenue(): Promise<LeverageVenue> {
     const [ratio, oi, prem, book] = await Promise.all([
       getJson<{ longShortRatio?: string }[]>(
         "https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&limit=1",
@@ -865,7 +865,7 @@ async function onchain() {
   const used: string[] = [];
   let height: number | null = null;
   let hashrateEh: number | null = null;
-  let difficulty: number | null = null;
+  const difficulty: number | null = null;
   if (hashR.status === "fulfilled") {
     height = hashR.value.height;
     hashrateEh = hashR.value.eh > 0 ? hashR.value.eh : null;
@@ -1188,7 +1188,7 @@ function parseUsdToken(raw: string): number | null {
   return n;
 }
 
-function scrapeHeld(html: string, label: string): { btc: number | null; usd: number | null; change30: number | null } {
+function _scrapeHeld(html: string, label: string): { btc: number | null; usd: number | null; change30: number | null } {
   const i = html.indexOf(label);
   if (i < 0) return { btc: null, usd: null, change30: null };
   const slice = html.slice(i, i + 3500);
@@ -1497,7 +1497,7 @@ async function capitalTape(): Promise<CapitalTape> {
   };
 }
 
-async function mubadalaIbit(): Promise<{ usd: number; asOf: string } | null> {
+async function _mubadalaIbit(): Promise<{ usd: number; asOf: string } | null> {
   const j = await getJson<{
     filings?: { recent?: { form: string[]; accessionNumber: string[]; filingDate: string[] } };
   }>("https://data.sec.gov/submissions/CIK0001704268.json", 9000);
@@ -1575,7 +1575,7 @@ async function quotes(): Promise<Quote[]> {
   }
   const still = symbols.filter((s) => !out.some((q) => q.symbol.toUpperCase() === s.toUpperCase()));
   if (still.length) {
-    const us = still.filter((s) => !/[=\^-]/.test(s)).slice(0, 8);
+    const us = still.filter((s) => !/[=^-]/.test(s)).slice(0, 8);
     await Promise.all(
       us.map(async (sym) => {
         try {
@@ -2420,7 +2420,7 @@ const SILVER_META: Record<string, MetalMeta> = {
   WPM: { name: "Wheaton Precious Metals", kind: "miner", held: "Streaming / royalty — not unencumbered vault", ozPerShare: null },
 };
 
-async function metalHoldings(symbols: string[], meta: Record<string, MetalMeta>): Promise<MetalHolding[]> {
+async function _metalHoldings(symbols: string[], meta: Record<string, MetalMeta>): Promise<MetalHolding[]> {
   const fallback = () =>
     symbols.map((sym) => ({
       symbol: sym,

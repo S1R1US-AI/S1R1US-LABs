@@ -7,7 +7,6 @@ import { HiveSwarmLabel, LeaderBoardLabel } from "@/components/godzilla-mark";
 import { HiveResourcePanel } from "@/components/hive-resource-panel";
 import { ByoConnectPanel } from "@/components/byo-connect-panel";
 import {
-  COMPUTE_PATH,
   HIVE_DISCLAIMER,
   HIVE_HEADLINE,
   HIVE_PATH,

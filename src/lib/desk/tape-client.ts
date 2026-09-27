@@ -224,19 +224,18 @@ export function isDeskPollLive() {
 }
 
 export function useDeskTape() {
-  const [snap, setSnap] = useState<DeskSnapshot | null>(null);
+  const [snap, setSnap] = useState<DeskSnapshot | null>(() => peekDeskTape());
   const [err, setErr] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(() => {
+    const had = peekDeskTape();
+    return !had || tapeNeedsFill(had) || had.candles.length < 220;
+  });
   const [live, setLiveState] = useState(true);
 
   useEffect(() => {
     listeners.add(setSnap);
     liveListeners.add(setLiveState);
     const had = peekDeskTape();
-    if (had) {
-      setSnap(had);
-      setLoading(false);
-    }
     const stop = window.setTimeout(() => setLoading(false), 5_000);
     ensurePoll();
     const thin = !had || tapeNeedsFill(had) || had.candles.length < 220;
@@ -253,7 +252,8 @@ export function useDeskTape() {
         });
     } else {
       window.clearTimeout(stop);
-      setLoading(false);
+      // Already hydrated from peek; clear loading asynchronously.
+      void Promise.resolve().then(() => setLoading(false));
     }
     return () => {
       listeners.delete(setSnap);

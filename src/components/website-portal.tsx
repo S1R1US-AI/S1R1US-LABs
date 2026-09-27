@@ -35,7 +35,8 @@ export function WebsitePortal() {
 
   useEffect(() => {
     if (!token) return;
-    void ping(false);
+    void Promise.resolve().then(() => ping(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- token-driven refresh
   }, [token]);
 
   return (

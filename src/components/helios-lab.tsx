@@ -76,10 +76,11 @@ export function HeliosLab() {
 
   useEffect(() => {
     if (!liveTape) return;
-    if (preset === "live") setKnobs(knobsFromSnap(liveTape));
-    setLiveNote(
-      `Live Coinbase ${money(liveTape.btc.price ?? 0, 0)} · 5 min poll · ${liveTape.errors.length ? `degraded ${liveTape.errors.join(", ")}` : "all sources live"}`,
-    );
+    const note = `Live Coinbase ${money(liveTape.btc.price ?? 0, 0)} · 5 min poll · ${liveTape.errors.length ? `degraded ${liveTape.errors.join(", ")}` : "all sources live"}`;
+    void Promise.resolve().then(() => {
+      if (preset === "live") setKnobs(knobsFromSnap(liveTape));
+      setLiveNote(note);
+    });
   }, [liveTape, preset]);
 
   async function loadLive() {

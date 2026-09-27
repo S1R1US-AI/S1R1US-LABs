@@ -1,4 +1,4 @@
-import { useEffect, useState, type ClipboardEvent, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type ClipboardEvent, type FormEvent } from "react";
 import { createFileRoute, Navigate } from "@tanstack/react-router";
 import { Lock } from "lucide-react";
 import { authEnabled, signIn, xSignInProviderId } from "@/lib/auth/client";
@@ -14,6 +14,7 @@ import { useOperator } from "@/lib/desk/operator";
 import { looksLikeSecret } from "@/lib/desk/security";
 import { APP_NAME } from "@/lib/brand";
 import { LoginCluster, Shell } from "@/components/shell";
+import { useWindowSearch } from "@/lib/react/client";
 
 export const Route = createFileRoute("/login")({
   component: Login,
@@ -38,21 +39,19 @@ function Login() {
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [xAdmin, setXAdmin] = useState(false);
-  const [xErr, setXErr] = useState<string | null>(null);
+  const [xWaitErr, setXWaitErr] = useState<string | null>(null);
+  const search = useWindowSearch();
+  const searchErr = useMemo(() => {
+    if (!search) return null;
+    const q = new URLSearchParams(search).get("error");
+    return q
+      ? "X sign-in did not finish. Try Continue with X again, or use name and password."
+      : null;
+  }, [search]);
+  const xErr = xWaitErr ?? searchErr;
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const q = new URLSearchParams(window.location.search).get("error");
-    if (q) {
-      setXErr("X sign-in did not finish. Try Continue with X again, or use name and password.");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!me) {
-      setXAdmin(false);
-      return;
-    }
+    if (!me) return;
     let gone = false;
     void (async () => {
       try {
@@ -60,13 +59,14 @@ function Login() {
         if (gone) return;
         setXAdmin(Boolean(st.allowed));
       } catch {
-        setXAdmin(false);
+        if (!gone) setXAdmin(false);
       }
     })();
     return () => {
       gone = true;
     };
   }, [me]);
+  const xAdminOk = Boolean(me) && xAdmin;
 
   if (isPending) {
     return (
@@ -139,12 +139,12 @@ function Login() {
             className="w-full"
             type="button"
             onClick={() => {
-              setXErr(null);
+              setXWaitErr(null);
               void Promise.race([
                 signIn(xSignInProviderId(), { callbackURL: "/login", errorCallbackURL: "/login" }),
                 new Promise((_, reject) => setTimeout(() => reject(new Error("x-timeout")), 90_000)),
               ]).catch(() => {
-                setXErr("X is still waiting. Allow popups, finish X, or use name + password.");
+                setXWaitErr("X is still waiting. Allow popups, finish X, or use name + password.");
               });
             }}
           >
@@ -159,7 +159,7 @@ function Login() {
       ) : user ? (
         <div className="mt-6 space-y-3">
           <UserButton />
-          {xAdmin ? (
+          {xAdminOk ? (
             <p className="text-sm text-high">
               Operator X verified. Enter name and password to finish.
             </p>
@@ -203,7 +203,7 @@ function Login() {
         {err ? <p className="text-sm text-down">{err}</p> : null}
         <Button variant="primary" type="submit" disabled={busy} className="w-full">
           <Lock className="size-4" />
-          {xAdmin ? "Unlock admin" : "Unlock"}
+          {xAdminOk ? "Unlock admin" : "Unlock"}
         </Button>
       </form>
       <ResetPwordExpand plane="system" />
