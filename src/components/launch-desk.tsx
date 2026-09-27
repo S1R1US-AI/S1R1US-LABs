@@ -11,7 +11,7 @@ import { SeoImage } from "@/components/seo-image";
 import { APP_NAME, TAB_DESK, TAB_LAB } from "@/lib/brand";
 import { LIVE_UNLOCKED } from "@/lib/desk/practice";
 import { useOperator } from "@/lib/desk/operator";
-import { BUDGET, CHECKLIST, COIN_CHAIN_REC, COIN_DISPLAY, COIN_DOMAIN, COIN_NAME_NOTE, COIN_STANDARD, COIN_TICKER, COMPANY_X_STEPS, DNS_STEPS, DOMAINS, FUND_INTEGRATION, FUND_LANES, GIFT_RECEIPT, GODADDY_IO, HOWEY_POSTURE, ICP_NOTE, LIQ_BANDS, MINT_STEPS, PATH_A_LOCKED, PATH_A_NAME, PATH_A_ORDER, PLATFORM_ROWS, RH_NOTE, TIERS, TOKEN_LAUNCHED, TOKEN_UTILITY, type LaunchCheck } from "@/lib/launch/model";
+import { BUDGET, CHECKLIST, COIN_CHAIN_REC, COIN_DOMAIN, COIN_NAME_NOTE, COIN_STANDARD, COIN_TICKER, COMPANY_X_STEPS, DNS_STEPS, DOMAINS, FUND_INTEGRATION, FUND_LANES, GIFT_RECEIPT, GODADDY_IO, HOWEY_POSTURE, ICP_NOTE, LIQ_BANDS, MINT_STEPS, PATH_A_LOCKED, PATH_A_NAME, PATH_A_ORDER, PLATFORM_ROWS, RH_NOTE, TIERS, TOKEN_LAUNCHED, TOKEN_UTILITY, type LaunchCheck } from "@/lib/launch/model";
 import { ADMIN_X_HANDLE, ADMIN_X_LABEL, COMPANY_X_ART, COMPANY_X_AVATAR_X400, COMPANY_X_BANNER, COMPANY_X_HANDLE, COMPANY_X_LABEL, COMPANY_X_LOGO_FILE, COMPANY_X_LOGO_NAME, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { CompanyAvatar } from "@/components/company-x";
 import { probeLaunch, type DomainProbe } from "@/lib/launch/probes";
@@ -90,7 +90,7 @@ export function LaunchDesk() {
   }
 
   useEffect(() => {
-    if (unlocked) void refresh();
+    if (unlocked) void Promise.resolve().then(() => refresh());
   }, [unlocked]);
 
   const auto = useMemo(() => {

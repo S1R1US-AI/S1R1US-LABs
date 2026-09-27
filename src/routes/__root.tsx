@@ -1,5 +1,4 @@
 import { createRootRoute, HeadContent, Outlet, Scripts, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import { AuthProvider } from "@/lib/auth/provider";
 import { MatrixSaver } from "@/components/matrix-saver";
 import { PracticeEngine } from "@/components/practice-engine";
@@ -11,6 +10,7 @@ import { SEO_DESCRIPTION, SEO_KEYWORDS, SEO_TITLE } from "@/lib/brand";
 import { xBannerAbsUrl } from "@/lib/og/public-host";
 import { liveMeLinks } from "@/lib/desk/official-presence";
 import { COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
+import { useWindowHostname } from "@/lib/react/client";
 
 export const Route = createRootRoute({
   head: () => {
@@ -93,8 +93,7 @@ function publicHost(host: string) {
 
 function DeskChrome() {
   const path = useRouterState({ select: (s) => s.location.pathname });
-  const [host, setHost] = useState("");
-  useEffect(() => setHost(window.location.hostname), []);
+  const host = useWindowHostname();
   if (path.startsWith("/s1r1us") || path.startsWith("/renew") || path.startsWith("/login") || publicHost(host)) return null;
   return (
     <>

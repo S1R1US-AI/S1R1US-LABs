@@ -9,7 +9,7 @@ export type DeskError = {
 };
 
 const MAX = 100;
-let RING: DeskError[] = [];
+const RING: DeskError[] = [];
 const LOG_PATH = "/tmp/desk-errors.json";
 
 function hostOf(msg: string) {

@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { useIsClient } from "@/lib/react/client";
 import { Link } from "@tanstack/react-router";
 import { Lock, LogOut, RefreshCw } from "lucide-react";
 import { AskGrokPanel } from "@/components/ask-grok-panel";
@@ -30,12 +31,11 @@ export function AppAdminPanel() {
   const token = useAppAdmin((s) => s.token);
   const refresh = useAppAdmin((s) => s.refresh);
   const lock = useAppAdmin((s) => s.lock);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsClient();
   const [tab, setTab] = useState<Tab>("console");
 
-  useEffect(() => setMounted(true), []);
   useEffect(() => {
-    if (mounted) void refresh();
+    if (mounted) void Promise.resolve().then(() => refresh());
   }, [mounted, refresh]);
 
   if (!mounted) {

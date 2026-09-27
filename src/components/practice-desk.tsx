@@ -3,7 +3,7 @@ import { money, stanceClass, CallWords } from "@/components/helios-card";
 import { OrderBookPanel } from "@/components/order-book-panel";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/shell";
-import { LIVE_UNLOCKED, PRACTICE_MS, TEST_PHASE_USDC, usePractice } from "@/lib/desk/practice";
+import { LIVE_UNLOCKED, PRACTICE_MS, usePractice } from "@/lib/desk/practice";
 import { rollBots, DESK_POLL_MS } from "@/lib/desk/roll-bots";
 import { openLots, STOP_MAX, STOP_MIN } from "@/lib/desk/stops";
 import { CASH_MAX, CASH_MIN, CASH_STEP, usePaper } from "@/lib/desk/store";

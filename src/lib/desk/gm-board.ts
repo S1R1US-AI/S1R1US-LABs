@@ -832,7 +832,7 @@ export async function tickBoard(input: {
   if (!ACTIONS.has(action)) {
     return { ok: false as const, error: "action must be BUY, ACCUMULATE, HOLD, WAIT, or TRIM. No short. No sell of the stack." };
   }
-  let bookKind: BoardBookKind | "callout" = input.book === "practice" ? "practice" : input.book === "callout" ? "callout" : "official";
+  const bookKind: BoardBookKind | "callout" = input.book === "practice" ? "practice" : input.book === "callout" ? "callout" : "official";
   if (bookKind === "callout") {
     const action = String(input.action ?? "HOLD").toUpperCase();
     if (!ACTIONS.has(action as BoardAction) && action !== "BUY" && action !== "ACCUMULATE") {

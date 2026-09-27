@@ -14,7 +14,6 @@ import { GodzillaModeLabel } from "@/components/godzilla-mark";
 import { SeoCopy } from "@/components/seo-copy";
 import { APP_NAME, BOT7_NAME, LABS_NAME, TAB_DESK } from "@/lib/brand";
 import { COMPANY_X_HANDLE, COMPANY_X_URL } from "@/lib/desk/x-admin";
-import { CompanyXChip } from "@/components/company-x";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { useDeskTape } from "@/lib/desk/tape-client";
 import { rollBots, DESK_POLL_MS } from "@/lib/desk/roll-bots";

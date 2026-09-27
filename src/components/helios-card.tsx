@@ -9,24 +9,6 @@ import type { HeliosCall, PaperFill, Stance } from "@/lib/desk/types";
 import { cn, BTC_TONE, USD_TONE, fgTone, rsiTone } from "@/lib/utils";
 import { APP_CALLS } from "@/lib/brand";
 
-function gateShort(label: string) {
-  if (/orthogonal/i.test(label)) return "two-lane";
-  if (/Fear & Greed/i.test(label)) return "F&G";
-  if (/Sell wall/i.test(label)) return "sell wall";
-  if (/RSI/i.test(label)) return "RSI";
-  if (/Long\/short/i.test(label)) return "L/S";
-  if (/Funding/i.test(label)) return "funding";
-  if (/Kimchi/i.test(label)) return "kimchi";
-  if (/CNY/i.test(label)) return "CNY OTC";
-  if (/^EM /i.test(label)) return "EM";
-  if (/ETF/i.test(label)) return "ETF melt";
-  if (/gold/i.test(label)) return "BTC/gold";
-  if (/rotat/i.test(label)) return "rotation";
-  if (/Mempool|fee spike/i.test(label)) return "fees";
-  if (/dry-run|Preview/i.test(label)) return "dry-run";
-  if (/Never sell/i.test(label)) return "never-sell";
-  return label.split("(")[0]!.trim().slice(0, 18);
-}
 
 export function money(n: number, d = 0) {
   return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: d });

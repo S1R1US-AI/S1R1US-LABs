@@ -1,5 +1,5 @@
 /** YubiKey is optional. Name+password unlocks system admin. */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { getSql } from "@/lib/db";
 import { webauthnCount } from "./webauthn.server";
 import { yubiRows } from "./yubi.server";
@@ -7,18 +7,6 @@ import { yubiRows } from "./yubi.server";
 const PATHS = ["/tmp/admin-yubi-gate.json", "/workspace/data/admin-yubi-gate.json"];
 
 type Gate = { panelLock: boolean; updatedAt: string | null };
-
-function readFileGate(): Gate | null {
-  for (const p of PATHS) {
-    try {
-      const raw = JSON.parse(readFileSync(p, "utf8")) as Gate;
-      if (typeof raw?.panelLock === "boolean") return { panelLock: raw.panelLock, updatedAt: raw.updatedAt ?? null };
-    } catch {
-      /* missing */
-    }
-  }
-  return null;
-}
 
 function writeFileGate(g: Gate) {
   const body = JSON.stringify(g);
@@ -42,7 +30,7 @@ export async function adminPanelYubiLock(): Promise<boolean> {
 }
 
 export async function setAdminPanelYubiLock(
-  on: boolean,
+  _on: boolean,
 ): Promise<{ ok: true; panelLock: boolean; keyCount: number; yubicoRecommendTwo: boolean } | { ok: false; error: string }> {
   const otp = await yubiRows();
   const fido = await webauthnCount();

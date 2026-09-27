@@ -94,13 +94,17 @@ export function MobileAppPage() {
   const [out, setOut] = useState<string | null>(null);
 
   useEffect(() => {
-    setPlat(detectPlatform());
-    const t = readToken();
-    if (t) setToken(t);
+    void Promise.resolve().then(() => {
+      setPlat(detectPlatform());
+      const t = readToken();
+      if (t) setToken(t);
+    });
   }, []);
 
   useEffect(() => {
-    if (plat === "android") setDesigner("Google Gemini");
+    if (plat === "android") {
+      void Promise.resolve().then(() => setDesigner("Google Gemini"));
+    }
   }, [plat]);
 
   useEffect(() => {

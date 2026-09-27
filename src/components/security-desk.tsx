@@ -212,10 +212,13 @@ export function SecurityDesk() {
   }
 
   useEffect(() => {
-    void loadPosture(true);
-    void loadGate();
-    void loadBoard();
+    void Promise.resolve().then(() => {
+      void loadPosture(true);
+      void loadGate();
+      void loadBoard();
+    });
     void fetchTapeMeta().then((m) => setPullPaused(Boolean(m.frozen)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- token-driven refresh
   }, [token]);
 
   const shown = useMemo(
@@ -227,7 +230,8 @@ export function SecurityDesk() {
     [rows],
   );
   const badBot24 = useMemo(() => {
-    const since = Date.now() - 24 * 60 * 60_000;
+    const latest = badBotRows.reduce((m, r) => Math.max(m, Date.parse(r.at) || 0), 0);
+    const since = (latest || 0) - 24 * 60 * 60_000;
     return badBotRows.filter((r) => Date.parse(r.at) >= since);
   }, [badBotRows]);
   const badBotKinds = useMemo(() => {

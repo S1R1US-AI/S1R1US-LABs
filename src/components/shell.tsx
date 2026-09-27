@@ -22,9 +22,6 @@ import {
   TAB_COMPUTE,
   TAB_APP,
   TAB_COFFEE,
-  TAB_DESK,
-  TAB_FEED,
-  TAB_GM,
   TAB_HOVER_AGENT,
   TAB_HOVER_BEARS,
   TAB_HOVER_OWL,
@@ -334,10 +331,7 @@ function useBoundXAdmin() {
   const { user, isPending } = useCurrentUserState();
   const [xVerified, setXVerified] = useState(false);
   useEffect(() => {
-    if (!user) {
-      setXVerified(false);
-      return;
-    }
+    if (!user) return;
     let gone = false;
     void secondFactorStatus()
       .then((st) => {

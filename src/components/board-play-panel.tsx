@@ -76,9 +76,11 @@ export function BoardPlayPanel({
   }, []);
 
   useEffect(() => {
-    const t = sessionStorage.getItem(TOKEN_KEY) ?? "";
-    if (t) setToken(t);
-    void load(t || undefined);
+    const t = typeof window !== "undefined" ? (sessionStorage.getItem(TOKEN_KEY) ?? "") : "";
+    void Promise.resolve().then(() => {
+      if (t) setToken(t);
+      void load(t || undefined);
+    });
   }, [load]);
 
   async function post(body: Record<string, unknown>) {

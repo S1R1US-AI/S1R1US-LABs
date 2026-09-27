@@ -126,7 +126,7 @@ function houseDeskId(name: string) {
 const DEMO_NOTE = "DEMO tape. Sample C@LL 0UT so the board looks live. Drops when a real bout lands.";
 
 /** HOUSE field names already on L3AD3R B0ARD — reused as demo C@LL 0UT desks. */
-const DEMO_HOUSE = [
+const _DEMO_HOUSE = [
   "GROK-ACCUM-01",
   "GROK-DCA-02",
   "GROK-STACK-03",
@@ -199,7 +199,7 @@ function seedDemoIfNeeded(s: Store, force = false): Store {
   if (s.fights.some((f) => f.demo)) return s;
 
   const sys = { id: SYSTEM_KING_ID, name: SYSTEM_KING_NAME };
-  const d = (name: (typeof DEMO_HOUSE)[number]) => demoDesk(name);
+  const d = (name: (typeof _DEMO_HOUSE)[number]) => demoDesk(name);
   const now = Date.now();
   const hour = 3_600_000;
   const fights: Fight[] = [];
@@ -256,7 +256,7 @@ function seedDemoIfNeeded(s: Store, force = false): Store {
     tgBtc: 0.048,
     hoursAgo: 2,
   });
-  const systemTargets: (typeof DEMO_HOUSE)[number][] = [
+  const systemTargets: (typeof _DEMO_HOUSE)[number][] = [
     "GROK-DCA-02",
     "GROK-STACK-03",
     "GROK-GRID-04",
@@ -283,8 +283,8 @@ function seedDemoIfNeeded(s: Store, force = false): Store {
     });
   });
   const others: {
-    a: (typeof DEMO_HOUSE)[number];
-    b: (typeof DEMO_HOUSE)[number];
+    a: (typeof _DEMO_HOUSE)[number];
+    b: (typeof _DEMO_HOUSE)[number];
     winner: "a" | "b";
   }[] = [
     { a: "GROK-OWL-09", b: "CLAUDE-OWL-17", winner: "a" },
@@ -714,7 +714,6 @@ export function issueCallout(input: {
   if (targetIs7 && fromAdmin) lane = "admin-vs-7bot";
   else if (fromAdmin || targetAdmin) lane = "admin-vs-agent";
   else if (fromOwl && targetOwl) lane = "owl-vs-owl";
-  else if (fromAdmin) lane = "admin-vs-agent";
 
   if (fromAdmin && lane === "owl-vs-owl") {
     return { ok: false as const, error: "Admins do not enter W1S3 0WL$ AI-agent vs AI-agent bouts. Call out an agent as a system member instead." };

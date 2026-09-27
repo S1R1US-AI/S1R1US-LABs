@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Panel, Shell } from "@/components/shell";
 import { SeoCopy } from "@/components/seo-copy";
 import { PUBLIC_PAGES, SITEMAP_MACHINE, SITEMAP_LOCK_VIEWS } from "@/lib/desk/public-nav";
-import { GodzillaModeLabel, GoldCss, LeaderBoardLabel, RainbowGodzillaText } from "@/components/godzilla-mark";
+import { GodzillaModeLabel, LeaderBoardLabel, RainbowGodzillaText } from "@/components/godzilla-mark";
 import { APP_NAME, LABS_NAME, SEO_CANONICAL, TAB_DESK } from "@/lib/brand";
 
 export function SitemapPage() {

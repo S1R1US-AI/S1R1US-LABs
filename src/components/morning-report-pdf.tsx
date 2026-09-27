@@ -74,7 +74,8 @@ export function MorningReportPdf({ token: tokenProp, canPauseLibrary = true }: {
   }
 
   useEffect(() => {
-    void load();
+    void Promise.resolve().then(() => load());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- token-driven refresh
   }, [token]);
 
   async function toggle() {
@@ -530,12 +531,9 @@ function BoardMorningSection() {
 
 function SecurityMorningSection() {
   const token = useOperator((s) => s.token);
-  const [brief, setBrief] = useState<ReturnType<typeof morningSecurity> | null>(null);
+  const [brief, setBrief] = useState<ReturnType<typeof morningSecurity> | null>(() => morningSecurity());
   useEffect(() => {
-    if (!token) {
-      setBrief(morningSecurity());
-      return;
-    }
+    if (!token) return;
     void fetchSecurityBrief({ data: { token } }).then((res) => {
       if (res.ok && res.brief) setBrief(res.brief);
       else setBrief(morningSecurity());
@@ -590,12 +588,9 @@ function SecurityMorningSection() {
 
 function HealthMorningSection() {
   const token = useOperator((s) => s.token);
-  const [health, setHealth] = useState<SystemHealth | null>(null);
+  const [health, setHealth] = useState<SystemHealth | null>(() => systemHealth());
   useEffect(() => {
-    if (!token) {
-      setHealth(systemHealth());
-      return;
-    }
+    if (!token) return;
     void fetchSecurityBrief({ data: { token } }).then((res) => {
       if (res.ok && res.health) setHealth(res.health);
       else setHealth(systemHealth());
@@ -643,12 +638,9 @@ function HealthMorningSection() {
 
 function AlignmentMorningSection() {
   const token = useOperator((s) => s.token);
-  const [align, setAlign] = useState<AlignmentScore | null>(null);
+  const [align, setAlign] = useState<AlignmentScore | null>(() => alignmentScore());
   useEffect(() => {
-    if (!token) {
-      setAlign(alignmentScore());
-      return;
-    }
+    if (!token) return;
     void fetchSecurityBrief({ data: { token } }).then((res) => {
       if (res.ok && "alignment" in res && res.alignment) setAlign(res.alignment);
       else setAlign(alignmentScore());
@@ -693,12 +685,9 @@ function AlignmentMorningSection() {
 
 function BadBotsMorningSection() {
   const token = useOperator((s) => s.token);
-  const [brief, setBrief] = useState<ReturnType<typeof morningBadBots> | null>(null);
+  const [brief, setBrief] = useState<ReturnType<typeof morningBadBots> | null>(() => morningBadBots());
   useEffect(() => {
-    if (!token) {
-      setBrief(morningBadBots());
-      return;
-    }
+    if (!token) return;
     void fetchSecurityBrief({ data: { token } }).then((res) => {
       if (res.ok && res.badBots) setBrief(res.badBots);
       else setBrief(morningBadBots());

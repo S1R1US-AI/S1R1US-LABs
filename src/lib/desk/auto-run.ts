@@ -6,7 +6,6 @@ import {
   AUTO_RUN_CASH,
   AUTO_RUN_ID,
   AUTO_RUN_UNTIL_MS,
-  autoWindowOpen,
 } from "./auto-window";
 
 export {
@@ -64,7 +63,7 @@ type AutoState = {
 
 export const useAutoRun = create<AutoState>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       id: AUTO_RUN_ID,
       armed: false,
       paused: true,

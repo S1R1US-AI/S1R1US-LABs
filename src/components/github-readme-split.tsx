@@ -54,7 +54,7 @@ function ReadmePreview({ md }: { md: string }) {
             <pre key={i} className="overflow-x-auto rounded-md border border-rule bg-fg/4 p-3 font-mono text-xs">
               {t
                 .split("\n")
-                .map((l) => l.replace(/^    /, ""))
+                .map((l) => l.replace(/^ {4}/, ""))
                 .join("\n")}
             </pre>
           );

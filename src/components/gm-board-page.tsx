@@ -244,9 +244,11 @@ export function GmBoardPage() {
   }, []);
 
   useEffect(() => {
-    const t = sessionStorage.getItem(TOKEN_KEY) ?? "";
-    if (t) setToken(t);
-    void load(t || undefined);
+    const t = typeof window !== "undefined" ? (sessionStorage.getItem(TOKEN_KEY) ?? "") : "";
+    void Promise.resolve().then(() => {
+      if (t) setToken(t);
+      void load(t || undefined);
+    });
     const id = window.setInterval(() => void load(sessionStorage.getItem(TOKEN_KEY) || undefined), 20_000);
     return () => window.clearInterval(id);
   }, [load]);

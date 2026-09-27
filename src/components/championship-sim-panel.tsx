@@ -12,15 +12,18 @@ export function ChampionshipSimPanel({ token }: { token: string | null }) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
-  async function load() {
-    if (!token) return;
-    const res = await fetchChampionshipSim({ data: { token } });
-    if (res.ok) setSim(res.sim);
-    else setErr(res.error ?? "Could not load championship simulation");
-  }
-
   useEffect(() => {
-    void load();
+    if (!token) return;
+    let gone = false;
+    void (async () => {
+      const res = await fetchChampionshipSim({ data: { token } });
+      if (gone) return;
+      if (res.ok) setSim(res.sim);
+      else setErr(res.error ?? "Could not load championship simulation");
+    })();
+    return () => {
+      gone = true;
+    };
   }, [token]);
 
   async function toggle(status: "LIVE" | "PAUSED") {

@@ -33,7 +33,7 @@ function read(path) {
 }
 
 const secretRe =
-  /(sk-[A-Za-z0-9]{20,}|xai-[A-Za-z0-9]{20,}|BEGIN (RSA |OPENSSH )?PRIVATE KEY|CDP_API_KEY|api[_-]?secret\s*[:=]\s*['\"][^'\"]{12,})/i;
+  /(sk-[A-Za-z0-9]{20,}|xai-[A-Za-z0-9]{20,}|BEGIN (RSA |OPENSSH )?PRIVATE KEY|CDP_API_KEY|api[_-]?secret\s*[:=]\s*['"][^'"]{12,})/i;
 
 function secretScan() {
   const r = spawnSync(

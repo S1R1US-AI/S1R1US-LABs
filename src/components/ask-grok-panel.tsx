@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { LoaderCircle, ScanSearch } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,15 +25,16 @@ export function AskGrokPanel({ kicker = "Ask Grok" }: { kicker?: string }) {
   const [text, setText] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [asking, setAsking] = useState(false);
-  const [copyAdmin, setCopyAdmin] = useState(false);
-
-  useEffect(() => {
+  const [copyAdmin] = useState(() => {
+    if (typeof window === "undefined") return false;
     try {
-      setCopyAdmin((window.sessionStorage.getItem("h3-app-token") ?? "").startsWith("app."));
+      return (window.sessionStorage.getItem("h3-app-token") ?? "").startsWith("app.");
     } catch {
-      setCopyAdmin(false);
+      return false;
     }
-  }, []);
+  });
+
+  // session token is read via lazy useState init (SSR-safe)
 
   const identified = Boolean(user) || copyAdmin;
 

@@ -14,7 +14,6 @@ import {
 import { Panel } from "@/components/shell";
 import { money } from "@/components/helios-card";
 import type { DeskSnapshot, StrategyProduct } from "@/lib/desk/types";
-import { cn } from "@/lib/utils";
 
 function chgClass(n: number | null) {
   if (n == null) return "text-muted";
@@ -40,10 +39,10 @@ function monthTick(t: number) {
 }
 
 export function StrategyTape({ snap }: { snap: DeskSnapshot | null }) {
-  const products = snap?.strategy.products ?? [];
-  const mstr = products.find((p) => p.symbol === "MSTR");
-  const prefs = products.filter((p) => p.kind === "preferred");
-  const etfs = products.filter((p) => p.kind === "etf");
+  const products = snap?.strategy.products;
+  const mstr = (products ?? []).find((p) => p.symbol === "MSTR");
+  const prefs = (products ?? []).filter((p) => p.kind === "preferred");
+  const etfs = (products ?? []).filter((p) => p.kind === "etf");
   const [stackOpen, setStackOpen] = useState(false);
   const spark = useMemo(
     () =>
@@ -55,7 +54,7 @@ export function StrategyTape({ snap }: { snap: DeskSnapshot | null }) {
     [mstr],
   );
   const ranked = useMemo(() => {
-    return [...products]
+    return [...(products ?? [])]
       .filter((p) => p.change6m != null)
       .sort((a, b) => (b.change6m ?? 0) - (a.change6m ?? 0))
       .map((p) => ({

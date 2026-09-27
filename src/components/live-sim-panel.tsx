@@ -12,15 +12,18 @@ export function LiveSimPanel({ token }: { token: string | null }) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
-  async function load() {
-    if (!token) return;
-    const res = await fetchLiveSim({ data: { token } });
-    if (res.ok) setSim(res.sim);
-    else setErr(res.error ?? "Could not load simulation");
-  }
-
   useEffect(() => {
-    void load();
+    if (!token) return;
+    let gone = false;
+    void (async () => {
+      const res = await fetchLiveSim({ data: { token } });
+      if (gone) return;
+      if (res.ok) setSim(res.sim);
+      else setErr(res.error ?? "Could not load simulation");
+    })();
+    return () => {
+      gone = true;
+    };
   }, [token]);
 
   async function toggle(status: "LIVE" | "PAUSED") {
