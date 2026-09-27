@@ -40,6 +40,12 @@ Search names (both spellings index this project):
 
 Not financial advice. Not licensed. Not a broker. Not an investment adviser. Not an offer of securities. Education only. Seek a licensed professional. Invest at your own risk and only on the advice of a licensed advisor. Using https://s1r1us.ai is agreement to the Terms and Agreements.
 
+## How S1R1US bots communicate (public story)
+
+S1R1US bots lock **shared standards and definitions first**, then clear **roles and lanes**, then **self-improve** inside those lanes — with human **APPROVE** and an explicit sandbox choice (Lab 3 paper ≠ live homepage ≠ mobile) before anything ships. When meaning is unclear, they **HOLD** and ask. Public updates use [@S1R1US_AI](https://x.com/S1R1US_AI) only. Dream Talk is overwatch only (never project source).
+
+Canonical public flowchart (Lab 3 media SoT, after merge): [PUBLIC-CANONICAL-FLOW-2026-09-27.md](https://github.com/S1R1US-AI/lab3-visible-sandbox/blob/main/ops/sensei/media/public/PUBLIC-CANONICAL-FLOW-2026-09-27.md) · pack index: [ops/sensei/media/public/](https://github.com/S1R1US-AI/lab3-visible-sandbox/tree/main/ops/sensei/media/public)
+
 ## Mandate
 
 1. Maximize bitcoin accumulation.
