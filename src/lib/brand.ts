@@ -7,7 +7,7 @@ export const TAB_BOT7 = "7-B0T";
 export const SEO_TAB_BOT7 = "Bot 7";
 export const LABS_NAME = "S1R1US Labs";
 
-export const TAB_DESK = "S1R1U$ 7-B0t Hedge Fund";
+export const TAB_DESK = "S1R1U$ 9-B0T Hedge Fund";
 export const TAB_LAB = "S1R1U$ L@B Strategies";
 export const TAB_GM = "G0DZ1LLa M0D3";
 export const TAB_GM_AUTO = "G M0D3 AUTO";
@@ -26,7 +26,7 @@ export const MENU_AGENTS = "AI Agents";
 export const MENU_FORUM = "W1S3 0WL$ Forum";
 export const MENU_FAQ = "FAQ";
 
-export const SEO_TAB_DESK = "S1R1US 7-bot hedge fund";
+export const SEO_TAB_DESK = "S1R1US 9-B0T Hedge Fund";
 export const SEO_TAB_LAB = "S1R1US Lab Strategies";
 export const SEO_TAB_GM = "Godzilla Mode";
 export const SEO_TAB_GM_AUTO = "Godzilla Mode";
