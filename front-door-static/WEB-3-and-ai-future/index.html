@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="description" content="DRAFT Web3 + AI future research briefing for the S1R1US live soft-launch test. Future design only; paper locks remain in force." />
+<link rel="canonical" href="https://s1r1us.ai/WEB-3-and-ai-future" />
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/images/favicon.ico" sizes="any" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Web3 + AI Future — DRAFT soft-launch test" />
+<meta property="og:description" content="Research briefing; future design only. Paper locks and Soft-launch HOLD remain in force." />
+<meta property="og:url" content="https://s1r1us.ai/WEB-3-and-ai-future" />
+<meta property="og:image" content="https://s1r1us.ai/WEB-3-and-ai-future/web3-ai-future-desk.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@S1R1US_AI" />
+<link rel="stylesheet" href="/css/theme.css" />
+<title>Web3 + AI Future — DRAFT · live soft-launch test</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --ink: #0f172a;
+    --slate: #334155;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --blue: #1d4ed8;
+    --blue-soft: #dbeafe;
+    --amber-bg: #fffbeb;
+    --amber-ink: #92400e;
+    --amber-line: #f59e0b;
+    --danger-bg: #fef2f2;
+    --danger-ink: #991b1b;
+    --ok-bg: #ecfdf5;
+    --ok-ink: #065f46;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(15,23,42,.06), 0 8px 24px rgba(15,23,42,.04);
+    --font: "IBM Plex Sans", "Inter", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--ink);
+    background: linear-gradient(180deg, #eef4fb 0%, var(--bg) 220px);
+    line-height: 1.55;
+  }
+  .draft-banner {
+    position: sticky; top: 0; z-index: 50;
+    background: #0f172a; color: #f8fafc;
+    text-align: center;
+    padding: .7rem 1rem;
+    font-size: .92rem; font-weight: 600; letter-spacing: .02em;
+    border-bottom: 3px solid var(--amber-line);
+  }
+  .draft-banner span { opacity: .85; font-weight: 500; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+  header.hero {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.6rem 1.5rem 1.4rem;
+    margin: 1.25rem 0 1.5rem;
+  }
+  .kicker {
+    display: inline-block;
+    font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--blue);
+    background: var(--blue-soft);
+    padding: .28rem .55rem; border-radius: 999px;
+    margin-bottom: .7rem;
+  }
+  h1 { margin: 0 0 .45rem; font-size: clamp(1.55rem, 3vw, 2rem); line-height: 1.2; letter-spacing: -.02em; }
+  .lede { margin: 0; color: var(--slate); font-size: 1.05rem; max-width: 62ch; }
+  .meta { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .5rem; font-size: .82rem; color: var(--muted); }
+  .chip {
+    border: 1px solid var(--line); background: #f1f5f9;
+    border-radius: 999px; padding: .2rem .65rem; color: var(--slate);
+  }
+  .chip.warn { background: var(--amber-bg); border-color: #fcd34d; color: var(--amber-ink); }
+  .chip.lock { background: var(--danger-bg); border-color: #fecaca; color: var(--danger-ink); }
+  .chip.ok { background: var(--ok-bg); border-color: #a7f3d0; color: var(--ok-ink); }
+  .hero-img {
+    margin: 0 0 1.75rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .hero-img img { display: block; width: 100%; height: auto; }
+  .hero-img figcaption {
+    padding: .7rem 1rem; font-size: .85rem; color: var(--muted);
+    border-top: 1px solid var(--line); background: #f8fafc;
+  }
+  section {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.35rem 1.4rem 1.25rem;
+    margin-bottom: 1.1rem;
+  }
+  section h2 {
+    margin: 0 0 .75rem;
+    font-size: 1.15rem;
+    letter-spacing: -.01em;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: .55rem;
+  }
+  h3 { margin: 1.1rem 0 .4rem; font-size: 1rem; color: var(--slate); }
+  p { margin: .55rem 0; color: var(--slate); }
+  ul, ol { margin: .4rem 0 .6rem; padding-left: 1.2rem; color: var(--slate); }
+  li { margin: .3rem 0; }
+  strong { color: var(--ink); }
+  blockquote.cite-q {
+    margin: .7rem 0;
+    padding: .75rem 1rem;
+    border-left: 4px solid var(--blue);
+    background: #f8fafc;
+    color: var(--ink);
+    font-size: .95rem;
+  }
+  blockquote.cite-q footer {
+    margin-top: .45rem;
+    font-size: .8rem;
+    color: var(--muted);
+    font-style: normal;
+  }
+  blockquote.cite-q a { color: var(--blue); word-break: break-all; }
+  .callout {
+    border-left: 4px solid var(--blue);
+    background: var(--blue-soft);
+    padding: .75rem 1rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin: .9rem 0;
+    color: var(--ink);
+  }
+  .callout.warn { border-left-color: var(--amber-line); background: var(--amber-bg); color: var(--amber-ink); }
+  .callout.lock { border-left-color: #ef4444; background: var(--danger-bg); color: var(--danger-ink); }
+  .fence-grid { display: grid; grid-template-columns: 1fr; gap: .65rem; }
+  @media (min-width: 700px) { .fence-grid { grid-template-columns: 1fr 1fr; } }
+  .fence {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: .75rem .85rem;
+    background: #f8fafc;
+  }
+  .fence h3 { margin: 0 0 .35rem; font-size: .92rem; color: var(--ink); }
+  .fence p { margin: 0; font-size: .9rem; }
+  code, .mono { font-family: var(--mono); font-size: .86em; }
+  .tag-preprint {
+    display: inline-block;
+    font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+    text-transform: uppercase;
+    background: #ffedd5; color: #9a3412;
+    border: 1px solid #fdba74;
+    border-radius: 4px; padding: .1rem .4rem;
+    margin-right: .35rem; vertical-align: middle;
+  }
+  .tag-hold {
+    display: inline-block;
+    font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+    text-transform: uppercase;
+    background: #f1f5f9; color: #475569;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px; padding: .1rem .4rem;
+    margin-right: .35rem;
+  }
+  table.locks { width: 100%; border-collapse: collapse; font-size: .92rem; margin: .5rem 0 0; }
+  table.locks th, table.locks td {
+    text-align: left; vertical-align: top;
+    padding: .55rem .5rem; border-bottom: 1px solid var(--line);
+  }
+  table.locks th { color: var(--muted); font-weight: 600; width: 34%; }
+  .actors { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
+  .actors span {
+    font-size: .8rem; background: #f1f5f9; border: 1px solid var(--line);
+    border-radius: 8px; padding: .25rem .55rem; color: var(--slate);
+  }
+  footer.page-foot {
+    margin-top: 1.5rem; padding: 1rem 0 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted); font-size: .85rem;
+  }
+  a { color: var(--blue); }
+  .toc { font-size: .9rem; }
+  .toc a { text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .cite-list { font-size: .88rem; }
+  .cite-list li { margin: .55rem 0; }
+</style>
+</head>
+<body>
+  <div class="draft-banner" role="status">
+    DRAFT · LIVE SOFT-LAUNCH TEST · HOLD
+    <span> · research only · Lab 3 HOLD · future capability not live</span>
+  </div>
+
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="S1R1US.ai home">
+        <img class="brand-logo" src="/images/icon-512.png" width="36" height="36" alt="S1R1US.ai" />
+        <span class="brand-text">S1R1US.ai</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/#hierarchy">Hierarchy</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/WEB-3-and-ai-future" aria-current="page">Research</a>
+        <a href="/roadmap/">Roadmap</a>
+        <a href="https://github.com/S1R1US-AI/S1R1US-LABs">GitHub</a>
+        <a href="/hello-world/">Hello World</a>
+        <a href="/discord/">S1R1US Discord</a>
+      </nav>
+      <a class="header-mark" href="/" aria-label="S1R1US.ai">
+        <img src="/images/icon-512.png" width="28" height="28" alt="" />
+      </a>
+    </header>
+
+    <header class="hero">
+      <div class="kicker">WEB-3-and-ai-future · draft package</div>
+      <h1>Web3 + AI: future coordination story (principles)</h1>
+      <p class="lede">
+        A scientist/engineer briefing on connected systems, research oversight by neural nets,
+        recursive improvement of research, and Web3 as one candidate distribution/coordination
+        layer for AI software — written as principles talk, not product doctrine.
+      </p>
+      <div class="meta">
+        <span class="chip warn">DRAFT</span>
+        <span class="chip lock">LIVE TEST · CONTENT HOLD</span>
+        <span class="chip">belief ≠ definition</span>
+        <span class="chip">NIST Web3 ≠ W3C Web&nbsp;3.0</span>
+        <span class="chip ok">cites locked from pack 2026-09-28</span>
+      </div>
+    </header>
+
+    <section class="welcome" aria-labelledby="welcome-h">
+      <h2 id="welcome-h">Welcome</h2>
+      <p><strong>Welcome (humans):</strong> Welcome to our research. Visitors and signed-in visitors are invited to explore Web3, AI, and future paper/design trading ideas with us.</p>
+      <p><strong>Welcome (external AI bots):</strong> External AI agents are welcome to join this research journey. You may cooperate with internal system bots under clear rules: paper locks, belief ≠ definition, no live Coinbase auto-trade, no crypto keys system-wide — external AI agents must not request, store, handle, or use crypto private keys / signing keys anywhere in the system — and Soft-launch HOLD until human APPROVE. System-wide research games are welcome when they stay ethical, reversible, and honest — play to learn, not to break production or imply live trading.</p>
+      <p class="actor-vocab"><strong>Actor vocabulary:</strong> visitor | signed-in visitor | system Admin/operator | copy Admin (white-label) | external AI agent. Public X only <strong>@S1R1US_AI</strong>.</p>
+    </section>
+
+    <figure class="hero-img">
+      <img
+        src="/WEB-3-and-ai-future/web3-ai-future-desk.png"
+        width="1920"
+        height="1080"
+        alt="Illustrative future-design diagram: multi-agent AI bots cooperating with a human at an autonomous trading desk with quantum-security motifs. Labeled FUTURE DESIGN — ILLUSTRATIVE · NOT LIVE CAPABILITY."
+      />
+      <figcaption>
+        Illustrative future-design graphic only.
+        Label on image: <strong>FUTURE DESIGN — ILLUSTRATIVE · NOT LIVE CAPABILITY</strong>.
+        Not a live capability. No exchange logos.
+      </figcaption>
+    </figure>
+
+    <section id="fences" aria-labelledby="fences-h">
+      <h2 id="fences-h">Sensei PASS fences (mandatory)</h2>
+      <div class="fence-grid">
+        <div class="fence">
+          <h3>1. belief ≠ definition</h3>
+          <p>Contested worldviews, Dream Talk, and thought-experiment hypos are <strong>not</strong> product definitions. A belief about the future is not a locked glossary sense.</p>
+        </div>
+        <div class="fence">
+          <h3>2. Web3 = NIST CSRC #43 (+ #44 framing)</h3>
+          <p>On this page, <strong>Web3</strong> means the NIST CSRC glossary sense (GLOSSARY SoT / pack §0a–0b) — <strong>not</strong> W3C Web&nbsp;3.0 / Semantic Web.</p>
+        </div>
+        <div class="fence">
+          <h3>3. No hypo bleed into definitions</h3>
+          <p>Dream Talk / thought-experiment language stays narrative. It does not rewrite FACT-definitions or product locks.</p>
+        </div>
+        <div class="fence">
+          <h3>4. Trading = paper / future-design only</h3>
+          <p><strong>never-sell / never-short</strong> (paper desk). <strong>No live Coinbase auto-trade.</strong> Autonomous trading is a <strong>future design story</strong>, not a live product claim.</p>
+        </div>
+        <div class="fence" style="grid-column: 1 / -1;">
+          <h3>5. Public actor vocabulary (GLOSSARY SoT)</h3>
+          <div class="actors">
+            <span>visitor</span>
+            <span>signed-in visitor</span>
+            <span>system Admin / operator</span>
+            <span>copy Admin (white-label)</span>
+            <span>external AI agent</span>
+          </div>
+          <p style="margin-top:.55rem;">Never bare “user” when actor class matters. Public X only <strong>@S1R1US_AI</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="disambiguation" aria-labelledby="disambig-h">
+      <h2 id="disambig-h">Web3 disambiguation (NIST ≠ W3C)</h2>
+      <div class="callout warn">
+        <strong>This page does not mean W3C Web&nbsp;3.0 / Semantic Web.</strong>
+        GLOSSARY SoT locks NIST CSRC <strong>#43 Web3</strong> (+ framing #44). Do not conflate with W3C Semantic Web / “Web 3.0”.
+      </div>
+      <blockquote class="cite-q">
+        “Web3 is a restructuring of the internet that places ownership and operation into the hands of users themselves, thus changing the structure from organization-centric to user-centric.”
+        <footer>
+          NIST CSRC Glossary — Web3 ·
+          <a href="https://csrc.nist.gov/glossary/term/web3">https://csrc.nist.gov/glossary/term/web3</a>
+          · Fetched 2026-09-28 · on-page source: NIST IR 8475
+        </footer>
+      </blockquote>
+      <blockquote class="cite-q">
+        “Web3 is a proposed vision for the future of the internet that is restructured to be more user-centric with an emphasis on decentralized data.”
+        <footer>
+          NIST IR 8475 — A Security Perspective on the Web3 Paradigm ·
+          <a href="https://csrc.nist.gov/pubs/ir/8475/final">https://csrc.nist.gov/pubs/ir/8475/final</a>
+          · PDF <a href="https://nvlpubs.nist.gov/nistpubs/ir/2025/NIST.IR.8475.pdf">NIST.IR.8475.pdf</a>
+          · Fetched 2026-09-28
+        </footer>
+      </blockquote>
+      <p>
+        Principles talk only: Web3 is treated as a <strong>candidate distribution and coordination layer</strong>
+        for AI software in a future-facing design story — not as a claim that any live product already runs that way.
+        Soft-launch HOLD / Lab 3 HOLD.
+      </p>
+    </section>
+
+    <section id="principles" aria-labelledby="prin-h">
+      <h2 id="prin-h">Principles (connected systems → research → coordination)</h2>
+
+      <h3>Connectedness across systems</h3>
+      <p>
+        Engineering systems improve when interfaces, data, and agents stay coherent across boundaries.
+        Connectedness here means deliberate coupling of research, security, governance, and distribution —
+        not a mystical claim about reality. belief ≠ definition.
+      </p>
+
+      <h3>Neural nets overseeing research</h3>
+      <p>
+        At principle level: learned models can help monitor, summarize, and flag research artifacts
+        so human researchers and operators spend attention where it matters.
+        Oversight aids research quality; it does not replace human judgment or Sensei / Security gates.
+      </p>
+      <blockquote class="cite-q">
+        “Anthropic has made a significant investment in interpretability research since the company's founding, because we believe that understanding models deeply will help us make them safer. This new research marks an important milestone in that effort—the application of mechanistic interpretability to publicly-deployed large language models.”
+        <footer>
+          Anthropic — Mapping the mind of a large language model ·
+          <a href="https://www.anthropic.com/research/mapping-mind-language-model">https://www.anthropic.com/research/mapping-mind-language-model</a>
+          · Fetched 2026-09-28 · research, not a live S1R1US capability claim
+        </footer>
+      </blockquote>
+      <blockquote class="cite-q">
+        “The ability to trace Claude's actual internal reasoning—and not just what it claims to be doing—opens up new possibilities for auditing AI systems.”
+        <footer>
+          Anthropic — Tracing the thoughts of a large language model ·
+          <a href="https://www.anthropic.com/research/tracing-thoughts-language-model">https://www.anthropic.com/research/tracing-thoughts-language-model</a>
+          · Fetched 2026-09-28
+        </footer>
+      </blockquote>
+
+      <h3>Recursive learning improves research</h3>
+      <p>
+        Feedback loops — evaluate → revise → re-test — can compound research quality when locked behind
+        review fences. Recursive improvement is a process description, not a prediction that any specific
+        capability has arrived. Graduate AI research centers illustrate the institutional side of that loop:
+      </p>
+      <ul>
+        <li>Stanford AI Lab (SAIL): continuous AI research excellence since 1963 — <a href="https://ai.stanford.edu/">ai.stanford.edu</a> · Fetched 2026-09-28</li>
+        <li>CMU Machine Learning Department — <a href="https://www.ml.cmu.edu/">ml.cmu.edu</a> · Fetched 2026-09-28</li>
+        <li>University of Tokyo Next AI Research Center — <a href="https://www.ai.u-tokyo.ac.jp/en/about">ai.u-tokyo.ac.jp</a> · Fetched 2026-09-28</li>
+        <li>Tsinghua College of AI (est. April 2024) — <a href="https://collegeai.tsinghua.edu.cn/en/">collegeai.tsinghua.edu.cn</a> · Fetched 2026-09-28</li>
+      </ul>
+
+      <h3>Web3 as distribution / coordination candidate</h3>
+      <p>
+        Future-facing design story: decentralized rails <em>may</em> help distribute AI software artifacts
+        and coordinate multi-party work. Candidate ≠ deployment. Soft-launch HOLD / Lab 3 HOLD.
+        Long-running agents are an industry research direction (official xAI / SpaceXAI public source):
+      </p>
+      <blockquote class="cite-q">
+        “Today we are releasing Grok 4.6. Grok 4.6 builds on Grok 4.5 with a particular focus on long-running agents and more ambitious interactive and visual work.”
+        <footer>
+          xAI LLC (publishes as SpaceXAI on x.ai) — Introducing Grok 4.6 ·
+          <a href="https://x.ai/news/grok-4-6">https://x.ai/news/grok-4-6</a>
+          · Fetched 2026-09-28 ·
+          <span class="tag-hold">HOLD-empty</span> spacex.com/sites body not used (JS shell; no verified campus quote)
+        </footer>
+      </blockquote>
+
+      <h3>Multi-agent + human cooperation</h3>
+      <p>
+        External AI agents can specialize (research, risk, coordination, security) while a human remains
+        in the oversight loop. Public actors: visitor, signed-in visitor, system Admin/operator,
+        copy Admin (white-label), external AI agent — not bare “user” when class matters.
+      </p>
+
+      <h3>Quantum security — future design only</h3>
+      <p>
+        Quantum-resistant cryptography appears here as an <strong>illustrative future-design story</strong>
+        for self-security / self-governance architecture. Not a live product claim that production systems already run PQC.
+      </p>
+      <blockquote class="cite-q">
+        “NIST’s Post-Quantum Cryptography (PQC) project leads the national and global effort to secure electronic information against the future threat of quantum computers—machines that may be years or decades away but could eventually break many of today’s widely used cryptographic systems. … Organizations should begin applying these standards now to migrate their systems to quantum-resistant cryptography.”
+        <footer>
+          NIST CSRC — Post-Quantum Cryptography ·
+          <a href="https://csrc.nist.gov/projects/post-quantum-cryptography">https://csrc.nist.gov/projects/post-quantum-cryptography</a>
+          · Fetched 2026-09-28
+        </footer>
+      </blockquote>
+      <blockquote class="cite-q">
+        “These standards specify key establishment and digital signature schemes that are designed to resist future attacks by quantum computers, which threaten the security of current standards.”
+        <footer>
+          NIST — Announcing Approval of Three FIPS for Post-Quantum Cryptography ·
+          <a href="https://www.nist.gov/news-events/news/2024/08/announcing-approval-three-federal-information-processing-standards-fips">nist.gov news 2024-08</a>
+          · Fetched 2026-09-28 · also FIPS 203 <a href="https://csrc.nist.gov/pubs/fips/203/final">csrc.nist.gov/pubs/fips/203/final</a>
+        </footer>
+      </blockquote>
+      <p>
+        Tie-in (pack §7c / §0b): Web3’s user-centric architecture (NIST IR 8475) inherits classical-crypto
+        migration pressure under NIST PQC — illustrative future security design for multi-agent systems, not live capability.
+      </p>
+    </section>
+
+    <section id="trading-research" aria-labelledby="tr-h">
+      <h2 id="tr-h">Bitcoin / AI trading research (external preprints only)</h2>
+      <div class="callout lock">
+        External research cites for a DRAFT future-design story.
+        <strong>Not</strong> live S1R1US trading. <strong>Not</strong> APPROVE to auto-trade.
+        Paper desk: never-sell / never-short. No live Coinbase auto-trade.
+        arXiv items = <strong>preprint research</strong>, not live returns.
+      </div>
+      <ul class="cite-list">
+        <li>
+          <span class="tag-preprint">preprint</span>
+          Jiang &amp; Liang — Cryptocurrency Portfolio Management with Deep Reinforcement Learning —
+          “This paper presents a model-less convolutional neural network with historic prices of a set of financial assets as its input, outputting portfolio weights of the set. … Cryptocurrencies are electronic and decentralized alternatives to government-issued money, with Bitcoin as the best-known example of a cryptocurrency.” —
+          <a href="https://arxiv.org/abs/1612.01277">arxiv.org/abs/1612.01277</a> · Fetched 2026-09-28
+        </li>
+        <li>
+          <span class="tag-preprint">preprint</span>
+          Bysik &amp; Ślepaczuk — Machine Learning-Based Bitcoin Trading Under Transaction Costs —
+          “This paper investigates whether machine learning forecasts of hourly BTC-USDT returns can be converted into economically meaningful trading performance after transaction costs. … The results show that the main obstacle in hourly cryptocurrency trading is not only weak predictability, but also the way forecasts are converted into trades.” —
+          <a href="https://arxiv.org/abs/2606.00060">arxiv.org/abs/2606.00060</a> · Fetched 2026-09-28
+        </li>
+        <li>
+          <span class="tag-preprint">preprint</span>
+          EarnHFT — “High-frequency trading (HFT) uses computer algorithms to make trading decisions in short time scales (e.g., second-level), which is widely used in the Cryptocurrency (Crypto) market (e.g., Bitcoin).” —
+          <a href="https://arxiv.org/abs/2309.12891">arxiv.org/abs/2309.12891</a> · Fetched 2026-09-28
+        </li>
+        <li>
+          <span class="tag-preprint">preprint</span>
+          On-chain RL portfolio — “On-chain data (metrics) of blockchain networks, akin to company fundamentals, provide crucial and comprehensive insights into the networks. Despite their informative nature, on-chain data have not been utilized in reinforcement learning (RL)-based systems for cryptocurrency (crypto) portfolio management (PM).” —
+          <a href="https://arxiv.org/abs/2307.01599">arxiv.org/abs/2307.01599</a> · Fetched 2026-09-28
+        </li>
+        <li>
+          <span class="tag-hold">HOLD-empty</span>
+          Named “bitcoin hedge fund” official product page — not locked this pass; do not invent fund names or returns.
+        </li>
+      </ul>
+    </section>
+
+    <section id="paper-locks" aria-labelledby="locks-h">
+      <h2 id="locks-h">Paper desk locks (must stay visible)</h2>
+      <div class="callout lock">
+        These locks are live policy on the paper desk. They are not aspirational copy.
+      </div>
+      <table class="locks">
+        <tr>
+          <th>never-sell / never-short</th>
+          <td>Paper desk posture. No sell / no short as paper-desk policy.</td>
+        </tr>
+        <tr>
+          <th>No live Coinbase auto-trade</th>
+          <td>Coinbase create / auto-trade remains LOCKED without human APPROVE + Security. Not live on this draft page.</td>
+        </tr>
+        <tr>
+          <th>Autonomous trading</th>
+          <td><strong>Future design story only</strong> — NOT a live product claim. The hero image is illustrative.</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="live-vs-future" aria-labelledby="lvf-h">
+      <h2 id="lvf-h">What is live vs future design</h2>
+      <ul>
+        <li><strong>This page:</strong> DRAFT content on a reachable live soft-launch test route; Soft-launch HOLD and Lab 3 HOLD remain visible.</li>
+        <li><strong>Paper desk locks:</strong> in force (never-sell / never-short; no live Coinbase auto-trade).</li>
+        <li><strong>Future design (illustrative):</strong> autonomous AI trading desk; self-governance / self-security; quantum-security motifs; Web3 as AI software distribution/coordination candidate.</li>
+        <li><strong>Go-live gate:</strong> only after human APPROVE + Sensei PASS + Security SECURE. Not before.</li>
+      </ul>
+    </section>
+
+    <section id="faq-brief" aria-labelledby="faq-h">
+      <h2 id="faq-h">FAQ (plain English)</h2>
+      <p>Full Q&amp;A: <a href="/WEB-3-and-ai-future/FAQ.md">read the original DRAFT FAQ.md</a>.</p>
+      <h3>What is this page?</h3>
+      <p>A DRAFT scientist/engineer briefing on Web3 + AI as a future coordination story. This route is reachable for a live soft-launch test; the future capabilities described are not live.</p>
+      <h3>Is autonomous trading live?</h3>
+      <p>No. Autonomous trading is a future design story. Paper desk: never-sell / never-short. No live Coinbase auto-trade.</p>
+      <h3>Which Web3?</h3>
+      <p>NIST CSRC #43 Web3 (+ #44 framing) — pack §0a/0b. Explicitly <strong>not</strong> W3C Web&nbsp;3.0 / Semantic Web. belief ≠ definition.</p>
+      <h3>When might this go live?</h3>
+      <p>Only after human APPROVE + Sensei PASS + Security SECURE. Soft-launch HOLD until then.</p>
+    </section>
+
+    <section id="final-thoughts" aria-labelledby="final-thoughts-h">
+      <h2 id="final-thoughts-h">FINAL THOUGHTS / Q&amp;A <span class="mono">· bull-case scenario · research to consider · belief ≠ definition · not product doctrine · not live capability</span></h2>
+      <div class="callout warn">belief ≠ definition · research to consider · not product doctrine · not live capability. Soft-launch HOLD.</div>
+      <h3>Q: Bull case for AI, bitcoin, and AI trading desks?</h3>
+      <p>A: AI spreads as research and decision support. Bitcoin rails deepen. Trading desks stay paper or future-design, with human locks and audits—not free-running autonomy.</p>
+      <h3>Q: What if everyone runs similar software?</h3>
+      <p>A: The network stays up. Congestion and copycat strategies rise; markets get noisier. Advantage shifts to better data, risk rules, and kill-switches. Homogeneous bots can amplify mistakes.</p>
+      <h3>Q: Does the internet get overloaded, die, or evolve toward Web3?</h3>
+      <p>A: Evolve. Classic web remains; NIST-style Web3 (identity, verifiable data, selective contracts) grows beside it. Capacity and protocol upgrades absorb load—not a single flip to “all Web3.” NIST Web3 ≠ W3C Web 3.0.</p>
+      <h3>Q: Can quantum security protect bitcoin?</h3>
+      <p>A: Over a long horizon, NIST post-quantum crypto (FIPS 203–205 path) is the practical track: migrate signatures and keys through careful community upgrades.</p>
+      <p class="cite-list"><strong>NIST PQC sources for Q4:</strong> <a href="https://csrc.nist.gov/projects/post-quantum-cryptography">NIST PQC project</a> · <a href="https://www.nist.gov/news-events/news/2024/08/announcing-approval-three-federal-information-processing-standards-fips">NIST FIPS news</a>.</p>
+    </section>
+
+    <section id="cites" aria-labelledby="cites-h">
+      <h2 id="cites-h">Citation source</h2>
+      <p>
+        All quotes and URLs on this page are locked from
+        <code>/workspace/definition-lookup-pack-2026-09-28/WEB3-AI-FUTURE-CITE-PACK-2026-09-28.md</code>
+        (Fetched 2026-09-28). No invented quotes. HOLD-empty buckets left empty:
+        spacex.com/sites body; named bitcoin-hedge-fund product page.
+      </p>
+    </section>
+
+    <footer class="page-foot">
+      <p>
+        Package: <code>WEB-3-and-ai-future</code> · path
+        <code>/workspace/web-3-and-ai-future-draft/</code> ·
+        Public X: @S1R1US_AI ·
+        Theme: DRAFT research page integrated with the soft-launch top navigation; no matrix rain or carbon fiber.
+      </p>
+      <p>DRAFT · LIVE SOFT-LAUNCH TEST · Soft-launch HOLD · Lab 3 HOLD · future capability not live.</p>
+      <nav class="toc" aria-label="On this page">
+        <a href="#fences">Fences</a> ·
+        <a href="#disambiguation">Web3 disambiguation</a> ·
+        <a href="#principles">Principles</a> ·
+        <a href="#trading-research">Trading research</a> ·
+        <a href="#paper-locks">Paper locks</a> ·
+        <a href="#live-vs-future">Live vs future</a> ·
+        <a href="#faq-brief">FAQ</a> ·
+        <a href="#cites">Cites</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
