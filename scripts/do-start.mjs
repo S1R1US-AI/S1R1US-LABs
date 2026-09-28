@@ -4,13 +4,10 @@
  *
  * Security path A — soft-launch front-door static overlay:
  * - External PORT (default 8080): tiny Node HTTP front door
- * - Serves front-door-static/ for home, hello-world, discord + shared assets
+ * - Serves front-door-static/ for home, hello-world, discord, roadmap + shared assets
  * - Proxies everything else to Nitro on internal 8081
  *
- * Roadmap static overlay (/roadmap) is FEATURE-FLAGGED and DEFAULT OFF:
- *   set S1R1US_FRONT_DOOR_ROADMAP=1 only after human APPROVE.
- *   Until then Nitro continues to own /roadmap (desk app). Do NOT enable on main/prod.
- *
+ * Soft-launch routes (/, /hello-world, /discord, /roadmap) always overlay — no env gate.
  * Does not touch Grok live preview (:8080 dev) or regenerate .output.
  */
 import { createReadStream, existsSync, statSync } from "node:fs";
@@ -25,11 +22,6 @@ const EXTERNAL_PORT = String(process.env.PORT || process.env.NITRO_PORT || "8080
 const HOST = process.env.HOST || process.env.NITRO_HOST || "0.0.0.0";
 const NITRO_INTERNAL_PORT = "8081";
 const STATIC_ROOT = join(ROOT, "front-door-static");
-
-/** HOLD: roadmap static pack ships on feature branch; keep OFF until human APPROVE. */
-const ENABLE_ROADMAP_STATIC =
-  process.env.S1R1US_FRONT_DOOR_ROADMAP === "1" ||
-  process.env.S1R1US_FRONT_DOOR_ROADMAP === "true";
 
 const candidates = [
   join(ROOT, ".output/server/index.mjs"),
@@ -111,9 +103,8 @@ function resolveStatic(pathname) {
     return fileIfExists(join(STATIC_ROOT, faviconMap[pathname]));
   }
 
-  // Prefix routes: hello-world, discord, css, js, images (+ roadmap when flagged)
-  const prefixes = ["/hello-world", "/discord", "/css", "/js", "/images"];
-  if (ENABLE_ROADMAP_STATIC) prefixes.push("/roadmap");
+  // Prefix routes: hello-world, discord, roadmap, css, js, images
+  const prefixes = ["/hello-world", "/discord", "/roadmap", "/css", "/js", "/images"];
   const hit = prefixes.find(
     (p) => pathname === p || pathname.startsWith(p + "/"),
   );
@@ -201,12 +192,8 @@ function startFrontDoor() {
     }
 
     // Prefix claimed but file missing under front-door-static → 404 (do not fall through to Nitro for css/js/images ship paths that 404 today)
-    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/"];
-    const staticOnlyExact = ["/hello-world", "/discord", "/css", "/js", "/images"];
-    if (ENABLE_ROADMAP_STATIC) {
-      staticOnlyPrefixes.push("/roadmap/");
-      staticOnlyExact.push("/roadmap");
-    }
+    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/"];
+    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/css", "/js", "/images"];
     const claimed =
       staticOnlyExact.includes(pathname) ||
       staticOnlyPrefixes.some((p) => pathname.startsWith(p)) ||
@@ -221,7 +208,7 @@ function startFrontDoor() {
         pathname.startsWith("/images") ||
         pathname.startsWith("/hello-world") ||
         pathname.startsWith("/discord") ||
-        (ENABLE_ROADMAP_STATIC && pathname.startsWith("/roadmap"))
+        pathname.startsWith("/roadmap")
       ) {
         console.log(`[s1r1us] front-door static overlay 404 ${pathname}`);
         res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
@@ -236,7 +223,7 @@ function startFrontDoor() {
 
   server.listen(Number(EXTERNAL_PORT), HOST, () => {
     console.log(
-      `[s1r1us] front-door listening on ${HOST}:${EXTERNAL_PORT}; nitro internal :${NITRO_INTERNAL_PORT}; static=${STATIC_ROOT}; roadmapOverlay=${ENABLE_ROADMAP_STATIC ? "on" : "off"}`,
+      `[s1r1us] front-door listening on ${HOST}:${EXTERNAL_PORT}; nitro internal :${NITRO_INTERNAL_PORT}; static=${STATIC_ROOT}`,
     );
   });
 
