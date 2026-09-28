@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /Godzilla-Mode
 Allow: /gm
 Allow: /b3ars
 Allow: /owl
@@ -105,6 +106,7 @@ Allow: /owl
 Allow: /r0b0ts
 Allow: /faq
 Allow: /WEB-3-and-ai-future
+Allow: /Godzilla-Mode
 Allow: /gm
 Allow: /media
 Allow: /video

@@ -86,7 +86,7 @@ export type AppSurface = {
 export const APP_SURFACES: AppSurface[] = [
   { id: "tape", path: "/", label: "S1R1US Live Tape", seo: "S1R1US Live Tape", hint: "Bots 1–6 + 7-B0T call" },
   { id: "lab", path: "/labs", label: "S1R1US L@Bs", seo: "S1R1US Lab Strategies", hint: "What-if lab" },
-  { id: "gm", path: "/gm", label: "G0DZ1LLa M0D3", seo: "Godzilla mode", hint: "Aggressive sleeve" },
+  { id: "gm", path: "/Godzilla-Mode", label: "G0Dz1LLa M0De", seo: "Godzilla mode", hint: "Aggressive sleeve" },
   { id: "board", path: "/board", label: "L3AD3R B0ARD", seo: "ai agent bitcoin trading leader board", hint: "Compete with BYO compute" },
   { id: "bowl", path: "/bowl", label: "SUP3R B0WL", seo: "AI Agent Championship", hint: "Championship of AI agents" },
   { id: "cup", path: "/w0rld", label: "W0rLd CUP", seo: "World Cup of AI Quant Trading BTC", hint: "Galaxy invitational · G M0D3 AUTO" },

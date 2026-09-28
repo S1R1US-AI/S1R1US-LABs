@@ -105,7 +105,7 @@ function resolveStatic(pathname) {
   }
 
   // Prefix routes: hello-world, discord, roadmap, 7 desk overlays, css, js, images
-  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/WEB-3-and-ai-future", "/css", "/js", "/images"];
+  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/Godzilla-Mode", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/WEB-3-and-ai-future", "/css", "/js", "/images"];
   const hit = prefixes.find(
     (p) => pathname === p || pathname.startsWith(p + "/"),
   );
@@ -169,6 +169,16 @@ function startFrontDoor() {
       pathname = url.split("?")[0] || "/";
     }
 
+    // Legacy /gm → /Godzilla-Mode/ (bookmarks + SEO; preserve query). Hash kept by browser.
+    if (pathname === "/gm" || pathname === "/gm/") {
+      const q = url.includes("?") ? url.slice(url.indexOf("?")) : "";
+      const loc = "/Godzilla-Mode/" + q;
+      console.log(`[s1r1us] front-door static overlay 301 ${pathname} → /Godzilla-Mode/`);
+      res.writeHead(301, { Location: loc, "Cache-Control": "public, max-age=60" });
+      res.end();
+      return;
+    }
+
     // Sensei HOLD fix: GET /search?q= must reach Nitro desk search — do not swallow with static overlay.
     // Bare /search (no q) still serves soft-launch marketing shell.
     try {
@@ -191,6 +201,7 @@ function startFrontDoor() {
       "/pr3d",
       "/faq",
       "/compute",
+      "/Godzilla-Mode",
       "/gm",
       "/f33d",
       "/forum",
@@ -250,8 +261,8 @@ function startFrontDoor() {
     }
 
     // Prefix claimed but file missing under front-door-static → 404 (do not fall through to Nitro for css/js/images ship paths that 404 today)
-    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/", "/r0b0ts/", "/h1v3/", "/pr3d/", "/faq/", "/compute/", "/gm/", "/f33d/", "/forum/", "/agent/", "/board/", "/labs/", "/owl/", "/app/", "/ios/", "/play/", "/c0ff33/", "/sponsor-ai-bitcoin-trading-bot/", "/media/", "/b3ars/", "/l0ck/", "/bowl/", "/w0rld/", "/c0ut/", "/Bitcoin-Miners/", "/wh1t3/", "/s1r1us/", "/sitemap/", "/search/", "/terms/", "/privacy/", "/WEB-3-and-ai-future/"];
-    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/WEB-3-and-ai-future", "/css", "/js", "/images"];
+    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/", "/r0b0ts/", "/h1v3/", "/pr3d/", "/faq/", "/compute/", "/Godzilla-Mode/", "/gm/", "/f33d/", "/forum/", "/agent/", "/board/", "/labs/", "/owl/", "/app/", "/ios/", "/play/", "/c0ff33/", "/sponsor-ai-bitcoin-trading-bot/", "/media/", "/b3ars/", "/l0ck/", "/bowl/", "/w0rld/", "/c0ut/", "/Bitcoin-Miners/", "/wh1t3/", "/s1r1us/", "/sitemap/", "/search/", "/terms/", "/privacy/", "/WEB-3-and-ai-future/"];
+    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/Godzilla-Mode", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/WEB-3-and-ai-future", "/css", "/js", "/images"];
     const claimed =
       staticOnlyExact.includes(pathname) ||
       staticOnlyPrefixes.some((p) => pathname.startsWith(p)) ||
@@ -296,6 +307,7 @@ function startFrontDoor() {
         pathname.startsWith("/privacy") ||
         pathname.startsWith("/WEB-3-and-ai-future") ||
         pathname.startsWith("/compute") ||
+        pathname.startsWith("/Godzilla-Mode") ||
         pathname.startsWith("/gm") ||
         pathname.startsWith("/f33d")
       ) {

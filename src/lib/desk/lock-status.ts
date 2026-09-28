@@ -11,7 +11,7 @@ export type LockId = "agents" | "bot7Auto" | "gmAuto" | "gmManual" | "agentLive"
 
 export const LOCK_IDS: LockId[] = ["agents", "bot7Auto", "gmAuto", "gmManual", "agentLive", "hive", "pred"];
 
-export type LockHref = "/" | "/gm" | "/agent" | "/h1v3" | "/labs" | "/pr3d";
+export type LockHref = "/" | "/Godzilla-Mode" | "/agent" | "/h1v3" | "/labs" | "/pr3d";
 
 export const LOCK_META: Record<
   LockId,
@@ -43,7 +43,7 @@ export const LOCK_META: Record<
     css: "gm-rainbow",
     hint: "Live-intent for G M0D3 AUTO. This host never holds keys. Operator / agent Coinbase only.",
     copyAdmin: true,
-    to: "/gm",
+    to: "/Godzilla-Mode",
     hash: "auto",
   },
   gmManual: {
@@ -53,7 +53,7 @@ export const LOCK_META: Record<
     css: "gm-rainbow",
     hint: "Live-intent for G M0D3 M@NU@L. Paper until unlocked. This host never creates orders.",
     copyAdmin: true,
-    to: "/gm",
+    to: "/Godzilla-Mode",
     hash: "manual",
   },
   agentLive: {

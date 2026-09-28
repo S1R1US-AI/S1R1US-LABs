@@ -144,7 +144,7 @@ export function HelloWorld() {
           {"\n"}
           <span className="text-high">variable</span>
           <span className="text-muted">(load full access); return; run=</span>
-          <Link to="/gm" title={TAB_HOVER_MAX_GAINS} aria-label={TAB_HOVER_MAX_GAINS} className={ORANGE}>
+          <Link to="/Godzilla-Mode" title={TAB_HOVER_MAX_GAINS} aria-label={TAB_HOVER_MAX_GAINS} className={ORANGE}>
             [{TAB_MAX_GAINS}]
           </Link>
           {"\n"}

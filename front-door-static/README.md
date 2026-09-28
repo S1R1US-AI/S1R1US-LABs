@@ -29,7 +29,7 @@ Shared idle overlay (no auth / no saver-lock):
 | `/css/theme.css` `.screensaver-overlay` | Fullscreen overlay styles |
 
 - **All non-GM pages:** classic Matrix screensaver after 5 min click-idle.
-- **`/gm`:** Godzilla Mode rainbow rain (path-forced `inGmContext`); ghost canvases stay stripped (`matrix-mistake`).
+· **`/Godzilla-Mode/`** (legacy `/gm` redirects): Godzilla Mode rainbow rain (path-forced `inGmContext`); ghost canvases stay stripped (`matrix-mistake`).
 - Home `#gm` / `.tier-gm` in view also selects GM rain while that section is visible.
 - QA: `?saverDemo=1` → 3s idle.
 

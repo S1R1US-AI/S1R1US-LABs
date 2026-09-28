@@ -185,7 +185,7 @@ export function morningHtmlLinks() {
     { url: "https://github.com/S1R1US-AI/S1R1US-LABs", code: 200, note: "Hello World GitHub — repo public" },
     { url: "https://x.com/S1R1US_AI", code: 200, note: "Official X" },
     { url: "https://s1r1us.ai/", code: 200, note: "Live home" },
-    { url: "https://s1r1us.ai/gm", code: 200, note: "Godzilla Mode" },
+    { url: "https://s1r1us.ai/Godzilla-Mode/", code: 200, note: "Godzilla Mode" },
     { url: "https://s1r1us.ai/labs", code: 200, note: "Lab" },
     { url: "https://s1r1us.ai/faq", code: 200, note: "FAQ" },
     { url: "https://s1r1us.ai/agent", code: 200, note: "AI Agents" },

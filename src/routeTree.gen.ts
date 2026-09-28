@@ -28,6 +28,7 @@ import { Route as F33dRouteImport } from './routes/f33d'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ForumRouteImport } from './routes/forum'
 import { Route as GmRouteImport } from './routes/gm'
+import { Route as GodzillaModeRouteImport } from './routes/Godzilla-Mode'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as H1v3RouteImport } from './routes/h1v3'
 import { Route as HeliosRouteImport } from './routes/helios'
@@ -205,6 +206,11 @@ const ForumRoute = ForumRouteImport.update({
 const GmRoute = GmRouteImport.update({
   id: '/gm',
   path: '/gm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GodzillaModeRoute = GodzillaModeRouteImport.update({
+  id: '/Godzilla-Mode',
+  path: '/Godzilla-Mode',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuideRoute = GuideRouteImport.update({
@@ -652,6 +658,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
+  '/Godzilla-Mode': typeof GodzillaModeRoute
   '/guide': typeof GuideRoute
   '/h1v3': typeof H1v3Route
   '/helios': typeof HeliosRoute
@@ -756,6 +763,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
+  '/Godzilla-Mode': typeof GodzillaModeRoute
   '/guide': typeof GuideRoute
   '/h1v3': typeof H1v3Route
   '/helios': typeof HeliosRoute
@@ -861,6 +869,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/forum': typeof ForumRoute
   '/gm': typeof GmRoute
+  '/Godzilla-Mode': typeof GodzillaModeRoute
   '/guide': typeof GuideRoute
   '/h1v3': typeof H1v3Route
   '/helios': typeof HeliosRoute
@@ -967,6 +976,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/forum'
     | '/gm'
+    | '/Godzilla-Mode'
     | '/guide'
     | '/h1v3'
     | '/helios'
@@ -1071,6 +1081,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/forum'
     | '/gm'
+    | '/Godzilla-Mode'
     | '/guide'
     | '/h1v3'
     | '/helios'
@@ -1175,6 +1186,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/forum'
     | '/gm'
+    | '/Godzilla-Mode'
     | '/guide'
     | '/h1v3'
     | '/helios'
@@ -1280,6 +1292,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   ForumRoute: typeof ForumRoute
   GmRoute: typeof GmRoute
+  GodzillaModeRoute: typeof GodzillaModeRoute
   GuideRoute: typeof GuideRoute
   H1v3Route: typeof H1v3Route
   HeliosRoute: typeof HeliosRoute
@@ -1470,6 +1483,13 @@ declare module '@tanstack/react-router' {
       path: '/gm'
       fullPath: '/gm'
       preLoaderRoute: typeof GmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/Godzilla-Mode': {
+      id: '/Godzilla-Mode'
+      path: '/Godzilla-Mode'
+      fullPath: '/Godzilla-Mode'
+      preLoaderRoute: typeof GodzillaModeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guide': {
@@ -2160,6 +2180,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   ForumRoute: ForumRoute,
   GmRoute: GmRoute,
+  GodzillaModeRoute: GodzillaModeRoute,
   GuideRoute: GuideRoute,
   H1v3Route: H1v3Route,
   HeliosRoute: HeliosRoute,

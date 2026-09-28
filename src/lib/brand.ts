@@ -20,7 +20,7 @@ export const TAB_FEED_GROWL =
 /** Chrome labels on the main menu (short). Long SEO names stay TAB_*. */
 export const MENU_TAPE = "S1R1US Desk";
 export const MENU_LAB = "S1R1US L@Bs";
-export const MENU_GM = "GM";
+export const MENU_GM = "G0Dz1LLa M0De";
 export const MENU_FEED = "F33D";
 export const MENU_AGENTS = "AI Agents";
 export const MENU_FORUM = "W1S3 0WL$ Forum";
@@ -137,6 +137,8 @@ export const BEARS_HEADLINE = "How to beat the Bears at market speed with AI Age
 export const TAB_MINERS = "BTC M1N3Rz";
 export const SEO_TAB_MINERS = "BTC Miners View";
 export const MINERS_PATH = "/Bitcoin-Miners";
+export const GM_PATH = "/Godzilla-Mode";
+export const GM_PATH_LEGACY = "/gm";
 export const MINERS_HEADLINE = "Bitcoin Miner for accumulation system";
 export const MINERS_DISCLAIMER =
   "BTC M1N3Rz is a read-only miner stats view of free public solo CKPool (ckpool.org) data. Mining rewards pay out from the pool directly to the BTC receive address the miner points at — this host never holds keys, never pools hash, never escrows, and never places Coinbase orders. Education only. Not financial advice.";
@@ -222,19 +224,19 @@ export const SITE_IMAGES = [
     src: "/s1r1us-godzilla-logo.jpg",
     name: seoImgAlt("S1R!US Godzilla Logo — S1R1US Labs hologram mark"),
     caption: seoImgAlt("Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent"),
-    pages: ["/", "/gm", "/board", "/bowl", "/agent", "/forum", "/r0b0ts", "/faq", "/media", "/search", "/app", "/ios", "/play"],
+    pages: ["/", "/Godzilla-Mode", "/board", "/bowl", "/agent", "/forum", "/r0b0ts", "/faq", "/media", "/search", "/app", "/ios", "/play"],
   },
   {
     src: "/gzilla-holo.jpg",
     name: seoImgAlt("AI Bitcoin Trading Bot"),
     caption: seoImgAlt("AI Bitcoin Trading Bot = G M0D3 AUTO"),
-    pages: ["/", "/gm"],
+    pages: ["/", "/Godzilla-Mode"],
   },
   {
     src: "/AI-Bitcoin-Trading-Bot.gif",
     name: seoImgAlt("AI Bitcoin Trading Bot"),
     caption: seoImgAlt("AI Bitcoin Trading Bot = G M0D3 AUTO"),
-    pages: ["/", "/gm", "/h1v3", "/board", "/faq", "/media", "/search", "/roadmap", "/gm#auto", "/l0ck"],
+    pages: ["/", "/Godzilla-Mode", "/h1v3", "/board", "/faq", "/media", "/search", "/roadmap", "/Godzilla-Mode#auto", "/l0ck"],
   },
   {
     src: "/h1v3-swarm-banner.jpg",
@@ -258,7 +260,7 @@ export const SITE_IMAGES = [
     src: "/l0ck-status-banner.jpg",
     name: seoImgAlt("Locked Status"),
     caption: seoImgAlt("Locked Status"),
-    pages: ["/l0ck", "/faq", "/agent", "/h1v3", "/gm"],
+    pages: ["/l0ck", "/faq", "/agent", "/h1v3", "/Godzilla-Mode"],
   },
   {
     src: "/lock-closed.gif",
@@ -276,7 +278,7 @@ export const SITE_IMAGES = [
     src: "/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif",
     name: seoImgAlt("AI Agent Lock System for AI Agent BTC Trading Bot"),
     caption: seoImgAlt("AI Agent Lock System for AI Agent BTC Trading Bot"),
-    pages: ["/l0ck", "/faq", "/gm", "/search", "/roadmap", "/agent", "/h1v3", "/gm#auto", "/gm#manual", "/agent#live", "/#bot7"],
+    pages: ["/l0ck", "/faq", "/Godzilla-Mode", "/search", "/roadmap", "/agent", "/h1v3", "/Godzilla-Mode#auto", "/Godzilla-Mode#manual", "/agent#live", "/#bot7"],
   },
   {
     src: "/gzilla-mrkt.png",

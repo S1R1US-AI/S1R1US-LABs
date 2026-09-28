@@ -56,7 +56,7 @@ export function ProDeskMock() {
             Tape
           </Link>
           <Link to="/labs">Lab</Link>
-          <Link to="/gm">GM</Link>
+          <Link to="/Godzilla-Mode">G0Dz1LLa M0De</Link>
           <Link to="/agent">Agents</Link>
           <Link to="/compute">Compute</Link>
         </nav>

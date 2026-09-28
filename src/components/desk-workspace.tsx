@@ -403,7 +403,7 @@ function HoloGifExpand() {
           <div className="gif-expand-panel" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between gap-3">
               <Link
-                to="/gm"
+                to="/Godzilla-Mode"
                 hash="auto"
                 className="min-h-11 text-sm font-semibold text-oss hover:underline"
                 title={`${GIF_AI_BTC_BOT_EQ} · open G M0D3 AUTO`}

@@ -2,7 +2,7 @@
  * Screensaver lock policy. System-admin controlled from Admin → Security.
  *
  * Two savers exist:
- *  - GM rain: 3 s G0DZ1LLa M0D3 burst on every G0DZ1LLa M0D3 tab click / /gm open. Never locks.
+ *  - GM rain: 3 s G0DZ1LLa M0D3 burst on every G0DZ1LLa M0D3 tab click / /Godzilla-Mode open. Never locks.
  *  - Matrix classic: full-screen rain after 5 minutes of no user activity.
  *
  * LOCKED   → an idle trip signs the operator out and requires login again.

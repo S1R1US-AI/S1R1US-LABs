@@ -186,7 +186,7 @@ export function BearsPage() {
             FAQ
           </Link>
           <span className="px-2">|</span>
-          <Link to="/gm" className="hover:underline">
+          <Link to="/Godzilla-Mode" className="hover:underline">
             <GodzillaModeLabel />
           </Link>
           <span className="px-2">|</span>

@@ -1,6 +1,6 @@
 /*!
  * Soft-launch front-door screensavers — no auth / no login / no saver-lock.
- * Classic Matrix idle on all non-GM pages; Godzilla Mode rain on /gm (+ home #gm).
+ * Classic Matrix idle on all non-GM pages; Godzilla Mode rain on /Godzilla-Mode (+ /gm redirect, home #gm).
  * Uses S1R1USRain (rain-engine.js). Ghost background rain (matrix-rain.js) stays separate.
  *
  * IDLE TRIGGER (human GO): 5 minutes with no mouse *click*.
@@ -35,9 +35,11 @@
   var inGmContext = false;
   var ghostPaused = false;
 
-  /** Dedicated /gm marketing shell — always Godzilla Mode rain (not classic). */
+  /** Dedicated Godzilla Mode marketing shell — always Godzilla Mode rain (not classic). */
   function isGmPath() {
     var p = (location.pathname || '').replace(/\/+$/, '') || '/';
+    if (p === '/Godzilla-Mode' || /(^|\/)Godzilla-Mode$/i.test(p)) return true;
+    // Transition: old /gm (+ trailing) still counts while redirects settle
     return p === '/gm' || /(^|\/)gm$/.test(p);
   }
 
@@ -145,7 +147,7 @@
   }
 
   function updateGmContext() {
-    // /gm page → always GM rain. Home #gm / .tier-gm in view → GM. Else classic.
+    // /Godzilla-Mode (and legacy /gm) → always GM rain. Home #gm / .tier-gm in view → GM. Else classic.
     var hashGm = (location.hash || '') === '#gm';
     var tier = document.querySelector('.tier-gm');
     var visible = false;

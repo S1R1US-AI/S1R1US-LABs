@@ -79,7 +79,7 @@ describe("LoCK3D STATUS", () => {
     assert.match(ui, /LOCK_GIF_OPEN/);
     assert.match(rail, /Lock3dRail/);
     assert.match(rail, /GIF_AI_BTC_BOT/);
-    assert.match(rail, /to="\/gm"/);
+    assert.match(rail, /to="\/Godzilla-Mode"/);
     assert.match(admin, /Lock3dStatusPanel/);
     assert.match(appAdmin, /Lock3dStatusPanel/);
     assert.match(ping, /lockStatus/);
@@ -118,12 +118,12 @@ describe("LoCK3D STATUS", () => {
     assert.match(ui, /hash=\{row\.hash\}/);
     assert.equal(LOCK_META.agents.to, "/agent");
     assert.equal(LOCK_META.hive.to, "/h1v3");
-    assert.equal(LOCK_META.gmAuto.to, "/gm");
+    assert.equal(LOCK_META.gmAuto.to, "/Godzilla-Mode");
     assert.equal(LOCK_META.gmAuto.hash, "auto");
     assert.equal(LOCK_META.gmManual.hash, "manual");
     assert.equal(LOCK_META.bot7Auto.hash, "bot7");
     assert.equal(LOCK_META.agentLive.hash, "live");
-    assert.equal(lockViewPath("gmAuto"), "/gm#auto");
+    assert.equal(lockViewPath("gmAuto"), "/Godzilla-Mode#auto");
     assert.equal(lockViewPath("hive"), "/h1v3");
     assert.match(ui, /lock-status-cols/);
     const board = ui.slice(ui.indexOf("function LockBoard"), ui.indexOf("export function LockHead"));

@@ -25,7 +25,7 @@ type Rain = "classic" | "gm";
 
 const burstFns = new Set<(ms: number) => void>();
 
-/** 3 s Matrix rain on every G0DZ1LLa M0D3 tab click / /gm open — never locks the session. */
+/** 3 s Matrix rain on every G0DZ1LLa M0D3 tab click / /Godzilla-Mode open — never locks the session. */
 export function rainGmBurst(ms = BURST_MS) {
   for (const fn of burstFns) fn(ms);
 }
@@ -39,7 +39,9 @@ function rainbowAt(tMs: number, col: number, row: number) {
 
 /** GM rain only on the G0DZ1LLa M0D3 tab. Every other view uses classic rain. */
 export function gmRainActive() {
-  const path = typeof window !== "undefined" ? window.location.pathname : "";
+  const path = typeof window !== "undefined" ? window.location.pathname.replace(/\/+$/, "") || "/" : "";
+  if (path === "/Godzilla-Mode" || path.toLowerCase() === "/godzilla-mode") return true;
+  // Transition: legacy /gm still Godzilla Mode theme
   return path === "/gm" || path.startsWith("/gm/");
 }
 

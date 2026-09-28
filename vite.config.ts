@@ -322,6 +322,8 @@ export default defineConfig(({ command, isPreview }) => ({
             routeRules: {
               "/heliosbot": { redirect: { to: "/", statusCode: 301 } },
               "/heliosbot/**": { redirect: { to: "/", statusCode: 301 } },
+              "/gm": { redirect: { to: "/Godzilla-Mode/", statusCode: 301 } },
+              "/gm/": { redirect: { to: "/Godzilla-Mode/", statusCode: 301 } },
             },
           }),
         ]
