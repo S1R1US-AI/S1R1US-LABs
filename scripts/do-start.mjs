@@ -7,7 +7,7 @@
  * - Serves front-door-static/ for home, hello-world, discord, roadmap, 7 desk overlays + shared assets
  * - Proxies everything else to Nitro on internal 8081
  *
- * Soft-launch routes (/, /hello-world, /discord, /roadmap, /r0b0ts, /h1v3, /pr3d, /faq, /compute, /gm, /f33d) always overlay — no env gate.
+ * Soft-launch routes (/, /hello-world, /discord, /roadmap, /r0b0ts, /h1v3, /pr3d, /faq, /compute, /gm, /f33d, /forum, /agent, /board) always overlay — no env gate.
  * Does not touch Grok live preview (:8080 dev) or regenerate .output.
  */
 import { createReadStream, existsSync, statSync } from "node:fs";
@@ -104,7 +104,7 @@ function resolveStatic(pathname) {
   }
 
   // Prefix routes: hello-world, discord, roadmap, 7 desk overlays, css, js, images
-  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/css", "/js", "/images"];
+  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/css", "/js", "/images"];
   const hit = prefixes.find(
     (p) => pathname === p || pathname.startsWith(p + "/"),
   );
@@ -214,8 +214,8 @@ function startFrontDoor() {
     }
 
     // Prefix claimed but file missing under front-door-static → 404 (do not fall through to Nitro for css/js/images ship paths that 404 today)
-    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/", "/r0b0ts/", "/h1v3/", "/pr3d/", "/faq/", "/compute/", "/gm/", "/f33d/"];
-    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/css", "/js", "/images"];
+    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/", "/r0b0ts/", "/h1v3/", "/pr3d/", "/faq/", "/compute/", "/gm/", "/f33d/", "/forum/", "/agent/", "/board/"];
+    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/css", "/js", "/images"];
     const claimed =
       staticOnlyExact.includes(pathname) ||
       staticOnlyPrefixes.some((p) => pathname.startsWith(p)) ||
@@ -235,6 +235,9 @@ function startFrontDoor() {
         pathname.startsWith("/h1v3") ||
         pathname.startsWith("/pr3d") ||
         pathname.startsWith("/faq") ||
+        pathname.startsWith("/forum") ||
+        pathname.startsWith("/agent") ||
+        pathname.startsWith("/board") ||
         pathname.startsWith("/compute") ||
         pathname.startsWith("/gm") ||
         pathname.startsWith("/f33d")
