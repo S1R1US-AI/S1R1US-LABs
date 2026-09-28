@@ -99,10 +99,10 @@ export function WhiteLabelPage() {
         <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">Download · rebrand · your domain</p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight text-fg">{TAB_WHITE}</h1>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
-          Upgrade to system admin of your own copy: download this entire open-source system and relaunch it under a
-          domain name YOU control — never under S1R1US.ai. Available to all phone app and website users. As soon as
+          Become a white-label desk operator (copy-admin) of your own copy: download this entire open-source system and relaunch it under a
+          domain name YOU control — never under S1R1US.ai. That role is never S1R1US.ai System Admin. Available to all phone app and website users. As soon as
           the system goes live on your domain it is rebranded for that domain. The go-live check below verifies zero
-          use of S1R1US.ai system admin account data — the white label does not go live if the check fails.
+          use of S1R1US.ai System Admin account data — the white label does not go live if the check fails.
         </p>
         <p className="mt-2 max-w-3xl text-sm font-semibold leading-relaxed text-fg">{OSS_LICENSE_NOTICE}</p>
         <p className="legal-purple mt-2 max-w-3xl text-sm font-semibold leading-relaxed">LEGAL STATUS: {WHITE_LABEL_LEGAL_STATUS}</p>
@@ -213,7 +213,7 @@ export function WhiteLabelPage() {
 
           <h3 className="mt-5 text-sm font-semibold text-fg">Accounts</h3>
           <div className="mt-2 grid gap-3 sm:grid-cols-2">
-            <Box label="1. System admin" value={cfg.systemAdmin} onChange={(v) => set("systemAdmin", v)} placeholder="@your_new_admin" />
+            <Box label="1. White-label desk operator (copy-admin)" value={cfg.systemAdmin} onChange={(v) => set("systemAdmin", v)} placeholder="@your_new_admin" />
             <Box label="2. Phone app user" value={cfg.phoneAppUser} onChange={(v) => set("phoneAppUser", v)} placeholder="@your_phone_user" />
           </div>
 
@@ -248,7 +248,7 @@ export function WhiteLabelPage() {
           <h3 className="mt-5 text-sm font-semibold text-fg">GitHub</h3>
           <div className="mt-2 grid gap-3 sm:grid-cols-2">
             <Box label="GitHub repository (never S1R1US-AI/S1R1US-LABs — any branch or main)" value={cfg.githubRepo} onChange={(v) => set("githubRepo", v)} placeholder="you/your-repo" />
-            <Box label="GitHub system admin for the white label" value={cfg.githubAdmin} onChange={(v) => set("githubAdmin", v)} />
+            <Box label="GitHub copy-admin for the white label" value={cfg.githubAdmin} onChange={(v) => set("githubAdmin", v)} />
           </div>
 
           <h3 className="mt-5 text-sm font-semibold text-fg">{TAB_MINERS} ({SEO_TAB_MINERS}) — your own CKPool stratum</h3>
@@ -298,7 +298,7 @@ export function WhiteLabelPage() {
           ) : null}
         </Panel>
 
-        <Panel className="mt-4" kicker="Security" title="System admin vs white label admin">
+        <Panel className="mt-4" kicker="Security" title="S1R1US System Admin vs white-label desk operator (copy-admin)">
           <ul className="divide-y divide-rule">
             {WHITE_LABEL_PRIVILEGES.map((row) => (
               <li key={row.control} className="flex flex-wrap items-start gap-2 py-2 font-mono text-xs">

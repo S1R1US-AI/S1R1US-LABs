@@ -279,7 +279,7 @@ export function MobileAppPage() {
         </p>
 
         <section className="mt-4 rounded-lg border border-rule bg-surface p-4">
-          <p className="text-xs font-medium tracking-[0.08em] text-tab uppercase">Upgrade to system admin</p>
+          <p className="text-xs font-medium tracking-[0.08em] text-tab uppercase">White-label desk operator (copy-admin)</p>
           <h2 className="mt-1 text-base font-semibold text-fg">{TAB_WHITE}</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
             Download this entire open-source system and relaunch it under a domain name YOU control — never under
