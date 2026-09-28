@@ -39,7 +39,9 @@
   .site-header .nav a {
     padding: 0.18rem 0.48rem 0.22rem;
   }
-  header.hero {
+  /* Avoid theme.css .hero (home 2-col grid). Page-local name only. */
+  header.web3-hero {
+    display: block;
     background: var(--bg-card, #1c2126);
     border: 1px solid var(--line, #2a3138);
     border-radius: var(--radius, 14px);
@@ -240,7 +242,7 @@
       </nav>
     </header>
 
-    <header class="hero">
+    <header class="web3-hero">
       <div class="kicker">WEB-3-and-ai-future · draft package</div>
       <h1>Web3 + AI: future coordination story (principles)</h1>
       <p class="lede">
