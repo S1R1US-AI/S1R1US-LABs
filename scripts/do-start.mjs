@@ -4,9 +4,10 @@
  *
  * Security path A — soft-launch front-door static overlay:
  * - External PORT (default 8080): tiny Node HTTP front door
- * - Serves front-door-static/ for home, hello-world, discord + shared assets
+ * - Serves front-door-static/ for home, hello-world, discord, roadmap + shared assets
  * - Proxies everything else to Nitro on internal 8081
  *
+ * Soft-launch routes (/, /hello-world, /discord, /roadmap) always overlay — no env gate.
  * Does not touch Grok live preview (:8080 dev) or regenerate .output.
  */
 import { createReadStream, existsSync, statSync } from "node:fs";
@@ -102,8 +103,8 @@ function resolveStatic(pathname) {
     return fileIfExists(join(STATIC_ROOT, faviconMap[pathname]));
   }
 
-  // Prefix routes: hello-world, discord, css, js, images
-  const prefixes = ["/hello-world", "/discord", "/css", "/js", "/images"];
+  // Prefix routes: hello-world, discord, roadmap, css, js, images
+  const prefixes = ["/hello-world", "/discord", "/roadmap", "/css", "/js", "/images"];
   const hit = prefixes.find(
     (p) => pathname === p || pathname.startsWith(p + "/"),
   );
@@ -191,8 +192,8 @@ function startFrontDoor() {
     }
 
     // Prefix claimed but file missing under front-door-static → 404 (do not fall through to Nitro for css/js/images ship paths that 404 today)
-    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/"];
-    const staticOnlyExact = ["/hello-world", "/discord", "/css", "/js", "/images"];
+    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/"];
+    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/css", "/js", "/images"];
     const claimed =
       staticOnlyExact.includes(pathname) ||
       staticOnlyPrefixes.some((p) => pathname.startsWith(p)) ||
@@ -206,7 +207,8 @@ function startFrontDoor() {
         pathname.startsWith("/js") ||
         pathname.startsWith("/images") ||
         pathname.startsWith("/hello-world") ||
-        pathname.startsWith("/discord")
+        pathname.startsWith("/discord") ||
+        pathname.startsWith("/roadmap")
       ) {
         console.log(`[s1r1us] front-door static overlay 404 ${pathname}`);
         res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });

@@ -2,8 +2,14 @@
 
 Security path A: static soft-launch theme served **outside** Vite/Nitro `.output`.
 
-- Tip: `ed1999ec4fa423d722151efb0c9c2edacdee3ab0` (lab3 live-prep)
-- Ship set: home (`/`), `/hello-world/`, `/discord/`
+- Ship set (live / shipped pages): home (`/`), `/hello-world/`, `/discord/`, `/roadmap/`
+- **Roadmap** (`/roadmap/`): soft-launch theme pack — `s1r1us:deploy-guard=shipped`
+  - Static files: `roadmap/index.html` + `roadmap/roadmap.css`
+  - Brand strip = Neural Network + Studio 01–06 + gate triad + G0Dz1LLa sleeve (display marks only; not one LIVE_FUNCTION per logo)
+  - Screensavers omitted on this page
+  - Godzilla `images/icon-512.png` + favicons — **never replace**
+  - Overlay wiring in `scripts/do-start.mjs` always includes `/roadmap` (same as home / hello-world / discord — no env gate)
 - Backend: **HOLD** (admin/auth/APIs unchanged; proxied to Nitro)
 - Not part of `public/` or theme rebuild — `do-start.mjs` overlays these files on PORT and proxies everything else to Nitro on 8081
 - Brand lock: Godzilla `images/icon-512.png` + favicons — never replace
+- Desk data companion: `src/lib/desk/oss-roadmap.ts` LIVE ids `soft-launch-home`, `hello-world`, `discord` + DONE milestone `d1l` (admin-identity nondisclosure)

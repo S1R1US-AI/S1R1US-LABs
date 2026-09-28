@@ -1,0 +1,216 @@
+/* Soft-launch OSS Roadmap theme — shipped.
+   Studio charcoal + matrix via parent theme. No honesty-strip prose. */
+
+@import url("../css/theme.css");
+
+.rm-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 600;
+  margin: 0 0 0.55rem;
+  text-align: center;
+}
+
+.rm-hero {
+  margin: 0 auto 1.75rem;
+  text-align: center;
+  max-width: 46rem;
+}
+
+.rm-hero h1 {
+  font-size: clamp(1.75rem, 3.6vw, 2.45rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 0.65rem;
+}
+
+.rm-hero h1 .accent {
+  color: var(--gold);
+}
+
+.rm-lede {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin: 0 auto 1rem;
+  max-width: 40rem;
+}
+
+
+.rm-brand-strip {
+  margin: 0 auto 2rem;
+  padding: 1.1rem 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(28, 33, 38, 0.72);
+  max-width: 52rem;
+}
+
+.rm-brand-strip h2 {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+}
+
+.rm-brand-note {
+  margin: 0 0 1rem;
+  text-align: center;
+  color: var(--muted-2);
+  font-size: 0.82rem;
+}
+
+.rm-brand-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.rm-brand-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 4.5rem;
+}
+
+.rm-brand-mark img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #0a0c0e;
+  border: 1px solid var(--line-soft);
+}
+
+.rm-brand-mark.apex img {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+}
+
+.rm-brand-mark.sleeve img {
+  width: 58px;
+  height: 58px;
+}
+
+.rm-brand-mark span {
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.rm-section {
+  max-width: 52rem;
+  margin: 0 auto 1.85rem;
+}
+
+.rm-section h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.rm-section > p {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin: 0 0 1rem;
+}
+
+.rm-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+}
+
+.rm-card {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(28, 33, 38, 0.85);
+  padding: 1rem 1.05rem 1.1rem;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rm-card:hover {
+  border-color: rgba(46, 196, 182, 0.55);
+  box-shadow: 0 0 0 1px rgba(46, 196, 182, 0.18);
+  text-decoration: none;
+}
+
+.rm-card .status {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a2e1a;
+  background: #3dff1a;
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  margin-bottom: 0.55rem;
+}
+
+.rm-card .status.done {
+  color: #102418;
+  background: #2ec4b6;
+}
+
+.rm-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.rm-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.rm-card .path {
+  display: inline-block;
+  margin-top: 0.65rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: var(--teal);
+}
+
+.rm-api-note {
+  border: 1px solid rgba(46, 196, 182, 0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(46, 196, 182, 0.08);
+  padding: 0.95rem 1.05rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.rm-api-note code {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.84rem;
+  color: var(--teal);
+}
+
+.rm-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.15rem;
+  justify-content: center;
+  margin: 1.5rem auto 0.5rem;
+  max-width: 44rem;
+  font-size: 0.9rem;
+}
