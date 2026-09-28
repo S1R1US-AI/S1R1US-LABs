@@ -1,5 +1,5 @@
 /**
- * 7-B0T H3DGE FUND "WHITE LABEL" — download + rebrand of the OSS system.
+ * 9-B0T H3DGE FUND "WHITE LABEL" — download + rebrand of the OSS system.
  *
  * Any phone-app or website user may download the open-source system and
  * relaunch it under a domain name THEY control — never under S1R1US.ai.
@@ -357,7 +357,7 @@ export function builderPrompt(cfg: WhiteLabelConfig): string {
   const repo = String(cfg.githubRepo ?? "").trim() || "<your-github-repo>";
   const menus = (cfg.menus ?? []).filter((m) => String(m ?? "").trim()).join(", ") || "<your top-level menu names>";
   return [
-    `Help me build my white label of the 7-B0T H3DGE FUND open-source system under my own domain ${domain}.`,
+    `Help me build my white label of the 9-B0T H3DGE FUND open-source system under my own domain ${domain}.`,
     `My GitHub repository is ${repo}. My top-level menus: ${menus}.`,
     "It must never reference s1r1us.ai, its system admin, tokens, or web host — all were stripped from the download.",
     "I will populate my own terms, privacy policy, roadmap, and licensing manually.",

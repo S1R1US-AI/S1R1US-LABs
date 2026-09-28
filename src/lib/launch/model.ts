@@ -370,7 +370,7 @@ export const GITHUB_STARTED = true;
 export const GITHUB_STARTED_ON = "2026-09-04";
 export const README_PDF = "/S1R1US-GitHub-README.pdf";
 export const OSS_LINK = GITHUB_URL;
-export const OSS_LINK_LABEL = "H3LP 7-B0T H3DGE FUND [ S1R1U$ <<L@B$>> ] G0 >> OP3N S0URC3";
+export const OSS_LINK_LABEL = "H3LP 9-B0T H3DGE FUND [ S1R1U$ <<L@B$>> ] G0 >> OP3N S0URC3";
 
 /** What OSS needs before the public GitHub is useful. Order = do first. */
 export const OSS_NEEDS = [

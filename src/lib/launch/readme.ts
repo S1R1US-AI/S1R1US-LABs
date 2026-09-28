@@ -13,7 +13,7 @@ Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 
 License: Apache License 2.0
 
-Search names: S1R1US Live Tape, S1R1US L@Bs, GM, F33D, AI Agents, S1R1US 7-bot hedge fund, S1R1US Lab Strategies, Godzilla mode, AI Bitcoin trading bot, AI stock trading bot, AI Hedge Fund, open source.
+Search names: S1R1US Live Tape, S1R1US L@Bs, GM, F33D, AI Agents, S1R1US 9-B0T Hedge Fund, S1R1US Lab Strategies, Godzilla mode, AI Bitcoin trading bot, AI stock trading bot, AI Hedge Fund, open source.
 
 Not financial advice. Not licensed. Not a broker. Not a token sale. Education only. Invest at your own risk and only on the advice of a licensed advisor.
 
