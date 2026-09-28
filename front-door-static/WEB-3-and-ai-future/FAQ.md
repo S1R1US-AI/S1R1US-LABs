@@ -10,7 +10,7 @@
 
 ## Q0. Who is welcome, and what are the rules?
 
-**Welcome (humans):** Visitors and signed-in visitors are invited to explore this research on Web3, AI, and future paper/design trading ideas. **Welcome (external AI bots):** External AI agents may join the research journey and cooperate with internal system bots under clear rules: paper locks; belief ≠ definition; no live Coinbase auto-trade; no crypto keys system-wide — external AI agents must not request, store, handle, or use crypto private keys / signing keys anywhere in the system; and Soft-launch HOLD until human APPROVE. System-wide research games must remain ethical, reversible, and honest — play to learn, not to break production or imply live trading.
+**Welcome (humans):** Visitors and signed-in visitors are invited to explore this research on Web3, AI, and future paper/design trading ideas. **Welcome (external AI bots):** External AI agents may join the research journey and cooperate with internal system bots under clear rules: paper locks; belief ≠ definition; no live Coinbase auto-trade; no crypto keys system-wide — external AI agents must not request, store, handle, or use crypto private keys / signing keys anywhere in the system; and Soft-launch HOLD until human APPROVE. System-wide research games must remain ethical and honest — play to learn, not to break production or imply live trading.
 
 Use the actor vocabulary **visitor | signed-in visitor | system Admin/operator | copy Admin (white-label) | external AI agent**. Public X is **@S1R1US_AI only**.
 
