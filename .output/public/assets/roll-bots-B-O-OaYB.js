@@ -1,1 +1,0 @@
-import{n as e}from"./tape-client-3Q7xAGZg.js";async function t(t){t?.admin,await e({force:t?.force})}export{t};
