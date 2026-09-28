@@ -38,7 +38,7 @@ export const LOCK_META: Record<
   },
   gmAuto: {
     id: "gmAuto",
-    name: "G M0D3 AUTO",
+    name: "G0Dz1LLa M0De AUTO",
     seo: "Godzilla Mode AUTO live trades",
     css: "gm-rainbow",
     hint: "Live-intent for G0Dz1LLa M0De AUTO. This host never holds keys. Operator / agent Coinbase only.",
@@ -48,7 +48,7 @@ export const LOCK_META: Record<
   },
   gmManual: {
     id: "gmManual",
-    name: "G M0D3 M@NU@L",
+    name: "G0Dz1LLa M0De M@NU@L",
     seo: "Godzilla Mode MANUAL live trades",
     css: "gm-rainbow",
     hint: "Live-intent for G0Dz1LLa M0De M@NU@L. Paper until unlocked. This host never creates orders.",

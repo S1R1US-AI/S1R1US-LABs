@@ -523,7 +523,7 @@ function BoardMorningSection() {
           )}
         </>
       ) : (
-        <p className="mt-2 text-sm text-muted">Loading G0Dz1LLa M0De B0aRd daily analysis…</p>
+        <p className="mt-2 text-sm text-muted">Loading GM B0aRd daily analysis…</p>
       )}
     </Panel>
   );

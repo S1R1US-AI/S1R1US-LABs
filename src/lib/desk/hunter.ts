@@ -234,7 +234,7 @@ export function runHunter(): HunterReport {
       "HIGH",
       "PASS",
       "setChampionshipSim uses verifyAccessToken or verifyAppAdminToken. Sim LIVE|PAUSED is world-cup.json, not gm-board status. Coinbase create stays locked on web and phone apps.",
-      "Never wire setSimStatus to app-admin or a board token. Do not reuse G0Dz1LLa M0De B0aRd LIVE/PAUSED for the cup.",
+      "Never wire setSimStatus to app-admin or a board token. Do not reuse GM B0aRd LIVE/PAUSED for the cup.",
     ),
     finding(
       "h-thesis",

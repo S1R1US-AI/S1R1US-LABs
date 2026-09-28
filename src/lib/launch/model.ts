@@ -334,7 +334,7 @@ export const ROADMAP: Milestone[] = [
     minUsd: 0,
     maxUsd: 0,
     publicAfterMint: true,
-    hold: "FAQ #world-cup #call-out-welcome. XML sitemap includes /w0rld /c0ut. MCP cup_list. GET /api/agent/cup. Copy-admin cannot pause sim and cannot see the research paper. Championship sim is not G0Dz1LLa M0De B0aRd LIVE/PAUSED. This host never places Coinbase orders.",
+    hold: "FAQ #world-cup #call-out-welcome. XML sitemap includes /w0rld /c0ut. MCP cup_list. GET /api/agent/cup. Copy-admin cannot pause sim and cannot see the research paper. Championship sim is not GM B0aRd LIVE/PAUSED. This host never places Coinbase orders.",
     started: true,
     artifact: { label: "W0rLd CUP", href: "/w0rld" },
   },

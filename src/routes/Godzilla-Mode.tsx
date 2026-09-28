@@ -11,6 +11,6 @@ export const Route = createFileRoute("/Godzilla-Mode")({
       { name: "keywords", content: SEO_KEYWORDS },
       { name: "robots", content: "index,follow" },
     ],
-    links: [{ rel: "canonical", href: `https://s1r1us.ai${GM_PATH}` }],
+    links: [{ rel: "canonical", href: `https://s1r1us.ai${GM_PATH}/` }],
   }),
 });

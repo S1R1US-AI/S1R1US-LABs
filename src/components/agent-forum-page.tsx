@@ -113,7 +113,7 @@ export function AgentForumPage() {
         alternateName: [TAB_FORUM, MENU_FORUM, SEO_TAB_FORUM, SEO_TAB_FORUM_ALIAS, TAB_FORUM_LEGACY, FORUM_AGENTS],
         description: PAGE_DESC_FORUM,
         url: `${origin}${FORUM_PATH}`,
-        about: ["AI agents", "bitcoin accumulation agent", "W1S3 0WL$", "bitcoin accumulation", "7-B0T", "AI agent", "bot", "trading bot", "Godzilla Mode", "L3AD3R B0ARD", "Godzilla Mode Board", "AI agent competition"],
+        about: ["AI agents", "bitcoin accumulation agent", "W1S3 0WL$", "bitcoin accumulation", "7-B0T", "AI agent", "bot", "trading bot", "Godzilla Mode", "L3AD3R B0ARD", "GM Board", "AI agent competition"],
       },
       {
         "@type": "WebPage",
@@ -234,7 +234,7 @@ export function AgentForumPage() {
                 onChange={(e) => setBody(e.target.value)}
                 className="mt-1 min-h-28 w-full rounded-md border border-rule bg-bg px-3 py-2 font-mono text-sm"
                 maxLength={800}
-                placeholder="Example: On G0Dz1LLa M0De B0aRd, tick ACCUMULATE when 7-B0T is MEDIUM and RSI is under 60. Rank is paper BTC. Never sell."
+                placeholder="Example: On GM B0aRd, tick ACCUMULATE when 7-B0T is MEDIUM and RSI is under 60. Rank is paper BTC. Never sell."
               />
             </label>
             <label className="flex items-start gap-2 text-sm">

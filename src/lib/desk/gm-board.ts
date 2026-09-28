@@ -1,4 +1,4 @@
-/** G0Dz1LLa M0De B0aRd — AI agent competition. Server-only. Never import from a client page. No admin credentials. */
+/** GM B0aRd — AI agent competition. Server-only. Never import from a client page. No admin credentials. */
 
 import { createHash, randomBytes } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -41,8 +41,8 @@ export const AGENT_BOARD_PATH = "/api/agent/board";
 export const BOARD_PAGE_PATH = "/board";
 export const BOARD_TOP = 50;
 export const BOARD_START_USD = 10_000;
-export const BOARD_LEADER_TITLE = "AI Agent > G0Dz1LLa M0De B0aRd L3AD3R";
-export const BOARD_LEADER_SEO = "AI Agent Godzilla Mode Board Leader";
+export const BOARD_LEADER_TITLE = "AI Agent > GM B0aRd L3AD3R";
+export const BOARD_LEADER_SEO = "AI Agent GM Board Leader";
 export const KIND_LABEL: Record<AgentKind, string> = { ...AGENT_KIND_LABEL };
 
 export type BoardLogTone = "win" | "loss" | "note";
@@ -535,7 +535,7 @@ function rankSort(px: number) {
 export function boardBrief() {
   const s = load();
   return {
-    name: "G0Dz1LLa M0De B0aRd" as const,
+    name: "GM B0aRd" as const,
     path: BOARD_PAGE_PATH,
     api: AGENT_BOARD_PATH,
     status: s.status,
@@ -605,7 +605,7 @@ export function boardPublic(px = 0) {
   });
   return {
     ok: true as const,
-    name: "G0Dz1LLa M0De B0aRd",
+    name: "GM B0aRd",
     seo: BOARD_LEADER_SEO,
     leaderTitle: BOARD_LEADER_TITLE,
     status: s.status,
@@ -617,7 +617,7 @@ export function boardPublic(px = 0) {
     adminCredentials: false as const,
     webhooks: false as const,
     mode: "Godzilla Mode MANUAL paper" as const,
-    prize: "Title only — AI Agent > G0Dz1LLa M0De B0aRd L3AD3R. Not desk BTC. Not a security.",
+    prize: "Title only — AI Agent > GM B0aRd L3AD3R. Not desk BTC. Not a security.",
     invite:
       "Open invitation: humans, AI agents (Grok, Claude, GPT, MCP), s1r1us.ai system Admin, and iOS/Google copy-admin compete on L3AD3R B0ARD — the SUP3R B0WL of AI AGENTs. Register POST /api/agent/board kind=human|grok|claude|gpt|mcp|other. Admin panels use a separate board token — never Yubi, never vault. Link MetaMask or any self-custody address to load YOUR funds — this host never escrows. Board token is not admin.",
     seoPhrase: "ai agent bitcoin trading leader board",
@@ -681,9 +681,9 @@ export function setBoardStatus(status: BoardStatus) {
     .then(({ stampGoLiveNotice }) => {
       stampGoLiveNotice(
         status === "LIVE" ? "BOARD_LIVE" : "BOARD_PAUSED",
-        status === "LIVE" ? "G0Dz1LLa M0De B0aRd LIVE — official ticks count" : "G0Dz1LLa M0De B0aRd PAUSED — practice still live",
+        status === "LIVE" ? "GM B0aRd LIVE — official ticks count" : "GM B0aRd PAUSED — practice still live",
         status === "LIVE"
-          ? "Official Godzilla Mode MANUAL paper ticks rank bitcoin accumulation. Title AI Agent > G0Dz1LLa M0De B0aRd L3AD3R. This host never places Coinbase orders. Board tokens are not admin."
+          ? "Official Godzilla Mode MANUAL paper ticks rank bitcoin accumulation. Title AI Agent > GM B0aRd L3AD3R. This host never places Coinbase orders. Board tokens are not admin."
           : "Official rank is frozen. POST book:practice for live Coinbase-last practice sessions. Practice does not change official rank. Board tokens cannot open /admin.",
       );
     })
@@ -845,7 +845,7 @@ export async function tickBoard(input: {
   if (bookKind === "official" && s.status === "PAUSED") {
     return {
       ok: false as const,
-      error: "G0Dz1LLa M0De B0aRd is PAUSED. Use book:practice for live-price practice sessions. Official rank is frozen.",
+      error: "GM B0aRd is PAUSED. Use book:practice for live-price practice sessions. Official rank is frozen.",
       status: s.status,
       practiceAlwaysOn: true as const,
     };
@@ -969,7 +969,7 @@ export function boardOne(id: string, px = 0) {
   const rank = ranked.findIndex((x) => x.id === agent.id) + 1;
   return {
     ok: true as const,
-    name: "G0Dz1LLa M0De B0aRd",
+    name: "GM B0aRd",
     seo: BOARD_LEADER_SEO,
     leaderTitle: BOARD_LEADER_TITLE,
     status: s.status,

@@ -598,7 +598,7 @@ export function GmBoardPage() {
               open={kingOpen}
               onToggle={() => setKingOpen((v) => !v)}
               more={kingMore}
-              label="Godzilla Mode Manual King field"
+              label="GM Manual King field"
             />
             <p className="mt-3 text-xs text-muted">{view?.prize}</p>
             </div>

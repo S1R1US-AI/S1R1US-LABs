@@ -13,7 +13,7 @@ Do not skip a section. Do not auto-green. If unsure, keep it OPEN and say so.
 
 - Last 24h unique errors from `/tmp/desk-errors.json` and `/tmp/desk-cycle.json`
 - AGENT flags from `/tmp/agent-pings.json` (PING / BUSY / REJECT / NONE). Connection tests only. PoC — not LIVE. No trades.
-- G0Dz1LLa M0De B0aRd: always list the top 5 leaders (rank, name, BTC, last clip). If an external (non-HOUSE) bot stacked paper BTC, note in one line what it did (BUY/ACCUMULATE clip, Coinbase last, BTC added). Paper only. Not desk BTC. Frozen once per ET day (`/tmp/board-daily.json`).
+- GM B0aRd: always list the top 5 leaders (rank, name, BTC, last clip). If an external (non-HOUSE) bot stacked paper BTC, note in one line what it did (BUY/ACCUMULATE clip, Coinbase last, BTC added). Paper only. Not desk BTC. Frozen once per ET day (`/tmp/board-daily.json`).
 - What was actually fixed (verified with live tape, not a story)
 - What still needs the operator before **green**
 - Architecture (two-phase cycle, 7 bots, practice autonomy, live Coinbase locked)

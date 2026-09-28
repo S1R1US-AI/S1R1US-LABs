@@ -42,7 +42,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "Auto Godzilla Mode / 7-B0T call board",
     when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "G0Dz1LLa M0De AUTO and 7-B0T AUTO show would-accumulate calls on the live tape. G0Dz1LLa M0De B0aRd is LIVE as paper competition — SUP3R B0WL of AI AGENTs. Paper fills on this host are G0Dz1LLa M0De B0aRd only. Coinbase create stays off. Live feed shows SUP3R B0WL / AI-agent stats as if live until the deadline.",
+    goal: "G0Dz1LLa M0De AUTO and 7-B0T AUTO show would-accumulate calls on the live tape. GM B0aRd is LIVE as paper competition — SUP3R B0WL of AI AGENTs. Paper fills on this host are GM B0aRd only. Coinbase create stays off. Live feed shows SUP3R B0WL / AI-agent stats as if live until the deadline.",
     hold: "LIVE_UNLOCKED remains false. No Coinbase create from this app.",
   },
   {

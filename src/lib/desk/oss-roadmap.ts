@@ -181,7 +181,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/board#spice",
     status: "LIVE-PAPER",
     since: "2026-09-06",
-    note: "As-live paper simulation of who is Godzilla Mode Manual King next. Four 6-hour ET rounds. Simulated crowd plus real picks. Cap $100 notional. Never escrow. Rank stays bitcoin stacked.",
+    note: "As-live paper simulation of who is GM Manual King next. Four 6-hour ET rounds. Simulated crowd plus real picks. Cap $100 notional. Never escrow. Rank stays bitcoin stacked.",
   },
   {
     id: "cup",
