@@ -345,6 +345,34 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     since: "2026-09-11",
     note: `Download the stripped OSS system and relaunch under a domain YOU control — never under S1R1US.ai. Zero s1r1us.ai admin rights, games, rolls, simulations, tokens, or host info ship in the download. Discover and populate the OSS information, terms, and privacy policy manually. Connect Grok, Claude, or GitHub Copilot to build it. ${OSS_LICENSE_NOTICE}`,
   },
+
+  {
+    id: "soft-launch-home",
+    name: "Soft-launch front door",
+    seo: "S1R1US.ai soft-launch home",
+    path: "/",
+    status: "LIVE",
+    since: "2026-09-28",
+    note: "Studio charcoal + matrix soft-launch home at /. Education / paper front door. Backend desk HOLD. Public X @S1R1US_AI only.",
+  },
+  {
+    id: "hello-world",
+    name: "Hello World",
+    seo: "S1R1US-ai-hello-world",
+    path: "/hello-world/",
+    status: "LIVE",
+    since: "2026-09-28",
+    note: "Geek + bot welcome at /hello-world/. Fake-code greeting only — not a shell. Soft-launch front door.",
+  },
+  {
+    id: "discord",
+    name: "S1R1US Discord",
+    seo: "S1R1US Discord",
+    path: "/discord/",
+    status: "LIVE",
+    since: "2026-09-28",
+    note: "Contributor Discord + GitHub Discussions at /discord/. Open source and white-label community. Soft-launch front door.",
+  },
   {
     id: "btc-miners",
     name: TAB_MINERS,
@@ -566,6 +594,14 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     status: "DONE",
     name: "S1R1US App build #113 (live sim launch)",
     detail: "Checkpoint 101 finalized and renamed. Main-branch fold for live admin simulation (G M0D3 AUTO, AI agents, PR3D1CT10N$ paper). Carbon-fiber baseline remains DEPLOY #68. Saved in Project BTD / S1R1US L@Bs. This host never places Coinbase orders.",
+  },
+  {
+    id: "d1l",
+    date: "2026-09-28",
+    estimate: false,
+    status: "DONE",
+    name: "Admin-identity nondisclosure",
+    detail: "Public surfaces use company @S1R1US_AI only. Admin-identity nondisclosure complete on public copy and client bundles.",
   },
 ];
 
