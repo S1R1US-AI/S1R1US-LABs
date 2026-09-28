@@ -166,7 +166,7 @@ export function protocolRows(): ProtocolRow[] {
     },
     {
       id: "gm",
-      title: "G0DZ1LLa M0D3 sleeve",
+      title: "G0Dz1LLa M0De sleeve",
       status: "PASS",
       detail: "Practice for everyone. Live unlock is admin HMAC only (not localStorage). Live book is not persisted. AUTO never naked-shorts. TRIM keeps BTC at 33km…. Fund 0x is receive-only. No Godzilla Mode spend keys.",
     },

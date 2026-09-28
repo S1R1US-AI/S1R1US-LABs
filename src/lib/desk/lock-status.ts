@@ -41,7 +41,7 @@ export const LOCK_META: Record<
     name: "G M0D3 AUTO",
     seo: "Godzilla Mode AUTO live trades",
     css: "gm-rainbow",
-    hint: "Live-intent for G M0D3 AUTO. This host never holds keys. Operator / agent Coinbase only.",
+    hint: "Live-intent for G0Dz1LLa M0De AUTO. This host never holds keys. Operator / agent Coinbase only.",
     copyAdmin: true,
     to: "/Godzilla-Mode",
     hash: "auto",
@@ -51,7 +51,7 @@ export const LOCK_META: Record<
     name: "G M0D3 M@NU@L",
     seo: "Godzilla Mode MANUAL live trades",
     css: "gm-rainbow",
-    hint: "Live-intent for G M0D3 M@NU@L. Paper until unlocked. This host never creates orders.",
+    hint: "Live-intent for G0Dz1LLa M0De M@NU@L. Paper until unlocked. This host never creates orders.",
     copyAdmin: true,
     to: "/Godzilla-Mode",
     hash: "manual",
@@ -235,7 +235,7 @@ export function lockStatusView(store: LockStore, tape: TapeStatus, tapeNote: str
     dataPullPause: "system-only",
     agentExecuteOwnBook: store.mode === "LIVE" && !store.locked.agentLive,
     notice:
-      "LoCK3D STATUS is Admin (system or phone-app). Live tape is status only — simulated or true live — and is not a lock. Unlock is live-intent: agents and G M0D3 run on THEIR Coinbase. This host never places Coinbase orders, never holds keys, never escrows. Championship sim pause stays system Admin. Optional unlocks: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE only, H1V3 SW@RM, PR3D1CT10N$. PR3D1CT10N$ is LOCKED while fewer than 4 live registered external AI agents have joined, UNLOCKED at 4+. Mode SIM or LIVE does not create orders here.",
+      "LoCK3D STATUS is Admin (system or phone-app). Live tape is status only — simulated or true live — and is not a lock. Unlock is live-intent: agents and G0Dz1LLa M0De run on THEIR Coinbase. This host never places Coinbase orders, never holds keys, never escrows. Championship sim pause stays system Admin. Optional unlocks: AI Agents, 7-B0T AUTO, G0Dz1LLa M0De AUTO, G0Dz1LLa M0De M@NU@L, AI Agents LIVE only, H1V3 SW@RM, PR3D1CT10N$. PR3D1CT10N$ is LOCKED while fewer than 4 live registered external AI agents have joined, UNLOCKED at 4+. Mode SIM or LIVE does not create orders here.",
   };
 }
 

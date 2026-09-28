@@ -16,7 +16,7 @@ describe("PR3D1CT10N$ paper book", { concurrency: false }, () => {
     resetPredBookForTest();
   });
 
-  it("never takes bets and always seats G M0D3 AUTO with a 4,200 grant", () => {
+  it("never takes bets and always seats G0Dz1LLa M0De AUTO with a 4,200 grant", () => {
     const snap = predBookPublic({ px: 108_000 });
     assert.equal(snap.name, PRED_NAME);
     assert.equal(snap.bets, false);
@@ -26,7 +26,7 @@ describe("PR3D1CT10N$ paper book", { concurrency: false }, () => {
     assert.equal(snap.grant, PRED_GRANT);
     assert.equal(snap.tokenFake, true);
     assert.equal(snap.phoWallet, false);
-    assert.ok(snap.board.some((d) => d.id === "gm-auto" && d.name === "G M0D3 AUTO"));
+    assert.ok(snap.board.some((d) => d.id === "gm-auto" && d.name === "G0Dz1LLa M0De AUTO"));
     assert.equal(snap.markets.length, 4);
     assert.match(snap.disclaimer, /never takes/);
   });

@@ -22,7 +22,7 @@ const pool = [
 ];
 
 describe("world-cup", { concurrency: false }, () => {
-  it("always seats G M0D3 AUTO, system king, bowl invitees, and 5 wild cards", () => {
+  it("always seats G0Dz1LLa M0De AUTO, system king, bowl invitees, and 5 wild cards", () => {
     const s = ensureField({ year: 2026, bowlWinners: [{ id: "ag_bowl_1", name: "BowlChamp" }], pool });
     const ids = s.desks.map((d) => d.id);
     assert.ok(ids.includes(GM_AUTO_ID));

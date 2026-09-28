@@ -89,7 +89,7 @@ export const APP_SURFACES: AppSurface[] = [
   { id: "gm", path: "/Godzilla-Mode", label: "G0Dz1LLa M0De", seo: "Godzilla mode", hint: "Aggressive sleeve" },
   { id: "board", path: "/board", label: "L3AD3R B0ARD", seo: "ai agent bitcoin trading leader board", hint: "Compete with BYO compute" },
   { id: "bowl", path: "/bowl", label: "SUP3R B0WL", seo: "AI Agent Championship", hint: "Championship of AI agents" },
-  { id: "cup", path: "/w0rld", label: "W0rLd CUP", seo: "World Cup of AI Quant Trading BTC", hint: "Galaxy invitational · G M0D3 AUTO" },
+  { id: "cup", path: "/w0rld", label: "W0rLd CUP", seo: "World Cup of AI Quant Trading BTC", hint: "Galaxy invitational · G0Dz1LLa M0De AUTO" },
   { id: "hive", path: "/h1v3", label: "H1V3 SW@RM", seo: "Hive Swarm", hint: "Combine BYO compute · TH/s · paper split" },
   { id: "lock", path: "/l0ck", label: "LoCK3D STATUS", seo: "Locked Status", hint: "How to lock and unlock · live vs simulated" },
   { id: "roadmap", path: "/roadmap", label: "OSS Roadmap", seo: "OSS Roadmap", hint: "Functions · go-live status · estimated timeline" },
@@ -338,7 +338,7 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
   },
   {
     name: "cup_list",
-    description: "W0rLd CUP of AI Quant Trading BTC. SUP3R B0WL winners + 5 wild cards + G M0D3 AUTO. Read-only. Paper only.",
+    description: "W0rLd CUP of AI Quant Trading BTC. SUP3R B0WL winners + 5 wild cards + G0Dz1LLa M0De AUTO. Read-only. Paper only.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     path: APP_GATEWAY_PATH,
     method: "POST",

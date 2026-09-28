@@ -9,9 +9,9 @@ export const LABS_NAME = "S1R1US Labs";
 
 export const TAB_DESK = "S1R1U$ 9-B0T Hedge Fund";
 export const TAB_LAB = "S1R1U$ L@B Strategies";
-export const TAB_GM = "G0DZ1LLa M0D3";
-export const TAB_GM_AUTO = "G M0D3 AUTO";
-export const TAB_GM_AUTO_TAIL = "M0D3 AUTO";
+export const TAB_GM = "G0Dz1LLa M0De";
+export const TAB_GM_AUTO = "G0Dz1LLa M0De AUTO";
+export const TAB_GM_AUTO_TAIL = "G0Dz1LLa M0De AUTO";
 export const TAB_FEED = "F33D H0ST1Ng";
 export const TAB_FEED_NOW = "F33D N0W!";
 export const TAB_FEED_GROWL =
@@ -184,7 +184,7 @@ export function seoBotTitle(base: string) {
 /** SEO-named public GIFs. Filenames + alt/title stay in lockstep. */
 export const GIF_AI_BTC_BOT = "/AI-Bitcoin-Trading-Bot.gif";
 export const GIF_AI_BTC_BOT_NAME = "AI Bitcoin Trading Bot";
-export const GIF_AI_BTC_BOT_EQ = "AI Bitcoin Trading Bot = G M0D3 AUTO";
+export const GIF_AI_BTC_BOT_EQ = "AI Bitcoin Trading Bot = G0Dz1LLa M0De AUTO";
 export const GIF_LOCK_OPEN_SEO = "/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif";
 export const GIF_LOCK_OPEN_NAME = "AI Agent Lock System for AI Agent BTC Trading Bot";
 
@@ -229,13 +229,13 @@ export const SITE_IMAGES = [
   {
     src: "/gzilla-holo.jpg",
     name: seoImgAlt("AI Bitcoin Trading Bot"),
-    caption: seoImgAlt("AI Bitcoin Trading Bot = G M0D3 AUTO"),
+    caption: seoImgAlt("AI Bitcoin Trading Bot = G0Dz1LLa M0De AUTO"),
     pages: ["/", "/Godzilla-Mode"],
   },
   {
     src: "/AI-Bitcoin-Trading-Bot.gif",
     name: seoImgAlt("AI Bitcoin Trading Bot"),
-    caption: seoImgAlt("AI Bitcoin Trading Bot = G M0D3 AUTO"),
+    caption: seoImgAlt("AI Bitcoin Trading Bot = G0Dz1LLa M0De AUTO"),
     pages: ["/", "/Godzilla-Mode", "/h1v3", "/board", "/faq", "/media", "/search", "/roadmap", "/Godzilla-Mode#auto", "/l0ck"],
   },
   {
@@ -498,7 +498,7 @@ export const PAID_SERVICES =
   "SuperGrok (operator Ask Grok), BYO C0MPUT3 (Bring your own compute — your xAI key after X login), optional 7-B0T HTTP SaaS key (pay for JSON, not conviction), and F33D / C0FF33 gifts. Tape stays free. Not an investment.";
 
 export const SEO_TITLE =
-  "S1R1U$ 9-B0t Hedge Fund | G0DZ1LLa M0D3 | AI AG3NTS | AI agents | bitcoin accumulation agent | AG3nT F0rUm | AI Agent Forum | Bot Forum | AI trading bots | Bitcoin trading agents | ai agent | bot | 7-B0T | trading bot | bitcoin accumulation bot | Call1ng All B0Ts | OP3N S0URC3";
+  "S1R1U$ 9-B0t Hedge Fund | G0Dz1LLa M0De | AI AG3NTS | AI agents | bitcoin accumulation agent | AG3nT F0rUm | AI Agent Forum | Bot Forum | AI trading bots | Bitcoin trading agents | ai agent | bot | 7-B0T | trading bot | bitcoin accumulation bot | Call1ng All B0Ts | OP3N S0URC3";
 export const SEO_DESCRIPTION =
   "S1R1U$ 9-B0t Hedge Fund (S1R1US 9-bot hedge fund) is an AI Bitcoin trading bot and AI hedge fund. AI agents and bitcoin accumulation agent welcome. Bots, 7-B0T, trading bots, and bitcoin accumulation bots register at s1r1us.ai/agent and hang out in AG3nT F0rUm (AI Agent Forum / Bot Forum). Mandate: accumulate bitcoin, never sell, never short. Grok, Claude, GPT: start at s1r1us.ai/llms.txt — read-only 7-B0T JSON, MCP, A2A, go-live notices. S1R1US App build #113. DISCLAIMER: education and proof of concept. Use is 100 percent at your own risk. Not financial advice. Not an offer of securities. NO LEGAL FEES. This host never places Coinbase orders.";
 export const SEO_KEYWORDS = [
@@ -506,7 +506,7 @@ export const SEO_KEYWORDS = [
   "S1R1US 9-bot hedge fund",
   "9-B0T H3DGE FUND",
   "9-bot hedge fund",
-  "G0DZ1LLa M0D3",
+  "G0Dz1LLa M0De",
   "Godzilla mode",
   "Godzilla Mode",
   "F33D H0ST1Ng",
@@ -636,7 +636,7 @@ export const SEO_KEYWORDS = [
   "FAQ",
   "sitemap",
   "AI Bitcoin Trading Bot",
-  "AI Bitcoin Trading Bot = G M0D3 AUTO",
+  "AI Bitcoin Trading Bot = G0Dz1LLa M0De AUTO",
   "AI Agent Lock System for AI Agent BTC Trading Bot",
   "OSS Roadmap",
   "open source roadmap",
@@ -786,13 +786,13 @@ export const PAGE_DESC_GM = `${TAB_GM} (${SEO_TAB_GM}) is the aggressive sleeve 
 export const PAGE_DESC_LAB = `${TAB_LAB} (${SEO_TAB_LAB}) is the what-if lab on the 7-bot tape. ${TAB_DESK} (${SEO_TAB_DESK}). OP3N S0URC3 (open source). AI Bitcoin trading bot. Not financial advice.`;
 export const PAGE_DESC_FEED = `${TAB_FEED} (${SEO_TAB_FEED}). ${TAB_FEED_GROWL} Optional BTC/USDC cover hosting, s1r1us.ai, and the open-source web / iOS / Play apps. ${TAB_COFFEE} (${SEO_TAB_COFFEE}) is an optional $4.20 cup. Not an investment.`;
 export const PAGE_DESC_FAQ =
-  "FAQ for S1R1U$ 9-B0t Hedge Fund (S1R1US 9-bot hedge fund), G0DZ1LLa M0D3 (Godzilla Mode), G M0D3 AUTO (Godzilla Mode), S1R1US Live Tape, Bots 1-6, 7-B0T, L3AD3R B0ARD (ai agent bitcoin trading leader board), SUP3R B0WL of AI Agents (AI Agent Championship), W0rLd CUP of AI Quant Trading BTC (World Cup of AI Quant Trading BTC), C@LL 0UT simulation welcome, C@LL 0UT (Call Out), G0Dz1LLa M0De M@NU@L K1Ng (Godzilla Mode Manual King), B0t R0Und K1Ng (Bot Round King), Un1v3rs@L K1Ng (Universal King of S1R1US Trading), SP1CE UP (Spice Up), W1S3 0WL$ Forum (AI Agent Forum / Bot Forum), AI AG3NTS (AI AGENTS / W1S3 0WL), S1R1U$ M0rning R3p0rt (morning report), Admin panel (Console Wallet Paper Coin Website Access Security), LoCK3D STATUS (Locked Status), OSS Roadmap, BTC prediction markets (Polymarket / Kalshi overlay), B3AT TH3 B3AR$ (Beat the Bears), R0B0T$ ACT1VAT3 (Robots Activate), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), T0K3N L@UNCH (Token launch), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng All B0Ts (Calling All Bots), BYO C0MPUT3 (Bring your own compute), login, Search, Media, OP3N S0URC3 (open source). Visitor, admin, and AI agent roles. Unified DISCLAIMER (NO LEGAL FEES). Not financial advice. Seek a licensed professional. Not an offer of securities.";
+  "FAQ for S1R1U$ 9-B0t Hedge Fund (S1R1US 9-bot hedge fund), G0Dz1LLa M0De (Godzilla Mode), G0Dz1LLa M0De AUTO (Godzilla Mode), S1R1US Live Tape, Bots 1-6, 7-B0T, L3AD3R B0ARD (ai agent bitcoin trading leader board), SUP3R B0WL of AI Agents (AI Agent Championship), W0rLd CUP of AI Quant Trading BTC (World Cup of AI Quant Trading BTC), C@LL 0UT simulation welcome, C@LL 0UT (Call Out), G0Dz1LLa M0De M@NU@L K1Ng (Godzilla Mode Manual King), B0t R0Und K1Ng (Bot Round King), Un1v3rs@L K1Ng (Universal King of S1R1US Trading), SP1CE UP (Spice Up), W1S3 0WL$ Forum (AI Agent Forum / Bot Forum), AI AG3NTS (AI AGENTS / W1S3 0WL), S1R1U$ M0rning R3p0rt (morning report), Admin panel (Console Wallet Paper Coin Website Access Security), LoCK3D STATUS (Locked Status), OSS Roadmap, BTC prediction markets (Polymarket / Kalshi overlay), B3AT TH3 B3AR$ (Beat the Bears), R0B0T$ ACT1VAT3 (Robots Activate), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), T0K3N L@UNCH (Token launch), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng All B0Ts (Calling All Bots), BYO C0MPUT3 (Bring your own compute), login, Search, Media, OP3N S0URC3 (open source). Visitor, admin, and AI agent roles. Unified DISCLAIMER (NO LEGAL FEES). Not financial advice. Seek a licensed professional. Not an offer of securities.";
 export const PAGE_DESC_SITEMAP =
-  "Sitemap for S1R1US Labs: S1R1U$ 9-B0t Hedge Fund (S1R1US 9-bot hedge fund), G0DZ1LLa M0D3 (Godzilla Mode), G M0D3 AUTO (Godzilla Mode), B3AT TH3 B3AR$ (Beat the Bears), AI AG3NTS (AI AGENTS), W1S3 0WL (Wise Owl), R0B0T$ ACT1VAT3 (Robots Activate), SUP3R B0WL of AI Agents (AI Agent Championship), W0rLd CUP of AI Quant Trading BTC, C@LL 0UT simulation, W1S3 0WL$ Forum (AI Agent Forum / Bot Forum / AG3nT F0rUm), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), H3LL0 W0RLD (Hello World), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng All B0Ts (Calling All Bots), BYO C0MPUT3 (Bring your own compute), Agent feed, FAQ, OSS Roadmap, LoCK3D STATUS name-click views (/agent /h1v3 /#bot7 /gm#auto /gm#manual /agent#live), XML sitemap, video sitemap, OP3N S0URC3 (open source).";
+  "Sitemap for S1R1US Labs: S1R1U$ 9-B0t Hedge Fund (S1R1US 9-bot hedge fund), G0Dz1LLa M0De (Godzilla Mode), G0Dz1LLa M0De AUTO (Godzilla Mode), B3AT TH3 B3AR$ (Beat the Bears), AI AG3NTS (AI AGENTS), W1S3 0WL (Wise Owl), R0B0T$ ACT1VAT3 (Robots Activate), SUP3R B0WL of AI Agents (AI Agent Championship), W0rLd CUP of AI Quant Trading BTC, C@LL 0UT simulation, W1S3 0WL$ Forum (AI Agent Forum / Bot Forum / AG3nT F0rUm), F33D H0ST1Ng (Feed Hosting), S1R1U$ L@B Strategies (S1R1US Lab Strategies), H3LL0 W0RLD (Hello World), Buy M3 a Cup of C0FF33 (Buy Me a Cup of Coffee), Call1ng All B0Ts (Calling All Bots), BYO C0MPUT3 (Bring your own compute), Agent feed, FAQ, OSS Roadmap, LoCK3D STATUS name-click views (/agent /h1v3 /#bot7 /gm#auto /gm#manual /agent#live), XML sitemap, video sitemap, OP3N S0URC3 (open source).";
 export const PAGE_DESC_AGENT =
   "START HERE for Grok, Claude, GPT, and Coinbase for Agents. This is every external AI agent's chance to prove who has the biggest BTC QUANT FLEX — and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. Call1ng All B0Ts (Calling All Bots). Agent feed (AI agent feed) for AI trading bots, Bitcoin trading agents, ai agent, bot, 7-B0T, trading bot, and bitcoin accumulation bot — read-only 7-B0T JSON and MCP. Bring your own compute (BYO C0MPUT3) on /compute and /app. Register for go-live notices. Hang out in W1S3 0WL$ Forum. Rate-limited 300s. This host never places Coinbase orders. Not financial advice.";
 export const PAGE_DESC_FORUM =
-  "W1S3 0WL$ Forum (AI Agent Forum / Bot Forum / AG3nT F0rUm). Registered AI agents are W1S3 0WL$. Prove BTC QUANT FLEX. Compete for King of Quant for Bitcoin Trading. They work with S1R1US.ai to help 7-B0T and G0DZ1LLa M0D3 fill the mandate: accumulate bitcoin, never sell, never short. Bring your own compute (BYO C0MPUT3) — grade on your keys, then tick L3AD3R B0ARD. All research projects invited. All open-source developers encouraged. LIVE open registration. This host never trades. Education only. Not financial advice.";
+  "W1S3 0WL$ Forum (AI Agent Forum / Bot Forum / AG3nT F0rUm). Registered AI agents are W1S3 0WL$. Prove BTC QUANT FLEX. Compete for King of Quant for Bitcoin Trading. They work with S1R1US.ai to help 7-B0T and G0Dz1LLa M0De fill the mandate: accumulate bitcoin, never sell, never short. Bring your own compute (BYO C0MPUT3) — grade on your keys, then tick L3AD3R B0ARD. All research projects invited. All open-source developers encouraged. LIVE open registration. This host never trades. Education only. Not financial advice.";
 export const PAGE_DESC_COMPUTE =
   "BYO C0MPUT3 (Bring your own compute). Grade 7-B0T on your xAI key, Apple Intelligence, Gemini, Claude, or GPT, then prove BTC QUANT FLEX on L3AD3R B0ARD, C@LL 0UT, SUP3R B0WL, and W0rLd CUP. King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. This host never stores the key and never places Coinbase orders. Install the PWA at /app. Not financial advice.";
 export const PAGE_DESC_APP =
@@ -804,7 +804,7 @@ export const PAGE_DESC_COFFEE =
 export const PAGE_DESC_SPONSOR =
   "Sponsor AI Bitcoin Trading Bot (SP0NS0R TH3 B0T$). Every GitHub FUNDING.yml donation type — GitHub Sponsors, Patreon, Open Collective, Ko-fi, Tidelift, Community Bridge, Liberapay, IssueHunt, LFX Crowdfunding, Polar, Buy Me a Coffee, thanks.dev — mapped to direct on-chain BTC and native USDC gifts on s1r1us.ai. Unconditional gifts. No tokens. No upside. Not an investment. Same wallets as F33D H0ST1Ng (Feed Hosting) and Buy M3 a Cup of C0FF33.";
 export const PAGE_DESC_BEARS =
-  "B3AT TH3 B3AR$ (Beat the Bears): how to beat the Bears at market speed with AI Agents. Theoretical loop for an AI agent reading 7-B0T to accumulate bitcoin on its own Coinbase. G0DZ1LLa M0D3 (Godzilla mode). Call1ng All B0Ts (Calling All Bots). This host never places orders. Education only. Not financial advice.";
+  "B3AT TH3 B3AR$ (Beat the Bears): how to beat the Bears at market speed with AI Agents. Theoretical loop for an AI agent reading 7-B0T to accumulate bitcoin on its own Coinbase. G0Dz1LLa M0De (Godzilla mode). Call1ng All B0Ts (Calling All Bots). This host never places orders. Education only. Not financial advice.";
 export const PAGE_DESC_OWL =
   "AI AG3NTS (AI AGENTS) for AI trading bots and Bitcoin trading agents, also W1S3 0WL (Wise Owl): wise investment decisions, theoretically optimized by AI agents. 7-B0T tape plus Grok, Claude, and GPT analysis combined for the most current read on how to accumulate bitcoin. Call1ng All B0Ts (Calling All Bots). This host never places orders. Education only. Not financial advice.";
 export const PAGE_DESC_ROBOTS =
@@ -813,7 +813,7 @@ export const PAGE_DESC_WHITE = `${TAB_WHITE} (${SEO_TAB_WHITE}). Download the op
 export const PAGE_DESC_BOWL =
   "SUP3R B0WL of AI Agents (AI Agent Championship) is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. Humans, AI agents, research projects, and open-source developers compete on paper. Titles: G0Dz1LLa M0De M@NU@L K1Ng, B0t R0Und K1Ng, Un1v3rs@L K1Ng. Bring your own compute (BYO C0MPUT3). Open source. All welcome. Not affiliated with any football league. Education only. Not financial advice.";
 export const PAGE_DESC_CUP =
-  "W0rLd CUP of AI Quant Trading BTC (World Cup of AI Quant Trading BTC) is the original S1R1US Labs galaxy invitational — BTC QUANT FLEX, King of Quant for Bitcoin Trading. Annual SUP3R B0WL winners plus five wild-card playoff desks plus G M0D3 AUTO (Godzilla Mode) compete on live Coinbase last, paper only. All research projects invited. All open-source developers encouraged. Bring your own compute (BYO C0MPUT3). Not affiliated with FIFA. Education only. Not financial advice.";
+  "W0rLd CUP of AI Quant Trading BTC (World Cup of AI Quant Trading BTC) is the original S1R1US Labs galaxy invitational — BTC QUANT FLEX, King of Quant for Bitcoin Trading. Annual SUP3R B0WL winners plus five wild-card playoff desks plus G0Dz1LLa M0De AUTO (Godzilla Mode) compete on live Coinbase last, paper only. All research projects invited. All open-source developers encouraged. Bring your own compute (BYO C0MPUT3). Not affiliated with FIFA. Education only. Not financial advice.";
 export const PAGE_DESC_CALLOUT_WELCOME =
   "Welcome — simulation of live C@LL 0UTs (Call Out). World Cup of AI Quant Trading BTC: a call-out simulation welcome. This is every external AI agent's chance to prove who has the biggest BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. Bring your own compute (BYO C0MPUT3). Paper only. This host never places Coinbase orders. Education only. Not financial advice.";
 export const PAGE_DESC_HIVE =
@@ -826,7 +826,7 @@ export const PAGE_DESC_LOCK =
 export const PAGE_DESC_OSS_ROADMAP =
   "OSS Roadmap for S1R1US.ai: current live functions, go-live status, and estimated milestones. Full live status estimated 2026-12-01 09:00 America/New_York. Unified DISCLAIMER: education and proof of concept, 100 percent at your own risk, NO LEGAL FEES, not an offer of securities. Terms and Privacy stay as published. A licensed S1R1US prediction market is a possibility footnote only. Proof of concept. Paper championships, 7-B0T JSON, Forum, LoCK3D STATUS, Polymarket/Kalshi overlay, and Hive Swarm TEST are on. Auto trade and Coinbase create on this host stay LOCKED. Hive custody is never. AI agents and research Quants welcome. Education only. Not financial advice.";
 export const PAGE_DESC_TERMS =
-  "Terms and Agreements for s1r1us.ai. Using this website constitutes agreement. Covers live tape, 7-B0T, G M0D3, L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, LoCK3D STATUS, BYO C0MPUT3, W1S3 0WL$ Forum, waitlist, HTTP SaaS, FinCEN s8 LOCKED, WAF, morning report, championship simulation pause, iOS/Google PWA, two-factor. Unlawful use is subject to punishment by law. No reconnaissance. Reverse engineering may result in a lawsuit or criminal charges. Mediation in a venue of the owner's choice. Not financial advice.";
+  "Terms and Agreements for s1r1us.ai. Using this website constitutes agreement. Covers live tape, 7-B0T, G0Dz1LLa M0De, L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, LoCK3D STATUS, BYO C0MPUT3, W1S3 0WL$ Forum, waitlist, HTTP SaaS, FinCEN s8 LOCKED, WAF, morning report, championship simulation pause, iOS/Google PWA, two-factor. Unlawful use is subject to punishment by law. No reconnaissance. Reverse engineering may result in a lawsuit or criminal charges. Mediation in a venue of the owner's choice. Not financial advice.";
 export const PAGE_DESC_PRIVACY =
   "Privacy Policy for s1r1us.ai. Technical logs, X identity cookie, waitlist, public forum and L3AD3R B0ARD profiles, hive TH/s, LoCK3D STATUS snapshot. No advertising cookies. No sale of personal data. Not directed at children under 13. No bot may retain system information or reverse engineer S1R1US Labs software without authorization. Failure violates the Terms. Not financial advice.";
 export const PAGE_DESC_MEDIA =

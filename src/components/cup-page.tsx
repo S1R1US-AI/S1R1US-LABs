@@ -101,7 +101,7 @@ export function CupPage() {
           "bitcoin accumulation agent",
           "AI Quant trading",
           "World Cup of AI Quant Trading BTC",
-          "G M0D3 AUTO",
+          "G0Dz1LLa M0De AUTO",
           "Godzilla Mode",
           SEO_TAB_COMPUTE,
           "BTC QUANT FLEX",

@@ -73,7 +73,7 @@ export function SitemapPage() {
           <a className="text-oss hover:underline" href="/roadmap">
             /roadmap
           </a>
-          . LoCK3D STATUS name click opens AI Agents, H1V3 SW@RM, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE. Crawlers: {SEO_CANONICAL}
+          . LoCK3D STATUS name click opens AI Agents, H1V3 SW@RM, 7-B0T AUTO, G0Dz1LLa M0De AUTO, G0Dz1LLa M0De M@NU@L, AI Agents LIVE. Crawlers: {SEO_CANONICAL}
         </p>
         <Panel kicker="Index" title="Public URLs" className="mt-6" kickerClass="text-oss">
           <ul className="space-y-3">

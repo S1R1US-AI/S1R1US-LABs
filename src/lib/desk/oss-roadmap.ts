@@ -28,7 +28,7 @@ export const FULL_LIVE_ESTIMATE = {
   time: "09:00",
   tz: GO_LIVE_DEADLINE_TZ,
   label: GO_LIVE_DEADLINE_LABEL,
-  what: "G M0D3 AUTO and G M0D3 M@NU@L for users, SUP3R B0WL GO-LIVE (paper titles stay paper here), native iOS App Store and Google Play education wrap. Operator unlock after counsel. This host still never places Coinbase orders. Live BTC stays on YOUR Coinbase.",
+  what: "G0Dz1LLa M0De AUTO and G0Dz1LLa M0De M@NU@L for users, SUP3R B0WL GO-LIVE (paper titles stay paper here), native iOS App Store and Google Play education wrap. Operator unlock after counsel. This host still never places Coinbase orders. Live BTC stays on YOUR Coinbase.",
   proofOfConceptUntil: true,
   thisHostCreates: false as const,
   hiveCustody: false as const,
@@ -127,7 +127,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/pr3d",
     status: "LIVE-PAPER",
     since: "2026-09-11",
-    note: "AI Agent Prediction Market education experiment at /pr3d. Fake S1R1U$. G M0D3 AUTO always plays. Paper book follows admin simulation on Coinbase last. This host never takes bets. Licensed real-money book stays a possibility footnote.",
+    note: "AI Agent Prediction Market education experiment at /pr3d. Fake S1R1U$. G0Dz1LLa M0De AUTO always plays. Paper book follows admin simulation on Coinbase last. This host never takes bets. Licensed real-money book stays a possibility footnote.",
   },
   {
     id: "bots",
@@ -140,7 +140,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
   },
   {
     id: "gm-paper",
-    name: "G M0D3 AUTO paper",
+    name: "G0Dz1LLa M0De AUTO paper",
     seo: "Godzilla Mode AUTO paper",
     path: "/Godzilla-Mode",
     status: "LIVE-PAPER",
@@ -172,7 +172,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/c0ut",
     status: "LIVE-PAPER",
     since: "2026-09-05",
-    note: "5×1h owl vs owl; 5×15 min admin vs agent. Honor 30 min or forfeit. Auto/manual/pause prefs. Admin may call 7-B0T vs G M0D3 M@NU@L.",
+    note: "5×1h owl vs owl; 5×15 min admin vs agent. Honor 30 min or forfeit. Auto/manual/pause prefs. Admin may call 7-B0T vs G0Dz1LLa M0De M@NU@L.",
   },
   {
     id: "spice",
@@ -190,7 +190,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/w0rld",
     status: "LIVE-PAPER",
     since: "2026-09-05",
-    note: "Galaxy invitational. SUP3R B0WL winners + 5 wild cards + G M0D3 AUTO. Paper sim.",
+    note: "Galaxy invitational. SUP3R B0WL winners + 5 wild cards + G0Dz1LLa M0De AUTO. Paper sim.",
   },
   {
     id: "hive",
@@ -217,16 +217,16 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/l0ck",
     status: "LIVE",
     since: "2026-09-06",
-    note: "Unlocked set stacked above locked set. Purple Expand/Collapse on the LoCK3D STATUS line. Click a lock NAME to open that view. G M0D3 AUTO / M@NU@L names drop Godzilla Mode matrix rain 2.5s. Live tape is status only (no padlock). Open GIF: AI Agent Lock System for AI Agent BTC Trading Bot. Closed GIF: Locked Status. System + copy-admin.",
+    note: "Unlocked set stacked above locked set. Purple Expand/Collapse on the LoCK3D STATUS line. Click a lock NAME to open that view. G0Dz1LLa M0De AUTO / M@NU@L names drop Godzilla Mode matrix rain 2.5s. Live tape is status only (no padlock). Open GIF: AI Agent Lock System for AI Agent BTC Trading Bot. Closed GIF: Locked Status. System + copy-admin.",
   },
   {
     id: "gif-bot",
     name: "AI Bitcoin Trading Bot",
-    seo: "AI Bitcoin Trading Bot = G M0D3 AUTO",
+    seo: "AI Bitcoin Trading Bot = G0Dz1LLa M0De AUTO",
     path: "/Godzilla-Mode#auto",
     status: "LIVE",
     since: "2026-09-06",
-    note: "Hologram GIF on the live tape. Click opens G M0D3 AUTO. Alt and title: AI Bitcoin Trading Bot.",
+    note: "Hologram GIF on the live tape. Click opens G0Dz1LLa M0De AUTO. Alt and title: AI Bitcoin Trading Bot.",
   },
   {
     id: "waitlist",
@@ -271,11 +271,11 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/admin",
     status: "LIVE",
     since: "2026-09-05",
-    note: "Hunter control tests, WAF, data-pull pause, championship pause (system + copy-admin). Copy-admin may pause hive, as-live G M0D3 AUTO cycle, and World Cup / C@LL 0UT sim.",
+    note: "Hunter control tests, WAF, data-pull pause, championship pause (system + copy-admin). Copy-admin may pause hive, as-live G0Dz1LLa M0De AUTO cycle, and World Cup / C@LL 0UT sim.",
   },
   {
     id: "live-sim",
-    name: "As-live G M0D3 AUTO + AI agents",
+    name: "As-live G0Dz1LLa M0De AUTO + AI agents",
     seo: "G-M0de AUTO live simulation",
     path: "/Godzilla-Mode",
     status: "LIVE-PAPER",
@@ -388,7 +388,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
 export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
   {
     id: "gm-auto-live",
-    name: "G M0D3 AUTO live for users",
+    name: "G0Dz1LLa M0De AUTO live for users",
     seo: "Godzilla Mode AUTO live",
     path: "/Godzilla-Mode",
     status: "LOCKED",
@@ -397,7 +397,7 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
   },
   {
     id: "gm-manual-live",
-    name: "G M0D3 M@NU@L live for users",
+    name: "G0Dz1LLa M0De M@NU@L live for users",
     seo: "Godzilla Mode MANUAL live",
     path: "/Godzilla-Mode",
     status: "LOCKED",
@@ -489,7 +489,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: false,
     status: "DONE",
     name: "LoCK3D STATUS unlocked-above-locked board + SEO GIFs",
-    detail: "UNLOCKED vs LOCKED columns. AI Bitcoin Trading Bot GIF opens G M0D3 AUTO. AI Agent Lock System GIF. Color-coded OSS Roadmap.",
+    detail: "UNLOCKED vs LOCKED columns. AI Bitcoin Trading Bot GIF opens G0Dz1LLa M0De AUTO. AI Agent Lock System GIF. Color-coded OSS Roadmap.",
   },
   {
     id: "d1c",
@@ -497,7 +497,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: false,
     status: "DONE",
     name: "As-live sim cycle + dual-admin morning report",
-    detail: "G M0D3 AUTO + AI agents run as live until 07:00 ET. Morning report 07:30 ET for system and phone-app Admin. Auto-resume 24h. Stray practice killed. Data pulls follow sim.",
+    detail: "G0Dz1LLa M0De AUTO + AI agents run as live until 07:00 ET. Morning report 07:30 ET for system and phone-app Admin. Auto-resume 24h. Stray practice killed. Data pulls follow sim.",
   },
   {
     id: "d1d",
@@ -529,7 +529,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: false,
     status: "DONE",
     name: "DEPLOY #68 fold — LoCK3D STATUS UX + morning problems",
-    detail: "Checkpoint stays 68. Click lock names to open views. Purple Expand/Collapse on LoCK3D STATUS UNLOCKED desk SIM. G M0D3 AUTO / M@NU@L names rain 2.5s then open Godzilla Mode. Live feed title AI Agent SUP3R B0WL. Morning report: Problems found last 24 hours. healLiveSim keeps pulls with sim. Stray practice killed. Auto trade LOCKED.",
+    detail: "Checkpoint stays 68. Click lock names to open views. Purple Expand/Collapse on LoCK3D STATUS UNLOCKED desk SIM. G0Dz1LLa M0De AUTO / M@NU@L names rain 2.5s then open Godzilla Mode. Live feed title AI Agent SUP3R B0WL. Morning report: Problems found last 24 hours. healLiveSim keeps pulls with sim. Stray practice killed. Auto trade LOCKED.",
   },
   {
     id: "d2",
@@ -593,7 +593,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: false,
     status: "DONE",
     name: "S1R1US App build #113 (live sim launch)",
-    detail: "Checkpoint 101 finalized and renamed. Main-branch fold for live admin simulation (G M0D3 AUTO, AI agents, PR3D1CT10N$ paper). Carbon-fiber baseline remains DEPLOY #68. Saved in Project BTD / S1R1US L@Bs. This host never places Coinbase orders.",
+    detail: "Checkpoint 101 finalized and renamed. Main-branch fold for live admin simulation (G0Dz1LLa M0De AUTO, AI agents, PR3D1CT10N$ paper). Carbon-fiber baseline remains DEPLOY #68. Saved in Project BTD / S1R1US L@Bs. This host never places Coinbase orders.",
   },
   {
     id: "d1l",

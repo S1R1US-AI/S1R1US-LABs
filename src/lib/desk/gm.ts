@@ -3,7 +3,7 @@ import { heliosCall, runBots } from "./signal";
 import { PROFIT_BTC_EXPLORER, PROFIT_BTC_RECEIVE } from "./treasury";
 import type { Candle, DeskSnapshot, HeliosCall, Stance } from "./types";
 
-export const GM_NAME = "G0DZ1LLa M0D3";
+export const GM_NAME = "G0Dz1LLa M0De";
 export const GM_CASH_MIN = 1_000;
 export const GM_CASH_MAX = 100_000;
 export const GM_CASH_STEP = 1_000;

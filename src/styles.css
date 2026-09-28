@@ -284,7 +284,7 @@
   color: var(--color-sell) !important;
 }
 
-/* G0DZ1LLa M0D3: ACCUMULATE and HIGH ACCUMULATE cycle rainbow (hue over the green lock). */
+/* G0Dz1LLa M0De: ACCUMULATE and HIGH ACCUMULATE cycle rainbow (hue over the green lock). */
 .gm-mode .call-accumulate,
 .gm-mode .call-accumulate *,
 .gm-mode .call-high-accum,
@@ -945,7 +945,7 @@ footer a.hive-nav {
   color: transparent !important;
   -webkit-text-fill-color: transparent !important;
 }
-/* Sitewide G0DZ1LLa M0D3: rainbow even when wrapped without per-letter spans. */
+/* Sitewide G0Dz1LLa M0De: rainbow even when wrapped without per-letter spans. */
 .godzilla-mode:not(.gm-rainbow),
 .leader-board:not(.gm-rainbow) {
   background-image: linear-gradient(
@@ -1151,7 +1151,7 @@ footer a[href]:not(.call1ng-bots):not(.welcome-blue):not(.forum-nav) {
 /* Selected-tab highlight matches the tab's own name color (PR3D1CT10N$ untouched —
    the PR3D1CT10N$ tab carries board-nav/gm-nav classes, so every selector here
    excludes .pred-nav; pred-nav.css keeps its gold shimmer + gold underline).
-   Rainbow-named tabs (G0DZ1LLa M0D3, L3AD3R B0ARD, H1V3 SW@RM) get the same
+   Rainbow-named tabs (G0Dz1LLa M0De, L3AD3R B0ARD, H1V3 SW@RM) get the same
    rainbow as their letters; W1S3 0WL$ Forum gets its amber owl color. */
 .desk-nav-fiber .desk-tabs a.gm-nav.is-on:not(.pred-nav),
 .desk-nav-fiber .desk-tabs a.gm-nav[data-status="active"]:not(.pred-nav),

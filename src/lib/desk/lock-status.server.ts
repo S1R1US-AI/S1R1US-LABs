@@ -217,7 +217,7 @@ export function applyMaster(locked: boolean, by: LockPlane) {
     locked ? "LIVE_OFF" : "LIVE_ON",
     locked ? "LoCK3D STATUS master LOCKED" : "LoCK3D STATUS master UNLOCKED",
     locked
-      ? "Admin locked selected LoCK3D STATUS rails. External agents, G M0D3, 7-B0T AUTO, and/or H1V3 SW@RM follow the include set. This host never places Coinbase orders."
+      ? "Admin locked selected LoCK3D STATUS rails. External agents, G0Dz1LLa M0De, 7-B0T AUTO, and/or H1V3 SW@RM follow the include set. This host never places Coinbase orders."
       : "Admin unlocked selected LoCK3D STATUS rails. Live-intent only — execute on YOUR Coinbase. This host never places Coinbase orders.",
   );
   return lockStatusPublic();

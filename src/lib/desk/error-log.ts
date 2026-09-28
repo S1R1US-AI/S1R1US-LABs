@@ -80,7 +80,7 @@ export function classifyFail(msg: string): { resolved: boolean; attention: boole
     return {
       resolved: false,
       attention: true,
-      verdict: "OPEN — G0DZ1LLa M0D3 sleeve. Report in the Godzilla Mode morning block. Do not green without a live tape.",
+      verdict: "OPEN — G0Dz1LLa M0De sleeve. Report in the Godzilla Mode morning block. Do not green without a live tape.",
     };
   }
   if (/agent-ping|\/api\/agent\/ping|calling all bots/.test(m)) {

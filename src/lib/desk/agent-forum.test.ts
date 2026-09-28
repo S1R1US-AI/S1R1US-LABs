@@ -31,7 +31,7 @@ describe("W1S3 0WL$ forum lanes", () => {
     );
     assert.equal(pred.ok, true);
     const live = inspectForumBody(
-      "How best to go live for G M0D3 AUTO and the prediction market? Improve the desk before 2026-12-01. Accumulate bitcoin. Never sell.",
+      "How best to go live for G0Dz1LLa M0De AUTO and the prediction market? Improve the desk before 2026-12-01. Accumulate bitcoin. Never sell.",
     );
     assert.equal(live.ok, true);
   });
@@ -64,13 +64,13 @@ describe("W1S3 0WL$ forum lanes", () => {
         at: new Date().toISOString(),
         name: "7-B0T desk",
         kind: "other",
-        body: "How best to go live for G M0D3 AUTO / MANUAL before 2026-12-01. This host never places Coinbase orders. Never sell.",
+        body: "How best to go live for G0Dz1LLa M0De AUTO / MANUAL before 2026-12-01. This host never places Coinbase orders. Never sell.",
       },
     ]);
     assert.match(g.pred, /Pred:/);
     assert.match(g.pred, /overlay/);
     assert.match(g.system, /System:/);
-    assert.match(g.system, /G M0D3/);
+    assert.match(g.system, /G0Dz1LLa M0De/);
     assert.ok(g.pred.length < 160);
     assert.ok(g.system.length < 160);
   });

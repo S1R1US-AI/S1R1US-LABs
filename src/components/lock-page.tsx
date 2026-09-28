@@ -93,7 +93,7 @@ export function LockPage() {
           "AI trading bots",
           "Bitcoin trading agents",
           "7-B0T AUTO",
-          "G M0D3 AUTO",
+          "G0Dz1LLa M0De AUTO",
           "PR3D1CT10N$",
         ],
         hasPart: LOCK_IDS.map((id) => ({

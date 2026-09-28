@@ -1,5 +1,5 @@
 /**
- * As-live G M0D3 AUTO + AI-agent simulation until go-live.
+ * As-live G0Dz1LLa M0De AUTO + AI-agent simulation until go-live.
  * Daily: run until 07:00 ET, pause, morning report 07:30 ET, resume.
  * System Admin and copy-admin may pause. Championship pause stays system-only.
  * Stray practice AUTO ticks stay killed. This host never places Coinbase orders.
@@ -307,7 +307,7 @@ export function setLiveSimStatus(status: LiveSimStatus, by: Exclude<LiveSimBy, n
   syncPulls(s.status === "LIVE");
   stampGoLiveNotice(
     s.status === "LIVE" ? "SIM_LIVE" : "SIM_PAUSED",
-    s.status === "LIVE" ? "G M0D3 AUTO · AI agents simulation LIVE" : "G M0D3 AUTO · AI agents simulation PAUSED",
+    s.status === "LIVE" ? "G0Dz1LLa M0De AUTO · AI agents simulation LIVE" : "G0Dz1LLa M0De AUTO · AI agents simulation PAUSED",
     liveSimNote(s.status, s.checkpoint),
   );
   return liveSimPublic();

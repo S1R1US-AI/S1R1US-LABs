@@ -433,7 +433,7 @@ export function LaunchDesk() {
             </p>
             <SeoImage
               src={COMPANY_X_BANNER}
-              desc="S1R1US AI (@S1R1US_AI) · G0DZ1LLa M0D3 (Godzilla mode) company X header · S1R1US Labs"
+              desc="S1R1US AI (@S1R1US_AI) · G0Dz1LLa M0De (Godzilla mode) company X header · S1R1US Labs"
               className="mt-3 w-full max-w-xl rounded-md border border-rule object-cover"
             />
             <div className="mt-3 flex flex-wrap gap-2">

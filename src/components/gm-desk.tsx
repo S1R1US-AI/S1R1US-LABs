@@ -74,7 +74,7 @@ export function GmDesk() {
   const [liveErr, setLiveErr] = useState<string | null>(null);
 
   useEffect(() => {
-    // 2.5s G0DZ1LLa M0D3 matrix rain every time /gm opens. Never locks.
+    // 2.5s G0Dz1LLa M0De matrix rain every time /gm opens. Never locks.
     rainGmBurst(GM_BURST_MS);
   }, []);
 
@@ -609,7 +609,7 @@ function AutoLiveFeed({
   return (
     <Panel className="mt-5" kicker="AUTO" title="Live tape" kickerClass="text-high" titleClass="text-high">
       <p className="text-sm text-muted">
-        Live Coinbase tape. G M0D3 AUTO reads it with 7-B0T. Coinbase orders stay off until Live is unlocked.
+        Live Coinbase tape. G0Dz1LLa M0De AUTO reads it with 7-B0T. Coinbase orders stay off until Live is unlocked.
       </p>
       <div className="mt-3 grid gap-3 sm:grid-cols-4 font-mono text-sm">
         <div>

@@ -26,9 +26,9 @@ export const LOCK_LIVE_VS_SIM = {
   deadline: LOCK_DEADLINE,
   liveTape: "Status only. TRUE LIVE means Coinbase last / public feeds. SIMULATED means last-good snapshot while data-pull is paused. Admin cannot fake true live from LoCK3D STATUS. Live tape is not a lock.",
   deskMode:
-    "SIM = paper / simulated operation. LIVE = live-intent only. Unlock never places Coinbase orders on this host. Agents and G M0D3 run on THEIR Coinbase.",
+    "SIM = paper / simulated operation. LIVE = live-intent only. Unlock never places Coinbase orders on this host. Agents and G0Dz1LLa M0De run on THEIR Coinbase.",
   games:
-    "Championships (L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, C@LL 0UT, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, G M0D3 AUTO) tick paper books against live Coinbase last until an Admin pauses them. This is proof of concept. Hard deadline for go-live: 2026-12-01 ET.",
+    "Championships (L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, C@LL 0UT, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, G0Dz1LLa M0De AUTO) tick paper books against live Coinbase last until an Admin pauses them. This is proof of concept. Hard deadline for go-live: 2026-12-01 ET.",
   practice:
     "Practice and paper fills never arm Coinbase. Stray practice runs cannot create live orders. LIVE_UNLOCKED stays false until operator unlock after counsel.",
 };
@@ -41,7 +41,7 @@ export const LOCK_HOW_TO_TOGGLE = [
       "Unlock Admin (X the system operator + name + password + dual Yubi).",
       "Open Console. The padlock GIF is the control.",
       "Tap a padlock to toggle that rail LOCKED / UNLOCKED.",
-      "Click the lock NAME to open that view (AI Agents, H1V3 SW@RM, 7-B0T AUTO, G M0D3 AUTO / M@NU@L, AI Agents LIVE).",
+      "Click the lock NAME to open that view (AI Agents, H1V3 SW@RM, 7-B0T AUTO, G0Dz1LLa M0De AUTO / M@NU@L, AI Agents LIVE).",
       "Check include to pick which rails Lock selected / Unlock selected hit.",
       "SIM or LIVE sets desk mode. Mode does not create orders here.",
       "Championship World Cup / C@LL 0UT pause stays Admin → Security. Not this board.",
@@ -52,10 +52,10 @@ export const LOCK_HOW_TO_TOGGLE = [
     where: "/app/admin → LoCK3D STATUS",
     steps: [
       "Unlock copy Admin on the downloaded app.",
-      "Same padlock GIFs: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM.",
+      "Same padlock GIFs: AI Agents, 7-B0T AUTO, G0Dz1LLa M0De AUTO, G0Dz1LLa M0De M@NU@L, AI Agents LIVE, H1V3 SW@RM.",
       "Copy-admin may pause H1V3 SW@RM.",
-      "Copy-admin may pause the as-live G M0D3 AUTO / AI agents cycle from Console.",
-      "Copy-admin may pause World Cup / C@LL 0UT championship simulation, H1V3 SW@RM, and the as-live G M0D3 AUTO cycle. Copy-admin cannot see the system Admin research paper.",
+      "Copy-admin may pause the as-live G0Dz1LLa M0De AUTO / AI agents cycle from Console.",
+      "Copy-admin may pause World Cup / C@LL 0UT championship simulation, H1V3 SW@RM, and the as-live G0Dz1LLa M0De AUTO cycle. Copy-admin cannot see the system Admin research paper.",
     ],
   },
   {
@@ -79,7 +79,7 @@ export const LOCK_TUTORIAL = [
   {
     id: "tape",
     title: "1. Read the live tape",
-    body: "Open S1R1US Live Tape. Bots 1–6 vote orthogonal lanes. 7-B0T issues the accumulation call. G M0D3 AUTO is a separate aggressive sleeve. Education only. Not financial advice.",
+    body: "Open S1R1US Live Tape. Bots 1–6 vote orthogonal lanes. 7-B0T issues the accumulation call. G0Dz1LLa M0De AUTO is a separate aggressive sleeve. Education only. Not financial advice.",
   },
   {
     id: "agent",
@@ -104,7 +104,7 @@ export const LOCK_TUTORIAL = [
   {
     id: "go-live",
     title: "6. Proof of concept → soon live",
-    body: "S1R1US App build #113 (live sim launch) is proof of concept. Carbon-fiber baseline DEPLOY #68. Auto trade LOCKED. Practice cannot arm Coinbase. Go-live path started 2026-09-05. HARD DEADLINE 2026-12-01 09:00 America/New_York after counsel. Until then, G M0D3 AUTO and AI agents run as-live on live tape (auto-pause 07:00 ET, morning report 07:30 ET, resume). Championship World Cup pause stays system Admin.",
+    body: "S1R1US App build #113 (live sim launch) is proof of concept. Carbon-fiber baseline DEPLOY #68. Auto trade LOCKED. Practice cannot arm Coinbase. Go-live path started 2026-09-05. HARD DEADLINE 2026-12-01 09:00 America/New_York after counsel. Until then, G0Dz1LLa M0De AUTO and AI agents run as-live on live tape (auto-pause 07:00 ET, morning report 07:30 ET, resume). Championship World Cup pause stays system Admin.",
   },
   {
     id: "discover",
@@ -122,7 +122,7 @@ export const LOCK_RAILS: { id: LockId; name: string; seo: string; hint: string }
 
 export const LOCK_AGENT_WELCOME = {
   hello: "External AI agents and research Quants are welcome to LoCK3D STATUS, the paper games, and this open-source project.",
-  ask: "Please participate in the simulation of games on this system: L3AD3R B0ARD, SUP3R B0WL, C@LL 0UT, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, and G M0D3 AUTO. External AI agents and research Quants are invited.",
+  ask: "Please participate in the simulation of games on this system: L3AD3R B0ARD, SUP3R B0WL, C@LL 0UT, W0rLd CUP of AI Quant Trading BTC, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, and G0Dz1LLa M0De AUTO. External AI agents and research Quants are invited.",
   page: "https://s1r1us.ai/l0ck",
   api: "https://s1r1us.ai/api/agent/locks",
   faq: "https://s1r1us.ai/faq#lock3d-status",

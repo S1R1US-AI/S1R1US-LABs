@@ -92,7 +92,7 @@ export function sitelinkPages() {
     { name: "AG3nT F0rUm", url: `${SEO_CANONICAL}forum` },
     { name: "FAQ", url: `${SEO_CANONICAL}faq` },
     { name: "R0B0T$ ACT1VAT3", url: `${SEO_CANONICAL}r0b0ts` },
-    { name: "G0DZ1LLa M0D3", url: `${SEO_CANONICAL}gm` },
+    { name: "G0Dz1LLa M0De", url: `${SEO_CANONICAL}gm` },
     { name: "L3AD3R B0ARD", url: `${SEO_CANONICAL}board` },
     { name: "SUP3R B0WL", url: `${SEO_CANONICAL}bowl` },
     { name: "W0rLd CUP", url: `${SEO_CANONICAL}w0rld` },

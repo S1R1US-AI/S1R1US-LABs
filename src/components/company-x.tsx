@@ -21,7 +21,7 @@ export function CompanyAvatar({
   return (
     <SeoImage
       src={COMPANY_X_AVATAR}
-      desc={`${COMPANY_X_LOGO_NAME} · ${COMPANY_X_LABEL} · ${LABS_NAME} ${APP_NAME} · G0DZ1LLa M0D3 hologram`}
+      desc={`${COMPANY_X_LOGO_NAME} · ${COMPANY_X_LABEL} · ${LABS_NAME} ${APP_NAME} · G0Dz1LLa M0De hologram`}
       width={size}
       height={size}
       className={cn("shrink-0 rounded-full bg-black object-cover", className)}

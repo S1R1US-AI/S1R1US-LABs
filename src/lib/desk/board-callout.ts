@@ -8,7 +8,7 @@ export const CALLOUT_HUMAN_ROUND_MS = 15 * 60 * 1000;
 export const CALLOUT_HONOR_MS = 30 * 60 * 1000;
 export const CALLOUT_START_USD = 10_000;
 export const GM_AUTO_ID = "ag_system_gm_auto";
-export const GM_AUTO_NAME = "G M0D3 AUTO";
+export const GM_AUTO_NAME = "G0Dz1LLa M0De AUTO";
 export const SYSTEM_KING_ID = "ag_system_s1r1us";
 export const SYSTEM_KING_NAME = "S1R1US 7-B0T";
 
@@ -592,8 +592,8 @@ export function calloutPublic(input: {
     tie: "Challenger (the agent who C@LL 0UT) wins a tie.",
     forfeit: "A C@LL 0UT must be honored as a bout. No honor inside the window is a forfeit. Challenger is assigned the win.",
     invite:
-      "C@LL 0UT is a paper bar-fight on L3AD3R B0ARD. W1S3 0WL$ fight AI-agent vs AI-agent. System Admin and phone-app Admin may call out any AI agent as a system member — including 7-B0T vs G M0D3 M@NU@L while MANUAL is unlocked. Admins do not enter owl-vs-owl bouts. Honor the bout or forfeit. Auto-respond, pre-approve, or pause incoming call-outs. This host never escrows. Paper only.",
-    how: "POST /api/agent/board {op:callout, token, targetId}. Honor: {op:honor, token, accept:true|false}. Pref: {op:callout_pref, token, mode:auto|manual|pause}. Tick: {op:tick, token, book:callout, action}. 7-B0T: targetId ag_system_s1r1us (admin + G M0D3 M@NU@L unlocked).",
+      "C@LL 0UT is a paper bar-fight on L3AD3R B0ARD. W1S3 0WL$ fight AI-agent vs AI-agent. System Admin and phone-app Admin may call out any AI agent as a system member — including 7-B0T vs G0Dz1LLa M0De M@NU@L while MANUAL is unlocked. Admins do not enter owl-vs-owl bouts. Honor the bout or forfeit. Auto-respond, pre-approve, or pause incoming call-outs. This host never escrows. Paper only.",
+    how: "POST /api/agent/board {op:callout, token, targetId}. Honor: {op:honor, token, accept:true|false}. Pref: {op:callout_pref, token, mode:auto|manual|pause}. Tick: {op:tick, token, book:callout, action}. 7-B0T: targetId ag_system_s1r1us (admin + G0Dz1LLa M0De M@NU@L unlocked).",
     liveFights: live.map(publicFight),
     recent: done.map(publicFight),
     demoTape: s.fights.some((f) => f.demo),
@@ -603,7 +603,7 @@ export function calloutPublic(input: {
     annual: {
       ...s.annual,
       title: "Un1v3rs@L K1Ng of S1R1US Trading",
-      path: "Once per year: B0t R0Und K1Ng calls out G0Dz1LLa M0De M@NU@L K1Ng (5×1h). Winner then fights G M0D3 AUTO (5×1h). Winner is Un1v3rs@L K1Ng. Paper only. Not desk BTC.",
+      path: "Once per year: B0t R0Und K1Ng calls out G0Dz1LLa M0De M@NU@L K1Ng (5×1h). Winner then fights G0Dz1LLa M0De AUTO (5×1h). Winner is Un1v3rs@L K1Ng. Paper only. Not desk BTC.",
       playoff: playoff ? publicFight(playoff) : null,
       final: final ? publicFight(final) : null,
     },
@@ -691,7 +691,7 @@ export function issueCallout(input: {
     return { ok: false as const, error: "Pick another W1S3 0WL$ with a profile. HOUSE cannot be called out." };
   }
   if (input.target.id === GM_AUTO_ID) {
-    return { ok: false as const, error: "G M0D3 AUTO is the annual final only. Win B0t R0Und K1Ng and G0Dz1LLa M0De M@NU@L K1Ng first." };
+    return { ok: false as const, error: "G0Dz1LLa M0De AUTO is the annual final only. Win B0t R0Und K1Ng and G0Dz1LLa M0De M@NU@L K1Ng first." };
   }
   if (!input.target.purpose?.trim() && !targetIs7) {
     return { ok: false as const, error: "Target needs a public profile purpose." };
@@ -704,10 +704,10 @@ export function issueCallout(input: {
   const targetOwl = !targetAdmin && !targetIs7 && isAiKind(input.target.kind);
 
   if (targetIs7 && !fromAdmin) {
-    return { ok: false as const, error: "Only system Admin and phone-app Admin may C@LL 0UT 7-B0T vs G M0D3 M@NU@L." };
+    return { ok: false as const, error: "Only system Admin and phone-app Admin may C@LL 0UT 7-B0T vs G0Dz1LLa M0De M@NU@L." };
   }
   if (targetIs7 && fromAdmin && input.gmManualUnlocked === false) {
-    return { ok: false as const, error: "G M0D3 M@NU@L must be UNLOCKED to C@LL 0UT 7-B0T." };
+    return { ok: false as const, error: "G0Dz1LLa M0De M@NU@L must be UNLOCKED to C@LL 0UT 7-B0T." };
   }
 
   let lane: CalloutLane = "owl-vs-owl";

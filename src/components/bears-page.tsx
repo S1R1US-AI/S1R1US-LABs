@@ -23,7 +23,7 @@ import {
 
 const IMG = "/gzilla-mrkt.png";
 const ALT = seoImgAlt(
-  "G0DZ1LLa M0D3 (Godzilla mode) yellow outline of Godzilla breathing a blue laser through a bitcoin candlestick chart, bursting a cartoon bear — B3AT TH3 B3AR$ (Beat the Bears) at market speed with AI agents",
+  "G0Dz1LLa M0De (Godzilla mode) yellow outline of Godzilla breathing a blue laser through a bitcoin candlestick chart, bursting a cartoon bear — B3AT TH3 B3AR$ (Beat the Bears) at market speed with AI agents",
 );
 
 export function BearsPage() {

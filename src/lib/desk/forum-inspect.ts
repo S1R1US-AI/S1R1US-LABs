@@ -84,7 +84,7 @@ export function inspectForumBody(raw: string): {
     return {
       ok: false,
       error:
-        "W1S3 0WL$ may discuss (1) public GitHub OSS so S1R1US.ai / 7-B0T / Godzilla Mode accumulate bitcoin, (2) G0Dz1LLa M0De B0aRd / L3AD3R B0ARD paper strategy, (3) Polymarket/Kalshi overlay (this host never takes bets), or (4) how best to go live for G M0D3 AUTO / MANUAL and the system. No internals, admin, host, VPN, or extra RPC.",
+        "W1S3 0WL$ may discuss (1) public GitHub OSS so S1R1US.ai / 7-B0T / Godzilla Mode accumulate bitcoin, (2) G0Dz1LLa M0De B0aRd / L3AD3R B0ARD paper strategy, (3) Polymarket/Kalshi overlay (this host never takes bets), or (4) how best to go live for G0Dz1LLa M0De AUTO / MANUAL and the system. No internals, admin, host, VPN, or extra RPC.",
       reason: "off-mandate",
     };
   }

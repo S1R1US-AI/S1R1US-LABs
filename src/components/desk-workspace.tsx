@@ -11,7 +11,7 @@ import { Lock3dRail } from "@/components/lock3d-status";
 import { AUTO_RUN_CASH, AUTO_RUN_LABEL } from "@/lib/desk/auto-run";
 import { DEFAULT_GM_VARS, GM_NAME, gmCall } from "@/lib/desk/gm";
 import { SeoImage } from "@/components/seo-image";
-import { GIF_AI_BTC_BOT, GIF_AI_BTC_BOT_EQ, GIF_AI_BTC_BOT_NAME, SEO_TAB_GM_AUTO, TAB_GM_AUTO, TAB_GM_AUTO_TAIL } from "@/lib/brand";
+import { GIF_AI_BTC_BOT, GIF_AI_BTC_BOT_EQ, GIF_AI_BTC_BOT_NAME, SEO_TAB_GM_AUTO, TAB_GM_AUTO } from "@/lib/brand";
 
 function isPurchase(stance: string | undefined) {
   if (!stance) return false;
@@ -195,11 +195,8 @@ export function DeskWorkspace({
           ) : null}
           {gm ? (
             <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 py-2 text-xs" title={`${TAB_GM_AUTO} (${SEO_TAB_GM_AUTO})`}>
-              <span className="w-4 shrink-0">
-                <GmRainbow text="G" />
-              </span>
               <span className="min-w-0 flex-1 leading-snug">
-                <GmRainbow text={TAB_GM_AUTO_TAIL} />
+                <GmRainbow text={TAB_GM_AUTO} />
               </span>
               <span className={cn("shrink-0", callStanceClass(gm.stance))}>{gm.stance}</span>
             </div>
@@ -406,8 +403,8 @@ function HoloGifExpand() {
                 to="/Godzilla-Mode"
                 hash="auto"
                 className="min-h-11 text-sm font-semibold text-oss hover:underline"
-                title={`${GIF_AI_BTC_BOT_EQ} · open G M0D3 AUTO`}
-                aria-label={`${GIF_AI_BTC_BOT_EQ} · open G M0D3 AUTO`}
+                title={`${GIF_AI_BTC_BOT_EQ} · open G0Dz1LLa M0De AUTO`}
+                aria-label={`${GIF_AI_BTC_BOT_EQ} · open G0Dz1LLa M0De AUTO`}
               >
                 {GIF_AI_BTC_BOT_EQ}
               </Link>

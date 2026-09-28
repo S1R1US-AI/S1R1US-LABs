@@ -325,7 +325,7 @@ function GmMorningSection() {
         AUTO live tape
       </p>
       <p className="mt-2 text-sm text-muted">
-        G M0D3 AUTO reads the live Coinbase tape with 7-B0T. Coinbase orders stay off until Live is unlocked.
+        G0Dz1LLa M0De AUTO reads the live Coinbase tape with 7-B0T. Coinbase orders stay off until Live is unlocked.
       </p>
       {error ? <p className="mt-2 font-mono text-xs text-down">{error}</p> : null}
       {rows.length ? (
@@ -611,7 +611,7 @@ function HealthMorningSection() {
         Function {health.function.score}/100 · Security {health.security.score}/100 · Design {health.design.score}/100 · weights 40/40/20
       </p>
       <p className="mt-2 text-sm leading-relaxed text-muted">
-        Live Coinbase create {health.liveUnlocked ? "UNLOCKED" : "LOCKED"}. Practice cannot arm Coinbase. Checkpoint {health.checkpoint} stays synced with the as-live simulation. Copy-admin may pause H1V3 SW@RM, the as-live G M0D3 AUTO cycle, and championship sim.
+        Live Coinbase create {health.liveUnlocked ? "UNLOCKED" : "LOCKED"}. Practice cannot arm Coinbase. Checkpoint {health.checkpoint} stays synced with the as-live simulation. Copy-admin may pause H1V3 SW@RM, the as-live G0Dz1LLa M0De AUTO cycle, and championship sim.
       </p>
       <ul className="mt-3 grid gap-2 sm:grid-cols-3">
         {axes.map((a) => (
@@ -775,7 +775,7 @@ function ProblemsMorningSection() {
         </ul>
       ) : (
         <p className="mt-2 text-sm leading-relaxed text-fg">
-          None. G M0D3 AUTO + AI agents simulation is running with pause/stop for system and phone-app Admin. Data
+          None. G0Dz1LLa M0De AUTO + AI agents simulation is running with pause/stop for system and phone-app Admin. Data
           pulls follow sim. Stray practice is killed. Polymarket/Kalshi stay a 7-B0T overlay. This host never places Coinbase
           orders.
         </p>

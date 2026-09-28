@@ -43,7 +43,7 @@ type DeskSeed = {
 };
 
 const SEEDS: DeskSeed[] = [
-  { id: "gm-auto", name: "G M0D3 AUTO", kind: "gm", system: true, bias: 0.62 },
+  { id: "gm-auto", name: "G0Dz1LLa M0De AUTO", kind: "gm", system: true, bias: 0.62 },
   { id: "app-admin", name: "Phone Admin", kind: "admin", system: true, bias: 0.48 },
   { id: "grok-test", name: "Grok · TEST", kind: "grok", system: false, bias: 0.55 },
   { id: "claude-test", name: "Claude · TEST", kind: "claude", system: false, bias: 0.44 },
@@ -343,7 +343,7 @@ export function predBookPublic(input?: { px?: number }) {
       lastPx: s.lastPx,
       ticks: s.ticks,
       note: live
-        ? `${tag} PR3D1CT10N$ paper book LIVE on Coinbase last (or last-good tape). G M0D3 AUTO always plays. Fake ${PRED_TOKEN}. This host never takes bets.`
+        ? `${tag} PR3D1CT10N$ paper book LIVE on Coinbase last (or last-good tape). G0Dz1LLa M0De AUTO always plays. Fake ${PRED_TOKEN}. This host never takes bets.`
         : `${tag} PR3D1CT10N$ PAUSED with the admin simulation. Last tape held. Continue from Admin Console.`,
     },
     markets: s.markets,

@@ -142,7 +142,7 @@ export function PredPage() {
                   </li>
                 ))
               ) : (
-                <li className="py-2 text-sm text-muted">G M0D3 AUTO seats on the first tick.</li>
+                <li className="py-2 text-sm text-muted">G0Dz1LLa M0De AUTO seats on the first tick.</li>
               )}
             </ol>
           </Panel>

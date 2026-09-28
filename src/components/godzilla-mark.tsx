@@ -21,7 +21,7 @@ export function GodzillaMark({ className, beam = "red" }: { className?: string; 
   const trail = beam === "green" ? "#6fbf63" : "#ff7a18";
   return (
     <svg viewBox="0 0 72 40" className={className} aria-hidden fill="currentColor">
-      <title>G0DZ1LLa M0D3 (Godzilla Mode) — AI agents bitcoin accumulation agent</title>
+      <title>G0Dz1LLa M0De (Godzilla Mode) — AI agents bitcoin accumulation agent</title>
       <desc>S1R1US Labs Godzilla mark. AI agents. bitcoin accumulation agent. AI trading bots. Bitcoin trading agents.</desc>
       {/* dorsal fins */}
       <path d="M14 4l3 10H12zm7-2l3 12h-5zm7 1l4 11h-6zm8 2l5 9h-7z" />
@@ -78,7 +78,7 @@ export function GoldCss({ text, className }: { text: string; className?: string 
   );
 }
 
-/** Sitewide / systemwide label: G0DZ1LLa M0D3 always rainbow. SEO = Godzilla Mode. */
+/** Sitewide / systemwide label: G0Dz1LLa M0De always rainbow. SEO = Godzilla Mode. */
 export function GodzillaModeLabel({ className }: { className?: string }) {
   return (
     <span title={`${TAB_GM} (${SEO_TAB_GM})`}>
@@ -87,7 +87,7 @@ export function GodzillaModeLabel({ className }: { className?: string }) {
   );
 }
 
-/** Sitewide / systemwide label: G M0D3 AUTO always rainbow. SEO = Godzilla Mode. */
+/** Sitewide / systemwide label: G0Dz1LLa M0De AUTO always rainbow. SEO = Godzilla Mode. */
 export function GmAutoLabel({ className }: { className?: string }) {
   return (
     <span title={`${TAB_GM_AUTO} (${SEO_TAB_GM_AUTO})`}>
@@ -129,12 +129,12 @@ export function HiveSwarmLabel({ className }: { className?: string }) {
   );
 }
 
-const RAINBOW_BITS = [TAB_GM, TAB_GM_AUTO, "G M0D3 M@NU@L", MENU_BOARD, TAB_CALLOUT, TAB_KING_MANUAL, TAB_KING_ROUND, TAB_KING_UNI, TAB_BOWL, TAB_CUP, TAB_HIVE];
+const RAINBOW_BITS = [TAB_GM, TAB_GM_AUTO, "G0Dz1LLa M0De M@NU@L", "G M0D3 AUTO", "G M0D3 M@NU@L", MENU_BOARD, TAB_CALLOUT, TAB_KING_MANUAL, TAB_KING_ROUND, TAB_KING_UNI, TAB_BOWL, TAB_CUP, TAB_HIVE];
 const GOLD_BITS = ["S1R1US Pr3d1ctions", "Pr3d1ctions"];
 
 /** Paint branded titles rainbow in running text. Prediction market names are gold. */
 export function RainbowGodzillaText({ text }: { text: string }) {
-  const parts = text.split(/(S1R1US Pr3d1ctions|Pr3d1ctions|G0DZ1LLa M0D3|G M0D3 AUTO|G M0D3 M@NU@L|L3AD3R B0ARD|C@LL 0UT|G0Dz1LLa M0De M@NU@L K1Ng|GM M@NU@L K1Ng|B0t R0Und K1Ng|Un1v3rs@L K1Ng|SUP3R B0WL|W0rLd CUP|H1V3 SW@RM)/g);
+  const parts = text.split(/(S1R1US Pr3d1ctions|Pr3d1ctions|G0Dz1LLa M0De M@NU@L K1Ng|G0Dz1LLa M0De M@NU@L|G0Dz1LLa M0De AUTO|G0Dz1LLa M0De|G M0D3 AUTO|G M0D3 M@NU@L|L3AD3R B0ARD|C@LL 0UT|GM M@NU@L K1Ng|B0t R0Und K1Ng|Un1v3rs@L K1Ng|SUP3R B0WL|W0rLd CUP|H1V3 SW@RM)/g);
   if (parts.length === 1) return <>{text}</>;
   return (
     <>

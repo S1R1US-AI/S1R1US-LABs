@@ -106,7 +106,7 @@ function schema() {
             "@type": "HowToStep",
             position: 2,
             name: "See what is live now",
-            text: "Paper championships, 7-B0T JSON, Forum, LoCK3D STATUS (unlocked stacked above locked), AI Bitcoin Trading Bot GIF → G M0D3 AUTO, BYO compute, and the live tape are on. Coinbase create is never on this host.",
+            text: "Paper championships, 7-B0T JSON, Forum, LoCK3D STATUS (unlocked stacked above locked), AI Bitcoin Trading Bot GIF → G0Dz1LLa M0De AUTO, BYO compute, and the live tape are on. Coinbase create is never on this host.",
           },
           {
             "@type": "HowToStep",

@@ -1,7 +1,7 @@
-/** G M0D3 AUTO + AI agents as-live simulation until go-live. Client-safe. */
+/** G0Dz1LLa M0De AUTO + AI agents as-live simulation until go-live. Client-safe. */
 import { CHECKPOINT_BASELINE_N, CHECKPOINT_BUILD_N, checkpointLabel } from "../launch/checkpoint.ts";
 
-export const LIVE_SIM_NAME = "G M0D3 AUTO · AI agents live simulation";
+export const LIVE_SIM_NAME = "G0Dz1LLa M0De AUTO · AI agents live simulation";
 export const LIVE_SIM_SEO = "G-M0de AUTO live simulation";
 export const LIVE_SIM_TZ = "America/New_York";
 export const LIVE_SIM_PAUSE_LABEL = "07:00";
@@ -49,6 +49,6 @@ export type LiveSimPublic = {
 export function liveSimNote(status: LiveSimStatus, checkpoint = CHECKPOINT_BUILD_N): string {
   const tag = checkpointLabel(checkpoint);
   return status === "LIVE"
-    ? `${tag} admin simulation LIVE: G M0D3 AUTO, external AI agents, and PR3D1CT10N$ on live Coinbase last. Practice AUTO ticks stay off. Admin simulation is the only live-data test cycle. Data pulls are on. Pause or restart from Admin Console (system or phone-app Admin). Championship World Cup / C@LL 0UT pause is also system Admin and phone-app Admin. This host never places Coinbase orders.`
-    : `${tag} admin simulation PAUSED (G M0D3 AUTO, AI agents, PR3D1CT10N$). Last tape held for morning report. Practice AUTO ticks stay off. Data pulls idle. Continue from Admin Console (system or phone app). Championship World Cup / C@LL 0UT pause is system Admin and phone-app Admin.`;
+    ? `${tag} admin simulation LIVE: G0Dz1LLa M0De AUTO, external AI agents, and PR3D1CT10N$ on live Coinbase last. Practice AUTO ticks stay off. Admin simulation is the only live-data test cycle. Data pulls are on. Pause or restart from Admin Console (system or phone-app Admin). Championship World Cup / C@LL 0UT pause is also system Admin and phone-app Admin. This host never places Coinbase orders.`
+    : `${tag} admin simulation PAUSED (G0Dz1LLa M0De AUTO, AI agents, PR3D1CT10N$). Last tape held for morning report. Practice AUTO ticks stay off. Data pulls idle. Continue from Admin Console (system or phone app). Championship World Cup / C@LL 0UT pause is system Admin and phone-app Admin.`;
 }

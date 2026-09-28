@@ -6,7 +6,7 @@ import { APP_NAME } from "@/lib/brand";
 
 const IDLE_MS = SAVER_IDLE_MS;
 const BURST_MS = GM_BURST_MS;
-const GM_SEQ = "G0DZ1LLa M0D3";
+const GM_SEQ = "G0Dz1LLa M0De";
 const CLASSIC =
   "AI搭載のビットコイン蓄積器へようこそ、R0B0T0氏。私たちはAIビットコインヘッジトレーディングデスクです。バイ、コンピュート。420420420420420420420420420";
 
@@ -25,7 +25,7 @@ type Rain = "classic" | "gm";
 
 const burstFns = new Set<(ms: number) => void>();
 
-/** 3 s Matrix rain on every G0DZ1LLa M0D3 tab click / /Godzilla-Mode open — never locks the session. */
+/** 3 s Matrix rain on every G0Dz1LLa M0De tab click / /Godzilla-Mode open — never locks the session. */
 export function rainGmBurst(ms = BURST_MS) {
   for (const fn of burstFns) fn(ms);
 }
@@ -37,7 +37,7 @@ function rainbowAt(tMs: number, col: number, row: number) {
   return RAINBOW[Math.floor(i) % RAINBOW.length] ?? "#3dff1a";
 }
 
-/** GM rain only on the G0DZ1LLa M0D3 tab. Every other view uses classic rain. */
+/** GM rain only on the G0Dz1LLa M0De tab. Every other view uses classic rain. */
 export function gmRainActive() {
   const path = typeof window !== "undefined" ? window.location.pathname.replace(/\/+$/, "") || "/" : "";
   if (path === "/Godzilla-Mode" || path.toLowerCase() === "/godzilla-mode") return true;
@@ -283,7 +283,7 @@ export function MatrixSaver() {
     <div
       className={burst ? "pointer-events-none fixed inset-0 z-[90] bg-bg/80" : "fixed inset-0 z-[90] bg-bg"}
       role="presentation"
-      aria-label={burst ? "G0DZ1LLa M0D3" : saver ? "Matrix classic screensaver. Move to continue." : "Locked. Sign in again to continue."}
+      aria-label={burst ? "G0Dz1LLa M0De" : saver ? "Matrix classic screensaver. Move to continue." : "Locked. Sign in again to continue."}
       onPointerDown={burst || saver ? undefined : () => window.location.assign("/login")}
       onKeyDown={burst || saver ? undefined : () => window.location.assign("/login")}
     >

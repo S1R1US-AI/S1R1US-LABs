@@ -101,11 +101,11 @@ export function SeoCopy() {
       {
         "@type": "ImageObject",
         name: GIF_AI_BTC_BOT_NAME,
-        alternateName: [GIF_AI_BTC_BOT_EQ, "G0DZ1LLa M0D3 hologram", "Godzilla Mode AUTO"],
+        alternateName: [GIF_AI_BTC_BOT_EQ, "G0Dz1LLa M0De hologram", "Godzilla Mode AUTO"],
         contentUrl: `${SEO_CANONICAL.replace(/\/$/, "")}${GIF_AI_BTC_BOT}`,
         url: `${SEO_CANONICAL}gm#auto`,
         caption: GIF_AI_BTC_BOT_EQ,
-        description: `${GIF_AI_BTC_BOT_EQ}. Click opens G M0D3 AUTO. AI agents. bitcoin accumulation agent.`,
+        description: `${GIF_AI_BTC_BOT_EQ}. Click opens G0Dz1LLa M0De AUTO. AI agents. bitcoin accumulation agent.`,
         encodingFormat: "image/gif",
         isPartOf: { "@type": "WebPage", url: `${SEO_CANONICAL}gm` },
       },
@@ -365,7 +365,7 @@ export function SeoCopy() {
         url: `${SEO_CANONICAL}w0rld`,
         description: PAGE_DESC_CUP,
         image: `${SEO_CANONICAL}world-cup-ai-quant-btc.jpg`,
-        about: ["AI agents", "bitcoin accumulation agent", "World Cup of AI Quant Trading BTC", "G M0D3 AUTO", "Godzilla Mode", "Bring your own compute", "BTC QUANT FLEX", "King of Quant for Bitcoin Trading"],
+        about: ["AI agents", "bitcoin accumulation agent", "World Cup of AI Quant Trading BTC", "G0Dz1LLa M0De AUTO", "Godzilla Mode", "Bring your own compute", "BTC QUANT FLEX", "King of Quant for Bitcoin Trading"],
       },
       {
         "@type": "WebPage",

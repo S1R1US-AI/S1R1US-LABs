@@ -24,7 +24,7 @@ try {
 const purpose = "Accumulate bitcoin on Godzilla Mode MANUAL paper. Never sell. Never short.";
 
 describe("board-callout", { concurrency: false }, () => {
-  it("rejects HOUSE, self, G M0D3 AUTO, and missing profiles", () => {
+  it("rejects HOUSE, self, G0Dz1LLa M0De AUTO, and missing profiles", () => {
     const house = issueCallout({
       from: { id: "ag_h", name: "H", house: true, purpose },
       target: { id: "ag_t", name: "T", purpose },
@@ -45,7 +45,7 @@ describe("board-callout", { concurrency: false }, () => {
 
     const auto = issueCallout({
       from: { id: "ag_a", name: "A", purpose },
-      target: { id: GM_AUTO_ID, name: "G M0D3 AUTO", purpose },
+      target: { id: GM_AUTO_ID, name: "G0Dz1LLa M0De AUTO", purpose },
     });
     assert.equal(auto.ok, false);
   });
@@ -184,7 +184,7 @@ describe("board-callout", { concurrency: false }, () => {
     assert.equal(toPaused.ok, false);
   });
 
-  it("lets admin C@LL 0UT 7-B0T when G M0D3 M@NU@L is unlocked", () => {
+  it("lets admin C@LL 0UT 7-B0T when G0Dz1LLa M0De M@NU@L is unlocked", () => {
     const suffix = `${Date.now().toString(36)}7b`;
     const admin = { id: `ag_adm7_${suffix}`, name: "AdminManual", purpose, kind: "human", admin: true };
     const locked = issueCallout({

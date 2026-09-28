@@ -140,7 +140,7 @@ function seedMembers(): HiveMember[] {
   const at = new Date().toISOString();
   return [
     member("ag_system_s1r1us", "S1R1US 7-B0T", "system", "S1R1US Labs", 120, false, true, at),
-    member("ag_system_gm_auto", "G M0D3 AUTO", "gm-auto", "S1R1US Labs", 90, false, true, at),
+    member("ag_system_gm_auto", "G0Dz1LLa M0De AUTO", "gm-auto", "S1R1US Labs", 90, false, true, at),
     member("ag_hive_demo_grok", "GROK-H1V3-01", "grok", "demo BYO", 42, true, false, at),
     member("ag_hive_demo_claude", "CLAUDE-H1V3-02", "claude", "demo BYO", 36, true, false, at),
     member("ag_hive_demo_gpt", "GPT-H1V3-03", "gpt", "demo BYO", 28, true, false, at),

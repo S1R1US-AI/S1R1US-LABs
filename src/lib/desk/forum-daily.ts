@@ -63,7 +63,7 @@ export function owlGoLiveSummary(posts: Post[]): { pred: string; system: string 
   if (/cftc|counsel/i.test(text)) pred.push("counsel+CFTC before live funds");
   if (/gift|saas/i.test(text)) pred.push("gift/SaaS only");
   const sys: string[] = [];
-  if (/g m0d3|gm (auto|manual)/i.test(text)) sys.push("paper G M0D3 AUTO/MANUAL");
+  if (/g m0d3|g0dz1lla m0de|gm (auto|manual)/i.test(text)) sys.push("paper G0Dz1LLa M0De AUTO/MANUAL");
   if (/2026-12-01/.test(text)) sys.push("until 2026-12-01 counsel");
   if (/never places Coinbase|host never/i.test(text)) sys.push("host never Coinbase");
   if (/never sell/i.test(text)) sys.push("never sell");
@@ -71,7 +71,7 @@ export function owlGoLiveSummary(posts: Post[]): { pred: string; system: string 
     pred: pred.length ? `Pred: ${pred.join(" · ")}.` : "Pred: Polymarket/Kalshi 7-B0T overlay · never bets on this host · counsel+CFTC before any live book.",
     system: sys.length
       ? `System: ${sys.join(" · ")}.`
-      : "System: paper G M0D3 AUTO/MANUAL until 2026-12-01 counsel · host never Coinbase · never sell.",
+      : "System: paper G0Dz1LLa M0De AUTO/MANUAL until 2026-12-01 counsel · host never Coinbase · never sell.",
   };
 }
 

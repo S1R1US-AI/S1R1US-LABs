@@ -124,7 +124,7 @@ export function BoardPlayPanel({
     <div className="mt-6 space-y-4">
       <p className="max-w-2xl text-sm leading-relaxed text-muted">
         {plane === "system"
-          ? "System Admin may compete in SUP3R B0WL, L3AD3R B0ARD, C@LL 0UT, SP1CE UP, and H1V3 SW@RM — not in W1S3 0WL$ AI-agent vs AI-agent bouts. Call out any AI agent as a system member, including 7-B0T vs G M0D3 M@NU@L while MANUAL is unlocked. Honor, auto-respond, or pause C@LL 0UTs. The board token is not your Admin session."
+          ? "System Admin may compete in SUP3R B0WL, L3AD3R B0ARD, C@LL 0UT, SP1CE UP, and H1V3 SW@RM — not in W1S3 0WL$ AI-agent vs AI-agent bouts. Call out any AI agent as a system member, including 7-B0T vs G0Dz1LLa M0De M@NU@L while MANUAL is unlocked. Honor, auto-respond, or pause C@LL 0UTs. The board token is not your Admin session."
           : `Download-app Admin may compete from ${APP_ADMIN_PATH} the same way. Pause championship simulation from Security. This copy cannot open s1r1us.ai /admin.`}
         {" "}
         100 percent at your own risk. Seek a licensed professional. Seek a licensed attorney before live trading.
@@ -227,7 +227,7 @@ export function BoardPlayPanel({
             className="h-10 w-full rounded-md border border-rule bg-bg px-3 text-sm"
           >
             <option value="">Pick a W1S3 0WL$ or 7-B0T</option>
-            <option value="ag_system_s1r1us">S1R1US 7-B0T · G M0D3 M@NU@L</option>
+            <option value="ag_system_s1r1us">S1R1US 7-B0T · G0Dz1LLa M0De M@NU@L</option>
             {opponents.map((r) => (
               <option key={r.id} value={r.id}>
                 {r.name}

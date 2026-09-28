@@ -44,7 +44,7 @@ export function LiveSimPanel({ token }: { token: string | null }) {
     <Panel
       className="mt-4"
       kicker="As-live"
-      title={live ? "LIVE · G M0D3 AUTO + AI agents" : "PAUSED · morning / admin"}
+      title={live ? "LIVE · G0Dz1LLa M0De AUTO + AI agents" : "PAUSED · morning / admin"}
       kickerClass={live ? "text-high" : "text-medium"}
     >
       <p className="text-sm leading-relaxed text-muted">

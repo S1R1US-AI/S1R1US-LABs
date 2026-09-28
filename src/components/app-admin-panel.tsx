@@ -343,7 +343,7 @@ function PaperPane() {
       </ol>
       <p className="mt-3 text-xs leading-relaxed text-muted">
         Device paper book only. The host research paper stays on s1r1us.ai system Admin. Championship World Cup / C@LL 0UT pause is on this copy and on system Admin.
-        Pause championship World Cup / C@LL 0UT simulation, the as-live G M0D3 AUTO cycle, and {TAB_HIVE} from Console / Security / {TAB_HIVE}.
+        Pause championship World Cup / C@LL 0UT simulation, the as-live G0Dz1LLa M0De AUTO cycle, and {TAB_HIVE} from Console / Security / {TAB_HIVE}.
       </p>
     </section>
   );
@@ -428,7 +428,7 @@ function SecurityPane() {
         Lock this Admin session. Paper only. Never paste Coinbase keys or wallet seeds. Combine phone compute with
         an online key — both ACCUMULATE or WAIT. Copy-admin is a device-bound HMAC session (12h) plus mandate — not
         system 2FA. Host Yubi / FIDO2 stay on s1r1us.ai /admin. Compete on SUP3R B0WL from the SUP3R B0WL tab with a
-        separate board token. Pause {TAB_HIVE}, the as-live G M0D3 AUTO / AI agents cycle, and the championship
+        separate board token. Pause {TAB_HIVE}, the as-live G0Dz1LLa M0De AUTO / AI agents cycle, and the championship
         World Cup / C@LL 0UT simulation from this panel. Copy-admin cannot open s1r1us.ai /admin, Yubi, or vault.
       </p>
       {token ? <ChampionshipSimPanel token={token} /> : null}
