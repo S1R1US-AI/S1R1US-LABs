@@ -180,6 +180,9 @@ function startFrontDoor() {
       "/compute",
       "/gm",
       "/f33d",
+      "/forum",
+      "/agent",
+      "/board",
     ];
     if (dirExact.includes(pathname)) {
       const q = (url.includes("?") ? url.slice(url.indexOf("?")) : "");
