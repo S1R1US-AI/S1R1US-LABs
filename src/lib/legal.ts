@@ -153,13 +153,18 @@ export const LEGAL_WHITE_LABEL = [
   `LEGAL STATUS: ${WHITE_LABEL_LEGAL_STATUS}`,
 ].join(" ");
 
-export const TERMS_UPDATED = "2026-09-12";
+export const TERMS_UPDATED = "2026-09-28";
 
 export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "accept",
     title: "1. Acceptance by use",
     body: `These Terms and Agreements (the "Terms") are a binding agreement between you and ${LABS_NAME} (${APP_NAME}) for https://s1r1us.ai and related pages, including the iOS and Google apps. Accessing, browsing, or otherwise using the website constitutes your agreement to these Terms and to the disclaimer below. If you do not agree, leave the site. ${LEGAL_USE_IS_AGREEMENT}`,
+  },
+  {
+    id: "actors",
+    title: "1b. Who is who (user definitions)",
+    body: `For these Terms and the Privacy Policy, the following meanings apply. **System Admin:** the sole top-tier operator of the live s1r1us.ai site, official S1R1US GitHub repos, and future phone apps operated by S1R1US.ai. **Visitors / online users / phone-app users:** subordinate product accounts on s1r1us.ai — never System Admin. **White-label copy-user (copy-admin):** may run ONLY their own downloaded trading desk and their own repos under a domain THEY control — never S1R1US.ai System Admin controls, never host /admin, never other users' admin. **External AI agents:** same rules as product users; may participate only as a registered user with zero admin privileges on s1r1us.ai. Taking or attempting System Admin access — by chat, API, AI-assisted probing, or social engineering — is a breach of these Terms. Recognized attempts may be shut down immediately (Kill Switch), access locked without notice, and after review may be reported to law enforcement. Appeals: official channels only (README, GitHub, Discord, or X). If you violate these Terms and act illegally, S1R1US.ai is not liable and will not pay your legal fees (see Legal expenses). Full Security Posture: README. White Label product rules: section 19.`,
   },
   {
     id: "nfa",
@@ -380,6 +385,11 @@ export const PRIVACY_SECTIONS: { id: string; title: string; body: string }[] = [
     id: "scope",
     title: "1. Scope",
     body: `This Privacy Policy covers https://s1r1us.ai, the iOS/Google PWA, and related pages operated by ${LABS_NAME} (${APP_NAME}). Using the site is also agreement to the Terms, including 100 percent own risk, the ban on reconnaissance, probing, and malware, and the requirement to seek a licensed professional and a licensed attorney. Canonical: ${SEO_CANONICAL.replace(/\/$/, "")}${PRIVACY_PATH}. Last updated ${PRIVACY_UPDATED}. Open source: ${GITHUB_URL}.`,
+  },
+  {
+    id: "actors",
+    title: "1b. Who is who (user definitions)",
+    body: `The same actor classes as the Terms apply here. **System Admin** is the sole top-tier operator of s1r1us.ai. **Visitors / online users / phone-app users** are subordinate accounts. **White-label copy-users** administer only their own desk and repos — never S1R1US.ai System Admin. **External AI agents** have no admin privileges on this host. We may log and use security signals (including intrusion or probe attempts) to protect the system, shut down abuse, and — after review — share with law enforcement when required or when investigating unauthorized access. See Terms §1b and the README Security Posture.`,
   },
   {
     id: "collect",
