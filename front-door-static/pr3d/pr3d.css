@@ -1,6 +1,6 @@
 /* Soft-launch redesign target pages — HOLD draft · Distrobi / Grok Bot 2026-09-28.
    Studio charcoal + matrix via parent theme. Godzilla icon-512 never overwritten. */
-@import url("../css/theme.css");
+@import url("/css/theme.css");
 
 .pg-kicker {
   font-size: 0.72rem;

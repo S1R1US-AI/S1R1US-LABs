@@ -168,6 +168,28 @@ function startFrontDoor() {
       pathname = url.split("?")[0] || "/";
     }
 
+    // Belt-and-suspenders: /roadmap → /roadmap/ etc. Absolute CSS is the real fix for theme-css-miss.
+    const dirExact = [
+      "/hello-world",
+      "/discord",
+      "/roadmap",
+      "/r0b0ts",
+      "/h1v3",
+      "/pr3d",
+      "/faq",
+      "/compute",
+      "/gm",
+      "/f33d",
+    ];
+    if (dirExact.includes(pathname)) {
+      const q = (url.includes("?") ? url.slice(url.indexOf("?")) : "");
+      const loc = pathname + "/" + q;
+      console.log(`[s1r1us] front-door static overlay 308 ${pathname} → ${pathname}/`);
+      res.writeHead(308, { Location: loc, "Cache-Control": "public, max-age=60" });
+      res.end();
+      return;
+    }
+
     // Reject obvious traversal in path before static resolve
     if (pathname.includes("..") || pathname.includes("%2e%2e") || pathname.includes("%2E%2E")) {
       console.log(`[s1r1us] front-door static overlay 400 ${pathname}`);

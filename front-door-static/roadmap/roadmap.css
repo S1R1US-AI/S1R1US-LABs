@@ -1,7 +1,7 @@
 /* Soft-launch OSS Roadmap theme — shipped.
    Studio charcoal + matrix via parent theme. No honesty-strip prose. */
 
-@import url("../css/theme.css");
+@import url("/css/theme.css");
 
 .rm-kicker {
   font-size: 0.72rem;

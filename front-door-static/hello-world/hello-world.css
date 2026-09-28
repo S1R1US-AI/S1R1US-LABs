@@ -1,7 +1,7 @@
 /* S1R1US-ai-hello-world — thin page layer over soft-launch theme tokens.
    DRAFT · live ship HOLD · geek greeting preserved from LABs hello-world.tsx */
 
-@import url("../css/theme.css");
+@import url("/css/theme.css");
 
 .hw-page-title {
   font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;

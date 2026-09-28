@@ -1,7 +1,7 @@
 /* S1R1US-discord — thin page layer over soft-launch theme tokens.
    DRAFT · live ship HOLD · charcoal + Matrix ghost via parent theme. */
 
-@import url("../css/theme.css");
+@import url("/css/theme.css");
 
 .dc-page-kicker {
   font-size: 0.72rem;

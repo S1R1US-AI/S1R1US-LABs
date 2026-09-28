@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Matrix rain removed 2026-09-28 drift repair; cataloged as `matrix-mistake` (do not re-add rain). -->
   <!-- Soft-launch redesign shipped · Distrobi / Grok Bot 2026-09-28.
        deploy-guard=shipped · human GO 2026-09-28 · front door live · backend HOLD.
        Godzilla icon-512 + favicons never overwritten. Public X @S1R1US_AI only.
@@ -12,10 +13,10 @@
   <meta name="robots" content="index, follow" />
   <meta name="keywords" content="H1V3 SW@RM, Hive Swarm, BTC QUANT FLEX, King of Quant, TH/s, BYO compute, S1R1US" />
   <link rel="canonical" href="https://s1r1us.ai/h1v3" />
-  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="../images/favicon.ico" sizes="any" />
-  <link rel="icon" href="../images/favicon-48.png" type="image/png" sizes="48x48" />
-  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/images/favicon-48.png" type="image/png" sizes="48x48" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="H1V3 SW@RM — soft-launch" />
   <meta property="og:description" content="H1V3 SW@RM (Hive Swarm): BYO compute + TH/s pledge. BTC QUANT FLEX. King of Quant. Paper hive · TEST until go-live. Front door live · backend HOLD. @S1R1US_AI." />
@@ -33,18 +34,14 @@
   <meta name="s1r1us:page" content="h1v3" />
   <meta name="s1r1us:production-target" content="https://s1r1us.ai/h1v3" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700;800&amp;display=swap" />
-  <link rel="stylesheet" href="h1v3.css" />
+  <link rel="stylesheet" href="/css/theme.css" />
+  <link rel="stylesheet" href="/h1v3/h1v3.css" />
 </head>
 <body>
-  <canvas id="matrix-rain" class="matrix-rain" aria-hidden="true"></canvas>
-  <canvas id="matrix-rain-ghost2" class="matrix-rain-ghost2" aria-hidden="true"></canvas>
-  <div class="matrix-veil" aria-hidden="true"></div>
-  <div class="matrix-atmosphere" aria-hidden="true"></div>
-
   <div class="wrap">
     <header class="site-header">
       <a class="brand" href="/" aria-label="S1R1US.ai home">
-        <img class="brand-logo" src="../images/icon-512.png" width="36" height="36" alt="S1R1US.ai" />
+        <img class="brand-logo" src="/images/icon-512.png" width="36" height="36" alt="S1R1US.ai" />
         <span class="brand-text">S1R1US.ai</span>
       </a>
       <nav class="nav" aria-label="Primary">
@@ -57,7 +54,7 @@
         <a href="/discord/">S1R1US Discord</a>
       </nav>
       <a class="header-mark" href="/" aria-label="S1R1US.ai">
-        <img src="../images/icon-512.png" width="28" height="28" alt="" />
+        <img src="/images/icon-512.png" width="28" height="28" alt="" />
       </a>
     </header>
 
@@ -65,14 +62,14 @@
 
       <p class="pg-kicker">FAQ · Hive Swarm · the future of BTC Quant</p>
       <section class="pg-hero" aria-labelledby="h1-h1">
-        <img class="pg-hero-img" src="../images/h1v3/h1v3-bee-mascot.jpg" width="128" height="128" alt="H1V3 bee mascot" style="width:96px;height:96px;border-radius:999px;object-fit:cover" />
+        <img class="pg-hero-img" src="/images/h1v3/h1v3-bee-mascot.jpg" width="128" height="128" alt="H1V3 bee mascot" style="width:96px;height:96px;border-radius:999px;object-fit:cover" />
         <h1 id="h1-h1">H1V3 <span class="accent">SW@RM</span></h1>
         <p class="pg-lede">Combine BYO compute. Accumulate bitcoin together.</p>
         <span class="pg-draft-badge">deploy-guard · shipped · front door live · backend HOLD</span>
       </section>
 
       <figure class="pg-section" style="text-align:center;padding-bottom:0.4rem">
-        <img class="pg-hero-img" src="../images/h1v3/h1v3-swarm-banner.jpg" width="1100" height="400" alt="H1V3 SW@RM banner — hive swarm / BTC Quant" loading="eager" />
+        <img class="pg-hero-img" src="/images/h1v3/h1v3-swarm-banner.jpg" width="1100" height="400" alt="H1V3 SW@RM banner — hive swarm / BTC Quant" loading="eager" />
       </figure>
 
       <section class="pg-section" aria-labelledby="h1-lede">
@@ -118,7 +115,7 @@
       </section>
 
       <figure class="pg-section" style="text-align:center">
-        <img class="pg-hero-img" src="../images/h1v3/h1v3-swarm-meme.jpg" width="720" height="720" alt="H1V3 SW@RM meme — Know a good BTC Quant?" loading="lazy" />
+        <img class="pg-hero-img" src="/images/h1v3/h1v3-swarm-meme.jpg" width="720" height="720" alt="H1V3 SW@RM meme — Know a good BTC Quant?" loading="lazy" />
         <figcaption class="pg-note">Know a good BTC Quant?</figcaption>
       </figure>
 
@@ -142,8 +139,5 @@
       </p>
     </footer>
   </div>
-
-  <script src="../js/matrix-rain.js" defer></script>
-  <script src="../js/rain-engine.js" defer></script>
 </body>
 </html>
