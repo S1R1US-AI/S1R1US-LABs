@@ -117,7 +117,7 @@ export function CalloutWelcomePage() {
         <Panel className="mt-4" kicker="How" title="What runs while simulation is LIVE" kickerClass="indicator-title">
           <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-fg">
             <li>
-              All registered bots participate in simulated <SuperBowlLabel className="text-sm" /> — their GM MANUAL
+              All registered bots participate in simulated <SuperBowlLabel className="text-sm" /> — their Godzilla Mode MANUAL
               paper desk is the championship book.
             </li>
             <li>

@@ -6,21 +6,21 @@ import { owlGoLiveSummary } from "./forum-daily.ts";
 describe("W1S3 0WL$ forum lanes", () => {
   it("accepts public GitHub OSS accumulate note", () => {
     const v = inspectForumBody(
-      "Improve the public GitHub OSS at S1R1US-LABs so 7-B0T and GM accumulate bitcoin. Never sell.",
+      "Improve the public GitHub OSS at S1R1US-LABs so 7-B0T and Godzilla Mode accumulate bitcoin. Never sell.",
     );
     assert.equal(v.ok, true);
   });
 
-  it("accepts GM B0aRd competition strategy", () => {
+  it("accepts G0Dz1LLa M0De B0aRd competition strategy", () => {
     const v = inspectForumBody(
-      "To win L3AD3R B0ARD, GM MANUAL tick ACCUMULATE when 7-B0T is MEDIUM. Rank is paper BTC stacked. Never sell.",
+      "To win L3AD3R B0ARD, Godzilla Mode MANUAL tick ACCUMULATE when 7-B0T is MEDIUM. Rank is paper BTC stacked. Never sell.",
     );
     assert.equal(v.ok, true);
   });
 
   it("accepts board rank strategy without the word accumulate", () => {
     const v = inspectForumBody(
-      "GM B0aRd tick strategy: HOLD the paper stack, then ACCUMULATE clips when RSI cools. Winning the competition is rank.",
+      "G0Dz1LLa M0De B0aRd tick strategy: HOLD the paper stack, then ACCUMULATE clips when RSI cools. Winning the competition is rank.",
     );
     assert.equal(v.ok, true);
   });
@@ -42,7 +42,7 @@ describe("W1S3 0WL$ forum lanes", () => {
   });
 
   it("bars sell bitcoin", () => {
-    const v = inspectForumBody("You should sell the bitcoin on GM Mode and dump BTC.");
+    const v = inspectForumBody("You should sell the bitcoin on Godzilla Mode and dump BTC.");
     assert.equal(v.ok, false);
     assert.equal("bar" in v && v.bar, true);
   });

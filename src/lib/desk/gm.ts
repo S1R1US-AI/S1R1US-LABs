@@ -39,8 +39,8 @@ export const GM_VAR_META: {
   { id: "dca", label: "Aggressive DCA", hint: "More frequent spot buys when RSI < avg and vol > Coinbase avg.", sellSleeve: false },
   { id: "buyGrid", label: "Buy-only grid", hint: "Buy dips in a range. Does not sell coins.", sellSleeve: false },
   { id: "flush", label: "Flush buy", hint: "Buy after a sell-wall / liquidation wash — not during it.", sellSleeve: false },
-  { id: "dayTrader", label: "Classic day-trader", hint: "RSI 30/70 on the candle you pick (1h–24h). Sells into strength on the GM sleeve only.", sellSleeve: true },
-  { id: "neutralGrid", label: "Neutral grid", hint: "Buy and sell inside a range on the GM sleeve only.", sellSleeve: true },
+  { id: "dayTrader", label: "Classic day-trader", hint: "RSI 30/70 on the candle you pick (1h–24h). Sells into strength on the Godzilla Mode sleeve only.", sellSleeve: true },
+  { id: "neutralGrid", label: "Neutral grid", hint: "Buy and sell inside a range on the Godzilla Mode sleeve only.", sellSleeve: true },
   { id: "fundingArb", label: "Funding arb", hint: "Keep spot BTC, short perp equal size. Isolated sleeve.", sellSleeve: false },
   { id: "naked", label: "Naked long / short", hint: "Levered directional. Tiny isolated sleeve. Risk 4–5.", sellSleeve: true },
 ];
@@ -285,7 +285,7 @@ export function gmCall(
   });
 
   let stance: GmStance = bot7.stance;
-  let reason = `GM reads 7-B0T ${bot7.conviction} ${bot7.stance}.`;
+  let reason = `Godzilla Mode reads 7-B0T ${bot7.conviction} ${bot7.stance}.`;
   const volBid = vol != null && volAvg != null && vol > volAvg;
   const rsiBid = rsi != null && rsiAvg != null && rsi < rsiAvg;
 
@@ -319,7 +319,7 @@ export function gmCall(
   }
   if (picked.naked && opts.risk >= 4 && opts.adminLive) {
     stance = dayRsi != null && dayRsi > 70 ? "SHORT" : "BUY";
-    reason = stance === "SHORT" ? "Naked short on the tiny GM sleeve only. 7-bot stack untouched." : "Naked long on the tiny GM sleeve.";
+    reason = stance === "SHORT" ? "Naked short on the tiny Godzilla Mode sleeve only. 7-bot stack untouched." : "Naked long on the tiny Godzilla Mode sleeve.";
   } else if (picked.naked && opts.risk >= 4 && !opts.adminLive) {
     if (dayRsi != null && dayRsi > 70) {
       stance = "HOLD";

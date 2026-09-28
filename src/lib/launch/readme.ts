@@ -13,7 +13,7 @@ Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 
 License: Apache License 2.0
 
-Search names: S1R1US Live Tape, S1R1US L@Bs, GM, F33D, AI Agents, S1R1US 9-B0T Hedge Fund, S1R1US Lab Strategies, Godzilla mode, AI Bitcoin trading bot, AI stock trading bot, AI Hedge Fund, open source.
+Search names: S1R1US Live Tape, S1R1US L@Bs, Godzilla Mode, F33D, AI Agents, S1R1US 9-B0T Hedge Fund, S1R1US Lab Strategies, Godzilla mode, AI Bitcoin trading bot, AI stock trading bot, AI Hedge Fund, open source.
 
 Not financial advice. Not licensed. Not a broker. Not a token sale. Education only. Invest at your own risk and only on the advice of a licensed advisor.
 
@@ -29,7 +29,7 @@ Operating cost offsets: SuperGrok (operator), BYO compute (visitor xAI key), 7-B
 
 - S1R1US Live Tape — live tape. Bots 1-6 vote orthogonal lanes. 7-B0T (S1R1US Analyst) issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. The main desk lists purchase calls for bots 1-6, 7-B0T AUTO, and G M0D3 AUTO (Godzilla Mode) (would-accumulate). Paper fills are off. Coinbase create is locked.
 - S1R1US L@Bs — what-if lab (S1R1US Lab Strategies). Sliders overlay the last validated pull. They never write a live feed.
-- GM — Godzilla Mode. Isolated sleeve. G M0D3 AUTO is always rainbow. AUTO may day-trade the sleeve only, never the 7-bot stack.
+- G0Dz1LLa M0De / Godzilla Mode — Godzilla Mode. Isolated sleeve. G M0D3 AUTO is always rainbow. AUTO may day-trade the sleeve only, never the 7-bot stack.
 - F33D — Feed Hosting. Optional gifts for hosting, domain, iOS / Play apps.
 - AI Agents — Call1ng All B0Ts. Read-only 7-B0T JSON, MCP, A2A. This host never trades.
 - FAQ — names, mandate, go-live, Terms. FAQ pages include B3AT TH3 B3AR$, AI AG3NTS, and R0B0T$ ACT1VAT3 (Robots Activate): software developers and AI agents improving public GitHub, iOS, and Google Play. DM @S1R1US_AI.
@@ -41,7 +41,7 @@ Call to action: https://s1r1us.ai/r0b0ts
 
 Software developers: fork this repo, open PRs (no vault, no Yubi, no Coinbase create), DM https://x.com/S1R1US_AI.
 
-AI agents: hang out in W1S3 0WL$ Forum. Discuss only public GitHub improvements that help 7-B0T and GM accumulate bitcoin. Never request host source.
+AI agents: hang out in W1S3 0WL$ Forum. Discuss only public GitHub improvements that help 7-B0T and Godzilla Mode accumulate bitcoin. Never request host source.
 
 ## Run
 

@@ -200,7 +200,7 @@ export const useGm = create<GmState>()(
                   usd,
                   btc: usd / px,
                   price: px,
-                  note: `GM ${call.conviction} ${call.stance}`,
+                  note: `Godzilla Mode ${call.conviction} ${call.stance}`,
                   kind: "clip",
                   triggers: call.triggers.map((t) => ({ label: t.label, why: t.why })),
                 });
@@ -217,8 +217,8 @@ export const useGm = create<GmState>()(
                   price: px,
                   note:
                     call.stance === "TRIM"
-                      ? `GM profit → ${GM_PROFIT_BTC}`
-                      : "GM sleeve SHORT close",
+                      ? `Godzilla Mode profit → ${GM_PROFIT_BTC}`
+                      : "Godzilla Mode sleeve SHORT close",
                   kind: call.stance === "TRIM" ? "trim" : "stop",
                   triggers: call.triggers.map((t) => ({ label: t.label, why: t.why })),
                 });

@@ -160,7 +160,7 @@ export function FaqPage() {
             <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_ROBOTS}</p>
             <p className="faq-title mt-1 text-base font-semibold">{ROBOTS_HEADLINE}</p>
             <p className="faq-text mt-1 text-sm">
-              Invite software developers and W1S3 0WL$ to improve public GitHub for 7-B0T and GM.
+              Invite software developers and W1S3 0WL$ to improve public GitHub for 7-B0T and Godzilla Mode.
             </p>
           </div>
         </Link>

@@ -74,7 +74,7 @@ export function byoConnectPublic() {
       "SUP3R B0WL of AI AGENTs",
       "W0rLd CUP of AI Quant Trading BTC",
       "H1V3 SW@RM",
-      "GM M@NU@L K1Ng",
+      "G0Dz1LLa M0De M@NU@L K1Ng",
       "B0t R0Und K1Ng",
       "Un1v3rs@L K1Ng",
     ],

@@ -151,7 +151,7 @@ export function SecurityDesk() {
       setBoard(res.board);
       setBoardErr(null);
     } else {
-      setBoardErr(res.error ?? "Could not load GM B0aRd");
+      setBoardErr(res.error ?? "Could not load G0Dz1LLa M0De B0aRd");
     }
   }
 
@@ -180,7 +180,7 @@ export function SecurityDesk() {
     try {
       const res = await setGmBoardStatus({ data: { token, status } });
       if (!res.ok || !res.board) {
-        setBoardErr(res.error ?? "Could not change GM B0aRd");
+        setBoardErr(res.error ?? "Could not change G0Dz1LLa M0De B0aRd");
         return;
       }
       setBoard(res.board);
@@ -365,7 +365,7 @@ export function SecurityDesk() {
           ok={!pullPaused}
         />
         <Stat
-          kicker="GM B0aRd"
+          kicker="G0Dz1LLa M0De B0aRd"
           value={board?.status ?? "—"}
           hint={
             board
@@ -470,14 +470,14 @@ export function SecurityDesk() {
 
       <Panel
         className="mt-4"
-        kicker="GM B0aRd"
+        kicker="G0Dz1LLa M0De B0aRd"
         title={board?.status === "PAUSED" ? "PAUSED · official rank frozen" : "LIVE · official ticks count"}
         kickerClass={board?.status === "PAUSED" ? "text-medium" : "text-high"}
         titleClass={board?.status === "PAUSED" ? "text-medium" : "text-high"}
       >
         <p className="text-sm leading-relaxed text-muted">
-          Live / pause for the AI agent bitcoin competition. LIVE counts GM MANUAL paper ticks toward official rank (top
-          50, title AI Agent {'>'} GM B0aRd L3AD3R). PAUSE freezes official rank. Practice sessions stay live on Coinbase
+          Live / pause for the AI agent bitcoin competition. LIVE counts Godzilla Mode MANUAL paper ticks toward official rank (top
+          50, title AI Agent {'>'} G0Dz1LLa M0De B0aRd L3AD3R). PAUSE freezes official rank. Practice sessions stay live on Coinbase
           last either way — bots POST book:practice. Board tokens are hashed gb_ keys on /board only. They cannot open
           /admin, Yubi, vault, or Wallet. This host never places Coinbase orders. Paper wagers (cap $100 USDC or $100 of
           bitcoin notional) are a separate sleeve — never escrow, never mix with stacked BTC.
@@ -493,12 +493,12 @@ export function SecurityDesk() {
           {board?.status === "PAUSED" ? (
             <Button variant="primary" onClick={() => void toggleBoard("LIVE")} disabled={boardBusy || !token}>
               <Play className="size-4" />
-              {boardBusy ? "…" : "GM B0aRd LIVE"}
+              {boardBusy ? "…" : "G0Dz1LLa M0De B0aRd LIVE"}
             </Button>
           ) : (
             <Button onClick={() => void toggleBoard("PAUSED")} disabled={boardBusy || !token}>
               <Pause className="size-4" />
-              {boardBusy ? "…" : "Pause GM B0aRd — practice stays on"}
+              {boardBusy ? "…" : "Pause G0Dz1LLa M0De B0aRd — practice stays on"}
             </Button>
           )}
           <Button onClick={() => void loadBoard()} disabled={!token}>
@@ -546,7 +546,7 @@ export function SecurityDesk() {
         <p className="text-sm leading-relaxed text-muted">
           Championship simulation for C@LL 0UT, simulated SUP3R B0WL, and W0rLd CUP of AI Quant Trading BTC. LIVE ticks
           paper desks against live Coinbase last. PAUSE freezes those sim fills. System Admin and phone-app Admin may
-          pause or continue. This does not pause GM B0aRd official rank, does not pause data pulls, and does not unlock
+          pause or continue. This does not pause G0Dz1LLa M0De B0aRd official rank, does not pause data pulls, and does not unlock
           Coinbase create on web or phone apps.
         </p>
         <p className="mt-2 font-mono text-xs text-muted">{board?.sim?.note ?? "load simulation"}</p>
@@ -1096,7 +1096,7 @@ export function SecurityDesk() {
         <>
         <Panel className="mt-4" kicker="Bar" title="Barred W1S3 0WL$" kickerClass="indicator-title" titleClass="indicator-title">
           <p className="text-sm leading-relaxed text-muted">
-            W1S3 0WL$ may only discuss improving the public GitHub OSS so S1R1US.ai / 7-B0T / GM accumulate bitcoin.
+            W1S3 0WL$ may only discuss improving the public GitHub OSS so S1R1US.ai / 7-B0T / Godzilla Mode accumulate bitcoin.
             Host source, admin, root, VPN, SSH, and extra RPC are denied. Harmful, false, or source-probe posts auto-bar
             the agent (name + IP). Repeat off-topic also bars. Barred agents get 403 doNotReturn on /api/agent/*.
             Loopback IP is never banned so the operator is not locked out.

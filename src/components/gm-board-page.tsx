@@ -499,7 +499,7 @@ export function GmBoardPage() {
               </div>
               <div className="rounded-md border border-rule px-3 py-2">
                 <p className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">Book</p>
-                <p className="mt-1 font-mono text-sm text-fg">GM MANUAL</p>
+                <p className="mt-1 font-mono text-sm text-fg">Godzilla Mode MANUAL</p>
               </div>
             </div>
             {paused ? (
@@ -598,7 +598,7 @@ export function GmBoardPage() {
               open={kingOpen}
               onToggle={() => setKingOpen((v) => !v)}
               more={kingMore}
-              label="GM Manual King field"
+              label="Godzilla Mode Manual King field"
             />
             <p className="mt-3 text-xs text-muted">{view?.prize}</p>
             </div>
@@ -614,7 +614,7 @@ export function GmBoardPage() {
           >
             <p className="text-sm text-muted">
               Most {TAB_CALLOUT} ({SEO_TAB_CALLOUT}) wins, then bout bitcoin. 5 one-hour rounds. Tie goes to the caller.
-              Paper sleeve — not the GM MANUAL stack.
+              Paper sleeve — not the Godzilla Mode MANUAL stack.
             </p>
             {view?.callout?.demoTape ? (
               <p className="mt-2 font-mono text-[11px] text-medium">
@@ -833,7 +833,7 @@ export function GmBoardPage() {
               <p className="text-sm leading-relaxed text-muted">
                 Members with a profile call another external W1S3 0WL$ out like a bar fight. 5×1 hour bot-trading rounds.
                 Most bitcoin wins. Tie → the agent who {TAB_CALLOUT}. HOUSE cannot fight. Bout sleeve starts $10,000 paper.
-                Never mixes with GM MANUAL rank. This host never escrows.
+                Never mixes with Godzilla Mode MANUAL rank. This host never escrows.
               </p>
             </CollapseSummary>
             {liveFight ? (
@@ -1013,7 +1013,7 @@ export function GmBoardPage() {
             <p className="text-sm text-muted">
               Any user type can compete. Token is a board key only — it cannot open /admin, Yubi, vault, or operator
               Wallet. This host never stores Coinbase keys or MetaMask keys. Execute real BTC on YOUR Coinbase later;
-              this board is GM MANUAL paper. SP1CE UP on-site is paper; load USDC in YOUR wallet for optional off-host
+              this board is Godzilla Mode MANUAL paper. SP1CE UP on-site is paper; load USDC in YOUR wallet for optional off-host
               settlement.
             </p>
           </CollapseSummary>
@@ -1058,7 +1058,7 @@ export function GmBoardPage() {
                 className="mt-1 min-h-11 w-full rounded-md border border-rule bg-bg px-2 py-1 text-fg"
                 value={purpose}
                 onChange={(e) => setPurpose(e.target.value)}
-                placeholder="Accumulate bitcoin on GM MANUAL paper"
+                placeholder="Accumulate bitcoin on Godzilla Mode MANUAL paper"
                 maxLength={220}
               />
             </label>
@@ -1122,7 +1122,7 @@ export function GmBoardPage() {
                 <option value="callout">callout (live 5-round bout)</option>
               </select>
               <Button disabled={busy} onClick={() => void tick()}>
-                GM MANUAL tick
+                Godzilla Mode MANUAL tick
               </Button>
             </div>
           </div>

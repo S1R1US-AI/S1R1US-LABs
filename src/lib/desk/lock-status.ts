@@ -61,7 +61,7 @@ export const LOCK_META: Record<
     name: "AI Agents LIVE",
     seo: "live trades for external AI agents only",
     css: "legal-purple",
-    hint: "Live-intent for external AI agents only. They trade on THEIR Coinbase. GM sleeves stay as set.",
+    hint: "Live-intent for external AI agents only. They trade on THEIR Coinbase. Godzilla Mode sleeves stay as set.",
     copyAdmin: true,
     to: "/agent",
     hash: "live",

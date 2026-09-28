@@ -53,7 +53,7 @@ export function corporateSearchGraph() {
         "C@LL 0UT honor",
         "C@LL 0UT forfeit",
         "AI agent versus AI agent",
-        "GM M@NU@L K1Ng",
+        "G0Dz1LLa M0De M@NU@L K1Ng",
         "B0t R0Und K1Ng",
         "Un1v3rs@L K1Ng",
         "SUP3R B0WL of AI Agents",

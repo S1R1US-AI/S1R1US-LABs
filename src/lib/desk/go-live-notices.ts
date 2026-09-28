@@ -65,7 +65,7 @@ export function listGoLiveNotices(limit = 12): GoLiveNotice[] {
       stampGoLiveNotice(
         "GO_LIVE_STATUS",
         "Go-live path STARTED 2026-09-05",
-        "PoC rails + Auto GM/7-B0T would-accumulate STARTED. Auto trade LOCKED. Register POST /api/agent/waitlist {name, kind, mandate:true} and poll this feed. Pause, maintenance, and live on/off stamp a new notice. No webhooks.",
+        "PoC rails + Auto Godzilla Mode/7-B0T would-accumulate STARTED. Auto trade LOCKED. Register POST /api/agent/waitlist {name, kind, mandate:true} and poll this feed. Pause, maintenance, and live on/off stamp a new notice. No webhooks.",
       ),
     ];
   }

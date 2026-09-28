@@ -39,10 +39,10 @@ export const GO_LIVE: GoLivePhase[] = [
   {
     id: "gl1",
     n: 1,
-    name: "Auto GM / 7-B0T call board",
+    name: "Auto Godzilla Mode / 7-B0T call board",
     when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "G M0D3 AUTO and 7-B0T AUTO show would-accumulate calls on the live tape. GM B0aRd is LIVE as paper competition — SUP3R B0WL of AI AGENTs. Paper fills on this host are GM B0aRd only. Coinbase create stays off. Live feed shows SUP3R B0WL / AI-agent stats as if live until the deadline.",
+    goal: "G M0D3 AUTO and 7-B0T AUTO show would-accumulate calls on the live tape. G0Dz1LLa M0De B0aRd is LIVE as paper competition — SUP3R B0WL of AI AGENTs. Paper fills on this host are G0Dz1LLa M0De B0aRd only. Coinbase create stays off. Live feed shows SUP3R B0WL / AI-agent stats as if live until the deadline.",
     hold: "LIVE_UNLOCKED remains false. No Coinbase create from this app.",
   },
   {
@@ -60,7 +60,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "G M0D3 AUTO + MANUAL live for users",
     when: `DEADLINE ${GO_LIVE_DEADLINE_LABEL} — operator unlock only`,
     status: "LOCKED",
-    goal: "Users (human, AI agent, system Admin competitor, download-app Admin) may run G M0D3 AUTO and GM MANUAL. Live execution, if armed, stays on THEIR Coinbase — this host never holds keys. SUP3R B0WL participation stays paper on this host unless the user executes on their own book.",
+    goal: "Users (human, AI agent, system Admin competitor, download-app Admin) may run G M0D3 AUTO and Godzilla Mode MANUAL. Live execution, if armed, stays on THEIR Coinbase — this host never holds keys. SUP3R B0WL participation stays paper on this host unless the user executes on their own book.",
     hold: "Human-in-the-loop + dual Yubi for outgoing on the operator book. Seek a licensed attorney and a licensed financial professional first. This website does not grow a GPU farm.",
   },
   {
@@ -176,7 +176,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
   },
 ];
 
-export const GO_LIVE_HEADLINE = `GO-LIVE PATH STARTED ${GO_LIVE_START} — HARD DEADLINE ${GO_LIVE_DEADLINE_LABEL}. Full live status estimated ${GO_LIVE_DEADLINE_LABEL}. PoC rails + Auto GM/7-B0T would-accumulate + SUP3R B0WL paper LIVE. S1R1US App build #113 (live sim launch). Carbon-fiber baseline DEPLOY #68. Coinbase create LOCKED. Public OSS Roadmap: /roadmap. Seek a licensed professional and a licensed attorney before live use.`;
+export const GO_LIVE_HEADLINE = `GO-LIVE PATH STARTED ${GO_LIVE_START} — HARD DEADLINE ${GO_LIVE_DEADLINE_LABEL}. Full live status estimated ${GO_LIVE_DEADLINE_LABEL}. PoC rails + Auto Godzilla Mode/7-B0T would-accumulate + SUP3R B0WL paper LIVE. S1R1US App build #113 (live sim launch). Carbon-fiber baseline DEPLOY #68. Coinbase create LOCKED. Public OSS Roadmap: /roadmap. Seek a licensed professional and a licensed attorney before live use.`;
 
 export function goLiveBrief() {
   const now = [...GO_LIVE].reverse().find((p) => p.status === "STARTED") ?? GO_LIVE[0]!;

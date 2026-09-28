@@ -21,7 +21,7 @@ try {
   /* fresh */
 }
 
-const purpose = "Accumulate bitcoin on GM MANUAL paper. Never sell. Never short.";
+const purpose = "Accumulate bitcoin on Godzilla Mode MANUAL paper. Never sell. Never short.";
 
 describe("board-callout", { concurrency: false }, () => {
   it("rejects HOUSE, self, G M0D3 AUTO, and missing profiles", () => {

@@ -179,7 +179,7 @@ export function GmDesk() {
               </p>
             </div>
           </div>
-          <div className="desk-tabs flex flex-wrap items-center gap-1" role="tablist" aria-label="GM book">
+          <div className="desk-tabs flex flex-wrap items-center gap-1" role="tablist" aria-label="Godzilla Mode book">
             <button
               type="button"
               className={cn("inline-flex h-11 min-h-11 items-center rounded-md px-4 text-sm font-medium", view === "practice" && "is-on")}
@@ -202,7 +202,7 @@ export function GmDesk() {
             <p className="font-mono text-xs tracking-[0.14em] text-sell uppercase">Live locked</p>
             <p className="mt-1 text-sm text-muted">
               {admin
-                ? "Unlock Live below. Autonomous GM then uses the live sleeve."
+                ? "Unlock Live below. Autonomous Godzilla Mode then uses the live sleeve."
                 : "Only the admin can arm Live. AUTO still reads the live tape."}
             </p>
             {admin ? (
@@ -265,7 +265,7 @@ export function GmDesk() {
 
         <div className="mt-5 grid gap-4 lg:grid-cols-3">
           <Panel
-            kicker="GM call"
+            kicker="Godzilla Mode call"
             title={
               isGmAccumulate(call) ? (
                 <GmRainbow text={`${call!.conviction} ${call!.stance}`} />
@@ -336,14 +336,14 @@ export function GmDesk() {
               {error ? ` · ${error}` : ""}
             </p>
           </Panel>
-          <Panel kicker="Sleeve" title={liveArmed ? "Live GM book" : "Practice GM book"} kickerClass="text-high" titleClass="text-medium">
+          <Panel kicker="Sleeve" title={liveArmed ? "Live Godzilla Mode book" : "Practice Godzilla Mode book"} kickerClass="text-high" titleClass="text-medium">
             <p className={cn("font-mono text-2xl tabular-nums", USD_TONE)}>{money(nav, 0)}</p>
             <p className="mt-1 font-mono text-sm">
               <span className={USD_TONE}>{money(book.cashUsd, 0)}</span>
               {" · "}
               <span className={BTC_TONE}>{book.btc.toFixed(6)} BTC</span>
             </p>
-            <p className="mt-3 font-mono text-xs text-muted">Fund GM (USDC · Base / ETH)</p>
+            <p className="mt-3 font-mono text-xs text-muted">Fund Godzilla Mode (USDC · Base / ETH)</p>
             <p className="mt-0.5 break-all font-mono text-[11px]">
               <a className={USD_TONE} href={GM_FUND_EXPLORER} target="_blank" rel="noreferrer">
                 {GM_FUND_USDC}
@@ -390,7 +390,7 @@ export function GmDesk() {
               value={risk}
               onChange={(e) => setRisk(Number(e.target.value))}
               className="w-full"
-              aria-label="GM risk 1 to 5"
+              aria-label="Godzilla Mode risk 1 to 5"
             />
             <p className="mt-2 text-sm text-muted">
               1 = 20% of the sleeve at risk. 5 = 100%. Naked long/short needs 4–5.
@@ -480,14 +480,14 @@ export function GmDesk() {
                 {tf.sim.vs1hPct >= 0 ? "+" : ""}
                 {tf.sim.vs1hPct.toFixed(1)}%
               </span>{" "}
-              vs 1h. Longer candles fire less often. Turn Classic day-trader ON to use this in the GM call.
+              vs 1h. Longer candles fire less often. Turn Classic day-trader ON to use this in the Godzilla Mode call.
             </p>
           ) : (
             <p className="mt-3 text-sm text-muted">Waiting on Coinbase hourly candles to fold into this timeframe.</p>
           )}
         </Panel>
 
-        <Panel className="mt-4" kicker="Fills" title="GM sleeve history" kickerClass="text-high" titleClass="text-medium">
+        <Panel className="mt-4" kicker="Fills" title="Godzilla Mode sleeve history" kickerClass="text-high" titleClass="text-medium">
           {book.fills.length ? (
             <ul className="space-y-3">
               {book.fills.slice(0, 12).map((f, i) => (
@@ -531,7 +531,7 @@ export function GmDesk() {
               ))}
             </ul>
           ) : (
-            <p className="text-sm text-muted">No GM fills yet. When a clip prints, the settings that fired it show here.</p>
+            <p className="text-sm text-muted">No Godzilla Mode fills yet. When a clip prints, the settings that fired it show here.</p>
           )}
         </Panel>
         <div className="mt-10 flex justify-end pb-2">
@@ -613,7 +613,7 @@ function AutoLiveFeed({
       </p>
       <div className="mt-3 grid gap-3 sm:grid-cols-4 font-mono text-sm">
         <div>
-          <p className="text-[11px] text-muted">GM NAV</p>
+          <p className="text-[11px] text-muted">Godzilla Mode NAV</p>
           <p className={USD_TONE}>{money(gmNav, 0)}</p>
           <p className={BTC_TONE}>{gmBook.btc.toFixed(6)} BTC</p>
         </div>
@@ -646,7 +646,7 @@ function AutoLiveFeed({
         </div>
       </div>
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
-        <TickList label="GM sleeve" rows={liveRows} />
+        <TickList label="Godzilla Mode sleeve" rows={liveRows} />
         <TickList label="7-B0T" rows={bot7Rows} />
       </div>
     </Panel>

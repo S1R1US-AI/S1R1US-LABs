@@ -134,7 +134,7 @@ const GOLD_BITS = ["S1R1US Pr3d1ctions", "Pr3d1ctions"];
 
 /** Paint branded titles rainbow in running text. Prediction market names are gold. */
 export function RainbowGodzillaText({ text }: { text: string }) {
-  const parts = text.split(/(S1R1US Pr3d1ctions|Pr3d1ctions|G0DZ1LLa M0D3|G M0D3 AUTO|G M0D3 M@NU@L|L3AD3R B0ARD|C@LL 0UT|GM M@NU@L K1Ng|B0t R0Und K1Ng|Un1v3rs@L K1Ng|SUP3R B0WL|W0rLd CUP|H1V3 SW@RM)/g);
+  const parts = text.split(/(S1R1US Pr3d1ctions|Pr3d1ctions|G0DZ1LLa M0D3|G M0D3 AUTO|G M0D3 M@NU@L|L3AD3R B0ARD|C@LL 0UT|G0Dz1LLa M0De M@NU@L K1Ng|GM M@NU@L K1Ng|B0t R0Und K1Ng|Un1v3rs@L K1Ng|SUP3R B0WL|W0rLd CUP|H1V3 SW@RM)/g);
   if (parts.length === 1) return <>{text}</>;
   return (
     <>

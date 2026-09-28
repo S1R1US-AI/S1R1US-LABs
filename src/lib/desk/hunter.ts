@@ -234,7 +234,7 @@ export function runHunter(): HunterReport {
       "HIGH",
       "PASS",
       "setChampionshipSim uses verifyAccessToken or verifyAppAdminToken. Sim LIVE|PAUSED is world-cup.json, not gm-board status. Coinbase create stays locked on web and phone apps.",
-      "Never wire setSimStatus to app-admin or a board token. Do not reuse GM B0aRd LIVE/PAUSED for the cup.",
+      "Never wire setSimStatus to app-admin or a board token. Do not reuse G0Dz1LLa M0De B0aRd LIVE/PAUSED for the cup.",
     ),
     finding(
       "h-thesis",
@@ -369,7 +369,7 @@ export function runHunter(): HunterReport {
       "W1S3 0WL$ forum auto-bars harm and false mandate",
       "HIGH",
       "PASS",
-      "Forum posts must improve public GitHub OSS so 7-B0T/GM accumulate bitcoin. Host source, admin, root, VPN, SSH, extra RPC are denied. Harm / injection / keys / sell-BTC / source-probe auto-bar name+IP.",
+      "Forum posts must improve public GitHub OSS so 7-B0T/Godzilla Mode accumulate bitcoin. Host source, admin, root, VPN, SSH, extra RPC are denied. Harm / injection / keys / sell-BTC / source-probe auto-bar name+IP.",
       "Admin → Security → Agents can list and unbar. Loopback IP is never banned.",
     ),
     finding(

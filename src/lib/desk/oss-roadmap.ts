@@ -181,7 +181,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/board#spice",
     status: "LIVE-PAPER",
     since: "2026-09-06",
-    note: "As-live paper simulation of who is GM Manual King next. Four 6-hour ET rounds. Simulated crowd plus real picks. Cap $100 notional. Never escrow. Rank stays bitcoin stacked.",
+    note: "As-live paper simulation of who is Godzilla Mode Manual King next. Four 6-hour ET rounds. Simulated crowd plus real picks. Cap $100 notional. Never escrow. Rank stays bitcoin stacked.",
   },
   {
     id: "cup",
@@ -217,7 +217,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/l0ck",
     status: "LIVE",
     since: "2026-09-06",
-    note: "Unlocked set stacked above locked set. Purple Expand/Collapse on the LoCK3D STATUS line. Click a lock NAME to open that view. G M0D3 AUTO / M@NU@L names drop GM matrix rain 2.5s. Live tape is status only (no padlock). Open GIF: AI Agent Lock System for AI Agent BTC Trading Bot. Closed GIF: Locked Status. System + copy-admin.",
+    note: "Unlocked set stacked above locked set. Purple Expand/Collapse on the LoCK3D STATUS line. Click a lock NAME to open that view. G M0D3 AUTO / M@NU@L names drop Godzilla Mode matrix rain 2.5s. Live tape is status only (no padlock). Open GIF: AI Agent Lock System for AI Agent BTC Trading Bot. Closed GIF: Locked Status. System + copy-admin.",
   },
   {
     id: "gif-bot",
@@ -529,7 +529,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: false,
     status: "DONE",
     name: "DEPLOY #68 fold — LoCK3D STATUS UX + morning problems",
-    detail: "Checkpoint stays 68. Click lock names to open views. Purple Expand/Collapse on LoCK3D STATUS UNLOCKED desk SIM. G M0D3 AUTO / M@NU@L names rain 2.5s then open GM. Live feed title AI Agent SUP3R B0WL. Morning report: Problems found last 24 hours. healLiveSim keeps pulls with sim. Stray practice killed. Auto trade LOCKED.",
+    detail: "Checkpoint stays 68. Click lock names to open views. Purple Expand/Collapse on LoCK3D STATUS UNLOCKED desk SIM. G M0D3 AUTO / M@NU@L names rain 2.5s then open Godzilla Mode. Live feed title AI Agent SUP3R B0WL. Morning report: Problems found last 24 hours. healLiveSim keeps pulls with sim. Stray practice killed. Auto trade LOCKED.",
   },
   {
     id: "d2",

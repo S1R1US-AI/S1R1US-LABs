@@ -50,7 +50,7 @@ export function ChampionshipSimPanel({ token }: { token: string | null }) {
     >
       <p className="text-sm leading-relaxed text-muted">
         Pause or continue W0rLd CUP, simulated SUP3R B0WL, and C@LL 0UT paper ticks on live Coinbase last. System
-        Admin and phone-app Admin share this control. Pause does not unlock Coinbase create and does not pause GM
+        Admin and phone-app Admin share this control. Pause does not unlock Coinbase create and does not pause G0Dz1LLa M0De
         B0aRd official rank.
       </p>
       <p className="mt-2 font-mono text-xs text-muted">{sim?.note ?? "load simulation"}</p>

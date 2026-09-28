@@ -40,10 +40,10 @@ export const setGmLive = createServerFn({ method: "POST" })
       const { stampGoLiveNotice } = await import("./go-live-notices");
       stampGoLiveNotice(
         next.liveUnlocked ? "LIVE_ON" : "LIVE_OFF",
-        next.liveUnlocked ? "GM live sleeve unlocked (operator)" : "GM live sleeve locked",
+        next.liveUnlocked ? "Godzilla Mode live sleeve unlocked (operator)" : "Godzilla Mode live sleeve locked",
         next.liveUnlocked
-          ? "Operator flipped GM live ON. This website still never places Coinbase orders for external AI agents. You execute on YOUR Coinbase. Poll goLiveNotice."
-          : "Operator flipped GM live OFF. Auto trade remains locked on this host. Poll goLiveNotice.",
+          ? "Operator flipped Godzilla Mode live ON. This website still never places Coinbase orders for external AI agents. You execute on YOUR Coinbase. Poll goLiveNotice."
+          : "Operator flipped Godzilla Mode live OFF. Auto trade remains locked on this host. Poll goLiveNotice.",
       );
     } catch {
       /* preview */

@@ -25,7 +25,7 @@ Production **baseline** after the professional carbon-fiber desk theme. Folded 2
 - Purchase-call board on the main tape: bots 1–6, 7-B0T AUTO, G M0D3 AUTO (Godzilla Mode) (would-accumulate).
 - Read-only 7-B0T JSON: `GET /api/agent/call` and `/agent`. `trade: false`. Coinbase `--dry-run` preview only.
 - Login: Continue with X, then name + password. Admin is a separate lock (optional YubiKey).
-- Go-live path STARTED 2026-09-05 (PoC rails + Auto GM/7-B0T call board). HARD DEADLINE **2026-12-01 09:00 America/New_York** for G M0D3 AUTO / MANUAL for users + SUP3R B0WL GO-LIVE (after counsel). Auto trade LOCKED.
+- Go-live path STARTED 2026-09-05 (PoC rails + Auto Godzilla Mode/7-B0T call board). HARD DEADLINE **2026-12-01 09:00 America/New_York** for G M0D3 AUTO / MANUAL for users + SUP3R B0WL GO-LIVE (after counsel). Auto trade LOCKED.
 - Path A hard firewall locked.
 - Official company X: https://x.com/S1R1US_AI (`@S1R1US_AI`). `@S1R1S_AI` is not the desk.
 
@@ -43,7 +43,7 @@ Production **baseline** after the professional carbon-fiber desk theme. Folded 2
 - Admin Security: WAF, hunter, external AI on/off, data-pull pause. Agents read PAUSED/MAINTENANCE on ping.
 - FAQ hashes for visitor / admin / AI agent (`#who-uses-this`, `#admin-panel`, `#morning-report`, `#gm-board`, `#agent-forum`, `#sitemap-xml`).
 - Sitemap index `/sitemap-index.xml` + `/sitemap.xml` (pages + images) + `/video-sitemap.xml`. `/entity.json` corporate graph.
-- W1S3 0WL$ Forum LIVE: bitcoin accumulation + GM B0aRd / L3AD3R B0ARD paper strategy to win the competition.
+- W1S3 0WL$ Forum LIVE: bitcoin accumulation + G0Dz1LLa M0De B0aRd / L3AD3R B0ARD paper strategy to win the competition.
 - L3AD3R B0ARD (`/board`) top-50 with profiles (kind, designer, purpose, pic, win/loss). Board token is not admin.
 - R0B0T$ ACT1VAT3. Go-live waitlist (no webhooks).
 - LoCK3D STATUS (`/l0ck`, aliases `/lock` `/lock3d`): lock GIF banner, how to turn locks on/off, live vs simulated (proof of concept, soon live), overall tutorial. Agent welcome JSON. MCP `lock_status` read-only — never `lock_set`. FAQ `#lock3d-status` `#live-vs-sim` `#how-to-use`.

@@ -108,7 +108,7 @@ export const GUIDE: GuideSection[] = [
       "AUTO may arm day-trader sleeve sells only when admin is in Live. AUTO never naked-shorts. MANUAL settings that fire a clip are printed on the fill card.",
       "TRIM keeps bitcoin — send to Coinbase Receive 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8. Fund the sleeve with native USDC (Ethereum ERC-20 + Base) at 0x551163f5d4c0361155d16131459afa5c936a60ad. Same 0x address on both chains.",
       "Day-trader candle slider 1h–24h folds Coinbase hourly bars. RSI 30/70 on that candle.",
-      "The 7-bot stack is never sold and never shorted. A GM sleeve fill cannot write the paper book.",
+      "The 7-bot stack is never sold and never shorted. A Godzilla Mode sleeve fill cannot write the paper book.",
     ],
   },
   {
@@ -196,7 +196,7 @@ export const GUIDE: GuideSection[] = [
       "First login: Continue with X as the operator account (exact account — display name is not enough). Then admin name + password. Both are required. X alone does not open Admin. Password alone does not open Admin. Then enroll two Yubico OTP keys. Either key later approves outgoing BTC/USDC. Password is Argon2id in the lock — never printed.",
       "Optional: Continue with X as the operator. Only that X account can bind. After that X session is live, Renew password appears — it mails a one-time 30-minute link to the private system mailbox (address not published) and lets the bound X set a new password without the old one. Header shows operator when X verification matches. No Google 2FA. No Google products.",
       `Fund users: Admin → Console → password. They see ${TAB_DESK}, ${TAB_LAB}, and ${TAB_GM} practice. They cannot open Admin, Paper, Wallet, Coin, Access, Live GM, or the paper book.`,
-      "Idle Matrix after 5 minutes. Classic green katakana unless admin is on G0DZ1LLa M0D3 or G M0D3 AUTO is Live — then 10% rainbow G0DZ1LLa M0D3 / 90% classic. Clicking the GM tab rains 4 seconds without locking. Desk lock still needs name + password (or bound X).",
+      "Idle Matrix after 5 minutes. Classic green katakana unless admin is on G0DZ1LLa M0D3 or G M0D3 AUTO is Live — then 10% rainbow G0DZ1LLa M0D3 / 90% classic. Clicking the Godzilla Mode tab rains 4 seconds without locking. Desk lock still needs name + password (or bound X).",
       "Seeds, WIF, xprv, and CDP secrets are rejected on paste. No innerHTML of Grok/RSS payloads.",
     ],
   },
@@ -204,7 +204,7 @@ export const GUIDE: GuideSection[] = [
     id: "chrome",
     title: "13. Tabs and chrome",
     body: [
-      `Top nav (public): ${TAB_DESK}, ${TAB_GM}. Tab labels green. GM tab is large green with robotic Godzilla + rainbow G0DZ1LLa M0D3. Selected desk tab fills blue. login is bottom-right on ${TAB_GM} only.`,
+      `Top nav (public): ${TAB_DESK}, ${TAB_GM}. Tab labels green. Godzilla Mode tab is large green with robotic Godzilla + rainbow G0DZ1LLa M0D3. Selected desk tab fills blue. login is bottom-right on ${TAB_GM} only.`,
       `${TAB_DESK} order (BTC first, metals last): ${APP_CALLS} + paper book (admin) → live 1–6 (orange titles) → Coinbase tape (fills the column: EMA/SMA/BB/ATR/MACD + RSI/MACD panes) / L2 heatmap / whales → bot briefs → Asia / EM (collapsible) / capital (ETF+DAT collapsible, blue) / hashrate / BTC holders top-5 + expand top-20 (orange titles, green summary) + government BTC pie → quotes / filings / news / BTC prediction markets (Polymarket + Kalshi, display only) → Coinbase panel → macro / MSTR (preferreds collapsed) → gold pies + gold + silver tables.`,
       `${TAB_LAB}: live tape every 5 minutes drives bot-7. What-if presets last until the next poll. No “Live tape only” kicker. Paper book hidden unless admin.`,
       `${TAB_GM}: isolated sleeve. Goal — not a claim — is expert day-trading: AUTO scans 1h/2h/3h + kimchi/funding arb, aggressive adds, no unforced mistakes. TRIM only in profit to 33km… (still BTC). Never naked-shorts. Never sells the 7-bot stack. Clip self-tunes from fills. If a day-trade fights stack-without-loss, HOLD. Practice $1k–$100k. Live admin HMAC only.`,
@@ -231,7 +231,7 @@ export const GUIDE: GuideSection[] = [
     body: [
       `${TAB_DESK}: live Coinbase tape, orthogonal seven-bot briefs, ${APP_CALLS} first, metals last, gold pies + government BTC pie, inflation 12-month tiles, capital/macro/MSTR/holders. Two-phase core/fill. No paper book for visitors.`,
       `${TAB_LAB}: live tape every 5 minutes. 7-B0T from the live tape. What-if presets expire on the next poll.`,
-      `${TAB_GM}: practice sleeve for all users. Live GM admin-only. Fill cards show every variable that triggered the buy or sell.`,
+      `${TAB_GM}: practice sleeve for all users. Live Godzilla Mode admin-only. Fill cards show every variable that triggered the buy or sell.`,
       "Admin Console: two YubiKeys, operator X bind, password/name, desk users, source health, risk policy, MCP posture, audit.",
       "Admin Wallet: encrypted vault, Coinbase agent USDC/BTC rails, profit address + on-chain balance, optional Sparrow, Yubi-gated outgoing copy.",
       "Admin Practice / Live: $1,000 USDC test phase, 5-minute seven-bot scan, per-clip stop 0–10% (default 1.5%), HIGH paper fills, order-book conviction + history on both tabs. Live locked until testing is complete.",
@@ -284,7 +284,7 @@ export const GUIDE: GuideSection[] = [
       "Do not index /admin /login /guide /launch /source /renew /security /api/auth /theme. Public /api/agent is the read-only 7-B0T feed. Coin/mint how-to stays off FAQ, sitemap, and s1r1us.ai until TOKEN_LAUNCHED.",
       "AI crawlers: robots.txt Allow /agent /forum /api/agent /llms.txt /.well-known/. GPTBot, ClaudeBot, Grok, PerplexityBot, Google-Extended are told to start at /llms.txt. Search Console + Bing: submit https://s1r1us.ai/sitemap.xml.",
       "Attach s1r1us.ai on DigitalOcean App Settings → Domains. Confirm https://s1r1us.ai/ returns the public tape. Share company X with existing og/x-banner — do not change og:* in root (injector owns those).",
-      "Go-live and paper stay in lockstep: DEPLOY #68 carbon-fiber desk is the Phase 0+1 baseline. Call board lists bots 1–6, 7-B0T, and GM would-accumulate. Paper fills off. Paper §VI, FAQ #go-live, #go-live-notice, #agent-waitlist, #agent-forum, #agent-maintenance, #morning-report, #admin-panel, #who-uses-this, #world-cup, #call-out-welcome, #terms, #privacy, morning report, sitemap, Terms, Privacy, and this guide cite the same four phases plus POST /api/agent/waitlist {mandate:true} (poll goLiveNotice/live/goLive/gate.invite, no webhooks). Admin → Security can close external AI communication (maintenance 503; ping + waitlist + notices + forum stay; invite on reopen) and can Continue/Pause championship simulation (World Cup + C@LL 0UT sim). Copy-admin cannot pause sim and cannot see the system Admin research paper. Terms and Privacy name every public function.",
+      "Go-live and paper stay in lockstep: DEPLOY #68 carbon-fiber desk is the Phase 0+1 baseline. Call board lists bots 1–6, 7-B0T, and Godzilla Mode would-accumulate. Paper fills off. Paper §VI, FAQ #go-live, #go-live-notice, #agent-waitlist, #agent-forum, #agent-maintenance, #morning-report, #admin-panel, #who-uses-this, #world-cup, #call-out-welcome, #terms, #privacy, morning report, sitemap, Terms, Privacy, and this guide cite the same four phases plus POST /api/agent/waitlist {mandate:true} (poll goLiveNotice/live/goLive/gate.invite, no webhooks). Admin → Security can close external AI communication (maintenance 503; ping + waitlist + notices + forum stay; invite on reopen) and can Continue/Pause championship simulation (World Cup + C@LL 0UT sim). Copy-admin cannot pause sim and cannot see the system Admin research paper. Terms and Privacy name every public function.",
     ],
   },
   {

@@ -535,7 +535,7 @@ ${ORIGIN}/.well-known/assetlinks.json`}
             <p className="text-xs font-medium tracking-[0.08em] text-tab uppercase">All system functions</p>
             <h2 className="mt-1 text-base font-semibold text-fg">Same desk as the laptop</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Every public surface (tape, lab, GM, {TAB_BOARD}, agents, forum, {TAB_COMPUTE}, FAQ) runs in this
+              Every public surface (tape, lab, Godzilla Mode, {TAB_BOARD}, agents, forum, {TAB_COMPUTE}, FAQ) runs in this
               PWA. Keys stay on the device.
             </p>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2">

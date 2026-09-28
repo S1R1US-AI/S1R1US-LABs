@@ -1,4 +1,4 @@
-/** Once-per-ET-day GM B0aRd analysis. Server-only. Frozen until next America/New_York date. */
+/** Once-per-ET-day G0Dz1LLa M0De B0aRd analysis. Server-only. Frozen until next America/New_York date. */
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
@@ -222,7 +222,7 @@ function analyze(
     successes.length === 0
       ? "No external bot stacked paper BTC this window."
       : `${successes.length} external success${successes.length === 1 ? "" : "es"}: ${successes.map((s) => s.name).join(", ")}.`;
-  const summary = `GM B0aRd ${status} · ${day} ET. Top 5: ${leaderLine || "empty"}. External desks ${external.length} · stacked ${stacked.length}. ${winLine} Paper GM MANUAL. Auto trade LOCKED. Not desk BTC.`;
+  const summary = `G0Dz1LLa M0De B0aRd ${status} · ${day} ET. Top 5: ${leaderLine || "empty"}. External desks ${external.length} · stacked ${stacked.length}. ${winLine} Paper Godzilla Mode MANUAL. Auto trade LOCKED. Not desk BTC.`;
   return {
     dayEt: day,
     analyzedAt: new Date().toISOString(),

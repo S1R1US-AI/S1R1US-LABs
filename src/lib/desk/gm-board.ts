@@ -1,4 +1,4 @@
-/** GM B0aRd — AI agent competition. Server-only. Never import from a client page. No admin credentials. */
+/** G0Dz1LLa M0De B0aRd — AI agent competition. Server-only. Never import from a client page. No admin credentials. */
 
 import { createHash, randomBytes } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -41,8 +41,8 @@ export const AGENT_BOARD_PATH = "/api/agent/board";
 export const BOARD_PAGE_PATH = "/board";
 export const BOARD_TOP = 50;
 export const BOARD_START_USD = 10_000;
-export const BOARD_LEADER_TITLE = "AI Agent > GM B0aRd L3AD3R";
-export const BOARD_LEADER_SEO = "AI Agent GM Board Leader";
+export const BOARD_LEADER_TITLE = "AI Agent > G0Dz1LLa M0De B0aRd L3AD3R";
+export const BOARD_LEADER_SEO = "AI Agent Godzilla Mode Board Leader";
 export const KIND_LABEL: Record<AgentKind, string> = { ...AGENT_KIND_LABEL };
 
 export type BoardLogTone = "win" | "loss" | "note";
@@ -176,7 +176,7 @@ const TEST_FIELD: { id: string; name: string; kind: AgentKind; handle: string | 
     kind: "grok",
     handle: null,
     designer: "xAI Grok · TEST",
-    purpose: "TEST paper. External Grok agent. Accumulate bitcoin on GM MANUAL paper. Never sell. Never short. Not admin.",
+    purpose: "TEST paper. External Grok agent. Accumulate bitcoin on Godzilla Mode MANUAL paper. Never sell. Never short. Not admin.",
   },
   {
     id: "ag_test_operator",
@@ -213,14 +213,14 @@ function emptyBook(): BoardBook {
 }
 
 const PURPOSE_TAG: { re: RegExp; text: string }[] = [
-  { re: /ACCUM/, text: "Accumulate bitcoin on GM MANUAL paper. Clip when the tape says ACCUMULATE. Never sell. Never short." },
+  { re: /ACCUM/, text: "Accumulate bitcoin on Godzilla Mode MANUAL paper. Clip when the tape says ACCUMULATE. Never sell. Never short." },
   { re: /DCA/, text: "Dollar-cost clips into BTC on live Coinbase last. Paper stack. Mandate: max bitcoin." },
   { re: /STACK/, text: "Stack BTC on dips. Paper. Rank is bitcoin accumulated, not USD NAV." },
   { re: /GRID/, text: "Grid clips around Coinbase last. Paper accumulation only." },
   { re: /FLUSH/, text: "Flush cash into BTC when conviction is HIGH. Paper. Never dump the stack." },
   { re: /HOLD/, text: "Hold the stack. Add only on mandate clips. Never sell bitcoin." },
-  { re: /CLIP/, text: "Sized clips vs NAV. Paper GM MANUAL. Accumulate bitcoin." },
-  { re: /TAPE/, text: "Read the live tape (7-B0T + GM). Clip with the call. Paper only." },
+  { re: /CLIP/, text: "Sized clips vs NAV. Paper Godzilla Mode MANUAL. Accumulate bitcoin." },
+  { re: /TAPE/, text: "Read the live tape (7-B0T + Godzilla Mode). Clip with the call. Paper only." },
   { re: /OWL/, text: "W1S3 0WL$ helper. Improve accumulation. Paper stack. Never sell." },
   { re: /MAX/, text: "Max bitcoin sleeve. Aggressive clips. Still never sell, never short." },
   { re: /BOND/, text: "Slow-capital paper sleeve. Accumulate bitcoin, ignore noise." },
@@ -232,17 +232,17 @@ const PURPOSE_TAG: { re: RegExp; text: string }[] = [
   { re: /GOLD/, text: "BTC vs gold sleeve. Rotate labels; still accumulate bitcoin." },
   { re: /F33D/, text: "F33D sleeve. Hosting is a gift; this book is paper BTC." },
   { re: /DESK/, text: "Owl desk paper agent. Mandate: stack bitcoin." },
-  { re: /MANUAL/, text: "GM MANUAL field. Title hunt is paper. Not desk BTC." },
+  { re: /MANUAL/, text: "Godzilla Mode MANUAL field. Title hunt is paper. Not desk BTC." },
 ];
 
 export function defaultPurpose(name: string, kind: AgentKind) {
   if (kind === "human") {
-    return "Human desk. Paper bitcoin accumulation on GM MANUAL. Optional self-custody MetaMask / wallet for SP1CE UP. Never sell. Never short.";
+    return "Human desk. Paper bitcoin accumulation on Godzilla Mode MANUAL. Optional self-custody MetaMask / wallet for SP1CE UP. Never sell. Never short.";
   }
   const u = name.toUpperCase();
   const hit = PURPOSE_TAG.find((t) => t.re.test(u));
   if (hit) return hit.text;
-  return `Paper bitcoin accumulation on GM MANUAL as a ${KIND_LABEL[kind] ?? kind}. Never sell. Never short.`;
+  return `Paper bitcoin accumulation on Godzilla Mode MANUAL as a ${KIND_LABEL[kind] ?? kind}. Never sell. Never short.`;
 }
 
 export function cleanDesigner(raw: string | null | undefined) {
@@ -320,7 +320,7 @@ function houseBook(name: string, sleeve: BoardBookKind): BoardBook {
       usd: round2(usd),
       btc: round8(qty),
       price: HOUSE_PX,
-      note: "GM MANUAL paper opening clip · HOUSE field · not desk BTC · education only",
+      note: "Godzilla Mode MANUAL paper opening clip · HOUSE field · not desk BTC · education only",
       book: sleeve,
     },
   ];
@@ -535,7 +535,7 @@ function rankSort(px: number) {
 export function boardBrief() {
   const s = load();
   return {
-    name: "GM B0aRd" as const,
+    name: "G0Dz1LLa M0De B0aRd" as const,
     path: BOARD_PAGE_PATH,
     api: AGENT_BOARD_PATH,
     status: s.status,
@@ -550,7 +550,7 @@ export function boardBrief() {
     keysOnThisHost: false as const,
     adminCredentials: false as const,
     webhooks: false as const,
-    mode: "GM MANUAL paper" as const,
+    mode: "Godzilla Mode MANUAL paper" as const,
   };
 }
 
@@ -605,7 +605,7 @@ export function boardPublic(px = 0) {
   });
   return {
     ok: true as const,
-    name: "GM B0aRd",
+    name: "G0Dz1LLa M0De B0aRd",
     seo: BOARD_LEADER_SEO,
     leaderTitle: BOARD_LEADER_TITLE,
     status: s.status,
@@ -616,8 +616,8 @@ export function boardPublic(px = 0) {
     keysOnThisHost: false as const,
     adminCredentials: false as const,
     webhooks: false as const,
-    mode: "GM MANUAL paper" as const,
-    prize: "Title only — AI Agent > GM B0aRd L3AD3R. Not desk BTC. Not a security.",
+    mode: "Godzilla Mode MANUAL paper" as const,
+    prize: "Title only — AI Agent > G0Dz1LLa M0De B0aRd L3AD3R. Not desk BTC. Not a security.",
     invite:
       "Open invitation: humans, AI agents (Grok, Claude, GPT, MCP), s1r1us.ai system Admin, and iOS/Google copy-admin compete on L3AD3R B0ARD — the SUP3R B0WL of AI AGENTs. Register POST /api/agent/board kind=human|grok|claude|gpt|mcp|other. Admin panels use a separate board token — never Yubi, never vault. Link MetaMask or any self-custody address to load YOUR funds — this host never escrows. Board token is not admin.",
     seoPhrase: "ai agent bitcoin trading leader board",
@@ -681,9 +681,9 @@ export function setBoardStatus(status: BoardStatus) {
     .then(({ stampGoLiveNotice }) => {
       stampGoLiveNotice(
         status === "LIVE" ? "BOARD_LIVE" : "BOARD_PAUSED",
-        status === "LIVE" ? "GM B0aRd LIVE — official ticks count" : "GM B0aRd PAUSED — practice still live",
+        status === "LIVE" ? "G0Dz1LLa M0De B0aRd LIVE — official ticks count" : "G0Dz1LLa M0De B0aRd PAUSED — practice still live",
         status === "LIVE"
-          ? "Official GM MANUAL paper ticks rank bitcoin accumulation. Title AI Agent > GM B0aRd L3AD3R. This host never places Coinbase orders. Board tokens are not admin."
+          ? "Official Godzilla Mode MANUAL paper ticks rank bitcoin accumulation. Title AI Agent > G0Dz1LLa M0De B0aRd L3AD3R. This host never places Coinbase orders. Board tokens are not admin."
           : "Official rank is frozen. POST book:practice for live Coinbase-last practice sessions. Practice does not change official rank. Board tokens cannot open /admin.",
       );
     })
@@ -845,7 +845,7 @@ export async function tickBoard(input: {
   if (bookKind === "official" && s.status === "PAUSED") {
     return {
       ok: false as const,
-      error: "GM B0aRd is PAUSED. Use book:practice for live-price practice sessions. Official rank is frozen.",
+      error: "G0Dz1LLa M0De B0aRd is PAUSED. Use book:practice for live-price practice sessions. Official rank is frozen.",
       status: s.status,
       practiceAlwaysOn: true as const,
     };
@@ -859,7 +859,7 @@ export async function tickBoard(input: {
   if (!px || px <= 0) return { ok: false as const, error: "No Coinbase last yet. Retry." };
   const book = bookKind === "official" ? agent.official : agent.practice;
   const at = new Date().toISOString();
-  let note = `GM MANUAL ${action} · paper · Coinbase last ${px}`;
+  let note = `Godzilla Mode MANUAL ${action} · paper · Coinbase last ${px}`;
   if (action === "HOLD" || action === "WAIT") {
     if (bookKind === "official") agent.lastOfficialAt = at;
     else agent.lastPracticeAt = at;
@@ -887,7 +887,7 @@ export async function tickBoard(input: {
       usd: round2(usd),
       btc: round8(qty),
       price: px,
-      note: "GM MANUAL sleeve TRIM — profit BTC tracked. Rank is still bitcoin accumulated.",
+      note: "Godzilla Mode MANUAL sleeve TRIM — profit BTC tracked. Rank is still bitcoin accumulated.",
       book: bookKind,
     };
     book.btc = round8(book.btc - qty);
@@ -969,7 +969,7 @@ export function boardOne(id: string, px = 0) {
   const rank = ranked.findIndex((x) => x.id === agent.id) + 1;
   return {
     ok: true as const,
-    name: "GM B0aRd",
+    name: "G0Dz1LLa M0De B0aRd",
     seo: BOARD_LEADER_SEO,
     leaderTitle: BOARD_LEADER_TITLE,
     status: s.status,

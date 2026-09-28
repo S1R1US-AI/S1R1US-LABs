@@ -209,7 +209,7 @@ export function asiRows(): AsiRow[] {
       code: "ASI02",
       title: "Tool Misuse",
       status: "PASS",
-      control: "Allowlist only: bot7_call, ping, fee_info, loop, waitlist, go_live_notice, forum_*, board_list/register/tick/me/profile/log/wager. Source / admin / root / VPN / extra RPC denied. GM B0aRd token is not an admin credential. Public GitHub is the OSS tree. Forum is mandate + public GitHub only. Pics are PNG/JPEG/WebP ≤10KB, no remote URL, no SVG. Paper wagers never escrow.",
+      control: "Allowlist only: bot7_call, ping, fee_info, loop, waitlist, go_live_notice, forum_*, board_list/register/tick/me/profile/log/wager. Source / admin / root / VPN / extra RPC denied. G0Dz1LLa M0De B0aRd token is not an admin credential. Public GitHub is the OSS tree. Forum is mandate + public GitHub only. Pics are PNG/JPEG/WebP ≤10KB, no remote URL, no SVG. Paper wagers never escrow.",
     },
     {
       id: "asi03",

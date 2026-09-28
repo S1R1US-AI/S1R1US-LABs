@@ -316,7 +316,7 @@ function GmMorningSection() {
     });
   }, []);
   return (
-    <Panel className="mt-4" kicker="GM" title={`${GM_NAME} morning`}>
+    <Panel className="mt-4" kicker="Godzilla Mode" title={`${GM_NAME} morning`}>
       <p className="font-mono text-xs text-muted">
         {pilot} · {view}
         {liveUnlocked ? " · Live unlocked" : " · tape"} · risk {risk} ({risk * 20}%)
@@ -339,7 +339,7 @@ function GmMorningSection() {
           ))}
         </ul>
       ) : (
-        <p className="mt-2 text-xs text-muted">No GM-tagged cycle errors in the last 100.</p>
+        <p className="mt-2 text-xs text-muted">No Godzilla Mode-tagged cycle errors in the last 100.</p>
       )}
     </Panel>
   );
@@ -470,7 +470,7 @@ function BoardMorningSection() {
   return (
     <Panel className="mt-4" kicker={<LeaderBoardLabel className="text-xs tracking-[0.08em]" />} title="External bots · top 5">
       <p className="font-mono text-xs text-muted">
-        Once per day · America/New_York · paper GM MANUAL · auto trade LOCKED
+        Once per day · America/New_York · paper Godzilla Mode MANUAL · auto trade LOCKED
       </p>
       {brief ? (
         <>
@@ -523,7 +523,7 @@ function BoardMorningSection() {
           )}
         </>
       ) : (
-        <p className="mt-2 text-sm text-muted">Loading GM B0aRd daily analysis…</p>
+        <p className="mt-2 text-sm text-muted">Loading G0Dz1LLa M0De B0aRd daily analysis…</p>
       )}
     </Panel>
   );

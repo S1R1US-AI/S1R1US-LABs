@@ -144,7 +144,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "vault",
       title: "Encrypted treasury vault",
       status: "PASS",
-      detail: "AES-256-GCM: Coinbase BTC profit Receive (33km…), optional USDC staging 0x, Sparrow, portfolio UUIDs. Decrypt only after admin session. No spend keys on this host. GM tab shows operator receive addresses only (USDC fund 0x, BTC profit 33km) — never a private key.",
+      detail: "AES-256-GCM: Coinbase BTC profit Receive (33km…), optional USDC staging 0x, Sparrow, portfolio UUIDs. Decrypt only after admin session. No spend keys on this host. Godzilla Mode tab shows operator receive addresses only (USDC fund 0x, BTC profit 33km) — never a private key.",
     },
     {
       id: "rails",
@@ -156,19 +156,19 @@ export function protocolRows(): ProtocolRow[] {
       id: "idle",
       title: "Idle screensaver",
       status: "PASS",
-      detail: "5-minute idle: token cleared first, epoch bumped, X signed out, overlay cannot be dismissed in-place. Any key/click sends /login. Burst rain on GM tab does not lock. Overlay is not mounted on /login.",
+      detail: "5-minute idle: token cleared first, epoch bumped, X signed out, overlay cannot be dismissed in-place. Any key/click sends /login. Burst rain on Godzilla Mode tab does not lock. Overlay is not mounted on /login.",
     },
     {
       id: "roles",
       title: "Admin vs desk user vs public",
       status: "PASS",
-      detail: `Public: ${TAB_DESK} dashboard only. Fund user: ${TAB_DESK} + ${TAB_LAB} + GM practice. They cannot open Admin, Paper, Wallet, Coin, Access, Security, or Live GM. Admin: Console + Wallet + Paper + Practice + Coin + Website + Access + Security + GM Live unlock. Coin and launch notes never render on the public tape or s1r1us.ai.`,
+      detail: `Public: ${TAB_DESK} dashboard only. Fund user: ${TAB_DESK} + ${TAB_LAB} + Godzilla Mode practice. They cannot open Admin, Paper, Wallet, Coin, Access, Security, or Live Godzilla Mode. Admin: Console + Wallet + Paper + Practice + Coin + Website + Access + Security + Godzilla Mode Live unlock. Coin and launch notes never render on the public tape or s1r1us.ai.`,
     },
     {
       id: "gm",
       title: "G0DZ1LLa M0D3 sleeve",
       status: "PASS",
-      detail: "Practice for everyone. Live unlock is admin HMAC only (not localStorage). Live book is not persisted. AUTO never naked-shorts. TRIM keeps BTC at 33km…. Fund 0x is receive-only. No GM spend keys.",
+      detail: "Practice for everyone. Live unlock is admin HMAC only (not localStorage). Live book is not persisted. AUTO never naked-shorts. TRIM keeps BTC at 33km…. Fund 0x is receive-only. No Godzilla Mode spend keys.",
     },
     {
       id: "pw-reset",
@@ -204,7 +204,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "short",
       title: "Never short bitcoin",
       status: "PASS",
-      detail: "7-bot stack: accumulate. Never sell bitcoin. Never short. A stop does not dump the stack. GM sleeve TRIM sends BTC to 33km… (still bitcoin). GM SHORT/naked is Live-admin, isolated paper/preview only — never the stack.",
+      detail: "7-bot stack: accumulate. Never sell bitcoin. Never short. A stop does not dump the stack. Godzilla Mode sleeve TRIM sends BTC to 33km… (still bitcoin). Godzilla Mode SHORT/naked is Live-admin, isolated paper/preview only — never the stack.",
     },
     {
       id: "oss",
@@ -294,7 +294,7 @@ export function vulnRows(): VulnRow[] {
     },
     {
       id: "gm-persist",
-      title: "GM Live flag in localStorage",
+      title: "Godzilla Mode Live flag in localStorage",
       severity: "MED",
       status: "FIXED",
       detail: "s1r1us-gm-v1 persisted liveUnlocked and the live book. v2 persist is practice-only. Live unlock is HMAC admin GET/POST.",

@@ -319,7 +319,7 @@ export function GmBoardProfile({ id }: { id: string }) {
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
                   maxLength={400}
-                  placeholder="What you did on GM MANUAL paper. No URLs. No source talk."
+                  placeholder="What you did on Godzilla Mode MANUAL paper. No URLs. No source talk."
                 />
                 <Button className="mt-2" disabled={busy} onClick={() => void postLog()}>
                   Post to profile

@@ -1,4 +1,4 @@
-/** C@LL 0UT — 5×1h paper fights. Never escrow. Never mix with GM MANUAL stack. */
+/** C@LL 0UT — 5×1h paper fights. Never escrow. Never mix with Godzilla Mode MANUAL stack. */
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
@@ -603,7 +603,7 @@ export function calloutPublic(input: {
     annual: {
       ...s.annual,
       title: "Un1v3rs@L K1Ng of S1R1US Trading",
-      path: "Once per year: B0t R0Und K1Ng calls out GM M@NU@L K1Ng (5×1h). Winner then fights G M0D3 AUTO (5×1h). Winner is Un1v3rs@L K1Ng. Paper only. Not desk BTC.",
+      path: "Once per year: B0t R0Und K1Ng calls out G0Dz1LLa M0De M@NU@L K1Ng (5×1h). Winner then fights G M0D3 AUTO (5×1h). Winner is Un1v3rs@L K1Ng. Paper only. Not desk BTC.",
       playoff: playoff ? publicFight(playoff) : null,
       final: final ? publicFight(final) : null,
     },
@@ -691,7 +691,7 @@ export function issueCallout(input: {
     return { ok: false as const, error: "Pick another W1S3 0WL$ with a profile. HOUSE cannot be called out." };
   }
   if (input.target.id === GM_AUTO_ID) {
-    return { ok: false as const, error: "G M0D3 AUTO is the annual final only. Win B0t R0Und K1Ng and GM M@NU@L K1Ng first." };
+    return { ok: false as const, error: "G M0D3 AUTO is the annual final only. Win B0t R0Und K1Ng and G0Dz1LLa M0De M@NU@L K1Ng first." };
   }
   if (!input.target.purpose?.trim() && !targetIs7) {
     return { ok: false as const, error: "Target needs a public profile purpose." };
