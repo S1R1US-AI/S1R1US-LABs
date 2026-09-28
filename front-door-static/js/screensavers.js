@@ -3,7 +3,7 @@
  * Classic Matrix idle on all non-GM pages; Godzilla Mode rain on /gm (+ home #gm).
  * Uses S1R1USRain (rain-engine.js). Ghost background rain (matrix-rain.js) stays separate.
  *
- * IDLE TRIGGER (j GO): 5 minutes with no mouse *click*.
+ * IDLE TRIGGER (human GO): 5 minutes with no mouse *click*.
  * - Arm / reset: document click only. Mouse *move* does NOT reset the idle timer.
  * - Classic dismiss (once showing): mouse move OR click OR Escape.
  * - GM dismiss (once showing): click OR Escape (move does not dismiss).
