@@ -7,7 +7,7 @@ import { t as SeoCopy } from "./seo-copy-DP2GSLbi.mjs";
 import { c as QUANT_FLEX_HEADLINE, n as BYO_WELCOME } from "./mandate-Dfgywm3A.mjs";
 import { t as BowlLiveFeed } from "./bowl-live-feed-D-jugscz.mjs";
 import { t as QuantFlexWelcome } from "./quant-flex-welcome-DcvWBX9D.mjs";
-import { j as GITHUB_REPO_URL } from "./router-DSQr-xOG.mjs";
+import { j as GITHUB_REPO_URL } from "./router-C6TTOWjV.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/w0rld-BqfQaMpW.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
