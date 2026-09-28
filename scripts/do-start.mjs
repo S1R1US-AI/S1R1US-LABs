@@ -169,7 +169,8 @@ function startFrontDoor() {
     }
 
     // Belt-and-suspenders: /roadmap → /roadmap/ etc. Absolute CSS is the real fix for theme-css-miss.
-    const dirExact = [      "/hello-world",
+    const dirExact = [
+      "/hello-world",
       "/discord",
       "/roadmap",
       "/r0b0ts",
