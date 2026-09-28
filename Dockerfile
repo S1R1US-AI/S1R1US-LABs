@@ -6,6 +6,8 @@ WORKDIR /app
 # `npm install` / `vite build` in ~1 minute. Do not compile here.
 COPY .output /app/.output
 COPY scripts/do-start.mjs /app/scripts/do-start.mjs
+# Soft-launch front-door static overlay (outside .output; Security path A)
+COPY front-door-static /app/front-door-static
 # PGLite WASM is not inside node_modules in this image — pin the files
 # Better Auth / admin lock load on first Continue with X / Unlock.
 COPY .output/server/_libs/pglite.wasm /app/pglite/pglite.wasm
