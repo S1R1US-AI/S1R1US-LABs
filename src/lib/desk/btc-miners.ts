@@ -224,7 +224,7 @@ export const MINERS_FAQ_ITEMS: { id: string; q: string; a: string }[] = [
   {
     id: "btc-miners-setup",
     q: `How do I point my own miners at ${TAB_MINERS}?`,
-    a: `Per the ckpool.org docs: set your miner URL to ${MINERS_STRATUM_SCHEME}${MINERS_DEFAULT_STRATUM} (backup ${MINERS_STRATUM_SCHEME}${MINERS_DEFAULT_BACKUP}), username = YOUR BTC receive address (optional .workername), password x. Then open Admin → ${TAB_MINERS} and enter the same stratum + BTC receive address in the dialogue boxes and hit Save — only the most basic information is required, and each system admin updates only their own stratum. Blank + Save restores the S1R1US.ai defaults. White label admins get the same dialogue boxes in the ${MINERS_PATH} setup of the /wh1t3 download — miner information is never stripped; enter your own CKPool stratum to rebuild the ${TAB_MINERS} data and view, or save blank to run on the S1R1US.ai CKPool data.`,
+    a: `Per the ckpool.org docs: set your miner URL to ${MINERS_STRATUM_SCHEME}${MINERS_DEFAULT_STRATUM} (backup ${MINERS_STRATUM_SCHEME}${MINERS_DEFAULT_BACKUP}), username = YOUR BTC receive address (optional .workername), password x. Then open Admin → ${TAB_MINERS} and enter the same stratum + BTC receive address in the dialogue boxes and hit Save — only the most basic information is required, and each system admin updates only their own stratum. Blank + Save restores the S1R1US.ai defaults. White label admins get the same dialogue boxes in the ${MINERS_PATH} setup of the White Label download (/wh1t3) — miner information is never stripped; enter your own CKPool stratum to rebuild the ${TAB_MINERS} data and view, or save blank to run on the S1R1US.ai CKPool data.`,
   },
   {
     id: "btc-miners-payout",
