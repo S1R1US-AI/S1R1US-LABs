@@ -1,6 +1,6 @@
 # FAQ — Web3 + AI Future (DRAFT)
 
-**DRAFT · Soft-launch HOLD · Lab 3 HOLD · cites locked from `/workspace/definition-lookup-pack-2026-09-28/WEB3-AI-FUTURE-CITE-PACK-2026-09-28.md` (Fetched 2026-09-28)**
+**DRAFT · Soft-launch HOLD · Lab 3 HOLD · cites locked from the `WEB-3-and-ai-future` citation pack (Fetched 2026-09-28)**
 
 **Public X:** `@S1R1US_AI` only  
 **Package:** `WEB-3-and-ai-future`  
