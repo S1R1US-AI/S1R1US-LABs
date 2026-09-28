@@ -1,12 +1,18 @@
 /*!
- * Soft-launch front-door screensavers — DRAFT (no auth / no login / no saver-lock).
- * Classic Matrix idle + Godzilla Mode intro/idle. Uses S1R1USRain (rain-engine.js).
- * Ghost background rain (matrix-rain.js) stays separate.
+ * Soft-launch front-door screensavers — no auth / no login / no saver-lock.
+ * Classic Matrix idle on all non-GM pages; Godzilla Mode rain on /gm (+ home #gm).
+ * Uses S1R1USRain (rain-engine.js). Ghost background rain (matrix-rain.js) stays separate.
+ *
+ * IDLE TRIGGER (human GO): 5 minutes with no mouse *click*.
+ * - Arm / reset: document click only. Mouse *move* does NOT reset the idle timer.
+ * - Classic dismiss (once showing): mouse move OR click OR Escape.
+ * - GM dismiss (once showing): click OR Escape (move does not dismiss).
+ * QA shortcut: ?saverDemo=1 → 3s idle / 1.2s intro.
  */
 (function () {
   'use strict';
 
-  var IDLE_MS = 5 * 60 * 1000;
+  var IDLE_MS = 5 * 60 * 1000; // 5 min — click-idle (not move-idle)
   var GM_INTRO_MS = 2500;
   var INTRO_KEY = 's1r1us-gm-saver-intro';
   var DEMO_PARAM = 'saverDemo';
@@ -28,6 +34,12 @@
   var gmIdleTimer = null;
   var inGmContext = false;
   var ghostPaused = false;
+
+  /** Dedicated /gm marketing shell — always Godzilla Mode rain (not classic). */
+  function isGmPath() {
+    var p = (location.pathname || '').replace(/\/+$/, '') || '/';
+    return p === '/gm' || /(^|\/)gm$/.test(p);
+  }
 
   function ensureDom() {
     if (overlay) return;
@@ -133,6 +145,7 @@
   }
 
   function updateGmContext() {
+    // /gm page → always GM rain. Home #gm / .tier-gm in view → GM. Else classic.
     var hashGm = (location.hash || '') === '#gm';
     var tier = document.querySelector('.tier-gm');
     var visible = false;
@@ -141,7 +154,7 @@
       var vh = window.innerHeight || 0;
       visible = r.top < vh * 0.85 && r.bottom > vh * 0.15;
     }
-    var next = hashGm || visible;
+    var next = isGmPath() || hashGm || visible;
     if (next !== inGmContext) {
       inGmContext = next;
       if (!activeTheme) resetIdleTimers();
@@ -181,11 +194,12 @@
       dismissFromUser(ev);
       return;
     }
-    // Idle is click-based for both savers
+    // Click-idle only: any click restarts the 5-minute arm timer (move never does).
     resetIdleTimers();
   }
 
   function onMouseMove(ev) {
+    // Move does NOT reset idle. Only dismisses classic overlay once it is already showing.
     if (activeTheme === 'classic') dismissFromUser(ev);
   }
 
@@ -230,7 +244,9 @@
         return {
           activeTheme: activeTheme,
           inGmContext: inGmContext,
+          gmPath: isGmPath(),
           idleMs: IDLE_MS,
+          idleTrigger: 'click', // not mousemove
           introMs: GM_INTRO_MS,
           introPlayed: (function () {
             try { return sessionStorage.getItem(INTRO_KEY) === '1'; } catch (e) { return !!playGmIntroOnce._done; }
