@@ -698,12 +698,12 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     q: `Who operates ${APP_NAME}?`,
     a: companyHandleSet()
-      ? `${LABS_NAME} on s1r1us.ai. Official public company desk is ${COMPANY_X_HANDLE} (https://x.com/S1R1US_AI). @S1R1S_AI was accidental and is not the desk. Operator identity is not published. Display names and lookalikes are not admin. Not an offer of securities.`
+      ? `${LABS_NAME} on s1r1us.ai. Official public company desk is ${COMPANY_X_HANDLE}. Operator identity is not published. Display names and lookalikes are not admin. Not an offer of securities.`
       : `${LABS_NAME} on s1r1us.ai. Operator identity is not published. Display names and lookalikes are not admin. Not an offer of securities.`,
   },
   {
     q: `What is ${TAB_TOKEN} (Token launch)?`,
-    a: `${TAB_TOKEN} is also searched as ${SEO_TAB_TOKEN}. A cultural ticker named s1r1us may exist on a public pad such as pump.fun. Official company desk on X is ${COMPANY_X_HANDLE} (https://x.com/S1R1US_AI). @S1R1S_AI is not the desk. This website does not sell tokens and does not take orders. The ticker is not shares of ${LABS_NAME}, not a claim on bitcoin, not a profit share, and not how the 7-bot book is funded. Do not buy any ticker because bots or a bitcoin stack exist. Path A (hard firewall) is locked. Not an offer of securities. Not financial advice. Seek a licensed professional. See Terms and Agreements.`,
+    a: `${TAB_TOKEN} is also searched as ${SEO_TAB_TOKEN}. A cultural ticker named s1r1us may exist on a public pad such as pump.fun. Official company desk on X is ${COMPANY_X_HANDLE}. This website does not sell tokens and does not take orders. The ticker is not shares of ${LABS_NAME}, not a claim on bitcoin, not a profit share, and not how the 7-bot book is funded. Do not buy any ticker because bots or a bitcoin stack exist. Path A (hard firewall) is locked. Not an offer of securities. Not financial advice. Seek a licensed professional. See Terms and Agreements.`,
   },
   {
     q: `What is H3LL0 W0RLD (Hello World)?`,
