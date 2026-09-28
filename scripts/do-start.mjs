@@ -168,6 +168,19 @@ function startFrontDoor() {
       pathname = url.split("?")[0] || "/";
     }
 
+    // Sensei HOLD fix: GET /search?q= must reach Nitro desk search — do not swallow with static overlay.
+    // Bare /search (no q) still serves soft-launch marketing shell.
+    try {
+      const u = new URL(url, "http://localhost");
+      const q = u.searchParams.get("q");
+      if ((u.pathname === "/search" || u.pathname === "/search/") && q != null && String(q).length > 0) {
+        console.log(`[s1r1us] front-door proxy Nitro search q ${req.method} ${u.pathname}`);
+        return proxyToNitro(req, res);
+      }
+    } catch {
+      /* fall through */
+    }
+
     // Belt-and-suspenders: /roadmap → /roadmap/ etc. Absolute CSS is the real fix for theme-css-miss.
     const dirExact = [      "/hello-world",
       "/discord",
