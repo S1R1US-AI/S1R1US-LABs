@@ -630,7 +630,7 @@ export function pwaManifest() {
     name: "S1R1US Labs",
     short_name: "S1R1US",
     description:
-      "S1R1U$ 7-B0t Hedge Fund. AI agents and bitcoin accumulation agent. L3AD3R B0ARD. BYO compute on iOS and Google. This host never places Coinbase orders.",
+      "S1R1U$ 9-B0T Hedge Fund. AI agents and bitcoin accumulation agent. L3AD3R B0ARD. BYO compute on iOS and Google. This host never places Coinbase orders.",
     id: `${ORIGIN}/`,
     start_url: "/",
     scope: "/",
