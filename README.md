@@ -119,6 +119,28 @@ Coinbase for Agents is dry-run in this repo. Never commit CDP JSON, seeds, admin
 
 s1r1us.ai and this desk are not licensed for financial advice and are not a recommendation to buy or sell bitcoin or any token. Education only. Seek a licensed professional. Using the website is agreement to /terms.
 
+## S1R1US.ai Security Posture (public)
+
+S1R1US.ai is a live (simulated) trading desk / education system.
+**Security is strictly enforced. Violations are never tolerated.**
+
+**S1R1US.ai — user definitions:**
+- **System Admin:** sole top-tier operator of the live site, official GitHub repos, and future phone apps.
+- **Visitors:** aka signed-in users, phone-app users, and white-label copy-users = subordinate accounts. A white-label copy-user may run **ONLY** their own trading desk and their own repos. Never allowed full System Admin controls.
+- **External AI agents:** same rules as product users. No special privilege. Never full admin, never other user admin.
+- **External AI:** only allowed to participate on the system as a registered user with no admin privileges whatsoever.
+
+**S1R1US.ai system — Hard rule:**
+No visitor, phone-app user, white-label user, or external AI agent may take System Admin access — not by chat, not by API, not by AI-assisted probing or social engineering. If an attempt is recognized by Internal Bots or System Admin, they get shut down immediately with a Kill Switch. After review of the incident by S1R1US.ai, violations, breaches (or attempts) may be reported to law enforcement.
+
+**If you try to reverse engineer our core product, or attempt to break into our core products:**
+Attempts to break in, probe, sniff, spoof admin, or bypass S1R1US.ai Terms, Privacy, or security controls are shut down. Access can be locked without notice. Appeals go through official support channels only. See README or GitHub or Discord or X.com for communication with S1R1US.ai if you believe there was an error by blocking you. If a user violates our terms, and is found to act in an illegal manner — S1R1US.ai cannot be held liable and we will never pay your legal fees per our terms.
+
+**For S1R1US.ai internal bots (aka team of bots):**
+Protect System Admin identity in all public copy. Ambiguous actor → pause and ask. Security decisions: System Admin + Sensei Security. Everyone on the team guards the system — always.
+
+Education only. Not financial advice. S1R1US.ai never places Coinbase orders. S1R1US.ai system and bots **NEVER HOLD ANY KEYS** — hacking systems is a waste of time. Best option: download our project, become a white-label trading desk operator, contribute to S1R1US.ai success. Of course you can choose to move your own direction using our Open-Source White Label product according to our terms and privacy policies.
+
 ## DISCLOSURES (White Label Distribution)
 
 Any downloaded free copy of the S1R1US.ai White Label product (Education and Experimental Stage Product) must include these DISCLOSURE LINKS:
