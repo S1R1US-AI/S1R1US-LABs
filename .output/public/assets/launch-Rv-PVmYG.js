@@ -1,1 +1,0 @@
-import{n as e}from"./launch-desk-9vaGAO_Y.js";var t=e;export{t as component};

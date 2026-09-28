@@ -322,6 +322,15 @@ export const PUBLIC_PAGES = [
     priority: "0.8",
   },
   {
+    path: "/WEB-3-and-ai-future",
+    loc: `${origin}/WEB-3-and-ai-future`,
+    label: "Research",
+    title: "Web3 + AI Future — DRAFT soft-launch test",
+    hint: "DRAFT research briefing · future design only · Soft-launch HOLD · Lab 3 HOLD · no live Coinbase auto-trade",
+    changefreq: "weekly",
+    priority: "0.5",
+  },
+  {
     path: TERMS_PATH,
     loc: `${origin}${TERMS_PATH}`,
     label: TERMS_TITLE,
