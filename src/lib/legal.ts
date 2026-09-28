@@ -179,12 +179,12 @@ export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "token",
     title: "4. T0K3N L@UNCH (Token launch)",
-    body: `A cultural ticker named s1r1us may appear on a public meme pad such as pump.fun. T0K3N L@UNCH is also searched as Token launch. It is not ${TAB_DESK} (S1R1US 7-bot hedge fund). It is not equity, debt, a profit share, a vote, or a claim on any bitcoin, USDC, or other asset held by the desk. Creator fees, bonding-curve inventory, and locked LP (if any) are not the Coinbase book and are not used to buy bitcoin for holders. This website does not take orders for that ticker and does not promise price, liquidity, or profit from anyone's efforts.`,
+    body: `A cultural ticker named s1r1us may appear on a public meme pad such as pump.fun. T0K3N L@UNCH is also searched as Token launch. It is not ${TAB_DESK} (S1R1US 9-B0T Hedge Fund). It is not equity, debt, a profit share, a vote, or a claim on any bitcoin, USDC, or other asset held by the desk. Creator fees, bonding-curve inventory, and locked LP (if any) are not the Coinbase book and are not used to buy bitcoin for holders. This website does not take orders for that ticker and does not promise price, liquidity, or profit from anyone's efforts.`,
   },
   {
     id: "desk",
     title: "5. The desk, lab, and sleeves",
-    body: `${TAB_DESK} (S1R1US 7-bot hedge fund), ${TAB_LAB} (S1R1US Lab Strategies), ${TAB_GM} (Godzilla Mode), and ${TAB_FEED} (Feed Hosting) are educational tools and open-source software. Practice and paper fills are not live orders. Live execution, if ever unlocked, is the operator's and the user's own risk. You are responsible for any action you take. ${LEGAL_WAGER} ${LEGAL_CALLOUT} ${LEGAL_HUMAN} ${LEGAL_WALLET} ${LEGAL_HIVE} ${LEGAL_BYO} ${LEGAL_LOCK} ${LEGAL_ROADMAP} ${LEGAL_CUP} ${LEGAL_FORUM} ${LEGAL_TAPE} ${LEGAL_AGENTS} ${LEGAL_SAAS} ${LEGAL_FINCEN} ${LEGAL_WAF} ${LEGAL_MORNING} ${LEGAL_EDU} ${LEGAL_MANDATE} ${LEGAL_SIM} ${LEGAL_LAB} ${LEGAL_ADMIN_PLAY}`,
+    body: `${TAB_DESK} (S1R1US 9-B0T Hedge Fund), ${TAB_LAB} (S1R1US Lab Strategies), ${TAB_GM} (Godzilla Mode), and ${TAB_FEED} (Feed Hosting) are educational tools and open-source software. Practice and paper fills are not live orders. Live execution, if ever unlocked, is the operator's and the user's own risk. You are responsible for any action you take. ${LEGAL_WAGER} ${LEGAL_CALLOUT} ${LEGAL_HUMAN} ${LEGAL_WALLET} ${LEGAL_HIVE} ${LEGAL_BYO} ${LEGAL_LOCK} ${LEGAL_ROADMAP} ${LEGAL_CUP} ${LEGAL_FORUM} ${LEGAL_TAPE} ${LEGAL_AGENTS} ${LEGAL_SAAS} ${LEGAL_FINCEN} ${LEGAL_WAF} ${LEGAL_MORNING} ${LEGAL_EDU} ${LEGAL_MANDATE} ${LEGAL_SIM} ${LEGAL_LAB} ${LEGAL_ADMIN_PLAY}`,
   },
   {
     id: "wager",
