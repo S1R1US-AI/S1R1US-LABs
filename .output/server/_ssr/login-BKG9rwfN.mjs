@@ -8,7 +8,7 @@ import { m as secondFactorStatus, v as useOperator } from "./operator-3yoyqoNq.m
 import { a as XRenewWhenAdmin, m as useCurrentUserState, n as Button, p as useCurrentUser } from "./renew-password-B-D0RQDq.mjs";
 import { p as Lock } from "../_libs/lucide-react.mjs";
 import { E as UserButton, O as YubiForm, S as Shell, d as LoginCluster } from "./shell-FTHxZ6K_.mjs";
-import { q as useWindowSearch } from "./router-DSQr-xOG.mjs";
+import { q as useWindowSearch } from "./router-C6TTOWjV.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/login-BKG9rwfN.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
