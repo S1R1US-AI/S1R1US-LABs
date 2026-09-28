@@ -1,7 +1,7 @@
 /** Official public properties of S1R1US Labs. sameAs only includes live, owned URLs. */
 
 import { COMPANY_X_HANDLE, COMPANY_X_URL } from "@/lib/desk/x-admin";
-import { SEO_CANONICAL } from "@/lib/brand";
+import { GM_PATH, SEO_CANONICAL } from "@/lib/brand";
 
 export const GITHUB_ORG_URL = "https://github.com/S1R1US-AI";
 export const GITHUB_REPO_URL = "https://github.com/S1R1US-AI/S1R1US-LABs";
@@ -92,7 +92,7 @@ export function sitelinkPages() {
     { name: "AG3nT F0rUm", url: `${SEO_CANONICAL}forum` },
     { name: "FAQ", url: `${SEO_CANONICAL}faq` },
     { name: "R0B0T$ ACT1VAT3", url: `${SEO_CANONICAL}r0b0ts` },
-    { name: "G0Dz1LLa M0De", url: `${SEO_CANONICAL}gm` },
+    { name: "G0Dz1LLa M0De", url: `${SEO_CANONICAL.replace(/\/$/, "")}${GM_PATH}` },
     { name: "L3AD3R B0ARD", url: `${SEO_CANONICAL}board` },
     { name: "SUP3R B0WL", url: `${SEO_CANONICAL}bowl` },
     { name: "W0rLd CUP", url: `${SEO_CANONICAL}w0rld` },
