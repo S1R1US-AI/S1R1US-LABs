@@ -32,7 +32,7 @@ Bugs and feature requests belong on GitHub Issues. Announcements go on X. Discor
 
 Search names (both spellings index this project):
 
-- S1R1US Live Tape = live tape = S1R1U$ 7-B0t Hedge Fund = S1R1US 7-bot hedge fund
+- S1R1US Live Tape = live tape = S1R1U$ 9-B0T Hedge Fund = S1R1US 9-B0T Hedge Fund
 - S1R1US L@Bs = S1R1U$ L@B Strategies = S1R1US Lab Strategies
 - GM = G0DZ1LLa M0D3 = Godzilla mode = Godzilla Mode
 - F33D = F33D H0ST1Ng = Feed Hosting
@@ -68,7 +68,7 @@ Hover titles use the leet name plus the plain alias.
 
 | Tab | Also searched as | What it is |
 |---|---|---|
-| S1R1US Live Tape | S1R1US 7-bot hedge fund | Live tape. Bots 1-6 vote orthogonal lanes. 7-B0T issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. |
+| S1R1US Live Tape | S1R1US 9-B0T Hedge Fund | Live tape. Bots 1-6 vote orthogonal lanes. 7-B0T issues BUY / ACCUMULATE / HOLD / WAIT / TRIM. |
 | S1R1US L@Bs | S1R1US Lab Strategies | What-if lab. Sliders overlay the last validated pull. They never write a live feed. |
 | GM | Godzilla Mode | Isolated sleeve. G M0D3 AUTO (Godzilla Mode) is always rainbow. AUTO may day-trade the sleeve only, never the 7-bot stack. |
 | F33D | Feed Hosting | Hosting / domain / iOS / Play app fees. Same wallets as FAQ. Not the trading book. Not a token. |
