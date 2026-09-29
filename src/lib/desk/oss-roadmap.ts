@@ -600,8 +600,8 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-09-28",
     estimate: false,
     status: "DONE",
-    name: "Admin-identity nondisclosure",
-    detail: "Public surfaces use company @S1R1US_AI only. Admin-identity nondisclosure complete on public copy and client bundles.",
+    name: "Public company X",
+    detail: "Public surfaces use @S1R1US_AI only.",
   },
 ];
 
