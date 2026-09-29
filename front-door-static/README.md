@@ -12,7 +12,7 @@ Security path A: static soft-launch theme served **outside** Vite/Nitro `.output
 - Backend: **HOLD** (admin/auth/APIs unchanged; proxied to Nitro)
 - Not part of `public/` or theme rebuild — `do-start.mjs` overlays these files on PORT and proxies everything else to Nitro on 8081
 - Brand lock: Godzilla `images/icon-512.png` + favicons — never replace
-- Desk data companion: `src/lib/desk/oss-roadmap.ts` LIVE ids `soft-launch-home`, `hello-world`, `discord` + DONE milestone `d1l` (admin-identity nondisclosure)
+- Desk data companion: `src/lib/desk/oss-roadmap.ts` LIVE ids `soft-launch-home`, `hello-world`, `discord` + DONE milestone `d1l` (Public company X — public surfaces use @S1R1US_AI only)
 
 - **Research** (`/WEB-3-and-ai-future`): reachable DRAFT live soft-launch test; `noindex,nofollow`; Soft-launch HOLD / Lab 3 HOLD and paper locks remain visible. Source FAQ is linked at `/WEB-3-and-ai-future/FAQ.md`.
 

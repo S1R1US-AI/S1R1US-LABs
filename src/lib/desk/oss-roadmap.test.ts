@@ -61,7 +61,7 @@ describe("OSS Roadmap", { concurrency: false }, () => {
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "soft-launch-home" && f.status === "LIVE" && f.path === "/"));
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "hello-world" && f.status === "LIVE" && f.path === "/hello-world/"));
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "discord" && f.status === "LIVE" && f.path === "/discord/"));
-    assert.ok(DATED_MILESTONES.some((m) => m.id === "d1l" && m.status === "DONE" && /admin-identity nondisclosure/i.test(m.name + " " + m.detail) && /@S1R1US_AI/.test(m.detail)));
+    assert.ok(DATED_MILESTONES.some((m) => m.id === "d1l" && m.status === "DONE" && /Public company X/.test(m.name) && m.detail === "Public surfaces use @S1R1US_AI only."));
     assert.match(String(snap.disclaimer ?? ""), /NO LEGAL FEES/);
     assert.match(String(snap.disclaimerShort ?? ""), /NO LEGAL FEES/);
     assert.ok(snap.predMonetization?.some((m) => m.id === "rake" && m.status === "NEVER"));
