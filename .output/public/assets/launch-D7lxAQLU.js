@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-DTl5k1p0.js";var t=e;export{t as component};
