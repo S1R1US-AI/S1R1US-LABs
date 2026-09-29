@@ -349,6 +349,15 @@ export const PUBLIC_PAGES = [
     priority: "0.6",
   },
   {
+    path: "/copyright-terms",
+    loc: `${origin}/copyright-terms`,
+    label: "Copyright",
+    title: "Copyright · S1R1US.ai",
+    hint: "Ownership & No-Tamper Notice. Soft locks Present · Soft-Launch PARKED. Public X @S1R1US_AI only. White-label / fork / download must keep disclosure links.",
+    changefreq: "weekly",
+    priority: "0.6",
+  },
+  {
     path: "/sitemap",
     loc: `${origin}/sitemap`,
     label: "Sitemap",
