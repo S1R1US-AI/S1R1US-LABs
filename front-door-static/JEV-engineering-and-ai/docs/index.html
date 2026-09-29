@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://s1r1us.ai/JEV-engineering-and-ai/docs/" />
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+<meta name="twitter:site" content="@S1R1US_AI" />
+<link rel="stylesheet" href="/css/theme.css" />
+<meta name="description" content="Public documentation index for Soft-Launch Neural Hub / JEV Engineering research (DRAFT). S1R1US.ai." />
+<title>Public documentation · JEV Engineering and AI | S1R1US.ai</title>
+<style>
+  :root {
+    --bg: #f8fafc; --surface: #ffffff; --ink: #0f172a; --slate: #334155; --muted: #64748b;
+    --line: #e2e8f0; --blue: #1d4ed8; --blue-soft: #dbeafe; --amber-bg: #fffbeb; --amber-ink: #92400e;
+    --amber-line: #f59e0b; --danger-bg: #fef2f2; --danger-ink: #991b1b; --ok-bg: #ecfdf5; --ok-ink: #065f46;
+    --radius: 14px; --shadow: 0 1px 2px rgba(15,23,42,.06), 0 8px 24px rgba(15,23,42,.04);
+    --font: "IBM Plex Sans", "Inter", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font); color: var(--ink); background: linear-gradient(180deg,#eef4fb 0%,var(--bg) 220px); line-height: 1.55; }
+  .draft-banner { position: sticky; top: 0; z-index: 50; background: #0f172a; color: #f8fafc; text-align: center; padding: .7rem 1rem; font-size: .92rem; font-weight: 600; border-bottom: 3px solid var(--amber-line); }
+  .draft-banner span { opacity: .85; font-weight: 500; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+  header.hero { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem 1.4rem 1.2rem; margin: 1.25rem 0 1.25rem; }
+  .kicker { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); background: var(--blue-soft); padding: .28rem .55rem; border-radius: 999px; margin-bottom: .7rem; }
+  h1 { margin: 0 0 .45rem; font-size: clamp(1.35rem, 2.6vw, 1.75rem); line-height: 1.25; }
+  .lede { margin: 0; color: var(--slate); }
+  .locks-line { margin: .9rem 0 0; padding: .65rem .85rem; background: var(--danger-bg); border: 1px solid #fecaca; border-radius: 10px; color: var(--danger-ink); font-size: .88rem; font-weight: 600; }
+  section { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.25rem 1.35rem; margin-bottom: 1.1rem; }
+  section h2 { margin: 0 0 .7rem; font-size: 1.1rem; border-bottom: 1px solid var(--line); padding-bottom: .5rem; }
+  p, li { color: var(--slate); }
+  a { color: var(--blue); }
+  .callout { border-left: 4px solid var(--blue); background: var(--blue-soft); padding: .75rem 1rem; border-radius: 0 var(--radius) var(--radius) 0; margin: .8rem 0; }
+  .callout.lock { border-left-color: #ef4444; background: var(--danger-bg); color: var(--danger-ink); }
+  .callout.warn { border-left-color: var(--amber-line); background: var(--amber-bg); color: var(--amber-ink); }
+  .tag-hold { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 4px; padding: .1rem .4rem; margin-right: .35rem; }
+  .hero-img { margin: .8rem 0 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .hero-img img { display: block; width: 100%; height: auto; }
+  .hero-img figcaption { padding: .65rem 1rem; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); background: #f8fafc; }
+  .hold-card { display: grid; gap: 1rem; border: 2px dashed #f59e0b; background: var(--amber-bg); border-radius: var(--radius); padding: 1rem; }
+  @media (min-width: 720px) { .hold-card { grid-template-columns: minmax(200px, 340px) 1fr; } }
+  .hold-card img { width: 100%; height: auto; border-radius: 10px; border: 1px solid #fcd34d; }
+  footer.page-foot { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+  code { font-family: var(--mono); font-size: .86em; }
+  .chip { display: inline-block; border: 1px solid var(--line); background: #f1f5f9; border-radius: 999px; padding: .15rem .55rem; font-size: .8rem; color: var(--slate); margin-right: .35rem; }
+  .chip.warn { background: var(--amber-bg); border-color: #fcd34d; color: var(--amber-ink); }
+</style>
+</head>
+<body>
+  <div class="draft-banner" role="status">DRAFT · Soft-launch research · not live · Soft locks Present<span> · PARKED · no public ship</span></div>
+  <div class="wrap">
+
+    <header class="hero">
+      <div class="kicker">docs · draft</div>
+      <h1>Public documentation index</h1>
+      <p class="lede">Visitor-safe index for the Soft-Launch Path / Soft-Launch Neural Hub / JEV Engineering research surface (human safety gate). Cite packs are research notes — not live product SoT. Glossary write remains on HOLD.</p>
+      <p class="locks-line" role="note">paper only · never sell · never short · Coinbase create LOCKED · auto-trade LOCKED · public X @S1R1US_AI only</p>
+    </header>
+
+    <section id="page-family" aria-labelledby="pf-h">
+      <h2 id="pf-h">Page family</h2>
+      <ul>
+        <li><a href="../">Main research page</a> — Soft-Launch Neural Hub · Patch Gate · system marks</li>
+        <li><a href="../timeline/">Public timeline</a> — Soft-Launch Path + milestones (PARKED)</li>
+        <li><a href="../instructions/">Instruction module</a> — preview + video HOLD / storyboard</li>
+        <li><a href="../sitemap.xml">sitemap.xml</a> — draft URL set for this family</li>
+      </ul>
+    </section>
+
+    <section id="sections" aria-labelledby="sec-h">
+      <h2 id="sec-h">Main page sections (anchors)</h2>
+      <ul>
+        <li><a href="../#why">Why this page exists</a></li>
+        <li><a href="../#what-jev">What Jev is</a> · <a href="../#what-jev-engineering">What “Jev Engineering” names</a></li>
+        <li><a href="../#s1r1us-use">S1R1US use (PARKED)</a> · visitor fence</li>
+        <li><a href="../#soft-launch-path">Soft-Launch Path</a></li>
+        <li><a href="../#example-soft-launch-path">Featured · Soft-Launch Path</a> · <a href="../#example-patch-gate">Patch Gate</a> · <a href="../#example-overall-method">Overall Method</a> · <a href="../#example-human-path-timeline">Human Path Timeline</a></li>
+        <li><a href="../#timestamped-team-learning">Timestamped team learning</a> · <a href="../README.md">Peer debate README</a></li>
+        <li><a href="../#how-network-learns">How the Soft-Launch Neural Network learns</a></li>
+        <li><a href="../#patch-gate">Governance &amp; Patch Gate</a></li>
+        <li><a href="../#system-marks">System marks &amp; bot logos</a></li>
+        <li><a href="../#copyright">Copyright &amp; definitions</a></li>
+      </ul>
+    </section>
+
+    <section id="cite-packs" aria-labelledby="cp-h">
+      <h2 id="cp-h">Research cite packs (notes · visitor-safe)</h2>
+      <p>Soft-launch definition cite packs live in the research checkpoint (not shipped as a public glossary). Useful headwords for this page family include Batch&nbsp;F (Jev Engineering) and Batch&nbsp;C (Webster core, including <em>copyright</em>). Status: DRAFT cite · HOLD on publishing a public glossary · Soft locks Present.</p>
+      <div class="callout warn"><span class="tag-hold">HOLD</span> Do not treat cite packs as live engineering SoT. Do not publish a public glossary file from this surface.</div>
+    </section>
+
+    <section id="related" aria-labelledby="rel-h">
+      <h2 id="rel-h">Related</h2>
+      <ul>
+        <li><a href="/WEB-3-and-ai-future/">WEB-3-and-ai-future</a></li>
+        <li><a href="/terms">See S1R1US.ai Terms</a></li>
+        <li><a href="https://typesafe.ai/legal/terms" target="_blank" rel="noopener noreferrer">See TypeSafe Terms of Use (Jev / System One product)</a></li>
+        <li><a href="https://madewithjev.com/what-is-jev-engineering" target="_blank" rel="noopener noreferrer">Jev Engineering discipline explainer</a></li>
+      </ul>
+    </section>
+
+    <footer class="page-foot">
+      <p><a href="../">← JEV Engineering and AI</a> · <a href="/WEB-3-and-ai-future/">WEB-3-and-ai-future</a> · <a href="/terms">Terms</a> · Public X <a href="https://x.com/S1R1US_AI" target="_blank" rel="noopener noreferrer">@S1R1US_AI</a></p>
+      <p>DRAFT · PARKED · Soft locks Present · NFA · not a trading desk</p>
+    </footer>
+  </div>
+</body>
+</html>
