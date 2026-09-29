@@ -43,7 +43,7 @@ Education and game-theory research only — not financial advice, not a broker, 
 | Leader board / World Cup / Hive / Miners | see site | Paper championships, BYO compute, public miner stats |
 | FAQ · Locked Status · Roadmap · Train | — | Names, locks, L0–L7 architecture, recursive train |
 
-Public routes: `/` · `/labs` · `/gm` · `/f33d` · `/agent` · `/forum` · `/faq` · `/roadmap` · `/train` · `/Bitcoin-Miners` · `/compute` · `/terms` · `/privacy` · more on the [site map](https://s1r1us.ai/sitemap).
+Public routes: `/` · `/labs` · `/gm` · `/f33d` · `/agent` · `/forum` · `/faq` · `/roadmap` · `/train` · `/Bitcoin-Miners` · `/compute` · `/terms` · `/privacy` · `/copyright-terms` · more on the [site map](https://s1r1us.ai/sitemap).
 
 Canonical public flowchart (lab3 ops; when on main): [PUBLIC-CANONICAL-FLOW](https://github.com/S1R1US-AI/lab3-visible-sandbox/blob/main/ops/sensei/media/public/PUBLIC-CANONICAL-FLOW-2026-09-27.md).
 
@@ -64,8 +64,22 @@ npm run typecheck && npm run build
 
 Node 22 · DigitalOcean App Platform (see [DEPLOY.md](DEPLOY.md)). Optional xAI API token env for Ask Grok. Never commit CDP JSON, seeds, admin hashes, or hardware security ids. Coinbase for Agents is dry-run here.
 
+## Copyright
+
+S1R1US.ai owns the copyrights in bot names, roles, functions, proprietary source that controls those bots, the design process, and logos/marks. See the Ownership & No-Tamper Notice on the Copyright page. Apache 2.0 on this public repo (where stated) does not waive that notice or S1R1US.ai marks. White-label / fork / download users must keep active disclosure links in **their** GitHub repository README (or equivalent public repo docs) to S1R1US.ai official communications: site, Copyright, Terms, Privacy, and FAQ — do not strip or replace those links.
+
+[Copyright](https://s1r1us.ai/copyright-terms) · [FAQ](https://s1r1us.ai/faq#copyright-policy) · [Terms](https://s1r1us.ai/terms) · [Privacy](https://s1r1us.ai/privacy)
+
 ## Security (public)
 
 Humans drive the car and hold the car keys. This system does not hold visitor crypto custody material. Education only — S1R1US.ai never places Coinbase orders.
 
-White-label downloads must keep disclosure links active: [S1R1US.ai](https://s1r1us.ai) · [Terms](https://s1r1us.ai/terms) · [Privacy](https://s1r1us.ai/privacy). Not a licensed broker/dealer; not SEC-registered; not attorneys — consult licensed advisors before use. Users may lose funds; no legal fees paid per Terms.
+White-label / fork / download users must keep these disclosure links active in **their** GitHub repository README (or equivalent public repo docs):
+
+- Original Creation distributed by: [S1R1US.ai](https://s1r1us.ai)
+- Original Creation distributor Copyright: <https://s1r1us.ai/copyright-terms>
+- Original Creation distributor Terms: <https://s1r1us.ai/terms>
+- Original Creation distributor Privacy Policy: <https://s1r1us.ai/privacy>
+- Original Creation distributor FAQ: <https://s1r1us.ai/faq>
+
+Of course you can choose to move your own direction using our Open-Source White Label product according to our Copyright, Terms, Privacy, and FAQ — keep those disclosure links active in your GitHub repository README (or equivalent public repo docs). Not a licensed broker/dealer; not SEC-registered; not attorneys — consult licensed advisors before use. Users may lose funds; no legal fees paid per Terms.
