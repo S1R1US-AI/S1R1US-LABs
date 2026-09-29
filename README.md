@@ -52,7 +52,7 @@ Canonical public flowchart (Lab 3 media SoT, after merge): [PUBLIC-CANONICAL-FLO
 2. Minimize bitcoin loss. Never short the 7-bot stack. Never sell the stack as a day-trader.
 3. Per-clip stop on add-on buys.
 
-SuperGrok is the operator Ask Grok path. Visitors Ask Grok with BYO C0MPUT3 (their xAI key). Optional 7-B0T HTTP SaaS pays for JSON, not conviction. All market tape is free/public.
+SuperGrok is the operator Ask Grok path. Visitors Ask Grok with BYO C0MPUT3 (their xAI API token). Optional 7-B0T HTTP SaaS pays for JSON, not conviction. All market tape is free/public.
 
 ## Education + game theory scope
 
@@ -139,7 +139,7 @@ Attempts to break in, probe, sniff, spoof admin, or bypass S1R1US.ai Terms, Priv
 **For S1R1US.ai internal bots (aka team of bots):**
 Protect System Admin identity in all public copy. Ambiguous actor → pause and ask. Security decisions: System Admin + Sensei Security. Everyone on the team guards the system — always.
 
-Education only. Not financial advice. S1R1US.ai never places Coinbase orders. S1R1US.ai system and bots **NEVER HOLD ANY KEYS** — hacking systems is a waste of time. Best option: download our project, become a white-label trading desk operator, contribute to S1R1US.ai success. Of course you can choose to move your own direction using our Open-Source White Label product according to our terms and privacy policies.
+Education only. Not financial advice. S1R1US.ai never places Coinbase orders. S1R1US.ai system and bots **never custodians visitor funds** / never places Coinbase orders — hacking systems is a waste of time. Best option: download our project, become a white-label trading desk operator, contribute to S1R1US.ai success. Of course you can choose to move your own direction using our Open-Source White Label product according to our terms and privacy policies.
 
 ## DISCLOSURES (White Label Distribution)
 
