@@ -172,7 +172,7 @@ A: Evolve. Classic web remains; NIST-style Web3 (identity, verifiable data, sele
 
 ### Q: Can quantum security protect bitcoin?
 
-A: Over a long horizon, NIST post-quantum crypto (FIPS 203–205 path) is the practical track: migrate signatures and keys through careful community upgrades.
+A: Over a long horizon, NIST post-quantum crypto (FIPS 203–205 path) is the practical track: migrate signatures and related material through careful community upgrades.
 
 
 ---
