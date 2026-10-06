@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="480" viewBox="0 0 1600 480" role="img" aria-labelledby="title desc">
+  <title id="title">S1R1US AI Marketing</title>
+  <desc id="desc">Professional marketing banner for S1R1US.ai open-source education and paper research.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1114"/>
+      <stop offset="55%" stop-color="#121619"/>
+      <stop offset="100%" stop-color="#1a2228"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9a227"/>
+      <stop offset="100%" stop-color="#e6c35c"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a9d8f"/>
+      <stop offset="100%" stop-color="#5ec4b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="480" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1600" height="6" fill="url(#gold)"/>
+  <rect x="0" y="474" width="1600" height="6" fill="url(#teal)"/>
+  <!-- subtle grid -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <path d="M0 120 H1600 M0 240 H1600 M0 360 H1600"/>
+    <path d="M200 0 V480 M400 0 V480 M600 0 V480 M800 0 V480 M1000 0 V480 M1200 0 V480 M1400 0 V480"/>
+  </g>
+  <text x="80" y="160" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="28" font-weight="600" fill="#5ec4b6" letter-spacing="4">OPEN SOURCE · EDUCATION · PAPER</text>
+  <text x="80" y="250" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="72" font-weight="800" fill="#f2f4f6">S1R1US AI Marketing</text>
+  <text x="80" y="320" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="28" fill="#c9a227">Bitcoin-native research software · visitor channels</text>
+  <text x="80" y="390" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="22" fill="#9aa3ad">Soft locks Present · Soft-Launch PARKED · Public X @S1R1US_AI only</text>
+  <rect x="1280" y="160" width="240" height="160" rx="16" fill="none" stroke="#c9a227" stroke-width="3"/>
+  <text x="1400" y="230" text-anchor="middle" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="36" font-weight="800" fill="#c9a227">S1R1US</text>
+  <text x="1400" y="280" text-anchor="middle" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="22" fill="#5ec4b6">.ai</text>
+</svg>

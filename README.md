@@ -18,6 +18,7 @@ S1R1US.ai strives to build open-source software designed with AI research tools.
 | **GitHub** | [S1R1US-AI/S1R1US-LABs](https://github.com/S1R1US-AI/S1R1US-LABs) |
 | **Discord** | [discord.gg/UrPerk3j5](https://discord.gg/UrPerk3j5) |
 | **X** | [@S1R1US_AI](https://x.com/S1R1US_AI) |
+| **Substack** | [@br0k3ns0ft](https://substack.com/@br0k3ns0ft) |
 | **TikTok** | [@S1R1US.ai](https://www.tiktok.com/@S1R1US.ai) |
 
 Bugs → GitHub Issues · announcements → X · chat/support → Discord. License: Apache 2.0.
@@ -66,7 +67,7 @@ Node 22 · DigitalOcean App Platform (see [DEPLOY.md](DEPLOY.md)). Optional xAI 
 
 ## Copyright
 
-S1R1US.ai owns the copyrights in bot names, roles, functions, proprietary source that controls those bots, the design process, and logos/marks. See the Ownership & No-Tamper Notice on the Copyright page. Apache 2.0 on this public repo (where stated) does not waive that notice or S1R1US.ai marks. White-label / fork / download users must keep active disclosure links in **their** GitHub repository README (or equivalent public repo docs) to S1R1US.ai official communications: site, Copyright, Terms, Privacy, and FAQ — do not strip or replace those links.
+S1R1US.ai owns the copyrights in bot names, roles, functions, proprietary source that controls those bots, the design process, and logos/marks. See the Ownership & No-Tamper Notice on the Copyright page. Apache 2.0 on this public repo (where stated) does not waive that notice or S1R1US.ai marks. White-label / fork / download users must keep active disclosure links in **their** GitHub repository README (or equivalent public repo docs) to S1R1US.ai official communications: site, Copyright, Terms, Privacy, FAQ, and Substack — do not strip or replace those links. Active white-label / fork / download copies must also keep an active Substack link to [https://substack.com/@br0k3ns0ft](https://substack.com/@br0k3ns0ft) in the OSS README, the website disclaimer, and the website FAQ.
 
 [Copyright](https://s1r1us.ai/copyright-terms) · [FAQ](https://s1r1us.ai/faq#copyright-policy) · [Terms](https://s1r1us.ai/terms) · [Privacy](https://s1r1us.ai/privacy)
 
@@ -81,5 +82,6 @@ White-label / fork / download users must keep these disclosure links active in *
 - Original Creation distributor Terms: <https://s1r1us.ai/terms>
 - Original Creation distributor Privacy Policy: <https://s1r1us.ai/privacy>
 - Original Creation distributor FAQ: <https://s1r1us.ai/faq>
+- Original Creation distributor Substack: <https://substack.com/@br0k3ns0ft>
 
-Of course you can choose to move your own direction using our Open-Source White Label product according to our Copyright, Terms, Privacy, and FAQ — keep those disclosure links active in your GitHub repository README (or equivalent public repo docs). Not a licensed broker/dealer; not SEC-registered; not attorneys — consult licensed advisors before use. Users may lose funds; no legal fees paid per Terms.
+Of course you can choose to move your own direction using our Open-Source White Label product according to our Copyright, Terms, Privacy, FAQ, and Substack — keep those disclosure links active in your GitHub repository README (or equivalent public repo docs). Active white-label / fork / download copies must also keep an active Substack link to [https://substack.com/@br0k3ns0ft](https://substack.com/@br0k3ns0ft) in the OSS README, the website disclaimer, and the website FAQ. Not a licensed broker/dealer; not SEC-registered; not attorneys — consult licensed advisors before use. Users may lose funds; no legal fees paid per Terms.
