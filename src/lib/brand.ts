@@ -6,6 +6,8 @@ export const BOT7_NAME = "S1R1U$ Analyst";
 export const TAB_BOT7 = "7-B0T";
 export const SEO_TAB_BOT7 = "Bot 7";
 export const LABS_NAME = "S1R1US Labs";
+/** Legal owner/operator Organization name (entity.json + schema). */
+export const LEGAL_ENTITY_NAME = "SAI Citizens United, LTD";
 
 export const TAB_DESK = "S1R1U$ 9-B0T Hedge Fund";
 export const TAB_LAB = "S1R1U$ L@B Strategies";
@@ -218,6 +220,30 @@ export const GIF_MINERS_HASH_NAME = "Solo CKPool Bitcoin Miner Hash Power";
 
 /** Public GIFs/pictures for sitemap Image + schema ImageObject. Keep in sync with /public. */
 export const SITE_IMAGES = [
+  {
+    src: "/images/sai-citizens-united.png",
+    name: seoImgAlt("SAI Citizens United, LTD"),
+    caption: seoImgAlt("SAI Citizens United, LTD — North Carolina nonprofit · owner/operator of S1R1US.ai OSS and website"),
+    pages: ["/sai-citizens-united", "/sai-citizens-united/", "/manifesto", "/manifesto/", "/faq", "/faq/", "/roadmap", "/roadmap/"],
+  },
+  {
+    src: "/images/sai-citizens-united-large.png",
+    name: seoImgAlt("SAI Citizens United, LTD large mark"),
+    caption: seoImgAlt("SAI Citizens United, LTD large mark"),
+    pages: ["/sai-citizens-united", "/sai-citizens-united/", "/manifesto", "/manifesto/", "/faq", "/faq/"],
+  },
+  {
+    src: "/images/sai-citizens-united-medium.png",
+    name: seoImgAlt("SAI Citizens United, LTD medium mark"),
+    caption: seoImgAlt("SAI Citizens United, LTD medium mark"),
+    pages: ["/sai-citizens-united", "/sai-citizens-united/", "/manifesto", "/manifesto/", "/faq", "/faq/"],
+  },
+  {
+    src: "/images/sai-citizens-united-card.png",
+    name: seoImgAlt("SAI Citizens United, LTD card mark"),
+    caption: seoImgAlt("SAI Citizens United, LTD card mark"),
+    pages: ["/sai-citizens-united", "/sai-citizens-united/", "/faq", "/faq/"],
+  },
   {
     src: "/s1r1us-godzilla-logo.jpg",
     name: seoImgAlt("S1R!US Godzilla Logo — S1R1US Labs hologram mark"),

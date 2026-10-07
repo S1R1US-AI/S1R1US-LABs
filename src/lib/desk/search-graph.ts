@@ -1,6 +1,7 @@
 import {
   APP_NAME,
   LABS_NAME,
+  LEGAL_ENTITY_NAME,
   PAGE_DESC_FAQ,
   PAGE_TITLE_FAQ,
   SEO_CANONICAL,
@@ -34,9 +35,9 @@ export function corporateSearchGraph() {
     {
       "@type": "Organization",
       "@id": orgId,
-      name: LABS_NAME,
-      legalName: LABS_NAME,
-      alternateName: [APP_NAME, "S1R1US Labs", "S1R1US AI", TAB_DESK, SEO_TAB_DESK, "S1R1US Bot Hedge Fund"],
+      name: LEGAL_ENTITY_NAME,
+      legalName: LEGAL_ENTITY_NAME,
+      alternateName: [LABS_NAME, APP_NAME, "S1R1US Labs", "S1R1US AI", TAB_DESK, SEO_TAB_DESK, "S1R1US Bot Hedge Fund"],
       url: SEO_CANONICAL,
       description: SEO_DESCRIPTION,
       foundingDate: FOUNDING_DATE,

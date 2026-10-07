@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SEO_CANONICAL, SEO_DESCRIPTION, LABS_NAME, APP_NAME } from "@/lib/brand";
+import { SEO_CANONICAL, SEO_DESCRIPTION, LABS_NAME, APP_NAME, LEGAL_ENTITY_NAME } from "@/lib/brand";
 import { corporateSearchGraph, videoObjectGraph } from "@/lib/desk/search-graph";
 import { liveSameAs, OFFICIAL_PROPERTIES, FOUNDING_DATE } from "@/lib/desk/official-presence";
 
@@ -11,8 +11,9 @@ export const Route = createFileRoute("/entity.json")({
           JSON.stringify(
             {
               "@context": "https://schema.org",
-              name: LABS_NAME,
-              alternateName: [APP_NAME, "S1R1US AI"],
+              name: LEGAL_ENTITY_NAME,
+              legalName: LEGAL_ENTITY_NAME,
+              alternateName: [LABS_NAME, APP_NAME, "S1R1US AI", "S1R1US Labs"],
               url: SEO_CANONICAL,
               description: SEO_DESCRIPTION,
               foundingDate: FOUNDING_DATE,
