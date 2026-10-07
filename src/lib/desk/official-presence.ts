@@ -103,6 +103,8 @@ export function sitelinkPages() {
     { name: "iOS · Google App", url: `${SEO_CANONICAL}app` },
     { name: "S1R1US L@Bs", url: `${SEO_CANONICAL}labs` },
     { name: "Media", url: `${SEO_CANONICAL}media` },
+    { name: "SAI Citizens United, LTD", url: `${SEO_CANONICAL}sai-citizens-united` },
+    { name: "MANIFESTO", url: `${SEO_CANONICAL}manifesto` },
     { name: "GitHub", url: GITHUB_REPO_URL },
     { name: "X", url: COMPANY_X_URL },
   ];
