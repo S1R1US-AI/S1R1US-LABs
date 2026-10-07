@@ -105,7 +105,7 @@ function resolveStatic(pathname) {
   }
 
   // Prefix routes: hello-world, discord, roadmap, 7 desk overlays, css, js, images
-  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/css", "/js", "/images"];
+  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/sense1-engineering", "/sai-citizens-united", "/manifesto", "/oss-marketing", "/css", "/js", "/images"];
   const hit = prefixes.find(
     (p) => pathname === p || pathname.startsWith(p + "/"),
   );
