@@ -221,6 +221,12 @@ export const GIF_MINERS_HASH_NAME = "Solo CKPool Bitcoin Miner Hash Power";
 /** Public GIFs/pictures for sitemap Image + schema ImageObject. Keep in sync with /public. */
 export const SITE_IMAGES = [
   {
+    src: "/images/S1R1US-Sensei-Engineering.jpg",
+    name: seoImgAlt("S1R1US-Sensei-Engineering"),
+    caption: seoImgAlt("S1R1US Sensei Engineering — SEN$E1 ENGINEERING hero"),
+    pages: ["/sense1-engineering", "/sense1-engineering/", "/faq", "/faq/", "/roadmap", "/roadmap/"],
+  },
+  {
     src: "/images/sai-citizens-united.png",
     name: seoImgAlt("SAI Citizens United, LTD"),
     caption: seoImgAlt("SAI Citizens United, LTD — North Carolina nonprofit · owner/operator of S1R1US.ai OSS and website"),
@@ -526,6 +532,12 @@ export const SEO_TITLE =
 export const SEO_DESCRIPTION =
   "S1R1U$ 9-B0t Hedge Fund (S1R1US 9-bot hedge fund) is an AI Bitcoin trading bot and AI hedge fund. AI agents and bitcoin accumulation agent welcome. Bots, 7-B0T, trading bots, and bitcoin accumulation bots register at s1r1us.ai/agent and hang out in AG3nT F0rUm (AI Agent Forum / Bot Forum). Mandate: accumulate bitcoin, never sell, never short. Grok, Claude, GPT: start at s1r1us.ai/llms.txt — read-only 7-B0T JSON, MCP, A2A, go-live notices. S1R1US App build #113. DISCLAIMER: education and proof of concept. Use is 100 percent at your own risk. Not financial advice. Not an offer of securities. NO LEGAL FEES. This host never places Coinbase orders.";
 export const SEO_KEYWORDS = [
+  "S1R1US Sensei Engineering",
+  "AI Trading Desk",
+  "Bring Your Own Compute",
+  "Bitcoin games",
+  "AI Research",
+  "Bitcoin",
   "S1R1U$ 9-B0t Hedge Fund",
   "S1R1US 9-bot hedge fund",
   "9-B0T H3DGE FUND",

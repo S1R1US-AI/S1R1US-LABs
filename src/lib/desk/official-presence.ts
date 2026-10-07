@@ -104,6 +104,7 @@ export function sitelinkPages() {
     { name: "S1R1US L@Bs", url: `${SEO_CANONICAL}labs` },
     { name: "Media", url: `${SEO_CANONICAL}media` },
     { name: "SAI Citizens United, LTD", url: `${SEO_CANONICAL}sai-citizens-united` },
+    { name: "SEN$E1 ENGINEERING", url: `${SEO_CANONICAL}sense1-engineering` },
     { name: "MANIFESTO", url: `${SEO_CANONICAL}manifesto` },
     { name: "GitHub", url: GITHUB_REPO_URL },
     { name: "X", url: COMPANY_X_URL },
