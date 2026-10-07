@@ -362,7 +362,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/sense1-engineering`,
     label: "SEN$E1 ENGINEERING",
     title: "S1R1US Sensei Engineering · SEN$E1 ENGINEERING · S1R1US.ai",
-    hint: "S1R1US Sensei Engineering. j + Grok + bot team under Sensei standards. Soft locks Present · Soft-Launch PARKED · NFA · public X @S1R1US_AI only. Jev engineering no longer required going forward; past history stays.",
+    hint: "S1R1US Sensei Engineering. system admin + Grok + bot team under Sensei standards. Soft locks Present · Soft-Launch PARKED · NFA · public X @S1R1US_AI only. Jev engineering no longer required going forward; past history stays.",
     changefreq: "weekly",
     priority: "0.7",
   },
@@ -874,7 +874,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "sense1-engineering",
     q: "What is SEN$E1 ENGINEERING?",
-    a: "SEN$E1 ENGINEERING (also styled SEN$EI ENGINEERING / Sensei Engineering) is how S1R1US achieves S1R1US Sensei Engineering: standards-led teaching and mastery applied to building. Who builds it: j + Grok + bot team under Sensei standards. Sensei (先生) means teacher / one who comes before — see https://en.wikipedia.org/wiki/Sensei. Jev engineering is no longer required going forward; past public history of Jev Engineering stays as history. Page: /sense1-engineering/. Soft locks Present: paper only · never sell · never short · Coinbase create LOCKED · auto-trade LOCKED · public X @S1R1US_AI only. Soft-Launch PARKED. Not financial advice (NFA). Entity owner: SAI Citizens United, LTD.",
+    a: "SEN$E1 ENGINEERING (also styled SEN$EI ENGINEERING / Sensei Engineering) is how S1R1US achieves S1R1US Sensei Engineering: standards-led teaching and mastery applied to building. Who builds it: system admin + Grok + bot team under Sensei standards. Sensei (先生) means teacher / one who comes before — see https://en.wikipedia.org/wiki/Sensei. Jev engineering is no longer required going forward; past public history of Jev Engineering stays as history. Page: /sense1-engineering/. Soft locks Present: paper only · never sell · never short · Coinbase create LOCKED · auto-trade LOCKED · public X @S1R1US_AI only. Soft-Launch PARKED. Not financial advice (NFA). Entity owner: SAI Citizens United, LTD.",
   },
   {
     id: "search-media",
