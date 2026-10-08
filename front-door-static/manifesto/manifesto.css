@@ -1,0 +1,85 @@
+/* /manifesto/ page-scoped styles · SAI Citizens United hero (navy / gold / cyan). Soft locks Present · Soft-Launch PARKED. */
+.mf { --mf-navy: #14254a; --mf-cyan: #4fd6ee; }
+
+.mf-hero {
+  margin: 0.5rem auto 2.25rem;
+  max-width: 1024px;
+  text-align: center;
+}
+.mf-hero-figure {
+  margin: 0 0 1.6rem;
+  padding: 3px;
+  border-radius: calc(var(--radius) + 3px);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--mf-navy) 45%, var(--mf-cyan) 100%);
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 39, 0.25),
+    0 10px 40px rgba(20, 37, 74, 0.55),
+    0 0 46px rgba(79, 214, 238, 0.18);
+}
+.mf-hero-figure a { display: block; border-radius: var(--radius); overflow: hidden; line-height: 0; }
+.mf-hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--mf-navy);
+}
+.mf-hero-copy { max-width: 46rem; margin: 0 auto; }
+.mf-hero-copy h1 {
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0 0 0.6rem;
+}
+.mf-hero-copy h1 .accent { color: var(--gold); }
+
+.mf-section { max-width: 52rem; margin-left: auto; margin-right: auto; }
+.mf-section h2 { margin-bottom: 1rem; }
+
+.mf-section .mf-demands {
+  list-style: none;
+  counter-reset: mf;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 0.75rem;
+}
+.mf-demands li {
+  counter-increment: mf;
+  position: relative;
+  padding: 0.85rem 1rem 0.85rem 3.1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  line-height: 1.55;
+}
+.mf-demands li::before {
+  content: counter(mf, decimal-leading-zero);
+  position: absolute;
+  left: 0.85rem;
+  top: 0.85rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--mf-cyan);
+}
+.mf-closing {
+  color: var(--muted);
+  line-height: 1.7;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 1rem;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .mf-hero { margin-top: 0; margin-bottom: 1.6rem; }
+  .mf-hero-figure { margin-bottom: 1.1rem; }
+  .mf-demands li { padding: 0.75rem 0.85rem 0.75rem 2.7rem; font-size: 0.97rem; }
+  .mf-demands li::before { left: 0.7rem; top: 0.75rem; }
+}
