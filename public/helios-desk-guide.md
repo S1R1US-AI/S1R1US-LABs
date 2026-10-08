@@ -99,7 +99,7 @@ This desk never stores a Coinbase API secret. Live trading happens on your machi
 
 MCP (recommended for ChatGPT / Claude / custom harnesses): https://agents.coinbase.com/mcp — OAuth into an isolated portfolio.
 
-CLI: `npm i -g @coinbase/coinbase-cli` then create a CDP token with Trade + Transfer, scoped to one portfolio, `coinbase env live --key-file <key.json>`.
+CLI: `npm i -g @coinbase/coinbase-cli` then create a CDP API key with Trade + Transfer, scoped to one portfolio, `coinbase env live --key-file <key.json>`.
 
 Always preview: `coinbase orders preview --dry-run product_id=BTC-USD side=BUY type=market quote_size=100`
 
