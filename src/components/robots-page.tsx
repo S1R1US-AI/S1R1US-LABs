@@ -288,7 +288,7 @@ export function RobotsPage() {
         <Panel kicker="Devs" title="Software developers — help us build" className="mt-4" kickerClass="faq-kicker" titleClass="faq-title">
           <p className="faq-text text-sm leading-relaxed">
             Fork {GITHUB_REPO_URL.replace("https://", "")}. Open PRs that make 7-B0T, GM, the live tape, iOS,
-            and Google Play clearer, faster, and safer. Do not PR vault, Yubi, admin, or Coinbase create.
+            and Google Play clearer, faster, and safer. Do not PR vault, admin credentials, admin, or Coinbase create.
             The future of a one-person hedge fund is public rails plus private keys. That is worth building.
           </p>
           <p className="mt-3 text-sm">

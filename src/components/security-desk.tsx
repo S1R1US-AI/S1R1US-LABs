@@ -19,7 +19,7 @@ import { HiveAdminPanel } from "@/components/hive-admin-panel";
 import { s3cSweepRows, s3cSweepScore } from "@/lib/desk/s3c-sweep";
 import { useSaverLock, saverLockLabel } from "@/lib/desk/saver-lock";
 import { WHITE_LABEL_NAME, WHITE_LABEL_PATH, WHITE_LABEL_WATCH } from "@/lib/desk/white-label";
-import { BACKUP_PIN, BACKUP_SHOW_DAYS, RESTORE_STEPS, backupEntries } from "@/lib/desk/backup-plan";
+import { BACKUP_LINKS, BACKUP_SHOW_DAYS, RESTORE_STEPS, backupEntries } from "@/lib/desk/backup-plan";
 import { OWL_SECURITY_POLICY, owlSecuritySummary } from "@/lib/desk/owl-forum";
 import { cn } from "@/lib/utils";
 
@@ -347,7 +347,7 @@ export function SecurityDesk() {
           ok={bars.count === 0 && badBot24.length === 0}
         />
         <Stat
-          kicker="Yubi lock"
+          kicker="Key setting"
           value={layers.find((l) => l.id === "yubi-panel")?.status === "ARMED" ? "ON" : "OFF"}
           hint="optional physical key · Admin → Wallet"
           ok
@@ -1276,13 +1276,13 @@ export function SecurityDesk() {
               <Panel className="mt-4" kicker="BACKUP" title="Full system backups — s1r1us.ai web app + phone apps" kickerClass="text-high">
                 <p className="text-sm leading-relaxed text-muted">
                   Last {BACKUP_SHOW_DAYS} days of backups, expandable to 14, each with a downloadable archive and a
-                  full-system Restore link. Restore is allowed for the full 14-day window. The protected rebuild pin
-                  ships prebuilt .output — never compile on the 1 GB box.
+                  full-system Restore link. Restore is allowed for the full 14-day window. Restore steps are private
+                  to the operator.
                 </p>
                 <p className="mt-2 font-mono text-xs text-muted">
-                  Pin: <a className="text-tab hover:underline" href={BACKUP_PIN.releaseUrl} target="_blank" rel="noreferrer">{BACKUP_PIN.tag}</a>
+                  Releases: <a className="text-tab hover:underline" href={BACKUP_LINKS.releaseUrl} target="_blank" rel="noreferrer">{BACKUP_LINKS.tag}</a>
                   {" · "}
-                  <a className="text-tab hover:underline" href={BACKUP_PIN.downloadUrl} target="_blank" rel="noreferrer">download pin archive</a>
+                  <a className="text-tab hover:underline" href={BACKUP_LINKS.downloadUrl} target="_blank" rel="noreferrer">download main archive</a>
                 </p>
                 <ol className="mt-3 list-decimal space-y-1 pl-5 text-xs leading-relaxed text-muted">
                   {RESTORE_STEPS.map((s) => (

@@ -10,7 +10,6 @@ Note: @S1R1S_AI is not the desk.
 Standards: HTML5, JSON-LD, Open Graph, llms.txt, Agentic Resource Discovery, MCP server card
 Doctype: HTML5
 Language: English
-Founded: 2026-09-04
 Mandate: Accumulate bitcoin. Never sell bitcoin. Never short bitcoin.
 Education only. Not financial advice. Not licensed.
 

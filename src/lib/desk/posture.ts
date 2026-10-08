@@ -88,8 +88,8 @@ export async function securityPosture(opts?: { refreshIntel?: boolean }) {
     if (layer) {
       layer.status = on ? "ARMED" : "OPERATOR";
       layer.detail = on
-        ? `ON — Admin requires a physical YubiKey after X + password. Keys enrolled=${String(keys)}.`
-        : `OFF (default). Enroll a YubiKey then lock Admin from Wallet. Dual OTP still required for outgoing BTC/USDC.`;
+        ? `ON — hardware-key setting enabled. Keys enrolled=${String(keys)}.`
+        : `OFF. Operator-managed hardware-key setting.`;
     }
   } catch {
     /* preview */

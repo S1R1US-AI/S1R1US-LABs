@@ -18,9 +18,9 @@ describe("live-sim checkpoint sync", { concurrency: false }, () => {
     assert.equal(CHECKPOINT_BASELINE_N, 68);
     assert.equal(CHECKPOINT_BUILD_N, 113);
     assert.equal(checkpointId(), "113");
-    assert.equal(checkpointLabel(), "S1R1US App build #113");
+    assert.equal(checkpointLabel(), "S1R1US current release");
     assert.match(CHECKPOINT_FOLD, /^2026-09-12/);
-    assert.match(liveSimNote("LIVE"), /S1R1US App build #113/);
+    assert.match(liveSimNote("LIVE"), /S1R1US current release/);
     const h = systemHealth();
     assert.equal(h.checkpoint, "113");
     assert.equal(h.liveUnlocked, false);

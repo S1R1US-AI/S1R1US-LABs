@@ -212,11 +212,11 @@ export function runHunter(): HunterReport {
     finding(
       "h-and",
       "WP2 Auth",
-      "Admin is operator X AND name+password",
+      "Admin is operator sign-in only",
       "HIGH",
       proto.find((p) => p.id === "2fa")?.status === "PASS" ? "PASS" : "OPEN",
-      "X alone or password alone cannot mint admin. Dual Yubi for outgoing BTC/USDC. Optional admin-panel YubiKey lock (default OFF). Two physical keys (primary + backup).",
-      "Keep AND. Do not add passwordless admin. Panel lock stays optional until the operator enrolls a key.",
+      "Operator sign-in only. Operator approval on outgoing BTC/USDC.",
+      "Keep operator-only sign-in. Do not add passwordless admin.",
     ),
     finding(
       "h-tenancy",
@@ -339,11 +339,11 @@ export function runHunter(): HunterReport {
     finding(
       "h-yubi-panel",
       "WP2 Auth",
-      "Optional admin YubiKey lock is off until operator enables it",
+      "Admin hardware-key settings are operator-managed",
       "MED",
       "OPERATOR",
-      "Yubico FIDO2 MFA (UV required, hardware-bound, sign-count clone detect) + Yubico OTP (YubiCloud HMAC when YUBICO_API_SECRET is set). Lock cannot turn on without an enrolled key. Last key cannot be removed while lock is on. Official: yubico.com.",
-      "Enroll two keys (Yubico: primary + backup). Turn the lock on from Admin → Wallet if the panel should require a physical tap. Set YUBICO_CLIENT_ID and YUBICO_API_SECRET in production.",
+      "Yubico FIDO2 and OTP hardware keys for operator approvals. Details stay private. Official: yubico.com.",
+      "Enroll a primary and a backup key. Keep hardware-key settings operator-managed and private.",
     ),
     finding(
       "h-agent",

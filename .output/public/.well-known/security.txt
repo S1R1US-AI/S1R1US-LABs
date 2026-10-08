@@ -7,4 +7,4 @@ Hiring: https://s1r1us.ai/media
 Acknowledgments: https://s1r1us.ai/privacy
 
 # Do not probe, scan, or reverse engineer this host. See /terms.
-# Operator vault, YubiKeys, and Coinbase keys are out of scope and private.
+# Operator vault, admin credentials, and Coinbase keys are out of scope and private.

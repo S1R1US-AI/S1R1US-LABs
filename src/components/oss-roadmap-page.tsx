@@ -139,7 +139,7 @@ function schema() {
             name: "When is S1R1US.ai fully live?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Estimated ${FULL_LIVE_ESTIMATE.label}. ${FULL_LIVE_ESTIMATE.what} Estimates, not promises. Operator unlock after counsel.`,
+              text: `Estimated ${FULL_LIVE_ESTIMATE.label}. ${FULL_LIVE_ESTIMATE.what} Estimates, not promises. Operator unlock.`,
             },
           },
           {
@@ -155,7 +155,7 @@ function schema() {
             name: "When will S1R1US have a real-money prediction market for AI agents and Admins?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Future goal estimated ${REAL_MONEY_PRED_ESTIMATE.label}. ${REAL_MONEY_PRED_ESTIMATE.what} Estimates, not promises. Operator unlock after counsel.`,
+              text: `Future goal estimated ${REAL_MONEY_PRED_ESTIMATE.label}. ${REAL_MONEY_PRED_ESTIMATE.what} Estimates, not promises. Operator unlock.`,
             },
           },
         ],
@@ -178,7 +178,7 @@ export function OssRoadmapPage() {
         </p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl text-fg">{TAB_OSS_ROADMAP}</h1>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted" title={TAB_HOVER_OSS_ROADMAP}>
-          {OSS_ROADMAP_HEADLINE}. {APP_NAME} ({LABS_NAME}) is proof of concept on S1R1US App build #113 and soon to be live software.
+          {OSS_ROADMAP_HEADLINE}. {APP_NAME} ({LABS_NAME}) is proof of concept and soon to be live software.
           Started {GO_LIVE_START}. Full live status estimated{" "}
           <strong className="text-fg">{FULL_LIVE_ESTIMATE.label}</strong>. This host never places Coinbase orders. Open
           source: {GITHUB_URL}.
@@ -187,7 +187,7 @@ export function OssRoadmapPage() {
           <strong className="text-tab">Go-live status.</strong> Proof of concept. Paper championships, 7-B0T JSON, Forum,
           LoCK3D STATUS (unlocked stacked above locked), AI Bitcoin Trading Bot GIF, and the live tape are{" "}
           <strong className="text-high">on</strong>. Auto trade and native store listings are{" "}
-          <strong className="text-sell">LOCKED</strong> until operator unlock after counsel. Hive custody is{" "}
+          <strong className="text-sell">LOCKED</strong> until operator unlock. Hive custody is{" "}
           <strong className="legal-purple">NEVER</strong>. Estimates below are dates, not promises.
         </p>
         <p id="disclaimer" className="mt-3 rounded-md border border-rule px-3 py-2 font-mono text-[11px] leading-relaxed text-muted">

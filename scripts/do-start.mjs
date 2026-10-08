@@ -276,8 +276,8 @@ function startFrontDoor() {
     }
 
     // Prefix claimed but file missing under front-door-static → 404 (do not fall through to Nitro for css/js/images ship paths that 404 today)
-    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/", "/r0b0ts/", "/h1v3/", "/pr3d/", "/faq/", "/compute/", "/gm/", "/f33d/", "/forum/", "/agent/", "/board/", "/labs/", "/owl/", "/app/", "/ios/", "/play/", "/c0ff33/", "/sponsor-ai-bitcoin-trading-bot/", "/media/", "/b3ars/", "/l0ck/", "/bowl/", "/w0rld/", "/c0ut/", "/Bitcoin-Miners/", "/wh1t3/", "/s1r1us/", "/sitemap/", "/search/", "/terms/", "/privacy/", "/copyright-terms/", "/WEB-3-and-ai-future/"];
-    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/css", "/js", "/images"];
+    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/", "/r0b0ts/", "/h1v3/", "/pr3d/", "/faq/", "/compute/", "/gm/", "/f33d/", "/forum/", "/agent/", "/board/", "/labs/", "/owl/", "/app/", "/ios/", "/play/", "/c0ff33/", "/sponsor-ai-bitcoin-trading-bot/", "/media/", "/b3ars/", "/l0ck/", "/bowl/", "/w0rld/", "/c0ut/", "/Bitcoin-Miners/", "/wh1t3/", "/s1r1us/", "/sitemap/", "/search/", "/terms/", "/privacy/", "/copyright-terms/", "/WEB-3-and-ai-future/", "/sense1-engineering/", "/sai-citizens-united/", "/manifesto/", "/oss-marketing/"];
+    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/sense1-engineering", "/sai-citizens-united", "/manifesto", "/oss-marketing", "/css", "/js", "/images"];
     const claimed =
       staticOnlyExact.includes(pathname) ||
       staticOnlyPrefixes.some((p) => pathname.startsWith(p)) ||
@@ -322,6 +322,10 @@ function startFrontDoor() {
         pathname.startsWith("/privacy") ||
         pathname.startsWith("/copyright-terms") ||
         pathname.startsWith("/WEB-3-and-ai-future") ||
+        pathname === "/sense1-engineering" || pathname.startsWith("/sense1-engineering/") ||
+        pathname === "/sai-citizens-united" || pathname.startsWith("/sai-citizens-united/") ||
+        pathname === "/manifesto" || pathname.startsWith("/manifesto/") ||
+        pathname === "/oss-marketing" || pathname.startsWith("/oss-marketing/") ||
         pathname.startsWith("/compute") ||
         pathname.startsWith("/gm") ||
         pathname.startsWith("/f33d")

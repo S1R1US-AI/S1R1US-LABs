@@ -1,5 +1,5 @@
 /*!
- * Soft-launch front-door screensavers — no auth / no login / no saver-lock.
+ * Front-door screensavers — no auth / no login / no saver-lock.
  * Classic Matrix idle on all non-GM pages; Godzilla Mode rain on /gm (+ home #gm).
  * Uses S1R1USRain (rain-engine.js). Ghost background rain (matrix-rain.js) stays separate.
  *

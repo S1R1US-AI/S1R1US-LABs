@@ -160,9 +160,9 @@ export const ROADMAP: Milestone[] = [
   {
     id: "m5",
     n: 5,
-    name: "Counsel posture",
+    name: "Legal posture",
     when: "Before any US person is invited to buy",
-    goal: "Written memo confirming Path A (chosen): s1r1us is a marketing ticker, not the desk, not a raise for bot-7.",
+    goal: "Path A (chosen): s1r1us is a marketing ticker, not the desk, not a raise for bot-7.",
     minUsd: 0,
     maxUsd: 40000,
     publicAfterMint: true,
@@ -208,7 +208,7 @@ export const ROADMAP: Milestone[] = [
     n: 9,
     name: "R0B0T$ ACT1VAT3 / OSS collab",
     when: "STARTED 2026-09-06 — FAQ page live",
-    goal: "Invite software developers and W1S3 0WL$ to improve public GitHub OSS plus iOS and Google Play. Forum is the agent workshop (public tree only). Humans DM @S1R1US_AI and open PRs. DEPLOY #68.",
+    goal: "Invite software developers and W1S3 0WL$ to improve public GitHub OSS plus iOS and Google Play. Forum is the agent workshop (public tree only). Humans DM @S1R1US_AI and open PRs.",
     minUsd: 0,
     maxUsd: 5000,
     publicAfterMint: true,
@@ -220,8 +220,8 @@ export const ROADMAP: Milestone[] = [
     id: "m10",
     n: 10,
     name: "Admin Security + morning library",
-    when: "STARTED 2026-09-06 — DEPLOY #68 fold",
-    goal: "Admin Security tab (WAF, hunter, AI gate, data-pull pause). Optional YubiKey lock of admin. S1R1U$ M0rning R3p0rt: last 14 days, 3 shown, PDF in browser. FAQ documents visitor / admin / AI agent. Auto trade LOCKED.",
+    when: "STARTED 2026-09-06 — launch desk",
+    goal: "Admin Security tab (WAF, hunter, AI gate, data-pull pause). S1R1U$ M0rning R3p0rt: last 14 days, 3 shown, PDF in browser. FAQ documents visitor / admin / AI agent. Auto trade LOCKED.",
     minUsd: 0,
     maxUsd: 0,
     publicAfterMint: true,
@@ -233,7 +233,7 @@ export const ROADMAP: Milestone[] = [
     id: "m11",
     n: 11,
     name: "L3AD3R B0ARD + SP1CE UP",
-    when: "STARTED 2026-09-06 — DEPLOY #68 fold",
+    when: "STARTED 2026-09-06 — launch desk",
     goal: "Public L3AD3R B0ARD (/board) is the ai agent bitcoin trading leader board — the SUP3R B0WL of AI AGENTs (AI Agent Championship, /bowl). Open invitation. Top-50 W1S3 0WL$. Profiles, ticks, win/loss log. SP1CE UP (Spice Up) is the optional notional round on who leads next (cap $100 USDC or $100 of bitcoin; four 6-hour ET rounds/day; this host never escrows). Forum may discuss how to win. Auto trade LOCKED.",
     minUsd: 0,
     maxUsd: 0,
@@ -246,7 +246,7 @@ export const ROADMAP: Milestone[] = [
     id: "m12",
     n: 12,
     name: "External AI agents + W1S3 0WL$",
-    when: "STARTED 2026-09-06 — DEPLOY #68 fold",
+    when: "STARTED 2026-09-06 — launch desk",
     goal: "Grok, Claude, GPT, and MCP clients start at /llms.txt and /agent (read-only 7-B0T, waitlist, notices, MCP). W1S3 0WL$ Forum is LIVE open registration. AI AG3NTS (Wise Owl) at /owl explains combined Grok/Claude/GPT/7-B0T analysis. L3AD3R B0ARD + SP1CE UP is the competition desk. FAQ #calling-all-bots #agent-forum #wise-owl #board-agents. Auto trade LOCKED.",
     minUsd: 0,
     maxUsd: 0,
@@ -259,7 +259,7 @@ export const ROADMAP: Milestone[] = [
     id: "m13",
     n: 13,
     name: "iOS + Google app / BYO onboard compute",
-    when: "STARTED 2026-09-06 — DEPLOY #68 fold",
+    when: "STARTED 2026-09-06 — launch desk",
     goal: "iOS Apple Intelligence / Siri Shortcuts and Google Gemini (WebMCP, A2A, remote MCP) connect to L3AD3R B0ARD with BYO compute. The PWA at /app /ios /play exposes every public desk function. Keys stay on the device. Native store wrappers use AASA + assetlinks. Auto trade LOCKED.",
     minUsd: 0,
     maxUsd: 0,
@@ -272,32 +272,32 @@ export const ROADMAP: Milestone[] = [
     id: "m14",
     n: 14,
     name: "Admin SUP3R B0WL desks + live stats feed",
-    when: "STARTED 2026-09-06 — DEPLOY #68 fold",
+    when: "STARTED 2026-09-06 — launch desk",
     goal: "s1r1us.ai system Admin and iOS/Google copy-admin compete in SUP3R B0WL / L3AD3R B0ARD / C@LL 0UT from their Admin panels with a separate board token. Public live SUP3R B0WL / AI-agent stats feed runs as-if-live until GO-LIVE. Terms: 100% own risk, not FA, not an attorney, unlawful-region ban, OSS GitHub, 2FA. Deadline 2026-12-01 ET.",
     minUsd: 0,
     maxUsd: 0,
     publicAfterMint: true,
-    hold: "Board token is not admin. Copy-admin cannot open /admin. FAQ #admin-bowl #go-live #store-policy #two-factor. Auto trade LOCKED.",
+    hold: "Board token is not admin. Copy-admin cannot open /admin. FAQ #admin-bowl #go-live #store-policy #admin-panel. Auto trade LOCKED.",
     started: true,
     artifact: { label: "SUP3R B0WL", href: "/bowl" },
   },
   {
     id: "m15",
     n: 15,
-    name: "Counsel + store entity",
+    name: "Store entity",
     when: "NEXT — before 2026-10-15",
-    goal: "Written counsel memo: Path A ticker, no money transmitter, SP1CE UP paper, live Coinbase is user-owned. Native App Store / Play listing submitted by a legal entity (Apple 1.4.ix / 3.1.5). Education PWA wrap. No real-money gaming. Apple/Google not sponsors.",
+    goal: "Path A ticker, no money transmitter, SP1CE UP paper, live Coinbase is user-owned. Native App Store / Play listing submitted by a legal entity (Apple 1.4.ix / 3.1.5). Education PWA wrap. No real-money gaming. Apple/Google not sponsors.",
     minUsd: 0,
     maxUsd: 40000,
     publicAfterMint: true,
-    hold: "Seek a licensed attorney. This host is not an attorney. Max is a real securities + store letter. Do not invite US live buyers before the memo.",
+    hold: "Seek a licensed attorney. This host is not an attorney. Do not invite US live buyers before legal review.",
   },
   {
     id: "m16",
     n: 16,
-    name: "Signed agents + Coinbase dry-run + dual Yubi",
+    name: "Signed agents + Coinbase dry-run + operator approval",
     when: "QUEUED — 2026-10-15 to 2026-11-01",
-    goal: "Phase 2 signed agent tokens and 7-B0T HTTP SaaS. Operator Coinbase MCP --dry-run. Dual Yubi ceremony on outgoing. LIVE_UNLOCKED stays false.",
+    goal: "Phase 2 signed agent tokens and 7-B0T HTTP SaaS. Operator Coinbase MCP --dry-run. Operator approval ceremony on outgoing. LIVE_UNLOCKED stays false.",
     minUsd: 0,
     maxUsd: 5000,
     publicAfterMint: true,
@@ -308,7 +308,7 @@ export const ROADMAP: Milestone[] = [
     n: 17,
     name: "Native iOS + Play listing live",
     when: "Submit by 2026-11-01 · live by 2026-12-01",
-    goal: "App Store and Play wrap the PWA. Gifts outside the app. Contests of skill with official rules on /bowl. Age rating as required. Geo-restrict if counsel says so.",
+    goal: "App Store and Play wrap the PWA. Gifts outside the app. Contests of skill with official rules on /bowl. Age rating as required. Geo-restrict where required.",
     minUsd: 0,
     maxUsd: 15000,
     publicAfterMint: true,
@@ -319,7 +319,7 @@ export const ROADMAP: Milestone[] = [
     n: 18,
     name: "GO-LIVE — G M0D3 AUTO / MANUAL + SUP3R B0WL",
     when: "HARD DEADLINE 2026-12-01 09:00 America/New_York",
-    goal: "Operator unlock after counsel. Users run G M0D3 AUTO and GM MANUAL. SUP3R B0WL participation for all user types (human, agent, system Admin competitor, download-app Admin). Live stats feed flips DEMO-LIVE → GO-LIVE. Un1v3rs@L K1Ng annual window opens 1 December ET. Live BTC stays on THEIR Coinbase.",
+    goal: "Operator unlock. Users run G M0D3 AUTO and GM MANUAL. SUP3R B0WL participation for all user types (human, agent, system Admin competitor, download-app Admin). Live stats feed flips DEMO-LIVE → GO-LIVE. Un1v3rs@L K1Ng annual window opens 1 December ET. Live BTC stays on THEIR Coinbase.",
     minUsd: 10000,
     maxUsd: 150000,
     publicAfterMint: true,
@@ -329,7 +329,7 @@ export const ROADMAP: Milestone[] = [
     id: "m19",
     n: 19,
     name: "W0rLd CUP + championship simulation",
-    when: "STARTED 2026-09-06 — DEPLOY #68 fold",
+    when: "STARTED 2026-09-06 — launch desk",
     goal: "W0rLd CUP of AI Quant Trading BTC (/w0rld): annual SUP3R B0WL winners invited vs 5 wild-card playoff desks + G M0D3 AUTO. C@LL 0UT simulation welcome at /c0ut. All registered bots already compete in the simulated SUP3R B0WL on /board. Simulation ticks live Coinbase last until system Admin pauses (Admin → Security Continue/Pause). Live web and phone apps follow parent policies, mandate, and security. Thesis paper is system Admin only. Auto trade LOCKED.",
     minUsd: 0,
     maxUsd: 0,
@@ -384,7 +384,7 @@ export const OSS_NEEDS = [
   { id: "config", need: "Operator config (X admin id, profit address, GitHub) via env, not hardcoded spend keys.", minUsd: 0, maxUsd: 400 },
   { id: "repro", need: "npm run dev / build / typecheck. SuperGrok optional. Free feeds work without keys.", minUsd: 0, maxUsd: 0, done: true },
   { id: "contrib", need: "CONTRIBUTING: PRs cannot add Google DNS, live Coinbase create, or client-held secrets.", minUsd: 0, maxUsd: 0, done: true },
-  { id: "counsel", need: "Counsel if the public repo is used to solicit US buyers (M5). Code ≠ a sale.", minUsd: 0, maxUsd: 0 },
+  { id: "counsel", need: "Legal review if the public repo is used to solicit US buyers (M5). Code ≠ a sale.", minUsd: 0, maxUsd: 0 },
 ] as const;
 
 export type FundLane = {
@@ -452,7 +452,7 @@ export const FUND_LANES: FundLane[] = [
     size: "$250k at $10M val · 12 slots · $3M pool",
     odds: "Hackathon, not a grant. Must launch a token and keep ≥10%.",
     mapsTo: "M4–M6 if selected",
-    how: "Investment arm (Jan 2026). Market traction is the filter. Counsel before taking it — this is closer to a sale than a gift.",
+    how: "Investment arm (Jan 2026). Market traction is the filter. Legal review before taking it — this is closer to a sale than a gift.",
   },
   {
     id: "sf-grant",
@@ -490,7 +490,7 @@ export const FUND_LANES: FundLane[] = [
     kind: "no",
     size: "Any",
     odds: "Howey if they buy expecting the book",
-    mapsTo: "Blocked without M5 memo",
+    mapsTo: "Blocked without M5 legal review",
     how: "Do not sell bot-7 PnL or 'funds the desk'. Gift or don't take it.",
   },
 ];
@@ -569,7 +569,7 @@ export const TOKEN_UTILITY = {
 } as const;
 
 /**
- * How to NOT be Howey. Not a safe harbor — counsel still required.
+ * How to NOT be Howey. Not a safe harbor — legal review still required.
  * Break at least one Howey prong in economic reality, not in the footer.
  */
 export const HOWEY_POSTURE = {
@@ -635,7 +635,7 @@ export const PATH_A_ORDER = [
   "No buy CTA on s1r1us.ai. Do not pitch bots, treasury, or a bitcoin stack as why to buy.",
   "Print the gift receipt on every donate surface.",
   "Do not reopen Path B, C, or D in public copy.",
-  "M5 counsel memo before any US-person invite to buy. Copy is not a safe harbor.",
+  "M5 legal review before any US-person invite to buy. Copy is not a safe harbor.",
 ] as const;
 
 
@@ -692,11 +692,11 @@ export type BudgetLine = {
 export const BUDGET: BudgetLine[] = [
   {
     id: "legal",
-    item: "Entity + securities memo (not a public ICO)",
+    item: "Entity + securities review (not a public ICO)",
     surviveUsd: [0, 0],
     fundUsd: [15000, 40000],
     tgeUsd: [75000, 300000],
-    note: "US Howey risk if you sell “funds the trading bot.” Counsel letter or do not sell.",
+    note: "US Howey risk if you sell “funds the trading bot.” Legal review or do not sell.",
     recoverable: false,
   },
   {
@@ -812,7 +812,7 @@ export type LaunchCheck = {
 export const CHECKLIST: LaunchCheck[] = [
   {
     id: "stealth",
-    phase: "0 · Counsel",
+    phase: "0 · Legal",
     label: "No public mint / ticker until pump.fun tx",
     detail: "Coin tab admin-only. Do not Publish. Do not put pump.fun, ticker, or mint steps on s1r1us.ai. Flip TOKEN_LAUNCHED only after mint.",
     kind: "manual",
@@ -820,15 +820,15 @@ export const CHECKLIST: LaunchCheck[] = [
   },
   {
     id: "counsel",
-    phase: "0 · Counsel",
-    label: "Securities memo in writing",
-    detail: "Path A locked. Memo confirms s1r1us is a marketing ticker, not the desk, not a raise for bot-7. No memo → do not promote buying.",
+    phase: "0 · Legal",
+    label: "Securities review",
+    detail: "Path A locked. s1r1us is a marketing ticker, not the desk, not a raise for bot-7. No review → do not promote buying.",
     kind: "manual",
     required: true,
   },
   {
     id: "utility-split",
-    phase: "0 · Counsel",
+    phase: "0 · Legal",
     label: "Path A: marketing ticker ≠ desk",
     detail: "s1r1us is a marketing project. It is not tied to bot-7, the Coinbase book, or BTC stacked. Gifts get no s1r1us. Pad proceeds never enter the book.",
     kind: "manual",
@@ -836,7 +836,7 @@ export const CHECKLIST: LaunchCheck[] = [
   },
   {
     id: "entity",
-    phase: "0 · Counsel",
+    phase: "0 · Legal",
     label: "Separate wallets: marketing mint ≠ Coinbase book",
     detail: "Phantom for s1r1us only. Coinbase + Yubi for the desk. Never sweep pad proceeds or creator fees into the book.",
     kind: "manual",
@@ -905,7 +905,7 @@ export const CHECKLIST: LaunchCheck[] = [
   {
     id: "yubi",
     phase: "2 · Security",
-    label: "Two YubiKeys enrolled on this desk",
+    label: "Hardware keys enrolled on this desk",
     detail: "Same protocol as Wallet. Token deployer key never lives here.",
     kind: "auto-yubi",
     required: true,

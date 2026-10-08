@@ -137,11 +137,11 @@ export const useOperator = create<OpState>()(
           return res.error;
         }
         if ("needPassword" in res && res.needPassword) {
-          get().log("unlock", "Operator X verified — admin name + password still required");
+          get().log("unlock", "Operator verified — finish sign-in");
           return "need-password";
         }
         get().log("reject", "X alone cannot open admin");
-        return "Admin requires X and password.";
+        return "Admin requires the full operator sign-in.";
       },
       requestReset: async () => {
         const res = await requestAdminReset();

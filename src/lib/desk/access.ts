@@ -151,7 +151,7 @@ export const signInDesk = createServerFn({ method: "POST" })
       if (!xUserId) {
         return {
           ok: false as const,
-          error: "Sign in with X as the operator account first, then enter name and password to write the lock.",
+          error: "Sign in as the operator first, then finish sign-in to write the lock.",
         };
       }
       if (!(await sessionIsAdminX(xUserId))) {
@@ -197,7 +197,7 @@ export const signInDesk = createServerFn({ method: "POST" })
     if (!xUserId) {
       return {
         ok: false as const,
-        error: "Sign in with X as the operator account on this page first, then enter name and password.",
+        error: "Sign in as the operator on this page first, then finish sign-in.",
       };
     }
     if (!(await sessionIsAdminX(xUserId))) {
@@ -495,7 +495,7 @@ export const enrollYubi = createServerFn({ method: "POST" })
   .validator((input: { token: string; otp: string }) => input)
   .handler(async ({ data }) => {
     if (!(await verifyAccessToken(data.token))) {
-      return { ok: false as const, error: "Admin session required. First login: name + password, then enroll keys here." };
+      return { ok: false as const, error: "Admin session required. Sign in as the operator, then enroll keys here." };
     }
     const otp = data.otp.trim().toLowerCase();
     const cloud = await verifyYubicoOtp(otp);
@@ -538,14 +538,14 @@ export const removeYubi = createServerFn({ method: "POST" })
         if (!data.publicId) {
           return {
             ok: false as const,
-            error: "Turn off the admin-panel YubiKey lock before removing keys. Yubico: do not remove the last authenticator while it is required.",
+            error: "Turn off the hardware-key setting before removing keys. Yubico: do not remove the last authenticator while it is required.",
           };
         }
         const remainingOtp = keys.filter((k) => k.id !== data.publicId && maskYubiId(k.public_id) !== data.publicId).length;
         if (remainingOtp + fidoCount < 1) {
           return {
             ok: false as const,
-            error: "Turn off the admin-panel YubiKey lock before removing the last physical key.",
+            error: "Turn off the hardware-key setting before removing the last physical key.",
           };
         }
       }
@@ -642,7 +642,7 @@ export const removeWebauthn = createServerFn({ method: "POST" })
       if (otp + remaining < 1) {
         return {
           ok: false as const,
-          error: "Turn off the admin-panel YubiKey lock before removing the last physical key.",
+          error: "Turn off the hardware-key setting before removing the last physical key.",
         };
       }
     }

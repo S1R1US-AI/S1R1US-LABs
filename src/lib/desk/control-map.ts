@@ -60,7 +60,7 @@ export function owaspRows(): MapRow[] {
       code: "A06",
       title: "Insecure Design",
       status: "PASS",
-      control: "No spend keys. Dry-run only. Dual Yubi on outgoing. Path A mint firewall.",
+      control: "No spend keys. Dry-run only. Operator approval on outgoing. Path A mint firewall.",
     },
     {
       id: "a07",
@@ -68,7 +68,7 @@ export function owaspRows(): MapRow[] {
       code: "A07",
       title: "Authentication Failures",
       status: "PASS",
-      control: "X AND password. Two YubiKeys. Idle wipe. Throttle 8/10m. Fail2ban after 8 strikes. Copy-admin tokens never satisfy verifyAccessToken.",
+      control: "Operator sign-in only. Idle wipe. Throttle 8/10m. Fail2ban after 8 strikes. Copy-admin tokens never satisfy verifyAccessToken.",
     },
     {
       id: "a08",
@@ -119,9 +119,9 @@ export function pciRows(): MapRow[] {
       id: "pci-83",
       framework: "PCI",
       code: "8.3 / 8.4",
-      title: "MFA + strong authentication",
+      title: "Operator sign-in",
       status: "PASS",
-      control: "Operator X + password. Optional YubiKey panel lock (Yubico FIDO2/OTP, default OFF). Dual Yubi on BTC/USDC CLI copy. Argon2id.",
+      control: "Operator sign-in only. Operator approval on BTC/USDC CLI copy.",
     },
     {
       id: "pci-102",
@@ -205,7 +205,7 @@ export function pluginInventory(): PluginRow[] {
       kind: "Login hardening",
       license: "GPLv2+",
       what: "2FA, brute-force, user-action log.",
-      how: "AND lock + dual Yubi + optional panel FIDO2 + intrusion kinds.",
+      how: "Operator sign-in + intrusion kinds.",
       status: "ARMED",
     },
     {

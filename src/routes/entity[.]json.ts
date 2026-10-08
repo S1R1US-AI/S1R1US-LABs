@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SEO_CANONICAL, SEO_DESCRIPTION, LABS_NAME, APP_NAME, LEGAL_ENTITY_NAME } from "@/lib/brand";
 import { corporateSearchGraph, videoObjectGraph } from "@/lib/desk/search-graph";
-import { liveSameAs, OFFICIAL_PROPERTIES, FOUNDING_DATE } from "@/lib/desk/official-presence";
+import { OFFICIAL_PROPERTIES } from "@/lib/desk/official-presence";
 
 export const Route = createFileRoute("/entity.json")({
   server: {
@@ -16,8 +16,6 @@ export const Route = createFileRoute("/entity.json")({
               alternateName: [LABS_NAME, APP_NAME, "S1R1US AI", "S1R1US Labs"],
               url: SEO_CANONICAL,
               description: SEO_DESCRIPTION,
-              foundingDate: FOUNDING_DATE,
-              sameAs: liveSameAs(),
               officialProperties: OFFICIAL_PROPERTIES,
               "@graph": [...corporateSearchGraph(), ...videoObjectGraph()],
             },

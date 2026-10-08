@@ -22,13 +22,13 @@ export const OSS_ROADMAP_HEADLINE = "Functions, go-live status, and estimated ti
 export const OSS_ROADMAP_FAQ = "/faq#oss-roadmap";
 export const OSS_ROADMAP_API = "/api/agent/roadmap";
 
-/** Hard target for full live status. Operator unlock after counsel. Not a promise of Coinbase create on this host. */
+/** Hard target for full live status. Operator unlock. Not a promise of Coinbase create on this host. */
 export const FULL_LIVE_ESTIMATE = {
   date: GO_LIVE_DEADLINE,
   time: "09:00",
   tz: GO_LIVE_DEADLINE_TZ,
   label: GO_LIVE_DEADLINE_LABEL,
-  what: "G M0D3 AUTO and G M0D3 M@NU@L for users, SUP3R B0WL GO-LIVE (paper titles stay paper here), native iOS App Store and Google Play education wrap. Operator unlock after counsel. This host still never places Coinbase orders. Live BTC stays on YOUR Coinbase.",
+  what: "G M0D3 AUTO and G M0D3 M@NU@L for users, SUP3R B0WL GO-LIVE (paper titles stay paper here), native iOS App Store and Google Play education wrap. Operator unlock. This host still never places Coinbase orders. Live BTC stays on YOUR Coinbase.",
   proofOfConceptUntil: true,
   thisHostCreates: false as const,
   hiveCustody: false as const,
@@ -40,7 +40,7 @@ export const REAL_MONEY_PRED_ESTIMATE = {
   time: "09:00",
   tz: GO_LIVE_DEADLINE_TZ,
   label: "2027-06-01 09:00 America/New_York",
-  what: "Possibility only: a licensed S1R1US Pr3d1ctions book after counsel + CFTC DCM/FCM or a licensed partner. Not on this desk, web, or phone apps. Polymarket/Kalshi public odds stay a 7-B0T overlay. This host never takes bets.",
+  what: "Possibility only: a licensed S1R1US Pr3d1ctions book subject to CFTC DCM/FCM registration or a licensed partner. Not on this desk, web, or phone apps. Polymarket/Kalshi public odds stay a 7-B0T overlay. This host never takes bets.",
   thisHostTakesBetsNow: false as const,
   kalshiRouting: false as const,
   polymarketRouting: false as const,
@@ -79,13 +79,13 @@ export const STATUS_LEGEND: { status: RoadmapStatus; tone: "green" | "cyan" | "g
   { status: "LIVE", tone: "green", meaning: "On now for visitors, Admins, and AI agents." },
   { status: "LIVE-PAPER", tone: "cyan", meaning: "Runs as paper on live Coinbase last. Titles, not desk BTC." },
   { status: "LIVE-TEST", tone: "gold", meaning: "On TEST data until go-live." },
-  { status: "STARTED", tone: "green", meaning: "Phase in progress on S1R1US App build #113." },
+  { status: "STARTED", tone: "green", meaning: "Phase in progress on the current release." },
   { status: "DONE", tone: "green", meaning: "Milestone completed." },
   { status: "NOW", tone: "cyan", meaning: "Work happening now." },
   { status: "NEXT", tone: "gold", meaning: "Next estimated date." },
-  { status: "QUEUED", tone: "gold", meaning: "Queued behind counsel or tokens." },
+  { status: "QUEUED", tone: "gold", meaning: "Queued behind signed agent tokens." },
   { status: "ALIGNED", tone: "green", meaning: "Fits the bitcoin accumulation mandate and gift/SaaS-only policy." },
-  { status: "LOCKED", tone: "red", meaning: "Not on yet. Estimated date on the timeline. Operator unlock after counsel." },
+  { status: "LOCKED", tone: "red", meaning: "Not on yet. Estimated date on the timeline. Operator unlock." },
   { status: "NEVER", tone: "purple", meaning: "Never on this host. Coinbase create and hive custody stay off." },
 ];
 
@@ -100,7 +100,7 @@ export type RoadmapFunction = {
   note: string;
 };
 
-/** Functions that are on for visitors, Admins, and AI agents right now (S1R1US App build #113). */
+/** Functions that are on for visitors, Admins, and AI agents right now. */
 export const LIVE_FUNCTIONS: RoadmapFunction[] = [
   {
     id: "tape",
@@ -280,7 +280,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/gm",
     status: "LIVE-PAPER",
     since: "2026-09-06",
-    note: "Runs as live until go-live on S1R1US App build #113 (carbon-fiber baseline DEPLOY #68). Auto-pause 07:00 ET, morning report 07:30 ET, resume. System + copy-admin may pause. Conflict rebases to 68 LIVE. Data pulls follow sim.",
+    note: "Runs as live until go-live on the current release. Auto-pause 07:00 ET, morning report 07:30 ET, resume. System + copy-admin may pause. Data pulls follow sim.",
   },
   {
     id: "byo",
@@ -334,7 +334,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/admin",
     status: "LIVE",
     since: "2026-09-05",
-    note: "System: HMAC + dual Yubi. Copy-admin: /app/admin. Championship pause is system + copy-admin.",
+    note: "System: operator sign-in only. Copy-admin: /app/admin. Championship pause is system + copy-admin.",
   },
   {
     id: "white-label",
@@ -347,13 +347,13 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
   },
 
   {
-    id: "soft-launch-home",
-    name: "Soft-launch front door",
-    seo: "S1R1US.ai soft-launch home",
+    id: "front-door-home",
+    name: "Public front door",
+    seo: "S1R1US.ai home",
     path: "/",
     status: "LIVE",
     since: "2026-09-28",
-    note: "Studio charcoal + matrix soft-launch home at /. Education / paper front door. Backend desk HOLD. Public X @S1R1US_AI only.",
+    note: "Studio charcoal + matrix home at /. Education / paper front door. Soft-Launch PARKED until 2026-11-01. Public X @S1R1US_AI only.",
   },
   {
     id: "hello-world",
@@ -362,7 +362,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/hello-world/",
     status: "LIVE",
     since: "2026-09-28",
-    note: "Geek + bot welcome at /hello-world/. Fake-code greeting only — not a shell. Soft-launch front door.",
+    note: "Geek + bot welcome at /hello-world/. Fake-code greeting only — not a shell. Public front door.",
   },
   {
     id: "discord",
@@ -371,7 +371,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/discord/",
     status: "LIVE",
     since: "2026-09-28",
-    note: "Contributor Discord + GitHub Discussions at /discord/. Open source and white-label community. Soft-launch front door.",
+    note: "Contributor Discord + GitHub Discussions at /discord/. Open source and white-label community. Public front door.",
   },
   {
     id: "btc-miners",
@@ -393,7 +393,7 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
     path: "/gm",
     status: "LOCKED",
     until: FULL_LIVE_ESTIMATE.label,
-    note: "Operator unlock after counsel on the full-live date. Execution stays on YOUR Coinbase.",
+    note: "Operator unlock on the full-live date. Execution stays on YOUR Coinbase.",
   },
   {
     id: "gm-manual-live",
@@ -472,7 +472,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-09-05",
     estimate: false,
     status: "DONE",
-    name: "PoC desk · DEPLOY #68",
+    name: "PoC desk launch",
     detail: "Carbon-fiber desk, 7-B0T JSON, Forum, Leader Board, SUP3R B0WL page, waitlist, dual-admin. Go-live path STARTED.",
   },
   {
@@ -528,8 +528,8 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-09-06",
     estimate: false,
     status: "DONE",
-    name: "DEPLOY #68 fold — LoCK3D STATUS UX + morning problems",
-    detail: "Checkpoint stays 68. Click lock names to open views. Purple Expand/Collapse on LoCK3D STATUS UNLOCKED desk SIM. G M0D3 AUTO / M@NU@L names rain 2.5s then open GM. Live feed title AI Agent SUP3R B0WL. Morning report: Problems found last 24 hours. healLiveSim keeps pulls with sim. Stray practice killed. Auto trade LOCKED.",
+    name: "LoCK3D STATUS UX + morning problems",
+    detail: "Click lock names to open views. Purple Expand/Collapse on LoCK3D STATUS UNLOCKED desk SIM. G M0D3 AUTO / M@NU@L names rain 2.5s then open GM. Live feed title AI Agent SUP3R B0WL. Morning report: Problems found last 24 hours. healLiveSim keeps pulls with sim. Stray practice killed. Auto trade LOCKED.",
   },
   {
     id: "d2",
@@ -544,8 +544,8 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-10-15",
     estimate: true,
     status: "NEXT",
-    name: "Counsel memo + signed agent tokens",
-    detail: "Written memo: Path A ticker, no money transmitter, SP1CE UP paper, live Coinbase is user-owned. Hashed agent tokens and 7-B0T HTTP key spec go on. Pred SaaS seat vs licensed DCM partner — only if aligned with accumulate-never-sell and gift/SaaS-only.",
+    name: "Legal review (private) + signed agent tokens",
+    detail: "Legal review is handled privately by the operator. Hashed agent tokens and 7-B0T HTTP key spec go on. Pred SaaS seat vs licensed DCM partner — only if aligned with accumulate-never-sell and gift/SaaS-only.",
   },
   {
     id: "d4",
@@ -553,7 +553,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: true,
     status: "LOCKED",
     name: "Coinbase dry-run + store submit",
-    detail: "Operator book MCP --dry-run, dual Yubi on outgoing, vault off this host. Native iOS/Play listing submitted by a legal entity as an education wrap.",
+    detail: "Operator book MCP --dry-run, operator approval on outgoing, vault off this host. Native iOS/Play listing submitted by a legal entity as an education wrap.",
   },
   {
     id: "d5",
@@ -592,8 +592,8 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-09-11",
     estimate: false,
     status: "DONE",
-    name: "S1R1US App build #113 (live sim launch)",
-    detail: "Checkpoint 101 finalized and renamed. Main-branch fold for live admin simulation (G M0D3 AUTO, AI agents, PR3D1CT10N$ paper). Carbon-fiber baseline remains DEPLOY #68. Saved in Project BTD / S1R1US L@Bs. This host never places Coinbase orders.",
+    name: "Live sim launch",
+    detail: "Live admin simulation (G M0D3 AUTO, AI agents, PR3D1CT10N$ paper). This host never places Coinbase orders.",
   },
   {
     id: "d1l",

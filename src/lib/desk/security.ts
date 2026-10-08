@@ -124,9 +124,9 @@ export function protocolRows(): ProtocolRow[] {
     },
     {
       id: "hitl",
-      title: "Human-in-the-loop + two YubiKeys",
+      title: "Human-in-the-loop operator approval",
       status: "PASS",
-      detail: "Outgoing BTC/USDC CLI copy (buy, sweep, take-profit, HIGH conviction) requires a tap from either of two enrolled admin YubiKeys. Fewer than two keys = blocked. YubiCloud + local OTP replay check.",
+      detail: "Outgoing BTC/USDC CLI copy (buy, sweep, take-profit, HIGH conviction) requires operator approval. Details stay private.",
     },
     {
       id: "session",
@@ -136,9 +136,9 @@ export function protocolRows(): ProtocolRow[] {
     },
     {
       id: "2fa",
-      title: "First door + hardware",
+      title: "Operator-only admin",
       status: "PASS",
-      detail: "Admin is AND: exact operator X account (id or handle — display name is not enough) plus admin name + password. X alone or password alone cannot mint an admin token. Any other X is a user at most. Optional: lock Admin behind a physical YubiKey (Yubico OTP or FIDO2, default OFF). Outgoing BTC/USDC still needs either enrolled OTP YubiKey.",
+      detail: "Admin is limited to the signed-in operator (exact account — display name is not enough). Any other X is a user at most. Sign-in details stay private. Outgoing BTC/USDC still needs operator approval.",
     },
     {
       id: "vault",
@@ -269,21 +269,21 @@ export function vulnRows(): VulnRow[] {
       title: "Admin tab on X-only session",
       severity: "MED",
       status: "FIXED",
-      detail: "Admin nav showed when X matched the operator without name+password. Nav now requires a full admin unlock.",
+      detail: "Admin nav showed before a full operator sign-in finished. Nav now requires a full admin unlock.",
     },
     {
       id: "session-xss",
       title: "Admin HMAC in sessionStorage",
       severity: "MED",
       status: "OPERATOR",
-      detail: "OWASP Session Management 2026: tokens in sessionStorage are readable by XSS. I cannot honestly call this closed. Need your OK to move the HMAC into an HttpOnly; Secure; SameSite=Strict cookie. Until then: epoch + X AND + idle wipe.",
+      detail: "OWASP Session Management 2026: tokens in sessionStorage are readable by XSS. I cannot honestly call this closed. Need your OK to move the HMAC into an HttpOnly; Secure; SameSite=Strict cookie. Until then: epoch + operator check + idle wipe.",
     },
     {
       id: "admin-and",
       title: "X-only or password-only admin",
       severity: "HIGH",
       status: "FIXED",
-      detail: "Admin unlock requires live operator X (that account on grok-x/twitter/x) AND admin name+password. Email local-part, display name, idToken screen_name, company/dead handles, and desk-user sessions cannot become admin. verifyAccessToken re-checks the X session. OperatorGate hides admin chrome unless role is admin.",
+      detail: "Admin unlock requires the live operator account plus the full operator sign-in. Email local-part, display name, idToken screen_name, company/dead handles, and desk-user sessions cannot become admin. verifyAccessToken re-checks the X session. OperatorGate hides admin chrome unless role is admin.",
     },
     {
       id: "slot-dead",
@@ -611,7 +611,7 @@ export function vulnRows(): VulnRow[] {
 }
 
 export const OPERATOR_RULES = [
-  "First door: admin name + password. Enroll two YubiKeys in Admin after you are in. X is optional.",
+  "First door: operator sign-in. Enroll hardware keys in Admin after you are in.",
   "CDP key: Trade + Transfer, that portfolio only. Secret shown once — never paste it here.",
   "MCP Transfer cannot withdraw off-exchange. Take-profit BTC is a Coinbase.com Send to the profit address.",
   "Sparrow is optional worst-case backup (exchange lockout). Never import a seed into [ S1R1U$ <<L@B$>> ].",
