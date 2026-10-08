@@ -260,7 +260,7 @@ export const ROADMAP: Milestone[] = [
     n: 13,
     name: "iOS + Google app / BYO onboard compute",
     when: "STARTED 2026-09-06 — launch desk",
-    goal: "iOS Apple Intelligence / Siri Shortcuts and Google Gemini (WebMCP, A2A, remote MCP) connect to L3AD3R B0ARD with BYO compute. The PWA at /app /ios /play exposes every public desk function. Tokens stay on the device. Native store wrappers use AASA + assetlinks. Auto trade LOCKED.",
+    goal: "iOS Apple Intelligence / Siri Shortcuts and Google Gemini (WebMCP, A2A, remote MCP) connect to L3AD3R B0ARD with BYO compute. The PWA at /app /ios /play exposes every public desk function. Model API keys stay on the device. Native store wrappers use AASA + assetlinks. Auto trade LOCKED.",
     minUsd: 0,
     maxUsd: 0,
     publicAfterMint: true,

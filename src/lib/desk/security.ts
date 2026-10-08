@@ -35,7 +35,7 @@ export function looksLikeSecret(text: string): boolean {
 
 export function assertSafePayload(raw: string): string | null {
   if (raw.length > 80_000) return "Snapshot too large.";
-  if (looksLikeSecret(raw)) return "Secret rejected. Never paste a key, seed, or xprv into this desk.";
+  if (looksLikeSecret(raw)) return "Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.";
   return null;
 }
 
@@ -234,7 +234,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "intel",
       title: "CISA KEV + OSV.dev intel",
       status: "PASS",
-      detail: "Free feeds, no API token. Security tab pulls the KEV catalog and npm advisories, stack-filters Node/React/Vite, and virtual-patches what this process can (Vite @fs). Operator still patches the OS/Node runtime.",
+      detail: "Free feeds, no API key. Security tab pulls the KEV catalog and npm advisories, stack-filters Node/React/Vite, and virtual-patches what this process can (Vite @fs). Operator still patches the OS/Node runtime.",
     },
     {
       id: "headers",

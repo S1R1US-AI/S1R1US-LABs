@@ -94,7 +94,7 @@ export function alignmentScore(hunterReport?: AlignmentHunter | null): Alignment
     check("s-fincen", "never", "Go-live s8 FinCEN LOCKED", s8?.status === "LOCKED", 5, s8?.name ?? "s8"),
     check("s-tape-not-lock", "security", "Live tape is status only — not a lock", lock.tapeLock === false && lock.trade === false && lock.ordersCreate === false, 4, "lockStatusView.tapeLock=false"),
     check("s-practice", "security", "Practice cannot arm Coinbase", lock.coinbaseCreate === false && lock.keysOnThisHost === false, 4, "practiceCannotArmCoinbase"),
-    check("s-keys", "security", "Keys never on this host", lock.keysOnThisHost === false, 5, "lockStatusView.keysOnThisHost=false"),
+    check("s-keys", "security", "No wallet keys or seeds on this host", lock.keysOnThisHost === false, 5, "lockStatusView.keysOnThisHost=false"),
     check("s-hunter", "security", "Hunter OPEN CRITICAL/HIGH is zero", hunter ? hunterCritOpen.length === 0 : hunterRailsHold, 8, hunter ? (hunter.open === 0 ? `${hunter.pass} PASS` : hunterCritOpen.map((f) => f.id).join(",") || `${hunter.open} OPEN`) : "rails hold without hunter attach"),
     check("l-terms", "legal", "Terms name mandate, FinCEN, lock, roadmap", termIdsOk, 6, "hunter h-legal / TERMS_SECTIONS"),
     check("l-privacy", "legal", "Privacy names cookies, UGC, children, retention", termIdsOk, 4, "hunter h-legal / PRIVACY_SECTIONS"),

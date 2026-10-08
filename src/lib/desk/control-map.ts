@@ -241,7 +241,7 @@ export function pluginInventory(): PluginRow[] {
       kind: "Behavior + IP reputation",
       license: "MIT",
       what: "Scenarios, local then shareable bans.",
-      how: "Local scoring only (no community blocklist without an API token). 8/10m → 30m, 16 → 12h.",
+      how: "Local scoring only (no community blocklist without an API key). 8/10m → 30m, 16 → 12h.",
       status: "ARMED",
     },
     {

@@ -1705,7 +1705,7 @@ function PasswordPanel({
     const t = e.clipboardData.getData("text");
     if (looksLikeSecret(t)) {
       e.preventDefault();
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed here.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
     }
   }
 
@@ -1713,7 +1713,7 @@ function PasswordPanel({
     e.preventDefault();
     setOk(false);
     if (looksLikeSecret(current) || looksLikeSecret(next) || looksLikeSecret(nextName)) {
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed here.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
       return;
     }
     setBusy(true);
@@ -1834,14 +1834,14 @@ function UsersPanel() {
     const t = e.clipboardData.getData("text");
     if (looksLikeSecret(t)) {
       e.preventDefault();
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed here.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
     }
   }
 
   async function onCreate(e: FormEvent) {
     e.preventDefault();
     if (looksLikeSecret(username) || looksLikeSecret(pass)) {
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed here.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
       return;
     }
     setBusy(true);

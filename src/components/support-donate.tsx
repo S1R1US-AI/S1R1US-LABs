@@ -107,7 +107,7 @@ export function SupportDonate() {
       <p className="mt-2 text-sm leading-relaxed text-muted">
         Optional resource payment. Pay for HTTP / hive seat / hosting. Send BTC or USDC from a wallet you
         control. This host never deducts hive share, never escrows, never withdraws for you. Gifts unlock
-        nothing extra. SaaS tokens only change poll rate. Not a share of hive BTC.
+        nothing extra. SaaS API keys only change poll rate. Not a share of hive BTC.
       </p>
       <p className="mt-2 text-sm font-medium text-fg">{SUPPORT_GIFT_RECEIPT}</p>
       <AddrRow

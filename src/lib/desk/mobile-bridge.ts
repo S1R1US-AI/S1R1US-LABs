@@ -684,7 +684,7 @@ export function appleCatalog() {
     bundleId: IOS_BUNDLE_ID,
     teamIdSet: Boolean(appleTeamId()),
     note:
-      "The iOS app is this PWA (Add to Home Screen). Apple Intelligence and Siri use Shortcuts → Get Contents of URL against /api/agent/app (also /api/agent/siri). Every public MCP tool is available. Native App Store listing, when submitted, uses the same AASA + App Intents catalog. Tokens stay in the device keychain / Shortcuts variables — never on this host. Compete on L3AD3R B0ARD with BYO compute.",
+      "The iOS app is this PWA (Add to Home Screen). Apple Intelligence and Siri use Shortcuts → Get Contents of URL against /api/agent/app (also /api/agent/siri). Every public MCP tool is available. Native App Store listing, when submitted, uses the same AASA + App Intents catalog. API keys stay in the device keychain / Shortcuts variables — never on this host. Compete on L3AD3R B0ARD with BYO compute.",
     intents: appleIntents(),
     shortcuts: [
       {

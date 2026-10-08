@@ -86,7 +86,7 @@ export const GUIDE: GuideSection[] = [
     body: [
       "BTC spot, 24h, hourly candles, product_book 80 (level=1 fallback): Coinbase Exchange public API (execution venue).",
       "RSI(14): Wilder on Coinbase hourly closes. Desk RSI is red when below the tape average, green when above.",
-      "Long/short, OI, funding: OKX + Bybit + Hyperliquid + Bitfinex public. No CoinGlass API token. Depth heatmap is Coinbase product_book. Whale tracker is large prints + blockchain.info unconfirmed ≥10 BTC.",
+      "Long/short, OI, funding: OKX + Bybit + Hyperliquid + Bitfinex public. No CoinGlass API key. Depth heatmap is Coinbase product_book. Whale tracker is large prints + blockchain.info unconfirmed ≥10 BTC.",
       "Hyperliquid BTC: public meta + dayNtlVlm. 90s cache. HTTP 429 keeps last good print and marks the host dead 3 minutes. Capital-tape bar.",
       "Asia (Binance geo-blocked on core): Upbit + Bithumb KRW kimchi vs Coinbase (Upbit blue, Coinbase orange; kimchi up green / down red), HashKey HK, OKX USDT, HTX USDT, OKX P2P USDT/CNY. FX: Frankfurter.",
       "EM flow (fill phase): UAE BitOasis AED; ME OKX P2P SAR/TRY; Russia Rapira RUB; Africa Luno + OKX P2P NGN/ZAR; LatAm Mercado BRL, Buda CLP/COP, OKX P2P ARS. INFLOW ≥ +1.5% green. OUTFLOW ≤ −1.5% grey label, red number. Flat yellow.",

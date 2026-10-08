@@ -61,14 +61,14 @@ export function XRenewBlock({
     const t = e.clipboardData.getData("text");
     if (looksLikeSecret(t)) {
       e.preventDefault();
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed here.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
     }
   }
 
   async function onSet(e: FormEvent) {
     e.preventDefault();
     if (looksLikeSecret(next) || looksLikeSecret(confirm) || looksLikeSecret(nextName)) {
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed here.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
       return;
     }
     setBusy(true);
@@ -160,7 +160,7 @@ export function MailboxRenewForm({ token }: { token: string }) {
     const t = e.clipboardData.getData("text");
     if (looksLikeSecret(t)) {
       e.preventDefault();
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed here.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
     }
   }
 

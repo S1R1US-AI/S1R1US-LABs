@@ -526,7 +526,7 @@ export function assertNewAdminPass(pass: string, confirm: string, adminName: str
   if (pass !== confirm) return "New passwords do not match.";
   if (pass.length < 12) return "New password must be at least 12 characters.";
   if (pass.length > 128) return "New password is too long.";
-  if (looksLikeSecret(pass)) return "Secret rejected. Never paste a Coinbase key or wallet seed here.";
+  if (looksLikeSecret(pass)) return "Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.";
   if (pass.toLowerCase() === adminName.toLowerCase()) return "Password cannot match the admin name.";
   return null;
 }

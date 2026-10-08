@@ -406,7 +406,7 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
   },
   {
     id: "agent-tokens",
-    name: "Signed agent tokens + HTTP SaaS tokens",
+    name: "Signed agent tokens + HTTP SaaS API keys",
     seo: "7-B0T HTTP key",
     path: "/agent",
     status: "LOCKED",
