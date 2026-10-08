@@ -240,9 +240,9 @@ var public_assets_data_default = {
 	},
 	"/helios-desk-guide.md": {
 		"type": "text/markdown; charset=utf-8",
-		"etag": "\"24e1-89qAeZ1STBOt6p7l901Q5R9GCic\"",
-		"mtime": "2026-10-08T17:33:11.054Z",
-		"size": 9441,
+		"etag": "\"24eb-WMkhOMT6lU6kf41kyahrFpY4PwQ\"",
+		"mtime": "2026-10-08T22:36:52.000Z",
+		"size": 9451,
 		"path": "../public/helios-desk-guide.md"
 	},
 	"/helios-desk-guide.pdf": {
@@ -289,9 +289,9 @@ var public_assets_data_default = {
 	},
 	"/llms.txt": {
 		"type": "text/plain; charset=utf-8",
-		"etag": "\"8059-ko9FmTMFsf2j5R1EBEe6vNa63VI\"",
-		"mtime": "2026-10-08T17:33:11.058Z",
-		"size": 32857,
+		"etag": "\"80e2-2c1X6wODaY1rWlSyjZ+Jodfx09I\"",
+		"mtime": "2026-10-08T22:36:52.000Z",
+		"size": 32994,
 		"path": "../public/llms.txt"
 	},
 	"/lock-closed.gif": {
@@ -478,9 +478,9 @@ var public_assets_data_default = {
 	},
 	"/.well-known/llms.txt": {
 		"type": "text/plain; charset=utf-8",
-		"etag": "\"8059-ko9FmTMFsf2j5R1EBEe6vNa63VI\"",
-		"mtime": "2026-10-08T17:33:10.942Z",
-		"size": 32857,
+		"etag": "\"80e2-2c1X6wODaY1rWlSyjZ+Jodfx09I\"",
+		"mtime": "2026-10-08T22:36:52.000Z",
+		"size": 32994,
 		"path": "../public/.well-known/llms.txt"
 	},
 	"/.well-known/security.txt": {
