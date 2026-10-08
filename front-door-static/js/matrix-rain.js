@@ -1,4 +1,4 @@
-/* Soft Matrix rain ghost — DRAFT soft-launch front door.
+/* Soft Matrix rain ghost — front door.
    Classic Matrix greens on charcoal fade. Custom S1R1US JP/Latin charset.
    Low opacity overlay; pointer-events none; pauses when tab hidden.
    Drives #matrix-rain and optional #matrix-rain-ghost2. */
@@ -11,7 +11,7 @@
     '#2aa424', '#208020', '#186218', '#124a14', '#0d3610', '#0a280c',
   ];
 
-  /* Custom alphabet from soft-launch greeting (unique glyphs, first-seen order):
+  /* Custom alphabet from the front-door greeting (unique glyphs, first-seen order):
      「AI搭載のビットコイン蓄積器へようこそ、R0B0T0氏。私たちはAIビットコインヘッジトレーディングデスクです。バイ、コンピュート。9-B0T す。S1R1US」 */
   var CHARS =
     '「AI搭載のビットコイン蓄積器へようこそ、R0BT氏。私たちはヘジレーディグスクですバピュ9-S1U」';

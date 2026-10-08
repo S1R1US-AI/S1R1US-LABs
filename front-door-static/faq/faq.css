@@ -1,5 +1,5 @@
-/* Soft-launch redesign target pages — HOLD draft · Distrobi / Grok Bot 2026-09-28.
-   Studio charcoal + matrix via parent theme. Godzilla icon-512 never overwritten. */
+/* Front-door page styles.
+   Studio charcoal + matrix via parent theme. */
 @import url("/css/theme.css");
 
 .pg-kicker {
@@ -231,7 +231,7 @@
   .faq-toc ul { columns: 1; }
 }
 
-/* Desk surfaces discovery strip — calm bridge to soft-launch desk pages.
+/* Desk surfaces discovery strip — calm bridge to desk pages.
    Not carbon desk-tabs / not desk-nav-fiber. Muted text · even spacing · gold underline on current. */
 .site-header { margin-bottom: 0.35rem; }
 .desk-surfaces {

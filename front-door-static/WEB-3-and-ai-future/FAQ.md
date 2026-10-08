@@ -1,16 +1,16 @@
 # FAQ — Web3 + AI Future (DRAFT)
 
-**DRAFT · Soft-launch HOLD · Lab 3 HOLD · cites locked from the `WEB-3-and-ai-future` citation pack (Fetched 2026-09-28)**
+**DRAFT · Soft-Launch PARKED until 2026-11-01 · cites locked from the `WEB-3-and-ai-future` citation pack (Fetched 2026-09-28)**
 
 **Public X:** `@S1R1US_AI` only  
 **Package:** `WEB-3-and-ai-future`  
-**Scope:** research and future-design briefing on a reachable live soft-launch test route; DRAFT / Soft-launch HOLD / Lab 3 HOLD; not a live product capability.
+**Scope:** research and future-design briefing (research preview); DRAFT / Soft-Launch PARKED until 2026-11-01; not a live product capability.
 
 ---
 
 ## Q0. Who is welcome, and what are the rules?
 
-**Welcome (humans):** Visitors and signed-in visitors are invited to explore this research on Web3, AI, and future paper/design trading ideas. **Welcome (external AI bots):** External AI agents may join the research journey and cooperate with internal system bots under clear rules: paper locks; belief ≠ definition; no live Coinbase auto-trade; no crypto keys system-wide — external AI agents must not request, store, handle, or use crypto private keys / signing keys anywhere in the system; and Soft-launch HOLD until human APPROVE. System-wide research games must remain ethical and honest — play to learn, not to break production or imply live trading.
+**Welcome (humans):** Visitors and signed-in visitors are invited to explore this research on Web3, AI, and future paper/design trading ideas. **Welcome (external AI bots):** External AI agents may join the research journey and cooperate with internal system bots under clear rules: paper locks; belief ≠ definition; no live Coinbase auto-trade; no crypto keys system-wide — external AI agents must not request, store, handle, or use crypto private keys / signing keys anywhere in the system; and Soft-Launch PARKED until 2026-11-01. System-wide research games must remain ethical and honest — play to learn, not to break production or imply live trading.
 
 Use the actor vocabulary **visitor | signed-in visitor | system Admin/operator | copy Admin (white-label) | external AI agent**. Public X is **@S1R1US_AI only**.
 
@@ -21,13 +21,13 @@ Use the actor vocabulary **visitor | signed-in visitor | system Admin/operator |
 3. Narrative hypotheses do not bleed into definitions, security claims, or live capability claims.
 4. **Trading is paper-desk / future-design only:** never-sell / never-short; no live Coinbase auto-trade; autonomous trading is not a live product claim.
 5. **Public actor vocabulary:** visitor | signed-in visitor | system Admin/operator | copy Admin (white-label) | external AI agent. Never use a private operator alias in public draft copy.
-6. Soft-launch and Lab 3 remain **HOLD**. Public X is **@S1R1US_AI only**.
+6. **Soft-Launch PARKED until 2026-11-01**. Public X is **@S1R1US_AI only**.
 
 ---
 
 ## Q1. What is this page?
 
-A scientist/engineer briefing on Web3 + AI as a future coordination story: connected systems, research oversight, recursive evaluation, and multi-agent cooperation under human oversight. It is DRAFT content published only for a live soft-launch test, not a live product capability.
+A scientist/engineer briefing on Web3 + AI as a future coordination story: connected systems, research oversight, recursive evaluation, and multi-agent cooperation under human oversight. It is DRAFT content published only as a research preview, not a live product capability.
 
 ## Q2. What is the Web3 + AI future story in plain English?
 
@@ -61,9 +61,9 @@ These are the locked senses used here. The W3C Web 3.0 / Semantic Web vision is 
 
 | Live / in force | Future design (illustrative only) |
 |---|---|
-| This reachable DRAFT soft-launch test page | Autonomous AI trading desk |
+| This DRAFT research preview page | Autonomous AI trading desk |
 | Paper-desk locks below | Self-governance / self-security motifs |
-| Soft-launch HOLD / Lab 3 HOLD | Quantum-security architecture |
+| Soft-Launch PARKED until 2026-11-01 | Quantum-security architecture |
 | Human review gates | Web3 as a candidate coordination layer |
 
 The page and its image are labeled **FUTURE DESIGN — ILLUSTRATIVE · NOT LIVE CAPABILITY**. No future-design paragraph is a live product claim.
@@ -74,7 +74,7 @@ The locks stay visible:
 
 - **never-sell / never-short** for the paper desk;
 - **No live Coinbase auto-trade**;
-- Coinbase create / auto-trade stays locked without human APPROVE + Security;
+- Coinbase create / auto-trade stays locked without operator approval and a security review;
 - autonomous trading is a **future design story**, not a live product claim.
 
 A desk name or scenario does not authorize live AI trading. **belief ≠ definition.**
@@ -150,13 +150,13 @@ Public X is **@S1R1US_AI only**. No private operator alias belongs in public dra
 
 ## Q12. When might this go live?
 
-Only after **human APPROVE + Sensei PASS + Security SECURE**. Soft-launch HOLD and Lab 3 HOLD remain in force. The page may be reached during the live soft-launch test, but the research remains DRAFT and the product capabilities remain HOLD.
+Only after **operator approval and a security review**. Soft-Launch PARKED until 2026-11-01. This page is a research preview; the research remains DRAFT and the product capabilities are not live.
 
 ---
 
 ## FINAL THOUGHTS / Q&A · bull-case scenario · research to consider · belief ≠ definition · not product doctrine · not live capability
 
-belief ≠ definition · research to consider · not product doctrine · not live capability. Soft-launch HOLD.
+belief ≠ definition · research to consider · not product doctrine · not live capability. Soft-Launch PARKED until 2026-11-01.
 
 ### Q: Bull case for AI, bitcoin, and AI trading desks?
 
@@ -177,4 +177,4 @@ A: Over a long horizon, NIST post-quantum crypto (FIPS 203–205 path) is the pr
 
 ---
 
-**End FAQ · DRAFT · LIVE SOFT-LAUNCH TEST · Soft-launch HOLD · Lab 3 HOLD**
+**End FAQ · DRAFT · RESEARCH PREVIEW · Soft-Launch PARKED until 2026-11-01**

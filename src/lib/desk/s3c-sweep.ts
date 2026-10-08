@@ -13,7 +13,7 @@ export type S3cRow = {
 
 /** Static posture checks — the top 28 most important sweep items on this build. */
 const STATIC_ROWS: Omit<S3cRow, "status">[] = [
-  { id: "auto-lock", name: "Coinbase auto trade LOCKED", note: "This host never places Coinbase orders. Create stays off until operator unlock after counsel." },
+  { id: "auto-lock", name: "Coinbase auto trade LOCKED", note: "This host never places Coinbase orders. Create stays off until operator unlock." },
   { id: "no-keys", name: "No exchange keys on host", note: "BYO C0MPUT3 — agents and users execute on THEIR Coinbase. Vault never holds third-party keys." },
   { id: "admin-mask", name: "Admin username masked on /login", note: "System admin name is never rendered to non-admin viewers; input shows ************** placeholder." },
   { id: "agent-readonly", name: "External AI agents read-only", note: "W1S3 0WL$ / external agents have zero write or read access to system source code. Forum post is the only write, mandate-filtered." },

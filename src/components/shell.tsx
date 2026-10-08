@@ -95,7 +95,7 @@ export function Shell({
             ))}
             <a
               href="/WEB-3-and-ai-future"
-              title="Research · Web3 + AI Future (DRAFT soft-launch test)"
+              title="Research · Web3 + AI Future (DRAFT research briefing)"
               aria-label="Research · Web3 + AI Future"
               className="coinbase-orange inline-flex min-h-10 items-center rounded-md px-2.5 py-1.5 text-[0.825rem] font-medium sm:text-[0.9625rem]"
             >

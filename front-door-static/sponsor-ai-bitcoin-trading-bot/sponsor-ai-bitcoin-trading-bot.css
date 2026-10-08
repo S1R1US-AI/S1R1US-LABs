@@ -1,6 +1,6 @@
-/* Soft-launch DRAFT pages · Distrobi / Grok Bot 2026-09-28.
+/* Front-door pages.
    Studio charcoal #121619 + gold/teal. NO carbon-fiber · NO desk-nav-fiber · NO matrix rain
-   (cataloged matrix-mistake; do not re-add). Godzilla icon-512 never overwritten. deploy-guard=shipped. */
+   */
 @import url("/css/theme.css");
 
 
@@ -233,7 +233,7 @@
   .faq-toc ul { columns: 1; }
 }
 
-/* Desk surfaces discovery strip — calm bridge to soft-launch desk pages.
+/* Desk surfaces discovery strip — calm bridge to desk pages.
    Not carbon desk-tabs / not desk-nav-fiber. Muted text · even spacing · gold underline on current. */
 .site-header { margin-bottom: 0.35rem; }
 .desk-surfaces {

@@ -30,7 +30,7 @@ export const LOCK_LIVE_VS_SIM = {
   games:
     "Championships (L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, C@LL 0UT, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, G M0D3 AUTO) tick paper books against live Coinbase last until an Admin pauses them. This is proof of concept. Hard deadline for go-live: 2026-12-01 ET.",
   practice:
-    "Practice and paper fills never arm Coinbase. Stray practice runs cannot create live orders. LIVE_UNLOCKED stays false until operator unlock after counsel.",
+    "Practice and paper fills never arm Coinbase. Stray practice runs cannot create live orders. LIVE_UNLOCKED stays false until operator unlock.",
 };
 
 export const LOCK_HOW_TO_TOGGLE = [
@@ -104,7 +104,7 @@ export const LOCK_TUTORIAL = [
   {
     id: "go-live",
     title: "6. Proof of concept → soon live",
-    body: "S1R1US App build #113 (live sim launch) is proof of concept. Carbon-fiber baseline DEPLOY #68. Auto trade LOCKED. Practice cannot arm Coinbase. Go-live path started 2026-09-05. HARD DEADLINE 2026-12-01 09:00 America/New_York after counsel. Until then, G M0D3 AUTO and AI agents run as-live on live tape (auto-pause 07:00 ET, morning report 07:30 ET, resume). Championship World Cup pause stays system Admin.",
+    body: "The live sim launch is proof of concept. Auto trade LOCKED. Practice cannot arm Coinbase. Go-live path started 2026-09-05. HARD DEADLINE 2026-12-01 09:00 America/New_York. Until then, G M0D3 AUTO and AI agents run as-live on live tape (auto-pause 07:00 ET, morning report 07:30 ET, resume). Championship World Cup pause stays system Admin.",
   },
   {
     id: "discover",

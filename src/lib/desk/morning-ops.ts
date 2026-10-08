@@ -58,7 +58,7 @@ export const AUTO_ANALYSIS = {
   fills: "No paper fills. Morning report 07:30 ET uses the as-live 24h book if present. Live Coinbase stays off. 7-bot stack never sells.",
   errors: "Do not green OPEN feed errors. Yahoo/Stooq classified. SuperGrok is operator Ask Grok; visitors use BYO compute. 7-B0T HTTP SaaS is pay-for-JSON.",
   security: "Admin Security tab: CRS-PL1 WAF + CISA KEV/OSV + CrowdSec bans + OWASP Agentic ASI01–10 / LLM Top 10 2026 on MCP/A2A + Hunter + Alignment Score 1–100 (mandate vs protocols) + external AI gate + data-pull pause (ops.status PAUSED/MAINTENANCE on ping; blocked agents get doNotReturn). Bad bots (source-probe / inject / scrape / harmful forum) auto-bar name+IP; 403 doNotReturn. Operator approval on outgoing. Coinbase create locked.",
-  action: "DEPLOY #68: 7-B0T + GM + bots 1–6 would-accumulate. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD is the SUP3R B0WL of AI AGENTs. W0rLd CUP of AI Quant Trading BTC invites SUP3R B0WL winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM combines BYO compute (TH/s) on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. BYO connect automatic at /api/agent/connect + MCP byo_connect — keys never on this host. Championship sim ticks live Coinbase last until system Admin pauses. HARD DEADLINE 2026-12-01 09:00 ET — G M0D3 AUTO / MANUAL for users + SUP3R B0WL GO-LIVE after counsel. System Admin and download-app Admin compete with a separate board token. Live SUP3R B0WL / World Cup stats feed is paper as-if-live. Terms: 100% own risk, not FA, not an attorney, unlawful-region ban, OSS GitHub, 2FA. HTML LINKS 6 Sep 2026: this build 0 × 404. Production still 404 on new routes until this deploy ships. Do not arm Coinbase. Auto trade LOCKED. Seek a licensed professional and a licensed attorney before live use.",
+  action: "7-B0T + GM + bots 1–6 would-accumulate. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD is the SUP3R B0WL of AI AGENTs. W0rLd CUP of AI Quant Trading BTC invites SUP3R B0WL winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM combines BYO compute (TH/s) on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. BYO connect automatic at /api/agent/connect + MCP byo_connect — keys never on this host. Championship sim ticks live Coinbase last until system Admin pauses. HARD DEADLINE 2026-12-01 09:00 ET — G M0D3 AUTO / MANUAL for users + SUP3R B0WL GO-LIVE. System Admin and download-app Admin compete with a separate board token. Live SUP3R B0WL / World Cup stats feed is paper as-if-live. Terms: 100% own risk, not FA, not an attorney, unlawful-region ban, OSS GitHub, 2FA. HTML LINKS 6 Sep 2026: this build 0 × 404. Production still 404 on new routes until this deploy ships. Do not arm Coinbase. Auto trade LOCKED. Seek a licensed professional and a licensed attorney before live use.",
 };
 
 export function morningAgent(flags: {
@@ -136,7 +136,7 @@ export function morningFeeds(snap: DeskSnapshot | null) {
   };
 }
 
-/** Frozen HTML href crawl. 6 Sep 2026. Preview = this build. Production = live s1r1us.ai until DEPLOY #68 ships. */
+/** Frozen HTML href crawl. 6 Sep 2026. Preview = this build. Production = live s1r1us.ai until this build ships. */
 export const HTML_LINK_AUDIT_AS_OF = "2026-09-06T15:00:00-04:00";
 
 export type HtmlLinkHit = {
@@ -209,7 +209,7 @@ export function morningHtmlLinks() {
     prodBroken,
     ok,
     noise,
-    note: "Crawled every HTML href on the public desk. This build has no Page Not Found. Live s1r1us.ai is an older production deploy — ship DEPLOY #68 to clear the OPEN list. Hello World GitHub is public. Official X is @S1R1US_AI.",
+    note: "Crawled every HTML href on the public desk. This build has no Page Not Found. Live s1r1us.ai is an older production deploy — ship this build to clear the OPEN list. Hello World GitHub is public. Official X is @S1R1US_AI.",
     action: "Operator: Digital Ocean production deploy of this build. Do not arm Coinbase.",
   };
 }

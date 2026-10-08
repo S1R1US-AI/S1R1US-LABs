@@ -58,7 +58,7 @@ describe("OSS Roadmap", { concurrency: false }, () => {
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1g"));
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1j"));
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1k"));
-    assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "soft-launch-home" && f.status === "LIVE" && f.path === "/"));
+    assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "front-door-home" && f.status === "LIVE" && f.path === "/"));
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "hello-world" && f.status === "LIVE" && f.path === "/hello-world/"));
     assert.ok(LIVE_FUNCTIONS.some((f) => f.id === "discord" && f.status === "LIVE" && f.path === "/discord/"));
     assert.ok(DATED_MILESTONES.some((m) => m.id === "d1l" && m.status === "DONE" && /Public company X/.test(m.name) && m.detail === "Public surfaces use @S1R1US_AI only."));
