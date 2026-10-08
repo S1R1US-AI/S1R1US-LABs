@@ -18,7 +18,7 @@ We will rotate anything that leaked and credit a fix after it ships.
 - Store a Coinbase API secret or wallet seed
 - Place a live exchange order (preview `--dry-run` only)
 - Trust a client-sent market tape for Ask Grok
-- Store a visitor xAI key on disk
+- Store a visitor xAI API key on disk
 - Use Google Public DNS
 - Fetch user-supplied URLs from the server
 
@@ -34,7 +34,7 @@ We will rotate anything that leaked and credit a fix after it ships.
 | Admin reset mailbox | `reset-mail.server.ts` only — never rendered |
 | Snapshot passphrase | Sidecar `*.pass.txt` next to the `.gpg`, never inside the archive |
 
-Public clones run on free feeds. SuperGrok is the operator Ask Grok path. Visitors Ask Grok with BYO compute (their xAI key, never stored). 7-B0T HTTP SaaS keys are hashed in `BOT7_FEED_KEY_HASHES`. Practice paper is not Coinbase. The public tree must never emit `orders create`. Admin / Yubi / vault stay out of the OSS how-to.
+Public clones run on free feeds. SuperGrok is the operator Ask Grok path. Visitors Ask Grok with BYO compute (their xAI API key, never stored). 7-B0T HTTP SaaS tokens are hashed in `BOT7_FEED_KEY_HASHES`. Practice paper is not Coinbase. The public tree must never emit `orders create`. Admin / Yubi / vault stay out of the OSS how-to.
 
 Encrypted project snapshots (`artifacts/*.tar.gz.gpg`) are AES-256. Do not pack `*.pass.txt`, `node_modules`, or prior `.gpg` files inside a new archive. Rotate the passphrase if a sidecar left the host.
 
@@ -55,7 +55,7 @@ Ingress is inspected in-process (OWASP CRS 4.28 paranoia level 1, not a full Mod
 
 Security headers set by this process: `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy` (payment=()), `X-DNS-Prefetch-Control: off`, HSTS on HTTPS. We do **not** set `X-Frame-Options: DENY` (live preview is iframed) or a blocking CSP (platform injects `https://grok.com`).
 
-## Threat intel (free, no API key)
+## Threat intel (free, no API token)
 
 Admin Security tab pulls:
 
