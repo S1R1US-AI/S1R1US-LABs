@@ -499,9 +499,9 @@ var public_assets_data_default = {
 	},
 	"/.well-known/llms.txt": {
 		"type": "text/plain; charset=utf-8",
-		"etag": "\"8080-rLHyK3KU9a9FRQN/en66gg2R7PY\"",
+		"etag": "\"8156-nsBB9R9B3/UIETV5sd/VjOP8UpY\"",
 		"mtime": "2026-09-29T19:24:14.987Z",
-		"size": 32896,
+		"size": 33110,
 		"path": "../public/.well-known/llms.txt"
 	},
 	"/.well-known/security.txt": {
