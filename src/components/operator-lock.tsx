@@ -86,7 +86,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
       <h1 className="mt-2 text-2xl font-bold tracking-tight text-medium">{APP_NAME}</h1>
       {userOnly ? (
         <p className="mt-3 text-sm leading-relaxed text-down">
-          This login is a desk user. Admin on s1r1us.ai is only the operator X plus name and password (two YubiKeys).
+          This login is a desk user. Admin on s1r1us.ai is operator only.
           iOS / Google copy Admin is on the downloaded app.
         </p>
       ) : null}
@@ -113,8 +113,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
             Continue with X
           </Button>
           <p className="text-xs leading-relaxed text-muted">
-            Admin needs the operator X account, then name and password. Two physical YubiKeys
-            (primary + backup) are the 2FA backup. Other X accounts and desk users stay users — they cannot
+            Admin is operator only and uses strong multi-factor authentication. Other X accounts and desk users stay users — they cannot
             open s1r1us.ai Admin, Wallet, or send. iOS / Google download Admin is a separate lock on the{" "}
             <Link to="/app/admin" className="text-tab hover:underline">
               downloaded app

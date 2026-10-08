@@ -221,7 +221,7 @@ export const ROADMAP: Milestone[] = [
     n: 10,
     name: "Admin Security + morning library",
     when: "STARTED 2026-09-06 — DEPLOY #68 fold",
-    goal: "Admin Security tab (WAF, hunter, AI gate, data-pull pause). Optional YubiKey lock of admin. S1R1U$ M0rning R3p0rt: last 14 days, 3 shown, PDF in browser. FAQ documents visitor / admin / AI agent. Auto trade LOCKED.",
+    goal: "Admin Security tab (WAF, hunter, AI gate, data-pull pause). S1R1U$ M0rning R3p0rt: last 14 days, 3 shown, PDF in browser. FAQ documents visitor / admin / AI agent. Auto trade LOCKED.",
     minUsd: 0,
     maxUsd: 0,
     publicAfterMint: true,

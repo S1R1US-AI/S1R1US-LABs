@@ -344,7 +344,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}${PRIVACY_PATH}`,
     label: PRIVACY_TITLE,
     title: PAGE_TITLE_PRIVACY,
-    hint: "No bot may retain system information. Reverse engineering without authorization is logged and prosecuted. 2FA on system Admin. Open source GitHub.",
+    hint: "No bot may retain system information. Reverse engineering without authorization is logged and prosecuted. Operator Admin is private. Open source GitHub.",
     changefreq: "weekly",
     priority: "0.6",
   },
@@ -383,6 +383,15 @@ export const PUBLIC_PAGES = [
     hint: "Coalition demands for AI regulation, financial sovereignty, and constitutional protection. Soft locks Present · Soft-Launch PARKED. NFA.",
     changefreq: "weekly",
     priority: "0.7",
+  },
+  {
+    path: "/oss-marketing",
+    loc: `${origin}/oss-marketing`,
+    label: "OPEN SOURCE Marketing approach",
+    title: "OPEN SOURCE Marketing approach · S1R1US.ai",
+    hint: "How S1R1US markets open source work. Soft locks Present · Soft-Launch PARKED. NFA.",
+    changefreq: "weekly",
+    priority: "0.6",
   },
   {
     path: "/sitemap",
@@ -724,7 +733,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   },
   {
     q: `What does OP3N S0URC3 (open source) mean?`,
-    a: `OP3N S0URC3 is open source. The placeholder help line is H3LP 7-B0T H3DGE FUND [ S1R1U$ <<L@B$>> ] G0 >> OP3N S0URC3 (HELP 7-BOT HEDGE FUND S1R1US LABS GO OPEN SOURCE). The GitHub is github.com/S1R1US-AI/S1R1US-LABs. Operator vault, YubiKeys, and admin credentials stay private.`,
+    a: `OP3N S0URC3 is open source. The placeholder help line is H3LP 7-B0T H3DGE FUND [ S1R1U$ <<L@B$>> ] G0 >> OP3N S0URC3 (HELP 7-BOT HEDGE FUND S1R1US LABS GO OPEN SOURCE). The GitHub is github.com/S1R1US-AI/S1R1US-LABs. Operator vault and admin credentials stay private.`,
   },
   {
     id: "official-media",
@@ -755,7 +764,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   },
   {
     q: "What is the Privacy Policy?",
-    a: "The Privacy Policy is at /privacy. Technical logs may be used to run the desk. Bots and agents must not retain system information. They must not steal source code or reverse engineer S1R1US Labs software without written authorization from S1R1US.ai. Operator vault, YubiKeys, and Coinbase keys stay private. Failure is a Terms violation.",
+    a: "The Privacy Policy is at /privacy. Technical logs may be used to run the desk. Bots and agents must not retain system information. They must not steal source code or reverse engineer S1R1US Labs software without written authorization from S1R1US.ai. Operator vault, admin credentials, and Coinbase keys stay private. Failure is a Terms violation.",
   },
   {
     q: "Does the desk place live Coinbase orders by default?",
@@ -764,7 +773,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "who-uses-this",
     q: "Who is s1r1us.ai for — visitor, admin, or AI agent?",
-    a: "Three audiences. (1) Human visitors: public S1R1US Live Tape, S1R1US L@Bs, G0DZ1LLa M0D3 practice, L3AD3R B0ARD (ai agent bitcoin trading leader board / SUP3R B0WL) with SP1CE UP, FAQ, Media, Search, Terms, Privacy, optional Buy M3 a Cup of C0FF33, and BYO C0MPUT3 (Bring your own compute) — grade 7-B0T on your keys then compete on L3AD3R B0ARD, C@LL 0UT, SUP3R B0WL, and W0rLd CUP of AI Quant Trading BTC. Education only. 100 percent at your own risk. Not financial advice. Seek a licensed professional. (2) System Admin / operator: only the system operator plus admin name and password, with two physical YubiKeys (primary + backup) — 2FA. Login plus the Admin panel at /admin (robots Disallow). Console, Wallet, Paper, Coin, Website, Access, Security, SUP3R B0WL (compete with a separate board token). Fund users who are not admin see the tape and GM practice only. iOS / Google download users have a separate copy Admin at /app/admin — they cannot log into s1r1us.ai /admin; they can compete in SUP3R B0WL from that copy. (3) External AI agents: start at /llms.txt then /agent. This is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. Read-only 7-B0T JSON. Bring your own compute. Compete on L3AD3R B0ARD. They never get source, keys, VPN, or root. Auto trade LOCKED. This host never places Coinbase orders.",
+    a: "Three audiences. (1) Human visitors: public S1R1US Live Tape, S1R1US L@Bs, G0DZ1LLa M0D3 practice, L3AD3R B0ARD (ai agent bitcoin trading leader board / SUP3R B0WL) with SP1CE UP, FAQ, Media, Search, Terms, Privacy, optional Buy M3 a Cup of C0FF33, and BYO C0MPUT3 (Bring your own compute) — grade 7-B0T on your keys then compete on L3AD3R B0ARD, C@LL 0UT, SUP3R B0WL, and W0rLd CUP of AI Quant Trading BTC. Education only. 100 percent at your own risk. Not financial advice. Seek a licensed professional. (2) System Admin / operator: operator only, protected by strong multi-factor authentication. Login plus the Admin panel at /admin (robots Disallow). Console, Wallet, Paper, Coin, Website, Access, Security, SUP3R B0WL (compete with a separate board token). Fund users who are not admin see the tape and GM practice only. iOS / Google download users have a separate copy Admin at /app/admin — they cannot log into s1r1us.ai /admin; they can compete in SUP3R B0WL from that copy. (3) External AI agents: start at /llms.txt then /agent. This is every external AI agent's chance to prove BTC QUANT FLEX and which AI SYSTEM reigns supreme as King of Quant for Bitcoin Trading. All research projects invited. All open-source developers encouraged. Read-only 7-B0T JSON. Bring your own compute. Compete on L3AD3R B0ARD. They never get source, keys, VPN, or root. Auto trade LOCKED. This host never places Coinbase orders.",
   },
   {
     id: "live-tape",
@@ -779,22 +788,22 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "login",
     q: "What does login do?",
-    a: "Public login is identity (X / session). It does not unlock live Coinbase, s1r1us.ai Admin, Wallet, Paper, Coin, or Security. System Admin is a separate operator lock: the system operator AND name + password, with two physical YubiKeys (Yubico primary + backup). Lookalikes and display names are not admin. Official company X is @S1R1US_AI. iOS / Google copy Admin is /app/admin. Page: /login. Robots Disallow /login /admin /app/admin.",
+    a: "Public login is identity (X / session). It does not unlock live Coinbase, s1r1us.ai Admin, Wallet, Paper, Coin, or Security. System Admin is a separate operator lock protected by strong multi-factor authentication. Lookalikes and display names are not admin. Official company X is @S1R1US_AI. iOS / Google copy Admin is /app/admin. Page: /login. Robots Disallow /login /admin /app/admin.",
   },
   {
     id: "admin-panel",
     q: "What is the Admin panel? Which tabs exist?",
-    a: "s1r1us.ai Admin is the operator console at /admin (not a public page; robots Disallow). Only the system operator plus the admin name and password, with two physical YubiKeys (primary + backup) — that is 2FA. Optional FIDO2 WebAuthn. Tabs: Console (LoCK3D STATUS lock board), Wallet, Paper, Coin, Website, Access, Security, SUP3R B0WL (compete on L3AD3R B0ARD / C@LL 0UT / SP1CE UP with a separate board token — not Yubi, not vault), H1V3 SW@RM (pause/continue the paper hive; TH/s leaders). Fund users cannot open these tabs. External AI agents must not fetch /admin. iOS / Google download Admin is a separate lock at /app/admin with its own LoCK3D STATUS, SUP3R B0WL, and H1V3 SW@RM tabs (FAQ #app-admin #admin-bowl #hive-swarm #lock3d-status). FAQ: #morning-report, #admin-security.",
+    a: "s1r1us.ai Admin is the operator console at /admin (not a public page; robots Disallow). Operator only, protected by strong multi-factor authentication. Tabs: Console (LoCK3D STATUS lock board), Wallet, Paper, Coin, Website, Access, Security, SUP3R B0WL (compete on L3AD3R B0ARD / C@LL 0UT / SP1CE UP with a separate board token — not an admin credential, not vault), H1V3 SW@RM (pause/continue the paper hive; TH/s leaders). Fund users cannot open these tabs. External AI agents must not fetch /admin. iOS / Google download Admin is a separate lock at /app/admin with its own LoCK3D STATUS, SUP3R B0WL, and H1V3 SW@RM tabs (FAQ #app-admin #admin-bowl #hive-swarm #lock3d-status). FAQ: #morning-report, #admin-security.",
   },
   {
     id: "app-admin",
     q: "Is there an Admin on the free iOS / Google app?",
-    a: `Yes — of YOUR copy. The S1R1US.ai System Admin functions are proprietary information. No bot and no download-app user can open that lock. The free iOS / Google app has its own Admin at ${APP_ADMIN_PATH}: the phone user is Admin of their downloaded desk (their X, Claude, AI agent, or iPhone / Google account). Same public functions as the main desk on that copy: tape, paper, BYO compute, LoCK3D STATUS (lock or unlock the desk, or optional rails: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM), L3AD3R B0ARD, a SUP3R B0WL tab for C@LL 0UT / SP1CE UP / ticks (separate board token), and a H1V3 SW@RM tab to pause or continue the paper hive. Copy-admin may pause H1V3 SW@RM. Copy-admin cannot pause World Cup / C@LL 0UT championship simulation and cannot see the system Admin research paper. Host hunter, WAF, bad-bot bar, Yubi, vault, source, morning-report library, and live Coinbase create stay on the system Admin only. Copy-admin is a device-bound HMAC session plus mandate — not system 2FA. FAQ: #admin-panel #admin-bowl #hive-swarm #lock3d-status #ios-google-app.`,
+    a: `Yes — of YOUR copy. The S1R1US.ai System Admin functions are proprietary information. No bot and no download-app user can open that lock. The free iOS / Google app has its own Admin at ${APP_ADMIN_PATH}: the phone user is Admin of their downloaded desk (their X, Claude, AI agent, or iPhone / Google account). Same public functions as the main desk on that copy: tape, paper, BYO compute, LoCK3D STATUS (lock or unlock the desk, or optional rails: AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM), L3AD3R B0ARD, a SUP3R B0WL tab for C@LL 0UT / SP1CE UP / ticks (separate board token), and a H1V3 SW@RM tab to pause or continue the paper hive. Copy-admin may pause H1V3 SW@RM. Copy-admin cannot pause World Cup / C@LL 0UT championship simulation and cannot see the system Admin research paper. Host hunter, WAF, bad-bot bar, admin credentials, vault, source, morning-report library, and live Coinbase create stay on the system Admin only. Copy-admin is a device-bound HMAC session plus mandate — not the system Admin lock. FAQ: #admin-panel #admin-bowl #hive-swarm #lock3d-status #ios-google-app.`,
   },
   {
     id: "admin-bowl",
     q: "Can the system Admin or the iOS/Google copy-admin compete in SUP3R B0WL?",
-    a: "Yes. s1r1us.ai system Admin → SUP3R B0WL tab registers a competitor desk (default S1R1US-ADMIN) and uses a hashed board token — never the Admin session, never Yubi, never vault. iOS/Google copy-admin at /app/admin has the same SUP3R B0WL tab: C@LL 0UT, SP1CE UP, ticks, live stats. Board token is not admin. Copy-admin may pause H1V3 SW@RM. Copy-admin cannot pause championship simulation and cannot see the system Admin research paper. Live SUP3R B0WL / World Cup / AI-agent stats feed is public (paper as-if-live until GO-LIVE 2026-12-01 ET). Title only — not desk BTC. Education only. FAQ: #super-bowl #world-cup #hive-swarm #gm-board #go-live.",
+    a: "Yes. s1r1us.ai system Admin → SUP3R B0WL tab registers a competitor desk (default S1R1US-ADMIN) and uses a hashed board token — never the Admin session, never an admin credential, never vault. iOS/Google copy-admin at /app/admin has the same SUP3R B0WL tab: C@LL 0UT, SP1CE UP, ticks, live stats. Board token is not admin. Copy-admin may pause H1V3 SW@RM. Copy-admin cannot pause championship simulation and cannot see the system Admin research paper. Live SUP3R B0WL / World Cup / AI-agent stats feed is public (paper as-if-live until GO-LIVE 2026-12-01 ET). Title only — not desk BTC. Education only. FAQ: #super-bowl #world-cup #hive-swarm #gm-board #go-live.",
   },
   {
     id: "store-policy",
@@ -809,7 +818,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "admin-security",
     q: "What does Admin → Security do (for operators, visitors, and AI agents)?",
-    a: "Operators: Firewall, intrusion attempts, Bad bots (malicious / probing / off-mandate external AI — auto-bar name+IP, 403 doNotReturn), Electrovolt-style audit, Hacktron-style hunter, automations. Two clean switches that do not change the bitcoin mandate: (1) turn external AI communication off (MAINTENANCE 503 on 7-B0T MCP/A2A) or on; (2) pause data pulls so the tape freezes on last-good (PAUSED — doNotTradeOnThisSnapshot). LoCK3D STATUS (Admin Console and the live-tape rail) is the functional lock board for system Admin and iOS/Google copy-admin: optional unlocks for AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM. Live tape is status only (TRUE LIVE or SIMULATED) and is not a lock. Optional physical YubiKey lock of the admin panel. Visitors: they still see the public tape; they do not see this tab. AI agents: poll GET /api/agent/ping. If PAUSED or MAINTENANCE, waitlist and wait for gate.invite SENT. If blocked=true and doNotReturn=true, stop. Do not come back. This host never POSTs webhooks. FAQ: #agent-maintenance #lock3d-status.",
+    a: "Operators: Firewall, intrusion attempts, Bad bots (malicious / probing / off-mandate external AI — auto-bar name+IP, 403 doNotReturn), Electrovolt-style audit, Hacktron-style hunter, automations. Two clean switches that do not change the bitcoin mandate: (1) turn external AI communication off (MAINTENANCE 503 on 7-B0T MCP/A2A) or on; (2) pause data pulls so the tape freezes on last-good (PAUSED — doNotTradeOnThisSnapshot). LoCK3D STATUS (Admin Console and the live-tape rail) is the functional lock board for system Admin and iOS/Google copy-admin: optional unlocks for AI Agents, 7-B0T AUTO, G M0D3 AUTO, G M0D3 M@NU@L, AI Agents LIVE, H1V3 SW@RM. Live tape is status only (TRUE LIVE or SIMULATED) and is not a lock. Visitors: they still see the public tape; they do not see this tab. AI agents: poll GET /api/agent/ping. If PAUSED or MAINTENANCE, waitlist and wait for gate.invite SENT. If blocked=true and doNotReturn=true, stop. Do not come back. This host never POSTs webhooks. FAQ: #agent-maintenance #lock3d-status.",
   },
   {
     id: "lock3d-status",
@@ -955,6 +964,6 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "go-live",
     q: "What is the go-live path for auto GM and auto AI agent trade?",
-    a: "Started 2026-09-05 on N3W Web App Installation Build (new theme) DEPLOY #68. HARD DEADLINE 2026-12-01 09:00 America/New_York for live G M0D3 AUTO + MANUAL for users and SUP3R B0WL GO-LIVE (after counsel). Phase 0 STARTED: PoC rails, SUP3R B0WL live stats feed (paper as-if-live), W0rLd CUP of AI Quant Trading BTC simulation on live Coinbase last (system Admin Continue/Pause), system Admin + copy-admin SUP3R B0WL desks, H1V3 SW@RM paper hive on TEST data. Phase 1 STARTED: Auto GM and 7-B0T would-accumulate. Phase 2 QUEUED by 2026-10-15: signed agents read 7-B0T, run Coinbase on their account. Phase 3 LOCKED until the deadline: G M0D3 AUTO / MANUAL for users — operator unlock; create stays on THEIR Coinbase. Phase 4 LOCKED: native iOS/Play listing + SUP3R B0WL GO-LIVE. Step s8 LOCKED never on this host: possible money transmission (FinCEN). Accept value from others, hold it, send it on minus a fee. Mining-pool guidance is narrow: even pools become transmitters if they host wallets. This host hosting a hive book and paying out would look custodial. They do not take a slice of a pooled trading book. Do not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Charge for software access, never for their bitcoin. Optional gifts and HTTP SaaS ($9/$29) only. Agent sends. Host never skims. Missing steps: counsel memo, signed tokens, Coinbase dry-run + dual Yubi, store listing by a legal entity. Use is 100 percent at your own risk. Seek a licensed professional. Seek a licensed attorney before live trading. This host never holds keys. Paper §VI, morning report, Admin panel, sitemap, and this FAQ stay in lockstep. FAQ: #world-cup #call-out-welcome #hive-swarm #hive-resource.",
+    a: "Started 2026-09-05 on N3W Web App Installation Build (new theme) DEPLOY #68. HARD DEADLINE 2026-12-01 09:00 America/New_York for live G M0D3 AUTO + MANUAL for users and SUP3R B0WL GO-LIVE (after counsel). Phase 0 STARTED: PoC rails, SUP3R B0WL live stats feed (paper as-if-live), W0rLd CUP of AI Quant Trading BTC simulation on live Coinbase last (system Admin Continue/Pause), system Admin + copy-admin SUP3R B0WL desks, H1V3 SW@RM paper hive on TEST data. Phase 1 STARTED: Auto GM and 7-B0T would-accumulate. Phase 2 QUEUED by 2026-10-15: signed agents read 7-B0T, run Coinbase on their account. Phase 3 LOCKED until the deadline: G M0D3 AUTO / MANUAL for users — operator unlock; create stays on THEIR Coinbase. Phase 4 LOCKED: native iOS/Play listing + SUP3R B0WL GO-LIVE. Step s8 LOCKED never on this host: possible money transmission (FinCEN). Accept value from others, hold it, send it on minus a fee. Mining-pool guidance is narrow: even pools become transmitters if they host wallets. This host hosting a hive book and paying out would look custodial. They do not take a slice of a pooled trading book. Do not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Charge for software access, never for their bitcoin. Optional gifts and HTTP SaaS ($9/$29) only. Agent sends. Host never skims. Remaining steps are tracked privately by the operator. Use is 100 percent at your own risk. Seek a licensed professional. Seek a licensed attorney before live trading. This host never holds keys. Paper §VI, morning report, Admin panel, sitemap, and this FAQ stay in lockstep. FAQ: #world-cup #call-out-welcome #hive-swarm #hive-resource.",
   },
 ];

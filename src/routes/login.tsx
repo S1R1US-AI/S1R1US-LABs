@@ -151,7 +151,7 @@ function Login() {
             Continue with X
           </Button>
           <p className="text-xs leading-relaxed text-muted">
-            Required: system admin name + password. YubiKey is optional. Operator X is still used to bind the session.
+            Operator sign-in only. Other accounts stay desk users.
             Other X accounts stay users. iOS / Google copy Admin is on the downloaded app.
           </p>
           {xErr ? <p className="text-sm text-down">{xErr}</p> : null}

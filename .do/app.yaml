@@ -1,11 +1,9 @@
-# s1r1us.ai live production — DigitalOcean App Platform
-# Project: live-production (id b0289cfa-8b5c-4661-b433-b8470a1fb120)
-# Staging project first-project is separate — do not point this spec at staging.
+# s1r1us.ai — DigitalOcean App Platform app spec (reference copy).
 # GitHub repo format is owner/repo: S1R1US-AI/S1R1US-LABs
-# Never s1r1us.ai/your-repo. deploy_on_push: true = every push to main rebuilds live.
-# Dockerfile copies prebuilt .output (no compile on the 1 GB box).
-# Encrypted env (BETTER_AUTH_SECRET, GROK_AUTH_CLIENT_SECRET) lives on the dashboard.
-# When you Edit App Spec, change only the github block — do not drop SECRET rows.
+# deploy_on_push: true = every push to main rebuilds live.
+# Dockerfile copies prebuilt .output (no compile on the small instance).
+# Encrypted env values live only in the DigitalOcean dashboard, never in GitHub.
+# When you edit the App Spec, change only the github block — do not drop SECRET rows.
 name: s1r1us-labs
 region: nyc
 alerts:

@@ -2,7 +2,12 @@
  * Server-only. Do not import from client components or re-export the mailbox.
  * Destination is never returned from a server function.
  */
-const SYSTEM_RESET_MAILBOX = "wangchung57@outlook.com";
+/** Destination comes from the server environment only. Unset = no mail is sent (fails safe). */
+function resetMailbox(): string | null {
+  const raw = (process.env.SYSTEM_RESET_MAILBOX ?? "").trim();
+  if (!raw || raw.length > 254 || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(raw)) return null;
+  return raw;
+}
 
 function fromAddr() {
   const raw = (process.env.RESET_FROM ?? "S1R1US Labs <noreply@s1r1us.ai>").trim();
@@ -10,6 +15,8 @@ function fromAddr() {
 }
 
 export async function sendAdminResetMail(link: string): Promise<boolean> {
+  const mailbox = resetMailbox();
+  if (!mailbox) return false;
   const subject = "Admin password renew";
   const text = [
     "A one-time admin password renew was requested.",
@@ -30,7 +37,7 @@ export async function sendAdminResetMail(link: string): Promise<boolean> {
         },
         body: JSON.stringify({
           from: fromAddr(),
-          to: [SYSTEM_RESET_MAILBOX],
+          to: [mailbox],
           subject,
           text,
         }),
@@ -43,7 +50,7 @@ export async function sendAdminResetMail(link: string): Promise<boolean> {
   const smtp = (process.env.SMTP_URL ?? "").trim();
   if (smtp) {
     try {
-      return await sendSmtp(smtp, fromAddr(), SYSTEM_RESET_MAILBOX, subject, text);
+      return await sendSmtp(smtp, fromAddr(), mailbox, subject, text);
     } catch {
       return false;
     }

@@ -12,8 +12,6 @@ import {
   SEO_TAB_DESK,
 } from "@/lib/brand";
 import {
-  FOUNDING_DATE,
-  liveSameAs,
   OFFICIAL_PROPERTIES,
   sitelinkPages,
 } from "@/lib/desk/official-presence";
@@ -29,7 +27,6 @@ const webId = `${origin}/#website`;
 const logoId = `${origin}/#logo`;
 
 export function corporateSearchGraph() {
-  const sameAs = liveSameAs();
   const sitelinks = sitelinkPages();
   return [
     {
@@ -40,7 +37,6 @@ export function corporateSearchGraph() {
       alternateName: [LABS_NAME, APP_NAME, "S1R1US Labs", "S1R1US AI", TAB_DESK, SEO_TAB_DESK, "S1R1US Bot Hedge Fund"],
       url: SEO_CANONICAL,
       description: SEO_DESCRIPTION,
-      foundingDate: FOUNDING_DATE,
       slogan: "Accumulate bitcoin. Never sell bitcoin. Never short bitcoin.",
       knowsAbout: [
         "AI agents",
@@ -107,7 +103,6 @@ export function corporateSearchGraph() {
       brand: { "@type": "Brand", name: APP_NAME, logo: logoUrl },
       logo: { "@id": logoId },
       image: { "@id": logoId },
-      sameAs,
       identifier: [
         { "@type": "PropertyValue", name: "X", value: COMPANY_X_HANDLE },
         { "@type": "PropertyValue", name: "GitHub", value: "S1R1US-AI/S1R1US-LABs" },
@@ -224,7 +219,7 @@ export function corporateSearchGraph() {
     {
       "@type": "ItemList",
       name: "Official S1R1US Labs properties",
-      description: "Live and reserved brand desks. sameAs only lists live owned profiles.",
+      description: "Live and reserved brand desks.",
       itemListElement: OFFICIAL_PROPERTIES.map((p, i) => ({
         "@type": "ListItem",
         position: i + 1,

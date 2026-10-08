@@ -334,7 +334,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/admin",
     status: "LIVE",
     since: "2026-09-05",
-    note: "System: HMAC + dual Yubi. Copy-admin: /app/admin. Championship pause is system + copy-admin.",
+    note: "System: operator-only MFA. Copy-admin: /app/admin. Championship pause is system + copy-admin.",
   },
   {
     id: "white-label",
@@ -593,7 +593,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: false,
     status: "DONE",
     name: "S1R1US App build #113 (live sim launch)",
-    detail: "Checkpoint 101 finalized and renamed. Main-branch fold for live admin simulation (G M0D3 AUTO, AI agents, PR3D1CT10N$ paper). Carbon-fiber baseline remains DEPLOY #68. Saved in Project BTD / S1R1US L@Bs. This host never places Coinbase orders.",
+    detail: "Checkpoint 101 finalized and renamed. Main-branch fold for live admin simulation (G M0D3 AUTO, AI agents, PR3D1CT10N$ paper). Carbon-fiber baseline remains DEPLOY #68. This host never places Coinbase orders.",
   },
   {
     id: "d1l",

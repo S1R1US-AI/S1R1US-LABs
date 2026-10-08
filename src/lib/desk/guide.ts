@@ -191,10 +191,10 @@ export const GUIDE: GuideSection[] = [
   },
   {
     id: "access",
-    title: "12. Access, first login, two YubiKeys",
+    title: "12. Access and first login",
     body: [
-      "First login: Continue with X as the operator account (exact account — display name is not enough). Then admin name + password. Both are required. X alone does not open Admin. Password alone does not open Admin. Then enroll two Yubico OTP keys. Either key later approves outgoing BTC/USDC. Password is Argon2id in the lock — never printed.",
-      "Optional: Continue with X as the operator. Only that X account can bind. After that X session is live, Renew password appears — it mails a one-time 30-minute link to the private system mailbox (address not published) and lets the bound X set a new password without the old one. Header shows operator when X verification matches. No Google 2FA. No Google products.",
+      "First login: Continue with X as the operator account (exact account — display name is not enough). Then the operator credentials. Details stay private. Password is Argon2id in the lock — never printed.",
+      "Optional: Continue with X as the operator. Only that X account can bind. After that X session is live, Renew password appears — it starts the private operator renew procedure. Header shows operator when X verification matches. No Google 2FA. No Google products.",
       `Fund users: Admin → Console → password. They see ${TAB_DESK}, ${TAB_LAB}, and ${TAB_GM} practice. They cannot open Admin, Paper, Wallet, Coin, Access, Live GM, or the paper book.`,
       "Idle Matrix after 5 minutes. Classic green katakana unless admin is on G0DZ1LLa M0D3 or G M0D3 AUTO is Live — then 10% rainbow G0DZ1LLa M0D3 / 90% classic. Clicking the GM tab rains 4 seconds without locking. Desk lock still needs name + password (or bound X).",
       "Seeds, WIF, xprv, and CDP secrets are rejected on paste. No innerHTML of Grok/RSS payloads.",

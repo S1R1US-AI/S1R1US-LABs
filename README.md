@@ -8,7 +8,7 @@ S1R1US.ai strives to build open-source software designed with AI research tools.
 
 **Soft locks Present:** `paper only · never sell · never short · Coinbase create LOCKED · auto-trade LOCKED · public X @S1R1US_AI only`
 
-**Soft-Launch: PARKED** · Live sim · App build #113 · live trades off · paper research. See [LAUNCH.md](LAUNCH.md) · [CHECKPOINT.md](CHECKPOINT.md) · [DEPLOY.md](DEPLOY.md) · [/roadmap](https://s1r1us.ai/roadmap).
+**Soft-Launch: PARKED** · Live sim · App build #113 · live trades off · paper research. See [DEPLOY.md](DEPLOY.md) · [/roadmap](https://s1r1us.ai/roadmap).
 
 ## Community
 

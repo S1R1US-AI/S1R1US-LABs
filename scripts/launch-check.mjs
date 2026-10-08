@@ -49,7 +49,6 @@ function secretScan() {
       "scripts",
       ".do",
       "Dockerfile",
-      "LAUNCH.md",
       "DEPLOY.md",
       "README.md",
     ],

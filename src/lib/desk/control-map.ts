@@ -121,7 +121,7 @@ export function pciRows(): MapRow[] {
       code: "8.3 / 8.4",
       title: "MFA + strong authentication",
       status: "PASS",
-      control: "Operator X + password. Optional YubiKey panel lock (Yubico FIDO2/OTP, default OFF). Dual Yubi on BTC/USDC CLI copy. Argon2id.",
+      control: "Operator only, strong multi-factor authentication. Operator approval on BTC/USDC CLI copy.",
     },
     {
       id: "pci-102",
@@ -205,7 +205,7 @@ export function pluginInventory(): PluginRow[] {
       kind: "Login hardening",
       license: "GPLv2+",
       what: "2FA, brute-force, user-action log.",
-      how: "AND lock + dual Yubi + optional panel FIDO2 + intrusion kinds.",
+      how: "Operator MFA + intrusion kinds.",
       status: "ARMED",
     },
     {

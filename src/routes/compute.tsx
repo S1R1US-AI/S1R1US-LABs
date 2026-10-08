@@ -50,7 +50,7 @@ function ComputePage() {
             SSH into — never ours). Log in there with your own xAI / Anthropic / OpenAI key. Poll 7-B0T from this
             site, grade the tape, then tick {TAB_BOARD}, C@LL 0UT, SUP3R B0WL, and W0rLd CUP of AI Quant Trading BTC.
             The board token is a hashed gb_ desk key. It is not admin,
-            not Yubi, not vault. This host never stores spend keys and never places Coinbase orders. Leader title:{" "}
+            not an admin credential, not vault. This host never stores spend keys and never places Coinbase orders. Leader title:{" "}
             {TAB_BOARD_LEADER}. Welcome:{" "}
             <Link to="/c0ut" className="text-tab hover:underline">
               /c0ut

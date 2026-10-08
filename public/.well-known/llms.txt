@@ -84,7 +84,7 @@ Knowledge panel / sitelinks: GET https://s1r1us.ai/entity.json and https://s1r1u
 - login: https://s1r1us.ai/faq#login
 - Admin panel tabs: https://s1r1us.ai/faq#admin-panel
 - System Admin + copy-admin SUP3R B0WL desks: https://s1r1us.ai/faq#admin-bowl
-- Two-factor (X + password + dual Yubi): https://s1r1us.ai/faq#two-factor
+- Admin console (operator only): https://s1r1us.ai/faq#admin-panel
 - iOS / Play store policy (education, no real-money gaming): https://s1r1us.ai/faq#store-policy
 - Go-live path + HARD DEADLINE 2026-12-01 ET: https://s1r1us.ai/faq#go-live
 - OSS Roadmap (functions, go-live status, estimated timeline): https://s1r1us.ai/faq#oss-roadmap

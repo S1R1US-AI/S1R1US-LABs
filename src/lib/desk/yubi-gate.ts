@@ -1,4 +1,4 @@
-/** YubiKey is optional. Name+password unlocks system admin. */
+/** Admin hardware-key gate (server-only). */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { getSql } from "@/lib/db";
 import { webauthnCount } from "./webauthn.server";
@@ -24,7 +24,7 @@ export function peekYubiPanelLock(): boolean {
   return false;
 }
 
-/** Login must not block on Yubi. Enrollment stays available. */
+/** Panel lock state (server-only). */
 export async function adminPanelYubiLock(): Promise<boolean> {
   return false;
 }

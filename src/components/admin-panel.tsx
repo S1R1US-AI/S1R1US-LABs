@@ -136,7 +136,7 @@ export function AdminPanel() {
             <h1 className="mt-1 text-2xl font-semibold tracking-tight text-brand">Admin</h1>
             <p className="mt-3 text-sm leading-relaxed text-muted">
               Signed in as desk user <span className="font-mono text-fg">{operatorName || "—"}</span>.
-              s1r1us.ai Admin is only the system operator (X identity) plus name and password (two YubiKeys). iOS / Google copy
+              s1r1us.ai Admin is operator only. iOS / Google copy
               Admin is on the downloaded app. Open the desk, or sign in as system admin.
             </p>
             <Link

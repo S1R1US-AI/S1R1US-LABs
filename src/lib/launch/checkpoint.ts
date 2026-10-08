@@ -7,8 +7,6 @@ export const CHECKPOINT_LAST_EDIT = "2026-09-12T02:10:00.000Z";
     White label + screensavers folded at #113; /labs URL, 3 s GM burst, pair ratio charts folded in. */
 export const CHECKPOINT_NAME = "S1R1US App build #113 (live sim launch)";
 export const CHECKPOINT_SHORT = "S1R1US App build #113";
-export const CHECKPOINT_PROJECT = "Project BTD";
-export const CHECKPOINT_FOLDER = "S1R1US L@Bs";
 
 export function checkpointLabel(n = CHECKPOINT_BUILD_N) {
   if (n === CHECKPOINT_BUILD_N) return CHECKPOINT_SHORT;
