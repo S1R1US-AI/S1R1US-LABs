@@ -1,0 +1,1 @@
+import{n as e}from"./tape-client-mem5QT_e.js";async function t(t){t?.admin,await e({force:t?.force})}export{t};
