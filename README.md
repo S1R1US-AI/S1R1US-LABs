@@ -1,5 +1,12 @@
 # S1R1US-LABs
 
+> ### ⚠️ DISCLAIMER
+> **NO crypto KEYS are EVER stored in S1R1US.ai systems or OSS (or OSS White-Label).**
+>
+> - S1R1US.ai never takes custody of visitor funds and never splits or transmits live bitcoin.
+> - Vendor API keys, such as an xAI API key or a Coinbase CDP API key, belong to you. They stay in your own browser session or your own environment and are never collected or stored by S1R1US.ai.
+> - Never paste a wallet seed, private key or exchange secret into any S1R1US page, issue, or pull request.
+
 ## Mission
 
 S1R1US.ai strives to build open-source software designed with AI research tools. We hope to help people learn how money flows with respect to Bitcoin. By learning about Bitcoin, Bitcoin legislation, and the economy, AI desk design can follow human safety principles. Humans can insist that a human lane and a human car remain available in future Web3 (and external AI adoption). At the intersection of AI and Bitcoin: we want humans to drive the car and humans to hold the car keys. AI should stay in its own lane. If rules or standard definitions are missing during product design, security is at risk and failure is possible. S1R1US.ai offers everyone a research path to experiment and find common ground. We can test the solution before bugs become features that lead to failures — human or bot.
