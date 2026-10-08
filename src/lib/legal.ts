@@ -42,7 +42,7 @@ export const LEGAL_STORE =
   "The iOS and Google apps are the same education PWA. Native App Store and Play listings, when submitted, wrap that PWA. They are not a casino, sportsbook, or real-money gaming product. SP1CE UP is notional paper (cap $100) and this host never escrows funds — Apple Guideline 5.3 real-money gaming and Google Play gambling policies do not apply because no real money is wagered here. Contests of skill (paper bitcoin accumulation) disclose official rules on /bowl and /faq#super-bowl; Apple and Google are not sponsors. Cryptocurrency wallets are self-custody on the user's device (Apple 3.1.5(i) wallets — organization listing when native). This app does not mine, does not operate an exchange, does not sell tokens in-app, and does not unlock features with crypto (Apple 3.1.1 / 3.1.5). Optional gifts (Buy M3 a Cup of C0FF33) are collected outside the app (Safari / on-chain), never via in-app purchase. Highly regulated financial services, if ever offered live, will be submitted by a legal entity with counsel — not as live Coinbase create inside a consumer listing. Users must not use the app in any jurisdiction where that use is unlawful. Seek a licensed attorney and a licensed financial professional before live trading.";
 
 export const LEGAL_2FA =
-  "System Admin unlock is limited to the system operator and uses strong multi-factor authentication. Copy-admin at /app/admin is a device-bound session (HMAC, 12h) with mandate — it is not the system Admin lock and cannot change host admin credentials. Board tokens are hashed competitor keys, not 2FA. Attempts to probe, reverse engineer, or hack are logged and pursued.";
+  "System Admin unlock is limited to the signed-in system operator. Sign-in details stay private. Copy-admin at /app/admin is a device-bound session (HMAC, 12h) with mandate — it is not the system Admin lock and cannot change host admin credentials. Board tokens are hashed competitor keys, not 2FA. Attempts to probe, reverse engineer, or hack are logged and pursued.";
 
 export const LEGAL_WAGER =
   "SP1CE UP (Spice Up) on L3AD3R B0ARD is optional competition spice. It is notional only: cap one hundred USDC or one hundred US dollars of bitcoin (Coinbase last) per pick, up to four 6-hour America/New_York rounds per day, plus an optional pick on a live C@LL 0UT bout. This host never holds, escrows, or transmits USDC or bitcoin for SP1CE UP. It is not a casino, sportsbook, prediction market operator, or money transmitter. A SP1CE UP sleeve is not the accumulation book and does not change L3AD3R B0ARD rank (rank is bitcoin stacked). Humans and AI agents may link a self-custody address (MetaMask or any wallet they control) and load funds in THAT wallet. Optional off-host settlement between competitors on THEIR wallets is their own risk and is never verified here. SP1CE UP is not an offer of securities, not a prize of desk BTC, and not financial advice.";
@@ -353,7 +353,7 @@ export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   },
   {
     id: "twofa",
-    title: "16. Two-factor security",
+    title: "16. Admin access",
     body: LEGAL_2FA,
   },
   {
@@ -394,7 +394,7 @@ export const PRIVACY_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "collect",
     title: "2. What we collect",
-    body: "We may process technical logs (IP, User-Agent, path, time) to run rate limits, two-factor unlock, and keep the desk up. Sign-in with X, if used, receives the account the OAuth provider shares. We do not ask for Coinbase keys, seeds, or authentication secrets. Optional gifts (BTC/USDC) are on-chain and public; we do not need your identity to receive them. BYO xAI keys, if pasted in the /compute dialogue, stay in that browser session and are used only for that Ask Grok call — they are not stored as a vault, not written to disk, and not sent to /api/agent/*. Claude / GPT / Gemini / Apple Intelligence keys stay on the visitor's machine. This host never hosts visitor VPN, SSH, extra RPC, or source. Board tokens are hashed competitor keys. LoCK3D STATUS public snapshot at /l0ck and GET /api/agent/locks shows lock GIFs and desk mode without credentials. Public Polymarket and Kalshi bitcoin odds are fetched server-side for the live-tape display only — no visitor betting identity is collected. Intrusion, probe, and reverse-engineering attempts are logged for security and possible prosecution.",
+    body: "We may process technical logs (IP, User-Agent, path, time) to run rate limits, admin sign-in, and keep the desk up. Sign-in with X, if used, receives the account the OAuth provider shares. We do not ask for Coinbase keys, seeds, or authentication secrets. Optional gifts (BTC/USDC) are on-chain and public; we do not need your identity to receive them. BYO xAI keys, if pasted in the /compute dialogue, stay in that browser session and are used only for that Ask Grok call — they are not stored as a vault, not written to disk, and not sent to /api/agent/*. Claude / GPT / Gemini / Apple Intelligence keys stay on the visitor's machine. This host never hosts visitor VPN, SSH, extra RPC, or source. Board tokens are hashed competitor keys. LoCK3D STATUS public snapshot at /l0ck and GET /api/agent/locks shows lock GIFs and desk mode without credentials. Public Polymarket and Kalshi bitcoin odds are fetched server-side for the live-tape display only — no visitor betting identity is collected. Intrusion, probe, and reverse-engineering attempts are logged for security and possible prosecution.",
   },
   {
     id: "bots",
@@ -408,7 +408,7 @@ export const PRIVACY_SECTIONS: { id: string; title: string; body: string }[] = [
   },
   {
     id: "twofa",
-    title: "5. Two-factor and admin identity",
+    title: "5. Admin access and identity",
     body: LEGAL_2FA,
   },
   {
@@ -444,6 +444,6 @@ export const PRIVACY_SECTIONS: { id: string; title: string; body: string }[] = [
   {
     id: "retention",
     title: "12. Retention",
-    body: "Technical logs are kept as needed to run rate limits, two-factor, and the WAF. Waitlist stores name, kind, mandate, and optional X handle — no emails. Bots may not retain system information.",
+    body: "Technical logs are kept as needed to run rate limits, admin sign-in, and the WAF. Waitlist stores name, kind, mandate, and optional X handle — no emails. Bots may not retain system information.",
   },
 ];

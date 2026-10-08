@@ -91,8 +91,7 @@ export function XRenewBlock({
       ) : (
         <form onSubmit={(e) => void onSet(e)} className="space-y-3">
           <p className="text-sm leading-relaxed text-muted">
-            Operator X is signed in. This sets the name and password for the second login
-            (admin door). X stays this account.
+            Operator is signed in. This sets the admin credentials for this account.
           </p>
           <label className="block text-sm" htmlFor="renew-name">
             Admin name
@@ -140,7 +139,7 @@ export function XRenewBlock({
           />
           {err ? <p className="text-sm text-down">{err}</p> : null}
           <Button variant="primary" type="submit" disabled={busy} className="w-full">
-            Set admin name and password
+            Set admin credentials
           </Button>
         </form>
       )}

@@ -100,7 +100,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
     when: "2026-09-06",
     status: "DONE",
     owner: "operator",
-    need: "100% own risk. Not FA. Not an attorney. Unlawful-region ban. OSS GitHub link. Welcome. Probe logs + prosecute. System Admin uses strong multi-factor authentication.",
+    need: "100% own risk. Not FA. Not an attorney. Unlawful-region ban. OSS GitHub link. Welcome. Probe logs + prosecute. System Admin is operator sign-in only.",
   },
   {
     id: "s2",

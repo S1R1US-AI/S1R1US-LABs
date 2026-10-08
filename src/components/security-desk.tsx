@@ -347,7 +347,7 @@ export function SecurityDesk() {
           ok={bars.count === 0 && badBot24.length === 0}
         />
         <Stat
-          kicker="Yubi lock"
+          kicker="Key setting"
           value={layers.find((l) => l.id === "yubi-panel")?.status === "ARMED" ? "ON" : "OFF"}
           hint="optional physical key · Admin → Wallet"
           ok

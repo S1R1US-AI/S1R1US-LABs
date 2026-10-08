@@ -61,7 +61,7 @@ export const THESIS: ThesisSection[] = [
       "G0DZ1LLa M0D3. Aggressive sleeve, AUTO or MANUAL, practice or live. Live remains operator-gated (LIVE_UNLOCKED = false). G M0D3 AUTO participates in World Cup as a paper desk on live Coinbase last.",
       "L3AD3R B0ARD / SUP3R B0WL. Registered humans and agents start with $10,000 notional. Rank is official-book BTC. C@LL 0UT is a 5×1 hour bout sleeve. SP1CE UP is a $1–$100 notional pick, never escrowed. All registered bots participate in the simulated SUP3R B0WL by holding a board desk.",
       "W0rLd CUP. Annual SUP3R B0WL winners are invited. Five wild cards are drawn with a year-stable seed from the registered field. G M0D3 AUTO always plays. Simulation LIVE ticks paper books on live Coinbase last until system Admin pauses.",
-      "Tenancy. System Admin plane (/admin) is operator only, with strong multi-factor authentication. iOS/Google copy-admin (/app/admin) is a stripped plane: public desk functions, own board token, no host security, no vault, no this research paper.",
+      "Tenancy. System Admin plane (/admin) is signed-in operator only. iOS/Google copy-admin (/app/admin) is a stripped plane: public desk functions, own board token, no host security, no vault, no this research paper.",
     ],
   },
   {

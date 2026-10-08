@@ -95,7 +95,7 @@ export function firewallLayers(): FirewallLayer[] {
       name: "Admin AND lock",
       zone: "auth",
       status: "ARMED",
-      detail: "Operator only, strong multi-factor authentication. Operator approval on outgoing BTC/USDC.",
+      detail: "Operator sign-in only. Operator approval on outgoing BTC/USDC.",
     },
     {
       id: "tenancy",
@@ -106,7 +106,7 @@ export function firewallLayers(): FirewallLayer[] {
     },
     {
       id: "yubi-panel",
-      name: "Admin YubiKey lock",
+      name: "Admin hardware-key setting",
       zone: "auth",
       status: "OPERATOR",
       detail: "Operator-managed hardware-key settings. Details stay private.",
@@ -130,7 +130,7 @@ export function firewallLayers(): FirewallLayer[] {
       name: "Session store",
       zone: "auth",
       status: "OPERATOR",
-      detail: "HMAC lives in sessionStorage (OWASP: XSS-readable). Epoch + X AND + idle wipe until an HttpOnly cookie ships.",
+      detail: "HMAC lives in sessionStorage (OWASP: XSS-readable). Epoch + operator check + idle wipe until an HttpOnly cookie ships.",
     },
     {
       id: "secrets",

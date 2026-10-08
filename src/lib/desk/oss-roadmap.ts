@@ -334,7 +334,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/admin",
     status: "LIVE",
     since: "2026-09-05",
-    note: "System: operator-only MFA. Copy-admin: /app/admin. Championship pause is system + copy-admin.",
+    note: "System: operator sign-in only. Copy-admin: /app/admin. Championship pause is system + copy-admin.",
   },
   {
     id: "white-label",
@@ -553,7 +553,7 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     estimate: true,
     status: "LOCKED",
     name: "Coinbase dry-run + store submit",
-    detail: "Operator book MCP --dry-run, dual Yubi on outgoing, vault off this host. Native iOS/Play listing submitted by a legal entity as an education wrap.",
+    detail: "Operator book MCP --dry-run, operator approval on outgoing, vault off this host. Native iOS/Play listing submitted by a legal entity as an education wrap.",
   },
   {
     id: "d5",

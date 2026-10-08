@@ -170,7 +170,7 @@ export function AdminPanel() {
                             ? "BTC M1N3Rz (BTC Miners View) — free public solo CKPool stats for your miners. Update only your own stratum + BTC receive address. Blank + Save = S1R1US.ai CKPool defaults. Read-only data — never Coinbase."
                             : tab === "hive"
                             ? "H1V3 SW@RM — combine BYO compute (TH/s). Paper BTC split by pledged terahash. TEST until go-live. Pause/continue. Copy-admin may pause hive and championship sim."
-                : `Fund control for ${APP_NAME}. Session, Grok cap, two YubiKeys, risk rules, Coinbase MCP posture.`}
+                : `Fund control for ${APP_NAME}. Session, Grok cap, hardware keys, risk rules, Coinbase MCP posture.`}
           </p>
           {err ? <p className="mt-3 text-sm text-down">{err}</p> : null}
 
@@ -895,8 +895,8 @@ function TreasuryPanel() {
         )}
         <p className="mt-2 text-sm text-muted">
           HIGH BUY/ACCUMULATE copies a BTC-USDC buy preview for the clip (1% ACCUMULATE / 2% BUY of the
-          $100 book). HIGH TRIM copies a take-profit send. This desk never broadcasts. Two YubiKeys
-          must be enrolled.
+          $100 book). HIGH TRIM copies a take-profit send. This desk never broadcasts. Operator approval
+          is required.
         </p>
         {call && call.conviction === "HIGH" && (call.stance === "BUY" || call.stance === "ACCUMULATE") ? (
           <div className="mt-3">
@@ -1256,10 +1256,9 @@ function FactorPanel() {
   const handle = st?.handle ?? st?.adminX ?? "system operator";
 
   return (
-    <Panel className="mt-4" kicker="Two-factor" title="System operator admin" titleClass="x-admin-name">
+    <Panel className="mt-4" kicker="Operator" title="System operator admin" titleClass="x-admin-name">
       <p className="text-sm leading-relaxed text-muted">
-        First login is admin name + password. Then enroll two YubiKeys (panel above). X is optional.
-        Connect records this X session as a passwordless admin path.
+        Operator X binding for this console. Sign-in details stay private.
       </p>
       <p className="mt-3 font-mono text-sm">
         {handle}{" "}
@@ -1485,21 +1484,19 @@ function YubiPanel() {
       setErr(res.error);
       return;
     }
-    log("yubi", on ? "Admin panel locked behind YubiKey" : "Admin panel YubiKey lock off");
+    log("yubi", on ? "Hardware-key setting saved" : "Hardware-key setting cleared");
     setOk(
       on
-        ? "Admin panel now requires a physical YubiKey after X + name + password."
-        : "YubiKey lock off. X + name + password opens Admin again.",
+        ? "Hardware-key setting saved."
+        : "Hardware-key setting cleared.",
     );
     await refresh();
   }
 
   return (
-    <Panel className="mt-4" kicker="Yubico" title="YubiKey — OTP, FIDO2, optional panel lock">
+    <Panel className="mt-4" kicker="Yubico" title="YubiKey — OTP and FIDO2">
       <p className="text-sm leading-relaxed text-muted">
-        First login is name + password only. Enroll <strong>two</strong> YubiKeys for outgoing BTC/USDC
-        (Yubico OTP, slot 1, short-press). Optionally lock the admin panel behind a physical key —
-        default <strong>off</strong>. Official:{" "}
+        Enroll hardware keys for operator approvals (Yubico OTP, slot 1, short-press). Official:{" "}
         <a className="text-brand underline" href="https://www.yubico.com/" target="_blank" rel="noreferrer">
           yubico.com
         </a>
@@ -1507,22 +1504,19 @@ function YubiPanel() {
       </p>
 
       <div className="mt-4 rounded-md border border-rule bg-bg px-3 py-3">
-        <p className="font-mono text-[11px] tracking-[0.08em] text-muted uppercase">Admin panel lock</p>
+        <p className="font-mono text-[11px] tracking-[0.08em] text-muted uppercase">Hardware-key setting</p>
         <p className={cn("mt-1 font-mono text-sm", lockOn ? "text-up" : "text-accent")}>
-          {lockOn ? "ON — physical YubiKey required to open Admin" : "OFF — X + name + password is enough"}
+          {lockOn ? "ON" : "OFF"}
         </p>
         <p className="mt-2 text-xs leading-relaxed text-muted">
-          Optional extra door. Cannot turn on without an enrolled YubiKey (OTP or FIDO2). Cannot remove
-          the last key while this is on. Yubico recommends two keys (primary + backup). Outgoing BTC/USDC
-          still needs both OTP keys. Official WebAuthn: UV required, hardware-bound, sign-count clone
-          detection.
+          Requires an enrolled YubiKey (OTP or FIDO2). Yubico recommends a primary and a backup key.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Button variant={lockOn ? undefined : "primary"} disabled={busy || lockOn || !hasKey} onClick={() => void toggleLock(true)}>
-            Lock admin behind YubiKey
+            Turn setting on
           </Button>
           <Button disabled={busy || !lockOn} onClick={() => void toggleLock(false)}>
-            Turn lock off
+            Turn setting off
           </Button>
         </div>
         {!hasKey ? <p className="mt-2 text-xs text-accent">Enroll a YubiKey below before turning the lock on.</p> : null}
@@ -1587,9 +1581,9 @@ function YubiPanel() {
         </Button>
       </form>
 
-      <p className="mt-6 font-mono text-[11px] tracking-[0.08em] text-muted uppercase">FIDO2 / WebAuthn (panel lock)</p>
+      <p className="mt-6 font-mono text-[11px] tracking-[0.08em] text-muted uppercase">FIDO2 / WebAuthn</p>
       <p className="mt-2 text-sm leading-relaxed text-muted">
-        Hardware-bound YubiKey 5 / Security Key. User verification (PIN) required — Yubico FIDO2 MFA.
+        Hardware-bound YubiKey 5 / Security Key. User verification (PIN) required.
         Cross-platform only (not a phone passkey). Enroll a backup.{" "}
         <a className="text-brand underline" href="https://developers.yubico.com/WebAuthn/" target="_blank" rel="noreferrer">
           developers.yubico.com/WebAuthn
@@ -1655,7 +1649,7 @@ function YubiPanel() {
         </Button>
       </form>
       {lockOn ? (
-        <p className="mt-2 text-xs text-accent">Turn the panel lock off before removing the last physical key.</p>
+        <p className="mt-2 text-xs text-accent">Turn the hardware-key setting off before removing the last physical key.</p>
       ) : null}
 
       <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
@@ -1862,7 +1856,7 @@ function UsersPanel() {
     setUsername("");
     setPass("");
     setConfirm("");
-    setOk(`Created ${res.username}. They can unlock the desk with this name and password.`);
+    setOk(`Created ${res.username}. They can unlock the desk with these credentials.`);
     log("password", `Desk user created: ${res.username}`);
     await refresh();
   }

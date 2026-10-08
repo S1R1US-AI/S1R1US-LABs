@@ -92,7 +92,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
       ) : null}
       {idleLocked || user ? (
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          {idleLocked ? "Screensaver locked the desk. Sign in again with your name and password." : null}
+          {idleLocked ? "Screensaver locked the desk. Sign in again." : null}
           {user ? (
             <>
               {idleLocked ? " " : null}
@@ -113,7 +113,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
             Continue with X
           </Button>
           <p className="text-xs leading-relaxed text-muted">
-            Admin is operator only and uses strong multi-factor authentication. Other X accounts and desk users stay users — they cannot
+            Admin is for the signed-in operator only. Other X accounts and desk users stay users — they cannot
             open s1r1us.ai Admin, Wallet, or send. iOS / Google download Admin is a separate lock on the{" "}
             <Link to="/app/admin" className="text-tab hover:underline">
               downloaded app
@@ -127,11 +127,11 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
           <UserButton />
           {xAdminOk ? (
             <p className="text-sm text-high">
-              Operator X verified. Enter name and password to finish.
+              Operator verified. Finish signing in below.
             </p>
           ) : (
             <p className="text-sm text-muted">
-              This X account is not the operator. Name + password opens a user session only. Download-app
+              This X account is not the operator. Signing in here opens a user session only. Download-app
               Admin is on the iOS / Google copy, not this page.
             </p>
           )}

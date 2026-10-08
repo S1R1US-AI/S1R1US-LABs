@@ -135,7 +135,7 @@ The [ S1R1U$ <<L@B$>> ] preview is the desk in action: live Coinbase tape, Asia 
 
 [ S1R1U$ <<L@B$>> ] test model (L@B in the top nav): same engine as 7-B0T with sliders and presets (crash bid, Asia FOMO, EM crowded, trim). Paper clips hit the same book. Load live tape to seed knobs from Coinbase/Upbit/Luno. Not a live order.
 
-Admin (Admin in the top nav): operator console — paper NAV, Grok cap, treasury (USDC hot / Sparrow cold), change password, multi-factor sign-in, source health, risk policy, Coinbase MCP posture.
+Admin (Admin in the top nav): operator console — paper NAV, Grok cap, treasury (USDC hot / Sparrow cold), sign-in settings, source health, risk policy, Coinbase MCP posture.
 
 Paper trading fills at the Coinbase last. Use it to rehearse clips. Wire live Coinbase only after you have run previews on your own CLI/MCP.
 

@@ -45,7 +45,7 @@ function Login() {
     if (!search) return null;
     const q = new URLSearchParams(search).get("error");
     return q
-      ? "X sign-in did not finish. Try Continue with X again, or use name and password."
+      ? "X sign-in did not finish. Try Continue with X again, or sign in below."
       : null;
   }, [search]);
   const xErr = xWaitErr ?? searchErr;
@@ -129,7 +129,7 @@ function Login() {
       <YubiSuggest />
       {idleLocked ? (
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Screensaver locked the desk. Sign in again with your name and password.
+          Screensaver locked the desk. Sign in again.
         </p>
       ) : null}
       {authEnabled && !user ? (
@@ -144,7 +144,7 @@ function Login() {
                 signIn(xSignInProviderId(), { callbackURL: "/login", errorCallbackURL: "/login" }),
                 new Promise((_, reject) => setTimeout(() => reject(new Error("x-timeout")), 90_000)),
               ]).catch(() => {
-                setXWaitErr("X is still waiting. Allow popups, finish X, or use name + password.");
+                setXWaitErr("X is still waiting. Allow popups, finish X, or sign in below.");
               });
             }}
           >
@@ -161,7 +161,7 @@ function Login() {
           <UserButton />
           {xAdminOk ? (
             <p className="text-sm text-high">
-              Operator X verified. Enter name and password to finish.
+              Operator verified. Finish signing in below.
             </p>
           ) : (
             <p className="text-sm text-muted">
