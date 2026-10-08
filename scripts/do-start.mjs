@@ -57,7 +57,12 @@ const MIME = {
 };
 
 function safeJoin(root, urlPath) {
-  const decoded = decodeURIComponent(urlPath.split("?")[0].split("#")[0]);
+  let decoded;
+  try {
+    decoded = decodeURIComponent(urlPath.split("?")[0].split("#")[0]);
+  } catch {
+    return null;
+  }
   const cleaned = decoded.replace(/^\/+/, "");
   if (cleaned.includes("\0") || cleaned.split(/[/\\]/).some((p) => p === "..")) {
     return null;
@@ -105,7 +110,7 @@ function resolveStatic(pathname) {
   }
 
   // Prefix routes: hello-world, discord, roadmap, 7 desk overlays, css, js, images
-  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/css", "/js", "/images"];
+  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/sense1-engineering", "/sai-citizens-united", "/manifesto", "/oss-marketing", "/css", "/js", "/images"];
   const hit = prefixes.find(
     (p) => pathname === p || pathname.startsWith(p + "/"),
   );
@@ -145,7 +150,9 @@ function proxyToNitro(req, res) {
     method: req.method,
     headers,
   };
+  res.on("error", (err) => console.error("[s1r1us] client response error:", err.message));
   const upstream = http.request(opts, (up) => {
+    up.on("error", () => res.destroy());
     res.writeHead(up.statusCode || 502, up.headers);
     up.pipe(res);
   });
@@ -153,14 +160,16 @@ function proxyToNitro(req, res) {
     console.error("[s1r1us] nitro proxy error:", err.message);
     if (!res.headersSent) {
       res.writeHead(502, { "Content-Type": "text/plain; charset=utf-8" });
+      res.end("Bad Gateway");
+    } else {
+      res.destroy();
     }
-    res.end("Bad Gateway");
   });
   req.pipe(upstream);
 }
 
 function startFrontDoor() {
-  const server = http.createServer(async (req, res) => {
+  const handleRequest = async (req, res) => {
     const url = req.url || "/";
     let pathname = "/";
     try {
@@ -224,6 +233,16 @@ function startFrontDoor() {
       console.log(`[s1r1us] front-door static overlay 308 ${pathname} → ${pathname}/`);
       res.writeHead(308, { Location: loc, "Cache-Control": "public, max-age=60" });
       res.end();
+      return;
+    }
+
+    // Malformed percent-encoding in the path → 400 (never reaches static resolve or Nitro)
+    try {
+      decodeURIComponent(pathname);
+    } catch {
+      console.log(`[s1r1us] front-door 400 malformed path encoding`);
+      res.writeHead(400, { "Content-Type": "text/plain; charset=utf-8" });
+      res.end("Bad Request");
       return;
     }
 
@@ -310,6 +329,20 @@ function startFrontDoor() {
 
     console.log(`[s1r1us] nitro proxy ${req.method} ${pathname}`);
     proxyToNitro(req, res);
+  };
+
+  const server = http.createServer(async (req, res) => {
+    try {
+      await handleRequest(req, res);
+    } catch (err) {
+      console.error("[s1r1us] front-door handler error:", err && err.message);
+      if (!res.headersSent) {
+        res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
+        res.end("Internal Server Error");
+      } else {
+        res.destroy();
+      }
+    }
   });
 
   server.listen(Number(EXTERNAL_PORT), HOST, () => {
