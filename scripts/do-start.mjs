@@ -13,7 +13,7 @@
 import { createReadStream, existsSync, statSync } from "node:fs";
 import { spawn } from "node:child_process";
 import http from "node:http";
-import { dirname, extname, join, resolve, sep } from "node:path";
+import { dirname, extname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { pipeline } from "node:stream/promises";
 
@@ -70,6 +70,12 @@ function safeJoin(root, urlPath) {
   const target = resolve(root, cleaned);
   const rootResolved = resolve(root);
   if (target !== rootResolved && !target.startsWith(rootResolved + sep)) {
+    return null;
+  }
+  // Explicit containment barrier (CodeQL js/path-injection recognizes this form):
+  // a path that escapes root has a relative form of ".." or "../…".
+  const rel = relative(rootResolved, target);
+  if (rel === ".." || rel.startsWith(".." + sep)) {
     return null;
   }
   return target;
