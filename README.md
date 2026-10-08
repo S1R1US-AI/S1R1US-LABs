@@ -1,10 +1,10 @@
 # S1R1US-LABs
 
 > ### ⚠️ DISCLAIMER
-> **NO crypto KEYS are EVER stored in S1R1US.ai systems or OSS (or OSS White-Label).**
+> **S1R1US.ai never asks for, collects or stores cryptocurrency wallet private keys or seed phrases — not on this website, not in the open-source code, and not in the OSS White-Label build.**
 >
 > - S1R1US.ai never takes custody of visitor funds and never splits or transmits live bitcoin.
-> - Vendor API keys, such as an xAI API key or a Coinbase CDP API key, belong to you. They stay in your own browser session or your own environment and are never collected or stored by S1R1US.ai.
+> - Vendor API keys, such as an xAI API key or a Coinbase CDP API key, belong to you. An xAI API key you paste for Ask Grok stays in your browser session; on each Ask Grok request it is sent over HTTPS to S1R1US.ai only to make that one xAI call, and it is never logged or stored. S1R1US.ai never accepts or stores a Coinbase CDP API key.
 > - Never paste a wallet seed, private key or exchange secret into any S1R1US page, issue, or pull request.
 
 ## Mission
