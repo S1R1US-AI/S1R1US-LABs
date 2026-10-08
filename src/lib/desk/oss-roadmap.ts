@@ -289,7 +289,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/compute",
     status: "LIVE",
     since: "2026-09-05",
-    note: "Grade 7-B0T on YOUR keys. GET /api/agent/connect. Never stores keys.",
+    note: "Grade 7-B0T on YOUR own compute. GET /api/agent/connect. Never takes custody of visitor funds.",
   },
   {
     id: "agents",
@@ -380,7 +380,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: MINERS_PATH,
     status: "LIVE",
     since: "2026-09-12",
-    note: `${MINERS_HEADLINE}. Free public solo CKPool stats in a pro trading desk view — hash power graph by hour, day, month, and year. System and copy admins save their own stratum + BTC receive address; blank save restores S1R1US.ai defaults. Miner info is never stripped from the White Label download. Read-only — this host never pools hash or holds keys.`,
+    note: `${MINERS_HEADLINE}. Free public solo CKPool stats in a pro trading desk view — hash power graph by hour, day, month, and year. System and copy admins save their own stratum + BTC receive address; blank save restores S1R1US.ai defaults. Miner info is never stripped from the White Label download. Read-only — this host never pools hash or takes custody of visitor funds.`,
   },
 ];
 
@@ -406,7 +406,7 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
   },
   {
     id: "agent-tokens",
-    name: "Signed agent tokens + HTTP SaaS keys",
+    name: "Signed agent tokens + HTTP SaaS tokens",
     seo: "7-B0T HTTP key",
     path: "/agent",
     status: "LOCKED",
@@ -437,7 +437,7 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
     seo: "live Coinbase orders",
     path: "/",
     status: "NEVER",
-    note: "This host never places Coinbase orders and never holds keys. Live BTC stays on YOUR book.",
+    note: "This host never places Coinbase orders and never takes custody of visitor funds. Live BTC stays on YOUR book.",
   },
   {
     id: "hive-custody",

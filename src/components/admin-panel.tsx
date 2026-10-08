@@ -850,7 +850,7 @@ function TreasuryPanel() {
       </div>
 
       <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted">
-        {APP_NAME} does not hold keys. Trading USDC/BTC sit in the Coinbase{" "}
+        {APP_NAME} does not take custody of funds. Trading USDC/BTC sit in the Coinbase{" "}
         <span className="text-fg">S1R1U$ agent portfolio</span> (UUID). Take-profit BTC goes to your Coinbase
         Receive. Sparrow is optional backup only.
       </p>
@@ -866,7 +866,7 @@ function TreasuryPanel() {
         <li className="rounded-md border border-rule bg-bg p-3">
           <p className="font-mono text-xs text-medium">BTC book</p>
           <p className="mt-1 text-sm">
-            BTC bought by the agent stays in that same portfolio until TRIM. No desk-owned BTC key.
+            BTC bought by the agent stays in that same portfolio until TRIM. No desk-owned BTC wallet.
           </p>
         </li>
         <li className="rounded-md border border-rule bg-bg p-3">

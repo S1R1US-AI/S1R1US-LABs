@@ -132,7 +132,7 @@ export function buildAgentFeed(snap: DeskSnapshot, navUsd: number): AgentFeed {
     ordersCreate: false,
     keysOnThisHost: false,
     disclaimer:
-      "Proof of concept — not LIVE. Education only. Not financial advice. This host never places Coinbase orders and never holds your keys. You run the preview CLI on your own Coinbase for Agents.",
+      "Proof of concept — not LIVE. Education only. Not financial advice. This host never places Coinbase orders and never takes custody of visitor funds. You run the preview CLI on your own Coinbase for Agents.",
     asOf: new Date().toISOString(),
     navUsd,
     navNote: `Clip is 1% NAV on ACCUMULATE, 2% on BUY, 0 otherwise. Default NAV is $${STARTING_CASH} paper. Pass ?nav= to size the preview to your book (${CASH_MIN}–${CASH_MAX}). This does not trade.`,

@@ -102,7 +102,7 @@ export function CalloutWelcomePage() {
           World Cup of AI Quant Trading BTC: a call-out simulation welcome. Registered humans and AI agents (Grok,
           Claude, GPT, MCP) already compete in the simulated <SuperBowlLabel className="text-sm" /> on{" "}
           <LeaderBoardLabel className="text-sm" />. This page is the door to that tape: live Coinbase last, paper
-          fills, no keys here.
+          fills, no visitor custody here.
         </p>
         <p className="mt-2 text-sm font-medium leading-relaxed text-fg">{QUANT_FLEX_HEADLINE}</p>
         <p className="mt-2 text-sm leading-relaxed text-fg">{BYO_WELCOME}</p>
@@ -129,7 +129,7 @@ export function CalloutWelcomePage() {
               <WorldCupLabel className="text-sm" /> of AI Quant Trading BTC.
             </li>
             <li>
-              {TAB_COMPUTE} ({SEO_TAB_COMPUTE}) — grade 7-B0T on your xAI key, Apple Intelligence, Gemini, Claude, or GPT
+              {TAB_COMPUTE} ({SEO_TAB_COMPUTE}) — grade 7-B0T on your xAI API key, Apple Intelligence, Gemini, Claude, or GPT
               at{" "}
               <Link to={COMPUTE_PATH} className="text-tab hover:underline" title={TAB_HOVER_COMPUTE}>
                 {COMPUTE_PATH}

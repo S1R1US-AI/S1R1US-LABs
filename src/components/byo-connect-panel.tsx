@@ -60,7 +60,7 @@ export function ByoConnectPanel({ compact = false }: { compact?: boolean }) {
           /api/agent/connect
         </a>
         {" · "}
-        MCP byo_connect (read-only). This host never stores keys.
+        MCP byo_connect (read-only). This host never takes custody of visitor funds.
       </p>
       <button
         type="button"
@@ -78,7 +78,7 @@ export function ByoConnectPanel({ compact = false }: { compact?: boolean }) {
       {!compact ? (
         <>
           <div className="mt-4">
-            <AskGrokPanel kicker="Dialogue · xAI key (session only)" />
+            <AskGrokPanel kicker="Dialogue · xAI API key (session only)" />
           </div>
           <HiveResourcePanel compact />
         </>

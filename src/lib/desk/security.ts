@@ -222,7 +222,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "byo",
       title: "BYO compute — visitor Ask Grok",
       status: "PASS",
-      detail: "Signed-in X users Ask Grok with their xAI key. Key is never written to disk. Operator XAI_API_KEY is not spent on visitors. X OAuth is identity only — it cannot drain SuperGrok.",
+      detail: "Signed-in X users Ask Grok with their xAI API key. It is never written to disk. Operator XAI_API_KEY is not spent on visitors. X OAuth is identity only — it cannot drain SuperGrok.",
     },
     {
       id: "crs",
@@ -234,7 +234,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "intel",
       title: "CISA KEV + OSV.dev intel",
       status: "PASS",
-      detail: "Free feeds, no API key. Security tab pulls the KEV catalog and npm advisories, stack-filters Node/React/Vite, and virtual-patches what this process can (Vite @fs). Operator still patches the OS/Node runtime.",
+      detail: "Free feeds, no API token. Security tab pulls the KEV catalog and npm advisories, stack-filters Node/React/Vite, and virtual-patches what this process can (Vite @fs). Operator still patches the OS/Node runtime.",
     },
     {
       id: "headers",
@@ -514,11 +514,11 @@ export function vulnRows(): VulnRow[] {
       title: "Ask Grok trusted a client snapshot",
       severity: "MED",
       status: "FIXED",
-      detail: "A desk session could send a fake tape and spend SuperGrok quota. Ask Grok now grades getLiveSnapshot() on the server. Client snapshot/briefs/call are ignored. Visitor Ask Grok uses BYO xAI key only.",
+      detail: "A desk session could send a fake tape and spend SuperGrok quota. Ask Grok now grades getLiveSnapshot() on the server. Client snapshot/briefs/call are ignored. Visitor Ask Grok uses BYO xAI API key only.",
     },
     {
       id: "byo-session-key",
-      title: "Visitor xAI key in sessionStorage",
+      title: "Visitor xAI API key in sessionStorage",
       severity: "LOW",
       status: "MITIGATED",
       detail: "BYO key is kept in this browser session so Ask Grok can call xAI from the server (CORS). It is never written to disk, never logged, never in git. XSS could read it — same class as the admin token. Do not Ask Grok on a shared kiosk.",

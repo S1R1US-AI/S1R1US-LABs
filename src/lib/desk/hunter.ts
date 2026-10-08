@@ -278,7 +278,7 @@ export function runHunter(): HunterReport {
       "BYO connect is automatic + dialogue — never keys, VPN, extra RPC on this host",
       "HIGH",
       "PASS",
-      "byoConnectPublic keysOnThisHost/vpn/ssh/extraRpc/webhooks/trade/escrow/howey/moneyTransmitter all false. MCP byo_connect is read-only. GET /api/agent/connect. xAI key stays in browser sessionStorage for Ask Grok only. Claude/GPT/Gemini/Apple keys stay on the agent machine.",
+      "byoConnectPublic keysOnThisHost/vpn/ssh/extraRpc/webhooks/trade/escrow/howey/moneyTransmitter all false. MCP byo_connect is read-only. GET /api/agent/connect. xAI API key stays in browser sessionStorage for Ask Grok only. Claude/GPT/Gemini/Apple tokens stay on the agent machine.",
       "Do not vault visitor keys. Do not add VPN/SSH/extra RPC. Do not POST webhooks. Gift/SaaS resource only.",
     ),
     finding(

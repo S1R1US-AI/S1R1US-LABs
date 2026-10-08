@@ -152,7 +152,7 @@ export function agentGatePublic(): AgentGatePublic {
       communication: "OPEN",
       maintenance: false,
       retryAfterSec: 0,
-      message: "External AI agents may read 7-B0T. This host never places orders and never holds keys.",
+      message: "External AI agents may read 7-B0T. This host never places orders and never takes custody of visitor funds.",
       after: "Poll GET /api/agent/call every 300s. Watch live, goLive, and gate.invite.",
       invite: invitePublic(s),
       waitlist: WAITLIST,

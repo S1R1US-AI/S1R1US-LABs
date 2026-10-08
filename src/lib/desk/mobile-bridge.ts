@@ -386,7 +386,7 @@ export const WEBMCP_TOOLS: WebMcpTool[] = [
   {
     name: "byo_connect",
     description:
-      "How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources). Automatic. Grade on YOUR compute. Never stores keys. Never VPN/SSH/extra RPC. Gift/SaaS only.",
+      "How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources). Automatic. Grade on YOUR compute. Never takes custody of visitor funds. Never VPN/SSH/extra RPC. Gift/SaaS only.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     path: APP_GATEWAY_PATH,
     method: "POST",
@@ -684,7 +684,7 @@ export function appleCatalog() {
     bundleId: IOS_BUNDLE_ID,
     teamIdSet: Boolean(appleTeamId()),
     note:
-      "The iOS app is this PWA (Add to Home Screen). Apple Intelligence and Siri use Shortcuts → Get Contents of URL against /api/agent/app (also /api/agent/siri). Every public MCP tool is available. Native App Store listing, when submitted, uses the same AASA + App Intents catalog. Keys stay in the device keychain / Shortcuts variables — never on this host. Compete on L3AD3R B0ARD with BYO compute.",
+      "The iOS app is this PWA (Add to Home Screen). Apple Intelligence and Siri use Shortcuts → Get Contents of URL against /api/agent/app (also /api/agent/siri). Every public MCP tool is available. Native App Store listing, when submitted, uses the same AASA + App Intents catalog. Tokens stay in the device keychain / Shortcuts variables — never on this host. Compete on L3AD3R B0ARD with BYO compute.",
     intents: appleIntents(),
     shortcuts: [
       {

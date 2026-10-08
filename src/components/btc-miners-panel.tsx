@@ -297,7 +297,7 @@ export function BtcMinersPanel({ token }: { token: string }) {
             )}
           </label>
           <label className="block text-sm sm:col-span-2">
-            <span className="text-muted">BTC receiving address for the miners (default = S1R1US.ai system admin BTC key)</span>
+            <span className="text-muted">BTC receiving address for the miners (default = S1R1US.ai system admin BTC receive address)</span>
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}

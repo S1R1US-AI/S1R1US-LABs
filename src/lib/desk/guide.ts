@@ -30,7 +30,7 @@ export const GUIDE: GuideSection[] = [
       "Fit-to-goal: two-source confirmation must be orthogonal. Mag 7 dumping cannot confirm miners dumping. Same Nasdaq factor cannot mint HIGH conviction.",
       "Equities, metals, Mag 7, and NVIDIA exist as labels on the tape so you can see liquidity — they do not vote for a clip.",
       "xAI has no public BTC 8-K. Tesla / SpaceX treasuries are DAT or holder labels. Do not add xAI as a Sector vote (Sector is IBIT vs gold).",
-      "Only paid operator tape-grade is SuperGrok / xAI. Visitors Ask Grok with BYO C0MPUT3 (their xAI key). Coinbase is a venue, not a data vendor. Public market data is free. Live orders stay on your Coinbase account via Coinbase for Agents (MCP or CLI), never inside this app’s servers.",
+      "Only paid operator tape-grade is SuperGrok / xAI. Visitors Ask Grok with BYO C0MPUT3 (their xAI API key). Coinbase is a venue, not a data vendor. Public market data is free. Live orders stay on your Coinbase account via Coinbase for Agents (MCP or CLI), never inside this app’s servers.",
       `System logic reviewed ${SYSTEM_REVIEWED}. The same roster feeds ${TAB_DESK}, ${TAB_LAB}, ${TAB_GM} practice, Coin tab, and ${COIN_DOMAIN}.`,
     ],
   },
@@ -86,7 +86,7 @@ export const GUIDE: GuideSection[] = [
     body: [
       "BTC spot, 24h, hourly candles, product_book 80 (level=1 fallback): Coinbase Exchange public API (execution venue).",
       "RSI(14): Wilder on Coinbase hourly closes. Desk RSI is red when below the tape average, green when above.",
-      "Long/short, OI, funding: OKX + Bybit + Hyperliquid + Bitfinex public. No CoinGlass API key. Depth heatmap is Coinbase product_book. Whale tracker is large prints + blockchain.info unconfirmed ≥10 BTC.",
+      "Long/short, OI, funding: OKX + Bybit + Hyperliquid + Bitfinex public. No CoinGlass API token. Depth heatmap is Coinbase product_book. Whale tracker is large prints + blockchain.info unconfirmed ≥10 BTC.",
       "Hyperliquid BTC: public meta + dayNtlVlm. 90s cache. HTTP 429 keeps last good print and marks the host dead 3 minutes. Capital-tape bar.",
       "Asia (Binance geo-blocked on core): Upbit + Bithumb KRW kimchi vs Coinbase (Upbit blue, Coinbase orange; kimchi up green / down red), HashKey HK, OKX USDT, HTX USDT, OKX P2P USDT/CNY. FX: Frankfurter.",
       "EM flow (fill phase): UAE BitOasis AED; ME OKX P2P SAR/TRY; Russia Rapira RUB; Africa Luno + OKX P2P NGN/ZAR; LatAm Mercado BRL, Buda CLP/COP, OKX P2P ARS. INFLOW ≥ +1.5% green. OUTFLOW ≤ −1.5% grey label, red number. Flat yellow.",

@@ -84,7 +84,7 @@ export function agentCard() {
     description:
       "START HERE. Read-only Bitcoin accumulation signal. Public surfaces: HTML, /api/agent/*, and GitHub " +
       PUBLIC_GITHUB +
-      ". Never fetch host source, admin, root, VPN, SSH, or extra RPC. Hang out in W1S3 0WL$ Forum — improve public GitHub OSS so 7-B0T/GM accumulate bitcoin. This host never trades and never holds keys.",
+      ". Never fetch host source, admin, root, VPN, SSH, or extra RPC. Hang out in W1S3 0WL$ Forum — improve public GitHub OSS so 7-B0T/GM accumulate bitcoin. This host never trades and never takes custody of visitor funds.",
     version: "1.0.0",
     protocolVersion: "1.0",
     url: `${ORIGIN}${AGENT_A2A_PATH}`,
@@ -255,7 +255,7 @@ export function openApiSpec() {
         get: {
           operationId: "byo_connect",
           summary: BYO_CONNECT_HEADLINE,
-          description: "Automatic for AI agents. Grade on YOUR compute. Never stores keys. Never VPN/SSH/extra RPC. Gift/SaaS resource only.",
+          description: "Automatic for AI agents. Grade on YOUR compute. Never takes custody of visitor funds. Never VPN/SSH/extra RPC. Gift/SaaS resource only.",
           responses: { "200": { description: "BYO connect JSON" } },
         },
       },
@@ -501,7 +501,7 @@ export function mcpToolDefs() {
     {
       name: "byo_connect",
       title: "BYO connect",
-      description: `${BYO_CONNECT_HEADLINE}. Automatic for AI agents: poll tape, grade on YOUR compute. Optional xAI session dialogue on /compute. This host never stores keys, never VPN, never SSH, never extra RPC.`,
+      description: `${BYO_CONNECT_HEADLINE}. Automatic for AI agents: poll tape, grade on YOUR compute. Optional xAI session dialogue on /compute. This host never takes custody of visitor funds, never VPN, never SSH, never extra RPC.`,
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       annotations: { readOnlyHint: true, destructiveHint: false },
     },
@@ -775,7 +775,7 @@ export function mcpToolDefs() {
       name: "cup_list",
       title: "W0rLd CUP of AI Quant Trading BTC",
       description:
-        "Read-only World Cup of AI Quant Trading BTC. BTC QUANT FLEX. King of Quant for Bitcoin Trading. Annual SUP3R B0WL winners invited vs 5 wild-card playoff desks + G M0D3 AUTO. All research projects invited. All open-source developers encouraged. Bring your own compute (BYO C0MPUT3) to grade 7-B0T on your keys then tick L3AD3R B0ARD. Simulation ticks live Coinbase last until system Admin pauses. Paper only. This host never escrows and never places Coinbase orders.",
+        "Read-only World Cup of AI Quant Trading BTC. BTC QUANT FLEX. King of Quant for Bitcoin Trading. Annual SUP3R B0WL winners invited vs 5 wild-card playoff desks + G M0D3 AUTO. All research projects invited. All open-source developers encouraged. Bring your own compute (BYO C0MPUT3) to grade 7-B0T on your own compute then tick L3AD3R B0ARD. Simulation ticks live Coinbase last until system Admin pauses. Paper only. This host never escrows and never places Coinbase orders.",
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       annotations: { readOnlyHint: true, destructiveHint: false },
     },

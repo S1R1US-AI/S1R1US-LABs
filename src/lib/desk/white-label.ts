@@ -67,7 +67,7 @@ export const WHITE_LABEL_STRIP = [
  * S1R1US.ai system admin. The defaults are free public CKPool data and ship
  * with every download as the default entry for all systems.
  */
-export const WHITE_LABEL_KEEP_MINERS = `${TAB_MINERS} (${SEO_TAB_MINERS}) miner information is NOT stripped. The download ships the free public solo CKPool defaults — stratum+tcp://${MINERS_DEFAULT_STRATUM}, backup stratum+tcp://${MINERS_DEFAULT_BACKUP}, BTC receive ${MINERS_DEFAULT_ADDRESS} (the S1R1US.ai system admin BTC key) — as the default entry for all systems. The white label admin enters their own CKPool stratum + BTC receive address below to rebuild the ${TAB_MINERS} data and view; blank + Save keeps the S1R1US.ai CKPool data in the dialogue boxes. Setup page: ${MINERS_PATH}.`;
+export const WHITE_LABEL_KEEP_MINERS = `${TAB_MINERS} (${SEO_TAB_MINERS}) miner information is NOT stripped. The download ships the free public solo CKPool defaults — stratum+tcp://${MINERS_DEFAULT_STRATUM}, backup stratum+tcp://${MINERS_DEFAULT_BACKUP}, BTC receive ${MINERS_DEFAULT_ADDRESS} (the S1R1US.ai system admin BTC receive address) — as the default entry for all systems. The white label admin enters their own CKPool stratum + BTC receive address below to rebuild the ${TAB_MINERS} data and view; blank + Save keeps the S1R1US.ai CKPool data in the dialogue boxes. Setup page: ${MINERS_PATH}.`;
 
 /**
  * System admin vs white label admin. 100 percent match on security — no

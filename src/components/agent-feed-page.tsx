@@ -105,7 +105,7 @@ export function AgentFeedPage() {
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Grok, Claude, GPT, and Coinbase for Agents: this is the start page after /llms.txt.{" "}
           {PAGE_DESC_AGENT} Proof of concept — not LIVE. Read-only {BOT7_NAME} call. This host never
-          places Coinbase orders and never holds your keys. Discover:{" "}
+          places Coinbase orders and never takes custody of visitor funds. Discover:{" "}
           <a href="/.well-known/ai-catalog.json" className="text-tab hover:underline">
             ARD catalog
           </a>
