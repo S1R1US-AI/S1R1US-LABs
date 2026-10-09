@@ -871,6 +871,16 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
 }
 .site-footer .handle:hover { color: var(--text); }
+.site-footer .philosophy-link,
+.page-foot .philosophy-link {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.site-footer .philosophy-link:hover,
+.page-foot .philosophy-link:hover { color: var(--gold); }
+.page-foot .philosophy-link { display: inline-block; margin-bottom: 0.5rem; }
 .site-footer .nfa {
   font-size: 0.78rem;
   color: var(--muted-2);
