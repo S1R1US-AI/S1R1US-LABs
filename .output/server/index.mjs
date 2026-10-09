@@ -303,9 +303,9 @@ var public_assets_data_default = {
 	},
 	"/llms.txt": {
 		"type": "text/plain; charset=utf-8",
-		"etag": "\"8198-Pi/uwCRfKpLGQ13/WjIl4kme/JY\"",
-		"mtime": "2026-10-09T02:46:48.765Z",
-		"size": 33176,
+		"etag": "\"8249-aaJoK49YWXKq4I518MMCUQL6Dkk\"",
+		"mtime": "2026-10-09T14:20:00.000Z",
+		"size": 33353,
 		"path": "../public/llms.txt"
 	},
 	"/lock-closed.gif": {
@@ -492,9 +492,9 @@ var public_assets_data_default = {
 	},
 	"/.well-known/llms.txt": {
 		"type": "text/plain; charset=utf-8",
-		"etag": "\"8198-Pi/uwCRfKpLGQ13/WjIl4kme/JY\"",
-		"mtime": "2026-10-09T02:46:48.645Z",
-		"size": 33176,
+		"etag": "\"8249-aaJoK49YWXKq4I518MMCUQL6Dkk\"",
+		"mtime": "2026-10-09T14:20:00.000Z",
+		"size": 33353,
 		"path": "../public/.well-known/llms.txt"
 	},
 	"/.well-known/security.txt": {

@@ -385,6 +385,15 @@ export const PUBLIC_PAGES = [
     priority: "0.7",
   },
   {
+    path: "/we-r-the-new-matrix",
+    loc: `${origin}/we-r-the-new-matrix`,
+    label: "We R The New Matrix",
+    title: "We R The New Matrix · AI logic model · SAI Citizens United · S1R1US.ai",
+    hint: "AI logic model and S1R1US.ai roadmap: humans and bots as one honest system with a clear hierarchy. SAI Citizens United LTD Roadmap image. Soft locks Present · Soft-Launch PARKED. NFA.",
+    changefreq: "weekly",
+    priority: "0.6",
+  },
+  {
     path: "/oss-marketing",
     loc: `${origin}/oss-marketing`,
     label: "OPEN SOURCE Marketing approach",

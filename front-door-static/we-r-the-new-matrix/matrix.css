@@ -1,0 +1,94 @@
+/* WE R THE NEW MATRIX page.
+   Lightweight CSS-only matrix rain behind the content. No JS, no canvas.
+   Honors prefers-reduced-motion. */
+@import url("/terms/terms.css");
+
+.nm-rain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(61, 255, 26, 0.10) 22px 23px, transparent 23px 46px),
+    repeating-linear-gradient(180deg, rgba(61, 255, 26, 0.0) 0 10px, rgba(61, 255, 26, 0.28) 10px 12px, rgba(61, 255, 26, 0.0) 12px 30px),
+    repeating-linear-gradient(90deg, transparent 0 57px, rgba(45, 212, 191, 0.10) 57px 58px, transparent 58px 115px);
+  background-size: 46px 100%, 100% 30px, 115px 100%;
+  animation: nm-fall 9s linear infinite;
+}
+@keyframes nm-fall {
+  from { background-position: 0 0, 0 0, 0 0; }
+  to { background-position: 0 0, 0 300px, 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nm-rain { animation: none; }
+}
+
+.nm-hero-figure {
+  margin: 0 auto 1.25rem;
+  max-width: 64rem;
+  text-align: center;
+}
+.nm-hero-figure img {
+  display: block;
+  width: 100%;
+  max-width: 64rem;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid rgba(45, 212, 191, 0.45);
+  border-radius: 10px;
+  background: #0a0c0e;
+  box-shadow: 0 0 24px rgba(45, 212, 191, 0.18);
+}
+.nm-hero-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.nm-tiers {
+  list-style: none;
+  padding: 0 !important;
+  margin: 0.5rem 0 0 !important;
+  display: grid;
+  gap: 0.6rem;
+}
+.nm-tiers li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(18, 22, 25, 0.65);
+  margin: 0 !important;
+}
+.nm-tiers img {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+}
+.nm-tiers strong { color: var(--text); }
+.nm-tier-gold { border-color: rgba(201, 162, 39, 0.55) !important; }
+.nm-tier-white { border-color: rgba(230, 240, 255, 0.45) !important; }
+.nm-tier-teal { border-color: rgba(45, 212, 191, 0.5) !important; }
+
+.nm-timeline {
+  list-style: none;
+  padding: 0 0 0 0.9rem !important;
+  border-left: 2px solid rgba(61, 255, 26, 0.45);
+}
+.nm-timeline li { position: relative; }
+.nm-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -1.23rem;
+  top: 0.55rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: rgba(61, 255, 26, 0.85);
+  box-shadow: 0 0 6px rgba(61, 255, 26, 0.7);
+}
+.nm-timeline code { color: var(--gold); }
