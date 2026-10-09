@@ -4,7 +4,7 @@
  * Invalid (cannot do from this host):
  * - Pin Windows/macOS /etc/resolv.conf
  * - Stop ISP / visitor-browser DNS tampering
- * - Force 1.1.1.1 on Vercel’s resolver for every fetch
+ * - Force 1.1.1.1 on Vercel\u2019s resolver for every fetch
  *
  * Valid:
  * - Explicit DNS lookups use Cloudflare DoH (cloudflare-dns.com), never dns.google
@@ -19,10 +19,10 @@ export const DNS_RESOLVER = {
   ipv6: ["2606:4700:4700::1111", "2606:4700:4700::1001"],
 } as const;
 
-/** Respected public recursive resolvers — inventory only. This desk uses Cloudflare. */
+/** Respected public recursive resolvers \u2014 inventory only. This desk uses Cloudflare. */
 export const PUBLIC_DNS_MASTERS = [
   { id: "cloudflare", name: "Cloudflare", addr: "1.1.1.1", use: true, note: "Privacy DoH/DoT. Desk DoH endpoint." },
-  { id: "quad9", name: "Quad9", addr: "9.9.9.9", use: false, note: "Malware block. Not used — CF-only policy." },
+  { id: "quad9", name: "Quad9", addr: "9.9.9.9", use: false, note: "Malware block. Not used \u2014 CF-only policy." },
   { id: "opendns", name: "Cisco OpenDNS", addr: "208.67.222.222", use: false, note: "Not used." },
   { id: "adguard", name: "AdGuard DNS", addr: "94.140.14.14", use: false, note: "Not used." },
   { id: "mullvad", name: "Mullvad DNS", addr: "194.242.2.2", use: false, note: "Not used." },
@@ -67,6 +67,10 @@ const HOST_SUFFIXES = [
   "bithumb.com",
   "hashkey.com",
   "huobi.pro",
+  "htx.com",
+  "gopax.co.kr",
+  "korbit.co.kr",
+  "coinone.co.kr",
   "er-api.com",
   "bitoasis.net",
   "rapira.net",
