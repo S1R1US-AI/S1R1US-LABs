@@ -109,10 +109,13 @@ export function MobileAppPage() {
   }, [plat]);
 
   useEffect(() => {
-    const dest = resolveAppTo(new URLSearchParams(window.location.search).get("to"));
-    if (new URLSearchParams(window.location.search).get("to") && dest !== "/app" && dest !== window.location.pathname) {
-      const known = dest === APP_PATH || APP_SURFACES.some((s) => s.path === dest);
-      if (dest.startsWith("/") && !dest.startsWith("//") && known) window.location.assign(dest);
+    const raw = new URLSearchParams(window.location.search).get("to");
+    if (!raw) return;
+    const dest = resolveAppTo(raw);
+    // Assign a path taken from the allowlist itself, never the query value.
+    const target = dest === APP_PATH ? APP_PATH : APP_SURFACES.find((s) => s.path === dest)?.path;
+    if (target && target !== APP_PATH && target !== window.location.pathname) {
+      window.location.assign(target);
     }
   }, []);
 
