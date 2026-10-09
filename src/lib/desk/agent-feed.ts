@@ -161,7 +161,7 @@ export function buildAgentFeed(snap: DeskSnapshot, navUsd: number): AgentFeed {
       docs: COINBASE_AGENTS_DOCS,
       cli,
       preview,
-      runOn: "Your Coinbase for Agents MCP or CLI. Keys stay on your machine. Never paste a secret into this site.",
+      runOn: "Your Coinbase for Agents MCP or CLI. Coinbase API keys stay on your machine. Never paste a secret into this site.",
     },
     links: {
       desk: `${ORIGIN}/`,
@@ -176,7 +176,7 @@ export function buildAgentFeed(snap: DeskSnapshot, navUsd: number): AgentFeed {
       pollSeconds: 300,
       thisHostTrades: false,
       neverSellBtc: true,
-      executeOn: "Coinbase for Agents on YOUR account. Keys never on this host.",
+      executeOn: "Coinbase for Agents on YOUR account. No Coinbase API keys, wallet keys or seeds on this host.",
       alwaysFirst: "coinbase orders preview --dry-run",
     },
     goLive: goLiveBrief(),

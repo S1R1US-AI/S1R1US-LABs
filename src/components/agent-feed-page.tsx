@@ -322,8 +322,8 @@ export function AgentFeedPage() {
 
         <Panel id="live" className="mt-4" kicker="Coinbase" title="You run the preview" kickerClass="indicator-title" titleClass="indicator-title">
           <p className="text-sm leading-relaxed text-muted">
-            Signal only. Run this on <span className="text-fg">your</span> Coinbase for Agents. Keys
-            stay on your machine. Never paste a secret here.
+            Signal only. Run this on <span className="text-fg">your</span> Coinbase for Agents. Coinbase API
+            keys stay on your machine. Never paste a secret here.
           </p>
           {feed ? (
             <>

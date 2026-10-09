@@ -103,7 +103,7 @@ export function systemHealth(): SystemHealth {
     secNotes.push("Go-live s8 FinCEN LOCKED");
   }
   sec += 20;
-  secNotes.push("Keys never on this host");
+  secNotes.push("No wallet keys or seeds on this host");
   sec = clamp(sec, 100);
 
   const desNotes = [

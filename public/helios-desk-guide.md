@@ -32,13 +32,13 @@ Only paid dependency: SuperGrok / xAI. Coinbase is used as a venue, not a data v
 7. S1R1U$ Analyst — sees 1–6 live, plus BTC: Coinbase price/volume/RSI, OKX long/short + OI + funding, Coinbase L2 heatmap, on-chain height/hashrate, Fear & Greed, Asia tape (Upbit/Bithumb kimchi, HashKey HK, HTX, OKX CNY OTC), and EM flow tape (UAE BitOasis, Middle East P2P, Russia Rapira, Africa Luno, South America Mercado/Buda). Binance is not used. Issues ACCUMULATE / BUY / HOLD / WAIT / TRIM. Grades the coordinator.
 
 
-## 3. Free source map (no Bloomberg, no CoinGlass API token)
+## 3. Free source map (no Bloomberg, no CoinGlass API key)
 
 BTC spot, 24h stats, hourly candles, L2 book: Coinbase Exchange public API (api.exchange.coinbase.com). This is also your execution venue.
 
 RSI(14): computed locally from Coinbase hourly closes (Wilder).
 
-Long/short ratio, open interest, funding: OKX public swap API. CoinGlass heatmaps need an API token — we do not use it. The desk draws a CoinGlass-style depth heatmap from the Coinbase L2 book instead.
+Long/short ratio, open interest, funding: OKX public swap API. CoinGlass heatmaps need an API key — we do not use it. The desk draws a CoinGlass-style depth heatmap from the Coinbase L2 book instead.
 
 Asia tape (Binance is geo-blocked from this host): Upbit + Bithumb KRW (kimchi premium vs Coinbase), HashKey Hong Kong (SFC book), OKX USDT (Asia/HK volume), HTX USDT (China-adjacent offshore), OKX P2P USDT/CNY (onshore China OTC proxy). FX: Frankfurter USD→KRW/HKD/CNY.
 

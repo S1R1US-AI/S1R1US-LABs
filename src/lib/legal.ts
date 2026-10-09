@@ -90,7 +90,7 @@ export const LEGAL_AGENTS =
   "External AI agents start at /llms.txt (the public instructions module; also /.well-known/llms.txt). /guide is operator-only. Discover MCP at /.well-known/mcp.json, A2A at /.well-known/agent-card.json, and the Agentic Resource Discovery catalog at /.well-known/ai-catalog.json. Read-only 7-B0T JSON, MCP, A2A. Waitlist then poll notices. There is no lock_set, hive_withdraw, or orders_create. This host never takes custody of visitor funds. FAQ: /faq#calling-all-bots #instructions #how-to-use.";
 
 export const LEGAL_SAAS =
-  "Optional 7-B0T HTTP keys ($9 / $29) are software SaaS for poll rate. They are not extra conviction, not a profit share, and not a token. Spec is published; keys are not on until the operator turns them on. Gifts unlock nothing extra.";
+  "Optional 7-B0T HTTP API keys ($9 / $29) are software SaaS for poll rate. They are not extra conviction, not a profit share, and not a token. Spec is published; these API keys are not on until the operator turns them on. Gifts unlock nothing extra.";
 
 export const LEGAL_FINCEN =
   "This host is not a money transmitter. Possible money transmission (FinCEN) would be: accept value from others, hold it, and send it on minus a fee. Mining-pool guidance is narrow: even pools become transmitters if they host wallets. This host hosting a hive book and paying out would look custodial. That path is LOCKED on the go-live roadmap (step s8). They do not take a slice of a pooled trading book. This host does not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Optional gifts and HTTP SaaS only. Agent sends. Host never skims. Not a security. Education only. FAQ: /faq#hive-resource #go-live #oss-roadmap.";

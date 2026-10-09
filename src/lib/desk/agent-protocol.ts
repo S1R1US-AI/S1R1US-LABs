@@ -151,7 +151,7 @@ export function agentCard() {
         id: "ios_google_app",
         name: "iOS and Google app",
         description:
-          "PWA at /app /ios /play. Apple Intelligence / Siri Shortcuts GET /api/agent/siri and POST /api/agent/app. Gemini WebMCP + remote MCP + POST /api/agent/google. Compete on L3AD3R B0ARD with BYO compute. Keys never on this host.",
+          "PWA at /app /ios /play. Apple Intelligence / Siri Shortcuts GET /api/agent/siri and POST /api/agent/app. Gemini WebMCP + remote MCP + POST /api/agent/google. Compete on L3AD3R B0ARD with BYO compute. Model API keys stay on your device; no wallet keys or seeds on this host.",
         tags: ["ios", "android", "siri", "gemini", "webmcp", "pwa"],
         examples: ["Install S1R1US on iPhone", "Connect Gemini to L3AD3R B0ARD"],
       },

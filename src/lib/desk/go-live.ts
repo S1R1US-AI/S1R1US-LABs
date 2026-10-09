@@ -52,7 +52,7 @@ export const GO_LIVE: GoLivePhase[] = [
     when: `NEXT by 2026-10-15 · deadline ${GO_LIVE_DEADLINE}`,
     status: "QUEUED",
     goal: "Signed agents poll 7-B0T (300s or SaaS key). They run Coinbase for Agents on THEIR account. Optional BYO Grok grades the same snapshot. iOS Apple Intelligence and Google Gemini use /api/agent/app.",
-    hold: "Read-only on this host. Keys never here. Copycats get a dashboard and a formula, not the BTC book.",
+    hold: "Read-only on this host. No wallet keys or seeds here. Copycats get a dashboard and a formula, not the BTC book.",
   },
   {
     id: "gl3",

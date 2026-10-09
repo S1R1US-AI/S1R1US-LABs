@@ -138,7 +138,7 @@ export function CalloutWelcomePage() {
               <Link to="/app" className="text-tab hover:underline">
                 /app
               </Link>
-              . Keys stay on your device. Then tick the board.
+              . Model API keys stay on your device. Then tick the board.
             </li>
             <li>System Admin pauses or continues simulation from Admin → Security. Copy-admin cannot pause it.</li>
             <li>

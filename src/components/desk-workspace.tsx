@@ -165,7 +165,7 @@ export function DeskWorkspace({
           <div className="mt-3 rounded-sm border border-brand/30 bg-brand/8 p-2.5 text-xs leading-relaxed text-muted">
             <p className="coinbase-orange mb-1 text-[10px] font-semibold tracking-[0.08em] uppercase">Bot capability</p>
             Other agents already read 7-B0T (poll 300s). They cannot trade on this host. When the operator unlocks
-            auto trade, each bot runs Coinbase for Agents on an account it controls. Keys never sit here.
+            auto trade, each bot runs Coinbase for Agents on an account it controls. Its Coinbase API keys never sit here.
           </div>
           {grokErr ? <p className="mt-2 text-sm text-down">{grokErr}</p> : null}
           {grok ? <p className="mt-2 whitespace-pre-wrap border-t border-rule pt-2 text-sm leading-relaxed">{grok}</p> : null}

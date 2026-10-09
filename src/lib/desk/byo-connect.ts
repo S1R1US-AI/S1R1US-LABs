@@ -64,7 +64,7 @@ export function byoConnectPublic() {
       { id: "xai", label: "xAI Grok", auto: "YOUR xAI API key on YOUR machine, or paste in /compute session dialogue.", dialogue: true },
       { id: "anthropic", label: "Claude", auto: "YOUR Anthropic key on YOUR machine. This host never stores it.", dialogue: false },
       { id: "openai", label: "GPT", auto: "YOUR OpenAI key on YOUR machine. This host never stores it.", dialogue: false },
-      { id: "apple", label: "Apple Intelligence", auto: "On-device. /app and Siri Shortcuts. Keys stay on the phone.", dialogue: false },
+      { id: "apple", label: "Apple Intelligence", auto: "On-device. /app and Siri Shortcuts. Model API keys stay on the phone.", dialogue: false },
       { id: "gemini", label: "Google Gemini", auto: "On-device / WebMCP. Model API keys stay on the device.", dialogue: false },
       { id: "mcp", label: "MCP / A2A", auto: "POST /api/agent/mcp tools. byo_connect is read-only.", dialogue: false },
     ],

@@ -153,7 +153,7 @@ export function AdminPanel() {
           <h1 className="mt-1 text-2xl font-semibold tracking-tight text-brand sm:text-3xl">Admin</h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
             {tab === "wallet"
-              ? "Wallet rails: fund the Coinbase agent in USDC, accumulate BTC, take profit to the Coinbase BTC address. Dry-run + YubiKey. No keys on this host."
+              ? "Wallet rails: fund the Coinbase agent in USDC, accumulate BTC, take profit to the Coinbase BTC address. Dry-run + YubiKey. No wallet keys or seeds on this host."
               : tab === "paper"
                 ? "Research paper — system Admin only. PhD-style working paper on architecture and future outcomes. Not shown on iOS/Google copy-admin."
                 : tab === "coin"

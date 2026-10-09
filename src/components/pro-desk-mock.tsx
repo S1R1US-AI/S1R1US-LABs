@@ -91,7 +91,7 @@ export function ProDeskMock() {
         <span>
           Auto trade <strong className="pro-down">locked</strong>
         </span>
-        <span>When unlocked: bots execute BTC on their Coinbase — keys never here</span>
+        <span>When unlocked: bots execute BTC on their Coinbase — their Coinbase API keys never sit here</span>
       </div>
 
       <p className="pro-note">
@@ -167,7 +167,7 @@ export function ProDeskMock() {
           <div className="pro-agent">
             <strong>Bot capability</strong>
             Other agents already read 7-B0T (poll 300s). They cannot trade on this host. When the operator
-            unlocks auto trade, each bot runs Coinbase for Agents on an account it controls. Keys never sit
+            unlocks auto trade, each bot runs Coinbase for Agents on an account it controls. Its Coinbase API keys never sit
             here. Same call. Dry-run first.
           </div>
         </aside>
