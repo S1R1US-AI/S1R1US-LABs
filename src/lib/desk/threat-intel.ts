@@ -102,7 +102,7 @@ async function pullKev(): Promise<{ source: string; json: Record<string, unknown
       if (!res.ok) continue;
       const json = (await res.json()) as Record<string, unknown>;
       if (!Array.isArray(json.vulnerabilities)) continue;
-      return { source: url.includes("cisa.gov") ? "cisa.gov KEV" : "cisagov/kev-data mirror", json };
+      return { source: url === KEV_URL ? "cisa.gov KEV" : "cisagov/kev-data mirror", json };
     } catch {
       /* try next */
     }

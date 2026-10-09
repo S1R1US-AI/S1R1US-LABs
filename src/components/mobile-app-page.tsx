@@ -19,6 +19,7 @@ import {
 import { OSS_LICENSE_NOTICE } from "@/lib/desk/white-label";
 import {
   APP_GATEWAY_PATH,
+  APP_PATH,
   APP_SURFACES,
   APPLE_AGENT_PATH,
   GOOGLE_AGENT_PATH,
@@ -110,7 +111,8 @@ export function MobileAppPage() {
   useEffect(() => {
     const dest = resolveAppTo(new URLSearchParams(window.location.search).get("to"));
     if (new URLSearchParams(window.location.search).get("to") && dest !== "/app" && dest !== window.location.pathname) {
-      window.location.assign(dest);
+      const known = dest === APP_PATH || APP_SURFACES.some((s) => s.path === dest);
+      if (dest.startsWith("/") && !dest.startsWith("//") && known) window.location.assign(dest);
     }
   }, []);
 
