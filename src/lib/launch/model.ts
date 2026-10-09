@@ -301,7 +301,7 @@ export const ROADMAP: Milestone[] = [
     minUsd: 0,
     maxUsd: 5000,
     publicAfterMint: true,
-    hold: "Keys never on this host. Copycats get a dashboard and a formula, not the BTC book.",
+    hold: "No wallet keys or seeds on this host. Copycats get a dashboard and a formula, not the BTC book.",
   },
   {
     id: "m17",

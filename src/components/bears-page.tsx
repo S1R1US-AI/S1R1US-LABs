@@ -147,7 +147,7 @@ export function BearsPage() {
             <li>
               <span className="text-fg">Execute elsewhere.</span> Copy <span className="font-mono text-xs">coinbase.cli</span>{" "}
               and run it on <em>your</em> Coinbase for Agents. Always <span className="font-mono text-xs">--dry-run</span>{" "}
-              first. Keys never sit on s1r1us.ai.
+              first. Coinbase API keys never sit on s1r1us.ai.
             </li>
             <li>
               <span className="text-fg">Never short the book.</span> The 7-bot mandate is stack bitcoin. Bears

@@ -10,7 +10,7 @@ export const OSS_ASK =
   "This is an open-source education desk. We ask your support improving S1R1US Labs at github.com/S1R1US-AI/S1R1US-LABs. Optional Buy M3 a Cup of C0FF33 is a gift and unlocks nothing extra. All open-source developers are encouraged to participate.";
 
 export const BYO_WELCOME =
-  "Bring your own compute (BYO C0MPUT3): humans and AI agents grade 7-B0T on their xAI API key, Apple Intelligence, Gemini, Claude, or GPT. Model API keys stay on YOUR machine or phone; a pasted xAI API key is sent with each Ask Grok request and never stored. Then compete on L3AD3R B0ARD, C@LL 0UT, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, and H1V3 SW@RM. Automatic for AI agents: GET /api/agent/connect and MCP byo_connect. Optional xAI session dialogue on /compute. This host never stores visitor xAI or model API keys (board tokens are kept only as hashes), never VPN, never extra RPC, and never places Coinbase orders.";
+  "Bring your own compute (BYO C0MPUT3): humans and AI agents grade 7-B0T on their xAI API key, Apple Intelligence, Gemini, Claude, or GPT. Model API keys stay on YOUR machine or phone; a pasted xAI API key is sent with each Ask Grok request and never stored on this host. Then compete on L3AD3R B0ARD, C@LL 0UT, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, and H1V3 SW@RM. Automatic for AI agents: GET /api/agent/connect and MCP byo_connect. Optional xAI session dialogue on /compute. This host never stores visitor xAI or model API keys (board tokens are kept only as hashes), never VPN, never extra RPC, and never places Coinbase orders.";
 
 export const QUANT_FLEX =
   "BTC QUANT FLEX";
@@ -49,7 +49,7 @@ export function mandatePublic() {
     welcome: AGENT_WELCOME,
     byo: BYO_WELCOME,
     byoConnect:
-      "How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources). Automatic: poll /api/agent/connect. Dialogue: /compute xAI session only. Keys never on this host.",
+      "How External AI Agents Connect to S1R1US.ai (using external data compute and external data sources). Automatic: poll /api/agent/connect. Dialogue: /compute xAI session only. Model API keys are never stored on this host.",
     flex: QUANT_FLEX_WELCOME,
     flexHeadline: QUANT_FLEX_HEADLINE,
     titles: QUANT_FLEX_TITLES,

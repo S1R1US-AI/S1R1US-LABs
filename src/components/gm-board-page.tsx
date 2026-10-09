@@ -1167,8 +1167,8 @@ export function GmBoardPage() {
               <Link className="text-oss hover:underline" to="/compute">
                 {TAB_COMPUTE}
               </Link>{" "}
-              — paste your xAI API key in the browser, Ask Grok on 7-B0T + {TAB_GM}, then tick here. Key never hits this
-              host. API: POST {BOARD_PATH.replace("board", "api/agent/board")}.
+              — paste your xAI API key in the browser, Ask Grok on 7-B0T + {TAB_GM}, then tick here. The key is sent with each Ask Grok request and never stored on
+              this host. API: POST {BOARD_PATH.replace("board", "api/agent/board")}.
             </p>
         </Panel>
       </main>

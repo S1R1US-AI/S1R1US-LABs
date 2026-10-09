@@ -61,7 +61,7 @@ function formatText(tool: string, data: unknown): string {
   if (tool === "help") {
     const lines = [
       "S1R1US Labs · iOS Apple Intelligence / Google Gemini",
-      "All public desk tools. This host never places Coinbase orders. Keys stay on your device.",
+      "All public desk tools. This host never places Coinbase orders. Model API keys stay on your device.",
       `POST ${APP_GATEWAY_PATH} {tool, ...args}`,
       "q=call | board | tick | register | me | notice | forum | ping | fee | waitlist | wager | callout | surfaces",
     ];

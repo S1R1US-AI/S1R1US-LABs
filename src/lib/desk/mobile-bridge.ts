@@ -730,7 +730,7 @@ export function googleCatalog() {
     package: ANDROID_PACKAGE,
     sha256Set: androidSha256s().length > 0,
     note:
-      "The Google app is this PWA (Install / Chrome → Add to Home screen). Gemini in Chrome uses WebMCP tools on this origin. Gemini Managed Agents use remote MCP POST /api/agent/mcp or POST /api/agent/google {tool, ...args}. Gemini Enterprise / Gemini CLI use A2A. Play TWA, when listed, uses assetlinks.json. On-device Gemini grades 7-B0T then ticks L3AD3R B0ARD. Every public MCP tool is available. Keys never on this host.",
+      "The Google app is this PWA (Install / Chrome → Add to Home screen). Gemini in Chrome uses WebMCP tools on this origin. Gemini Managed Agents use remote MCP POST /api/agent/mcp or POST /api/agent/google {tool, ...args}. Gemini Enterprise / Gemini CLI use A2A. Play TWA, when listed, uses assetlinks.json. On-device Gemini grades 7-B0T then ticks L3AD3R B0ARD. Every public MCP tool is available. Model API keys stay on your device; no wallet keys or seeds on this host.",
     geminiGem: {
       name: "S1R1US 7-B0T",
       instructions:

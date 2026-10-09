@@ -86,7 +86,7 @@ function ComputePage() {
               <Link to="/app/admin" className="text-tab hover:underline">
                 /app/admin
               </Link>
-              . Model API keys stay on YOUR machine or phone; a pasted xAI API key is sent with each Ask Grok request and never stored.
+              . Model API keys stay on YOUR machine or phone; a pasted xAI API key is sent with each Ask Grok request and never stored on this host.
             </li>
           </ol>
           <pre className="mt-3 overflow-x-auto rounded-md border border-rule bg-bg p-3 font-mono text-[11px] leading-relaxed text-muted">

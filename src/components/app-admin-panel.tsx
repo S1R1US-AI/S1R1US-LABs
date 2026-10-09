@@ -319,8 +319,8 @@ function WalletPane() {
       <h2 className="mt-1 text-base font-semibold text-fg">Your paper book</h2>
       <p className="mt-2 text-sm leading-relaxed text-muted">
         Paper cash {money(cash)} · BTC {btc.toFixed(6)} · profit BTC {(profitBtc ?? 0).toFixed(6)}. Starting cash{" "}
-        {money(STARTING_CASH)}. Live Coinbase create stays off. Keys stay on your phone or online service — never
-        here.
+        {money(STARTING_CASH)}. Live Coinbase create stays off. Model API keys stay on your phone or online service — never
+        stored here.
       </p>
       <p className="mt-2 text-sm text-muted">{fills.length} paper fills on this device.</p>
       <Button className="mt-4" type="button" onClick={() => reset()}>
@@ -411,7 +411,7 @@ function AccessPane() {
         </div>
       </dl>
       <p className="mt-3 text-sm text-muted">
-        Session lives in this browser. BYO compute keys stay in sessionStorage on this device.
+        Session lives in this browser. BYO compute API keys stay in sessionStorage on this device.
       </p>
     </section>
   );
