@@ -214,14 +214,15 @@ describe("7-B0T H3DGE FUND WHITE LABEL", () => {
     assert.match(legal, /Policy for White Label product offerings/);
     const disclaimer = readFileSync(new URL("./disclaimer.ts", import.meta.url), "utf8");
     assert.match(disclaimer, /NOT SEC Registered/);
-    for (const readmeUrl of [
-      new URL("../../../README.md", import.meta.url),
-      new URL("../launch/readme.ts", import.meta.url),
-    ]) {
-      const readme = readFileSync(readmeUrl, "utf8");
-      assert.match(readme, /LEGAL STATUS: .*NOT SEC Registered/);
-      assert.match(readme, /NOT ATTORNEYS/);
-    }
+    // The distribution readme carries the full LEGAL STATUS. The repo README.md
+    // was cut to a concise Mission-first page in #169; it keeps the short
+    // not-a-broker disclaimer and links to the Terms instead.
+    const distReadme = readFileSync(new URL("../launch/readme.ts", import.meta.url), "utf8");
+    assert.match(distReadme, /LEGAL STATUS: .*NOT SEC Registered/);
+    assert.match(distReadme, /NOT ATTORNEYS/);
+    const repoReadme = readFileSync(new URL("../../../README.md", import.meta.url), "utf8");
+    assert.match(repoReadme, /not financial advice, not a broker, not an investment adviser/);
+    assert.match(repoReadme, /\[Terms\]\(https:\/\/s1r1us\.ai\/terms\)/);
     for (const llmsUrl of [
       new URL("../../../public/llms.txt", import.meta.url),
       new URL("../../../public/.well-known/llms.txt", import.meta.url),
@@ -248,8 +249,10 @@ describe("7-B0T H3DGE FUND WHITE LABEL", () => {
       assert.match(readme, /Original Creation distributed by/);
       assert.match(readme, /https:\/\/s1r1us\.ai\/terms/);
       assert.match(readme, /https:\/\/s1r1us\.ai\/privacy/);
-      assert.match(readme, /WE PAY NO LEGAL FEES PER OUR TERMS\./);
     }
+    // The fee line ships in the distribution readme; #169 dropped it from README.md.
+    const distReadme = readFileSync(new URL("../launch/readme.ts", import.meta.url), "utf8");
+    assert.match(distReadme, /WE PAY NO LEGAL FEES PER OUR TERMS\./);
     for (const llmsUrl of [
       new URL("../../../public/llms.txt", import.meta.url),
       new URL("../../../public/.well-known/llms.txt", import.meta.url),

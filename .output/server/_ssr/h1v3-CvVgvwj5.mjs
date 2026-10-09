@@ -9,7 +9,7 @@ import { c as QUANT_FLEX_HEADLINE, o as HIVE_WELCOME, s as OSS_ASK } from "./man
 import { a as HIVE_IMG_SEO, d as hiveResourcePublic, i as HIVE_BANNER_ASK, o as HIVE_MEME_COW_ASK, r as HIVE_AGENT_WELCOME, s as HIVE_MEME_SWARM } from "./hive-resource-D0ljKxYE.mjs";
 import { t as QuantFlexWelcome } from "./quant-flex-welcome-B8gQ1m_9.mjs";
 import { n as HiveResourcePanel, t as ByoConnectPanel } from "./byo-connect-panel-DcIng9Yf.mjs";
-import { j as GITHUB_REPO_URL } from "./router-BtLXVjOF.mjs";
+import { j as GITHUB_REPO_URL } from "./router-BUIVje4Y.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/h1v3-CvVgvwj5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

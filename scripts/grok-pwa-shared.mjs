@@ -396,7 +396,9 @@ function insertAfterHeadOpen(html, snippet) {
 }
 
 function insertBeforeHeadClose(html, snippet) {
-  if (/<\/head>/i.test(html)) return html.replace(/<\/head>/i, `${snippet}</head>`);
+  // Function replacer: a string replacement would expand `$&`, `$1`, … found in
+  // the snippet (an app name such as "L@B$&gt;" carries `$&`).
+  if (/<\/head>/i.test(html)) return html.replace(/<\/head>/i, (close) => `${snippet}${close}`);
   return insertAfterHeadOpen(html, snippet);
 }
 
