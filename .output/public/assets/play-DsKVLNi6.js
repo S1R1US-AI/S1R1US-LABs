@@ -1,1 +1,0 @@
-import{t as e}from"./mobile-app-page-DrOkhNBD.js";var t=e;export{t as component};

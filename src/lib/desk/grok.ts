@@ -128,7 +128,7 @@ export const askHeliosByo = createServerFn({ method: "POST" })
     }
     const { looksLikeSecret } = await import("./security");
     if (looksLikeSecret(data.xaiKey)) {
-      return { ok: false as const, error: "Secret rejected. Never paste Coinbase keys, seeds, or xprv." };
+      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase API key, wallet seed or private key here." };
     }
     const { inspectAgentInput } = await import("./agent-security");
     const q = (data.question ?? "").trim();

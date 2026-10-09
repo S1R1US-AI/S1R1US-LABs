@@ -23,7 +23,7 @@ Not financial advice. Not licensed. Not a broker. Not a token sale. Education on
 2. Minimize bitcoin loss. Never short the 7-bot stack. Never sell the stack as a day-trader.
 3. Per-clip stop on add-on buys.
 
-Operating cost offsets: SuperGrok (operator), BYO compute (visitor xAI key), 7-B0T HTTP SaaS (pay for JSON), F33D/C0FF33 gifts. All market tape is free/public.
+Operating cost offsets: SuperGrok (operator), BYO compute (visitor xAI API key), 7-B0T HTTP SaaS (pay for JSON), F33D/C0FF33 gifts. All market tape is free/public.
 
 ## Tabs
 

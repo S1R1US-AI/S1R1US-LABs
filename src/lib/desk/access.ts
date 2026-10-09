@@ -142,7 +142,7 @@ export const signInDesk = createServerFn({ method: "POST" })
         recordIntrusion({ kind: "secret-paste", detail: "sign-in rejected secret-shaped input" });
       });
       handleAuthAbuse("local", "secret-paste");
-      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase key or wallet seed here." };
+      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase API key, wallet seed or private key here." };
     }
     const name = data.user.trim();
     const xUserId = (context as { xUserId?: string | null }).xUserId ?? null;
@@ -226,7 +226,7 @@ export const changeAdminCreds = createServerFn({ method: "POST" })
       void import("./intrusion-log").then(({ recordIntrusion }) => {
         recordIntrusion({ kind: "secret-paste", detail: "credential rotate rejected secret-shaped input" });
       });
-      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase key or wallet seed here." };
+      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase API key, wallet seed or private key here." };
     }
     const liveName = await storedAdminName();
     if (!(await credsMatch(liveName, data.current))) {
@@ -286,7 +286,7 @@ export const addDeskAccount = createServerFn({ method: "POST" })
       void import("./intrusion-log").then(({ recordIntrusion }) => {
         recordIntrusion({ kind: "secret-paste", detail: "desk-user create rejected secret-shaped input" });
       });
-      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase key or wallet seed here." };
+      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase API key, wallet seed or private key here." };
     }
     const username = data.username.trim();
     if (!ADMIN_NAME_RE.test(username)) {
@@ -798,7 +798,7 @@ export const completeAdminReset = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Sign in with X as the operator account first." };
     }
     if (looksLikeSecret(data.next)) {
-      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase key or wallet seed here." };
+      return { ok: false as const, error: "Secret rejected. Never paste a Coinbase API key, wallet seed or private key here." };
     }
     const liveName = await storedAdminName();
     const bad = assertNewAdminPass(data.next, data.confirm, liveName);

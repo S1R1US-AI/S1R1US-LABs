@@ -66,7 +66,7 @@ export function BearsPage() {
             name: BEARS_HEADLINE,
             acceptedAnswer: {
               "@type": "Answer",
-              text: "In theory: an AI agent reads 7-B0T on a 300s poll, sizes a clip to its own NAV, and runs Coinbase for Agents on an account it controls. This host never places orders and never holds keys. Education only. Not financial advice.",
+              text: "In theory: an AI agent reads 7-B0T on a 300s poll, sizes a clip to its own NAV, and runs Coinbase for Agents on an account it controls. This host never places orders and never takes custody of visitor funds. Education only. Not financial advice.",
             },
           },
           {
@@ -114,7 +114,7 @@ export function BearsPage() {
 
         <p className="mt-5 text-sm leading-relaxed text-muted">
           Education only. Not financial advice. Seek a licensed professional. {LABS_NAME} is a proof of
-          concept — not LIVE. {APP_NAME} never places Coinbase orders and never holds keys.
+          concept — not LIVE. {APP_NAME} never places Coinbase orders and never takes custody of visitor funds.
         </p>
 
         <Panel kicker="Wave" title="AI agents as the next investor class" className="mt-4" kickerClass="text-oss">

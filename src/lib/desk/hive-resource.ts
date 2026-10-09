@@ -15,7 +15,7 @@ import {
 import { FEED_PLANS, feedPlansPublic } from "./feed-plans.ts";
 
 export const HIVE_RESOURCE_COPY =
-  "Optional resource payment. Pay for HTTP / hive seat / hosting. Send BTC or USDC from a wallet you control to the published receive address. This host never deducts hive share, never escrows, never withdraws for you. Gifts unlock nothing extra. SaaS keys only change poll rate. Not a share of hive BTC.";
+  "Optional resource payment. Pay for HTTP / hive seat / hosting. Send BTC or USDC from a wallet you control to the published receive address. This host never deducts hive share, never escrows, never withdraws for you. Gifts unlock nothing extra. SaaS API keys only change poll rate. Not a share of hive BTC.";
 
 export const HIVE_NO_PROFIT_SHARE =
   "They do not take a slice of a pooled trading book. Do not implement hive profit-share, hive withdraw, or auto-send of agent P&L to the admin address. Charge for software access, never for their bitcoin.";

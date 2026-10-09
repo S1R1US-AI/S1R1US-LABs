@@ -30,7 +30,7 @@ export const GUIDE: GuideSection[] = [
       "Fit-to-goal: two-source confirmation must be orthogonal. Mag 7 dumping cannot confirm miners dumping. Same Nasdaq factor cannot mint HIGH conviction.",
       "Equities, metals, Mag 7, and NVIDIA exist as labels on the tape so you can see liquidity — they do not vote for a clip.",
       "xAI has no public BTC 8-K. Tesla / SpaceX treasuries are DAT or holder labels. Do not add xAI as a Sector vote (Sector is IBIT vs gold).",
-      "Only paid operator tape-grade is SuperGrok / xAI. Visitors Ask Grok with BYO C0MPUT3 (their xAI key). Coinbase is a venue, not a data vendor. Public market data is free. Live orders stay on your Coinbase account via Coinbase for Agents (MCP or CLI), never inside this app’s servers.",
+      "Only paid operator tape-grade is SuperGrok / xAI. Visitors Ask Grok with BYO C0MPUT3 (their xAI API key). Coinbase is a venue, not a data vendor. Public market data is free. Live orders stay on your Coinbase account via Coinbase for Agents (MCP or CLI), never inside this app’s servers.",
       `System logic reviewed ${SYSTEM_REVIEWED}. The same roster feeds ${TAB_DESK}, ${TAB_LAB}, ${TAB_GM} practice, Coin tab, and ${COIN_DOMAIN}.`,
     ],
   },

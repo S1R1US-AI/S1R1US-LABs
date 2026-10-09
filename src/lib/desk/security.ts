@@ -35,7 +35,7 @@ export function looksLikeSecret(text: string): boolean {
 
 export function assertSafePayload(raw: string): string | null {
   if (raw.length > 80_000) return "Snapshot too large.";
-  if (looksLikeSecret(raw)) return "Secret rejected. Never paste a key, seed, or xprv into this desk.";
+  if (looksLikeSecret(raw)) return "Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.";
   return null;
 }
 
@@ -222,7 +222,7 @@ export function protocolRows(): ProtocolRow[] {
       id: "byo",
       title: "BYO compute — visitor Ask Grok",
       status: "PASS",
-      detail: "Signed-in X users Ask Grok with their xAI key. Key is never written to disk. Operator XAI_API_KEY is not spent on visitors. X OAuth is identity only — it cannot drain SuperGrok.",
+      detail: "Signed-in X users Ask Grok with their xAI API key. It is never written to disk. Operator XAI_API_KEY is not spent on visitors. X OAuth is identity only — it cannot drain SuperGrok.",
     },
     {
       id: "crs",
@@ -514,11 +514,11 @@ export function vulnRows(): VulnRow[] {
       title: "Ask Grok trusted a client snapshot",
       severity: "MED",
       status: "FIXED",
-      detail: "A desk session could send a fake tape and spend SuperGrok quota. Ask Grok now grades getLiveSnapshot() on the server. Client snapshot/briefs/call are ignored. Visitor Ask Grok uses BYO xAI key only.",
+      detail: "A desk session could send a fake tape and spend SuperGrok quota. Ask Grok now grades getLiveSnapshot() on the server. Client snapshot/briefs/call are ignored. Visitor Ask Grok uses BYO xAI API key only.",
     },
     {
       id: "byo-session-key",
-      title: "Visitor xAI key in sessionStorage",
+      title: "Visitor xAI API key in sessionStorage",
       severity: "LOW",
       status: "MITIGATED",
       detail: "BYO key is kept in this browser session so Ask Grok can call xAI from the server (CORS). It is never written to disk, never logged, never in git. XSS could read it — same class as the admin token. Do not Ask Grok on a shared kiosk.",

@@ -267,7 +267,7 @@ function ConsolePane() {
         <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">{TAB_COMPUTE} · combine</p>
         <h2 className="mt-1 text-base font-semibold text-fg">Phone + online</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted">
-          Grade 7-B0T on this phone (Apple Intelligence / Gemini) and with your online key. Both must ACCUMULATE
+          Grade 7-B0T on this phone (Apple Intelligence / Gemini) and with your online API key. Both must ACCUMULATE
           to ACCUMULATE. Else WAIT. Never sell.
         </p>
         <div className="mt-3 grid grid-cols-2 gap-2">
@@ -338,7 +338,7 @@ function PaperPane() {
       <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-muted">
         <li>Maximize bitcoin accumulation.</li>
         <li>Never sell bitcoin. Never short.</li>
-        <li>Grade 7-B0T on your phone and/or your online key, then tick {TAB_BOARD}.</li>
+        <li>Grade 7-B0T on your phone and/or your online API key, then tick {TAB_BOARD}.</li>
         <li>Paper fills use Coinbase last. This desk never places a live order.</li>
       </ol>
       <p className="mt-3 text-xs leading-relaxed text-muted">
@@ -426,7 +426,7 @@ function SecurityPane() {
       <h2 className="mt-1 text-base font-semibold text-fg">Your copy</h2>
       <p className="mt-2 text-sm leading-relaxed text-muted">
         Lock this Admin session. Paper only. Never paste Coinbase keys or wallet seeds. Combine phone compute with
-        an online key — both ACCUMULATE or WAIT. Copy-admin is a device-bound HMAC session (12h) plus mandate — not
+        an online API key — both ACCUMULATE or WAIT. Copy-admin is a device-bound HMAC session (12h) plus mandate — not
         system 2FA. Host Yubi / FIDO2 stay on s1r1us.ai /admin. Compete on SUP3R B0WL from the SUP3R B0WL tab with a
         separate board token. Pause {TAB_HIVE}, the as-live G M0D3 AUTO / AI agents cycle, and the championship
         World Cup / C@LL 0UT simulation from this panel. Copy-admin cannot open s1r1us.ai /admin, Yubi, or vault.

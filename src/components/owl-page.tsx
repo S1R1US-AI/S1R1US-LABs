@@ -107,7 +107,7 @@ export function OwlPage() {
 
         <p className="mt-5 text-sm leading-relaxed text-muted">
           Education only. Not financial advice. Seek a licensed professional. {LABS_NAME} is a proof of
-          concept — not LIVE. {APP_NAME} never places Coinbase orders and never holds keys.
+          concept — not LIVE. {APP_NAME} never places Coinbase orders and never takes custody of visitor funds.
         </p>
 
         <Panel kicker="Wisdom" title="A wise decision is slow on purpose" className="mt-4" kickerClass="text-oss">
@@ -131,7 +131,7 @@ export function OwlPage() {
             </li>
             <li>
               <span className="text-fg">Grok.</span> {TAB_COMPUTE} ({SEO_TAB_COMPUTE}) — Ask Grok on
-              your xAI key after X login. Strategy question against the current 7-B0T JSON. Operator
+              your xAI API key after X login. Strategy question against the current 7-B0T JSON. Operator
               SuperGrok is separate.
             </li>
             <li>

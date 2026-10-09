@@ -56,7 +56,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     if (looksLikeSecret(name) || looksLikeSecret(pass)) {
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed into this desk.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
       setPass("");
       return;
     }
@@ -74,7 +74,7 @@ function LockForm({ pending, userOnly }: { pending?: boolean; userOnly?: boolean
     const t = e.clipboardData.getData("text");
     if (looksLikeSecret(t)) {
       e.preventDefault();
-      setErr("Secret rejected. Never paste a Coinbase key or wallet seed into this desk.");
+      setErr("Secret rejected. Never paste a Coinbase API key, wallet seed or private key here.");
     }
   }
 

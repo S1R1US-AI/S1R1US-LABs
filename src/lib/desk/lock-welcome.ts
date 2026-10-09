@@ -99,7 +99,7 @@ export const LOCK_TUTORIAL = [
   {
     id: "admin",
     title: "5. Admins turn locks on or off",
-    body: "Click the padlock GIF. Include checkboxes pick the master set. SIM / LIVE is desk mode, not Coinbase create. Championship pause is system Admin → Security. Hive pause is system or copy-admin. This host never holds keys and never escrows.",
+    body: "Click the padlock GIF. Include checkboxes pick the master set. SIM / LIVE is desk mode, not Coinbase create. Championship pause is system Admin → Security. Hive pause is system or copy-admin. This host never takes custody of visitor funds and never escrows.",
   },
   {
     id: "go-live",

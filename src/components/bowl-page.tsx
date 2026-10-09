@@ -143,7 +143,7 @@ export function BowlPage() {
 
         <p className="mt-5 text-sm leading-relaxed text-muted">
           Education only. Not financial advice. Seek a licensed professional. {LABS_NAME} is a proof of
-          concept — not LIVE. {APP_NAME} never places Coinbase orders and never holds keys.{" "}
+          concept — not LIVE. {APP_NAME} never places Coinbase orders and never takes custody of visitor funds.{" "}
           {BOWL_DISCLAIMER}
         </p>
 

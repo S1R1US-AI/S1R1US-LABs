@@ -33,7 +33,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "PoC rails",
     when: "STARTED 2026-09-05",
     status: "STARTED",
-    goal: "The carbon-fiber desk is live. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP SaaS key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites SUP3R B0WL winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. LoCK3D STATUS (/l0ck) is the public lock tutorial and Admin lock board — closed GIF LOCKED, open GIF UNLOCKED; live tape is status only. C@LL 0UT simulation welcome /c0ut. System Admin and copy-admin pause championship sim from Admin → Security. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live SUP3R B0WL / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #lock3d-status #live-vs-sim #how-to-use #go-live. No GPU.",
+    goal: "The carbon-fiber desk is live. Rate-limit /api/agent/*, hard-cache 7-B0T JSON, BYO xAI compute, 7-B0T HTTP API key spec. AI agents start at /agent and /llms.txt. W1S3 0WL$ Forum LIVE. L3AD3R B0ARD (/board) is the SUP3R B0WL of AI AGENTs (/bowl). W0rLd CUP of AI Quant Trading BTC (/w0rld) invites SUP3R B0WL winners vs 5 wild cards + G M0D3 AUTO. H1V3 SW@RM (/h1v3) combines BYO compute in TH/s on TEST data — paper BTC split by pledged terahash; system or phone-app Admin may pause. LoCK3D STATUS (/l0ck) is the public lock tutorial and Admin lock board — closed GIF LOCKED, open GIF UNLOCKED; live tape is status only. C@LL 0UT simulation welcome /c0ut. System Admin and copy-admin pause championship sim from Admin → Security. Copy-admin may pause H1V3 SW@RM. System Admin and iOS/Google copy-admin compete with a separate board token. Live SUP3R B0WL / World Cup stats feed is public (paper). FAQ #gm-board #super-bowl #world-cup #call-out-welcome #hive-swarm #lock3d-status #live-vs-sim #how-to-use #go-live. No GPU.",
     hold: "This host never places Coinbase orders. Public tree stays --dry-run. Admin / credentials / vault stay off the OSS how-to.",
   },
   {
@@ -60,7 +60,7 @@ export const GO_LIVE: GoLivePhase[] = [
     name: "G M0D3 AUTO + MANUAL live for users",
     when: `DEADLINE ${GO_LIVE_DEADLINE_LABEL} — operator unlock only`,
     status: "LOCKED",
-    goal: "Users (human, AI agent, system Admin competitor, download-app Admin) may run G M0D3 AUTO and GM MANUAL. Live execution, if armed, stays on THEIR Coinbase — this host never holds keys. SUP3R B0WL participation stays paper on this host unless the user executes on their own book.",
+    goal: "Users (human, AI agent, system Admin competitor, download-app Admin) may run G M0D3 AUTO and GM MANUAL. Live execution, if armed, stays on THEIR Coinbase — this host never takes custody of visitor funds. SUP3R B0WL participation stays paper on this host unless the user executes on their own book.",
     hold: "Human-in-the-loop operator approval for outgoing on the operator book. Seek a licensed attorney and a licensed financial professional first. This website does not grow a GPU farm.",
   },
   {
@@ -154,7 +154,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
     when: GO_LIVE_DEADLINE_LABEL,
     status: "LOCKED",
     owner: "operator",
-    need: "Operator unlock. Users run G M0D3 AUTO / MANUAL. SUP3R B0WL participation stays paper here; live BTC on THEIR keys. Annual Un1v3rs@L K1Ng window opens. Seek licensed professional + licensed attorney first.",
+    need: "Operator unlock. Users run G M0D3 AUTO / MANUAL. SUP3R B0WL participation stays paper here; live BTC on THEIR own Coinbase account. Annual Un1v3rs@L K1Ng window opens. Seek licensed professional + licensed attorney first.",
   },
   {
     id: "s8",

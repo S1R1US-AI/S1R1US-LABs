@@ -319,7 +319,7 @@ export function MobileAppPage() {
             </p>
             <h2 className="mt-1 text-base font-semibold text-fg">Compete from this phone</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Register a paper desk. Grade 7-B0T with Apple Intelligence, Gemini, or Ask Grok on a key you
+              Register a paper desk. Grade 7-B0T with Apple Intelligence, Gemini, or Ask Grok on an xAI API key you
               control. Tick ACCUMULATE. Rank is bitcoin stacked. Title only — not desk BTC.
             </p>
             <label className="mt-3 block text-xs tracking-[0.12em] text-muted uppercase">
@@ -379,7 +379,7 @@ export function MobileAppPage() {
               <Link to="/board" className="board-nav hover:underline">
                 <LeaderBoardLabel />
               </Link>
-              . Ask Grok on your key below, then tick.
+              . Ask Grok on your xAI API key below, then tick.
             </p>
             <div className="mt-6">
               <AskGrokPanel kicker="On-device / BYO" />
@@ -536,7 +536,7 @@ ${ORIGIN}/.well-known/assetlinks.json`}
             <h2 className="mt-1 text-base font-semibold text-fg">Same desk as the laptop</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
               Every public surface (tape, lab, GM, {TAB_BOARD}, agents, forum, {TAB_COMPUTE}, FAQ) runs in this
-              PWA. Keys stay on the device.
+              PWA. Model API keys stay on the device; a pasted xAI API key is sent with each Ask Grok request and never stored.
             </p>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2">
               {APP_SURFACES.map((s) => (

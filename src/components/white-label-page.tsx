@@ -259,7 +259,7 @@ export function WhiteLabelPage() {
           </div>
           <div className="mt-3">
             <Box
-              label="BTC receiving address for the miners (default = S1R1US.ai system admin BTC key)"
+              label="BTC receiving address for the miners (default = S1R1US.ai system admin BTC receive address)"
               value={cfg.minerBtcAddress}
               onChange={(v) => set("minerBtcAddress", v)}
               placeholder={MINERS_DEFAULT_ADDRESS}

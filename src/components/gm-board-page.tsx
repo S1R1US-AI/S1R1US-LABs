@@ -481,7 +481,7 @@ export function GmBoardPage() {
                 <Link to="/compute" className="hover:underline" title="BYO C0MPUT3 (Bring your own compute)">
                   BYO C0MPUT3
                 </Link>
-                ) — grade 7-B0T on your keys, then tick.
+                ) — grade 7-B0T on your own compute, then tick.
               </p>
             </CollapseSummary>
             <div className="mt-auto grid grid-cols-2 gap-2 pt-3 sm:grid-cols-4">
@@ -1167,7 +1167,7 @@ export function GmBoardPage() {
               <Link className="text-oss hover:underline" to="/compute">
                 {TAB_COMPUTE}
               </Link>{" "}
-              — paste your xAI key in the browser, Ask Grok on 7-B0T + {TAB_GM}, then tick here. Key never hits this
+              — paste your xAI API key in the browser, Ask Grok on 7-B0T + {TAB_GM}, then tick here. Key never hits this
               host. API: POST {BOARD_PATH.replace("board", "api/agent/board")}.
             </p>
         </Panel>

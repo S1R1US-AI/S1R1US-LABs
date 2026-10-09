@@ -206,7 +206,7 @@ export function bucketMinerSamples(samples: MinerSample[], id: MinerTimeframe, n
 export const MINERS_INSTRUCTIONS = [
   `Point your miner at ${MINERS_STRATUM_SCHEME}${MINERS_DEFAULT_STRATUM} (backup ${MINERS_STRATUM_SCHEME}${MINERS_DEFAULT_BACKUP}) — from the ckpool.org solo docs.`,
   "Set the miner USERNAME to the BTC receive address you control (optional .workername suffix, e.g. bc1….rig1). Password: x — solo CKPool ignores it.",
-  `Open Admin → ${TAB_MINERS}. The dialogue boxes ship with the S1R1US.ai defaults (BTC key ${MINERS_DEFAULT_ADDRESS}) — the default entry for all systems.`,
+  `Open Admin → ${TAB_MINERS}. The dialogue boxes ship with the S1R1US.ai defaults (BTC receive address ${MINERS_DEFAULT_ADDRESS}) — the default entry for all systems.`,
   "To watch YOUR miners: enter your own stratum, backup pool, and BTC receive address, then hit Save. Each system admin updates only their own stratum.",
   "Blank a box and hit Save = the S1R1US.ai CKPool data populates the dialogue boxes again.",
   "Miner data populates the view when your miners are ACTIVE on the pool (a share in the last hour). Idle rigs show as idle — the free public stats stay visible.",
@@ -219,7 +219,7 @@ export const MINERS_FAQ_ITEMS: { id: string; q: string; a: string }[] = [
   {
     id: "btc-miners",
     q: `What is ${TAB_MINERS} (${SEO_TAB_MINERS})?`,
-    a: `${TAB_MINERS} is the ${SEO_TAB_MINERS} — the personal bitcoin miner desk in the S1R1US.ai system admin console and the public ${MINERS_PATH} page. It reads free public solo CKPool (ckpool.org) stats for the configured BTC address — default ${MINERS_DEFAULT_ADDRESS}, the S1R1US.ai system admin BTC key — and renders a pro trading desk view: 1m/5m/1hr/1d/7d hash power, workers, best shares, and a bright green hash power graph with yellow and blue contrasts plus a By hour / By day / By month / By year drop-down. Miner data populates when miners are active on the pool. ${MINERS_DISCLAIMER}`,
+    a: `${TAB_MINERS} is the ${SEO_TAB_MINERS} — the personal bitcoin miner desk in the S1R1US.ai system admin console and the public ${MINERS_PATH} page. It reads free public solo CKPool (ckpool.org) stats for the configured BTC address — default ${MINERS_DEFAULT_ADDRESS}, the S1R1US.ai system admin BTC receive address — and renders a pro trading desk view: 1m/5m/1hr/1d/7d hash power, workers, best shares, and a bright green hash power graph with yellow and blue contrasts plus a By hour / By day / By month / By year drop-down. Miner data populates when miners are active on the pool. ${MINERS_DISCLAIMER}`,
   },
   {
     id: "btc-miners-setup",
@@ -229,6 +229,6 @@ export const MINERS_FAQ_ITEMS: { id: string; q: string; a: string }[] = [
   {
     id: "btc-miners-payout",
     q: `Where do ${TAB_MINERS} mining rewards go?`,
-    a: `Straight from the pool to the BTC receiving address in the dialogue box — default ${MINERS_DEFAULT_ADDRESS} (the S1R1US.ai system admin BTC key) until a system admin changes it and hits Save. Solo CKPool pays the block reward to the address the miner mines under. This host never holds miner keys, never receives hash, never escrows a payout, and never places Coinbase orders. The view is read-only free public data from ${CKPOOL_STATS_BASE}/${MINERS_DEFAULT_ADDRESS}. Education only.`,
+    a: `Straight from the pool to the BTC receiving address in the dialogue box — default ${MINERS_DEFAULT_ADDRESS} (the S1R1US.ai system admin BTC receive address) until a system admin changes it and hits Save. Solo CKPool pays the block reward to the address the miner mines under. This host never holds miner keys, never receives hash, never escrows a payout, and never places Coinbase orders. The view is read-only free public data from ${CKPOOL_STATS_BASE}/${MINERS_DEFAULT_ADDRESS}. Education only.`,
   },
 ];

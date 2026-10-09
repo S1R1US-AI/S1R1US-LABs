@@ -293,7 +293,7 @@ export function SeoCopy() {
         name: TAB_COMPUTE,
         alternateName: [SEO_TAB_COMPUTE, "Ask Grok", "BYO compute"],
         url: `${SEO_CANONICAL}compute`,
-        description: `${TAB_COMPUTE} is ${SEO_TAB_COMPUTE}. Sign in with X, paste your xAI API key, Ask Grok on your bill. This host never stores the key.`,
+        description: `${TAB_COMPUTE} is ${SEO_TAB_COMPUTE}. Sign in with X, paste your xAI API key, Ask Grok on your bill. Your xAI API key is sent with each Ask Grok request and is never stored or logged on this host.`,
       },
       {
         "@type": "WebPage",
