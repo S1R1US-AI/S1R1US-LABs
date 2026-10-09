@@ -25,7 +25,7 @@ import {
   seoImgAlt,
 } from "@/lib/brand";
 import { COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
-import { GITHUB_REPO_URL } from "@/lib/desk/official-presence";
+import { GITHUB_ORG_URL } from "@/lib/desk/official-presence";
 import { BYO_WELCOME, QUANT_FLEX_HEADLINE } from "@/lib/desk/mandate";
 import { BowlLiveFeed } from "@/components/bowl-live-feed";
 import { QuantFlexWelcome } from "@/components/quant-flex-welcome";
@@ -176,7 +176,7 @@ export function CalloutWelcomePage() {
             {COMPANY_X_HANDLE}
           </a>
           <span className="px-2">|</span>
-          <a href={GITHUB_REPO_URL} className="hover:underline">
+          <a href={`${GITHUB_ORG_URL}?tab=repositories`} target="_blank" rel="noopener noreferrer" className="hover:underline">
             GitHub
           </a>
         </p>
