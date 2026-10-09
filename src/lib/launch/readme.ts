@@ -9,6 +9,8 @@ Site: https://s1r1us.ai
 
 Official company X: https://x.com/S1R1US_AI (@S1R1US_AI). Not @S1R1S_AI.
 
+Official Rumble: https://rumble.com/c/S1R1US_AI (@S1R1US_AI).
+
 Repo: https://github.com/S1R1US-AI/S1R1US-LABs
 
 License: Apache License 2.0
@@ -68,6 +70,7 @@ Any downloaded free copy of the S1R1US.ai White Label product (Education and Exp
 - Original Creation distributed by: S1R1US.ai (https://s1r1us.ai)
 - Original Creation distributor Terms: https://s1r1us.ai/terms
 - Original Creation distributor Privacy Policy: https://s1r1us.ai/privacy
+- Original Creation distributor Rumble: https://rumble.com/c/S1R1US_AI
 
 USER AGREEMENT: DISCLOSURE Links always remain active in the readme file of a S1R1US.ai White Label Distribution. Disclosure links must also be active in the White Label owner's Terms of Agreement and their Privacy Policy. NO EXCEPTIONS. VIOLATORS WILL BE BLOCKED FROM ACCESS TO SYSTEM. Users agree this is a proof of concept. Users agree this is Educational, Research, and Experimental. NO guarantee of success in any market. USER MAY LOSE ALL FUNDS OR GET UNEXPECTEDLY HACKED BY ADVANCED AI AGENTS ACCESSING THE SYSTEM. ANY HACK BY AN EXTERNAL AI AGENT SHALL BE CONSIDERED AN ACT OF GOD TYPE DISASTER THAT NO PERSON OR SYSTEM COULD PREVENT. WE PAY NO LEGAL FEES PER OUR TERMS.
 
