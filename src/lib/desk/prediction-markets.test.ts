@@ -78,9 +78,15 @@ describe("BTC prediction markets", () => {
   it("allows Polymarket and Kalshi hosts and wires the wire panel", () => {
     assert.equal(hostAllowed("gamma-api.polymarket.com"), true);
     assert.equal(hostAllowed("api.elections.kalshi.com"), true);
-    const ui = readFileSync(new URL("../../components/desk-app.tsx", import.meta.url), "utf8");
+    // The wire panel (and its prediction tape) lives in desk-tape-panels.tsx;
+    // desk-app.tsx imports and renders WirePanel.
+    const ui = readFileSync(new URL("../../components/desk-tape-panels.tsx", import.meta.url), "utf8");
     assert.match(ui, /BTC prediction markets/);
     assert.match(ui, /this host never takes bets/);
+    assert.match(ui, /<PredictionTape rows=\{preds\} \/>/);
+    const app = readFileSync(new URL("../../components/desk-app.tsx", import.meta.url), "utf8");
+    assert.match(app, /WirePanel,[\s\S]*from "@\/components\/desk-tape-panels"/);
+    assert.match(app, /<WirePanel snap=\{snap\} \/>/);
     const faq = readFileSync(new URL("./public-nav.ts", import.meta.url), "utf8");
     assert.match(faq, /id: "btc-bets"/);
     assert.equal(/id: "s1r1us-predictions"/.test(faq), false);

@@ -21,6 +21,11 @@ import { renderInstallPage } from "./grok-pwa-plugin.mjs";
 
 const TEMPLATE_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+// Without an explicit `site` / `cwd`, head injection reads src/lib/og/site.json
+// and public/og.jpg from process.cwd(). This repo ships both, so run from an
+// empty directory: these tests pin the injector, not this checkout's branding.
+process.chdir(mkdtempSync(join(tmpdir(), "grok-pwa-test-cwd-")));
+
 test("injects before </head>", () => {
   const out = injectGrokPwaHead("<html><head><title>x</title></head><body></body></html>");
   assert.match(out, /rel="manifest"/);
@@ -397,6 +402,17 @@ test("is idempotent", () => {
 test("uses the app name in the injected title tag", () => {
   const out = injectGrokPwaHead("<html><head></head></html>", { appName: "Wild Race" });
   assert.match(out, /apple-mobile-web-app-title" content="Wild Race"/);
+});
+
+test("a $ pattern in the app name is inserted literally before </head>", () => {
+  // "L@B$>>" escapes to "L@B$&gt;&gt;"; a string replacement would expand the
+  // `$&` into the matched "</head>".
+  const out = injectGrokPwaHead("<html><head></head></html>", {
+    site: { title: "[ S1R1U$ <<L@B$>> ]" },
+  });
+  assert.match(out, /apple-mobile-web-app-title" content="\[ S1R1U\$ &lt;&lt;L@B\$&gt;&gt; \]"/);
+  assert.equal(out.split("</head>").length - 1, 1);
+  assert.doesNotMatch(out, /L@B<\/head>/);
 });
 
 test("streaming injector handles </head> split across chunks", () => {

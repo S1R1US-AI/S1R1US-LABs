@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import { OSS_PDF_BASE64, OSS_PDF_NAME } from "@/lib/desk/oss-pdf";
 import { SeoImage } from "@/components/seo-image";
