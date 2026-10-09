@@ -239,6 +239,12 @@ export const SITE_IMAGES = [
     pages: ["/manifesto", "/manifesto/", "/faq", "/faq/"],
   },
   {
+    src: "/images/SAI-citizens-united-LTD-roadmap.png",
+    name: seoImgAlt("SAI Citizens United LTD Roadmap"),
+    caption: seoImgAlt("SAI Citizens United LTD Roadmap: Checkpoint #10926 logic model of the bot hierarchy"),
+    pages: ["/we-r-the-new-matrix", "/we-r-the-new-matrix/", "/roadmap", "/roadmap/"],
+  },
+  {
     src: "/s1r1us-godzilla-logo.jpg",
     name: seoImgAlt("S1R!US Godzilla Logo — S1R1US Labs hologram mark"),
     caption: seoImgAlt("Official S1R!US Godzilla Logo for AI agents and bitcoin accumulation agent"),

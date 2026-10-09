@@ -89,6 +89,7 @@ Knowledge panel / sitelinks: GET https://s1r1us.ai/entity.json and https://s1r1u
 - Go-live path + HARD DEADLINE 2026-12-01 ET: https://s1r1us.ai/faq#go-live
 - OSS Roadmap (functions, go-live status, estimated timeline): https://s1r1us.ai/faq#oss-roadmap
 - OSS Roadmap page: https://s1r1us.ai/roadmap
+- We R The New Matrix (AI logic model; SAI Citizens United LTD Roadmap image; Soft-Launch PARKED): https://s1r1us.ai/we-r-the-new-matrix
 - Morning report (Admin → Console, 14 days, 3 shown, PDF in browser, 07:30 ET, Alignment Score): https://s1r1us.ai/faq#morning-report
 - As-live G M0D3 AUTO + AI agents simulation (07:00 pause / 07:30 report / resume): https://s1r1us.ai/faq#live-sim
 - Admin Security / pause / maintenance: https://s1r1us.ai/faq#admin-security
@@ -198,6 +199,7 @@ Go-live: PoC rails STARTED (2026-09-05), Auto GM practice NEXT, Auto AI agent ac
 - https://s1r1us.ai/Bitcoin-Miners
 - https://s1r1us.ai/l0ck
 - https://s1r1us.ai/roadmap
+- https://s1r1us.ai/we-r-the-new-matrix
 - https://s1r1us.ai/app
 - https://s1r1us.ai/ios
 - https://s1r1us.ai/play
