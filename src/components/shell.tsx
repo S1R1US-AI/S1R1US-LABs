@@ -289,6 +289,15 @@ export function Shell({
               <Link to={PRIVACY_PATH} className="legal-purple shrink-0 hover:underline" title={PRIVACY_HOVER}>
                 {PRIVACY_TITLE}
               </Link>
+              <a
+                href="/ai-philosophy-systems/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 text-oss hover:underline"
+                title="AI Systems Philosophy · Dream Talk · SAI Citizens United"
+              >
+                S1R1US.ai - AI Philosophy Systems
+              </a>
               <Link to="/login" className="shrink-0 text-oss hover:underline" title="login">
                 login
               </Link>

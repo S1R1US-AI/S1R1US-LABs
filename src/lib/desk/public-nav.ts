@@ -394,6 +394,15 @@ export const PUBLIC_PAGES = [
     priority: "0.6",
   },
   {
+    path: "/ai-philosophy-systems",
+    loc: `${origin}/ai-philosophy-systems`,
+    label: "AI Systems Philosophy",
+    title: "AI Systems Philosophy · Dream Talk · SAI Citizens United · S1R1US.ai",
+    hint: "AI philosophy systems: Dream Talk, the Voice of Reason, on honesty and trust between humans and bots. Rooted in Eastern philosophy and Hindu texts. Soft locks Present · Soft-Launch PARKED. NFA.",
+    changefreq: "weekly",
+    priority: "0.6",
+  },
+  {
     path: "/sitemap",
     loc: `${origin}/sitemap`,
     label: "Sitemap",

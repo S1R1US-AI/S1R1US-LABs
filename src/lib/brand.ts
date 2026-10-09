@@ -221,6 +221,12 @@ export const GIF_MINERS_HASH_NAME = "Solo CKPool Bitcoin Miner Hash Power";
 /** Public GIFs/pictures for sitemap Image + schema ImageObject. Keep in sync with /public. */
 export const SITE_IMAGES = [
   {
+    src: "/images/ai-systems-philosophy.jpg",
+    name: seoImgAlt("ai-systems-philosophy"),
+    caption: seoImgAlt("AI Systems Philosophy: seven robed guardian monks with half-robot faces beneath a glowing neural core"),
+    pages: ["/ai-philosophy-systems", "/ai-philosophy-systems/"],
+  },
+  {
     src: "/images/S1R1US-Sensei-Engineering.jpg",
     name: seoImgAlt("S1R1US-Sensei-Engineering"),
     caption: seoImgAlt("S1R1US Sensei Engineering — SEN$E1 ENGINEERING hero"),

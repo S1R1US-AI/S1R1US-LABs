@@ -1,0 +1,98 @@
+/* /ai-philosophy-systems/ page-scoped styles · AI Systems Philosophy (navy / gold / cyan). Soft locks Present · Soft-Launch PARKED. */
+.ph { --ph-navy: #14254a; --ph-cyan: #4fd6ee; }
+
+.ph-hero {
+  margin: 0.5rem auto 2.25rem;
+  max-width: 1280px;
+  text-align: center;
+}
+.ph-hero-figure {
+  margin: 0 0 1.6rem;
+  padding: 3px;
+  border-radius: calc(var(--radius) + 3px);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--ph-navy) 45%, var(--ph-cyan) 100%);
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 39, 0.25),
+    0 10px 40px rgba(20, 37, 74, 0.55),
+    0 0 46px rgba(79, 214, 238, 0.18);
+}
+.ph-hero-figure a { display: block; border-radius: var(--radius); overflow: hidden; line-height: 0; }
+.ph-hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--ph-navy);
+}
+.ph-hero-copy { max-width: 46rem; margin: 0 auto; }
+.ph-hero-copy h1 {
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0 0 0.6rem;
+}
+.ph-hero-copy h1 .accent { color: var(--gold); }
+.ph-label {
+  display: inline-block;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin: 0 0 0.75rem;
+}
+
+.ph-section { max-width: 52rem; margin-left: auto; margin-right: auto; }
+.ph-logo { margin: 0 0 1rem; text-align: center; }
+.ph-logo img {
+  display: block;
+  width: 100%;
+  max-width: 40rem;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 8px;
+  background: #121619;
+}
+
+.ph-bot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: flex-start;
+}
+.ph-bot-logo {
+  flex: 0 0 auto;
+  display: block;
+  line-height: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: #121619;
+  overflow: hidden;
+}
+.ph-bot-logo img { display: block; width: 160px; height: 160px; }
+.ph-bot-copy { flex: 1 1 18rem; min-width: 0; }
+
+.ph-quote {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(20, 37, 74, 0.35);
+  border-radius: 0 8px 8px 0;
+}
+.ph-quote p { margin: 0.35rem 0; }
+
+.ph-tenets { padding-left: 1.2rem; }
+.ph-tenets li { margin: 0.45rem 0; }
+
+.ph-join {
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  margin: 0.5rem 0 1rem;
+}
+.ph-join-row { justify-content: center; }
