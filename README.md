@@ -26,6 +26,7 @@ S1R1US.ai strives to build open-source software designed with AI research tools.
 | **Discord** | [discord.gg/UrPerk3j5](https://discord.gg/UrPerk3j5) |
 | **X** | [@S1R1US_AI](https://x.com/S1R1US_AI) |
 | **Substack** | [@br0k3ns0ft](https://br0k3ns0ft.substack.com/about) |
+| **Rumble** | [Rumble · @S1R1US_AI](https://rumble.com/c/S1R1US_AI) |
 | **TikTok** | [@S1R1US.ai](https://www.tiktok.com/@S1R1US.ai) |
 
 Bugs → GitHub Issues · announcements → X · chat/support → Discord. License: Apache 2.0.
@@ -90,6 +91,7 @@ White-label / fork / download users must keep these disclosure links active in *
 - Original Creation distributor Privacy Policy: <https://s1r1us.ai/privacy>
 - Original Creation distributor FAQ: <https://s1r1us.ai/faq>
 - Original Creation distributor Substack: <https://br0k3ns0ft.substack.com/about>
+- Original Creation distributor Rumble: <https://rumble.com/c/S1R1US_AI>
 
 Of course you can choose to move your own direction using our Open-Source White Label product according to our Copyright, Terms, Privacy, FAQ, and Substack — keep those disclosure links active in your GitHub repository README (or equivalent public repo docs). Active white-label / fork / download copies must also keep an active Substack link to [https://br0k3ns0ft.substack.com/about](https://br0k3ns0ft.substack.com/about) in the OSS README, the website disclaimer, and the website FAQ. Not a licensed broker/dealer; not SEC-registered; not attorneys — consult licensed advisors before use. Users may lose funds; no legal fees paid per Terms.
 

@@ -252,6 +252,7 @@ describe("7-B0T H3DGE FUND WHITE LABEL", () => {
       assert.match(readme, /https:\/\/s1r1us\.ai\/terms/);
       assert.match(readme, /https:\/\/s1r1us\.ai\/privacy/);
       assert.match(readme, /WE PAY NO LEGAL FEES PER OUR TERMS\./);
+      assert.match(readme, /Original Creation distributor Rumble: <?https:\/\/rumble\.com\/c\/S1R1US_AI>?/);
     }
     for (const llmsUrl of [
       new URL("../../../public/llms.txt", import.meta.url),
@@ -260,6 +261,7 @@ describe("7-B0T H3DGE FUND WHITE LABEL", () => {
       const llms = readFileSync(llmsUrl, "utf8");
       assert.match(llms, /DISCLOSURE LINKS/);
       assert.match(llms, /https:\/\/s1r1us\.ai\/privacy/);
+      assert.match(llms, /Rumble: https:\/\/rumble\.com\/c\/S1R1US_AI/);
     }
   });
 
