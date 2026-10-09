@@ -70,7 +70,7 @@ npm run dev
 npm run typecheck && npm run build
 ```
 
-Node 22 · DigitalOcean App Platform (see [DEPLOY.md](DEPLOY.md)). Optional xAI API token env for Ask Grok. Never commit CDP JSON, seeds, admin hashes, or hardware security ids. Coinbase for Agents is dry-run here.
+Node 22 · DigitalOcean App Platform (see [DEPLOY.md](DEPLOY.md)). Optional xAI API key env for Ask Grok. Never commit CDP JSON, seeds, admin hashes, or hardware security ids. Coinbase for Agents is dry-run here.
 
 ## Copyright
 
