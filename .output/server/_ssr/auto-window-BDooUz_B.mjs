@@ -8,7 +8,7 @@ var GM_CASH_MAX = 1e5;
 var GM_CASH_STEP = 1e3;
 var GM_PROFIT_BTC = PROFIT_BTC_RECEIVE;
 var GM_PROFIT_EXPLORER = PROFIT_BTC_EXPLORER;
-var GM_FUND_USDC = "0x551163f5d4c0361155d16131459afa5c936a60ad";
+var GM_FUND_USDC = "0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf";
 var GM_FUND_EXPLORER = `https://basescan.org/address/${GM_FUND_USDC}`;
 var GM_VAR_META = [
 	{

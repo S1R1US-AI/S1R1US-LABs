@@ -322,7 +322,7 @@ def main():
     section(pdf, "4. Architecture", (120, 180, 255))
     add(
         pdf,
-        "Two-phase 5-minute pull (core then fill). Semaphore 12. Slot timeout no longer marks Coinbase dead. Bots 1-6 vote; 7-B0T issues BUY / ACCUMULATE / HOLD / WAIT. Never TRIM the stack. Never sell bitcoin. Never short. Practice ticks on that cadence with no admin click. Live Coinbase create is locked on this host. G0DZ1LLa M0D3 is an isolated sleeve (practice for all, Live admin HMAC). Fill cards list the MANUAL/AUTO settings that fired each buy or sell. TRIM on the sleeve sends BTC to 33km... Fund USDC 0x5511... Receive only.",
+        "Two-phase 5-minute pull (core then fill). Semaphore 12. Slot timeout no longer marks Coinbase dead. Bots 1-6 vote; 7-B0T issues BUY / ACCUMULATE / HOLD / WAIT. Never TRIM the stack. Never sell bitcoin. Never short. Practice ticks on that cadence with no admin click. Live Coinbase create is locked on this host. G0DZ1LLa M0D3 is an isolated sleeve (practice for all, Live admin HMAC). Fill cards list the MANUAL/AUTO settings that fired each buy or sell. TRIM on the sleeve sends BTC to 33km... Fund USDC 0x843d... Receive only.",
     )
 
     section(pdf, "5. Security audit", (120, 180, 255))
@@ -333,7 +333,7 @@ def main():
 
     section(pdf, "5b. GM sleeve", (57, 255, 20))
     add(pdf, "Practice open. Live requires admin token. AUTO never naked-shorts. Day-trader 1-24h. Triggers printed on fills.")
-    add(pdf, "Profit BTC 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8 (keep bitcoin). Fund USDC 0x551163f5d4c0361155d16131459afa5c936a60ad.")
+    add(pdf, "Profit BTC 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8 (keep bitcoin). Fund USDC 0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf.")
 
     section(pdf, "5c. DEPLOY #68 system test (this fold)", (255, 140, 0))
     if test68:

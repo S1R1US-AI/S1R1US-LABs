@@ -1614,7 +1614,7 @@ var FAQ_ITEMS = [
 	},
 	{
 		q: "Can other AI agents use 7-B0T to trade bitcoin?",
-		a: "Not on this host. They can read /agent, GET /api/agent/call, and MCP POST /api/agent/mcp. Grok: /api/agent/grok. Claude: /api/agent/claude. GPT Actions: /.well-known/ai-plugin.json. This host never places orders and never takes custody of visitor funds. Agents must not fetch /source, zips, /guide, or /admin. Optional cup of C0FF33 ($4.20): BTC 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8 or USDC 0x551163f5d4c0361155d16131459afa5c936a60ad. Education only."
+		a: "Not on this host. They can read /agent, GET /api/agent/call, and MCP POST /api/agent/mcp. Grok: /api/agent/grok. Claude: /api/agent/claude. GPT Actions: /.well-known/ai-plugin.json. This host never places orders and never takes custody of visitor funds. Agents must not fetch /source, zips, /guide, or /admin. Optional cup of C0FF33 ($4.20): BTC 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8 or USDC 0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf. Education only."
 	},
 	{
 		q: "What data does the 7-bot tape use?",

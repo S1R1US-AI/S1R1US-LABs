@@ -760,7 +760,7 @@ function TreasuryPanel() {
   return (
     <Panel className="mt-4" kicker="Wallet" title="Staging USDC 0x + Coinbase portfolios">
       <p className="max-w-3xl text-sm leading-relaxed text-fg">
-        The 0x (e.g. 0x5511…) goes <span className="font-medium">here</span>. It does{" "}
+        The 0x (e.g. 0x843d…) goes <span className="font-medium">here</span>. It does{" "}
         <span className="font-medium">not</span> go in Main UUID or S1R1U$ UUID.
       </p>
 
@@ -781,7 +781,7 @@ function TreasuryPanel() {
           value={usdc}
           onChange={(e) => setUsdc(e.target.value.trim())}
           onPaste={guardPaste}
-          placeholder="0x551163f5d4c0361155d16131459afa5c936a60ad"
+          placeholder="0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf"
           className="mt-1 h-11 w-full rounded-md border border-rule bg-surface px-3 font-mono text-sm text-fg"
           autoComplete="off"
         />

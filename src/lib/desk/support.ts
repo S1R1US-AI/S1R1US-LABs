@@ -1,6 +1,6 @@
 /** Public operating-cost donations only — not the trading book. */
 export const SUPPORT_BTC = "33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8";
-export const SUPPORT_USDC = "0x551163f5d4c0361155d16131459afa5c936a60ad";
+export const SUPPORT_USDC = "0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf";
 
 /** Native Circle USDC token contracts — the receive wallet is the same 0x on both chains. */
 export const SUPPORT_USDC_ETH_TOKEN = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
