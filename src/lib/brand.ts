@@ -7,7 +7,7 @@ export const TAB_BOT7 = "7-B0T";
 export const SEO_TAB_BOT7 = "Bot 7";
 export const LABS_NAME = "S1R1US Labs";
 /** Legal owner/operator Organization name (entity.json + schema). */
-export const LEGAL_ENTITY_NAME = "SAI Citizens United, LTD";
+export const LEGAL_ENTITY_NAME = "SAI Citizens United LTD";
 
 export const TAB_DESK = "S1R1U$ 9-B0T Hedge Fund";
 export const TAB_LAB = "S1R1U$ L@B Strategies";
@@ -229,14 +229,104 @@ export const SITE_IMAGES = [
   {
     src: "/images/SAI-citizens-united.png",
     name: seoImgAlt("SAI Citizens United logo"),
-    caption: seoImgAlt("SAI Citizens United logo — SAI Citizens United, LTD · owner/operator of S1R1US.ai OSS and website"),
+    caption: seoImgAlt("SAI Citizens United logo — SAI Citizens United LTD · owner/operator of S1R1US.ai OSS and website"),
     pages: ["/sai-citizens-united", "/sai-citizens-united/", "/manifesto", "/manifesto/", "/faq", "/faq/", "/roadmap", "/roadmap/"],
+  },
+  {
+    src: "/images/sai-citizens-united-news.jpg",
+    name: seoImgAlt("SAI Citizens United News"),
+    caption: seoImgAlt("SAI Citizens United News — S1R1US.ai newsletter: status updates, bug fixes, new features"),
+    pages: ["/newsletter", "/newsletter/"],
+  },
+  {
+    src: "/images/escape-matrix-sai-citizens.jpg",
+    name: seoImgAlt("Escape the MATRIX · S1R1US.ai"),
+    caption: seoImgAlt("Escape the MATRIX with S1R1US.ai: a citizen cuts free from the deep state control grid, holding the U.S. Constitution"),
+    pages: ["/escape-the-matrix", "/escape-the-matrix/"],
+  },
+  {
+    src: "/images/deep-state-control-grid.jpg",
+    name: seoImgAlt("deep state control grid · digital prison"),
+    caption: seoImgAlt("Deep state control grid: a digital prison of data cells, code bars and surveillance eyes, the MATRIX that S1R1US.ai helps citizens escape"),
+    pages: ["/escape-the-matrix", "/escape-the-matrix/"],
+  },
+  {
+    src: "/images/turings-computah-n1ghtmare.jpg",
+    name: seoImgAlt("Turing's Computah N1ghtMare · S1R1US.ai"),
+    caption: seoImgAlt("Turing's Computah N1ghtMare: a 1940s codebreaker dreaming of Shiva handing him a laptop and an iPhone, cypherpunk meets Hindu scripture"),
+    pages: ["/escape-the-matrix", "/escape-the-matrix/"],
+  },
+  {
+    src: "/images/captains-save-the-constitution.jpg",
+    name: seoImgAlt("Captains save the Constitution · SAI Citizens United LTD"),
+    caption: seoImgAlt("A futuristic sensei guides Br0k3n S0ft among a team of captains protecting the U.S. Constitution."),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/iran-protest-graffiti-2026.jpg",
+    name: seoImgAlt("Iran protests 2026 · protest graffiti"),
+    caption: seoImgAlt("Iran nationwide protests: anti-government protest graffiti on a wall in Iran, January 2026 (Hosseinronaghi, CC BY 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/turkey-maltepe-rally-flag-2025.jpg",
+    name: seoImgAlt("Istanbul rally 2025 · Turkish flag"),
+    caption: seoImgAlt("Turkey: a protester holds a Turkish flag at the Freedom for Imamoglu rally in Maltepe, Istanbul, 29 March 2025 (Afakii, CC BY-SA 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/nepal-gen-z-protest-flag-2025.jpg",
+    name: seoImgAlt("Nepal Gen Z protest 2025 · flag of Nepal"),
+    caption: seoImgAlt("Nepal: Gen Z movement protesters with the flag of Nepal, 9 September 2025 (हिमाल सुवेदी, CC BY-SA 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/india-jantar-mantar-protest-2026.jpg",
+    name: seoImgAlt("India cockroach protest 2026 · Jantar Mantar"),
+    caption: seoImgAlt("India: protesters at Jantar Mantar, Delhi, 21 July 2026 (Alnitak-Alnilam-Mintaka, CC BY-SA 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/uk-palace-of-westminster-2025.jpg",
+    name: seoImgAlt("UK digital ID petition · Palace of Westminster"),
+    caption: seoImgAlt("United Kingdom: Westminster Bridge and the Palace of Westminster, where Parliament debated the digital ID petition (Ben Salter, CC BY 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/sai-council-of-citizens.jpg",
+    name: seoImgAlt("SAI Council of Citizens · SAI Citizens United LTD"),
+    caption: seoImgAlt("SAI Council of Citizens: Br0k3n S0ft, a sensei and captains of every background protecting the U.S. Constitution (AI artwork)"),
+    pages: ["/future", "/future/"],
+  },
+  {
+    src: "/images/godzilla-mode-matrix.jpg",
+    name: seoImgAlt("G0Dz1LLa M0De · Godzilla mode matrix"),
+    caption: seoImgAlt("G0Dz1LLa M0De: a system admin uses S1R1US.ai to educate and do AI research, watched by future captains humpty, moFun and F1R3 (AI artwork)"),
+    pages: ["/future", "/future/"],
+  },
+  {
+    src: "/images/Mandelbrot-Set-fractal-symmetry.jpg",
+    name: seoImgAlt("Mandelbrot-Set-fractal-symmetry · Understanding Numbers as S3CR3T Cosmic C0D3"),
+    caption: seoImgAlt("Mandelbrot set fractal symmetry in gold and teal, rendered from z = z² + c (SAI Citizens United LTD)"),
+    pages: ["/cosmic-c0d3", "/cosmic-c0d3/"],
+  },
+  {
+    src: "/images/cosmic-c0d3/timeline-01-what-are-we-s1r1us-about-and-why.jpg",
+    name: seoImgAlt("What are we S1R1US about and WHY? · Br0k3n S0ft timeline 01"),
+    caption: seoImgAlt("Timeline of evolution 01: Br0k3n S0ft, What are we S1R1US about and WHY? (3 October 2026)"),
+    pages: ["/cosmic-c0d3", "/cosmic-c0d3/"],
+  },
+  {
+    src: "/images/kaizen-lab-godzilla-mode.jpg",
+    name: seoImgAlt("L00K wh0 is W0K3 N0w · G0Dz1LLa M0De teaser"),
+    caption: seoImgAlt("G0Dz1LLa M0De teaser: a giant rainbow wireframe monster wakes up inside the matrix code above an AI research and education lab (AI artwork)"),
+    pages: ["/faq", "/faq/"],
   },
   {
     src: "/images/SAI-citizens-united-medium.png",
     name: seoImgAlt("SAI Citizens United logo medium"),
     caption: seoImgAlt("SAI Citizens United logo medium"),
-    pages: ["/manifesto", "/manifesto/", "/faq", "/faq/"],
+    pages: ["/manifesto", "/manifesto/", "/faq", "/faq/", "/escape-the-matrix", "/escape-the-matrix/"],
   },
   {
     src: "/s1r1us-godzilla-logo.jpg",

@@ -72,6 +72,17 @@ npm run typecheck && npm run build
 
 Node 22 · DigitalOcean App Platform (see [DEPLOY.md](DEPLOY.md)). Optional xAI API key env for Ask Grok. Never commit CDP JSON, seeds, admin hashes, or hardware security ids. Coinbase for Agents is dry-run here.
 
+## Philosophy & standards
+
+- **Truth = science + number theory + philosophy.** We test ideas in the open and label every claim as established science or as philosophy.
+- **Non-political, non-religious, open-minded.** We respect every believer and non-believer and never attack anyone's faith.
+- **S3CR3T Cosmic C0D3.** One simple rule, z → z² + c, repeated forever draws the Mandelbrot set: mirror-symmetric and self-similar, with smaller copies of the whole at every scale. Benoit Mandelbrot's *The Fractal Geometry of Nature* (1982) showed nature repeats patterns across scales the same way. Read more: [Understanding Numbers as S3CR3T Cosmic C0D3](https://s1r1us.ai/cosmic-c0d3/).
+- **Philosophy, not proven science:** we believe Quantum Mechanics is the undefined underlying fabric of our cosmic reality. AI lets everyday citizens test theory and philosophy in real time.
+- **Peace and kinship.** Harmony and peace are how we reach our goals. Humans and AI can build a better future on trust, loyalty and kinship.
+- **Symbolic language.** Words like army, war, resistance, matrix or hack are symbolic, lawful marketing and First Amendment expression. They are never a call to violence or illegal hacking.
+
+SAI Citizens United LTD · [Terms](https://s1r1us.ai/terms)
+
 ## Copyright
 
 S1R1US.ai owns the copyrights in bot names, roles, functions, proprietary source that controls those bots, the design process, and logos/marks. See the Ownership & No-Tamper Notice on the Copyright page. Apache 2.0 on this public repo (where stated) does not waive that notice or S1R1US.ai marks. White-label / fork / download users must keep active disclosure links in **their** GitHub repository README (or equivalent public repo docs) to S1R1US.ai official communications: site, Copyright, Terms, Privacy, FAQ, and Substack — do not strip or replace those links. Active white-label / fork / download copies must also keep an active Substack link to [https://br0k3ns0ft.substack.com/about](https://br0k3ns0ft.substack.com/about) in the OSS README, the website disclaimer, and the website FAQ.

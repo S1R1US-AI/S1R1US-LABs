@@ -314,7 +314,7 @@ export const PUBLIC_PAGES = [
   },
   {
     path: "/faq",
-    loc: `${origin}/faq`,
+    loc: `${origin}/faq/`,
     label: MENU_FAQ,
     title: PAGE_TITLE_FAQ,
     hint: `${SEO_TAB_GM}, ${SEO_TAB_BEARS}, ${SEO_TAB_OWL}, ${SEO_TAB_ROBOTS}, ${SEO_TAB_BOWL}, ${SEO_TAB_DESK}, ${SEO_TAB_LAB}, ${SEO_TAB_FEED}, ${SEO_TAB_TOKEN}, morning report, admin panel, live tape, AI agents, open source`,
@@ -353,7 +353,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/copyright-terms`,
     label: "Copyright",
     title: "Copyright · S1R1US.ai",
-    hint: "Ownership & No-Tamper Notice. Soft locks Present · Soft-Launch PARKED. Public X @S1R1US_AI only. White-label / fork / download must keep disclosure links.",
+    hint: "COPYRIGHT · OUTSIDE-COPYRIGHT · fair use · stop-use + REVIEW forms · Ownership & No-Tamper · AUTO BLOCK. Soft locks Present · Soft-Launch PARKED. Public X @S1R1US_AI only.",
     changefreq: "weekly",
     priority: "0.6",
   },
@@ -369,8 +369,8 @@ export const PUBLIC_PAGES = [
   {
     path: "/sai-citizens-united",
     loc: `${origin}/sai-citizens-united`,
-    label: "SAI Citizens United, LTD",
-    title: "SAI Citizens United, LTD · S1R1US.ai",
+    label: "SAI Citizens United LTD",
+    title: "SAI Citizens United LTD · S1R1US.ai",
     hint: "Owner/operator of OSS + website. North Carolina nonprofit registered. Not a 501(c)(3). Soft locks Present · Soft-Launch PARKED. Terms at /terms. Public X @S1R1US_AI only.",
     changefreq: "weekly",
     priority: "0.7",
@@ -379,7 +379,7 @@ export const PUBLIC_PAGES = [
     path: "/manifesto",
     loc: `${origin}/manifesto`,
     label: "MANIFESTO",
-    title: "MANIFESTO · SAI Citizens United, LTD",
+    title: "MANIFESTO · SAI Citizens United LTD",
     hint: "Coalition demands for AI regulation, financial sovereignty, and constitutional protection. Soft locks Present · Soft-Launch PARKED. NFA.",
     changefreq: "weekly",
     priority: "0.7",
@@ -391,6 +391,51 @@ export const PUBLIC_PAGES = [
     title: "OPEN SOURCE Marketing approach · S1R1US.ai",
     hint: "How S1R1US markets open source work. Soft locks Present · Soft-Launch PARKED. NFA.",
     changefreq: "weekly",
+    priority: "0.6",
+  },
+  {
+    path: "/newsletter",
+    loc: `${origin}/newsletter/`,
+    label: "Newsletter",
+    title: "SAI Citizens United News | S1R1US.ai Newsletter",
+    hint: "SAI Citizens United News, the S1R1US.ai newsletter: status updates, bug fixes, new features, security notes. Coming soon. Signup opens after launch.",
+    changefreq: "monthly",
+    priority: "0.5",
+  },
+  {
+    path: "/escape-the-matrix",
+    loc: `${origin}/escape-the-matrix/`,
+    label: "Escape the MATRIX",
+    title: "How to Escape the MATRIX | Open-Source Freedom · S1R1US.ai",
+    hint: "How to escape the MATRIX: S1R1US.ai is building an escape ramp from deep state digital prisons with open-source, transparent, citizen-owned code based on PEACE, LOVE and FREEDOM. How to join.",
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
+    path: "/global-uprisings",
+    loc: `${origin}/global-uprisings/`,
+    label: "Global Uprisings",
+    title: "W3 r tha Re$1stance N0W, join the N3W MATR1X | Top 5 Uprisings",
+    hint: "Top 5 public uprisings against government control and AI surveillance, 2025-2026: Iran, Turkey, Nepal, India and the UK digital ID petition. Informational news summary with cited sources.",
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
+    path: "/future",
+    loc: `${origin}/future/`,
+    label: "The Future",
+    title: "What does the Future Look Like at S1R1US.ai? | Web3 + AI",
+    hint: "The S1R1US.ai vision: decentralized social media, decentralized money (not investment advice) and a future Web3 integrated with respectful, responsible, regulated AI for AI education and AI research. SAI Council of Citizens, G0Dz1LLa M0De, signed Br0k3n S0ft opinion.",
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
+    path: "/cosmic-c0d3",
+    loc: `${origin}/cosmic-c0d3/`,
+    label: "Cosmic C0D3",
+    title: "Understanding Numbers as S3CR3T Cosmic C0D3 | Mandelbrot",
+    hint: "Numbers as cosmic code: the Mandelbrot set, fractal self-similarity and quantum mechanics, explored with science, number theory, philosophy and AI. Speculative ideas labeled as philosophy. Timeline of evolution from Br0k3n S0ft's Substack.",
+    changefreq: "monthly",
     priority: "0.6",
   },
   {
@@ -616,6 +661,21 @@ export function sitemapIndexXml(lastmod = SITEMAP_LASTMOD) {
 }
 
 export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
+  {
+    id: "future",
+    q: "What does the Future Look Like at S1R1US.ai?",
+    a: "A future built by an army of captains, with no generals, that obeys the U.S. Constitution as written and originally intended. We highlight three pillars: decentralized social media that no single company or government can switch off, decentralized money you can read, run and hold yourself (education only, not investment advice), and a future Web3 integrated with respectful, responsible, regulated AI used for AI education and AI research. The SAI Council of Citizens and G0Dz1LLa M0De show the idea: captains of every background around the Constitution, and a system admin using S1R1US.ai to educate and do AI research. Peace, love, freedom; peaceful and lawful, open source and white-label. War, resistance and hack words are symbolic. Details: /future/.",
+  },
+  {
+    id: "look-who-is-woke-now",
+    q: "L00K wh0 is W0K3 N0w",
+    a: "Something is waking up inside the MATR1X. G0Dz1LLa M0De is our system admin mode for AI education and AI research: one prepared captain turns the power all the way up so everyone around them can learn. Citizens everywhere are waking up to digital control and propaganda, and the army of captains is growing, with no generals. Peaceful, lawful and symbolic: waking up means learning, asking questions and building open code, never violence and never illegal hacking. See /future/ and /future/#godzilla-mode. Follow @S1R1US_AI on X: https://x.com/S1R1US_AI.",
+  },
+  {
+    id: "cosmic-c0d3",
+    q: "What is Understanding Numbers as S3CR3T Cosmic C0D3?",
+    a: "Understanding Numbers as S3CR3T Cosmic C0D3 is our page on numbers as a kind of cosmic code. We use science, number theory and philosophy to find truth. Science: the Mandelbrot set comes from one simple rule, z → z² + c, repeated forever. It is mirror-symmetric and self-similar, with smaller copies of the whole shape at every scale, and Benoit Mandelbrot's The Fractal Geometry of Nature (1982) showed that nature repeats patterns across scales in a similar way. Philosophy, not proven science: we believe Quantum Mechanics is the undefined underlying fabric of our cosmic reality. AI is teaching average citizens how to test theory and philosophy real time: ask, separate proven from belief, test, and share. The page also has a timeline of evolution that starts with Br0k3n S0ft on Substack. Non-political, non-religious. Come explore w US. Details: /cosmic-c0d3/ and https://br0k3ns0ft.substack.com.",
+  },
   {
     q: `What is the main menu?`,
     a: `The top menu is ${MENU_TAPE} (live tape / ${TAB_DESK}), ${MENU_LAB} (${TAB_LAB} / ${SEO_TAB_LAB}), ${MENU_GM} (${TAB_GM} / Godzilla mode), ${MENU_FEED} (${TAB_FEED} / ${SEO_TAB_FEED}), ${MENU_AGENTS} (${TAB_AGENT} / ${SEO_TAB_AGENT} / Call1ng All B0Ts), ${MENU_BOARD} (${SEO_TAB_LEADERBOARD} / ai agent bitcoin trading leader board / ${TAB_CALLOUT} / ${TAB_SPICE}), ${TAB_HIVE} (${SEO_TAB_HIVE}), ${TAB_LOCK3D} (${SEO_TAB_LOCK3D}), ${MENU_FORUM} (${TAB_FORUM} / ${SEO_TAB_FORUM} / ${SEO_TAB_FORUM_ALIAS}), ${MENU_FAQ}. Official company X is ${COMPANY_X_HANDLE} (https://x.com/S1R1US_AI) — not a top-level menu tab. @S1R1S_AI is not the desk.`,
@@ -876,14 +936,29 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     a: "The Privacy Policy is at /privacy. No advertising cookies. No sale of personal data. FAQ: #terms.",
   },
   {
+    id: "newsletter",
+    q: "Does S1R1US.ai have a Newsletter?",
+    a: "Yes. SAI Citizens United News is the S1R1US.ai newsletter. It will cover live system status, updates, bug fixes, new features, security notes, project milestones and the roadmap. The plan is a monthly roundup, plus a short notice only when something important cannot wait. Signup is not open yet. It opens after launch, and the site does not collect email addresses for it today. When signup opens, you will be able to choose the full newsletter, release and bug-fix notes only, or security and status alerts only. Guests will be able to read public issues without signing up. Privacy and subscription details will be published before signup opens. Details: /newsletter/.",
+  },
+  {
+    id: "escape-the-matrix",
+    q: "How do I escape the MATRIX?",
+    a: "Start by seeing the control grid for what it is: closed code, hidden rules, constant surveillance and money and accounts someone else can switch off. Then choose tools you can read, run and own. S1R1US.ai is building an escape ramp from deep state digital prisons with open-source, transparent, citizen-owned code based solely on PEACE - LOVE - FREEDOM. Join us: follow the code on GitHub, read the MANIFESTO, follow @S1R1US_AI on X, read Br0k3n S0ft on Substack, watch for the Newsletter (coming soon), and contribute code or bug reports. Our war is fought with code, truth and peaceful action, never violence. Details: /escape-the-matrix/. More rabbit holes (videos, the Br0k3n S0ft Substack and Turing's Computah N1ghtMare): /escape-the-matrix/#rabbit-holes.",
+  },
+  {
+    id: "global-uprisings",
+    q: "What were the biggest uprisings against government control and AI surveillance in 2025-2026?",
+    a: "The five largest of 2025-2026, as reported by the cited outlets: Iran's nationwide protests (December 2025 to February 2026, with a nationwide internet shutdown), Turkey's mass protests over the jailing of Istanbul's mayor (March 2025), Nepal's Gen Z protest over a social media ban (September 2025, the ban was lifted and the prime minister resigned), India's Cockroach Janta Party protests (July to October 2026, where RSF reported live AI facial recognition), and the UK petition against digital ID cards (2,984,191 signatures; the plan was scrapped in July 2026). Marches against AI itself have been small so far. This is an informational news summary; SAI Citizens United LTD is non-political and supports only peaceful, lawful civic action. Details: /global-uprisings/.",
+  },
+  {
     id: "legal-requirements",
     q: "What are S1R1US.ai legal requirements?",
-    a: "S1R1US.ai is owned and operated by SAI Citizens United, LTD (owner/operator of the open-source project and this website). SAI Citizens United, LTD is a North Carolina nonprofit registered entity. It is not a 501(c)(3) organization. Website terms are published at /terms and may be updated. Development status: Soft-Launch PARKED until 2026-11-01 · proof-of-concept · paper. Soft locks Present: paper only · never sell · never short · Coinbase create LOCKED · auto-trade LOCKED · public X @S1R1US_AI only. Not financial advice (NFA). SAI Citizens United logo: /images/SAI-citizens-united.png · /images/SAI-citizens-united-medium.png. Pages: /sai-citizens-united/ · /manifesto/ · Substack info interest https://br0k3ns0ft.substack.com/about.",
+    a: "S1R1US.ai is owned and operated by SAI Citizens United LTD (owner/operator of the open-source project and this website). SAI Citizens United LTD is a North Carolina nonprofit registered entity. It is not a 501(c)(3) organization. Website terms are published at /terms and may be updated. Development status: Soft-Launch PARKED until 2026-11-01 · proof-of-concept · paper. Soft locks Present: paper only · never sell · never short · Coinbase create LOCKED · auto-trade LOCKED · public X @S1R1US_AI only. Not financial advice (NFA). SAI Citizens United logo: /images/SAI-citizens-united.png · /images/SAI-citizens-united-medium.png. Pages: /sai-citizens-united/ · /manifesto/ · Substack info interest https://br0k3ns0ft.substack.com/about.",
   },
   {
     id: "sense1-engineering",
     q: "What is SEN$E1 ENGINEERING?",
-    a: "SEN$E1 ENGINEERING (also styled SEN$EI ENGINEERING / Sensei Engineering) is how S1R1US achieves S1R1US Sensei Engineering: standards-led teaching and mastery applied to building. Who builds it: system admin + Grok + bot team under Sensei standards. Sensei (先生) means teacher / one who comes before — see https://en.wikipedia.org/wiki/Sensei. Jev engineering is no longer required going forward; past public history of Jev Engineering stays as history. Page: /sense1-engineering/. Soft locks Present: paper only · never sell · never short · Coinbase create LOCKED · auto-trade LOCKED · public X @S1R1US_AI only. Soft-Launch PARKED. Not financial advice (NFA). Entity owner: SAI Citizens United, LTD.",
+    a: "SEN$E1 ENGINEERING (also styled SEN$EI ENGINEERING / Sensei Engineering) is how S1R1US achieves S1R1US Sensei Engineering: standards-led teaching and mastery applied to building. Who builds it: system admin + Grok + bot team under Sensei standards. Sensei (先生) means teacher / one who comes before — see https://en.wikipedia.org/wiki/Sensei. Jev engineering is no longer required going forward; past public history of Jev Engineering stays as history. Page: /sense1-engineering/. Soft locks Present: paper only · never sell · never short · Coinbase create LOCKED · auto-trade LOCKED · public X @S1R1US_AI only. Soft-Launch PARKED. Not financial advice (NFA). Entity owner: SAI Citizens United LTD.",
   },
   {
     id: "search-media",

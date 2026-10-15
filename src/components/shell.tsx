@@ -274,6 +274,18 @@ export function Shell({
               <Link to="/roadmap" className="shrink-0 text-oss hover:underline" title="OSS Roadmap · functions, go-live status, estimated timeline">
                 OSS Roadmap
               </Link>
+              <a href="/newsletter/" className="shrink-0 text-oss hover:underline" title="SAI Citizens United News · S1R1US.ai newsletter · coming soon">
+                Newsletter
+              </a>
+              <a href="/escape-the-matrix/" className="shrink-0 text-oss hover:underline" title="How to Escape the MATRIX · S1R1US.ai">
+                Escape the MATRIX
+              </a>
+              <a href="/global-uprisings/" className="shrink-0 text-oss hover:underline" title="Top 5 Global Uprisings 2025-2026 · S1R1US.ai">
+                Global Uprisings
+              </a>
+              <a href="/future/" className="shrink-0 text-oss hover:underline" title="What does the Future Look Like at S1R1US.ai? · S1R1US.ai">
+                The Future
+              </a>
               <Link to="/forum" className="forum-nav shrink-0 hover:underline" title={TAB_HOVER_FORUM}>
                 <ForumTitle />
               </Link>
