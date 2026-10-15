@@ -4,7 +4,23 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 const html = readFileSync(new URL("../front-door-static/faq/index.html", import.meta.url), "utf8");
-const decode = (s) => s.replace(/<[^>]+>/g, "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+function decode(s) {
+  let t = s;
+  let prev;
+  do {
+    prev = t;
+    t = t.replace(/<[^>]*>/g, "");
+  } while (t !== prev);
+  t = t.replace(/[<>]/g, "");
+  return t
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 test("static FAQ JSON-LD parses and has a FAQPage published by SAI Citizens United LTD", () => {
   const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
