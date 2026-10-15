@@ -14,7 +14,8 @@ test("static FAQ JSON-LD parses and has a FAQPage published by SAI Citizens Unit
   const visible = [...html.matchAll(/<section class="faq-item" id="([^"]+)"[^>]*>\s*<h2[^>]*>([\s\S]*?)<\/h2>/g)].map((m) => decode(m[2]));
   assert.deepEqual(faq.mainEntity.map((q) => q.name), visible);
   assert.equal(faq.mainEntity[0].name, "What does the Future Look Like at S1R1US.ai?");
-  assert.equal(faq.mainEntity[1].name, "L00K wh0 is W0K3 N0w");
+  assert.equal(faq.mainEntity[1].name, "What is the S1R1US.ai Copyright @ Policy?");
+  assert.equal(faq.mainEntity[2].name, "L00K wh0 is W0K3 N0w");
 });
 
 test("static FAQ has one H1, canonical with trailing slash and a large share card", () => {
