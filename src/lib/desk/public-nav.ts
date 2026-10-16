@@ -148,6 +148,23 @@ import { LOCK_IDS, LOCK_META, lockViewPath } from "@/lib/desk/lock-status";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
 export const SITEMAP_LASTMOD = "2026-09-12";
+/** Per-URL lastmod for pages changed after SITEMAP_LASTMOD (PR #205 + SEO follow-up, 2026-10-16). */
+export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
+  [`${origin}/`]: "2026-10-16",
+  [`${origin}/faq/`]: "2026-10-16",
+  [`${origin}${TERMS_PATH}`]: "2026-10-16",
+  [`${origin}${PRIVACY_PATH}`]: "2026-10-16",
+  [`${origin}/copyright-terms`]: "2026-10-16",
+  [`${origin}/roadmap`]: "2026-10-16",
+  [`${origin}/newsletter/`]: "2026-10-16",
+  [`${origin}/escape-the-matrix/`]: "2026-10-16",
+  [`${origin}/global-uprisings/`]: "2026-10-16",
+  [`${origin}/future/`]: "2026-10-16",
+  [`${origin}/cosmic-c0d3/`]: "2026-10-16",
+  [`${origin}/sitemap`]: "2026-10-16",
+  [`${origin}/llms.txt`]: "2026-10-16",
+  [`${origin}/.well-known/llms.txt`]: "2026-10-16",
+};
 
 export const PUBLIC_PAGES = [
   {
@@ -631,7 +648,7 @@ export function sitemapXml(lastmod = SITEMAP_LASTMOD) {
         .join("\n");
       return `  <url>
     <loc>${xmlEsc(u.loc)}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${SITEMAP_PAGE_LASTMOD[u.loc] ?? lastmod}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>${imageXml ? `\n${imageXml}` : ""}
   </url>`;
@@ -650,7 +667,7 @@ export function sitemapIndexXml(lastmod = SITEMAP_LASTMOD) {
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${origin}/sitemap.xml</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${SITEMAP_PAGE_LASTMOD[`${origin}/`] ?? lastmod}</lastmod>
   </sitemap>
   <sitemap>
     <loc>${origin}/video-sitemap.xml</loc>
@@ -665,6 +682,11 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     id: "future",
     q: "What does the Future Look Like at S1R1US.ai?",
     a: "A future built by an army of captains, with no generals, that obeys the U.S. Constitution as written and originally intended. We highlight three pillars: decentralized social media that no single company or government can switch off, decentralized money you can read, run and hold yourself (education only, not investment advice), and a future Web3 integrated with respectful, responsible, regulated AI used for AI education and AI research. The SAI Council of Citizens and G0Dz1LLa M0De show the idea: captains of every background around the Constitution, and a system admin using S1R1US.ai to educate and do AI research. Peace, love, freedom; peaceful and lawful, open source and white-label. War, resistance and hack words are symbolic. Details: /future/.",
+  },
+  {
+    id: "copyright-policy",
+    q: "What is the S1R1US.ai Copyright @ Policy?",
+    a: "COPYRIGHT means S1R1US.ai's own declared works: source code, logos, names, and marked originals. Marked copies carry © S1R1US.ai in the lower right. The SAI Citizens United LTD logo is excluded from that mark. OUTSIDE-COPYRIGHT means borrowed or mixed art and/or music that is a work in progress toward full legal compliance; when such a work is used, the original source's copyright is shown in the lower right (or equivalent credit for audio). We encourage fair use only. We respond to and respect any VALID copyright request asking S1R1US.ai to stop using a copyrighted work: use the Copyright stop-use request form at /copyright-terms#stop-use-form. S1R1US.ai protects its original designs under the Ownership & No-Tamper Notice. Any violation of Our Terms Agreement or README requirements results in AUTO BLOCK; for re-verification use the REVIEW form at /copyright-terms#review-form. Full policy and forms: /copyright-terms · Terms: /terms · Privacy: /privacy.",
   },
   {
     id: "look-who-is-woke-now",

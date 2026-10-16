@@ -10,7 +10,7 @@
  * Soft-launch routes (/, /hello-world, /discord, /roadmap, /r0b0ts, /h1v3, /pr3d, /faq, /compute, /gm, /f33d, /forum, /agent, /board, /labs, /owl, /app, /ios, /play, /c0ff33, /sponsor-…, /media, /b3ars, /l0ck, /bowl, /w0rld, /c0ut, /Bitcoin-Miners, /wh1t3, /s1r1us, /sitemap, /search, /terms, /privacy, /copyright-terms, /WEB-3-and-ai-future) always overlay — no env gate.
  * Does not touch Grok live preview (:8080 dev) or regenerate .output.
  */
-import { createReadStream, existsSync, statSync } from "node:fs";
+import { createReadStream, existsSync, realpathSync, statSync } from "node:fs";
 import { spawn } from "node:child_process";
 import http from "node:http";
 import { dirname, extname, join, relative, resolve, sep } from "node:path";
@@ -28,8 +28,16 @@ const candidates = [
   join(ROOT, ".output/server/index.js"),
   join(ROOT, "dist/server/index.mjs"),
 ];
+// Only boot when run directly (node scripts/do-start.mjs); importing for tests must not spawn Nitro.
+const IS_MAIN = (() => {
+  try {
+    return Boolean(process.argv[1]) && realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+})();
 const entry = candidates.find((p) => existsSync(p));
-if (!entry) {
+if (IS_MAIN && !entry) {
   console.error(
     "[s1r1us] no node-server build. On DigitalOcean the Docker image must run npm run build:do (NITRO_PRESET=node-server).",
   );
@@ -54,6 +62,8 @@ const MIME = {
   ".txt": "text/plain; charset=utf-8",
   ".map": "application/json; charset=utf-8",
   ".md": "text/markdown; charset=utf-8",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
 };
 
 function safeJoin(root, urlPath) {
@@ -137,13 +147,74 @@ function resolveStatic(pathname) {
   return null;
 }
 
-async function serveStatic(res, absPath) {
+/** Weak validator from size + mtime; used for ETag and If-Range matching. */
+export function staticValidators(st) {
+  return {
+    etag: `W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}"`,
+    lastModified: new Date(Math.floor(st.mtimeMs / 1000) * 1000).toUTCString(),
+  };
+}
+
+/**
+ * If-Range: a partial response is allowed only when the validator matches the
+ * current representation. Weak ETags are not strong validators per RFC 9110,
+ * but this server's W/"size-mtime" is stable for an unchanged file, so we accept
+ * an exact match (as Express/send does). HTTP-date must equal Last-Modified.
+ */
+function ifRangeMatches(ifRange, v) {
+  const val = String(ifRange).trim();
+  if (val.startsWith('"') || val.startsWith("W/")) return val === v.etag;
+  const t = Date.parse(val);
+  return !Number.isNaN(t) && t === Date.parse(v.lastModified);
+}
+
+export async function serveStatic(res, absPath, req) {
   const type = MIME[extname(absPath).toLowerCase()] || "application/octet-stream";
-  res.writeHead(200, {
+  const st = statSync(absPath);
+  const size = st.size;
+  const v = staticValidators(st);
+  const method = (req && req.method) || "GET";
+  const base = {
     "Content-Type": type,
     "X-Content-Type-Options": "nosniff",
     "Cache-Control": "public, max-age=60",
-  });
+    "Accept-Ranges": "bytes",
+    ETag: v.etag,
+    "Last-Modified": v.lastModified,
+  };
+  const headers = (req && req.headers) || {};
+  // Ranges apply only to GET; HEAD gets full 200 headers. Unmatched If-Range → full 200.
+  const range =
+    method === "GET" && headers.range && (headers["if-range"] == null || ifRangeMatches(headers["if-range"], v))
+      ? headers.range
+      : null;
+  if (range) {
+    const m = /^bytes=(\d*)-(\d*)$/.exec(String(range).trim());
+    let start = m && m[1] !== "" ? Number(m[1]) : NaN;
+    let end = m && m[2] !== "" ? Number(m[2]) : NaN;
+    if (m && m[1] === "" && m[2] !== "") {
+      start = Math.max(0, size - end);
+      end = size - 1;
+      if (Number(m[2]) === 0) start = size; // bytes=-0 is unsatisfiable
+    } else if (m && !Number.isNaN(start) && Number.isNaN(end)) {
+      end = size - 1;
+    }
+    if (!m || Number.isNaN(start) || Number.isNaN(end) || start > end || start >= size) {
+      res.writeHead(416, { ...base, "Content-Range": `bytes */${size}` });
+      res.end();
+      return;
+    }
+    end = Math.min(end, size - 1);
+    res.writeHead(206, {
+      ...base,
+      "Content-Range": `bytes ${start}-${end}/${size}`,
+      "Content-Length": String(end - start + 1),
+    });
+    await pipeline(createReadStream(absPath, { start, end }), res);
+    return;
+  }
+  res.writeHead(200, { ...base, "Content-Length": String(size) });
+  if (method === "HEAD") return void res.end();
   await pipeline(createReadStream(absPath), res);
 }
 
@@ -264,7 +335,7 @@ function startFrontDoor() {
     if (abs) {
       console.log(`[s1r1us] front-door static overlay ${req.method} ${pathname}`);
       try {
-        await serveStatic(res, abs);
+        await serveStatic(res, abs, req);
       } catch (err) {
         console.error("[s1r1us] static serve error:", err.message);
         if (!res.headersSent) {
@@ -379,6 +450,7 @@ const nitroEnv = {
   NODE_ENV: process.env.NODE_ENV || "production",
 };
 
+if (IS_MAIN) {
 const child = spawn(process.execPath, [entry], {
   cwd: ROOT,
   env: nitroEnv,
@@ -399,3 +471,4 @@ child.on("error", (err) => {
   console.error("[s1r1us] failed to spawn nitro:", err.message);
   process.exit(1);
 });
+}
