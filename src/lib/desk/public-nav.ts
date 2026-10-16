@@ -148,6 +148,23 @@ import { LOCK_IDS, LOCK_META, lockViewPath } from "@/lib/desk/lock-status";
 
 const origin = SEO_CANONICAL.replace(/\/$/, "");
 export const SITEMAP_LASTMOD = "2026-09-12";
+/** Per-URL lastmod for pages changed after SITEMAP_LASTMOD (PR #205 + SEO follow-up, 2026-10-16). */
+export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
+  [`${origin}/`]: "2026-10-16",
+  [`${origin}/faq/`]: "2026-10-16",
+  [`${origin}${TERMS_PATH}`]: "2026-10-16",
+  [`${origin}${PRIVACY_PATH}`]: "2026-10-16",
+  [`${origin}/copyright-terms`]: "2026-10-16",
+  [`${origin}/roadmap`]: "2026-10-16",
+  [`${origin}/newsletter/`]: "2026-10-16",
+  [`${origin}/escape-the-matrix/`]: "2026-10-16",
+  [`${origin}/global-uprisings/`]: "2026-10-16",
+  [`${origin}/future/`]: "2026-10-16",
+  [`${origin}/cosmic-c0d3/`]: "2026-10-16",
+  [`${origin}/sitemap`]: "2026-10-16",
+  [`${origin}/llms.txt`]: "2026-10-16",
+  [`${origin}/.well-known/llms.txt`]: "2026-10-16",
+};
 
 export const PUBLIC_PAGES = [
   {
@@ -631,7 +648,7 @@ export function sitemapXml(lastmod = SITEMAP_LASTMOD) {
         .join("\n");
       return `  <url>
     <loc>${xmlEsc(u.loc)}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${SITEMAP_PAGE_LASTMOD[u.loc] ?? lastmod}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>${imageXml ? `\n${imageXml}` : ""}
   </url>`;
@@ -650,7 +667,7 @@ export function sitemapIndexXml(lastmod = SITEMAP_LASTMOD) {
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${origin}/sitemap.xml</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${SITEMAP_PAGE_LASTMOD[`${origin}/`] ?? lastmod}</lastmod>
   </sitemap>
   <sitemap>
     <loc>${origin}/video-sitemap.xml</loc>
