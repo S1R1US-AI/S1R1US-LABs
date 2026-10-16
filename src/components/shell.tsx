@@ -284,7 +284,7 @@ export function Shell({
                 Global Uprisings
               </a>
               <a href="/future/" className="shrink-0 text-oss hover:underline" title="What does the Future Look Like at S1R1US.ai? · S1R1US.ai">
-                The Future
+                FUTURE
               </a>
               <Link to="/forum" className="forum-nav shrink-0 hover:underline" title={TAB_HOVER_FORUM}>
                 <ForumTitle />
