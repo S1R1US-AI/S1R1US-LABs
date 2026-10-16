@@ -153,7 +153,7 @@ export const LEGAL_WHITE_LABEL = [
   `LEGAL STATUS: ${WHITE_LABEL_LEGAL_STATUS}`,
 ].join(" ");
 
-export const TERMS_UPDATED = "2026-09-28";
+export const TERMS_UPDATED = "2026-10-14";
 
 export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
   {
@@ -371,14 +371,20 @@ export const TERMS_SECTIONS: { id: string; title: string; body: string }[] = [
     title: "19. Policy for White Label product offerings — disclosures",
     body: LEGAL_WHITE_LABEL,
   },
+  // DRAFT pending attorney review (2026-10-14): philosophy / symbolic language clause.
+  {
+    id: "philosophy",
+    title: "20. Philosophy, education and symbolic language",
+    body: "Philosophy, number theory and science content on S1R1US.ai (including Understanding Numbers as S3CR3T Cosmic C0D3) is opinion and education. Where we say philosophy, it is our view, not proven science. Nothing in it is scientific, medical, legal or financial advice. Words like army, war, resistance, uprising, matrix or hack are symbolic marketing and lawful expression protected by the First Amendment. They are never instructions or a call for violence, illegal hacking or any unlawful act. SAI Citizens United LTD is non-political and religion-neutral: we respect every believer and non-believer, and nothing on this website endorses or attacks any religion.",
+  },
   {
     id: "changes",
-    title: "20. Changes",
+    title: "21. Changes",
     body: `We may update these Terms. The date at the top of the Terms page is the current version. Continued use after a change is agreement to the new Terms. Last updated ${TERMS_UPDATED}. Canonical: ${SEO_CANONICAL.replace(/\/$/, "")}${TERMS_PATH}. Open source: ${GITHUB_URL}.`,
   },
 ];
 
-export const PRIVACY_UPDATED = TERMS_UPDATED;
+export const PRIVACY_UPDATED = "2026-09-28"; // privacy text unchanged in the 2026-10-14 terms update
 
 export const PRIVACY_SECTIONS: { id: string; title: string; body: string }[] = [
   {
