@@ -54,6 +54,8 @@ const MIME = {
   ".txt": "text/plain; charset=utf-8",
   ".map": "application/json; charset=utf-8",
   ".md": "text/markdown; charset=utf-8",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
 };
 
 function safeJoin(root, urlPath) {
@@ -137,13 +139,43 @@ function resolveStatic(pathname) {
   return null;
 }
 
-async function serveStatic(res, absPath) {
+async function serveStatic(res, absPath, req) {
   const type = MIME[extname(absPath).toLowerCase()] || "application/octet-stream";
-  res.writeHead(200, {
+  const size = statSync(absPath).size;
+  const base = {
     "Content-Type": type,
     "X-Content-Type-Options": "nosniff",
     "Cache-Control": "public, max-age=60",
-  });
+    "Accept-Ranges": "bytes",
+  };
+  const range = req && req.headers && req.headers.range;
+  if (range) {
+    const m = /^bytes=(\d*)-(\d*)$/.exec(String(range).trim());
+    let start = m && m[1] !== "" ? Number(m[1]) : NaN;
+    let end = m && m[2] !== "" ? Number(m[2]) : NaN;
+    if (m && m[1] === "" && m[2] !== "") {
+      start = Math.max(0, size - end);
+      end = size - 1;
+    } else if (m && !Number.isNaN(start) && Number.isNaN(end)) {
+      end = size - 1;
+    }
+    if (!m || Number.isNaN(start) || Number.isNaN(end) || start > end || start >= size) {
+      res.writeHead(416, { ...base, "Content-Range": `bytes */${size}` });
+      res.end();
+      return;
+    }
+    end = Math.min(end, size - 1);
+    res.writeHead(206, {
+      ...base,
+      "Content-Range": `bytes ${start}-${end}/${size}`,
+      "Content-Length": String(end - start + 1),
+    });
+    if (req.method === "HEAD") return void res.end();
+    await pipeline(createReadStream(absPath, { start, end }), res);
+    return;
+  }
+  res.writeHead(200, { ...base, "Content-Length": String(size) });
+  if (req && req.method === "HEAD") return void res.end();
   await pipeline(createReadStream(absPath), res);
 }
 
@@ -264,7 +296,7 @@ function startFrontDoor() {
     if (abs) {
       console.log(`[s1r1us] front-door static overlay ${req.method} ${pathname}`);
       try {
-        await serveStatic(res, abs);
+        await serveStatic(res, abs, req);
       } catch (err) {
         console.error("[s1r1us] static serve error:", err.message);
         if (!res.headersSent) {
