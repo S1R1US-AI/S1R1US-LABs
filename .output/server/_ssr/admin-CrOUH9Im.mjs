@@ -2629,7 +2629,7 @@ var GUIDE = [
 			`${TAB_GM} is not bot 8 on the public tape. It is a sleeve with full awareness of bots 1–7.`,
 			"Practice is open to every visitor. Live unlock is admin HMAC only. Live book is not stored in the browser.",
 			"AUTO may arm day-trader sleeve sells only when admin is in Live. AUTO never naked-shorts. MANUAL settings that fire a clip are printed on the fill card.",
-			"TRIM keeps bitcoin — send to Coinbase Receive 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8. Fund the sleeve with native USDC (Ethereum ERC-20 + Base) at 0x551163f5d4c0361155d16131459afa5c936a60ad. Same 0x address on both chains.",
+			"TRIM keeps bitcoin — send to Coinbase Receive 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8. Fund the sleeve with native USDC (Ethereum ERC-20 + Base) at 0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf. Same 0x address on both chains.",
 			"Day-trader candle slider 1h–24h folds Coinbase hourly bars. RSI 30/70 on that candle.",
 			"The 7-bot stack is never sold and never shorted. A GM sleeve fill cannot write the paper book."
 		]
@@ -4678,7 +4678,7 @@ function TreasuryPanel() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 				className: "max-w-3xl text-sm leading-relaxed text-fg",
 				children: [
-					"The 0x (e.g. 0x5511…) goes ",
+					"The 0x (e.g. 0x843d…) goes ",
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "font-medium",
 						children: "here"
@@ -4713,7 +4713,7 @@ function TreasuryPanel() {
 						value: usdc,
 						onChange: (e) => setUsdc(e.target.value.trim()),
 						onPaste: guardPaste,
-						placeholder: "0x551163f5d4c0361155d16131459afa5c936a60ad",
+						placeholder: "0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf",
 						className: "mt-1 h-11 w-full rounded-md border border-rule bg-surface px-3 font-mono text-sm text-fg",
 						autoComplete: "off"
 					}),

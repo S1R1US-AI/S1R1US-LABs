@@ -13,7 +13,7 @@ export const GM_TF_MIN = 1;
 export const GM_TF_MAX = 24;
 export const GM_PROFIT_BTC = PROFIT_BTC_RECEIVE;
 export const GM_PROFIT_EXPLORER = PROFIT_BTC_EXPLORER;
-export const GM_FUND_USDC = "0x551163f5d4c0361155d16131459afa5c936a60ad";
+export const GM_FUND_USDC = "0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf";
 export const GM_FUND_EXPLORER = `https://basescan.org/address/${GM_FUND_USDC}`;
 
 export type GmPilot = "AUTO" | "MANUAL";

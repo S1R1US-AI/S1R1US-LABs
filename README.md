@@ -62,7 +62,7 @@ A cultural ticker named s1r1us may appear on a public pad. This repo and s1r1us.
 Optional gifts (hosting / apps only — unconditional; no tokens; no tax advice):
 
 - BTC: `33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8`
-- USDC (Ethereum ERC-20 + Base): `0x551163f5d4c0361155d16131459afa5c936a60ad`
+- USDC (Ethereum ERC-20 + Base): `0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf`
 
 ```bash
 npm install
