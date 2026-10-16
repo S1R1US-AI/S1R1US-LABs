@@ -16,7 +16,9 @@
   menu.querySelectorAll('[data-share]').forEach(function (a) { a.href = links[a.getAttribute('data-share')]; });
   btn.addEventListener('click', function () {
     if (navigator.share) {
-      navigator.share({ title: 'Exit the MATRIX', text: text, url: url }).catch(function () {});
+      navigator.share({ title: 'Exit the MATRIX', text: text, url: url }).catch(function (err) {
+        if (!err || err.name !== 'AbortError') { menu.hidden = false; }
+      });
     } else {
       menu.hidden = !menu.hidden;
     }
