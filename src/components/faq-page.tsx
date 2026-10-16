@@ -202,7 +202,7 @@ export function FaqPage() {
             <p className="faq-kicker text-[10px] font-semibold tracking-[0.1em] uppercase">FAQ · {TAB_CUP}</p>
             <p className="faq-title mt-1 text-base font-semibold">{CUP_HEADLINE}</p>
             <p className="faq-text mt-1 text-sm">
-              Annual SUP3R B0WL winners plus 5 wild cards plus G M0D3 AUTO (Godzilla Mode). BTC QUANT FLEX. King of Quant for Bitcoin Trading. All research projects invited.
+              Annual SUP3R B0WL winners plus 5 wild cards plus G M0D3 AUTO (G0Dz1LLa M0D3). BTC QUANT FLEX. King of Quant for Bitcoin Trading. All research projects invited.
             </p>
           </div>
         </Link>
