@@ -74,3 +74,8 @@
   border-color: var(--teal);
   color: var(--teal);
 }
+
+/* Share fallback menu: .pg-cta-row { display:flex } must not override [hidden] */
+#em-share-menu[hidden] {
+  display: none !important;
+}
