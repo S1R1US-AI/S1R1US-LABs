@@ -222,6 +222,33 @@ Go-live: PoC rails STARTED (2026-09-05), Auto GM practice NEXT, Auto AI agent ac
 - System admin and copy admin each save only their own stratum in the admin BTC M1N3Rz tab; hash power graph by hour / day / month / year. Active miners on the pool populate the view.
 - Read-only stats. This host never pools hash, never takes custody of visitor funds, never places Coinbase orders. Education only. Not financial advice.
 
+## Copyright
+
+- S1R1US.ai Copyright @ Policy: https://s1r1us.ai/copyright-terms/ — COPYRIGHT (S1R1US.ai's own declared works: source code, logos, names, marked originals; © S1R1US.ai lower right; the SAI Citizens United LTD logo is excluded from that mark) and OUTSIDE-COPYRIGHT (borrowed or mixed art and/or music, work in progress toward full legal compliance; original source credit shown lower right). Fair use only. VALID stop-use requests are respected: https://s1r1us.ai/copyright-terms#stop-use-form. Re-verification after AUTO BLOCK: https://s1r1us.ai/copyright-terms#review-form. FAQ: https://s1r1us.ai/faq#copyright-policy
+
+## Newsletter
+
+- SAI Citizens United News (S1R1US.ai newsletter): https://s1r1us.ai/newsletter/ — status updates, bug fixes, new features, security notes, milestones. Coming soon. Signup opens after launch. No email addresses are collected yet. Privacy and subscription details will be published before signup opens. FAQ: https://s1r1us.ai/faq#newsletter
+
+## Escape the MATRIX
+
+- How to Escape the MATRIX: https://s1r1us.ai/escape-the-matrix/ — S1R1US.ai is building an escape ramp from deep state digital prisons with open-source, transparent, citizen-owned code based on PEACE, LOVE and FREEDOM. How to join: GitHub, MANIFESTO, X @S1R1US_AI, Br0k3n S0ft Substack, Newsletter (coming soon), code and bug reports. FAQ: https://s1r1us.ai/faq#escape-the-matrix
+- "want even more crazy rabb1t holes?" section on the same page (https://s1r1us.ai/escape-the-matrix/#rabbit-holes): links to third-party YouTube videos (Robert Breedlove Clips channel; Decentralized Medicine with Jack Kruse; Bitcoin and Humanity's Decentralized Revolution with Dr. Jack Kruse on WiM; Carl Hayden Smith on Danny Jones), the Br0k3n S0ft Substack, the SAI Citizens United LTD logo with the quote "3scape tha MATRIX by building the N3w MATR1X", and the art Turing's Computah N1ghtMare. Links only, no embeds.
+
+## Global Uprisings
+
+- Top 5 public uprisings against government control and AI surveillance, 2025-2026 ("W3 r tha Re$1stance N0W, join the N3W MATR1X"): https://s1r1us.ai/global-uprisings/ — informational news summary with cited sources (AP, Reuters, the Guardian, HRANA, Al Jazeera, BBC, RSF, TechCrunch, UK Parliament Petitions): Iran nationwide protests (Dec 2025-Feb 2026), Turkey Istanbul rallies over the jailing of the mayor (Mar 2025), Nepal Gen Z protest over a social media ban (Sept 2025), India Cockroach Janta Party protests and AI facial recognition (Jul-Oct 2026), UK digital ID petition (2,984,191 signatures, plan scrapped Jul 2026). Figures as reported by the cited outlets. SAI Citizens United LTD is non-political and supports only peaceful, lawful civic action. Also on the page: the SAI Citizens United LTD philosophy (PEACE, LOVE, FREEDOM; an army of captains with no generals; HACTIVISM = hacking society and propaganda 4 the b3tter through education, experimentation, open source and lawful activism; all war and hack words are symbolic, no violence, no illegal hacking) and a satire terminal (marketing only, not code). Hero: "Captains save the Constitution" (own AI artwork). Country images: Wikimedia Commons (CC BY / CC BY-SA). FAQ: https://s1r1us.ai/faq#global-uprisings
+
+## The Future
+
+- What does the Future Look Like at S1R1US.ai?: https://s1r1us.ai/future/ — the S1R1US.ai vision (peace, love, freedom; an army of captains, no generals; the U.S. Constitution as written and originally intended). Highlights: decentralized social media, decentralized money (education only, not investment advice) and a future Web3 integrated with respectful, responsible, regulated AI for AI education and AI research. Images: SAI Council of Citizens (hero) and G0Dz1LLa M0De / Godzilla mode matrix (a system admin uses S1R1US.ai to educate and do AI research, watched by future captains humpty, moFun and F1R3). Includes a signed opinion block by Br0k3n S0ft (political opinion, not statements of fact). All war, resistance and hack language is symbolic and lawful. FAQ: https://s1r1us.ai/faq#future
+- FAQ "L00K wh0 is W0K3 N0w" (look who is woke now): https://s1r1us.ai/faq#look-who-is-woke-now — G0Dz1LLa M0De (Godzilla Mode) teaser: something is waking up inside the matrix; G0Dz1LLa M0De is the system admin mode for AI education and AI research; citizens are waking up to digital control and propaganda and the army of captains is growing. Symbolic, peaceful and lawful language.
+
+## Understanding Numbers as S3CR3T Cosmic C0D3
+
+- Understanding Numbers as S3CR3T Cosmic C0D3: https://s1r1us.ai/cosmic-c0d3/ — philosophy and education page: the Mandelbrot set (z → z² + c), fractal self-similarity and symmetry (Benoit Mandelbrot, The Fractal Geometry of Nature, 1982), number theory, and the S1R1US.ai philosophy that Quantum Mechanics is the undefined underlying fabric of cosmic reality (labeled philosophy, not proven science). How AI lets citizens test theory and philosophy in real time. Timeline of evolution linking Br0k3n S0ft's Substack posts (https://br0k3ns0ft.substack.com). Hero image: Mandelbrot-Set-fractal-symmetry. Non-political, non-religious. SAI Citizens United LTD.
+- FAQ "What is Understanding Numbers as S3CR3T Cosmic C0D3?": https://s1r1us.ai/faq#cosmic-c0d3 — short answer: science + number theory + philosophy; Mandelbrot set z → z² + c and self-similarity; Quantum Mechanics as the undefined fabric of cosmic reality (philosophy, not proven science); AI lets citizens test theory and philosophy in real time. Page: https://s1r1us.ai/cosmic-c0d3/ · Br0k3n S0ft Substack: https://br0k3ns0ft.substack.com
+
 ## Do not index
 
 /admin /app/admin /login /guide /launch /source /renew /security /api/auth /theme
