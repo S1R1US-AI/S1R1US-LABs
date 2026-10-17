@@ -174,3 +174,14 @@
 @media (prefers-reduced-motion: reduce) { .bo-people-img img { transition: none; } }
 .bo-people-more { text-align: center; margin: 2rem auto 0; max-width: 240px; }
 .bo-people-more h3 { margin: 0.7rem 0 0.3rem; color: #dbb43a; font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+/* What MUSIC we listen to these days (2026-10-17b) */
+.bo-music { text-align: center; }
+.bo-music h2 { color: #dbb43a; font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.bo-music .bo-music-list { list-style: none; padding: 0; margin: 0.8rem auto 0.6rem; max-width: 36rem; }
+.bo-music-list li { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.9rem 1rem; border: 1px solid rgba(201, 162, 39, 0.45); border-radius: 10px; background: rgba(18, 22, 25, 0.75); }
+.bo-music-track { color: #c9a227; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 1.02rem; }
+.bo-music-track:hover, .bo-music-track:focus-visible { color: #2ec4b6; }
+.bo-music-artist { color: #2ec4b6; font-weight: 600; }
+.bo-music-follow { margin-top: 1rem; }
+.bo-music-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 0.7rem; }

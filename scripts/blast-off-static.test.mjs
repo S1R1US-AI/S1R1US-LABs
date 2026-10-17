@@ -36,3 +36,26 @@ test("front door claims /blast-off as a static route", () => {
   assert.ok(faq.includes('href="/blast-off/#meet-the-humans"'));
   assert.match(html, /id="meet-the-humans"/);
 });
+
+const book = readFileSync(new URL("book-dj-mo-funky/index.html", root), "utf8");
+
+test("book-dj-mo-funky is indexable, JSON-LD parses, assets exist and the front door serves it", () => {
+  assert.match(book, /<meta name="robots" content="index, follow, max-image-preview:large" \/>/);
+  assert.equal((book.match(/<h1[\s>]/g) || []).length, 1);
+  assert.match(book, /<link rel="canonical" href="https:\/\/s1r1us\.ai\/book-dj-mo-funky\/" \/>/);
+  for (const m of book.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    const ld = JSON.parse(m[1]);
+    const person = ld["@graph"].find((n) => n["@type"] === "Person");
+    assert.equal(person.name, "DJ i-B Mo FuNky");
+    assert.ok(person.sameAs.includes("https://dji-bmofunky.bandcamp.com/"));
+    assert.equal(ld["@graph"].find((n) => n["@type"] === "Organization").name, "SAI Citizens United LTD");
+  }
+  for (const r of [...book.matchAll(/(?:src|href|srcset)="(\/[^"#?\s]+)/g)].map((m) => m[1])) {
+    if (r.endsWith("/")) continue;
+    assert.ok(existsSync(new URL(r.slice(1), root)), `missing asset ${r}`);
+  }
+  assert.ok(start.includes('"/book-dj-mo-funky"') && start.includes('"/book-dj-mo-funky/"'));
+  assert.match(faq, /class="faq-item" id="book-dj-mo-funky"/);
+  assert.equal((faq.match(/data-featured="top5"/g) || []).length, 5);
+  assert.ok(html.includes('href="https://open.spotify.com/track/3b7doVly0rz4na3rqZUasE"'));
+});

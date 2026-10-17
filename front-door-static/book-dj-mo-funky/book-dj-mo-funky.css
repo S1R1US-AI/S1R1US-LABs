@@ -1,0 +1,9 @@
+/* /book-dj-mo-funky/ page-scoped styles (bg #121619 / gold #c9a227 #dbb43a / teal #2ec4b6 / IBM Plex Mono). Builds on blast-off.css. */
+.bk-img { aspect-ratio: 1200 / 630; }
+.bk-book { color: #c9a227; }
+.bk-section { text-align: left; }
+.bk-section h2 { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.bk-steps { margin: 0.8rem 0 0.4rem; padding-left: 1.4rem; line-height: 1.65; }
+.bk-steps li { margin: 0 0 0.55rem; }
+.bk-steps a, .bk-section p a { color: #2ec4b6; }
+.bk-ctas { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.9rem; }

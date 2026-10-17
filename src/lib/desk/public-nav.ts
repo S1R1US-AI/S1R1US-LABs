@@ -162,6 +162,7 @@ export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/future/`]: "2026-10-16",
   [`${origin}/cosmic-c0d3/`]: "2026-10-16",
   [`${origin}/blast-off/`]: "2026-10-17",
+  [`${origin}/book-dj-mo-funky/`]: "2026-10-17",
   [`${origin}/sitemap`]: "2026-10-17",
   [`${origin}/llms.txt`]: "2026-10-17",
   [`${origin}/.well-known/llms.txt`]: "2026-10-17",
@@ -466,6 +467,15 @@ export const PUBLIC_PAGES = [
     priority: "0.6",
   },
   {
+    path: "/book-dj-mo-funky",
+    loc: `${origin}/book-dj-mo-funky/`,
+    label: "Book DJ i-B Mo FuNky",
+    title: "BOOK > DJ Mo FuNky for a show today | S1R1US.ai",
+    hint: "Book DJ i-B Mo FuNky (Mo FuNky), the S1R1US.ai system DJ and graphic artist, for a show. Listen on Bandcamp and get the newsletter for new music releases and DJ i-B Mo FuNky show updates.",
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
     path: "/sitemap",
     loc: `${origin}/sitemap`,
     label: "Sitemap",
@@ -692,6 +702,11 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     id: "meet-the-humans",
     q: "Who are the humans behind S1R1US.ai? (Meet the HUmAns)",
     a: "Two humans fly with the S1R1US.ai bot crew. Br0k3n S0ft is the system admin; read his writing on Substack: https://br0k3ns0ft.substack.com/about. DJ i-B Mo FuNky (Mo FuNky) is the system DJ and graphic artist; listen on Bandcamp: https://dji-bmofunky.bandcamp.com/. Details: Meet the HUmAns on the Blast Off page (/blast-off/#meet-the-humans).",
+  },
+  {
+    id: "book-dj-mo-funky",
+    q: "BOOK > DJ Mo FuNky for a show today",
+    a: "DJ i-B Mo FuNky (Mo FuNky) is the S1R1US.ai system DJ and graphic artist. To book Mo FuNky for a show, start on the booking page (/book-dj-mo-funky/). A direct booking contact is coming soon; until then, listen and follow on Bandcamp: https://dji-bmofunky.bandcamp.com/ and get the S1R1US.ai newsletter (/newsletter/) for new music releases and DJ i-B Mo FuNky show updates.",
   },
   {
     id: "future",

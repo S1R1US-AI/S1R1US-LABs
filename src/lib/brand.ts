@@ -335,6 +335,18 @@ export const SITE_IMAGES = [
     pages: ["/faq", "/faq/"],
   },
   {
+    src: "/images/faq/book-dj-mo-funky-show-today-dj-booth-turntables-neon-music-notes.jpg",
+    name: seoImgAlt("BOOK > DJ Mo FuNky for a show today · S1R1US.ai"),
+    caption: seoImgAlt("An empty DJ booth on a night stage, ready for a show: turntables and a mixer glowing neon green and purple, headphones and rising music notes (AI artwork)"),
+    pages: ["/faq", "/faq/", "/book-dj-mo-funky", "/book-dj-mo-funky/"],
+  },
+  {
+    src: "/images/faq/look-who-is-woke-now-wireframe-kaiju-waking-in-matrix-code-captains.jpg",
+    name: seoImgAlt("L00K wh0 is W0K3 N0w · G0Dz1LLa · S1R1US.ai"),
+    caption: seoImgAlt("A giant glowing rainbow wireframe creature opens its eyes inside falling green matrix code while young captains, seen from behind, look up holding tablets (AI artwork)"),
+    pages: ["/faq", "/faq/"],
+  },
+  {
     src: "/images/SAI-citizens-united-medium.png",
     name: seoImgAlt("SAI Citizens United logo medium"),
     caption: seoImgAlt("SAI Citizens United logo medium"),

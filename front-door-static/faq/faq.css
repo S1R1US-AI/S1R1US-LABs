@@ -264,3 +264,35 @@
   border-bottom-color: var(--gold);
   font-weight: 700;
 }
+
+/* Top 5 featured FAQs (2026-10-17b): larger heading, gold card, more spacing, full-width concept image. */
+.faq-item[data-featured="top5"] {
+  margin: 0 auto 1.6rem;
+  padding: 1.35rem 1.4rem 1.45rem;
+  border: 2px solid #c9a227;
+  border-radius: calc(var(--radius) + 4px);
+  background: linear-gradient(180deg, rgba(201, 162, 39, 0.09) 0%, rgba(28, 33, 38, 0.85) 38%);
+  box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.18), 0 10px 34px rgba(0, 0, 0, 0.45);
+  max-width: 64rem;
+}
+.faq-item[data-featured="top5"] h2 {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-weight: 800;
+  color: #dbb43a;
+  margin: 0 0 0.9rem;
+}
+.faq-item[data-featured="top5"] p { font-size: 0.98rem; margin: 0 0 0.7rem; }
+.faq-item[data-featured="top5"] p:last-child { margin-bottom: 0; }
+.faq-item .faq-feature { margin: 0 0 1rem; }
+.faq-feature-img {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid rgba(201, 162, 39, 0.55);
+  border-radius: 10px;
+  background: #121619;
+}
+.faq-feature a:hover .faq-feature-img, .faq-feature a:focus-visible .faq-feature-img { border-color: #2ec4b6; }
