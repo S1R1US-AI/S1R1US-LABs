@@ -37,7 +37,7 @@ test("public/.well-known/llms.txt exists, matches public/llms.txt, and has every
 
 test("SEO follow-up: per-page lastmod, branded titles, trimmed descriptions, no ops wording, home links", () => {
   assert.match(nav, /SITEMAP_PAGE_LASTMOD\[u\.loc\] \?\? lastmod/);
-  for (const p of ["copyright-terms", "cosmic-c0d3/", "newsletter/"]) assert.ok(nav.includes(`[\`\${origin}/${p}\`]: "2026-10-16"`), `lastmod missing ${p}`);
+  for (const p of ["copyright-terms/", "cosmic-c0d3/", "newsletter/"]) assert.ok(nav.includes(`[\`\${origin}/${p}\`]: "2026-10-16"`), `lastmod missing ${p}`);
   for (const [f, t] of [["terms", "Terms and Agreements"], ["privacy", "Privacy Policy"], ["sitemap", "Sitemap"]]) {
     assert.ok(read(`front-door-static/${f}/index.html`).includes(`<title>${t} · S1R1US.ai</title>`), `${f} title`);
   }
@@ -53,6 +53,6 @@ test("SEO follow-up: per-page lastmod, branded titles, trimmed descriptions, no 
   assert.ok(home.includes('href="/cosmic-c0d3/"') && home.includes('href="/copyright-terms"'));
   for (const f of ["copyright-terms", "terms", "privacy", "sitemap"]) {
     const c = read(`front-door-static/${f}/index.html`).match(/rel="canonical" href="https:\/\/s1r1us\.ai([^"]*)"/)[1];
-    assert.equal(c, `/${f}`, `${f} canonical`);
+    assert.equal(c, `/${f}/`, `${f} canonical`);
   }
 });
