@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-DenI0CCv.js";var t=e;export{t as component};

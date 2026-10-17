@@ -323,6 +323,30 @@ export const SITE_IMAGES = [
     pages: ["/faq", "/faq/"],
   },
   {
+    src: "/blast-off/images/digital-launch-pad-spaceship-blast-off-2001-internet-era.jpg",
+    name: seoImgAlt("Blast Off: In Search of the Truth · S1R1US.ai"),
+    caption: seoImgAlt("A silver and gold spaceship blasts off from a digital launch pad built from 2001-era CRT monitors, floppy disks and paper records turning into green binary code (AI artwork)"),
+    pages: ["/blast-off", "/blast-off/"],
+  },
+  {
+    src: "/images/faq/meet-the-humans-br0k3n-s0ft-dj-i-b-mo-funky-avatars.jpg",
+    name: seoImgAlt("Meet the HUmAns · Br0k3n S0ft and DJ i-B Mo FuNky"),
+    caption: seoImgAlt("Meet the HUmAns: avatars of Br0k3n S0ft, the S1R1US.ai system admin, and DJ i-B Mo FuNky, the system DJ (AI artwork)"),
+    pages: ["/faq", "/faq/"],
+  },
+  {
+    src: "/images/faq/book-dj-mo-funky-show-today-dj-booth-turntables-neon-music-notes.jpg",
+    name: seoImgAlt("BOOK > DJ Mo FuNky for a show today · S1R1US.ai"),
+    caption: seoImgAlt("An empty DJ booth on a night stage, ready for a show: turntables and a mixer glowing neon green and purple, headphones and rising music notes (AI artwork)"),
+    pages: ["/faq", "/faq/", "/book-dj-mo-funky", "/book-dj-mo-funky/"],
+  },
+  {
+    src: "/images/faq/look-who-is-woke-now-wireframe-kaiju-waking-in-matrix-code-captains.jpg",
+    name: seoImgAlt("L00K wh0 is W0K3 N0w · G0Dz1LLa · S1R1US.ai"),
+    caption: seoImgAlt("A giant glowing rainbow wireframe creature opens its eyes inside falling green matrix code while young captains, seen from behind, look up holding tablets (AI artwork)"),
+    pages: ["/faq", "/faq/"],
+  },
+  {
     src: "/images/SAI-citizens-united-medium.png",
     name: seoImgAlt("SAI Citizens United logo medium"),
     caption: seoImgAlt("SAI Citizens United logo medium"),

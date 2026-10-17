@@ -286,6 +286,9 @@ export function Shell({
               <a href="/future/" className="shrink-0 text-oss hover:underline" title="What does the Future Look Like at S1R1US.ai? · S1R1US.ai">
                 The Future
               </a>
+              <a href="/blast-off/" className="shrink-0 text-oss hover:underline" title="Blast Off: In Search of the Truth · S1R1US.ai">
+                Blast Off
+              </a>
               <Link to="/forum" className="forum-nav shrink-0 hover:underline" title={TAB_HOVER_FORUM}>
                 <ForumTitle />
               </Link>
