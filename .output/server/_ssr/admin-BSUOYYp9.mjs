@@ -32,7 +32,7 @@ import { n as TapeFreezePanel } from "./tape-freeze-CWZH4nVf.mjs";
 import { r as probeSiteHealth, t as LaunchDesk } from "./launch-desk-Cvd_wm2a.mjs";
 import { t as rollBots } from "./roll-bots-CKZiIeoC.mjs";
 import { n as Lock3dStatusPanel } from "./lock3d-status-D4UQsCVw.mjs";
-import { D as usePractice, E as PRACTICE_MS, G as useWindowHash, H as saverLockLabel, U as useIsClient, W as useSaverLock } from "./router-DSs9AEWy.mjs";
+import { D as usePractice, E as PRACTICE_MS, G as useWindowHash, H as saverLockLabel, U as useIsClient, W as useSaverLock } from "./router-BeTiCdfN.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/admin-BSUOYYp9.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

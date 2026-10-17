@@ -9,7 +9,7 @@ import { _ as Panel, a as GmRainbow, c as GoldCss } from "./shell-CLyDNkBl.mjs";
 import { c as TAB_LOCK3D, d as lockGifSrc, i as LOCK_GIF_OPEN_NAME, n as LOCK_GIF_CLOSED, r as LOCK_GIF_OPEN, u as groupLockRows } from "./lock-status-BcM1CMkJ.mjs";
 import { r as APP_ADMIN_PATH } from "./tenancy-XVYWlKJ3.mjs";
 import { S as setLockStatus, u as fetchLockStatus } from "./desk-rpc-DfPw_Ou_.mjs";
-import { B as GM_BURST_MS, V as rainGmBurst } from "./router-DSs9AEWy.mjs";
+import { B as GM_BURST_MS, V as rainGmBurst } from "./router-BeTiCdfN.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/lock3d-status-D4UQsCVw.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
