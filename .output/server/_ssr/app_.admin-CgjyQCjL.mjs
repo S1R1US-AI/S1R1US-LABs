@@ -14,7 +14,7 @@ import { a as LiveSimPanel, i as HiveAdminPanel, n as BtcMinersPanel, o as Morni
 import { n as CallWords, u as money } from "./helios-card-CybsYjFp.mjs";
 import { a as useAppAdmin, n as Lock3dStatusPanel } from "./lock3d-status-CYp09RAD.mjs";
 import { t as AskGrokPanel } from "./ask-grok-panel-BxjxO9hl.mjs";
-import { W as useIsClient } from "./router-Dirb_X7y.mjs";
+import { W as useIsClient } from "./router-CX6YcDoA.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/app_.admin-CgjyQCjL.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
