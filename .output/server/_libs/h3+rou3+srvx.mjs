@@ -1373,4 +1373,4 @@ function redirect(location, status = 302, statusText) {
 	});
 }
 //#endregion
-export { redirect as a, NodeResponse as c, defineLazyEventHandler as i, serve as l, HTTPError as n, toEventHandler as o, defineHandler as r, toRequest as s, H3Core as t, FastURL as u };
+export { redirect as a, NodeResponse as c, defineLazyEventHandler as i, serve as l, HTTPError as n, toEventHandler as o, defineHandler as r, toRequest as s, H3Core as t };
