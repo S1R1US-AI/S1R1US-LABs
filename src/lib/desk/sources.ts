@@ -6,6 +6,7 @@ import { recordDeskFails } from "./error-log";
 import { FILING_CIKS, GOLD_TICKERS, MACRO_QUOTES, MAG7_TICKERS, PROXY_QUOTES, SILVER_TICKERS } from "./proxy-book";
 import { DESK_POLL_MS } from "./poll";
 import { guardedFetch } from "./net-guard";
+import { decodeFeedText } from "./html-text";
 import { isTapeFrozen, readLastGood, writeLastGood } from "./tape-persist";
 import { fetchPredictionMarkets } from "./prediction-markets";
 import type { AsiaTape, AsiaVenue, BtcHolder, Candle, CapitalTape, DatHolding, DeskSnapshot, EmRegion, EmTape, EmVenue, Filing, Flow, GoldBtcTape, Headline, HoldersTape, LeverageVenue, MacroTape, MetalHolding, Quote, RateSeries, StableYield, StrategyProduct, StrategyTape, WhalePrint } from "./types";
@@ -342,13 +343,7 @@ function tag(block: string, name: string): string {
 }
 
 function decode(s: string): string {
-  return s
-    .replace(/<[^>]+>/g, "")
-    .replace(/&/g, "&")
-    .replace(/</g, "<")
-    .replace(/>/g, ">")
-    .replace(/"/g, '"')
-    .replace(/&#39;/g, "'");
+  return decodeFeedText(s);
 }
 
 type CoinbaseTicker = {
