@@ -249,6 +249,11 @@ Go-live: PoC rails STARTED (2026-09-05), Auto GM practice NEXT, Auto AI agent ac
 - Understanding Numbers as S3CR3T Cosmic C0D3: https://s1r1us.ai/cosmic-c0d3/ — philosophy and education page: the Mandelbrot set (z → z² + c), fractal self-similarity and symmetry (Benoit Mandelbrot, The Fractal Geometry of Nature, 1982), number theory, and the S1R1US.ai philosophy that Quantum Mechanics is the undefined underlying fabric of cosmic reality (labeled philosophy, not proven science). How AI lets citizens test theory and philosophy in real time. Timeline of evolution linking Br0k3n S0ft's Substack posts (https://br0k3ns0ft.substack.com). Hero image: Mandelbrot-Set-fractal-symmetry. Non-political, non-religious. SAI Citizens United LTD.
 - FAQ "What is Understanding Numbers as S3CR3T Cosmic C0D3?": https://s1r1us.ai/faq#cosmic-c0d3 — short answer: science + number theory + philosophy; Mandelbrot set z → z² + c and self-similarity; Quantum Mechanics as the undefined fabric of cosmic reality (philosophy, not proven science); AI lets citizens test theory and philosophy in real time. Page: https://s1r1us.ai/cosmic-c0d3/ · Br0k3n S0ft Substack: https://br0k3ns0ft.substack.com
 
+## Blast Off
+
+- Blast Off: In Search of the Truth: https://s1r1us.ai/blast-off/ — Br0k3n S0ft's vision of a team of AI bots and human captains in search of the truth. Sections: the crew (every bot stays in its lane), how the team works, from the 2001 launch pad to orbit, the questions we will explore (when did time begin, Big Bang and Big Crunch, quantum fabric, space-time, electromagnetic energy, signal jamming vs signal augmentation), the space-time Mandelbrot Mind Virus (1 million projects inside 1 project), Hop aboard captains, Hopelessly Optimistic, and Meet the humans (https://s1r1us.ai/blast-off/#meet-the-humans). No affiliation with or endorsement by Elon Musk, SpaceX or xAI is claimed. SAI Citizens United LTD.
+- FAQ "Who are the humans behind S1R1US.ai? (Meet the HUmAns)": https://s1r1us.ai/faq#meet-the-humans — Br0k3n S0ft, system admin (Substack: https://br0k3ns0ft.substack.com/about) and DJ i-B Mo FuNky (Mo FuNky), system DJ and graphic artist (Bandcamp: https://dji-bmofunky.bandcamp.com/).
+
 ## Do not index
 
 /admin /app/admin /login /guide /launch /source /renew /security /api/auth /theme

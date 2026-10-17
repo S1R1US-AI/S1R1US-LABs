@@ -151,7 +151,7 @@ export const SITEMAP_LASTMOD = "2026-09-12";
 /** Per-URL lastmod for pages changed after SITEMAP_LASTMOD (PR #205 + SEO follow-up, 2026-10-16). */
 export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/`]: "2026-10-16",
-  [`${origin}/faq/`]: "2026-10-16",
+  [`${origin}/faq/`]: "2026-10-17",
   [`${origin}${TERMS_PATH}`]: "2026-10-16",
   [`${origin}${PRIVACY_PATH}`]: "2026-10-16",
   [`${origin}/copyright-terms`]: "2026-10-16",
@@ -161,9 +161,10 @@ export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/global-uprisings/`]: "2026-10-16",
   [`${origin}/future/`]: "2026-10-16",
   [`${origin}/cosmic-c0d3/`]: "2026-10-16",
-  [`${origin}/sitemap`]: "2026-10-16",
-  [`${origin}/llms.txt`]: "2026-10-16",
-  [`${origin}/.well-known/llms.txt`]: "2026-10-16",
+  [`${origin}/blast-off/`]: "2026-10-17",
+  [`${origin}/sitemap`]: "2026-10-17",
+  [`${origin}/llms.txt`]: "2026-10-17",
+  [`${origin}/.well-known/llms.txt`]: "2026-10-17",
 };
 
 export const PUBLIC_PAGES = [
@@ -456,6 +457,15 @@ export const PUBLIC_PAGES = [
     priority: "0.6",
   },
   {
+    path: "/blast-off",
+    loc: `${origin}/blast-off/`,
+    label: "Blast Off",
+    title: "Blast Off: In Search of the Truth | S1R1US.ai Vision",
+    hint: "Br0k3n S0ft's vision of a team of AI bots and human captains in search of the truth: Big Bang, quantum fabric, space-time, energy, the Mandelbrot Mind Virus of 1 million projects inside 1 project, Hopelessly Optimistic, and Meet the humans (Br0k3n S0ft and DJ i-B Mo FuNky).",
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
     path: "/sitemap",
     loc: `${origin}/sitemap`,
     label: "Sitemap",
@@ -678,6 +688,11 @@ export function sitemapIndexXml(lastmod = SITEMAP_LASTMOD) {
 }
 
 export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
+  {
+    id: "meet-the-humans",
+    q: "Who are the humans behind S1R1US.ai? (Meet the HUmAns)",
+    a: "Two humans fly with the S1R1US.ai bot crew. Br0k3n S0ft is the system admin; read his writing on Substack: https://br0k3ns0ft.substack.com/about. DJ i-B Mo FuNky (Mo FuNky) is the system DJ and graphic artist; listen on Bandcamp: https://dji-bmofunky.bandcamp.com/. Details: Meet the HUmAns on the Blast Off page (/blast-off/#meet-the-humans).",
+  },
   {
     id: "future",
     q: "What does the Future Look Like at S1R1US.ai?",

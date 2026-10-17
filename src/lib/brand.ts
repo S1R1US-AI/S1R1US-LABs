@@ -323,6 +323,18 @@ export const SITE_IMAGES = [
     pages: ["/faq", "/faq/"],
   },
   {
+    src: "/blast-off/images/digital-launch-pad-spaceship-blast-off-2001-internet-era.jpg",
+    name: seoImgAlt("Blast Off: In Search of the Truth · S1R1US.ai"),
+    caption: seoImgAlt("A silver and gold spaceship blasts off from a digital launch pad built from 2001-era CRT monitors, floppy disks and paper records turning into green binary code (AI artwork)"),
+    pages: ["/blast-off", "/blast-off/"],
+  },
+  {
+    src: "/images/faq/meet-the-humans-br0k3n-s0ft-dj-i-b-mo-funky-avatars.jpg",
+    name: seoImgAlt("Meet the HUmAns · Br0k3n S0ft and DJ i-B Mo FuNky"),
+    caption: seoImgAlt("Meet the HUmAns: avatars of Br0k3n S0ft, the S1R1US.ai system admin, and DJ i-B Mo FuNky, the system DJ (AI artwork)"),
+    pages: ["/faq", "/faq/"],
+  },
+  {
     src: "/images/SAI-citizens-united-medium.png",
     name: seoImgAlt("SAI Citizens United logo medium"),
     caption: seoImgAlt("SAI Citizens United logo medium"),
