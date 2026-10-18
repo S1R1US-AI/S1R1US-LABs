@@ -353,6 +353,42 @@ export const SITE_IMAGES = [
     pages: ["/global-uprisings", "/global-uprisings/"],
   },
   {
+    src: "/images/global-uprisings/india-cockroach-jantar-mantar-students-2026-1600.webp",
+    name: seoImgAlt("India protest · Election rolls · detentions · mobile internet cut"),
+    caption: seoImgAlt("India: Students at Jantar Mantar, New Delhi, 20 July 2026, during the same movement's summer protests. Not a photo of the October event. (Sumita Roy Dutta, CC BY-SA 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/kenya-reject-finance-bill-nairobi-2024-1600.webp",
+    name: seoImgAlt("Kenya protest · Tax rises · cost of living"),
+    caption: seoImgAlt("Kenya: Reject Finance Bill protest, Nairobi, 20 June 2024. (Egotieno, CC0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/indonesia-medan-protest-police-line-2025-1600.webp",
+    name: seoImgAlt("Indonesia protest · Lawmakers' allowances · austerity"),
+    caption: seoImgAlt("Indonesia: Riot police line in Medan, North Sumatra, August 2025, during the same nationwide wave of protests. (Nafisathallah, CC BY-SA 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/philippines-trillion-peso-march-edsa-2025-1600.webp",
+    name: seoImgAlt("Philippines protest · Flood-control funds · corruption"),
+    caption: seoImgAlt("Philippines: Trillion Peso March near the EDSA Shrine, Metro Manila, 21 September 2025. (Sean Ronquillo (Ubediplomacy), CC BY-SA 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/serbia-belgrade-eve-of-march-15-protest-2025-1600.webp",
+    name: seoImgAlt("Serbia protest · Public works · corruption · accountability"),
+    caption: seoImgAlt("Serbia: Belgrade welcomes student walkers on the eve of the 15 March 2025 rally, 14 March 2025. (Emilija Knezevic, CC BY 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
+    src: "/images/global-uprisings/hungary-budapest-elisabeth-bridge-crowd-2025-1600.webp",
+    name: seoImgAlt("Hungary protest · Facial recognition · right to assemble"),
+    caption: seoImgAlt("Hungary: Marchers fill the streets and Elisabeth Bridge, Budapest, 28 June 2025. (Banned pride, CC BY 4.0, Wikimedia Commons)"),
+    pages: ["/global-uprisings", "/global-uprisings/"],
+  },
+  {
     src: "/images/sai-council-of-citizens.jpg",
     name: seoImgAlt("SAI Council of Citizens · SAI Citizens United LTD"),
     caption: seoImgAlt("SAI Council of Citizens: Br0k3n S0ft, a sensei and captains of every background protecting the U.S. Constitution (AI artwork)"),

@@ -218,3 +218,46 @@
   text-align: center;
 }
 @media (prefers-reduced-motion: reduce) { .gu-cursor { animation: none; } }
+
+/* 2026-10-18: Global Uprisings over financial inequality and surveillance grids (6 official news reports). */
+.gu-news { max-width: 76rem; }
+.gu-news-kicker { margin: 0 0 0.25rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: #2ec4b6; }
+.gu-news-intro { max-width: 52rem; }
+.gu-news-list { list-style: none; margin: 1.2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: 1.1rem; }
+.gu-news-item { min-width: 0; border: 1px solid rgba(201, 162, 39, 0.4); border-radius: var(--radius-sm); background: rgba(255, 255, 255, 0.02); padding: 0.9rem 0.95rem 1rem; }
+.gu-news-item article { display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
+.gu-news-item h3 { margin: 0; font-size: 1.08rem; line-height: 1.35; color: #dbb43a; overflow-wrap: anywhere; }
+.gu-news-tag { margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.78rem; }
+.gu-news-country { padding: 0.1rem 0.5rem; border: 1px solid #2ec4b6; border-radius: 999px; color: #2ec4b6; font-weight: 700; }
+.gu-news-topic { color: var(--muted, #9aa4ad); }
+.gu-news-meta { margin: 0; font-size: 0.85rem; color: var(--muted, #9aa4ad); }
+.gu-news-figure { margin: 0.2rem 0; }
+.gu-news-figure .etm-img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.gu-news-figure figcaption { font-size: 0.8rem; line-height: 1.5; overflow-wrap: anywhere; }
+.gu-credit { display: block; margin-top: 0.3rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.74rem; color: var(--muted, #9aa4ad); }
+.gu-credit-k { color: #c9a227; font-weight: 700; }
+.gu-credit-full { display: inline; }
+.gu-news-sum { margin: 0; }
+.gu-news-src { margin: 0; font-size: 0.85rem; overflow-wrap: anywhere; }
+.gu-quote { margin: 0.2rem 0; padding: 0.7rem 0.9rem; border-left: 4px solid #c9a227; background: rgba(201, 162, 39, 0.08); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.gu-quote p { margin: 0 0 0.5rem; }
+.gu-quote .gu-quote-h { font-weight: 800; color: #f2e6c2; }
+.gu-quote footer { font-size: 0.78rem; color: var(--muted, #9aa4ad); overflow-wrap: anywhere; }
+.gu-credit-list li { overflow-wrap: anywhere; }
+
+/* Explore together: like / subscribe block */
+.gu-explore { text-align: center; border: 1px solid rgba(201, 162, 39, 0.45); border-radius: 12px; padding: 1.5rem 1.25rem; background: linear-gradient(180deg, rgba(23, 184, 166, 0.08), rgba(201, 162, 39, 0.06)); }
+.gu-explore .gu-like { font-size: 1.35rem; font-weight: 800; color: #c9a227; margin: 0.25rem 0 0.75rem; }
+.gu-explore .gu-thanks { max-width: 40rem; margin: 0 auto 0.75rem; }
+.gu-explore .gu-stars { font-size: 1.15rem; font-weight: 700; color: #3ee6c8; margin: 0.35rem 0; }
+.gu-cta-main { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem; margin: 1.25rem 0 0.75rem; }
+.gu-cta-main .pg-cta { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; }
+.gu-cta-big { font-size: 1.2rem; padding: 0.9rem 1.75rem; font-weight: 800; }
+.gu-more { font-size: 0.9rem; }
+@media (max-width: 600px) {
+  .gu-cta-main { flex-direction: column; align-items: stretch; }
+  .gu-cta-main .pg-cta { width: 100%; }
+}
+
+/* © S1R1US.ai in the lower right of the footer */
+.gu-page .site-footer .gu-copy { align-self: flex-end; width: 100%; margin: 0.6rem 0 0; text-align: right; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.8rem; color: #c9a227; }
