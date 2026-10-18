@@ -397,3 +397,19 @@ video.faq-feature-img { aspect-ratio: 1200 / 630; }
   .faq-item[data-featured="dmt-top"] .faq-dmt-figure figcaption { padding: 0.3rem 1rem 0; }
   .faq-item[data-featured="dmt-top"] h2 { font-size: 1.15rem; }
 }
+
+/* Featured link row (DMT and Plant Medicine + Dr1pped 0ut MATR1X): between the SAI logo and the Top 5 row */
+.faq-feature2 { margin: 0 auto 1.25rem; max-width: 34rem; }
+.faq-feature2-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.faq-feature2-img { aspect-ratio: 16 / 9; }
+.faq-feature2 .faq-top5-title { font-size: 0.82rem; }
+@media (max-width: 34rem) {
+  .faq-feature2-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .faq-feature2-row .faq-top5-tile:last-child { grid-column: auto; justify-self: stretch; width: auto; }
+}
+@media (max-width: 20rem) {
+  .faq-feature2-row { grid-template-columns: 1fr; }
+}
+
+/* Phones: long unbroken strings (addresses, URLs, paths) must wrap instead of widening the page */
+.faq-item p, .faq-item li, .faq-item code { overflow-wrap: anywhere; }

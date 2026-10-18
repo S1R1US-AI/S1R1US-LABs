@@ -203,7 +203,7 @@ test("faq top entry: What exactly is DMT and plant Medicine? sits above the logo
   assert.ok(img && /plant medicine/i.test(img.caption) && /DMT/.test(img.caption));
   const d = meta(faq, "name", "description");
   assert.ok(d.length <= 160 && /DMT and plant medicine/.test(d), d);
-  for (const k of ["G0Dz1LLa M0De", "AI research", "Bitcoin education", "AI agents", "newsletter", "Escape the MATRIX", "SAI Citizens United LTD"]) assert.ok(d.includes(k), `faq description kept ${k}`);
+  for (const k of ["Godzilla MODE", "AI research", "Bitcoin education", "AI agents", "newsletter", "Escape the MATRIX", "SAI Citizens United LTD"]) assert.ok(d.includes(k), `faq description kept ${k}`);
   const kw = meta(faq, "name", "keywords");
   for (const k of ["plant medicine", "DMT", "what is DMT", "DMT plant medicine", "S1R1US.ai FAQ", "SAI Citizens United LTD"]) assert.ok(kw.includes(k), `faq keywords ${k}`);
   assert.ok(faq.includes('<li><a href="#what-is-dmt-plant-medicine">'), "TOC entry");
@@ -218,4 +218,34 @@ test("plant-medicine-dmt is in the sitemap images, llms.txt and FAQ_ITEMS", () =
   assert.ok(llms.includes("plant-medicine-dmt"));
   assert.match(nav, /id: "what-is-dmt-plant-medicine",\n {4}q: "What exactly is DMT and plant Medicine\?"/);
   assert.doesNotMatch(nav, /id: "dmt"/);
+});
+
+test("faq top order: DMT entry, SAI logo, featured 2-tile row (DMT + Dr1pped 0ut MATR1X), then Top 5", () => {
+  const main = faq.slice(faq.indexOf("<main>"));
+  const pos = ['id="what-is-dmt-plant-medicine"', 'class="faq-header-logo"', '<nav class="faq-feature2"', '<nav class="faq-top5"', 'class="faq-top5-h"'].map((s) => main.indexOf(s));
+  assert.ok(pos.every((p) => p > 0), `all blocks present ${pos}`);
+  assert.deepEqual([...pos].sort((a, b) => a - b), pos, "order: DMT entry < logo < feature row < Top 5");
+  const row = main.match(/<nav class="faq-feature2"[\s\S]*?<\/nav>/)[0];
+  const tiles = [...row.matchAll(/<li class="faq-top5-tile">([\s\S]*?)<\/li>/g)].map((m) => m[1]);
+  assert.equal(tiles.length, 2);
+  assert.match(tiles[0], /href="\/dmt\/"[\s\S]*src="\/dmt\/images\/plant-medicine-dmt-800\.webp"[\s\S]*>DMT and Plant Medicine</);
+  assert.match(tiles[1], /href="\/dripped-out-matrix\/"[\s\S]*src="\/images\/faq\/dripped-out-matrix-tv-head-dancer-disco-dj-hero-800\.webp"[\s\S]*>Dr1pped 0ut MATR1X</);
+  for (const t of tiles) {
+    assert.match(t, /class="faq-top5-link"/);
+    assert.match(t, /alt="[^"]{40,}"/);
+    const src = t.match(/src="\/([^"]+)"/)[1];
+    assert.ok(existsSync(new URL(src, root)), `tile image ${src}`);
+  }
+  assert.match(main.slice(0, main.indexOf('<nav class="faq-feature2"')), /\/dripped-out-matrix\/ exists only on branch feat\/dripped-out-matrix-page-06-2026-10-18[\s\S]*Both pages must ship together/);
+  assert.equal((faq.match(/data-featured="top5"/g) || []).length, 5);
+});
+
+test("faq search text spells Godzilla MODE; visible glyph is M0D3 on /faq/ and /dmt/", () => {
+  for (const [a, n] of [["name", "description"], ["property", "og:description"], ["name", "twitter:description"]]) {
+    const d = meta(faq, a, n);
+    assert.ok(d.includes("Godzilla MODE") && !/G0Dz1LLa/.test(d) && d.length <= 160, `${n}: ${d}`);
+  }
+  const g = JSON.parse(faq.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  assert.ok(g.find((x) => x["@type"] === "WebPage").description.includes("Godzilla MODE"));
+  for (const page of [faq, html]) assert.doesNotMatch(page, /M0De/);
 });
