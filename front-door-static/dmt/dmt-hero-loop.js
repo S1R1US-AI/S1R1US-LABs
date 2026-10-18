@@ -5,7 +5,9 @@
  *   the poster stays, the button offers Play, and the next tap or key press anywhere retries.
  *   Gestures that start on the Pause/Play button are left to its own click handler, so one
  *   activation never plays and then pauses again.
- * - No JS: the native autoplay/loop attributes still run where allowed; the still poster is the fallback.
+ * - No JS: the native autoplay/loop attributes still run where allowed, and the native `controls`
+ *   in the markup give a way to pause (WCAG 2.2.2). They are removed only once the custom Pause
+ *   button below is wired and visible, so a pause control is always on screen.
  */
 (function () {
   'use strict';
@@ -73,12 +75,15 @@
     });
 
     if (btn) {
-      btn.hidden = false;
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         if (v.paused || userPaused) { userPaused = false; tryPlay(); }
         else { userPaused = true; v.pause(); disarm(); sync(); }
       });
+      btn.hidden = false;
+      // The custom toggle is now live: drop the no-JS native controls fallback.
+      v.controls = false;
+      v.removeAttribute('controls');
     }
 
     tryPlay();

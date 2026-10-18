@@ -7,7 +7,7 @@ import vm from "node:vm";
 
 const src = readFileSync(new URL("../front-door-static/dmt/dmt-hero-loop.js", import.meta.url), "utf8");
 
-function setup({ blocked }) {
+function setup({ blocked, withButton = true }) {
   class Node {
     constructor() { this.l = {}; }
     addEventListener(t, f) { (this.l[t] ||= []).push(f); }
@@ -19,8 +19,9 @@ function setup({ blocked }) {
   Object.assign(btn, { hidden: true, textContent: "Pause animation", attrs: {}, setAttribute(k, v) { this.attrs[k] = v; }, contains: (t) => t === btn });
   const v = new Node();
   Object.assign(v, {
-    paused: true, attrs: {}, setAttribute(k, val) { this.attrs[k] = val; },
-    parentNode: { querySelector: () => btn },
+    paused: true, controls: true, attrs: { controls: "" }, setAttribute(k, val) { this.attrs[k] = val; },
+    removeAttribute(k) { delete this.attrs[k]; },
+    parentNode: { querySelector: () => (withButton ? btn : null) },
     play() {
       if (env.blocked) return Promise.reject(new Error("NotAllowedError"));
       this.paused = false; this.fire("play"); return Promise.resolve();
@@ -92,4 +93,23 @@ test("only Pause stops the loop; Play resumes it; gestures elsewhere do not over
   await tick();
   assert.equal(v.paused, false);
   assert.equal(btn.textContent, "Pause animation");
+});
+
+test("no-JS fallback: native controls stay until the Pause button is wired and visible, then go", async () => {
+  const markup = readFileSync(new URL("../front-door-static/dmt/index.html", import.meta.url), "utf8");
+  assert.match(markup, /<video class="dmt-hero-loop"[^>]*\bcontrols\b/, "markup ships native controls for no-JS readers");
+  const { btn, v } = setup({ blocked: false });
+  await tick();
+  assert.equal(btn.hidden, false);
+  assert.equal(v.controls, false);
+  assert.ok(!("controls" in v.attrs));
+  assert.ok((btn.l.click || []).length === 1, "toggle handler attached");
+});
+
+test("no toggle in the markup: native controls are kept so a pause control always exists", async () => {
+  const { v } = setup({ blocked: false, withButton: false });
+  await tick();
+  assert.equal(v.controls, true);
+  assert.ok("controls" in v.attrs);
+  assert.equal(v.paused, false, "still autoplays and loops");
 });

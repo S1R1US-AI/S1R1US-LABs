@@ -83,7 +83,7 @@ test("dmt images: AI art has srcset, sizes, captions, lazy loading except the he
     assert.match(f, /loading="lazy"/);
   });
   const hero = html.match(/<figure class="etm-figure dmt-ai-figure dmt-hero-figure">([\s\S]*?)<\/figure>/)[1];
-  for (const a of ["autoplay", "muted", "loop", "playsinline"]) assert.match(hero, new RegExp(`<video [^>]*\\b${a}\\b`), `hero video ${a}`);
+  for (const a of ["autoplay", "muted", "loop", "playsinline", "controls"]) assert.match(hero, new RegExp(`<video [^>]*\\b${a}\\b`), `hero video ${a}`);
   assert.match(hero, /poster="\/dmt\/images\/plant-medicine-dmt-poster\.webp"/);
   assert.match(hero, /<source src="\/dmt\/images\/plant-medicine-dmt-loop\.mp4" type="video\/mp4" \/>/);
   assert.match(hero, /<source src="\/dmt\/images\/plant-medicine-dmt-loop\.webm" type="video\/webm" \/>/);
