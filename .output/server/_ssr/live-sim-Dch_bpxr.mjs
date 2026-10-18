@@ -1,5 +1,5 @@
 import { r as checkpointLabel } from "./checkpoint-DmgRjnZY.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/live-sim-Dch_bpxr.js
+//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/live-sim-Dch_bpxr.js
 /** G M0D3 AUTO + AI agents as-live simulation until go-live. Client-safe. */
 var LIVE_SIM_NAME = "G M0D3 AUTO · AI agents live simulation";
 var LIVE_SIM_SEO = "G-M0de AUTO live simulation";
