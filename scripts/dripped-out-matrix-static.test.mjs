@@ -2,6 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, statSync } from "node:fs";
+import { isUrl, jsonLd, textUrls, titleText, visibleText } from "./lib/html-tokens.mjs";
 
 const root = new URL("../front-door-static/", import.meta.url);
 const html = readFileSync(new URL("dripped-out-matrix/index.html", root), "utf8");
@@ -12,15 +13,15 @@ const sitemap = readFileSync(new URL("sitemap/index.html", root), "utf8");
 const llms = ["../public/llms.txt", "../public/.well-known/llms.txt", "../.output/public/llms.txt", "../.output/public/.well-known/llms.txt"].map((p) =>
   readFileSync(new URL(p, import.meta.url), "utf8"),
 );
-const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap((m) => JSON.parse(m[1])["@graph"]);
-const visible = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<!--[\s\S]*?-->/g, "").replace(/<head>[\s\S]*?<\/head>/, "").replace(/<[^>]+>/g, " ");
+const ld = jsonLd(html).flatMap((b) => b["@graph"]);
+const visible = visibleText(html);
 
 test("dripped-out-matrix: indexable, one H1, canonical, title and description limits, keywords", () => {
   assert.match(html, /<meta name="robots" content="index, follow, max-image-preview:large" \/>/);
   assert.equal((html.match(/<h1[\s>]/g) || []).length, 1);
   assert.match(html, /<h1 [^>]*>[\s\S]*Dr1pped 0ut MATR1X[\s\S]*<\/h1>/);
   assert.match(html, /<link rel="canonical" href="https:\/\/s1r1us\.ai\/dripped-out-matrix\/" \/>/);
-  const title = html.match(/<title>([^<]*)<\/title>/)[1].replace(/&amp;/g, "&");
+  const title = titleText(html);
   const desc = html.match(/<meta name="description" content="([^"]*)"/)[1];
   assert.ok(title.length <= 60 && title.startsWith("Dr1pped 0ut MATR1X"), `title ${title.length}`);
   assert.ok(desc.length >= 120 && desc.length <= 160, `description ${desc.length}`);
@@ -111,7 +112,7 @@ test("dripped-out-matrix: front door, sitemaps, brand images and all four llms.t
   assert.ok(nav.includes("loc: `${origin}/dripped-out-matrix/`"));
   assert.ok(sitemap.includes('href="/dripped-out-matrix/"'));
   assert.equal((brand.match(/src: "\/dripped-out-matrix\/images\//g) || []).length, 4);
-  for (const t of llms) assert.ok(t.includes("https://s1r1us.ai/dripped-out-matrix/"));
+  for (const t of llms) assert.ok(textUrls(t).some((u) => isUrl(u, "s1r1us.ai", "/dripped-out-matrix/")), "llms.txt links https://s1r1us.ai/dripped-out-matrix/");
   assert.ok(llms.every((t) => t === llms[0]), "llms.txt copies differ");
 });
 

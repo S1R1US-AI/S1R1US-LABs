@@ -2,6 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
+import { jsonLd, metaContent, titleText, visibleText } from "./lib/html-tokens.mjs";
 
 const root = new URL("../front-door-static/", import.meta.url);
 const html = readFileSync(new URL("dmt/index.html", root), "utf8");
@@ -19,7 +20,7 @@ test("dmt is indexable, has one H1, canonical and a share card that exists", () 
 });
 
 test("dmt JSON-LD parses, the FAQPage matches the visible FAQ and local assets exist", () => {
-  const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
+  const blocks = jsonLd(html);
   const nodes = blocks.flatMap((b) => b["@graph"] ?? [b]);
   const faqPage = nodes.find((n) => n["@type"] === "FAQPage");
   assert.equal(faqPage.publisher.name, "SAI Citizens United LTD");
@@ -105,14 +106,14 @@ test("dmt images: AI art has srcset, sizes, captions, lazy loading except the he
 });
 
 test("dmt SEO: title and description lengths, OG card 1200x630, Article author, BreadcrumbList", () => {
-  const title = html.match(/<title>([^<]*)<\/title>/)[1].replace(/&amp;/g, "&");
+  const title = titleText(html);
   const desc = html.match(/<meta name="description" content="([^"]*)"/)[1];
   assert.ok(title.length >= 50 && title.length <= 65, `title ${title.length}`);
   assert.ok(desc.length >= 140 && desc.length <= 160, `description ${desc.length}`);
   for (const k of ["What is DMT", "Plant medicine", "ayahuasca", "Indigenous heritage", "quantum reality", "consciousness", "Br0k3n S0ft", "S1R1US.ai"]) assert.ok(desc.includes(k), `description missing ${k}`);
   assert.match(html, /<meta property="og:image" content="https:\/\/s1r1us\.ai\/dmt\/images\/plant-medicine-dmt-og\.jpg" \/>/);
   assert.match(html, /<meta name="twitter:site" content="@S1R1US_AI" \/>/);
-  const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  const ld = jsonLd(html)[0]["@graph"];
   const art = ld.find((n) => n["@type"] === "Article");
   assert.equal(art.author.name, "Br0k3n S0ft");
   assert.equal(art.publisher.name, "SAI Citizens United LTD");
@@ -121,8 +122,8 @@ test("dmt SEO: title and description lengths, OG card 1200x630, Article author, 
   for (const r of ["/faq/", "/escape-the-matrix/", "/"]) assert.ok(html.includes(`href="${r}"`), `internal link ${r}`);
 });
 
-const decodeAttr = (s) => s.replace(/&amp;/g, "&").replace(/&#x27;/g, "'").replace(/&quot;/g, '"');
-const meta = (h, attr, name) => decodeAttr((h.match(new RegExp(`<meta ${attr}="${name}" content="([^"]*)"`)) || [])[1] ?? "");
+const meta = (h, attr, name) => metaContent(h, attr, name);
+const isWiki = (u) => { try { const x = new URL(u); return x.protocol === "https:" && x.host === "en.wikipedia.org" && x.pathname.startsWith("/wiki/") && x.pathname.length > 6; } catch { return false; } };
 
 test("dmt keyword SEO: plant medicine / DMT in title, meta, OG, Twitter, headings, alt text, JSON-LD Things", () => {
   const kw = meta(html, "name", "keywords");
@@ -130,7 +131,7 @@ test("dmt keyword SEO: plant medicine / DMT in title, meta, OG, Twitter, heading
     assert.ok(kw.split(", ").includes(k), `meta keywords missing ${k}`);
   }
   assert.doesNotMatch(kw, /\bcure|\bheal|treatment/i, "no medical or cure claims in keywords");
-  const title = decodeAttr(html.match(/<title>([^<]*)<\/title>/)[1]);
+  const title = titleText(html);
   assert.ok(title.length <= 60 && /DMT/.test(title) && /Plant Medicine/i.test(title), title);
   for (const [a, n] of [["property", "og:title"], ["name", "twitter:title"], ["property", "og:description"], ["name", "twitter:description"]]) {
     const v = meta(html, a, n);
@@ -141,14 +142,14 @@ test("dmt keyword SEO: plant medicine / DMT in title, meta, OG, Twitter, heading
   assert.match(html, /<h2 id="dmt-intro-h">What is DMT\?/);
   assert.match(html, /<h2 id="dmt-ethics-h">Plant medicine/);
   assert.match(html, /alt="Gaia&#x27;s face[^"]*DMT and plant medicine art"/);
-  const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  const ld = jsonLd(html)[0]["@graph"];
   const art = ld.find((n) => n["@type"] === "Article");
   for (const k of ["plant medicine", "DMT", "what is DMT", "DMT plant medicine"]) assert.ok(art.keywords.split(", ").includes(k), `Article keywords ${k}`);
   const about = Object.fromEntries(art.about.map((x) => [x.name, x.sameAs]));
   for (const [n, w] of [["DMT", "N,N-Dimethyltryptamine"], ["Ayahuasca", "Ayahuasca"], ["Plant medicine", "Medicinal_plants"], ["Psilocybin", "Psilocybin"], ["Peyote", "Peyote"]]) {
     assert.equal(about[n], `https://en.wikipedia.org/wiki/${w}`, `about ${n}`);
   }
-  assert.ok(art.about.every((x) => x["@type"] === "Thing") && art.mentions.every((x) => x["@type"] === "Thing" && x.sameAs.startsWith("https://en.wikipedia.org/wiki/")));
+  assert.ok(art.about.every((x) => x["@type"] === "Thing") && art.mentions.every((x) => x["@type"] === "Thing" && isWiki(x.sameAs)));
   const vid = ld.find((n) => n["@type"] === "VideoObject");
   assert.equal(vid.duration, "PT12S");
   assert.equal(vid.contentUrl, "https://s1r1us.ai/dmt/images/plant-medicine-dmt-loop.mp4");
@@ -188,13 +189,14 @@ test("faq top entry: What exactly is DMT and plant Medicine? sits above the logo
   assert.match(sec, /<h2 id="faq-what-is-dmt-plant-medicine-h"><span id="dmt" class="faq-anchor-alias" aria-hidden="true"><\/span>What exactly is DMT and plant Medicine\?<\/h2>/);
   assert.match(sec, /<a href="\/dmt\/"><img src="\/dmt\/images\/plant-medicine-dmt-1600\.webp"[^>]*alt="Plant medicine and DMT: [^"]+"[^>]*max-width:52rem/);
   assert.match(sec, /<figcaption[^>]*>AI-generated art · fictional figures · © S1R1US\.ai<\/figcaption>/);
-  const answer = sec.match(/<\/figure>\s*<p>([\s\S]*?)<\/p>/)[1].replace(/<[^>]+>/g, "");
+  const answerHtml = sec.match(/<\/figure>\s*<p>([\s\S]*?)<\/p>/)[1];
+  const answer = visibleText(answerHtml, { skipHead: false, tagSpace: false });
   const n = answer.split(/(?<=[.?!])\s+(?=[A-Z])/).length;
   assert.ok(n >= 2 && n <= 4, `answer sentences ${n}`);
   for (const k of ["DMT (N,N-dimethyltryptamine)", "naturally occurring psychedelic compound", "Plant medicine", "ayahuasca", "Amazon plant medicine", "psilocybin mushrooms and peyote", "Indigenous peoples and shamans of the Amazon and Mexico", "Schedule I", "not medical advice"]) assert.ok(answer.includes(k), `answer: ${k}`);
   assert.match(sec, /Read more about DMT and plant medicine on <a href="\/dmt\/">/);
   assert.doesNotMatch(answer, /\b(first|second|third|fourth|fifth|Broken Soft|cure|cures)\b/i);
-  const g = JSON.parse(faq.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  const g = jsonLd(faq)[0]["@graph"];
   const fp = g.find((x) => x["@type"] === "FAQPage");
   assert.equal(fp.mainEntity[0].name, "What exactly is DMT and plant Medicine?");
   assert.equal(fp.mainEntity[0].url, "https://s1r1us.ai/faq/#what-is-dmt-plant-medicine");
@@ -252,7 +254,7 @@ test("faq search text spells Godzilla MODE; visible glyph is M0D3 on /faq/ and /
     const d = meta(faq, a, n);
     assert.ok(d.includes("Godzilla MODE") && !/G0Dz1LLa/.test(d) && d.length <= 160, `${n}: ${d}`);
   }
-  const g = JSON.parse(faq.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  const g = jsonLd(faq)[0]["@graph"];
   assert.ok(g.find((x) => x["@type"] === "WebPage").description.includes("Godzilla MODE"));
   for (const page of [faq, html]) assert.doesNotMatch(page, /M0De/);
 });
