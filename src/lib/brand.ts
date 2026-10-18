@@ -257,6 +257,66 @@ export const SITE_IMAGES = [
     pages: ["/escape-the-matrix", "/escape-the-matrix/"],
   },
   {
+    src: "/dmt/images/plant-medicine-dmt-1600.webp",
+    name: seoImgAlt("plant medicine DMT · Gaia over a Mayan temple · S1R1US.ai"),
+    caption: seoImgAlt("Plant medicine and DMT, AI-generated art with fictional figures: Gaia's face in swirling green and ice blue clouds above a glowing Mayan temple under a red moon, a priest and a shaman leading a plant medicine ceremony with citizens"),
+    pages: ["/dmt", "/dmt/", "/faq", "/faq/"],
+  },
+  {
+    src: "/dmt/images/dmt-plant-medicine-reality-portal-quantum-hero-1600.webp",
+    name: seoImgAlt("dmt plant medicine reality portal quantum hero · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: a glowing golden fractal reality portal of sacred geometry above a misty night jungle, under falling green matrix code, symbolizing DMT, ancient plant medicine, consciousness and quantum reality"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dmt/images/ayahuasca-amazon-indigenous-shaman-plant-medicine-heritage-1600.webp",
+    name: seoImgAlt("ayahuasca amazon indigenous shaman plant medicine heritage · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: an Indigenous Amazon elder seen from behind beside a small fire in the rainforest at dusk, with a twisting ayahuasca vine (Banisteriopsis caapi), honoring Amazon plant medicine heritage"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dmt/images/mexico-indigenous-plant-medicine-heritage-peyote-mushrooms-1600.webp",
+    name: seoImgAlt("mexico indigenous plant medicine heritage peyote mushrooms · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: a peyote cactus and wild mushrooms on a woven Mexican Indigenous textile in a desert valley at sunset, honoring Mexico's plant medicine heritage"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dmt/images/quantum-mechanics-quantum-computing-reality-veil-meditation-1600.webp",
+    name: seoImgAlt("quantum mechanics quantum computing reality veil meditation · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: a meditating figure before a lifting veil of reality, with quantum wave patterns and a glowing qubit lattice, symbolizing quantum mechanics, quantum computing and consciousness"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dmt/images/ex1t-ramp-escape-the-matrix-peaceful-lawful-1600.webp",
+    name: seoImgAlt("ex1t ramp escape the matrix peaceful lawful · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: a glowing green exit ramp curving out of a digital matrix city toward a peaceful sunrise over green hills, the peaceful and lawful EX1T RAMP"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dripped-out-matrix/images/dripped-out-matrix-tv-head-dancer-disco-dj-hero-1500.webp",
+    name: seoImgAlt("dripped out matrix tv head dancer disco dj hero \u00b7 S1R1US.ai"),
+    caption: seoImgAlt("Dr1pped 0ut MATR1X title card: a TV head dancer in a matrix code jacket dances on a rainbow disco floor while a skeleton DJ drops beats, with robots and green matrix rain. Art \u00a9 S1R1US.ai"),
+    pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
+  },
+  {
+    src: "/dripped-out-matrix/images/dripped-out-matrix-purple-tv-head-dancer-skull-sneakers-1500.webp",
+    name: seoImgAlt("dripped out matrix purple tv head dancer skull sneakers \u00b7 S1R1US.ai"),
+    caption: seoImgAlt("Purple TV head dancer kicking in neon green skull sneakers on a purple and black checker floor, with a skeleton DJ at a skull booth and dancing robots. Art \u00a9 S1R1US.ai"),
+    pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
+  },
+  {
+    src: "/dripped-out-matrix/images/dripped-out-matrix-code-drip-jacket-dancer-robots-1500.webp",
+    name: seoImgAlt("dripped out matrix code drip jacket dancer robots \u00b7 S1R1US.ai"),
+    caption: seoImgAlt("TV head dancer whose jacket drips glowing green matrix code, dancing with robots beside a skeleton DJ and neon triangles. Art \u00a9 S1R1US.ai"),
+    pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
+  },
+  {
+    src: "/dripped-out-matrix/images/dripped-out-matrix-robot-dance-party-skeleton-dj-1500.webp",
+    name: seoImgAlt("dripped out matrix robot dance party skeleton dj \u00b7 S1R1US.ai"),
+    caption: seoImgAlt("Robot dance party: chrome robots dance around a spiky helmet dancer while a skeleton DJ in green goggles spins, with neon music notes and lasers. Art \u00a9 S1R1US.ai"),
+    pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
+  },
+  {
     src: "/images/captains-save-the-constitution.jpg",
     name: seoImgAlt("Captains save the Constitution · SAI Citizens United LTD"),
     caption: seoImgAlt("A futuristic sensei guides Br0k3n S0ft among a team of captains protecting the U.S. Constitution."),
@@ -300,8 +360,8 @@ export const SITE_IMAGES = [
   },
   {
     src: "/images/godzilla-mode-matrix.jpg",
-    name: seoImgAlt("G0Dz1LLa M0De · Godzilla mode matrix"),
-    caption: seoImgAlt("G0Dz1LLa M0De: a system admin uses S1R1US.ai to educate and do AI research, watched by future captains humpty, moFun and F1R3 (AI artwork)"),
+    name: seoImgAlt("G0Dz1LLa M0D3 · Godzilla mode matrix"),
+    caption: seoImgAlt("G0Dz1LLa M0D3: a system admin uses S1R1US.ai to educate and do AI research, watched by future captains humpty, moFun and F1R3 (AI artwork)"),
     pages: ["/future", "/future/"],
   },
   {
@@ -318,8 +378,8 @@ export const SITE_IMAGES = [
   },
   {
     src: "/images/kaizen-lab-godzilla-mode.jpg",
-    name: seoImgAlt("L00K wh0 is W0K3 N0w · G0Dz1LLa M0De teaser"),
-    caption: seoImgAlt("G0Dz1LLa M0De teaser: a giant rainbow wireframe monster wakes up inside the matrix code above an AI research and education lab (AI artwork)"),
+    name: seoImgAlt("L00K wh0 is W0K3 N0w · G0Dz1LLa M0D3 teaser"),
+    caption: seoImgAlt("G0Dz1LLa M0D3 teaser: a giant rainbow wireframe monster wakes up inside the matrix code above an AI research and education lab (AI artwork)"),
     pages: ["/faq", "/faq/"],
   },
   {

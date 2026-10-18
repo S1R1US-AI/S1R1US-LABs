@@ -151,7 +151,7 @@ export const SITEMAP_LASTMOD = "2026-09-12";
 /** Per-URL lastmod for pages changed after SITEMAP_LASTMOD (PR #205 + SEO follow-up, 2026-10-16). */
 export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/`]: "2026-10-16",
-  [`${origin}/faq/`]: "2026-10-17",
+  [`${origin}/faq/`]: "2026-10-18",
   [`${origin}${TERMS_PATH}/`]: "2026-10-16",
   [`${origin}${PRIVACY_PATH}/`]: "2026-10-16",
   [`${origin}/copyright-terms/`]: "2026-10-16",
@@ -163,9 +163,11 @@ export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/cosmic-c0d3/`]: "2026-10-16",
   [`${origin}/blast-off/`]: "2026-10-17",
   [`${origin}/book-dj-mo-funky/`]: "2026-10-17",
-  [`${origin}/sitemap/`]: "2026-10-17",
-  [`${origin}/llms.txt`]: "2026-10-17",
-  [`${origin}/.well-known/llms.txt`]: "2026-10-17",
+  [`${origin}/dmt/`]: "2026-10-18",
+  [`${origin}/dripped-out-matrix/`]: "2026-10-18",
+  [`${origin}/sitemap/`]: "2026-10-18",
+  [`${origin}/llms.txt`]: "2026-10-18",
+  [`${origin}/.well-known/llms.txt`]: "2026-10-18",
 };
 
 export const PUBLIC_PAGES = [
@@ -444,7 +446,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/future/`,
     label: "The Future",
     title: "What does the Future Look Like at S1R1US.ai? | Web3 + AI",
-    hint: "The S1R1US.ai vision: decentralized social media, decentralized money (not investment advice) and a future Web3 integrated with respectful, responsible, regulated AI for AI education and AI research. SAI Council of Citizens, G0Dz1LLa M0De, signed Br0k3n S0ft opinion.",
+    hint: "The S1R1US.ai vision: decentralized social media, decentralized money (not investment advice) and a future Web3 integrated with respectful, responsible, regulated AI for AI education and AI research. SAI Council of Citizens, G0Dz1LLa M0D3, signed Br0k3n S0ft opinion.",
     changefreq: "monthly",
     priority: "0.6",
   },
@@ -474,6 +476,24 @@ export const PUBLIC_PAGES = [
     hint: "Book DJ i-B Mo FuNky (Mo FuNky), the S1R1US.ai system DJ and graphic artist, for a show. Listen on Bandcamp and get the newsletter for new music releases and DJ i-B Mo FuNky show updates.",
     changefreq: "monthly",
     priority: "0.6",
+  },
+  {
+    path: "/dmt",
+    loc: `${origin}/dmt/`,
+    label: "DMT",
+    title: "DMT, Plant Medicine and the EX1T RAMP | S1R1US.ai",
+    hint: "Ancient plant medicine, DMT and ayahuasca: S1R1US.ai seeks a scientific understanding, respects Indigenous heritage, rejects commercializing plant medicine and labels beliefs as beliefs. Not medical advice.",
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
+    path: "/dripped-out-matrix",
+    loc: `${origin}/dripped-out-matrix/`,
+    label: "Dr1pped 0ut MATR1X",
+    title: "Dr1pped 0ut MATR1X: Neon Matrix Dance Party | S1R1US.ai",
+    hint: "Art gallery: a neon disco dance party inside the MATRIX, where TV-head dancers, robots and a skeleton DJ drop beats under matrix rain. Art © S1R1US.ai.",
+    changefreq: "monthly",
+    priority: "0.5",
   },
   {
     path: "/sitemap",
@@ -699,6 +719,11 @@ export function sitemapIndexXml(lastmod = SITEMAP_LASTMOD) {
 
 export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
+    id: "what-is-dmt-plant-medicine",
+    q: "What exactly is DMT and plant Medicine?",
+    a: "DMT (N,N-dimethyltryptamine) is a naturally occurring psychedelic compound found in many plants. Plant medicine means the traditional ceremonial use of plants such as ayahuasca, an Amazon plant medicine tradition, and, in Mexico, psilocybin mushrooms and peyote, honoring the Indigenous peoples and shamans of the Amazon and Mexico. In the United States, DMT is a Schedule I controlled substance, and this is not medical advice. Read more about DMT and plant medicine on /dmt/.",
+  },
+  {
     id: "meet-the-humans",
     q: "Who are the humans behind S1R1US.ai? (Meet the HUmAns)",
     a: "Two humans fly with the S1R1US.ai bot crew. Br0k3n S0ft is the system admin; read his writing on Substack: https://br0k3ns0ft.substack.com/about. DJ i-B Mo FuNky (Mo FuNky) is the system DJ and graphic artist; listen on Bandcamp: https://dji-bmofunky.bandcamp.com/. Details: Meet the HUmAns on the Blast Off page (/blast-off/#meet-the-humans).",
@@ -711,7 +736,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "future",
     q: "What does the Future Look Like at S1R1US.ai?",
-    a: "A future built by an army of captains, with no generals, that obeys the U.S. Constitution as written and originally intended. We highlight three pillars: decentralized social media that no single company or government can switch off, decentralized money you can read, run and hold yourself (education only, not investment advice), and a future Web3 integrated with respectful, responsible, regulated AI used for AI education and AI research. The SAI Council of Citizens and G0Dz1LLa M0De show the idea: captains of every background around the Constitution, and a system admin using S1R1US.ai to educate and do AI research. Peace, love, freedom; peaceful and lawful, open source and white-label. War, resistance and hack words are symbolic. Details: /future/.",
+    a: "A future built by an army of captains, with no generals, that obeys the U.S. Constitution as written and originally intended. We highlight three pillars: decentralized social media that no single company or government can switch off, decentralized money you can read, run and hold yourself (education only, not investment advice), and a future Web3 integrated with respectful, responsible, regulated AI used for AI education and AI research. The SAI Council of Citizens and G0Dz1LLa M0D3 show the idea: captains of every background around the Constitution, and a system admin using S1R1US.ai to educate and do AI research. Peace, love, freedom; peaceful and lawful, open source and white-label. War, resistance and hack words are symbolic. Details: /future/.",
   },
   {
     id: "copyright-policy",
@@ -721,7 +746,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "look-who-is-woke-now",
     q: "L00K wh0 is W0K3 N0w",
-    a: "Something is waking up inside the MATR1X. G0Dz1LLa M0De is our system admin mode for AI education and AI research: one prepared captain turns the power all the way up so everyone around them can learn. Citizens everywhere are waking up to digital control and propaganda, and the army of captains is growing, with no generals. Peaceful, lawful and symbolic: waking up means learning, asking questions and building open code, never violence and never illegal hacking. See /future/ and /future/#godzilla-mode. Follow @S1R1US_AI on X: https://x.com/S1R1US_AI.",
+    a: "Something is waking up inside the MATR1X. G0Dz1LLa M0D3 is our system admin mode for AI education and AI research: one prepared captain turns the power all the way up so everyone around them can learn. Citizens everywhere are waking up to digital control and propaganda, and the army of captains is growing, with no generals. Peaceful, lawful and symbolic: waking up means learning, asking questions and building open code, never violence and never illegal hacking. See /future/ and /future/#godzilla-mode. Follow @S1R1US_AI on X: https://x.com/S1R1US_AI.",
   },
   {
     id: "cosmic-c0d3",
