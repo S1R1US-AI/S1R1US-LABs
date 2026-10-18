@@ -6,6 +6,8 @@
  *   plays it, and pauses it when it leaves view or the tab is hidden.
  * - If play() is refused (Lockdown / Low Power / data saver), the poster stays.
  * - Source paths are checked first: same origin, /images/ or /blast-off/images/, .mp4/.webm only.
+ * - Each loop gets a Pause / Play button (WCAG 2.2.2), placed next to the avatar link, not inside it.
+ *   A pause by the user sticks: scrolling, tab switches and motion-setting changes never restart it.
  */
 (function () {
   'use strict';
@@ -32,21 +34,25 @@
   }
 
   function arm(v) {
-    if (v.getAttribute('data-loop-armed') === '1') return;
-    v.setAttribute('data-loop-armed', '1');
-    v.muted = true; // required for inline autoplay on iOS
+    var state = v.getAttribute('data-loop-armed');
+    if (state) return state === '1';
     var webm = safeSrc(v.getAttribute('data-loop-webm'), 'webm');
     var mp4 = safeSrc(v.getAttribute('data-loop-mp4'), 'mp4');
-    if (!webm && !mp4) return; // nothing valid: poster stays
+    if (!webm && !mp4) { v.setAttribute('data-loop-armed', 'none'); hideToggle(v); return false; } // nothing valid: poster stays
+    v.setAttribute('data-loop-armed', '1');
+    v.muted = true; // required for inline autoplay on iOS
     var s1 = null;
     if (webm) { s1 = document.createElement('source'); s1.src = webm; s1.type = 'video/webm'; v.insertBefore(s1, v.firstChild); }
     if (mp4) { var s2 = document.createElement('source'); s2.src = mp4; s2.type = 'video/mp4'; v.insertBefore(s2, s1 ? s1.nextSibling : v.firstChild); }
     v.load();
+    return true;
   }
 
+  function userPaused(v) { return v.getAttribute('data-loop-user-paused') === '1'; }
+
   function play(v) {
-    if (reduced() || document.hidden) return;
-    arm(v);
+    if (reduced() || document.hidden || userPaused(v)) return;
+    if (!arm(v)) return;
     var p = v.play();
     if (p && typeof p.catch === 'function') p.catch(function () { /* refused: poster stays */ });
   }
@@ -55,16 +61,84 @@
 
   function isVisible(v) { return visible ? !!visible.get(v) : true; }
 
-  if ('IntersectionObserver' in window) {
+  // Pause / Play toggle. It sits next to the link (a button can't live inside <a>)
+  // and is pinned to the top-right corner of the video's box.
+  var toggles = typeof WeakMap === 'function' ? new WeakMap() : null;
+  function toggleFor(v) { return toggles ? toggles.get(v) : null; }
+  function hideToggle(v) { var b = toggleFor(v); if (b) b.hidden = true; }
+
+  function syncToggle(v) {
+    var b = toggleFor(v);
+    if (!b) return;
+    var off = userPaused(v);
+    b.setAttribute('aria-pressed', off ? 'true' : 'false');
+    b.setAttribute('aria-label', off ? 'Play animation' : 'Pause animation');
+    b.title = off ? 'Play animation' : 'Pause animation';
+    b.setAttribute('data-state', off ? 'paused' : 'playing');
+    b.hidden = reduced() || v.getAttribute('data-loop-armed') === 'none';
+  }
+
+  function placeToggle(v) {
+    var b = toggleFor(v);
+    if (!b || b.hidden) return;
+    var host = b.parentNode;
+    var hr = host.getBoundingClientRect();
+    var vr = v.getBoundingClientRect();
+    var small = vr.width > 0 && vr.width < 120; // 64px intro avatars: smaller button on the ring's corner
+    if (b.classList) b.classList.toggle('s1-loop-toggle--sm', small);
+    var size = b.offsetWidth || (small ? 24 : 32);
+    var inset = small ? -6 : 6;
+    b.style.left = Math.round(vr.right - hr.left - size - inset) + 'px';
+    b.style.top = Math.round(vr.top - hr.top + inset) + 'px';
+  }
+
+  function addToggle(v) {
+    if (!toggles) return;
+    var link = v.closest ? v.closest('a') : null;
+    var anchor = link || v;
+    var host = anchor.parentNode;
+    if (!host) return;
+    if (host.classList) host.classList.add('s1-loop-host');
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 's1-loop-toggle';
+    host.insertBefore(b, anchor.nextSibling);
+    toggles.set(v, b);
+    b.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (userPaused(v)) {
+        v.removeAttribute('data-loop-user-paused');
+        syncToggle(v);
+        if (isVisible(v)) play(v);
+      } else {
+        v.setAttribute('data-loop-user-paused', '1');
+        syncToggle(v);
+        pause(v);
+      }
+    });
+    syncToggle(v);
+  }
+
+  function placeAll() { vids.forEach(placeToggle); }
+
+  vids.forEach(addToggle);
+  placeAll();
+  window.addEventListener('resize', placeAll);
+  window.addEventListener('load', placeAll);
+
+  if ('IntersectionObserver' in window && typeof window.IntersectionObserver === 'function') {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (visible) visible.set(e.target, e.isIntersecting);
-        if (e.isIntersecting) play(e.target); else pause(e.target);
+        if (e.isIntersecting) { placeToggle(e.target); play(e.target); } else pause(e.target);
       });
     }, { rootMargin: '200px 0px' });
     vids.forEach(function (v) { io.observe(v); });
   } else {
-    vids.forEach(play);
+    // No IntersectionObserver: treat every loop as visible so the tab-return
+    // and motion-setting resume paths below also work.
+    vids.forEach(function (v) { if (visible) visible.set(v, true); play(v); });
   }
 
   document.addEventListener('visibilitychange', function () {
@@ -76,8 +150,9 @@
   if (mq) {
     var onChange = function () {
       vids.forEach(function (v) {
+        syncToggle(v);
         if (reduced()) { pause(v); try { v.currentTime = 0; } catch { /* ignore */ } }
-        else if (isVisible(v)) play(v);
+        else if (isVisible(v)) { placeToggle(v); play(v); }
       });
     };
     if (typeof mq.addEventListener === 'function') mq.addEventListener('change', onChange);

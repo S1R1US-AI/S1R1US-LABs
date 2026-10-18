@@ -301,6 +301,17 @@ video.s1-loop { display: block; background: #121619; }
 /* No-JS: browsers show native controls on <video> when scripting is off; hide them so the poster stays clean (WebKit/Blink). */
 video.s1-loop::-webkit-media-controls, video.s1-loop::-webkit-media-controls-enclosure, video.s1-loop::-webkit-media-controls-overlay-play-button { display: none !important; }
 video.faq-feature-img { aspect-ratio: 1200 / 630; }
+/* Avatar loops Pause / Play toggle (WCAG 2.2.2): added by js/avatar-loops.js next to each avatar link, pinned to the video's top-right corner. */
+.s1-loop-host { position: relative; }
+.s1-loop-toggle { position: absolute; z-index: 2; width: 32px; height: 32px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #c9a227; background: rgba(18, 22, 25, 0.88); color: #dbb43a; cursor: pointer; line-height: 1; }
+.s1-loop-toggle[hidden] { display: none; }
+.s1-loop-toggle::before { content: ""; display: block; width: 10px; height: 12px; border-left: 3px solid currentColor; border-right: 3px solid currentColor; box-sizing: border-box; }
+.s1-loop-toggle[data-state="paused"]::before { width: 0; height: 0; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent currentColor; margin-left: 3px; }
+.s1-loop-toggle--sm { width: 24px; height: 24px; border-width: 1px; }
+.s1-loop-toggle--sm::before { width: 8px; height: 9px; border-left-width: 2px; border-right-width: 2px; }
+.s1-loop-toggle--sm[data-state="paused"]::before { border-width: 5px 0 5px 8px; margin-left: 2px; }
+.s1-loop-toggle:hover { border-color: #2ec4b6; color: #2ec4b6; }
+.s1-loop-toggle:focus-visible { outline: 3px solid #2ec4b6; outline-offset: 2px; border-color: #2ec4b6; color: #2ec4b6; }
 
 /* Top 5 FAQ tiles (2026-10-18): row under the SAI Citizens United LTD header logo.
    Same container width (52rem), 16:9 frame, border, radius and background as the logo;
