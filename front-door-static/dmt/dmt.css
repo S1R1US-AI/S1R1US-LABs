@@ -114,3 +114,18 @@
 .dmt-loop-toggle[hidden] { display: none; }
 
 .dmt-wikicard img[src*="molecule-structure"], .dmt-wikicard img[src*="newtons-cradle"] { object-fit: contain; padding: 0.4rem; box-sizing: border-box; }
+
+/* Explore together: merged like / subscribe / thanks block above the footer */
+.dmt-explore { text-align: center; border: 1px solid rgba(201, 162, 39, 0.45); border-radius: 12px; padding: 1.5rem 1.25rem; background: linear-gradient(180deg, rgba(23, 184, 166, 0.08), rgba(201, 162, 39, 0.06)); }
+.dmt-explore .dmt-like { font-size: 1.35rem; font-weight: 800; color: #c9a227; margin: 0.25rem 0 0.75rem; }
+.dmt-explore .dmt-thanks { max-width: 40rem; margin: 0 auto 0.75rem; }
+.dmt-explore .dmt-stars { font-size: 1.15rem; font-weight: 700; color: #3ee6c8; margin: 0.35rem 0; }
+.dmt-cta-main { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.75rem; margin: 1.25rem 0 0.75rem; }
+.dmt-cta-main .pg-cta { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; }
+.dmt-cta-big { font-size: 1.2rem; padding: 0.9rem 1.75rem; font-weight: 800; }
+.dmt-more { font-size: 0.9rem; }
+.dmt-anchor-alias { display: block; position: relative; top: -4rem; height: 0; }
+@media (max-width: 600px) {
+  .dmt-cta-main { flex-direction: column; align-items: stretch; }
+  .dmt-cta-main .pg-cta { width: 100%; }
+}

@@ -257,9 +257,9 @@ export const SITE_IMAGES = [
     pages: ["/escape-the-matrix", "/escape-the-matrix/"],
   },
   {
-    src: "/dmt/images/mayan-temple-ceremony-priest-shaman-citizens-red-moon-amazon-jungle-dmt-1600.webp",
-    name: seoImgAlt("mayan temple ceremony priest shaman citizens red moon \u00b7 S1R1US.ai DMT hero"),
-    caption: seoImgAlt("AI-generated art, fictional figures: an ancient plant medicine ceremony at a Mayan-style stone temple in the jungle under a blood-red moon, a shaman and a priest beside a fire surrounded by citizens"),
+    src: "/dmt/images/plant-medicine-dmt-1600.webp",
+    name: seoImgAlt("plant medicine DMT · Gaia over a Mayan temple · S1R1US.ai"),
+    caption: seoImgAlt("Plant medicine and DMT, AI-generated art with fictional figures: Gaia's face in swirling green and ice blue clouds above a glowing Mayan temple under a red moon, a priest and a shaman leading a plant medicine ceremony with citizens"),
     pages: ["/dmt", "/dmt/", "/faq", "/faq/"],
   },
   {

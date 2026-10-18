@@ -375,3 +375,25 @@ video.faq-feature-img { aspect-ratio: 1200 / 630; }
   .faq-top5-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .faq-top5-tile:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 0.3rem); }
 }
+
+/* Top entry: What exactly is DMT and plant Medicine? (above the logo and the Top 5 row) */
+.faq-item[data-featured="dmt-top"] {
+  max-width: 52rem;
+  margin: 0 auto 1.6rem;
+  padding: 1.35rem 1.4rem 1.45rem;
+  border: 2px solid #c9a227;
+  border-radius: calc(var(--radius) + 4px);
+  overflow: hidden;
+}
+.faq-item[data-featured="dmt-top"] h2 { font-size: 1.35rem; color: #c9a227; text-align: center; margin-bottom: 0.75rem; }
+.faq-item[data-featured="dmt-top"] .faq-dmt-figure { margin: 0 -1.4rem 0.85rem; text-align: center; }
+.faq-item[data-featured="dmt-top"] .faq-dmt-figure img { border-left: 0 !important; border-right: 0 !important; border-radius: 0 !important; }
+.faq-item[data-featured="dmt-top"] .faq-dmt-figure figcaption { padding: 0.3rem 1.4rem 0; }
+.faq-item[data-featured="dmt-top"] p { font-size: 0.98rem; }
+.faq-anchor-alias { display: block; position: relative; top: -4rem; height: 0; }
+@media (max-width: 600px) {
+  .faq-item[data-featured="dmt-top"] { padding: 1.05rem 1rem 1.15rem; }
+  .faq-item[data-featured="dmt-top"] .faq-dmt-figure { margin: 0 -1rem 0.75rem; }
+  .faq-item[data-featured="dmt-top"] .faq-dmt-figure figcaption { padding: 0.3rem 1rem 0; }
+  .faq-item[data-featured="dmt-top"] h2 { font-size: 1.15rem; }
+}

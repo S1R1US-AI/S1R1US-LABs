@@ -26,7 +26,7 @@ test("dmt JSON-LD parses, the FAQPage matches the visible FAQ and local assets e
   const visible = [...html.matchAll(/<summary>([\s\S]*?)<\/summary>/g)].map((m) => m[1].trim());
   assert.deepEqual(faqPage.mainEntity.map((q) => q.name), visible);
   assert.ok(visible.length >= 5 && visible.length <= 8);
-  for (const r of [...html.matchAll(/(?:src|href|srcset)="(\/[^"#?\s]+)/g)].map((m) => m[1])) {
+  for (const r of [...html.matchAll(/(?:src|href|srcset|poster)="(\/[^"#?\s]+)/g)].map((m) => m[1])) {
     if (r.endsWith("/")) continue;
     assert.ok(existsSync(new URL(r.slice(1), root)), `missing asset ${r}`);
   }
@@ -63,10 +63,11 @@ test("dmt carries the safety, belief and engagement copy, and no held topics", (
   assert.ok(handles.every((h) => h === "S1R1US_AI"), `unexpected X handle: ${handles}`);
 });
 
-test("front door claims /dmt, the sitemap lists it and the FAQ links it outside the top 5", () => {
+test("front door claims /dmt, the sitemap lists it and the FAQ links it", () => {
   assert.ok(start.includes('"/dmt"') && start.includes('"/dmt/"'));
   assert.ok(nav.includes('loc: `${origin}/dmt/`'));
-  assert.match(faq, /<section class="faq-item" id="dmt" aria-labelledby/);
+  assert.match(faq, /<section class="faq-item" id="what-is-dmt-plant-medicine" /);
+  assert.equal((faq.match(/id="dmt"/g) || []).length, 1, "#dmt survives only as the alias anchor");
   assert.ok(faq.includes('href="/dmt/"'));
   assert.equal((faq.match(/data-featured="top5"/g) || []).length, 5);
 });
@@ -82,13 +83,17 @@ test("dmt images: AI art has srcset, sizes, captions, lazy loading except the he
   });
   const hero = html.match(/<figure class="etm-figure dmt-ai-figure dmt-hero-figure">([\s\S]*?)<\/figure>/)[1];
   for (const a of ["autoplay", "muted", "loop", "playsinline"]) assert.match(hero, new RegExp(`<video [^>]*\\b${a}\\b`), `hero video ${a}`);
-  assert.match(hero, /poster="\/dmt\/images\/[a-z0-9-]+-poster\.webp"/);
-  assert.match(hero, /type="video\/mp4"/);
-  assert.match(hero, /type="video\/webm"/);
+  assert.match(hero, /poster="\/dmt\/images\/plant-medicine-dmt-poster\.webp"/);
+  assert.match(hero, /<source src="\/dmt\/images\/plant-medicine-dmt-loop\.mp4" type="video\/mp4" \/>/);
+  assert.match(hero, /<source src="\/dmt\/images\/plant-medicine-dmt-loop\.webm" type="video\/webm" \/>/);
+  assert.match(hero, /aria-label="Gaia&#x27;s face in swirling green and ice blue clouds above a glowing Mayan temple under a red moon, a priest and a shaman leading a ceremony with citizens/);
   assert.match(hero, /fetchpriority="high"/);
   assert.match(hero, /class="dmt-loop-toggle"[^>]*>Pause animation</);
   assert.match(hero, /<figcaption>AI-generated art · fictional figures/);
-  assert.ok(faq.includes('/dmt/images/mayan-temple-ceremony-priest-shaman-citizens-red-moon-amazon-jungle-dmt-800.webp'));
+  assert.match(html, /<script src="\/dmt\/dmt-hero-loop\.js" defer><\/script>/);
+  assert.ok(faq.includes('/dmt/images/plant-medicine-dmt-1600.webp'));
+  for (const page of [html, faq, nav]) assert.doesNotMatch(page, /mayan-temple-ceremony-priest-shaman/, "old hero still referenced");
+  for (const f of ["800.webp", "1600.webp", "poster.webp", "og.jpg", "loop.mp4", "loop.webm"]) assert.ok(existsSync(new URL(`dmt/images/plant-medicine-dmt-${f}`, root)), `plant-medicine-dmt-${f}`);
   const cards = [...html.matchAll(/<article class="dmt-wikicard">([\s\S]*?)<\/article>/g)].map((m) => m[1]);
   assert.ok(cards.length >= 3);
   for (const c of cards) {
@@ -104,8 +109,8 @@ test("dmt SEO: title and description lengths, OG card 1200x630, Article author, 
   const desc = html.match(/<meta name="description" content="([^"]*)"/)[1];
   assert.ok(title.length >= 50 && title.length <= 65, `title ${title.length}`);
   assert.ok(desc.length >= 140 && desc.length <= 160, `description ${desc.length}`);
-  for (const k of ["DMT", "ayahuasca", "plant medicine", "Indigenous heritage", "quantum mechanics", "consciousness", "Br0k3n S0ft", "S1R1US.ai"]) assert.ok(desc.includes(k), `description missing ${k}`);
-  assert.match(html, /<meta property="og:image" content="https:\/\/s1r1us\.ai\/dmt\/images\/mayan-temple-ceremony-priest-shaman-citizens-red-moon-amazon-jungle-dmt-og\.jpg" \/>/);
+  for (const k of ["What is DMT", "Plant medicine", "ayahuasca", "Indigenous heritage", "quantum reality", "consciousness", "Br0k3n S0ft", "S1R1US.ai"]) assert.ok(desc.includes(k), `description missing ${k}`);
+  assert.match(html, /<meta property="og:image" content="https:\/\/s1r1us\.ai\/dmt\/images\/plant-medicine-dmt-og\.jpg" \/>/);
   assert.match(html, /<meta name="twitter:site" content="@S1R1US_AI" \/>/);
   const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
   const art = ld.find((n) => n["@type"] === "Article");
@@ -114,4 +119,103 @@ test("dmt SEO: title and description lengths, OG card 1200x630, Article author, 
   assert.ok(ld.find((n) => n["@type"] === "BreadcrumbList"));
   assert.ok(ld.filter((n) => n["@type"] === "ImageObject").length >= 6);
   for (const r of ["/faq/", "/escape-the-matrix/", "/"]) assert.ok(html.includes(`href="${r}"`), `internal link ${r}`);
+});
+
+const decodeAttr = (s) => s.replace(/&amp;/g, "&").replace(/&#x27;/g, "'").replace(/&quot;/g, '"');
+const meta = (h, attr, name) => decodeAttr((h.match(new RegExp(`<meta ${attr}="${name}" content="([^"]*)"`)) || [])[1] ?? "");
+
+test("dmt keyword SEO: plant medicine / DMT in title, meta, OG, Twitter, headings, alt text, JSON-LD Things", () => {
+  const kw = meta(html, "name", "keywords");
+  for (const k of ["plant medicine", "DMT", "what is DMT", "DMT plant medicine", "ayahuasca", "Amazon plant medicine", "Indigenous plant medicine", "shamans", "psilocybin mushrooms Mexico", "peyote", "Mayan temple", "Gaia", "consciousness", "quantum reality", "EX1T RAMP", "S1R1US.ai", "Br0k3n S0ft"]) {
+    assert.ok(kw.split(", ").includes(k), `meta keywords missing ${k}`);
+  }
+  assert.doesNotMatch(kw, /\bcure|\bheal|treatment/i, "no medical or cure claims in keywords");
+  const title = decodeAttr(html.match(/<title>([^<]*)<\/title>/)[1]);
+  assert.ok(title.length <= 60 && /DMT/.test(title) && /Plant Medicine/i.test(title), title);
+  for (const [a, n] of [["property", "og:title"], ["name", "twitter:title"], ["property", "og:description"], ["name", "twitter:description"]]) {
+    const v = meta(html, a, n);
+    assert.ok(/DMT/.test(v) && /plant medicine/i.test(v), `${n}: ${v}`);
+  }
+  assert.ok(meta(html, "name", "description").length <= 160);
+  assert.match(html, /<h1 id="dmt-h1">[\s\S]*DMT[\s\S]*Plant Medicine[\s\S]*<\/h1>/);
+  assert.match(html, /<h2 id="dmt-intro-h">What is DMT\?/);
+  assert.match(html, /<h2 id="dmt-ethics-h">Plant medicine/);
+  assert.match(html, /alt="Gaia&#x27;s face[^"]*DMT and plant medicine art"/);
+  const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  const art = ld.find((n) => n["@type"] === "Article");
+  for (const k of ["plant medicine", "DMT", "what is DMT", "DMT plant medicine"]) assert.ok(art.keywords.split(", ").includes(k), `Article keywords ${k}`);
+  const about = Object.fromEntries(art.about.map((x) => [x.name, x.sameAs]));
+  for (const [n, w] of [["DMT", "N,N-Dimethyltryptamine"], ["Ayahuasca", "Ayahuasca"], ["Plant medicine", "Medicinal_plants"], ["Psilocybin", "Psilocybin"], ["Peyote", "Peyote"]]) {
+    assert.equal(about[n], `https://en.wikipedia.org/wiki/${w}`, `about ${n}`);
+  }
+  assert.ok(art.about.every((x) => x["@type"] === "Thing") && art.mentions.every((x) => x["@type"] === "Thing" && x.sameAs.startsWith("https://en.wikipedia.org/wiki/")));
+  const vid = ld.find((n) => n["@type"] === "VideoObject");
+  assert.equal(vid.duration, "PT12S");
+  assert.equal(vid.contentUrl, "https://s1r1us.ai/dmt/images/plant-medicine-dmt-loop.mp4");
+  assert.equal(vid.thumbnailUrl, "https://s1r1us.ai/dmt/images/plant-medicine-dmt-poster.webp");
+  const heroImg = ld.find((n) => n["@type"] === "ImageObject" && n.representativeOfPage);
+  assert.equal(heroImg.contentUrl, "https://s1r1us.ai/dmt/images/plant-medicine-dmt-1600.webp");
+});
+
+test("dmt Explore together: one merged like / subscribe / thanks block above the footer with the admin's copy", () => {
+  const m = html.match(/<section class="pg-section etm-section dmt-engage dmt-explore" id="explore-together"[\s\S]*?<\/section>/);
+  assert.ok(m, "explore block");
+  const b = m[0];
+  for (const s of ["Like and subscribe.", "Thank you to each listener, watcher, reader and subscriber, because without an audience we have nothing. Together we have everything within our reach.", "Why not REACH for the STARS together?", "Can WE explore together?"]) assert.ok(b.includes(s), `copy: ${s}`);
+  const ctas = [...b.matchAll(/<a class="pg-cta[^"]*"[^>]*>/g)].map((x) => x[0]);
+  assert.equal(ctas.length, 2);
+  assert.match(ctas[0], /dmt-cta-big/);
+  assert.match(ctas[0], /href="https:\/\/br0k3ns0ft\.substack\.com\/subscribe"/);
+  assert.match(ctas[1], /href="https:\/\/x\.com\/S1R1US_AI"/);
+  assert.match(b, />Follow on X @S1R1US_AI ↗</);
+  for (const a of ctas) {
+    assert.match(a, /target="_blank"/);
+    assert.match(a, /rel="[^"]*\bnoopener\b[^"]*"/);
+    assert.match(a, /aria-label="[^"]+"/);
+  }
+  const after = html.slice(html.indexOf(b) + b.length);
+  assert.match(after, /^\s*<\/main>\s*<footer/, "block sits directly above the footer");
+  assert.doesNotMatch(html, /id="dmt-join-h"|id="dmt-thanks-h"|Thank you to all our followers/, "no duplicate engagement blocks");
+  assert.equal((html.match(/href="https:\/\/br0k3ns0ft\.substack\.com\/subscribe"/g) || []).length, 1);
+  assert.ok(html.includes('id="join"') && html.includes('id="thanks"'), "old anchors kept as aliases");
+});
+
+test("faq top entry: What exactly is DMT and plant Medicine? sits above the logo and Top 5, with image, ImageObject and keywords", () => {
+  const main = faq.slice(faq.indexOf("<main>"));
+  const iTop = main.indexOf('id="what-is-dmt-plant-medicine"');
+  assert.ok(iTop > 0 && iTop < main.indexOf('class="faq-header-logo"') && iTop < main.indexOf('class="faq-top5"'));
+  const sec = main.match(/<section class="faq-item" id="what-is-dmt-plant-medicine"[\s\S]*?<\/section>/)[0];
+  assert.match(sec, /<h2 id="faq-what-is-dmt-plant-medicine-h"><span id="dmt" class="faq-anchor-alias" aria-hidden="true"><\/span>What exactly is DMT and plant Medicine\?<\/h2>/);
+  assert.match(sec, /<a href="\/dmt\/"><img src="\/dmt\/images\/plant-medicine-dmt-1600\.webp"[^>]*alt="Plant medicine and DMT: [^"]+"[^>]*max-width:52rem/);
+  assert.match(sec, /<figcaption[^>]*>AI-generated art · fictional figures · © S1R1US\.ai<\/figcaption>/);
+  const answer = sec.match(/<\/figure>\s*<p>([\s\S]*?)<\/p>/)[1].replace(/<[^>]+>/g, "");
+  const n = answer.split(/(?<=[.?!])\s+(?=[A-Z])/).length;
+  assert.ok(n >= 2 && n <= 4, `answer sentences ${n}`);
+  for (const k of ["DMT (N,N-dimethyltryptamine)", "naturally occurring psychedelic compound", "Plant medicine", "ayahuasca", "Amazon plant medicine", "psilocybin mushrooms and peyote", "Indigenous peoples and shamans of the Amazon and Mexico", "Schedule I", "not medical advice"]) assert.ok(answer.includes(k), `answer: ${k}`);
+  assert.match(sec, /Read more about DMT and plant medicine on <a href="\/dmt\/">/);
+  assert.doesNotMatch(answer, /\b(first|second|third|fourth|fifth|Broken Soft|cure|cures)\b/i);
+  const g = JSON.parse(faq.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  const fp = g.find((x) => x["@type"] === "FAQPage");
+  assert.equal(fp.mainEntity[0].name, "What exactly is DMT and plant Medicine?");
+  assert.equal(fp.mainEntity[0].url, "https://s1r1us.ai/faq/#what-is-dmt-plant-medicine");
+  assert.equal(fp.mainEntity.filter((q) => /DMT/.test(q.name)).length, 1, "single canonical DMT FAQ");
+  const img = g.find((x) => x["@type"] === "ImageObject" && x["@id"] === fp.mainEntity[0].image["@id"]);
+  assert.ok(img && /plant medicine/i.test(img.caption) && /DMT/.test(img.caption));
+  const d = meta(faq, "name", "description");
+  assert.ok(d.length <= 160 && /DMT and plant medicine/.test(d), d);
+  for (const k of ["G0Dz1LLa M0De", "AI research", "Bitcoin education", "AI agents", "newsletter", "Escape the MATRIX", "SAI Citizens United LTD"]) assert.ok(d.includes(k), `faq description kept ${k}`);
+  const kw = meta(faq, "name", "keywords");
+  for (const k of ["plant medicine", "DMT", "what is DMT", "DMT plant medicine", "S1R1US.ai FAQ", "SAI Citizens United LTD"]) assert.ok(kw.includes(k), `faq keywords ${k}`);
+  assert.ok(faq.includes('<li><a href="#what-is-dmt-plant-medicine">'), "TOC entry");
+});
+
+test("plant-medicine-dmt is in the sitemap images, llms.txt and FAQ_ITEMS", () => {
+  const brand = readFileSync(new URL("../src/lib/brand.ts", import.meta.url), "utf8");
+  const m = brand.match(/src: "\/dmt\/images\/plant-medicine-dmt-1600\.webp",[\s\S]*?pages: \[([^\]]*)\]/);
+  assert.ok(m && m[1].includes('"/dmt/"') && m[1].includes('"/faq/"'));
+  const llms = readFileSync(new URL("../public/llms.txt", import.meta.url), "utf8");
+  assert.ok(llms.includes('- FAQ "What exactly is DMT and plant Medicine?": https://s1r1us.ai/faq#what-is-dmt-plant-medicine'));
+  assert.ok(llms.includes("plant-medicine-dmt"));
+  assert.match(nav, /id: "what-is-dmt-plant-medicine",\n {4}q: "What exactly is DMT and plant Medicine\?"/);
+  assert.doesNotMatch(nav, /id: "dmt"/);
 });

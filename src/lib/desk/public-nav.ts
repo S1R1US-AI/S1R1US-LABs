@@ -709,6 +709,11 @@ export function sitemapIndexXml(lastmod = SITEMAP_LASTMOD) {
 
 export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
+    id: "what-is-dmt-plant-medicine",
+    q: "What exactly is DMT and plant Medicine?",
+    a: "DMT (N,N-dimethyltryptamine) is a naturally occurring psychedelic compound found in many plants. Plant medicine means the traditional ceremonial use of plants such as ayahuasca, an Amazon plant medicine tradition, and, in Mexico, psilocybin mushrooms and peyote, honoring the Indigenous peoples and shamans of the Amazon and Mexico. In the United States, DMT is a Schedule I controlled substance, and this is not medical advice. Read more about DMT and plant medicine on /dmt/.",
+  },
+  {
     id: "meet-the-humans",
     q: "Who are the humans behind S1R1US.ai? (Meet the HUmAns)",
     a: "Two humans fly with the S1R1US.ai bot crew. Br0k3n S0ft is the system admin; read his writing on Substack: https://br0k3ns0ft.substack.com/about. DJ i-B Mo FuNky (Mo FuNky) is the system DJ and graphic artist; listen on Bandcamp: https://dji-bmofunky.bandcamp.com/. Details: Meet the HUmAns on the Blast Off page (/blast-off/#meet-the-humans).",
@@ -1011,11 +1016,6 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     id: "global-uprisings",
     q: "What were the biggest uprisings against government control and AI surveillance in 2025-2026?",
     a: "The five largest of 2025-2026, as reported by the cited outlets: Iran's nationwide protests (December 2025 to February 2026, with a nationwide internet shutdown), Turkey's mass protests over the jailing of Istanbul's mayor (March 2025), Nepal's Gen Z protest over a social media ban (September 2025, the ban was lifted and the prime minister resigned), India's Cockroach Janta Party protests (July to October 2026, where RSF reported live AI facial recognition), and the UK petition against digital ID cards (2,984,191 signatures; the plan was scrapped in July 2026). Marches against AI itself have been small so far. This is an informational news summary; SAI Citizens United LTD is non-political and supports only peaceful, lawful civic action. Details: /global-uprisings/.",
-  },
-  {
-    id: "dmt",
-    q: "What is the S1R1US.ai DMT and plant medicine page?",
-    a: "It is our education and philosophy page on DMT and ancient plant medicine. We seek a scientific explanation and understanding of this power, we are not aligned with commercializing plant medicine (zero patents or trademarks; corporations don't own plant medicine), and we believe the Indigenous peoples and shamans of the Amazon and Mexico, and their approved apprentices, should be the ones to profit from ritual practice. Beliefs are labeled as beliefs, and opinions as opinions. S1R1US.ai is non-religious and apolitical; our critiques target institutions and systems, never any people. In the United States, DMT is a Schedule I controlled substance. S1R1US.ai sells nothing and does not promote use. Not medical advice. Our exit ramp is peaceful and lawful. Details: /dmt/.",
   },
   {
     id: "legal-requirements",
