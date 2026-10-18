@@ -161,17 +161,21 @@
 /* Avatars: intro + Meet the humans (2026-10-17) */
 .bo-intro-avatars { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem 1.4rem; padding: 0; margin: 1rem 0 0; }
 .bo-intro-avatars a { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: #dbb43a; font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 700; }
-.bo-intro-avatars img { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #c9a227; object-fit: cover; }
+.bo-intro-avatars img, .bo-intro-avatars video { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #c9a227; object-fit: cover; }
 .bo-intro-avatars small { display: block; font-weight: 400; color: #2ec4b6; font-size: 0.8rem; }
-.bo-intro-avatars a:hover img, .bo-intro-avatars a:focus-visible img { border-color: #2ec4b6; }
+.bo-intro-avatars a:hover img, .bo-intro-avatars a:focus-visible img, .bo-intro-avatars a:hover video, .bo-intro-avatars a:focus-visible video { border-color: #2ec4b6; }
 .bo-people-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem 3rem; padding: 0; margin: 1rem 0 0; text-align: center; }
 .bo-people-list li { max-width: 240px; }
-.bo-people-img img { display: block; width: 200px; height: 200px; margin: 0 auto; border-radius: 50%; border: 3px solid #c9a227; object-fit: cover; transition: border-color .2s, transform .2s; }
-.bo-people-img:hover img, .bo-people-img:focus-visible img { border-color: #2ec4b6; transform: scale(1.03); }
+.bo-people-img img, .bo-people-img video { display: block; width: 200px; height: 200px; margin: 0 auto; border-radius: 50%; border: 3px solid #c9a227; object-fit: cover; transition: border-color .2s, transform .2s; }
+.bo-people-img:hover img, .bo-people-img:focus-visible img, .bo-people-img:hover video, .bo-people-img:focus-visible video { border-color: #2ec4b6; transform: scale(1.03); }
 .bo-people-list h3 { margin: 0.7rem 0 0.1rem; color: #dbb43a; font-family: "IBM Plex Mono", ui-monospace, monospace; }
 .bo-people-list p { margin: 0 0 0.4rem; color: #2ec4b6; }
 .bo-people-link { color: #c9a227; font-weight: 700; }
-@media (prefers-reduced-motion: reduce) { .bo-people-img img { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .bo-people-img img, .bo-people-img video { transition: none; } }
+/* Avatar loops (2026-10-18): <video class="s1-loop"> keeps the same round crop and gold ring; poster = loop frame 0. */
+video.s1-loop { display: block; background: #121619; }
+/* No-JS: browsers show native controls on <video> when scripting is off; hide them so the poster stays clean (WebKit/Blink). */
+video.s1-loop::-webkit-media-controls, video.s1-loop::-webkit-media-controls-enclosure, video.s1-loop::-webkit-media-controls-overlay-play-button { display: none !important; }
 .bo-people-more { text-align: center; margin: 2rem auto 0; max-width: 240px; }
 .bo-people-more h3 { margin: 0.7rem 0 0.3rem; color: #dbb43a; font-family: "IBM Plex Mono", ui-monospace, monospace; }
 

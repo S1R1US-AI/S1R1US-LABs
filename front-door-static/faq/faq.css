@@ -296,6 +296,11 @@
   background: #121619;
 }
 .faq-feature a:hover .faq-feature-img, .faq-feature a:focus-visible .faq-feature-img { border-color: #2ec4b6; }
+/* Avatar loops (2026-10-18): Meet the HUmAns <video class="s1-loop"> uses the same frame; poster = loop frame 0. */
+video.s1-loop { display: block; background: #121619; }
+/* No-JS: browsers show native controls on <video> when scripting is off; hide them so the poster stays clean (WebKit/Blink). */
+video.s1-loop::-webkit-media-controls, video.s1-loop::-webkit-media-controls-enclosure, video.s1-loop::-webkit-media-controls-overlay-play-button { display: none !important; }
+video.faq-feature-img { aspect-ratio: 1200 / 630; }
 
 /* Top 5 FAQ tiles (2026-10-18): row under the SAI Citizens United LTD header logo.
    Same container width (52rem), 16:9 frame, border, radius and background as the logo;
