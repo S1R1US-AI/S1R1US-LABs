@@ -15,6 +15,7 @@ import {
   OFFICIAL_PROPERTIES,
   sitelinkPages,
 } from "@/lib/desk/official-presence";
+import { imageEncodingFormat } from "@/lib/desk/image-format";
 import { COMPANY_X_HANDLE, COMPANY_X_URL } from "@/lib/desk/x-admin";
 import { VIDEO_CLIPS } from "@/lib/desk/video-library";
 import { FAQ_ITEMS, PUBLIC_PAGES, SITEMAP_LOCK_VIEWS } from "@/lib/desk/public-nav";
@@ -235,7 +236,7 @@ export function corporateSearchGraph() {
       name: img.name,
       caption: img.caption,
       description: img.caption,
-      encodingFormat: img.src.endsWith(".gif") ? "image/gif" : img.src.endsWith(".png") ? "image/png" : "image/jpeg",
+      encodingFormat: imageEncodingFormat(img.src),
       about: ["AI agents", "bitcoin accumulation agent", "AI trading bots", "Bitcoin trading agents", "AI Bitcoin Trading Bot"],
       publisher: { "@id": orgId },
     })),
