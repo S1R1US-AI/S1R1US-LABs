@@ -3,6 +3,8 @@
  * - Keeps looping under prefers-reduced-motion (system admin decision); the Pause button stays visible.
  * - Only the user's Pause stops it. If the browser refuses play() (Low Power Mode, data saver),
  *   the poster stays, the button offers Play, and the next tap or key press anywhere retries.
+ *   Gestures that start on the Pause/Play button are left to its own click handler, so one
+ *   activation never plays and then pauses again.
  * - No JS: the native autoplay/loop attributes still run where allowed; the still poster is the fallback.
  */
 (function () {
@@ -27,7 +29,10 @@
       btn.setAttribute('aria-pressed', playing ? 'false' : 'true');
     }
 
-    function onGesture() {
+    function onGesture(e) {
+      // The toggle's click handler acts on its own gesture; retrying here too would start
+      // playback first and let that click pause it straight away.
+      if (btn && e && e.target instanceof Node && btn.contains(e.target)) return;
       disarm();
       if (!userPaused) tryPlay();
     }
