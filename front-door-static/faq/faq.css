@@ -296,3 +296,66 @@
   background: #121619;
 }
 .faq-feature a:hover .faq-feature-img, .faq-feature a:focus-visible .faq-feature-img { border-color: #2ec4b6; }
+
+/* Top 5 FAQ tiles (2026-10-18): row under the SAI Citizens United LTD header logo.
+   Same container width (52rem), 16:9 frame, border, radius and background as the logo;
+   image and title both link to the matching #anchor. Wraps on narrow screens. */
+.faq-top5 { margin: 0 auto 1.5rem; max-width: 52rem; }
+.faq-top5-h,
+.faq-top5-title {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  text-align: center;
+  color: #dbb43a;
+}
+.faq-top5-h {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+}
+.faq-top5-title {
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.faq-top5-row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+.faq-top5-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  height: 100%;
+  color: var(--text);
+  text-decoration: none;
+}
+.faq-top5-link picture { display: block; }
+.faq-top5-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: right bottom; /* keep the lower-right © S1R1US.ai mark whole on 1200x630 art */
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 8px;
+  background: #121619;
+}
+.faq-top5-link:hover .faq-top5-img,
+.faq-top5-link:focus-visible .faq-top5-img { border-color: var(--teal); }
+.faq-top5-link:hover .faq-top5-title,
+.faq-top5-link:focus-visible .faq-top5-title { color: var(--teal); text-decoration: underline; }
+.faq-top5-link:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 8px; }
+@media (max-width: 52rem) {
+  .faq-top5-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 34rem) {
+  .faq-top5-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .faq-top5-tile:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 0.3rem); }
+}
