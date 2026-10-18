@@ -70,3 +70,15 @@
 
 /* Final gallery slot: same tile size as the gallery, centered */
 @media (min-width: 900px) { .dom-gallery-more { grid-template-columns: minmax(0, calc(50% - 0.6rem)); justify-content: center; } }
+
+/* End-of-page dance video (LOGO-ANIM-LOCK): the Pause button is always visible */
+.dom-video-media { position: relative; }
+.dom-video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius, 10px); background: #121619; }
+.dom-loop-toggle {
+  position: absolute; left: 0.6rem; bottom: 0.6rem; z-index: 2; /* clear of the video's logo (top right) and © mark (bottom right) */
+  padding: 0.35rem 0.7rem; border: 1px solid rgba(61, 255, 138, 0.75); border-radius: 999px;
+  background: rgba(10, 13, 15, 0.82); color: #3dff8a; cursor: pointer;
+  font: 700 0.75rem "IBM Plex Mono", ui-monospace, monospace;
+}
+.dom-loop-toggle:hover, .dom-loop-toggle:focus-visible { color: #fff; border-color: #fff; outline: 2px solid #3dff8a; outline-offset: 2px; }
+.dom-loop-toggle[hidden] { display: none; }
