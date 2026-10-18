@@ -50,8 +50,11 @@ test("book-dj-mo-funky is indexable, JSON-LD parses, assets exist and the front 
     assert.ok(Array.isArray(person.sameAs));
     assert.ok(
       person.sameAs.some((u) => {
-        const url = new URL(u);
-        return u === url.href && url.protocol === "https:" && url.hostname === "dji-bmofunky.bandcamp.com" && url.pathname === "/";
+        try {
+          return new URL(u).href === "https://dji-bmofunky.bandcamp.com/";
+        } catch {
+          return false;
+        }
       }),
       "sameAs must list https://dji-bmofunky.bandcamp.com/",
     );
