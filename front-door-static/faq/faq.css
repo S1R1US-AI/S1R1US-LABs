@@ -413,3 +413,11 @@ video.faq-feature-img { aspect-ratio: 1200 / 630; }
 
 /* Phones: long unbroken strings (addresses, URLs, paths) must wrap instead of widening the page */
 .faq-item p, .faq-item li, .faq-item code { overflow-wrap: anywhere; }
+
+/* 2026-10-18: Global Uprisings over financial inequality and surveillance (AFP blockquote + news links). */
+.faq-img-note { font-size: 0.8rem; color: var(--muted, #9aa4ad); margin-top: -0.25rem; }
+.faq-quote { margin: 0.75rem 0; padding: 0.7rem 0.9rem; border-left: 4px solid #c9a227; background: rgba(201, 162, 39, 0.08); border-radius: 0 8px 8px 0; }
+.faq-quote p { margin: 0 0 0.5rem; }
+.faq-quote .faq-quote-h { font-weight: 800; }
+.faq-quote footer { font-size: 0.8rem; color: var(--muted, #9aa4ad); overflow-wrap: anywhere; }
+.faq-news-links li { overflow-wrap: anywhere; margin: 0.25rem 0; }
