@@ -220,11 +220,11 @@ test("plant-medicine-dmt is in the sitemap images, llms.txt and FAQ_ITEMS", () =
   assert.doesNotMatch(nav, /id: "dmt"/);
 });
 
-test("faq top order: DMT entry, SAI logo, Top 5 (Turing, Future, Copyright, Book a DJ, Woke); Dr1pped row after SUP3R B0WL", () => {
+test("faq top order: DMT entry, SAI logo, Top 5 (Turing, Future, Copyright, Book a DJ, Woke); W0rLd CUP and Escape the MATRIX at 13-14; Dr1pped row at 15", () => {
   const main = faq.slice(faq.indexOf("<main>"));
-  const pos = ['id="what-is-dmt-plant-medicine"', 'class="faq-header-logo"', '<nav class="faq-top5"', 'class="faq-top5-h"', 'class="faq-toc"', 'id="super-bowl"', '<nav class="faq-feature2"', 'id="world-cup"'].map((s) => main.indexOf(s));
+  const pos = ['id="what-is-dmt-plant-medicine"', 'class="faq-header-logo"', '<nav class="faq-top5"', 'class="faq-top5-h"', 'class="faq-toc"', 'id="super-bowl"', 'id="world-cup"', 'id="escape-the-matrix"', '<nav class="faq-feature2"', 'id="call-out-welcome"'].map((s) => main.indexOf(s));
   assert.ok(pos.every((p) => p > 0), `all blocks present ${pos}`);
-  assert.deepEqual([...pos].sort((a, b) => a - b), pos, "order: DMT entry < logo < Top 5 < TOC < SUP3R B0WL < feature row < W0rLd CUP");
+  assert.deepEqual([...pos].sort((a, b) => a - b), pos, "order: DMT entry < logo < Top 5 < TOC < SUP3R B0WL < W0rLd CUP < Escape the MATRIX < feature row < C@LL 0UT");
   const top5 = main.match(/<nav class="faq-top5"[\s\S]*?<\/nav>/)[0];
   const hrefs = [...top5.matchAll(/<a href="([^"]+)" class="faq-top5-link">/g)].map((m) => m[1]);
   assert.deepEqual(hrefs, ["/escape-the-matrix/#rabbit-holes", "#future", "#copyright-policy", "#book-dj-mo-funky", "#look-who-is-woke-now"]);
@@ -241,7 +241,7 @@ test("faq top order: DMT entry, SAI logo, Top 5 (Turing, Future, Copyright, Book
     const src = t.match(/src="\/([^"]+)"/)[1];
     assert.ok(existsSync(new URL(src, root)), `tile image ${src}`);
   }
-  assert.match(main.slice(main.indexOf('id="super-bowl"'), main.indexOf('<nav class="faq-feature2"')), /\/dripped-out-matrix\/ exists only on branch feat\/dripped-out-matrix-page-06-2026-10-18[\s\S]*Both pages must ship together/);
+  assert.doesNotMatch(faq, /exists only on branch|LOCAL DRAFT/);
   assert.equal((faq.match(/data-featured="top5"/g) || []).length, 5);
   const toc = [...main.match(/<nav class="faq-toc"[\s\S]*?<\/nav>/)[0].matchAll(/<li><a href="#([^"]+)">/g)].map((m) => m[1]);
   assert.deepEqual(toc, [...main.matchAll(/<section class="faq-item" id="([^"]+)"/g)].map((m) => m[1]), "TOC follows the visible order");
