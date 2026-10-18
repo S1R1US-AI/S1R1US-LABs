@@ -30,11 +30,9 @@ test("static FAQ JSON-LD parses and has a FAQPage published by SAI Citizens Unit
   const visible = [...html.matchAll(/<section class="faq-item" id="([^"]+)"[^>]*>\s*<h2[^>]*>([\s\S]*?)<\/h2>/g)].map((m) => decode(m[2]));
   assert.deepEqual(faq.mainEntity.map((q) => q.name), visible);
   assert.equal(faq.mainEntity[0].name, "What exactly is DMT and plant Medicine?");
-  assert.equal(faq.mainEntity[1].name, "Who are the humans behind S1R1US.ai? (Meet the HUmAns)");
-  assert.equal(faq.mainEntity[2].name, "BOOK > DJ Mo FuNky for a show today");
-  assert.equal(faq.mainEntity[3].name, "What does the Future Look Like at S1R1US.ai?");
-  assert.equal(faq.mainEntity[4].name, "What is the S1R1US.ai Copyright @ Policy?");
-  assert.equal(faq.mainEntity[5].name, "L00K wh0 is W0K3 N0w");
+  // Reorder 2026-10-18: Future, Copyright, Book a DJ, L00K wh0 is W0K3 N0w, Meet the HUmAns, Cosmic C0D3, Sensei, Legal, L3AD3R B0ARD, SUP3R B0WL.
+  assert.deepEqual(faq.mainEntity.slice(1, 11).map((q) => q.url.split("#")[1]), ["future", "copyright-policy", "book-dj-mo-funky", "look-who-is-woke-now", "meet-the-humans", "cosmic-c0d3", "sense1-engineering", "legal-requirements", "gm-board", "super-bowl"]);
+  assert.deepEqual(faq.mainEntity.slice(-3).map((q) => q.url.split("#")[1]), ["disclaimer", "terms", "privacy"]);
 });
 
 test("static FAQ has one H1, canonical with trailing slash and a large share card", () => {

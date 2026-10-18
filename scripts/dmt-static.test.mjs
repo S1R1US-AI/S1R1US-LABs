@@ -220,11 +220,16 @@ test("plant-medicine-dmt is in the sitemap images, llms.txt and FAQ_ITEMS", () =
   assert.doesNotMatch(nav, /id: "dmt"/);
 });
 
-test("faq top order: DMT entry, SAI logo, featured 2-tile row (DMT + Dr1pped 0ut MATR1X), then Top 5", () => {
+test("faq top order: DMT entry, SAI logo, Top 5 (Turing, Future, Copyright, Book a DJ, Woke); Dr1pped row after SUP3R B0WL", () => {
   const main = faq.slice(faq.indexOf("<main>"));
-  const pos = ['id="what-is-dmt-plant-medicine"', 'class="faq-header-logo"', '<nav class="faq-feature2"', '<nav class="faq-top5"', 'class="faq-top5-h"'].map((s) => main.indexOf(s));
+  const pos = ['id="what-is-dmt-plant-medicine"', 'class="faq-header-logo"', '<nav class="faq-top5"', 'class="faq-top5-h"', 'class="faq-toc"', 'id="super-bowl"', '<nav class="faq-feature2"', 'id="world-cup"'].map((s) => main.indexOf(s));
   assert.ok(pos.every((p) => p > 0), `all blocks present ${pos}`);
-  assert.deepEqual([...pos].sort((a, b) => a - b), pos, "order: DMT entry < logo < feature row < Top 5");
+  assert.deepEqual([...pos].sort((a, b) => a - b), pos, "order: DMT entry < logo < Top 5 < TOC < SUP3R B0WL < feature row < W0rLd CUP");
+  const top5 = main.match(/<nav class="faq-top5"[\s\S]*?<\/nav>/)[0];
+  const hrefs = [...top5.matchAll(/<a href="([^"]+)" class="faq-top5-link">/g)].map((m) => m[1]);
+  assert.deepEqual(hrefs, ["/escape-the-matrix/#rabbit-holes", "#future", "#copyright-policy", "#book-dj-mo-funky", "#look-who-is-woke-now"]);
+  assert.ok(top5.includes('src="/images/turings-computah-n1ghtmare.jpg"') && existsSync(new URL("images/turings-computah-n1ghtmare.webp", root)));
+  assert.ok(readFileSync(new URL("escape-the-matrix/index.html", root), "utf8").includes('id="rabbit-holes"'));
   const row = main.match(/<nav class="faq-feature2"[\s\S]*?<\/nav>/)[0];
   const tiles = [...row.matchAll(/<li class="faq-top5-tile">([\s\S]*?)<\/li>/g)].map((m) => m[1]);
   assert.equal(tiles.length, 2);
@@ -236,8 +241,10 @@ test("faq top order: DMT entry, SAI logo, featured 2-tile row (DMT + Dr1pped 0ut
     const src = t.match(/src="\/([^"]+)"/)[1];
     assert.ok(existsSync(new URL(src, root)), `tile image ${src}`);
   }
-  assert.match(main.slice(0, main.indexOf('<nav class="faq-feature2"')), /\/dripped-out-matrix\/ exists only on branch feat\/dripped-out-matrix-page-06-2026-10-18[\s\S]*Both pages must ship together/);
+  assert.match(main.slice(main.indexOf('id="super-bowl"'), main.indexOf('<nav class="faq-feature2"')), /\/dripped-out-matrix\/ exists only on branch feat\/dripped-out-matrix-page-06-2026-10-18[\s\S]*Both pages must ship together/);
   assert.equal((faq.match(/data-featured="top5"/g) || []).length, 5);
+  const toc = [...main.match(/<nav class="faq-toc"[\s\S]*?<\/nav>/)[0].matchAll(/<li><a href="#([^"]+)">/g)].map((m) => m[1]);
+  assert.deepEqual(toc, [...main.matchAll(/<section class="faq-item" id="([^"]+)"/g)].map((m) => m[1]), "TOC follows the visible order");
 });
 
 test("faq search text spells Godzilla MODE; visible glyph is M0D3 on /faq/ and /dmt/", () => {
