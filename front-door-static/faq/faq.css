@@ -342,6 +342,7 @@
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: right bottom; /* keep the lower-right © S1R1US.ai mark whole on 1200x630 art */
   border: 1px solid rgba(201, 162, 39, 0.35);
   border-radius: 8px;
   background: #121619;
