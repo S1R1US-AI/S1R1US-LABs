@@ -1,0 +1,1 @@
+import{t as e}from"./mobile-app-page-3_OE7-Tq.js";var t=e;export{t as component};

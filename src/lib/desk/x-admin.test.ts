@@ -38,8 +38,6 @@ describe("admin X identity (server env)", () => {
   it("accepts only configured handle and snowflake from env", async () => {
     const {
       looksLikeAdminX,
-      preferredXAccountId,
-      profileLooksLikeAdminX,
       getAdminXHandle,
       getAdminXHandleCore,
       getAdminXId,

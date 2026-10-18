@@ -2,7 +2,7 @@ import { o as __toESM, r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
 import { cn as capitalizeFirstLetter, dn as createFetch, fn as isSafeUrlScheme, ln as toKebabCase } from "../_libs/@better-auth/core+[...].mjs";
 import { a as getBaseURL, i as PACKAGE_VERSION, r as NATIVE_X_PROVIDER_ID, t as GENERIC_OAUTH_ERROR_CODES } from "./providers-AGnCJ8JQ.mjs";
-import { U as require_react } from "../_libs/@tanstack/react-router+[...].mjs";
+import { X as require_react } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as atom, i as onSet, n as STORE_UNMOUNT_DELAY, r as onMount, t as listenKeys } from "../_libs/nanostores.mjs";
 import { n as defu } from "../_libs/defu.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/client-Dp7wcF1K.js
