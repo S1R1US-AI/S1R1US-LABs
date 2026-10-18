@@ -59,7 +59,7 @@
 .dmt-faq details p { margin: 0; padding: 0 1rem 0.9rem; }
 
 /* © S1R1US.ai lower right */
-.dmt-footer .dmt-copy { margin: 0.6rem 0 0; text-align: right; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.8rem; color: #c9a227; }
+.site-footer.dmt-footer .dmt-copy { align-self: flex-end; width: 100%; margin: 0.6rem 0 0; text-align: right; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.8rem; color: #c9a227; }
 
 @media (max-width: 640px) {
   .dmt-terminal blockquote { padding: 0.85rem 0.9rem; }
