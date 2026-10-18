@@ -64,7 +64,7 @@
         ? rows / 180
         : (reduced ? 0.28 + Math.random() * 0.2 : 0.5 + Math.random() * 0.8) * 0.5419;
       var gmTheme = theme === 'gm';
-      columns = Array.from({ length: count }, function (_, i) {
+      columns = Array.from({ length: count }, function () {
         return {
           y: burstFall ? -Math.random() * rows * 0.35 : Math.random() * rows,
           speed: burstFall ? fall * (0.92 + Math.random() * 0.16) : fall,

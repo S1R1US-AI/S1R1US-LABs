@@ -1,5 +1,5 @@
 import { o as __toESM } from "../_runtime.mjs";
-import { U as require_react } from "../_libs/@tanstack/react-router+[...].mjs";
+import { X as require_react } from "../_libs/@tanstack/react-router+[...].mjs";
 import { i as fetchDesk } from "./desk-rpc-DfPw_Ou_.mjs";
 import { t as DESK_POLL_MS } from "./poll-ByA4PSVX.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/tape-client-Czzl5955.js

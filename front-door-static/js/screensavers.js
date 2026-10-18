@@ -9,6 +9,7 @@
  * - GM dismiss (once showing): click OR Escape (move does not dismiss).
  * QA shortcut: ?saverDemo=1 → 3s idle / 1.2s intro.
  */
+/* global S1R1USRain */
 (function () {
   'use strict';
 
@@ -24,7 +25,7 @@
       IDLE_MS = 3000;
       GM_INTRO_MS = 1200;
     }
-  } catch (e) { /* ignore */ }
+  } catch { /* ignore */ }
 
   var overlay = null;
   var canvas = null;
@@ -33,7 +34,6 @@
   var classicTimer = null;
   var gmIdleTimer = null;
   var inGmContext = false;
-  var ghostPaused = false;
 
   /** Dedicated /gm marketing shell — always Godzilla Mode rain (not classic). */
   function isGmPath() {
@@ -56,7 +56,6 @@
   }
 
   function setGhostPaused(paused) {
-    ghostPaused = !!paused;
     var ghost = document.getElementById('matrix-rain');
     if (ghost) ghost.style.visibility = paused ? 'hidden' : '';
   }
@@ -139,7 +138,7 @@
     // Classic: mouse move or click dismisses. GM idle/intro: click (or ESC) dismisses.
     if (isGm && ev && ev.type === 'mousemove') return;
     if (ev && ev.type === 'click') {
-      try { ev.preventDefault(); ev.stopPropagation(); } catch (e) { /* ignore */ }
+      try { ev.preventDefault(); ev.stopPropagation(); } catch { /* ignore */ }
     }
     hideOverlay();
   }
@@ -173,7 +172,7 @@
         return;
       }
       sessionStorage.setItem(INTRO_KEY, '1');
-    } catch (e) {
+    } catch {
       // sessionStorage blocked — still play once this page load via in-memory
       if (playGmIntroOnce._done) {
         resetIdleTimers();
@@ -249,7 +248,7 @@
           idleTrigger: 'click', // not mousemove
           introMs: GM_INTRO_MS,
           introPlayed: (function () {
-            try { return sessionStorage.getItem(INTRO_KEY) === '1'; } catch (e) { return !!playGmIntroOnce._done; }
+            try { return sessionStorage.getItem(INTRO_KEY) === '1'; } catch { return !!playGmIntroOnce._done; }
           })(),
         };
       },
