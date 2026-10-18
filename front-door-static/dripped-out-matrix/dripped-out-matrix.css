@@ -1,12 +1,6 @@
 /* /dripped-out-matrix/ page-scoped styles. Builds on escape-the-matrix.css (bg #121619 / gold #c9a227 #dbb43a / teal #2ec4b6 / matrix green #3dff8a). */
 .dom .etm-section p { line-height: 1.65; }
 .dom h2 { font-size: clamp(1.3rem, 2.8vw, 1.85rem); line-height: 1.25; }
-.dom-draft {
-  margin: 0 auto 1rem; max-width: 56rem; padding: 0.55rem 0.9rem;
-  border: 1px dashed #febc2e; border-radius: var(--radius-sm);
-  background: rgba(254, 188, 46, 0.08); color: #febc2e;
-  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.82rem; font-weight: 700; text-align: center;
-}
 .dom-breadcrumb { max-width: 1200px; margin: 0 auto 0.8rem; font-size: 0.85rem; color: var(--muted, #9aa7ad); }
 .dom-breadcrumb a { color: #2ec4b6; }
 
@@ -26,7 +20,7 @@
 .dom .dom-gallery-section { max-width: 1200px; }
 .dom-gallery { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
 @media (min-width: 900px) { .dom-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.dom-hold-slot { margin-top: 0; }
+.dom-more-slot { margin-top: 0; }
 
 /* Like and subscribe */
 .dom-engage { text-align: center; }
@@ -74,5 +68,5 @@
   color: #3dff8a; text-shadow: 0 0 6px rgba(61, 255, 138, 0.8), 0 0 18px rgba(61, 255, 138, 0.45);
 }
 
-/* Held slot: same tile size as the gallery, centered */
-@media (min-width: 900px) { .dom-gallery-hold { grid-template-columns: minmax(0, calc(50% - 0.6rem)); justify-content: center; } }
+/* Final gallery slot: same tile size as the gallery, centered */
+@media (min-width: 900px) { .dom-gallery-more { grid-template-columns: minmax(0, calc(50% - 0.6rem)); justify-content: center; } }

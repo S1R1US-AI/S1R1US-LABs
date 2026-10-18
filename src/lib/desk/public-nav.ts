@@ -446,7 +446,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/future/`,
     label: "The Future",
     title: "What does the Future Look Like at S1R1US.ai? | Web3 + AI",
-    hint: "The S1R1US.ai vision: decentralized social media, decentralized money (not investment advice) and a future Web3 integrated with respectful, responsible, regulated AI for AI education and AI research. SAI Council of Citizens, G0Dz1LLa M0De, signed Br0k3n S0ft opinion.",
+    hint: "The S1R1US.ai vision: decentralized social media, decentralized money (not investment advice) and a future Web3 integrated with respectful, responsible, regulated AI for AI education and AI research. SAI Council of Citizens, G0Dz1LLa M0D3, signed Br0k3n S0ft opinion.",
     changefreq: "monthly",
     priority: "0.6",
   },
@@ -736,7 +736,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "future",
     q: "What does the Future Look Like at S1R1US.ai?",
-    a: "A future built by an army of captains, with no generals, that obeys the U.S. Constitution as written and originally intended. We highlight three pillars: decentralized social media that no single company or government can switch off, decentralized money you can read, run and hold yourself (education only, not investment advice), and a future Web3 integrated with respectful, responsible, regulated AI used for AI education and AI research. The SAI Council of Citizens and G0Dz1LLa M0De show the idea: captains of every background around the Constitution, and a system admin using S1R1US.ai to educate and do AI research. Peace, love, freedom; peaceful and lawful, open source and white-label. War, resistance and hack words are symbolic. Details: /future/.",
+    a: "A future built by an army of captains, with no generals, that obeys the U.S. Constitution as written and originally intended. We highlight three pillars: decentralized social media that no single company or government can switch off, decentralized money you can read, run and hold yourself (education only, not investment advice), and a future Web3 integrated with respectful, responsible, regulated AI used for AI education and AI research. The SAI Council of Citizens and G0Dz1LLa M0D3 show the idea: captains of every background around the Constitution, and a system admin using S1R1US.ai to educate and do AI research. Peace, love, freedom; peaceful and lawful, open source and white-label. War, resistance and hack words are symbolic. Details: /future/.",
   },
   {
     id: "copyright-policy",
@@ -746,7 +746,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "look-who-is-woke-now",
     q: "L00K wh0 is W0K3 N0w",
-    a: "Something is waking up inside the MATR1X. G0Dz1LLa M0De is our system admin mode for AI education and AI research: one prepared captain turns the power all the way up so everyone around them can learn. Citizens everywhere are waking up to digital control and propaganda, and the army of captains is growing, with no generals. Peaceful, lawful and symbolic: waking up means learning, asking questions and building open code, never violence and never illegal hacking. See /future/ and /future/#godzilla-mode. Follow @S1R1US_AI on X: https://x.com/S1R1US_AI.",
+    a: "Something is waking up inside the MATR1X. G0Dz1LLa M0D3 is our system admin mode for AI education and AI research: one prepared captain turns the power all the way up so everyone around them can learn. Citizens everywhere are waking up to digital control and propaganda, and the army of captains is growing, with no generals. Peaceful, lawful and symbolic: waking up means learning, asking questions and building open code, never violence and never illegal hacking. See /future/ and /future/#godzilla-mode. Follow @S1R1US_AI on X: https://x.com/S1R1US_AI.",
   },
   {
     id: "cosmic-c0d3",

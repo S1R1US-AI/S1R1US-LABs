@@ -398,7 +398,7 @@ video.faq-feature-img { aspect-ratio: 1200 / 630; }
   .faq-item[data-featured="dmt-top"] h2 { font-size: 1.15rem; }
 }
 
-/* Featured link row (DMT and Plant Medicine + Dr1pped 0ut MATR1X): between the SAI logo and the Top 5 row */
+/* Featured link row (DMT and Plant Medicine + Dr1pped 0ut MATR1X): slot 15, after Escape the MATRIX */
 .faq-feature2 { margin: 0 auto 1.25rem; max-width: 34rem; }
 .faq-feature2-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
 .faq-feature2-img { aspect-ratio: 16 / 9; }

@@ -26,7 +26,7 @@ test("dripped-out-matrix: indexable, one H1, canonical, title and description li
   assert.ok(desc.length >= 120 && desc.length <= 160, `description ${desc.length}`);
   const kw = html.match(/<meta name="keywords" content="([^"]*)"/)[1];
   for (const k of ["dripped out matrix", "matrix dance party", "neon disco", "TV head dancer", "robot dance", "skeleton DJ", "matrix rain", "cyberpunk disco", "S1R1US.ai", "Br0k3n S0ft"]) assert.ok(kw.includes(k), `keyword ${k}`);
-  assert.ok(html.includes("LOCAL DRAFT · not for publication"));
+  assert.doesNotMatch(html, /LOCAL DRAFT|not for publication/);
 });
 
 test("dripped-out-matrix: share card 1200x630 exists, twitter card and site", () => {
@@ -71,15 +71,13 @@ test("dripped-out-matrix: images are WebP srcset with size, alt and caption; onl
   }
 });
 
-test("dripped-out-matrix: held image sits in its own removable slot", () => {
-  const a = html.indexOf("<!-- ATTORNEY-HOLD-V1 START: held robot crowd");
-  const b = html.indexOf("<!-- ATTORNEY-HOLD-V1 END -->", a);
+test("dripped-out-matrix: robot crowd image (v1) sits in the final gallery slot; no hold markers remain", () => {
+  const a = html.indexOf('id="gallery-more"');
+  const b = html.indexOf("</section>", a);
   assert.ok(a > 0 && b > a);
-  const slot = html.slice(a, b);
-  assert.ok(slot.includes("dripped-out-matrix-robot-dance-party-skeleton-dj-1500.webp"));
-  const outside = html.slice(0, a).replace(/<!-- ATTORNEY-HOLD-V1 START: JSON-LD[\s\S]*?<!-- ATTORNEY-HOLD-V1 END -->/, "") + html.slice(b);
-  assert.ok(!outside.includes("robot-dance-party-skeleton-dj"), "held image leaks outside its slot");
-  assert.ok(brand.includes("// ATTORNEY-HOLD-V1"));
+  assert.ok(html.slice(a, b).includes("dripped-out-matrix-robot-dance-party-skeleton-dj-1500.webp"));
+  assert.ok(brand.includes("/dripped-out-matrix/images/dripped-out-matrix-robot-dance-party-skeleton-dj-1500.webp"));
+  for (const s of [html, brand]) assert.doesNotMatch(s, /ATTORNEY-HOLD|data-hold/);
 });
 
 test("dripped-out-matrix: like and subscribe copy, Substack and X buttons, safe external links, internal links on main", () => {
@@ -91,6 +89,7 @@ test("dripped-out-matrix: like and subscribe copy, Substack and X buttons, safe 
     'href="https://br0k3ns0ft.substack.com/subscribe"',
     'href="https://x.com/S1R1US_AI"',
     'href="/escape-the-matrix/"',
+    'href="/dmt/"',
     "© S1R1US.ai",
   ]) assert.ok(html.includes(s), `missing: ${s}`);
   for (const a of html.matchAll(/<a [^>]*href="https?:\/\/[^"]+"[^>]*>/g)) {

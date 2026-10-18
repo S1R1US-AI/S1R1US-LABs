@@ -310,7 +310,6 @@ export const SITE_IMAGES = [
     caption: seoImgAlt("TV head dancer whose jacket drips glowing green matrix code, dancing with robots beside a skeleton DJ and neon triangles. Art \u00a9 S1R1US.ai"),
     pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
   },
-  // ATTORNEY-HOLD-V1: held robot crowd image; remove this entry with the page's held gallery slot.
   {
     src: "/dripped-out-matrix/images/dripped-out-matrix-robot-dance-party-skeleton-dj-1500.webp",
     name: seoImgAlt("dripped out matrix robot dance party skeleton dj \u00b7 S1R1US.ai"),
@@ -361,8 +360,8 @@ export const SITE_IMAGES = [
   },
   {
     src: "/images/godzilla-mode-matrix.jpg",
-    name: seoImgAlt("G0Dz1LLa M0De · Godzilla mode matrix"),
-    caption: seoImgAlt("G0Dz1LLa M0De: a system admin uses S1R1US.ai to educate and do AI research, watched by future captains humpty, moFun and F1R3 (AI artwork)"),
+    name: seoImgAlt("G0Dz1LLa M0D3 · Godzilla mode matrix"),
+    caption: seoImgAlt("G0Dz1LLa M0D3: a system admin uses S1R1US.ai to educate and do AI research, watched by future captains humpty, moFun and F1R3 (AI artwork)"),
     pages: ["/future", "/future/"],
   },
   {
@@ -379,8 +378,8 @@ export const SITE_IMAGES = [
   },
   {
     src: "/images/kaizen-lab-godzilla-mode.jpg",
-    name: seoImgAlt("L00K wh0 is W0K3 N0w · G0Dz1LLa M0De teaser"),
-    caption: seoImgAlt("G0Dz1LLa M0De teaser: a giant rainbow wireframe monster wakes up inside the matrix code above an AI research and education lab (AI artwork)"),
+    name: seoImgAlt("L00K wh0 is W0K3 N0w · G0Dz1LLa M0D3 teaser"),
+    caption: seoImgAlt("G0Dz1LLa M0D3 teaser: a giant rainbow wireframe monster wakes up inside the matrix code above an AI research and education lab (AI artwork)"),
     pages: ["/faq", "/faq/"],
   },
   {
