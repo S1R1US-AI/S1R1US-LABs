@@ -301,15 +301,23 @@
    Same container width (52rem), 16:9 frame, border, radius and background as the logo;
    image and title both link to the matching #anchor. Wraps on narrow screens. */
 .faq-top5 { margin: 0 auto 1.5rem; max-width: 52rem; }
-.faq-top5-h {
+.faq-top5-h,
+.faq-top5-title {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
+  text-align: center;
+  color: #dbb43a;
+}
+.faq-top5-h {
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #dbb43a;
-  text-align: center;
   margin: 0 0 0.6rem;
+}
+.faq-top5-title {
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 .faq-top5-row {
   list-style: none;
@@ -319,7 +327,6 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.6rem;
 }
-.faq-top5-tile { margin: 0; }
 .faq-top5-link {
   display: flex;
   flex-direction: column;
@@ -339,19 +346,11 @@
   border-radius: 8px;
   background: #121619;
 }
-.faq-top5-title {
-  font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 0.74rem;
-  font-weight: 600;
-  line-height: 1.3;
-  text-align: center;
-  color: #dbb43a;
-}
 .faq-top5-link:hover .faq-top5-img,
-.faq-top5-link:focus-visible .faq-top5-img { border-color: #2ec4b6; }
+.faq-top5-link:focus-visible .faq-top5-img { border-color: var(--teal); }
 .faq-top5-link:hover .faq-top5-title,
-.faq-top5-link:focus-visible .faq-top5-title { color: #2ec4b6; text-decoration: underline; }
-.faq-top5-link:focus-visible { outline: 2px solid #2ec4b6; outline-offset: 3px; border-radius: 8px; }
+.faq-top5-link:focus-visible .faq-top5-title { color: var(--teal); text-decoration: underline; }
+.faq-top5-link:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 8px; }
 @media (max-width: 52rem) {
   .faq-top5-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
