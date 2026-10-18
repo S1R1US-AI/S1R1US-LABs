@@ -151,7 +151,7 @@ export const SITEMAP_LASTMOD = "2026-09-12";
 /** Per-URL lastmod for pages changed after SITEMAP_LASTMOD (PR #205 + SEO follow-up, 2026-10-16). */
 export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/`]: "2026-10-16",
-  [`${origin}/faq/`]: "2026-10-17",
+  [`${origin}/faq/`]: "2026-10-18",
   [`${origin}${TERMS_PATH}/`]: "2026-10-16",
   [`${origin}${PRIVACY_PATH}/`]: "2026-10-16",
   [`${origin}/copyright-terms/`]: "2026-10-16",
@@ -163,9 +163,10 @@ export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/cosmic-c0d3/`]: "2026-10-16",
   [`${origin}/blast-off/`]: "2026-10-17",
   [`${origin}/book-dj-mo-funky/`]: "2026-10-17",
-  [`${origin}/sitemap/`]: "2026-10-17",
-  [`${origin}/llms.txt`]: "2026-10-17",
-  [`${origin}/.well-known/llms.txt`]: "2026-10-17",
+  [`${origin}/dmt/`]: "2026-10-18",
+  [`${origin}/sitemap/`]: "2026-10-18",
+  [`${origin}/llms.txt`]: "2026-10-18",
+  [`${origin}/.well-known/llms.txt`]: "2026-10-18",
 };
 
 export const PUBLIC_PAGES = [
@@ -472,6 +473,15 @@ export const PUBLIC_PAGES = [
     label: "Book DJ i-B Mo FuNky",
     title: "BOOK > DJ Mo FuNky for a show today | S1R1US.ai",
     hint: "Book DJ i-B Mo FuNky (Mo FuNky), the S1R1US.ai system DJ and graphic artist, for a show. Listen on Bandcamp and get the newsletter for new music releases and DJ i-B Mo FuNky show updates.",
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
+    path: "/dmt",
+    loc: `${origin}/dmt/`,
+    label: "DMT",
+    title: "DMT, Plant Medicine and the EX1T RAMP | S1R1US.ai",
+    hint: "Ancient plant medicine, DMT and ayahuasca: S1R1US.ai seeks a scientific understanding, respects Indigenous heritage, rejects commercializing plant medicine and labels beliefs as beliefs. Not medical advice.",
     changefreq: "monthly",
     priority: "0.6",
   },
@@ -1001,6 +1011,11 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     id: "global-uprisings",
     q: "What were the biggest uprisings against government control and AI surveillance in 2025-2026?",
     a: "The five largest of 2025-2026, as reported by the cited outlets: Iran's nationwide protests (December 2025 to February 2026, with a nationwide internet shutdown), Turkey's mass protests over the jailing of Istanbul's mayor (March 2025), Nepal's Gen Z protest over a social media ban (September 2025, the ban was lifted and the prime minister resigned), India's Cockroach Janta Party protests (July to October 2026, where RSF reported live AI facial recognition), and the UK petition against digital ID cards (2,984,191 signatures; the plan was scrapped in July 2026). Marches against AI itself have been small so far. This is an informational news summary; SAI Citizens United LTD is non-political and supports only peaceful, lawful civic action. Details: /global-uprisings/.",
+  },
+  {
+    id: "dmt",
+    q: "What is the S1R1US.ai DMT and plant medicine page?",
+    a: "It is our education and philosophy page on DMT and ancient plant medicine. We seek a scientific explanation and understanding of this power, we are not aligned with commercializing plant medicine (zero patents or trademarks; corporations don't own plant medicine), and we believe the Indigenous peoples and shamans of the Amazon and Mexico, and their approved apprentices, should be the ones to profit from ritual practice. Beliefs are labeled as beliefs, and opinions as opinions. S1R1US.ai is non-religious and apolitical; our critiques target institutions and systems, never any people. In the United States, DMT is a Schedule I controlled substance. S1R1US.ai sells nothing and does not promote use. Not medical advice. Our exit ramp is peaceful and lawful. Details: /dmt/.",
   },
   {
     id: "legal-requirements",

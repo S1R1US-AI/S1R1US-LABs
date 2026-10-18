@@ -257,6 +257,10 @@ Go-live: PoC rails STARTED (2026-09-05), Auto GM practice NEXT, Auto AI agent ac
 - BOOK > DJ Mo FuNky for a show today: https://s1r1us.ai/book-dj-mo-funky/ — how to book DJ i-B Mo FuNky (Mo FuNky), the S1R1US.ai system DJ and graphic artist. A direct booking contact is coming soon; until then, Bandcamp (https://dji-bmofunky.bandcamp.com/) and the newsletter (https://s1r1us.ai/newsletter/). SAI Citizens United LTD.
 - FAQ "BOOK > DJ Mo FuNky for a show today": https://s1r1us.ai/faq#book-dj-mo-funky
 
+## DMT and Plant Medicine
+
+- DMT, Plant Medicine and the EX1T RAMP: https://s1r1us.ai/dmt/ — education and philosophy page on ancient herbal plant medicine and ancient teachers. We seek a scientific explanation and understanding of this power. Links to Wikipedia on DMT (https://en.wikipedia.org/wiki/N,N-Dimethyltryptamine) and ayahuasca (https://en.wikipedia.org/wiki/Ayahuasca). Ethics: not aligned with commercializing plant medicine; zero patents or trademarks on ancient plant medicine; corporations don't own plant medicine; the Indigenous peoples and shamans of the Amazon and Mexico, and their approved apprentices, should profit from ritual practice (ayahuasca is an Amazon tradition; Mexico's heritage is psilocybin mushrooms and peyote). The system statement and the philosophy section are labeled as belief, not established science; a section labeled "Our opinion" critiques religious and political institutions and systems, never people. Disclaimer: S1R1US.ai is non-religious and apolitical.  Science and safety: the SPL026 DMT trial for depression (Nature Medicine) and Dean et al. 2019 (Scientific Reports). DMT is a Schedule I controlled substance in the US. S1R1US.ai sells nothing and does not promote use. Not medical advice. The EX1T RAMP is symbolic, peaceful and lawful. FAQ on the page (https://s1r1us.ai/dmt/#faq) and https://s1r1us.ai/faq#dmt
+
 ## Do not index
 
 /admin /app/admin /login /guide /launch /source /renew /security /api/auth /theme
