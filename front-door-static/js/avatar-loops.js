@@ -5,6 +5,7 @@
  * - Otherwise an IntersectionObserver adds the WebM + MP4 sources when the video is near view,
  *   plays it, and pauses it when it leaves view or the tab is hidden.
  * - If play() is refused (Lockdown / Low Power / data saver), the poster stays.
+ * - Source paths are checked first: same origin, /images/ or /blast-off/images/, .mp4/.webm only.
  */
 (function () {
   'use strict';
@@ -17,13 +18,28 @@
 
   function reduced() { return !!(mq && mq.matches); }
 
+  // Only same-origin loop files under /images/ or /blast-off/images/ are used.
+  // Anything else (other origin, protocol, '//', '..', query, hash, other type) is skipped.
+  var SAFE_PATH = /^\/(?:images|blast-off\/images)\/[A-Za-z0-9_-][A-Za-z0-9._-]*(?:\/[A-Za-z0-9_-][A-Za-z0-9._-]*)*\.(mp4|webm)$/;
+  function safeSrc(value, ext) {
+    if (typeof value !== 'string' || value.charAt(0) !== '/' || value.charAt(1) === '/' || value.indexOf('..') !== -1) return null;
+    var url;
+    try { url = new URL(value, window.location.origin); } catch { return null; }
+    if (url.origin !== window.location.origin || url.search || url.hash) return null;
+    var m = SAFE_PATH.exec(url.pathname);
+    if (!m || m[1] !== ext || url.pathname !== value) return null;
+    return url.pathname;
+  }
+
   function arm(v) {
     if (v.getAttribute('data-loop-armed') === '1') return;
     v.setAttribute('data-loop-armed', '1');
     v.muted = true; // required for inline autoplay on iOS
-    var webm = v.getAttribute('data-loop-webm');
-    var mp4 = v.getAttribute('data-loop-mp4');
-    if (webm) { var s1 = document.createElement('source'); s1.src = webm; s1.type = 'video/webm'; v.insertBefore(s1, v.firstChild); }
+    var webm = safeSrc(v.getAttribute('data-loop-webm'), 'webm');
+    var mp4 = safeSrc(v.getAttribute('data-loop-mp4'), 'mp4');
+    if (!webm && !mp4) return; // nothing valid: poster stays
+    var s1 = null;
+    if (webm) { s1 = document.createElement('source'); s1.src = webm; s1.type = 'video/webm'; v.insertBefore(s1, v.firstChild); }
     if (mp4) { var s2 = document.createElement('source'); s2.src = mp4; s2.type = 'video/mp4'; v.insertBefore(s2, s1 ? s1.nextSibling : v.firstChild); }
     v.load();
   }
