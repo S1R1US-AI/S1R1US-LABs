@@ -70,3 +70,48 @@ test("front door claims /dmt, the sitemap lists it and the FAQ links it outside 
   assert.ok(faq.includes('href="/dmt/"'));
   assert.equal((faq.match(/data-featured="top5"/g) || []).length, 5);
 });
+
+test("dmt images: AI art has srcset, sizes, captions, lazy loading except the hero; wiki cards carry Commons credits", () => {
+  const figs = [...html.matchAll(/<figure class="etm-figure dmt-ai-figure">([\s\S]*?)<\/figure>/g)].map((m) => m[1]);
+  assert.equal(figs.length, 5);
+  figs.forEach((f) => {
+    assert.match(f, /srcset="[^"]+-800\.webp 800w, [^"]+-1600\.webp 1600w"/);
+    assert.match(f, /width="1600" height="900"/);
+    assert.match(f, /<figcaption>AI-generated art/);
+    assert.match(f, /loading="lazy"/);
+  });
+  const hero = html.match(/<figure class="etm-figure dmt-ai-figure dmt-hero-figure">([\s\S]*?)<\/figure>/)[1];
+  for (const a of ["autoplay", "muted", "loop", "playsinline"]) assert.match(hero, new RegExp(`<video [^>]*\\b${a}\\b`), `hero video ${a}`);
+  assert.match(hero, /poster="\/dmt\/images\/[a-z0-9-]+-poster\.webp"/);
+  assert.match(hero, /type="video\/mp4"/);
+  assert.match(hero, /type="video\/webm"/);
+  assert.match(hero, /fetchpriority="high"/);
+  assert.match(hero, /class="dmt-loop-toggle"[^>]*>Pause animation</);
+  assert.match(hero, /<figcaption>AI-generated art · fictional figures/);
+  assert.ok(faq.includes('/dmt/images/mayan-temple-ceremony-priest-shaman-citizens-red-moon-amazon-jungle-dmt-800.webp'));
+  const cards = [...html.matchAll(/<article class="dmt-wikicard">([\s\S]*?)<\/article>/g)].map((m) => m[1]);
+  assert.ok(cards.length >= 3);
+  for (const c of cards) {
+    assert.match(c, /href="https:\/\/en\.wikipedia\.org\/wiki\//);
+    assert.match(c, /<img [^>]*width="\d+" height="\d+"[^>]*loading="lazy"/);
+    assert.match(c, /class="dmt-credit">Image: [^<]+ · (?:Public domain|<a href="https:\/\/creativecommons\.org\/licenses\/by(?:-sa)?\/4\.0\/")/);
+    assert.match(c, /href="https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
+  }
+});
+
+test("dmt SEO: title and description lengths, OG card 1200x630, Article author, BreadcrumbList", () => {
+  const title = html.match(/<title>([^<]*)<\/title>/)[1].replace(/&amp;/g, "&");
+  const desc = html.match(/<meta name="description" content="([^"]*)"/)[1];
+  assert.ok(title.length >= 50 && title.length <= 65, `title ${title.length}`);
+  assert.ok(desc.length >= 140 && desc.length <= 160, `description ${desc.length}`);
+  for (const k of ["DMT", "ayahuasca", "plant medicine", "Indigenous heritage", "quantum mechanics", "consciousness", "Br0k3n S0ft", "S1R1US.ai"]) assert.ok(desc.includes(k), `description missing ${k}`);
+  assert.match(html, /<meta property="og:image" content="https:\/\/s1r1us\.ai\/dmt\/images\/mayan-temple-ceremony-priest-shaman-citizens-red-moon-amazon-jungle-dmt-og\.jpg" \/>/);
+  assert.match(html, /<meta name="twitter:site" content="@S1R1US_AI" \/>/);
+  const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])["@graph"];
+  const art = ld.find((n) => n["@type"] === "Article");
+  assert.equal(art.author.name, "Br0k3n S0ft");
+  assert.equal(art.publisher.name, "SAI Citizens United LTD");
+  assert.ok(ld.find((n) => n["@type"] === "BreadcrumbList"));
+  assert.ok(ld.filter((n) => n["@type"] === "ImageObject").length >= 6);
+  for (const r of ["/faq/", "/escape-the-matrix/", "/"]) assert.ok(html.includes(`href="${r}"`), `internal link ${r}`);
+});

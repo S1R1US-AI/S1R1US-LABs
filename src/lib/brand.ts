@@ -257,6 +257,42 @@ export const SITE_IMAGES = [
     pages: ["/escape-the-matrix", "/escape-the-matrix/"],
   },
   {
+    src: "/dmt/images/mayan-temple-ceremony-priest-shaman-citizens-red-moon-amazon-jungle-dmt-1600.webp",
+    name: seoImgAlt("mayan temple ceremony priest shaman citizens red moon \u00b7 S1R1US.ai DMT hero"),
+    caption: seoImgAlt("AI-generated art, fictional figures: an ancient plant medicine ceremony at a Mayan-style stone temple in the jungle under a blood-red moon, a shaman and a priest beside a fire surrounded by citizens"),
+    pages: ["/dmt", "/dmt/", "/faq", "/faq/"],
+  },
+  {
+    src: "/dmt/images/dmt-plant-medicine-reality-portal-quantum-hero-1600.webp",
+    name: seoImgAlt("dmt plant medicine reality portal quantum hero · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: a glowing golden fractal reality portal of sacred geometry above a misty night jungle, under falling green matrix code, symbolizing DMT, ancient plant medicine, consciousness and quantum reality"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dmt/images/ayahuasca-amazon-indigenous-shaman-plant-medicine-heritage-1600.webp",
+    name: seoImgAlt("ayahuasca amazon indigenous shaman plant medicine heritage · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: an Indigenous Amazon elder seen from behind beside a small fire in the rainforest at dusk, with a twisting ayahuasca vine (Banisteriopsis caapi), honoring Amazon plant medicine heritage"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dmt/images/mexico-indigenous-plant-medicine-heritage-peyote-mushrooms-1600.webp",
+    name: seoImgAlt("mexico indigenous plant medicine heritage peyote mushrooms · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: a peyote cactus and wild mushrooms on a woven Mexican Indigenous textile in a desert valley at sunset, honoring Mexico's plant medicine heritage"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dmt/images/quantum-mechanics-quantum-computing-reality-veil-meditation-1600.webp",
+    name: seoImgAlt("quantum mechanics quantum computing reality veil meditation · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: a meditating figure before a lifting veil of reality, with quantum wave patterns and a glowing qubit lattice, symbolizing quantum mechanics, quantum computing and consciousness"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
+    src: "/dmt/images/ex1t-ramp-escape-the-matrix-peaceful-lawful-1600.webp",
+    name: seoImgAlt("ex1t ramp escape the matrix peaceful lawful · S1R1US.ai"),
+    caption: seoImgAlt("AI-generated art: a glowing green exit ramp curving out of a digital matrix city toward a peaceful sunrise over green hills, the peaceful and lawful EX1T RAMP"),
+    pages: ["/dmt", "/dmt/"],
+  },
+  {
     src: "/images/captains-save-the-constitution.jpg",
     name: seoImgAlt("Captains save the Constitution · SAI Citizens United LTD"),
     caption: seoImgAlt("A futuristic sensei guides Br0k3n S0ft among a team of captains protecting the U.S. Constitution."),

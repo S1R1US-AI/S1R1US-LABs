@@ -77,3 +77,40 @@
 .dmt-opinion-line { margin: 0 0 0.9rem; padding: 0.75rem 1rem; border: 1px dashed rgba(201, 162, 39, 0.6); border-radius: var(--radius-sm); background: rgba(201, 162, 39, 0.06); }
 .dmt-opinion-line .dmt-label { margin-bottom: 0.5rem; }
 .dmt-opinion-line p { margin: 0; }
+
+/* Breadcrumb */
+.dmt-breadcrumb { max-width: 56rem; margin: 0 auto 0.8rem; font-size: 0.82rem; color: #9aa7ad; }
+.dmt-breadcrumb a { color: #2ec4b6; }
+
+/* AI-generated art figures */
+.dmt-ai-figure { margin: 0.4rem 0 1.2rem; }
+.dmt-ai-figure figcaption { font-size: 0.75rem; font-family: "IBM Plex Mono", ui-monospace, monospace; letter-spacing: 0.04em; color: #c9a227; text-align: right; }
+.dmt .etm-hero .dmt-ai-figure { max-width: 56rem; margin: 0 auto 1.4rem; }
+.dmt h3 { color: #2ec4b6; font-size: clamp(1.1rem, 2.2vw, 1.35rem); margin: 1.4rem 0 0.7rem; }
+
+/* Wikipedia image link cards */
+.dmt-wikicards { display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); margin: 1rem 0; }
+.dmt-wikicard { display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--line); border-top: 3px solid #2ec4b6; border-radius: var(--radius-sm); overflow: hidden; }
+.dmt-wikicard-link { display: block; text-decoration: none; color: var(--text); flex: 1; }
+.dmt-wikicard-link:hover, .dmt-wikicard-link:focus-visible { background: rgba(46, 196, 182, 0.06); }
+.dmt-wikicard img { display: block; width: 100%; height: 11rem; object-fit: cover; background: #fff; }
+.dmt-wikicard h3, .dmt-wikicard h4 { margin: 0.75rem 1rem 0.3rem; font-size: 1.02rem; color: #dbb43a; line-height: 1.3; }
+.dmt-wiki-tag { font-size: 0.72rem; font-family: "IBM Plex Mono", ui-monospace, monospace; color: #2ec4b6; white-space: nowrap; }
+.dmt-wikicard-link p { margin: 0 1rem 0.75rem; font-size: 0.9rem; line-height: 1.5; color: var(--muted, #9aa7ad); }
+.dmt-credit { margin: 0; padding: 0.5rem 1rem 0.65rem; border-top: 1px solid var(--line); font-size: 0.72rem; line-height: 1.45; color: #9aa7ad; }
+.dmt-credit a { color: #2ec4b6; }
+.dmt-heritage { margin-top: 1rem; }
+
+/* Hero loop (LOGO-ANIM-LOCK): the Pause button is always visible */
+.dmt-hero-media { position: relative; }
+.dmt-hero-loop { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); background: #121619; }
+.dmt-loop-toggle {
+  position: absolute; right: 0.6rem; bottom: 0.6rem; z-index: 2;
+  padding: 0.35rem 0.7rem; border: 1px solid rgba(201, 162, 39, 0.75); border-radius: 999px;
+  background: rgba(10, 13, 15, 0.82); color: #dbb43a; cursor: pointer;
+  font: 700 0.75rem "IBM Plex Mono", ui-monospace, monospace;
+}
+.dmt-loop-toggle:hover, .dmt-loop-toggle:focus-visible { color: #3dff8a; border-color: #3dff8a; outline: none; }
+.dmt-loop-toggle[hidden] { display: none; }
+
+.dmt-wikicard img[src*="molecule-structure"], .dmt-wikicard img[src*="newtons-cradle"] { object-fit: contain; padding: 0.4rem; box-sizing: border-box; }
