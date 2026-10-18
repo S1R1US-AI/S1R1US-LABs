@@ -293,6 +293,31 @@ export const SITE_IMAGES = [
     pages: ["/dmt", "/dmt/"],
   },
   {
+    src: "/dripped-out-matrix/images/dripped-out-matrix-tv-head-dancer-disco-dj-hero-1500.webp",
+    name: seoImgAlt("dripped out matrix tv head dancer disco dj hero \u00b7 S1R1US.ai"),
+    caption: seoImgAlt("Dr1pped 0ut MATR1X title card: a TV head dancer in a matrix code jacket dances on a rainbow disco floor while a skeleton DJ drops beats, with robots and green matrix rain. Art \u00a9 S1R1US.ai"),
+    pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
+  },
+  {
+    src: "/dripped-out-matrix/images/dripped-out-matrix-purple-tv-head-dancer-skull-sneakers-1500.webp",
+    name: seoImgAlt("dripped out matrix purple tv head dancer skull sneakers \u00b7 S1R1US.ai"),
+    caption: seoImgAlt("Purple TV head dancer kicking in neon green skull sneakers on a purple and black checker floor, with a skeleton DJ at a skull booth and dancing robots. Art \u00a9 S1R1US.ai"),
+    pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
+  },
+  {
+    src: "/dripped-out-matrix/images/dripped-out-matrix-code-drip-jacket-dancer-robots-1500.webp",
+    name: seoImgAlt("dripped out matrix code drip jacket dancer robots \u00b7 S1R1US.ai"),
+    caption: seoImgAlt("TV head dancer whose jacket drips glowing green matrix code, dancing with robots beside a skeleton DJ and neon triangles. Art \u00a9 S1R1US.ai"),
+    pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
+  },
+  // ATTORNEY-HOLD-V1: held robot crowd image; remove this entry with the page's held gallery slot.
+  {
+    src: "/dripped-out-matrix/images/dripped-out-matrix-robot-dance-party-skeleton-dj-1500.webp",
+    name: seoImgAlt("dripped out matrix robot dance party skeleton dj \u00b7 S1R1US.ai"),
+    caption: seoImgAlt("Robot dance party: chrome robots dance around a spiky helmet dancer while a skeleton DJ in green goggles spins, with neon music notes and lasers. Art \u00a9 S1R1US.ai"),
+    pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
+  },
+  {
     src: "/images/captains-save-the-constitution.jpg",
     name: seoImgAlt("Captains save the Constitution · SAI Citizens United LTD"),
     caption: seoImgAlt("A futuristic sensei guides Br0k3n S0ft among a team of captains protecting the U.S. Constitution."),

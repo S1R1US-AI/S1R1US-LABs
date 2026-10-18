@@ -164,6 +164,7 @@ export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/blast-off/`]: "2026-10-17",
   [`${origin}/book-dj-mo-funky/`]: "2026-10-17",
   [`${origin}/dmt/`]: "2026-10-18",
+  [`${origin}/dripped-out-matrix/`]: "2026-10-18",
   [`${origin}/sitemap/`]: "2026-10-18",
   [`${origin}/llms.txt`]: "2026-10-18",
   [`${origin}/.well-known/llms.txt`]: "2026-10-18",
@@ -484,6 +485,15 @@ export const PUBLIC_PAGES = [
     hint: "Ancient plant medicine, DMT and ayahuasca: S1R1US.ai seeks a scientific understanding, respects Indigenous heritage, rejects commercializing plant medicine and labels beliefs as beliefs. Not medical advice.",
     changefreq: "monthly",
     priority: "0.6",
+  },
+  {
+    path: "/dripped-out-matrix",
+    loc: `${origin}/dripped-out-matrix/`,
+    label: "Dr1pped 0ut MATR1X",
+    title: "Dr1pped 0ut MATR1X: Neon Matrix Dance Party | S1R1US.ai",
+    hint: "Art gallery: a neon disco dance party inside the MATRIX, where TV-head dancers, robots and a skeleton DJ drop beats under matrix rain. Art © S1R1US.ai.",
+    changefreq: "monthly",
+    priority: "0.5",
   },
   {
     path: "/sitemap",

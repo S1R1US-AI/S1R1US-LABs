@@ -1,0 +1,78 @@
+/* /dripped-out-matrix/ page-scoped styles. Builds on escape-the-matrix.css (bg #121619 / gold #c9a227 #dbb43a / teal #2ec4b6 / matrix green #3dff8a). */
+.dom .etm-section p { line-height: 1.65; }
+.dom h2 { font-size: clamp(1.3rem, 2.8vw, 1.85rem); line-height: 1.25; }
+.dom-draft {
+  margin: 0 auto 1rem; max-width: 56rem; padding: 0.55rem 0.9rem;
+  border: 1px dashed #febc2e; border-radius: var(--radius-sm);
+  background: rgba(254, 188, 46, 0.08); color: #febc2e;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.82rem; font-weight: 700; text-align: center;
+}
+.dom-breadcrumb { max-width: 1200px; margin: 0 auto 0.8rem; font-size: 0.85rem; color: var(--muted, #9aa7ad); }
+.dom-breadcrumb a { color: #2ec4b6; }
+
+/* Images */
+.dom-figure { margin: 0; }
+.dom-hero-figure { margin-bottom: 1.6rem; }
+.dom-zoom { display: block; border-radius: var(--radius); cursor: zoom-in; }
+.dom-zoom:focus-visible { outline: 3px solid #3dff8a; outline-offset: 3px; }
+.dom-img {
+  display: block; width: 100%; height: auto; aspect-ratio: 1500 / 844;
+  border-radius: var(--radius) var(--radius) 0 0; background: #121619;
+}
+.dom-intro { font-size: clamp(1rem, 2.1vw, 1.15rem); line-height: 1.65; color: var(--text); }
+.dom-hint { margin: 0 0 1rem; color: var(--muted, #9aa7ad); font-size: 0.9rem; }
+
+/* Gallery: grid on desktop, stacked on phones */
+.dom .dom-gallery-section { max-width: 1200px; }
+.dom-gallery { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+@media (min-width: 900px) { .dom-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.dom-hold-slot { margin-top: 0; }
+
+/* Like and subscribe */
+.dom-engage { text-align: center; }
+.dom-engage .pg-cta-row, .dom-more { justify-content: center; }
+.dom .dom-engage .dom-like { margin: 0 0 0.6rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 800; font-size: clamp(1.15rem, 2.6vw, 1.5rem); color: #dbb43a; }
+.dom .dom-engage .dom-thanks { max-width: 44rem; margin: 0 auto 0.9rem; color: var(--text); }
+.dom .dom-engage .dom-stars {
+  margin: 0 0 0.4rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 800;
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem); color: #3dff8a; text-shadow: 0 0 10px rgba(61, 255, 138, 0.35);
+}
+.dom-engage .pg-cta-row { margin-top: 1.1rem; }
+.dom-cta-big { font-size: 1.02rem; padding: 0.75rem 1.2rem; }
+
+/* Footer: © lower right */
+.site-footer.dom-footer .dom-copy { align-self: flex-end; width: 100%; margin: 0.6rem 0 0; text-align: right; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.8rem; color: #c9a227; }
+
+/* Lightbox */
+.dom-lightbox {
+  width: min(96vw, 1500px); max-width: 96vw; max-height: 94vh; padding: 0.6rem; overflow: auto;
+  border: 1px solid rgba(61, 255, 138, 0.45); border-radius: var(--radius); background: #0a0d0f; color: var(--text);
+}
+.dom-lightbox::backdrop { background: rgba(0, 0, 0, 0.85); }
+.dom-lightbox form { display: flex; justify-content: flex-end; margin: 0 0 0.4rem; }
+.dom-close {
+  padding: 0.4rem 0.8rem; border: 1px solid #2ec4b6; border-radius: var(--radius-sm); background: transparent;
+  color: #2ec4b6; font: 700 0.85rem "IBM Plex Mono", ui-monospace, monospace; cursor: pointer;
+}
+.dom-close:focus-visible { outline: 3px solid #3dff8a; outline-offset: 2px; }
+.dom-lightbox-img { display: block; width: 100%; height: auto; max-height: 82vh; object-fit: contain; }
+.dom-lightbox-cap { margin: 0.4rem 0 0; font-size: 0.85rem; color: var(--muted, #9aa7ad); text-align: center; }
+
+/* call out to fr43ks: bold neon callout */
+.dom .dom-callout {
+  border: 2px solid #3dff8a; border-radius: var(--radius); text-align: center;
+  background: radial-gradient(ellipse at center, rgba(61, 255, 138, 0.12), rgba(18, 22, 25, 0) 70%), #0a0d0f;
+  box-shadow: 0 0 0 1px rgba(255, 46, 196, 0.45), 0 0 28px rgba(61, 255, 138, 0.35), inset 0 0 24px rgba(255, 46, 196, 0.18);
+}
+.dom .dom-callout h2 {
+  margin: 0 0 0.8rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 800; letter-spacing: 0.04em;
+  color: #ff4fd8; text-shadow: 0 0 8px rgba(255, 79, 216, 0.75), 0 0 22px rgba(255, 79, 216, 0.45);
+}
+.dom .dom-callout .dom-callout-text {
+  margin: 0 auto; max-width: 46rem; white-space: pre-wrap; overflow-wrap: anywhere;
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 800; font-size: clamp(1.05rem, 2.5vw, 1.4rem); line-height: 1.55;
+  color: #3dff8a; text-shadow: 0 0 6px rgba(61, 255, 138, 0.8), 0 0 18px rgba(61, 255, 138, 0.45);
+}
+
+/* Held slot: same tile size as the gallery, centered */
+@media (min-width: 900px) { .dom-gallery-hold { grid-template-columns: minmax(0, calc(50% - 0.6rem)); justify-content: center; } }
