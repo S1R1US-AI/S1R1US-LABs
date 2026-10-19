@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test + lint + typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Use npm 11.21.0 (matches the lockfile)
+        # Node 22 ships npm 10, whose `npm ci` wrongly reports the optional
+        # peer lru-cache@^11 (unstorage) as missing from this npm 11 lockfile.
+        run: npm install -g npm@11.21.0
+      - name: Install
+        run: npm ci
+      - name: Create /workspace/data (box + DO layout the tests expect)
+        run: sudo mkdir -p /workspace/data && sudo chown "$(id -u):$(id -g)" /workspace/data
+      - name: Test
+        run: npm test
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
