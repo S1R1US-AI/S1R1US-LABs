@@ -266,6 +266,11 @@ Go-live: PoC rails STARTED (2026-09-05), Auto GM practice NEXT, Auto AI agent ac
 
 - Dr1pped 0ut MATR1X: https://s1r1us.ai/dripped-out-matrix/ — art gallery page: a neon disco dance party inside the MATRIX, where TV-head dancers, robots and a skeleton DJ drop beats under falling matrix rain. Title card hero plus a gallery with click-to-enlarge; AI-generated art, labeled, © S1R1US.ai (SAI Citizens United LTD). Like and subscribe: Br0k3n S0ft on Substack (https://br0k3ns0ft.substack.com/subscribe) and X @S1R1US_AI. Related: https://s1r1us.ai/escape-the-matrix/
 
+## Hindu Teachings
+
+- Hindu Teachings & Meditation: https://s1r1us.ai/hindu-teachings/ — education page on Hindu and Buddhist teachings for healing and spiritual growth: the Trimurti (Brahma the Creator, Vishnu the Preserver, Shiva the Transformer), the Brahmastra, Vasuki Nagaraja and Samudra Manthana, each with a short Wikipedia quote and link. AI art © S1R1US.ai, including two silent looping animations (Brahma's lotus; Shiva working the Brahmastra). The page is apolitical and non-religious by affiliation, for AI research and education only.
+- FAQ "Did Steve Jobs study Hindu Tradition and access AKASHIC Records before developing the i-Phone?": https://s1r1us.ai/faq#steve-jobs-hindu-akashic — YES as a S1R1US research indication; documented context: India trip around 1974 seeking Neem Karoli Baba, later Zen Buddhism. Akashic Records are a S1R1US research exploration, not a historical fact and not an Apple endorsement.
+
 ## Do not index
 
 /admin /app/admin /login /guide /launch /source /renew /security /api/auth /theme
