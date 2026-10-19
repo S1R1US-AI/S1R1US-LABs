@@ -303,6 +303,21 @@ function startFrontDoor() {
       "/terms",
       "/privacy",
       "/copyright-terms",
+      "/WEB-3-and-ai-future",
+      "/sense1-engineering",
+      "/sai-citizens-united",
+      "/manifesto",
+      "/oss-marketing",
+      "/newsletter",
+      "/escape-the-matrix",
+      "/global-uprisings",
+      "/future",
+      "/cosmic-c0d3",
+      "/blast-off",
+      "/book-dj-mo-funky",
+      "/dmt",
+      "/dripped-out-matrix",
+      "/hindu-teachings",
     ];
     if (dirExact.includes(pathname)) {
       const q = (url.includes("?") ? url.slice(url.indexOf("?")) : "");
