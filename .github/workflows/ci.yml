@@ -26,6 +26,10 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+      - name: Use npm 11.21.0 (matches the lockfile)
+        # Node 22 ships npm 10, whose `npm ci` wrongly reports the optional
+        # peer lru-cache@^11 (unstorage) as missing from this npm 11 lockfile.
+        run: npm install -g npm@11.21.0
       - name: Install
         run: npm ci
       - name: Test
