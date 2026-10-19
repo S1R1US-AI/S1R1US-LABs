@@ -3,7 +3,15 @@ import assert from "node:assert/strict";
 import http from "node:http";
 import net from "node:net";
 import { after, before, test } from "node:test";
-import { normalizeRequestTarget, safeLocation, startFrontDoor } from "./do-start.mjs";
+import { readFileSync } from "node:fs";
+import {
+  OWN_HOSTS,
+  TRUSTED_REDIRECT_HOSTS,
+  isInternalHost,
+  normalizeRequestTarget,
+  safeLocation,
+  startFrontDoor,
+} from "./do-start.mjs";
 
 const BAD = /127\.0\.0\.1|localhost|:8081|\[::1\]|0\.0\.0\.0|^\/\/|^\/\\|^[a-z][a-z0-9+.-]*:/i;
 
@@ -15,6 +23,15 @@ before(async () => {
   // Stub upstream that mimics Nitro: redirects to an absolute URL built from the Host header.
   upstream = http.createServer((req, res) => {
     const u = new URL(req.url, "http://placeholder.invalid");
+    if (u.pathname === "/loc") {
+      // Upstream echoes a chosen Location so the front door's rewrite is tested end to end.
+      try {
+        res.writeHead(302, { Location: u.searchParams.get("to") });
+      } catch {
+        res.writeHead(500);
+      }
+      return res.end();
+    }
     if (u.pathname === "/oauth") {
       res.writeHead(302, { Location: "https://x.com/i/oauth2/authorize?state=1" });
       return res.end();
@@ -126,8 +143,118 @@ test("normalizeRequestTarget unit cases", () => {
   assert.deepEqual(normalizeRequestTarget("/faq/?q=1"), { url: "/faq/?q=1" });
   assert.deepEqual(normalizeRequestTarget("/search?q=%5c"), { url: "/search?q=%5c" });
   assert.deepEqual(normalizeRequestTarget("/a%5Cb"), { status: 400 });
-  assert.deepEqual(normalizeRequestTarget("/a\r\nb"), { status: 400 });
+  assert.deepEqual(normalizeRequestTarget("/a\r\nb"), { url: "/ab" });
+  assert.deepEqual(normalizeRequestTarget("/a\0b"), { status: 400 });
   assert.deepEqual(normalizeRequestTarget("*"), { status: 400 });
   assert.deepEqual(normalizeRequestTarget("http://evil.com/zz?a=1"), { url: "/zz?a=1" });
   assert.deepEqual(normalizeRequestTarget("//x"), { status: 308, location: "/x" });
+});
+
+const viaUpstream = async (to) => raw(`/loc?to=${encodeURIComponent(to)}`);
+
+test("allowlist: trusted https OAuth hosts pass through unchanged", async () => {
+  for (const to of [
+    "https://x.com/i/oauth2/authorize?client_id=a&state=b",
+    "https://twitter.com/i/oauth2/authorize",
+    "https://api.x.com/2/oauth2/token",
+    "https://auth.grok.me/api/auth/oauth2/authorize",
+  ]) {
+    assert.deepEqual(await viaUpstream(to), { status: 302, loc: to }, to);
+  }
+});
+
+test("allowlist: untrusted or unsafe absolute URLs become /", async () => {
+  for (const to of [
+    "https://evil.com/x",
+    "http://x.com/i/oauth2/authorize",
+    "https://x.com:444/i/oauth2/authorize",
+    "https://user:pw@x.com/",
+    "https://x.com.evil.com/",
+    "https://evilx.com/",
+    "javascript:alert(1)",
+    "data:text/html,hi",
+    "ftp://x.com/",
+    "ht\ttps://evil.com/",
+    "https://[::ffff:8.8.8.8]/",
+  ]) {
+    assert.deepEqual(await viaUpstream(to), { status: 302, loc: "/" }, to);
+    assert.equal(safeLocation(to), "/", to);
+  }
+});
+
+test("allowlist: our own host becomes a same-origin relative path", () => {
+  assert.equal(safeLocation("https://s1r1us.ai/faq/"), "/faq/");
+  assert.equal(safeLocation("https://WWW.S1R1US.AI//evil.com?a=1"), "/evil.com?a=1");
+  assert.equal(safeLocation("http://s1r1us.ai./x#h"), "/x#h");
+  assert.equal(safeLocation("https://s1r1us.ai"), "/");
+});
+
+test("loopback: 127/8, localhost forms, unspecified and v4-mapped become relative", async () => {
+  const hosts = [
+    "127.0.0.1:8081",
+    "127.1.2.3",
+    "127.255.255.255:9",
+    "0x7f.1",
+    "2130706433",
+    "LOCALHOST:8081",
+    "localhost.",
+    "foo.localhost",
+    "A.B.LocalHost.",
+    "0.0.0.0:8081",
+    "0",
+    "[::]",
+    "[::1]:8081",
+    "[0:0:0:0:0:0:0:1]",
+    "[::ffff:127.0.0.1]:8081",
+    "[::ffff:7f00:1]",
+    "[::ffff:127.9.9.9]",
+    "[::FFFF:7F01:0203]",
+  ];
+  for (const h of hosts) {
+    for (const scheme of ["http", "HTTPS"]) {
+      const to = `${scheme}://${h}//evil.com/p?q=1`;
+      assert.equal(safeLocation(to), "/evil.com/p?q=1", to);
+    }
+    assert.deepEqual(await viaUpstream(`http://${h}/p`), { status: 302, loc: "/p" }, h);
+  }
+});
+
+test("isInternalHost: exact cases", () => {
+  for (const h of ["127.0.0.1", "127.8.9.10", "localhost", "LOCALHOST.", "x.localhost", "0.0.0.0", "[::]", "[::1]", "::1", "[::ffff:7f00:1]", "[::ffff:127.0.0.1]", "[::ffff:0:0]"]) {
+    assert.equal(isInternalHost(h), true, h);
+  }
+  for (const h of ["128.0.0.1", "126.255.255.255", "localhost.evil.com", "evil-localhost", "127.evil.com", "[::2]", "[::ffff:8.8.8.8]", "[::ffff:808:808]", "s1r1us.ai", "x.com", ""]) {
+    assert.equal(isInternalHost(h), false, h);
+  }
+});
+
+test("tab/CR/LF and leading whitespace are dropped before the slash collapse", async () => {
+  for (const to of ["/\t/evil.com", " //evil.com", "\t\n//evil.com", "/\r\n/evil.com", "\u0001/\\evil.com", "/\t\\/evil.com"]) {
+    assert.equal(safeLocation(to), "/evil.com", JSON.stringify(to));
+  }
+  // End to end only for values that are legal in an HTTP header (tab and space are; CR/LF/C0 are not).
+  for (const to of ["/\t/evil.com", "/\t\\/evil.com", "/ /\t/x"]) {
+    const r = await viaUpstream(to);
+    assert.equal(r.status, 302, JSON.stringify(to));
+    assert.doesNotMatch(r.loc, BAD, JSON.stringify(to));
+    assert.doesNotMatch(r.loc, /\t/, JSON.stringify(to));
+  }
+  assert.deepEqual(normalizeRequestTarget("/\t/evil.com"), { status: 308, location: "/evil.com" });
+  assert.deepEqual(normalizeRequestTarget(" //evil.com?a=1"), { status: 308, location: "/evil.com?a=1" });
+  assert.deepEqual(normalizeRequestTarget("\t/faq/"), { url: "/faq/" });
+  assert.deepEqual(normalizeRequestTarget("/\r\n/evil.com"), { status: 308, location: "/evil.com" });
+  // Raw tabs/spaces in a request line are rejected by Node's HTTP parser before the front door.
+  assert.equal((await raw("/\t/evil.com")).status, 400);
+});
+
+test("allowlist mirrors the app's auth hosts", () => {
+  const server = readFileSync(new URL("../src/lib/auth/server.ts", import.meta.url), "utf8");
+  const preview = readFileSync(new URL("../src/lib/auth/preview.ts", import.meta.url), "utf8");
+  const pub = /PUBLIC_SITE_HOSTS: string\[\] = \[([^\]]*)\]/.exec(server);
+  assert.ok(pub, "PUBLIC_SITE_HOSTS not found");
+  const hosts = [...pub[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]).sort();
+  assert.deepEqual([...OWN_HOSTS].sort(), hosts);
+  const issuer = /GROK_ISSUER_DEFAULT = "([^"]+)"/.exec(preview);
+  assert.ok(issuer && TRUSTED_REDIRECT_HOSTS.has(new URL(issuer[1]).hostname));
+  assert.ok(TRUSTED_REDIRECT_HOSTS.has("x.com") && TRUSTED_REDIRECT_HOSTS.has("twitter.com") && TRUSTED_REDIRECT_HOSTS.has("api.x.com"));
 });

@@ -220,7 +220,46 @@ export async function serveStatic(res, absPath, req) {
 
 // Upstream port for the proxy; startFrontDoor() may override it (tests use a stub upstream).
 let upstreamPort = NITRO_INTERNAL_PORT;
-const INTERNAL_HOSTS = new Set(["127.0.0.1", "localhost", "0.0.0.0", "[::1]", "::1"]);
+
+// Our own public hosts (mirrors PUBLIC_SITE_HOSTS in src/lib/auth/server.ts).
+export const OWN_HOSTS = new Set(["s1r1us.ai", "www.s1r1us.ai"]);
+// External https hosts an upstream redirect may point to: native X OAuth (Better Auth `twitter`,
+// https://x.com/i/oauth2/authorize) and the Grok auth broker (GROK_ISSUER_DEFAULT in
+// src/lib/auth/preview.ts). Kept in sync by scripts/front-proxy-location.test.mjs.
+export const TRUSTED_REDIRECT_HOSTS = new Set([
+  "x.com",
+  "www.x.com",
+  "api.x.com",
+  "twitter.com",
+  "www.twitter.com",
+  "api.twitter.com",
+  "auth.grok.me",
+]);
+
+/** True for loopback / unspecified hosts as WHATWG URL serializes them (case-insensitive). */
+export function isInternalHost(hostname) {
+  let h = String(hostname || "").toLowerCase();
+  if (h.endsWith(".")) h = h.slice(0, -1);
+  if (h === "localhost" || h.endsWith(".localhost")) return true;
+  if (/^127\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(h) || /^0\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(h)) return true;
+  if (h.startsWith("[") && h.endsWith("]")) h = h.slice(1, -1);
+  if (h === "::1" || h === "::") return true;
+  // IPv4-mapped (::ffff:a.b.c.d or ::ffff:XXXX:XXXX): loopback 127/8 or 0/8
+  const mapped = /^::ffff:(?:(\d{1,3})\.\d{1,3}\.\d{1,3}\.\d{1,3}|([0-9a-f]{1,4}):[0-9a-f]{1,4})$/.exec(h);
+  if (mapped) {
+    const first = mapped[1] != null ? Number(mapped[1]) : parseInt(mapped[2], 16) >> 8;
+    return first === 127 || first === 0;
+  }
+  return false;
+}
+
+/** Drop ASCII tab/CR/LF/NUL anywhere and leading whitespace/control chars (browsers ignore them). */
+function stripIgnorable(value) {
+  const s = String(value).replace(/[\t\r\n]/g, "").split("\0").join("");
+  let i = 0;
+  while (i < s.length && s.charCodeAt(i) <= 0x20) i++;
+  return s.slice(i);
+}
 
 /** Collapse leading slashes/backslashes so a path can never be read as another host. */
 function singleLeadingSlash(path) {
@@ -228,13 +267,15 @@ function singleLeadingSlash(path) {
 }
 
 /**
- * Upstream Location → safe value for the browser. Internal-origin URLs become same-origin
- * relative paths; relative paths keep exactly one leading slash. Other absolute URLs
- * (for example OAuth providers) pass through unchanged.
+ * Upstream Location → safe value for the browser (allowlist):
+ * - https on a TRUSTED_REDIRECT_HOSTS host (no credentials, default port) passes through;
+ * - our own host or a loopback/internal host → same-origin relative path;
+ * - any other absolute URL → "/";
+ * - relative paths keep exactly one leading slash.
  */
 export function safeLocation(loc) {
   if (loc == null) return loc;
-  const s = String(Array.isArray(loc) ? loc[0] : loc).replace(/[\r\n\0]/g, "");
+  const s = stripIgnorable(Array.isArray(loc) ? loc[0] : loc);
   if (/^[a-z][a-z0-9+.-]*:/i.test(s)) {
     let u;
     try {
@@ -242,8 +283,14 @@ export function safeLocation(loc) {
     } catch {
       return "/";
     }
-    if (!INTERNAL_HOSTS.has(u.hostname.toLowerCase())) return s;
-    return singleLeadingSlash(u.pathname) + u.search + u.hash;
+    const host = u.hostname.toLowerCase().replace(/\.$/, "");
+    if (u.protocol === "https:" && TRUSTED_REDIRECT_HOSTS.has(host) && !u.username && !u.password && !u.port) {
+      return u.href;
+    }
+    if (OWN_HOSTS.has(host) || isInternalHost(host)) {
+      return singleLeadingSlash(u.pathname) + u.search + u.hash;
+    }
+    return "/";
   }
   if (s.startsWith("/") || s.startsWith("\\")) return singleLeadingSlash(s);
   return s;
@@ -251,14 +298,16 @@ export function safeLocation(loc) {
 
 /**
  * Request target → origin-form. Returns { url } to continue, { status: 400 } to reject,
- * or { status: 308, location } for a same-origin redirect. Backslashes (raw or %5C) are
- * rejected; absolute-form targets drop their authority; repeated leading slashes collapse.
+ * or { status: 308, location } for a same-origin redirect. Tab/CR/LF and leading whitespace
+ * are dropped; backslashes (raw or %5C) are rejected; absolute-form targets drop their
+ * authority; repeated leading slashes collapse.
  */
 export function normalizeRequestTarget(raw) {
   let target = String(raw || "/");
-  if (/[\r\n\0]/.test(target)) return { status: 400 };
+  if (target.includes("\0")) return { status: 400 };
+  target = stripIgnorable(target);
   if (!target.startsWith("/")) {
-    if (target === "*") return { status: 400 };
+    if (target === "*" || target === "") return { status: 400 };
     try {
       const u = new URL(target);
       target = (u.pathname || "/") + u.search;
