@@ -317,6 +317,36 @@ export const SITE_IMAGES = [
     pages: ["/dripped-out-matrix", "/dripped-out-matrix/"],
   },
   {
+    src: "/images/hindu-teaching-meditation.jpg",
+    name: seoImgAlt("Hindu teaching meditation · S1R1US.ai"),
+    caption: seoImgAlt("Hindu teaching meditation: a meditator on a dais amid ancient Hindu and Buddhist symbols under matrix rain of Akashic knowledge. AI art \u00a9 S1R1US.ai"),
+    pages: ["/hindu-teachings", "/hindu-teachings/"],
+  },
+  {
+    src: "/images/brahma-creator-trimurti.jpg",
+    name: seoImgAlt("Brahma the Creator · Trimurti · S1R1US.ai"),
+    caption: seoImgAlt("Brahma the Creator of the Trimurti: four faces, Vedas, mala, lotus and kamandalu on a cosmic lotus under Akashic matrix rain. AI art \u00a9 S1R1US.ai"),
+    pages: ["/hindu-teachings", "/hindu-teachings/"],
+  },
+  {
+    src: "/images/vishnu-preserver-trimurti.jpg",
+    name: seoImgAlt("Vishnu the Preserver · Trimurti · S1R1US.ai"),
+    caption: seoImgAlt("Vishnu the Preserver of the Trimurti: blue-skinned, four arms with conch, sudarshana chakra, mace and lotus under Akashic matrix rain. AI art \u00a9 S1R1US.ai"),
+    pages: ["/hindu-teachings", "/hindu-teachings/"],
+  },
+  {
+    src: "/images/shiva-brahmastra-launch.jpg",
+    name: seoImgAlt("Shiva and the Brahmastra · S1R1US.ai"),
+    caption: seoImgAlt("Shiva launching the Brahmastra, the celestial astra of Brahma, under matrix rain of Om and yantra. AI art \u00a9 S1R1US.ai"),
+    pages: ["/hindu-teachings", "/hindu-teachings/"],
+  },
+  {
+    src: "/images/vasuki-samudra-manthana-ocean-churn.jpg",
+    name: seoImgAlt("Vasuki · Samudra Manthana · S1R1US.ai"),
+    caption: seoImgAlt("Samudra Manthana: Vasuki the serpent king as the churning rope around Mount Mandara under matrix rain of Akashic knowledge. AI art \u00a9 S1R1US.ai"),
+    pages: ["/hindu-teachings", "/hindu-teachings/"],
+  },
+  {
     src: "/images/captains-save-the-constitution.jpg",
     name: seoImgAlt("Captains save the Constitution · SAI Citizens United LTD"),
     caption: seoImgAlt("A futuristic sensei guides Br0k3n S0ft among a team of captains protecting the U.S. Constitution."),

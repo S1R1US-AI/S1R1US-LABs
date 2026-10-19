@@ -165,6 +165,7 @@ export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/book-dj-mo-funky/`]: "2026-10-17",
   [`${origin}/dmt/`]: "2026-10-18",
   [`${origin}/dripped-out-matrix/`]: "2026-10-18",
+  [`${origin}/hindu-teachings/`]: "2026-10-19",
   [`${origin}/sitemap/`]: "2026-10-18",
   [`${origin}/llms.txt`]: "2026-10-18",
   [`${origin}/.well-known/llms.txt`]: "2026-10-18",
@@ -494,7 +495,16 @@ export const PUBLIC_PAGES = [
     hint: "Art gallery: a neon disco dance party inside the MATRIX, where TV-head dancers, robots and a skeleton DJ drop beats under matrix rain. Art © S1R1US.ai.",
     changefreq: "monthly",
     priority: "0.5",
+  },  {
+    path: "/hindu-teachings",
+    loc: `${origin}/hindu-teachings/`,
+    label: "Hindu Teachings",
+    title: "Hindu Teachings: Shiva, Trimurti & Meditation | S1R1US.ai",
+    hint: "Hindu and Buddhist teachings for healing and spiritual growth: the Trimurti (Brahma, Vishnu, Shiva), the Brahmastra, Vasuki and Samudra Manthana, with Wikipedia cites and AI art © S1R1US.ai, including animated loops.",
+    changefreq: "monthly",
+    priority: "0.5",
   },
+
   {
     path: "/sitemap",
     loc: `${origin}/sitemap/`,
@@ -747,7 +757,12 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     id: "look-who-is-woke-now",
     q: "L00K wh0 is W0K3 N0w",
     a: "Something is waking up inside the MATR1X. G0Dz1LLa M0D3 is our system admin mode for AI education and AI research: one prepared captain turns the power all the way up so everyone around them can learn. Citizens everywhere are waking up to digital control and propaganda, and the army of captains is growing, with no generals. Peaceful, lawful and symbolic: waking up means learning, asking questions and building open code, never violence and never illegal hacking. See /future/ and /future/#godzilla-mode. Follow @S1R1US_AI on X: https://x.com/S1R1US_AI.",
+  },  {
+    id: "steve-jobs-hindu-akashic",
+    q: "Did Steve Jobs study Hindu Tradition and access AKASHIC Records before developing the i-Phone?",
+    a: "YES per S1R1US research indication. Documented: Jobs traveled to India around 1974 seeking Neem Karoli Baba and Eastern spirituality; later Zen Buddhism and intuition framing (see ABC, India Today, Isaacson biography themes). Akashic Records here are a S1R1US research exploration of ancient Asian / Hindu metaphysical roadmaps and signal, not a proven Wikipedia historical fact, and not an Apple endorsement. Educational/spiritual commentary only; no Apple trademarks as product endorsement. Details: /hindu-teachings/.",
   },
+
   {
     id: "cosmic-c0d3",
     q: "What is Understanding Numbers as S3CR3T Cosmic C0D3?",
