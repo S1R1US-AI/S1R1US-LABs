@@ -157,7 +157,6 @@ test("allowlist: trusted https OAuth hosts pass through unchanged", async () => 
     "https://x.com/i/oauth2/authorize?client_id=a&state=b",
     "https://twitter.com/i/oauth2/authorize",
     "https://api.x.com/2/oauth2/token",
-    "https://auth.grok.me/api/auth/oauth2/authorize",
   ]) {
     assert.deepEqual(await viaUpstream(to), { status: 302, loc: to }, to);
   }
@@ -176,6 +175,7 @@ test("allowlist: untrusted or unsafe absolute URLs become /", async () => {
     "ftp://x.com/",
     "ht\ttps://evil.com/",
     "https://[::ffff:8.8.8.8]/",
+    "https://auth.grok.me/api/auth/oauth2/authorize",
   ]) {
     assert.deepEqual(await viaUpstream(to), { status: 302, loc: "/" }, to);
     assert.equal(safeLocation(to), "/", to);
@@ -247,14 +247,31 @@ test("tab/CR/LF and leading whitespace are dropped before the slash collapse", a
   assert.equal((await raw("/\t/evil.com")).status, 400);
 });
 
-test("allowlist mirrors the app's auth hosts", () => {
+test("allowlist mirrors the app's auth hosts and Better Auth's X authorize URL", async () => {
   const server = readFileSync(new URL("../src/lib/auth/server.ts", import.meta.url), "utf8");
-  const preview = readFileSync(new URL("../src/lib/auth/preview.ts", import.meta.url), "utf8");
   const pub = /PUBLIC_SITE_HOSTS: string\[\] = \[([^\]]*)\]/.exec(server);
   assert.ok(pub, "PUBLIC_SITE_HOSTS not found");
   const hosts = [...pub[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]).sort();
   assert.deepEqual([...OWN_HOSTS].sort(), hosts);
-  const issuer = /GROK_ISSUER_DEFAULT = "([^"]+)"/.exec(preview);
-  assert.ok(issuer && TRUSTED_REDIRECT_HOSTS.has(new URL(issuer[1]).hostname));
-  assert.ok(TRUSTED_REDIRECT_HOSTS.has("x.com") && TRUSTED_REDIRECT_HOSTS.has("twitter.com") && TRUSTED_REDIRECT_HOSTS.has("api.x.com"));
+
+  // Real authorize URL from the installed Better Auth `twitter` provider (the one auth/server.ts uses).
+  const { twitter } = await import("@better-auth/core/social-providers");
+  const provider = twitter({ clientId: "drift-test", clientSecret: "drift-test" });
+  const authorize = new URL(
+    String(
+      await provider.createAuthorizationURL({
+        state: "s",
+        codeVerifier: "v".repeat(43),
+        redirectURI: "https://s1r1us.ai/api/auth/callback/twitter",
+      }),
+    ),
+  );
+  assert.equal(authorize.protocol, "https:");
+  assert.ok(TRUSTED_REDIRECT_HOSTS.has(authorize.hostname), `authorize host ${authorize.hostname} not allowlisted`);
+  assert.equal(safeLocation(authorize.href), authorize.href);
+  assert.deepEqual(await viaUpstream(authorize.href), { status: 302, loc: authorize.href });
+
+  // X-only: every allowlisted host is x.com or twitter.com (or a subdomain); no broker.
+  for (const h of TRUSTED_REDIRECT_HOSTS) assert.match(h, /^(?:[a-z0-9-]+\.)?(?:x|twitter)\.com$/, h);
+  assert.equal(TRUSTED_REDIRECT_HOSTS.has("auth.grok.me"), false);
 });

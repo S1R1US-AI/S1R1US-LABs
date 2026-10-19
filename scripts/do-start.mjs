@@ -223,9 +223,9 @@ let upstreamPort = NITRO_INTERNAL_PORT;
 
 // Our own public hosts (mirrors PUBLIC_SITE_HOSTS in src/lib/auth/server.ts).
 export const OWN_HOSTS = new Set(["s1r1us.ai", "www.s1r1us.ai"]);
-// External https hosts an upstream redirect may point to: native X OAuth (Better Auth `twitter`,
-// https://x.com/i/oauth2/authorize) and the Grok auth broker (GROK_ISSUER_DEFAULT in
-// src/lib/auth/preview.ts). Kept in sync by scripts/front-proxy-location.test.mjs.
+// External https hosts an upstream redirect may point to: native X OAuth only (Better Auth
+// `twitter` provider, https://x.com/i/oauth2/authorize). The Grok broker is off in production.
+// Kept in sync by scripts/front-proxy-location.test.mjs.
 export const TRUSTED_REDIRECT_HOSTS = new Set([
   "x.com",
   "www.x.com",
@@ -233,7 +233,6 @@ export const TRUSTED_REDIRECT_HOSTS = new Set([
   "twitter.com",
   "www.twitter.com",
   "api.twitter.com",
-  "auth.grok.me",
 ]);
 
 /** True for loopback / unspecified hosts as WHATWG URL serializes them (case-insensitive). */
