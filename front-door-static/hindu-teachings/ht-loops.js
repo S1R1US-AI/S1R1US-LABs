@@ -25,7 +25,13 @@
     var p; try { p = v.play(); } catch { armRetry(); return; }
     if (p && typeof p.then === 'function') p.catch(function () { armRetry(); });
   }
-  function onGesture() { disarmRetry(); vids.forEach(tryPlay); }
+  // Retry every loop except the one the gesture targets: its own click/key handler toggles it,
+  // so starting it here first would make that handler pause it (Copilot review on PR #225).
+  function onGesture(e) {
+    disarmRetry();
+    var t = e && e.target;
+    vids.forEach(function (v) { if (!(t && (t === v || (v.contains && v.contains(t))))) tryPlay(v); });
+  }
   function armRetry() {
     if (retryArmed) return; retryArmed = true;
     document.addEventListener('pointerdown', onGesture, true);
