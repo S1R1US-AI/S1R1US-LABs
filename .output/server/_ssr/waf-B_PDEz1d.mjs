@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/waf-B_PDEz1d.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/waf-B_PDEz1d.js
 var SCORE = {
 	CRITICAL: 5,
 	ERROR: 4,

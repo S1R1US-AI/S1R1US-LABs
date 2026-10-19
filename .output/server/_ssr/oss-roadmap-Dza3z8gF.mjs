@@ -1,7 +1,7 @@
 import { Ai as WHITE_LABEL_PATH, dt as MINERS_HEADLINE, ft as MINERS_PATH, tr as SEO_TAB_MINERS, vi as TAB_MINERS } from "./brand-DgaoFySW.mjs";
 import { a as OSS_LICENSE_NOTICE, i as LEGAL_DISCLAIMER_UPDATED, r as LEGAL_DISCLAIMER_SHORT, t as LEGAL_DISCLAIMER } from "./white-label-C8aBGpiR.mjs";
 import { a as GO_LIVE_HEADLINE, i as GO_LIVE_DEADLINE_TZ, n as GO_LIVE_DEADLINE, o as GO_LIVE_START, r as GO_LIVE_DEADLINE_LABEL, s as GO_LIVE_STEPS, t as GO_LIVE } from "./go-live-BoZqVUs7.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/oss-roadmap-Dza3z8gF.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/oss-roadmap-Dza3z8gF.js
 /** Public OSS Roadmap — functions, go-live status, estimated dates. Client-safe. */
 var OSS_ROADMAP_PATH = "/roadmap";
 var OSS_ROADMAP_TAB = "OSS Roadmap";

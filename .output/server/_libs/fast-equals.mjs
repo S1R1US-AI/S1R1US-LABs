@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/fast-equals/dist/es/index.mjs
+//#region ../fresh-2026-10-19/node_modules/fast-equals/dist/es/index.mjs
 var { getOwnPropertyNames, getOwnPropertySymbols } = Object;
 var { hasOwnProperty } = Object.prototype;
 /**

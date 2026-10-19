@@ -228,11 +228,11 @@ Go-live: PoC rails STARTED (2026-09-05), Auto GM practice NEXT, Auto AI agent ac
 
 ## Newsletter
 
-- SAI Citizens United News (S1R1US.ai newsletter): https://s1r1us.ai/newsletter/ — status updates, bug fixes, new features, security notes, milestones. Coming soon. Signup opens after launch. No email addresses are collected yet. Privacy and subscription details will be published before signup opens. FAQ: https://s1r1us.ai/faq#newsletter
+- SAI Citizens United News (S1R1US.ai newsletter): https://s1r1us.ai/newsletter/ — status updates, bug fixes, new features, security notes, milestones. Signup is open: free, delivered by Substack, unsubscribe any time. Signup goes to Substack; this site does not collect email addresses. FAQ: https://s1r1us.ai/faq#newsletter
 
 ## Escape the MATRIX
 
-- How to Escape the MATRIX: https://s1r1us.ai/escape-the-matrix/ — S1R1US.ai is building an escape ramp from deep state digital prisons with open-source, transparent, citizen-owned code based on PEACE, LOVE and FREEDOM. How to join: GitHub, MANIFESTO, X @S1R1US_AI, Br0k3n S0ft Substack, Newsletter (coming soon), code and bug reports. FAQ: https://s1r1us.ai/faq#escape-the-matrix
+- How to Escape the MATRIX: https://s1r1us.ai/escape-the-matrix/ — S1R1US.ai is building an escape ramp from deep state digital prisons with open-source, transparent, citizen-owned code based on PEACE, LOVE and FREEDOM. How to join: GitHub, MANIFESTO, X @S1R1US_AI, Br0k3n S0ft Substack, Newsletter (free signup, delivered by Substack), code and bug reports. FAQ: https://s1r1us.ai/faq#escape-the-matrix
 - "want even more crazy rabb1t holes?" section on the same page (https://s1r1us.ai/escape-the-matrix/#rabbit-holes): links to third-party YouTube videos (Robert Breedlove Clips channel; Decentralized Medicine with Jack Kruse; Bitcoin and Humanity's Decentralized Revolution with Dr. Jack Kruse on WiM; Carl Hayden Smith on Danny Jones), the Br0k3n S0ft Substack, the SAI Citizens United LTD logo with the quote "3scape tha MATRIX by building the N3w MATR1X", and the art Turing's Computah N1ghtMare. Links only, no embeds.
 
 ## Global Uprisings

@@ -1,7 +1,7 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { ft as MINERS_PATH, tr as SEO_TAB_MINERS, ut as MINERS_DISCLAIMER, vi as TAB_MINERS } from "./brand-DgaoFySW.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/btc-miners-5wyDdWuS.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/btc-miners-5wyDdWuS.js
 var btc_miners_5wyDdWuS_exports = /* @__PURE__ */ __exportAll({
 	_: () => minerAddressError,
 	a: () => MINERS_FAQ_ITEMS,

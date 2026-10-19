@@ -419,7 +419,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/newsletter/`,
     label: "Newsletter",
     title: "SAI Citizens United News | S1R1US.ai Newsletter",
-    hint: "SAI Citizens United News, the S1R1US.ai newsletter: status updates, bug fixes, new features, security notes. Coming soon. Signup opens after launch.",
+    hint: "SAI Citizens United News, the S1R1US.ai newsletter: status updates, bug fixes, new features, security notes. Signup is open: free, delivered by Substack, unsubscribe any time.",
     changefreq: "monthly",
     priority: "0.5",
   },
@@ -1015,12 +1015,12 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "newsletter",
     q: "Does S1R1US.ai have a Newsletter?",
-    a: "Yes. SAI Citizens United News is the S1R1US.ai newsletter. It will cover live system status, updates, bug fixes, new features, security notes, project milestones and the roadmap. The plan is a monthly roundup, plus a short notice only when something important cannot wait. Signup is not open yet. It opens after launch, and the site does not collect email addresses for it today. When signup opens, you will be able to choose the full newsletter, release and bug-fix notes only, or security and status alerts only. Guests will be able to read public issues without signing up. Privacy and subscription details will be published before signup opens. Details: /newsletter/.",
+    a: "Yes. SAI Citizens United News is the S1R1US.ai newsletter. It covers live system status, updates, bug fixes, new features, security notes, project milestones and the roadmap. It is a monthly roundup, plus a short notice only when something important cannot wait. Signup is open. It is free and delivered by Substack: use the Sign up button on the Newsletter page. Unsubscribe any time with the link in every email. Your email address goes to Substack under its own privacy policy; this site does not collect or store it. Details: /newsletter/.",
   },
   {
     id: "escape-the-matrix",
     q: "How do I escape the MATRIX?",
-    a: "Start by seeing the control grid for what it is: closed code, hidden rules, constant surveillance and money and accounts someone else can switch off. Then choose tools you can read, run and own. S1R1US.ai is building an escape ramp from deep state digital prisons with open-source, transparent, citizen-owned code based solely on PEACE - LOVE - FREEDOM. Join us: follow the code on GitHub, read the MANIFESTO, follow @S1R1US_AI on X, read Br0k3n S0ft on Substack, watch for the Newsletter (coming soon), and contribute code or bug reports. Our war is fought with code, truth and peaceful action, never violence. Details: /escape-the-matrix/. More rabbit holes (videos, the Br0k3n S0ft Substack and Turing's Computah N1ghtMare): /escape-the-matrix/#rabbit-holes.",
+    a: "Start by seeing the control grid for what it is: closed code, hidden rules, constant surveillance and money and accounts someone else can switch off. Then choose tools you can read, run and own. S1R1US.ai is building an escape ramp from deep state digital prisons with open-source, transparent, citizen-owned code based solely on PEACE - LOVE - FREEDOM. Join us: follow the code on GitHub, read the MANIFESTO, follow @S1R1US_AI on X, read Br0k3n S0ft on Substack, sign up for the free Newsletter (delivered by Substack), and contribute code or bug reports. Our war is fought with code, truth and peaceful action, never violence. Details: /escape-the-matrix/. More rabbit holes (videos, the Br0k3n S0ft Substack and Turing's Computah N1ghtMare): /escape-the-matrix/#rabbit-holes.",
   },
   {
     id: "global-uprisings",

@@ -274,7 +274,7 @@ export function Shell({
               <Link to="/roadmap" className="shrink-0 text-oss hover:underline" title="OSS Roadmap · functions, go-live status, estimated timeline">
                 OSS Roadmap
               </Link>
-              <a href="/newsletter/" className="shrink-0 text-oss hover:underline" title="SAI Citizens United News · S1R1US.ai newsletter · coming soon">
+              <a href="/newsletter/" className="shrink-0 text-oss hover:underline" title="SAI Citizens United News · S1R1US.ai newsletter · free signup, delivered by Substack">
                 Newsletter
               </a>
               <a href="/escape-the-matrix/" className="shrink-0 text-oss hover:underline" title="How to Escape the MATRIX · S1R1US.ai">

@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/webauthn-client-wWVK9Jpi.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/webauthn-client-wWVK9Jpi.js
 /** Browser-only WebAuthn helpers. Never import from a server module. */
 function webauthnAvailable() {
 	return typeof window !== "undefined" && typeof window.PublicKeyCredential === "function" && typeof navigator.credentials?.create === "function" && typeof navigator.credentials?.get === "function";

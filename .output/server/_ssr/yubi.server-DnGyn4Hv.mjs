@@ -1,7 +1,7 @@
 import { r as getSql } from "./db-CnQahlAD.mjs";
 import { n as guardedFetch } from "./net-guard-C4Si76ZP.mjs";
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/yubi.server-DnGyn4Hv.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/yubi.server-DnGyn4Hv.js
 var YUBI_OTP_RE = /^[cbdefghijklnrtuv]{44}$/;
 function yubiPublicId(otp) {
 	return otp.slice(0, 12);

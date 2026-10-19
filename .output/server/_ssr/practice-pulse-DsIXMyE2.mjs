@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/practice-pulse-DsIXMyE2.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/practice-pulse-DsIXMyE2.js
 var PATH = "/workspace/data/practice-pulse.json";
 var mem = null;
 async function loadPulse() {

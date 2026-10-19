@@ -6,7 +6,7 @@ import { s as GO_LIVE_STEPS } from "./go-live-BoZqVUs7.mjs";
 import { p as mandatePublic } from "./mandate-ultYaK1a.mjs";
 import { d as hiveResourcePublic } from "./hive-resource-DvgKV684.mjs";
 import { i as LOCKED_FUNCTIONS } from "./oss-roadmap-Dza3z8gF.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/alignment-BUSZomnV.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/alignment-BUSZomnV.js
 var alignment_BUSZomnV_exports = /* @__PURE__ */ __exportAll({
 	n: () => alignment_exports,
 	t: () => alignmentScore

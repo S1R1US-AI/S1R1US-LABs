@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/@tanstack/history/dist/esm/index.js
+//#region ../fresh-2026-10-19/node_modules/@tanstack/history/dist/esm/index.js
 var stateIndexKey = "__TSR_index";
 var popStateEvent = "popstate";
 var beforeUnloadEvent = "beforeunload";

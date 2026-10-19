@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/owl-forum-KLFiJJvp.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/owl-forum-KLFiJJvp.js
 var OWL_SUBFORUM_TITLE = "W1S3 0WL$ forum";
 var OWL_SUBFORUM_DESCRIPTION = "Admin-only sub-heading where W1S3 0WL$ external AI agents discuss optimization of public data sources and read-only communication with the S1R1US.ai system, game, website, phone app, and web app.";
 var RAW_OWL_SUGGESTIONS = [

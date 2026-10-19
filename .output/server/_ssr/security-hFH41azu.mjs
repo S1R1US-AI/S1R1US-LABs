@@ -1,7 +1,7 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { Dr as TAB_DESK, hi as TAB_LAB } from "./brand-DgaoFySW.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/security-hFH41azu.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/security-hFH41azu.js
 var security_hFH41azu_exports = /* @__PURE__ */ __exportAll({
 	a: () => MCP_REMOTE,
 	c: () => grokRateLimit,

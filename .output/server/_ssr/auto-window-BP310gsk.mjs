@@ -1,7 +1,7 @@
 import { b as rsiWilder, v as rsiMean, y as rsiSeries } from "./proxy-book-BG4V1YAe.mjs";
 import { n as runBots, t as heliosCall } from "./signal-BYW8HIAl.mjs";
 import { n as PROFIT_BTC_RECEIVE, t as PROFIT_BTC_EXPLORER } from "./treasury-VcYm63db.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/auto-window-BP310gsk.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/auto-window-BP310gsk.js
 var GM_NAME = "G0DZ1LLa M0D3";
 var GM_CASH_MIN = 1e3;
 var GM_CASH_MAX = 1e5;

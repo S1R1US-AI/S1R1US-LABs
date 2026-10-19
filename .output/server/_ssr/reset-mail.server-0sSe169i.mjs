@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/reset-mail.server-0sSe169i.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/reset-mail.server-0sSe169i.js
 /**
 * Server-only. Do not import from client components or re-export the mailbox.
 * Destination is never returned from a server function.

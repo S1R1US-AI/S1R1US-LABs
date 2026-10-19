@@ -1,6 +1,6 @@
 import { f as ckpoolStatsUrl, g as minerActive, m as defaultMinerConfig, p as ckpoolUserJsonUrl, v as parseCkpoolHash, x as withMinerDefaults } from "./btc-miners-5wyDdWuS.mjs";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/btc-miners.server-D4eGxf1v.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/btc-miners.server-D4eGxf1v.js
 /**
 * BTC M1N3Rz server side — per-admin miner config store, free public solo
 * CKPool stats fetch, and hash power history sampling for the graph.
