@@ -32,6 +32,8 @@ jobs:
         run: npm install -g npm@11.21.0
       - name: Install
         run: npm ci
+      - name: Create /workspace/data (box + DO layout the tests expect)
+        run: sudo mkdir -p /workspace/data && sudo chown "$(id -u):$(id -g)" /workspace/data
       - name: Test
         run: npm test
       - name: Lint
