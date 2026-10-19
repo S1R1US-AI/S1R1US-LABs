@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/d3-color/src/define.js
+//#region ../fresh-2026-10-19/node_modules/d3-color/src/define.js
 function define_default(constructor, factory, prototype) {
 	constructor.prototype = factory.prototype = prototype;
 	prototype.constructor = constructor;
@@ -9,7 +9,7 @@ function extend(parent, definition) {
 	return prototype;
 }
 //#endregion
-//#region ../faq-dmt-dripped-wt/node_modules/d3-color/src/color.js
+//#region ../fresh-2026-10-19/node_modules/d3-color/src/color.js
 function Color() {}
 var darker = .7;
 var brighter = 1 / darker;

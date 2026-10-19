@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/brand-DgaoFySW.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/brand-DgaoFySW.js
 var APP_NAME = "[ S1R1U$ <<L@B$>> ]";
 var APP_CALLS = `${APP_NAME} CALLS`;
 var BOT7_NAME = "S1R1U$ Analyst";

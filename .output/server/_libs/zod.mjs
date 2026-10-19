@@ -1,5 +1,5 @@
 import { B as _coercedString, E as ZodString, T as ZodBoolean, z as _coercedBoolean } from "./@better-auth/core+[...].mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/zod/v4/classic/coerce.js
+//#region ../fresh-2026-10-19/node_modules/zod/v4/classic/coerce.js
 function string(params) {
 	return _coercedString(ZodString, params);
 }

@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/x-admin--2RwSK6Q.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/x-admin--2RwSK6Q.js
 /**
 * Handles that must never be company X.
 * @S1R1US — blocked for breaking rules.

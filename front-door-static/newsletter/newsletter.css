@@ -30,7 +30,6 @@
 .nl-section { max-width: 52rem; margin-left: auto; margin-right: auto; }
 .nl-section h2 { margin-bottom: 1rem; }
 
-.nl-status { border-left: 3px solid var(--teal); }
 
 .nl-cards {
   list-style: none;
@@ -52,13 +51,10 @@
 .nl-cards li strong { display: block; color: var(--gold); margin-bottom: 0.25rem; }
 
 
-.pg-cta.nl-cta-disabled,
-.pg-cta.nl-cta-disabled:hover {
-  opacity: 0.55;
-  cursor: not-allowed;
-  background: transparent;
-  font: inherit;
-}
+/* Newsletter signup: one plain link to the Substack subscribe page (no embed). */
+.nl-signup-a { margin: 1.4rem auto 0; text-align: center; }
+.pg-cta.nl-cta-big { font-size: 1.2rem; padding: 0.9rem 1.75rem; font-weight: 800; }
+.nl-signup-note { margin: 0.7rem 0 0; }
 
 @media (max-width: 640px) {
   .nl-hero { margin-top: 0; margin-bottom: 1.6rem; }

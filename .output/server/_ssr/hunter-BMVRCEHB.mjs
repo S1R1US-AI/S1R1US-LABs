@@ -7,7 +7,7 @@ import { a as underAttack, i as listActions, t as applyIntelPatches } from "./au
 import { n as guardedFetch } from "./net-guard-C4Si76ZP.mjs";
 import { i as wafStats, t as WAF_RULES } from "./waf-B_PDEz1d.mjs";
 import { n as agentSecurityStats, t as MCP_TOOLS } from "./agent-security-IAhNJMHV.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/hunter-BMVRCEHB.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/hunter-BMVRCEHB.js
 var hunter_BMVRCEHB_exports = /* @__PURE__ */ __exportAll({
 	a: () => cachedIntel,
 	c: () => firewallLayers,

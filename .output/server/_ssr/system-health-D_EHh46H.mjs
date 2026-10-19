@@ -5,7 +5,7 @@ import { s as GO_LIVE_STEPS } from "./go-live-BoZqVUs7.mjs";
 import { d as hiveResourcePublic } from "./hive-resource-DvgKV684.mjs";
 import { t as alignmentScore } from "./alignment-BUSZomnV.mjs";
 import { n as checkpointId } from "./checkpoint-DmgRjnZY.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/system-health-D_EHh46H.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/system-health-D_EHh46H.js
 var system_health_D_EHh46H_exports = /* @__PURE__ */ __exportAll({
 	n: () => system_health_exports,
 	t: () => systemHealth

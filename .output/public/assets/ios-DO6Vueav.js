@@ -1,1 +1,0 @@
-import{t as e}from"./mobile-app-page-DM7d2R82.js";var t=e;export{t as component};

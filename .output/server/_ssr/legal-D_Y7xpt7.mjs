@@ -3,7 +3,7 @@ import { o as COMPANY_X_HANDLE } from "./x-admin--2RwSK6Q.mjs";
 import { c as SUPPORT_GIFT_RECEIPT, o as SUPPORT_COFFEE_USD } from "./support-udAoCWLt.mjs";
 import { m as GITHUB_URL } from "./model-4xDjcesa.mjs";
 import { c as WHITE_LABEL_DISCLOSURE_LINKS, d as WHITE_LABEL_LEGAL_STATUS, g as WHITE_LABEL_USER_AGREEMENT, h as WHITE_LABEL_STRIP, m as WHITE_LABEL_STAGE } from "./white-label-C8aBGpiR.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/legal-D_Y7xpt7.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/legal-D_Y7xpt7.js
 var TERMS_PATH = "/terms";
 var TERMS_TITLE = "Terms and Agreements";
 var TERMS_HOVER = `${TERMS_TITLE} · 100 percent at your own risk · not financial advice · not legal advice`;

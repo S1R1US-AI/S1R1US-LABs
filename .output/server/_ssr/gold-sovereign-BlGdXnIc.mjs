@@ -1,4 +1,4 @@
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/gold-sovereign-BlGdXnIc.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/gold-sovereign-BlGdXnIc.js
 var GOLD_REGIONS = [
 	{
 		id: "us",

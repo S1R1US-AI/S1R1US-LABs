@@ -4,7 +4,7 @@ import { r as stampGoLiveNotice } from "./go-live-notices-y5KTHj_G.mjs";
 import { a as setAgentComm, i as isAgentCommOpen } from "./agent-gate-tcAP2SUX.mjs";
 import { s as setHiveStatus, t as hiveAdmin } from "./hive-swarm-DlFlLhhT.mjs";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/lock-status.server-Bhq68JxN.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/lock-status.server-Bhq68JxN.js
 /** Server-only LoCK3D STATUS. Never import from a client page. */
 var PATHS = ["/tmp/lock-status.json", "/workspace/data/lock-status.json"];
 var GM_LIVE = "/workspace/data/gm-live.json";

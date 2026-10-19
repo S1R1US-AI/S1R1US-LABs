@@ -1,5 +1,5 @@
 import { t as __commonJSMin } from "../_runtime.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/eventemitter3/index.js
+//#region ../fresh-2026-10-19/node_modules/eventemitter3/index.js
 var require_eventemitter3 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var has = Object.prototype.hasOwnProperty;
 	var prefix = "~";

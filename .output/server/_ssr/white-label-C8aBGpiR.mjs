@@ -1,6 +1,6 @@
 import { ft as MINERS_PATH, ki as TAB_WHITE, tr as SEO_TAB_MINERS, vi as TAB_MINERS } from "./brand-DgaoFySW.mjs";
 import { i as MINERS_DEFAULT_STRATUM, n as MINERS_DEFAULT_ADDRESS, r as MINERS_DEFAULT_BACKUP, x as withMinerDefaults } from "./btc-miners-5wyDdWuS.mjs";
-//#region ../faq-dmt-dripped-wt/node_modules/.nitro/vite/services/ssr/assets/white-label-C8aBGpiR.js
+//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/white-label-C8aBGpiR.js
 /** Unified public DISCLAIMER. Banner, SEO, schema, roadmap, instructions. Not Terms/Privacy. Client-safe. */
 var LEGAL_DISCLAIMER_UPDATED = "2026-09-12";
 var LEGAL_DISCLAIMER_PARAS = [
