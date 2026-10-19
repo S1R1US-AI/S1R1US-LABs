@@ -218,11 +218,67 @@ export async function serveStatic(res, absPath, req) {
   await pipeline(createReadStream(absPath), res);
 }
 
+// Upstream port for the proxy; startFrontDoor() may override it (tests use a stub upstream).
+let upstreamPort = NITRO_INTERNAL_PORT;
+const INTERNAL_HOSTS = new Set(["127.0.0.1", "localhost", "0.0.0.0", "[::1]", "::1"]);
+
+/** Collapse leading slashes/backslashes so a path can never be read as another host. */
+function singleLeadingSlash(path) {
+  return "/" + String(path).replace(/^[/\\]+/, "");
+}
+
+/**
+ * Upstream Location → safe value for the browser. Internal-origin URLs become same-origin
+ * relative paths; relative paths keep exactly one leading slash. Other absolute URLs
+ * (for example OAuth providers) pass through unchanged.
+ */
+export function safeLocation(loc) {
+  if (loc == null) return loc;
+  const s = String(Array.isArray(loc) ? loc[0] : loc).replace(/[\r\n\0]/g, "");
+  if (/^[a-z][a-z0-9+.-]*:/i.test(s)) {
+    let u;
+    try {
+      u = new URL(s);
+    } catch {
+      return "/";
+    }
+    if (!INTERNAL_HOSTS.has(u.hostname.toLowerCase())) return s;
+    return singleLeadingSlash(u.pathname) + u.search + u.hash;
+  }
+  if (s.startsWith("/") || s.startsWith("\\")) return singleLeadingSlash(s);
+  return s;
+}
+
+/**
+ * Request target → origin-form. Returns { url } to continue, { status: 400 } to reject,
+ * or { status: 308, location } for a same-origin redirect. Backslashes (raw or %5C) are
+ * rejected; absolute-form targets drop their authority; repeated leading slashes collapse.
+ */
+export function normalizeRequestTarget(raw) {
+  let target = String(raw || "/");
+  if (/[\r\n\0]/.test(target)) return { status: 400 };
+  if (!target.startsWith("/")) {
+    if (target === "*") return { status: 400 };
+    try {
+      const u = new URL(target);
+      target = (u.pathname || "/") + u.search;
+    } catch {
+      return { status: 400 };
+    }
+  }
+  const qAt = target.indexOf("?");
+  const path = qAt === -1 ? target : target.slice(0, qAt);
+  const query = qAt === -1 ? "" : target.slice(qAt);
+  if (/\\|%5c/i.test(path)) return { status: 400 };
+  if (/^\/{2,}/.test(path)) return { status: 308, location: singleLeadingSlash(path) + query };
+  return { url: target };
+}
+
 function proxyToNitro(req, res) {
-  const headers = { ...req.headers, host: `127.0.0.1:${NITRO_INTERNAL_PORT}` };
+  const headers = { ...req.headers, host: `127.0.0.1:${upstreamPort}` };
   const opts = {
     hostname: "127.0.0.1",
-    port: Number(NITRO_INTERNAL_PORT),
+    port: Number(upstreamPort),
     path: req.url,
     method: req.method,
     headers,
@@ -230,7 +286,9 @@ function proxyToNitro(req, res) {
   res.on("error", (err) => console.error("[s1r1us] client response error:", err.message));
   const upstream = http.request(opts, (up) => {
     up.on("error", () => res.destroy());
-    res.writeHead(up.statusCode || 502, up.headers);
+    const outHeaders = { ...up.headers };
+    if (outHeaders.location != null) outHeaders.location = safeLocation(outHeaders.location);
+    res.writeHead(up.statusCode || 502, outHeaders);
     up.pipe(res);
   });
   upstream.on("error", (err) => {
@@ -245,9 +303,24 @@ function proxyToNitro(req, res) {
   req.pipe(upstream);
 }
 
-function startFrontDoor() {
+export function startFrontDoor({ port = EXTERNAL_PORT, host = HOST, nitroPort = NITRO_INTERNAL_PORT } = {}) {
+  upstreamPort = String(nitroPort);
   const handleRequest = async (req, res) => {
-    const url = req.url || "/";
+    // Normalize the request target before any routing or proxying.
+    const target = normalizeRequestTarget(req.url);
+    if (target.status === 400) {
+      console.log(`[s1r1us] front-door 400 request target`);
+      res.writeHead(400, { "Content-Type": "text/plain; charset=utf-8" });
+      res.end("Bad Request");
+      return;
+    }
+    if (target.status === 308) {
+      res.writeHead(308, { Location: target.location, "Cache-Control": "public, max-age=60" });
+      res.end();
+      return;
+    }
+    req.url = target.url;
+    const url = req.url;
     let pathname = "/";
     try {
       pathname = new URL(url, "http://localhost").pathname;
@@ -451,9 +524,9 @@ function startFrontDoor() {
     }
   });
 
-  server.listen(Number(EXTERNAL_PORT), HOST, () => {
+  server.listen(Number(port), host, () => {
     console.log(
-      `[s1r1us] front-door listening on ${HOST}:${EXTERNAL_PORT}; nitro internal :${NITRO_INTERNAL_PORT}; static=${STATIC_ROOT}`,
+      `[s1r1us] front-door listening on ${host}:${port}; nitro internal :${upstreamPort}; static=${STATIC_ROOT}`,
     );
   });
 
