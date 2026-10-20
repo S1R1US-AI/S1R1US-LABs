@@ -47,7 +47,17 @@ test("book-dj-mo-funky is indexable, JSON-LD parses, assets exist and the front 
     const ld = JSON.parse(m[1]);
     const person = ld["@graph"].find((n) => n["@type"] === "Person");
     assert.equal(person.name, "DJ i-B Mo FuNky");
-    assert.ok(person.sameAs.includes("https://dji-bmofunky.bandcamp.com/"));
+    assert.ok(Array.isArray(person.sameAs));
+    assert.ok(
+      person.sameAs.some((u) => {
+        try {
+          return new URL(u).href === "https://dji-bmofunky.bandcamp.com/";
+        } catch {
+          return false;
+        }
+      }),
+      "sameAs must list https://dji-bmofunky.bandcamp.com/",
+    );
     assert.equal(ld["@graph"].find((n) => n["@type"] === "Organization").name, "SAI Citizens United LTD");
   }
   for (const r of [...book.matchAll(/(?:src|href|srcset)="(\/[^"#?\s]+)/g)].map((m) => m[1])) {
