@@ -104,15 +104,14 @@ Do not add Google DNS. No `DATABASE_URL` required (PGLite).
 Same URL. Safari → Share → Add to Home Screen.
 
 
-## System-admin X identity (server-only)
+## System-admin settings (server-only)
 
-Set these on DigitalOcean **before** or **with** deploy of the AID nondisclosure scrub. Never use a `VITE_` prefix (browser must not see them).
+Set on DigitalOcean (encrypted, run time) before deploy:
 
-- `S1R1US_ADMIN_X_HANDLE` — core handle **without** leading `@` (a leading `@` is stripped if present)
-- `S1R1US_ADMIN_X_NAME` — display name
-- `S1R1US_ADMIN_X_ID` — X snowflake / OAuth user id
-
-Required for operator `/admin` unlock. Public FAQ/UI never names the handle.
+- `S1R1US_ADMIN_X_ID`
+- `S1R1US_ADMIN_X_HANDLE`
+- `S1R1US_ADMIN_X_NAME`
+- `S1R1US_APP_ADMIN_SECRET`
 
 ## Server-only settings added 2026-10-08
 

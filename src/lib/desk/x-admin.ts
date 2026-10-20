@@ -85,7 +85,6 @@ const PROFILE_ID_KEYS = new Set([
   "twitterid",
   "x_user_id",
   "xuserid",
-  "email",
 ]);
 
 function pushIdentity(out: string[], raw: unknown) {
@@ -96,12 +95,11 @@ function pushIdentity(out: string[], raw: unknown) {
   if (typeof raw !== "string") return;
   const s = raw.trim();
   if (!s || s.length > 320) return;
+  if (s.includes("@") && !s.startsWith("@")) return;
   out.push(s);
-  const local = /^([^@\s]+)@[^@\s]+$/.exec(s);
-  if (local?.[1]) out.push(local[1]);
 }
 
-/** Pull handle / snowflake / email-local candidates from broker userinfo or an id_token. */
+/** Pull handle / snowflake candidates from broker userinfo or an id_token. */
 export function collectXIdentityStrings(value: unknown, depth = 0): string[] {
   const out: string[] = [];
   if (depth > 4 || value == null) return out;

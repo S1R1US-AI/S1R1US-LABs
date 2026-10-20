@@ -13,6 +13,8 @@ export type AppAdminRow = {
   kind: AppAdminKind;
   handle: string;
   label: string;
+  /** Signed-in user id that claimed this copy. */
+  owner?: string;
 };
 
 type Store = { rows: AppAdminRow[] };
@@ -20,7 +22,14 @@ type Store = { rows: AppAdminRow[] };
 const PATHS = ["/tmp/app-admins.json", "/workspace/data/app-admins.json"];
 const MAX = 400;
 const TTL_MS = 12 * 60 * 60 * 1000;
-const PEPPER = "s1r1us-app-admin-v1";
+/** Server-only signing secret (encrypted env). Fails closed when unset. */
+export const APP_ADMIN_SECRET_ENV = "S1R1US_APP_ADMIN_SECRET";
+const MIN_SECRET_LEN = 32;
+
+function signingSecret(): string | null {
+  const v = (process.env[APP_ADMIN_SECRET_ENV] ?? "").trim();
+  return v.length >= MIN_SECRET_LEN ? v : null;
+}
 
 function load(): Store {
   if (typeof window !== "undefined") return { rows: [] };
@@ -55,13 +64,17 @@ function cleanHandle(raw: string) {
     .slice(0, 32);
 }
 
-function sign(payload: string) {
-  return createHmac("sha256", PEPPER).update(payload).digest("hex");
+function sign(payload: string): string | null {
+  const secret = signingSecret();
+  if (!secret) return null;
+  return createHmac("sha256", secret).update(payload).digest("hex");
 }
 
+/** Empty string when the signing secret is not configured (fail closed). */
 export function signAppAdminToken(id: string) {
   const exp = Date.now() + TTL_MS;
   const sig = sign(`app-admin.${exp}.${id}`);
+  if (!sig) return "";
   return `app.${exp}.${id}.${sig}`;
 }
 
@@ -74,6 +87,7 @@ export function verifyAppAdminToken(token: string | undefined): { id: string } |
   const sig = parts[3] ?? "";
   if (!Number.isFinite(exp) || Date.now() > exp || !id.startsWith("aa-")) return null;
   const expect = sign(`app-admin.${exp}.${id}`);
+  if (!expect) return null;
   try {
     if (!timingSafeEqual(Buffer.from(sig, "hex"), Buffer.from(expect, "hex"))) return null;
   } catch {
@@ -93,7 +107,11 @@ export function claimAppAdmin(input: {
   label?: string;
   mandate?: boolean;
   xHandle?: string | null;
+  owner?: string | null;
 }): { ok: true; token: string; you: AppAdminRow } | { ok: false; error: string } {
+  const owner = String(input.owner ?? "").trim();
+  if (!owner) return { ok: false, error: "Sign in with X first, then claim your copy Admin." };
+  if (!signingSecret()) return { ok: false, error: "Copy Admin is not available on this host." };
   if (input.mandate !== true) {
     return { ok: false, error: "Read the mandate first. POST mandate:true. Accumulate bitcoin. Never sell. Never short." };
   }
@@ -112,6 +130,7 @@ export function claimAppAdmin(input: {
   const s = load();
   const existing = s.rows.find((r) => r.kind === kindRaw && r.handle.toLowerCase() === handle.toLowerCase());
   if (existing) {
+    if (existing.owner !== owner) return { ok: false, error: "That name is taken. Pick another." };
     return { ok: true, token: signAppAdminToken(existing.id), you: existing };
   }
   const row: AppAdminRow = {
@@ -120,6 +139,7 @@ export function claimAppAdmin(input: {
     kind: kindRaw,
     handle,
     label: String(input.label ?? handle).trim().slice(0, 40) || handle,
+    owner,
   };
   s.rows = [row, ...s.rows].slice(0, MAX);
   save(s);

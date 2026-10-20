@@ -68,12 +68,14 @@ describe("championship security sweep", { concurrency: false }, () => {
     assert.equal(MCP_TOOLS.has("pred_live"), false);
   });
 
-  it("as-live sim pause is dual-admin; championship pause is dual-admin", () => {
+  it("as-live sim pause is system Admin only; championship pause is system Admin only", () => {
     assert.match(deskRpc, /export const setLiveSim/);
     const liveBlock = deskRpc.slice(deskRpc.indexOf("export const setLiveSim"), deskRpc.indexOf("export const fetchLockStatus"));
-    assert.match(liveBlock, /verifyAppAdminToken/);
-    const cupBlock = deskRpc.slice(deskRpc.indexOf("export const setChampionshipSim"), deskRpc.indexOf("export const fetchHiveSwarm"));
-    assert.match(cupBlock, /verifyAppAdminToken/);
+    assert.doesNotMatch(liveBlock, /verifyAppAdminToken/);
+    assert.match(liveBlock, /systemTokenOnly/);
+    const cupBlock = deskRpc.slice(deskRpc.indexOf("export const setChampionshipSim"), deskRpc.indexOf("export const fetchChampionshipSim"));
+    assert.doesNotMatch(cupBlock, /verifyAppAdminToken/);
+    assert.match(cupBlock, /systemTokenOnly/);
     assert.match(appAdmin, /LiveSimPanel/);
     assert.match(adminPanel, /LiveSimPanel/);
   });
