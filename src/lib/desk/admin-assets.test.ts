@@ -80,3 +80,16 @@ describe("admin-only data is checked on the server", () => {
     });
   }
 });
+
+describe("sweep score without rows", () => {
+  it("reports not loaded instead of a perfect score", async () => {
+    const { s3cSweepScore } = await import("./s3c-score.ts");
+    const empty = s3cSweepScore([]);
+    assert.equal(empty.ready, false);
+    assert.equal(empty.score, null);
+    assert.doesNotMatch(empty.headline, /100\/100/);
+    const one = s3cSweepScore([{ id: "a", name: "a", status: "PASS", note: "" }]);
+    assert.equal(one.ready, true);
+    assert.equal(one.score, 100);
+  });
+});

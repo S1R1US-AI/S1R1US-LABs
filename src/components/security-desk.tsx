@@ -1244,7 +1244,7 @@ export function SecurityDesk() {
                   Top 28 most important checks from the most recent S3C Sweep run. PASS / WARN / FAIL indicators.
                   Score and summary also land on the 07:30 ET morning report.
                 </p>
-                <p className={cn("mt-2 font-mono text-sm", sweep.fail === 0 ? "text-high" : "text-sell")}>{sweep.headline}</p>
+                <p className={cn("mt-2 font-mono text-sm", !sweep.ready ? "text-muted" : sweep.fail === 0 ? "text-high" : "text-sell")}>{sweep.headline}</p>
               </Panel>
               <Panel className="mt-4" kicker="Top 28" title="Recent sweep — pass / fail indicators">
                 <ul className="mt-1 divide-y divide-rule">

@@ -8,7 +8,9 @@ export type S3cRow = {
   note: string;
 };
 
-export function s3cSweepScore(rows: S3cRow[]): { score: number; headline: string; pass: number; warn: number; fail: number } {
+export function s3cSweepScore(rows: S3cRow[]): { score: number | null; headline: string; pass: number; warn: number; fail: number; ready: boolean } {
+  // No rows yet (still loading, or not signed in): say so instead of showing a perfect score.
+  if (!rows.length) return { score: null, headline: "S3C SWEEP — not loaded yet", pass: 0, warn: 0, fail: 0, ready: false };
   const pass = rows.filter((r) => r.status === "PASS").length;
   const warn = rows.filter((r) => r.status === "WARN").length;
   const fail = rows.filter((r) => r.status === "FAIL").length;
@@ -17,5 +19,5 @@ export function s3cSweepScore(rows: S3cRow[]): { score: number; headline: string
     fail === 0
       ? `S3C SWEEP ${score}/100 — ${pass} PASS · ${warn} WARN · 0 FAIL`
       : `S3C SWEEP ${score}/100 — ${fail} FAIL · ${warn} WARN · ${pass} PASS`;
-  return { score, headline, pass, warn, fail };
+  return { score, headline, pass, warn, fail, ready: true };
 }

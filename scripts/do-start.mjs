@@ -97,6 +97,29 @@ export function currentAdminFamily(root = ROOT) {
   return names;
 }
 
+/** Lower-cased names of the gated (sign-in only) files of the current build. */
+export function gatedAdminAssets(root = ROOT) {
+  try {
+    const list = JSON.parse(readFileSync(join(root, ".output/server/admin-assets/admin-assets.json"), "utf8"));
+    return new Set((list.files ?? []).map((f) => String(f).toLowerCase()));
+  } catch {
+    return new Set();
+  }
+}
+
+/** Gated page code must never be stored by a browser or shared cache, whatever the app answers. */
+export function privateAssetHeaders(upHeaders) {
+  const out = {};
+  for (const [k, v] of Object.entries(upHeaders)) {
+    const key = k.toLowerCase();
+    if (key === "cache-control" || key === "etag" || key === "last-modified" || key === "expires" || key === "vary") continue;
+    out[k] = v;
+  }
+  out["cache-control"] = "private, no-store";
+  out.vary = "Cookie";
+  return out;
+}
+
 /**
  * True when the path asks for admin-family page code that is not part of the current
  * build (a name from an older deploy, or any source map). Those get a private 404.
@@ -123,6 +146,7 @@ export function isRetiredAdminAsset(pathname, current) {
   return isMap || !current.has(name);
 }
 let adminFamilyCache = null;
+let gatedAssetCache = null;
 
 function safeJoin(root, urlPath) {
   let decoded;
@@ -380,7 +404,7 @@ export function normalizeRequestTarget(raw) {
   return { url: target };
 }
 
-function proxyToNitro(req, res) {
+function proxyToNitro(req, res, { privateAsset = false } = {}) {
   const headers = { ...req.headers, host: `127.0.0.1:${upstreamPort}` };
   const opts = {
     hostname: "127.0.0.1",
@@ -392,7 +416,7 @@ function proxyToNitro(req, res) {
   res.on("error", (err) => console.error("[s1r1us] client response error:", err.message));
   const upstream = http.request(opts, (up) => {
     up.on("error", () => res.destroy());
-    const outHeaders = { ...up.headers };
+    const outHeaders = privateAsset ? privateAssetHeaders(up.headers) : { ...up.headers };
     if (outHeaders.location != null) outHeaders.location = safeLocation(outHeaders.location);
     res.writeHead(up.statusCode || 502, outHeaders);
     up.pipe(res);
@@ -530,6 +554,11 @@ export function startFrontDoor({ port = EXTERNAL_PORT, host = HOST, nitroPort = 
     if (isRetiredAdminAsset(pathname, adminFamilyCache)) {
       res.writeHead(404, RETIRED_ASSET_HEADERS);
       res.end(req.method === "HEAD" ? undefined : "Not Found");
+      return;
+    }
+    gatedAssetCache ??= gatedAdminAssets();
+    if (pathname.startsWith("/assets/") && gatedAssetCache.has(pathname.slice(8).toLowerCase())) {
+      proxyToNitro(req, res, { privateAsset: true });
       return;
     }
 

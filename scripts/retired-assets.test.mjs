@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { currentAdminFamily, isRetiredAdminAsset, RETIRED_ASSET_HEADERS } from "./do-start.mjs";
@@ -58,4 +58,37 @@ test("other assets and paths are not touched", () => {
 
 test("denials are private and never cached", () => {
   assert.equal(RETIRED_ASSET_HEADERS["Cache-Control"], "private, no-store");
+});
+
+test("gated page code is answered private, no-store even when the app says otherwise", async () => {
+  const { gatedAdminAssets, privateAssetHeaders, startFrontDoor } = await import("./do-start.mjs");
+  const out = privateAssetHeaders({ "content-type": "text/javascript", "cache-control": "public, max-age=31536000, immutable", etag: "x", "Last-Modified": "y" });
+  assert.equal(out["cache-control"], "private, no-store");
+  assert.equal(out.etag, undefined);
+  assert.equal(out["Last-Modified"], undefined);
+  assert.equal(out.vary, "Cookie");
+
+  const gated = [...gatedAdminAssets()];
+  if (!gated.length) return; // no build in this checkout
+  const http = await import("node:http");
+  const app = http.createServer((req, res) => {
+    res.writeHead(200, { "content-type": "text/javascript", "cache-control": "public, max-age=31536000, immutable", etag: '"e"' });
+    res.end("ok");
+  });
+  await new Promise((r) => app.listen(0, "127.0.0.1", r));
+  const door = startFrontDoor({ port: 0, host: "127.0.0.1", nitroPort: app.address().port });
+  await new Promise((r) => (door.listening ? r() : door.once("listening", r)));
+  try {
+    const base = `http://127.0.0.1:${door.address().port}`;
+    const real = readdirSync(join(process.cwd(), ".output/server/admin-assets")).find((f) => f.toLowerCase() === gated[0]);
+    for (const method of ["GET", "HEAD"]) {
+      const r = await fetch(`${base}/assets/${real}`, { method });
+      assert.equal(r.status, 200);
+      assert.equal(r.headers.get("cache-control"), "private, no-store", method);
+      assert.equal(r.headers.get("etag"), null);
+    }
+  } finally {
+    door.close();
+    app.close();
+  }
 });
