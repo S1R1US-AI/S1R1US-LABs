@@ -2,7 +2,7 @@ import { useEffect, useState, type ClipboardEvent, type FormEvent } from "react"
 import { Button } from "@/components/ui/button";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
 import { secondFactorStatus } from "@/lib/desk/access";
-import { looksLikeSecret } from "@/lib/desk/security";
+import { looksLikeSecret } from "@/lib/desk/secret-check";
 import { useOperator } from "@/lib/desk/operator";
 
 export function XRenewWhenAdmin() {

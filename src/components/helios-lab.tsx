@@ -10,7 +10,7 @@ import { TapeFreezeBanner } from "@/components/tape-freeze";
 
 import { askHelios } from "@/lib/desk/grok";
 import { useOperator } from "@/lib/desk/operator";
-import { looksLikeSecret } from "@/lib/desk/security";
+import { looksLikeSecret } from "@/lib/desk/secret-check";
 import { DEFAULT_KNOBS, LAB_PRESETS, knobsFromSnap, overlayLive, readStructure, type LabKnobs } from "@/lib/desk/lab";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { peekDeskTape, useDeskTape } from "@/lib/desk/tape-client";

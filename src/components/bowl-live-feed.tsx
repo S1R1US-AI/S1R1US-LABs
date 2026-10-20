@@ -96,7 +96,7 @@ export function BowlLiveFeed({ compact = false, className }: { compact?: boolean
         </span>
         {" · AI agent trading stats as-if-live until GO-LIVE "}
         {GO_LIVE_DEADLINE_LABEL}
-        {" · Coinbase create LOCKED"}
+        {" · no exchange orders can be created"}
       </p>
       <p className="mt-2 font-mono text-xs text-fg">
         Coinbase last {usd(feed?.btcUsd ?? null)} · {feed?.count ?? 0} desks ·{" "}

@@ -11,7 +11,7 @@ import { YubiSuggest } from "@/components/yubi-suggest";
 import { YubiForm } from "@/components/operator-lock";
 import { secondFactorStatus } from "@/lib/desk/access";
 import { useOperator } from "@/lib/desk/operator";
-import { looksLikeSecret } from "@/lib/desk/security";
+import { looksLikeSecret } from "@/lib/desk/secret-check";
 import { APP_NAME } from "@/lib/brand";
 import { LoginCluster, Shell } from "@/components/shell";
 import { useWindowSearch } from "@/lib/react/client";

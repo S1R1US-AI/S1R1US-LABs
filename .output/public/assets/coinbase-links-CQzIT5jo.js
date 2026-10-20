@@ -1,0 +1,1 @@
+var e=`https://agents.coinbase.com/mcp`,t=`https://docs.cdp.coinbase.com/coinbase-for-agents/overview`,n=`https://portal.cdp.coinbase.com/api-keys/secret`,r=`https://accounts.coinbase.com/security/connections`,i=`https://sparrowwallet.com/`;export{i as a,e as i,r as n,t as r,n as t};

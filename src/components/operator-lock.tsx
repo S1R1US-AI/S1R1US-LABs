@@ -7,7 +7,7 @@ import { UserButton } from "@/lib/auth/gates";
 import { useCurrentUser } from "@/lib/auth/use-current-user";
 import { Button } from "@/components/ui/button";
 import { secondFactorStatus } from "@/lib/desk/access";
-import { looksLikeSecret } from "@/lib/desk/security";
+import { looksLikeSecret } from "@/lib/desk/secret-check";
 import { useOperator } from "@/lib/desk/operator";
 import { APP_NAME } from "@/lib/brand";
 import { XRenewWhenAdmin } from "@/components/renew-password";
