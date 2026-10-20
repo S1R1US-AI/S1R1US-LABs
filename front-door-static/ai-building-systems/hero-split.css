@@ -1,0 +1,54 @@
+/* AI Building Systems 50/50 hero: live debt clock (left) + Br0k3n S0ft loop (right).
+   Shared by /ai-building-systems/ and the top of /faq/. Theme tokens from /css/theme.css only.
+   The clock itself is the approved .s1w-debt widget from econ-widgets.css. */
+.abs-hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  margin: 1.4rem auto 0;
+  max-width: 1120px;
+  text-align: left;
+}
+@media (min-width: 860px) {
+  .abs-hero-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; }
+}
+/* Clock column. On desktop the square loop sets the row height, so the clock render causes no shift. */
+.abs-hero-clock { min-width: 0; min-height: 0; display: flex; flex-direction: column; justify-content: center; container-type: inline-size; }
+.abs-hero-clock > .s1w { margin: 0; }
+/* Same widget line spacing as v1, where the clock sat inside the page copy (.abs-copy p: 1.7). */
+.abs-hero-clock .s1w p { line-height: 1.7; }
+/* Same digits and glow. Only on the two-column desktop layout does the digit size follow the half-width
+   column so the 17-digit figure never clips; stacked (mobile) it is exactly the widget's own size. */
+@media (min-width: 860px) { .abs-hero-clock .s1w-debt .s1w-debt-num { font-size: clamp(1.25rem, 7.2cqi, 3.1rem); } }
+/* Stacked (mobile): reserve about the clock's rendered height (488px at 390px wide) so the loop below does not jump. */
+@media (max-width: 859px) { .abs-hero-clock { min-height: 30.5rem; } }
+.abs-hero-loop-fig { margin: 0; min-width: 0; }
+.abs-hero-loop {
+  position: relative;
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0a0c0e;
+  overflow: hidden;
+}
+.abs-hero-loop-video, .abs-hero-loop-still { display: block; width: 100%; height: 100%; object-fit: cover; }
+.abs-hero-loop-still { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .abs-hero-loop-video { display: none; }
+  .abs-hero-loop-still { display: block; }
+}
+.abs-hero-loop-toggle {
+  position: absolute; right: 0.6rem; bottom: 0.6rem; z-index: 2;
+  padding: 0.35rem 0.7rem; border: 1px solid rgba(201, 162, 39, 0.75); border-radius: 999px;
+  background: rgba(18, 22, 25, 0.85); color: var(--gold); cursor: pointer;
+  font: 700 0.75rem "IBM Plex Mono", ui-monospace, monospace;
+}
+.abs-hero-loop-toggle:hover, .abs-hero-loop-toggle:focus-visible { color: var(--text); border-color: var(--gold-hover); outline: 2px solid var(--teal); outline-offset: 2px; }
+.abs-hero-loop-toggle[hidden] { display: none; }
+.abs-hero-loop-fig figcaption { margin-top: 0.45rem; font-size: 0.8rem; color: var(--muted); text-align: center; }
+/* At the top of /faq/: same hero, spaced like the FAQ cards below it. */
+.faq-lead-hero.abs-hero-split { margin: 0.5rem auto 1.5rem; }

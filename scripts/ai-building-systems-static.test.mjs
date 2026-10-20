@@ -47,7 +47,7 @@ test("every local asset the page references exists, images have alt and size", (
     assert.match(m[1], /width="\d+"/);
     assert.match(m[1], /height="\d+"/);
   }
-  assert.ok((html.match(/<figure class="abs-figure/g) || []).length >= 8, "hero + 5 medium + chart + photo");
+  assert.ok((html.match(/<figure class="abs-figure /g) || []).length >= 7, "5 medium + chart + photo");
 });
 
 test("system admin copy appears verbatim (only the listed typo fixes) and in order", () => {
@@ -69,8 +69,9 @@ test("system admin copy appears verbatim (only the listed typo fixes) and in ord
   assert.ok(!text.includes("We have seem enough") && !text.includes("find it’s way") && !text.includes(" w all people"));
 });
 
-test("40 TRILLION links the debt clock (nofollow) and the Treasury chart carries source + date", () => {
-  assert.match(html, /<a href="https:\/\/www\.usdebtclock\.org\/" target="_blank" rel="noopener nofollow">40 TRILLION<\/a>/);
+test("40 TRILLION links the hero debt clock (#debt-clock) and the Treasury chart carries source + date", () => {
+  assert.match(html, /<a href="#debt-clock">40 TRILLION<\/a>/);
+  assert.match(html, /<a href="https:\/\/www\.usdebtclock\.org\/" target="_blank" rel="noopener nofollow">usdebtclock\.org ↗<\/a>/);
   assert.ok(html.includes('href="https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/"'));
   assert.ok(html.includes("Source: U.S. Department of the Treasury, Fiscal Data (public domain)"));
   assert.match(html, /as of [A-Z][a-z]+ \d{1,2}, 20\d\d/);
@@ -137,12 +138,17 @@ test("AI, jobs and the bunkers section: verbatim copy, after the wages/jobs data
   for (const n of ["almost 40 percent", "300 million", "5,000-square-foot", "imf.org", "goldmansachs.com", "wired.com"]) assert.ok(a.includes(n), n);
 });
 
-test("debt clock sits in #debt-clock-slot right after 40 TRILLION; econ widgets in #wages-jobs-data-slot in order", () => {
+test("debt clock lives once, in the hero (#debt-clock), and 40 TRILLION points to it; econ widgets in #wages-jobs-data-slot in order", () => {
+  assert.equal((html.match(/data-s1w="debt-clock"/g) || []).length, 1, "one debt clock on the page");
+  assert.doesNotMatch(html, /id="debt-clock-slot"/);
+  const h1 = html.indexOf('<h1 id="abs-h1">');
+  const clock = html.indexOf('<div class="abs-hero-clock" id="debt-clock">');
+  const firstSection = html.indexOf('<section class="pg-section');
+  assert.ok(h1 > 0 && clock > h1 && firstSection > clock, "clock is in the hero, under the H1");
+  assert.ok(html.slice(clock, clock + 400).includes('data-s1w="debt-clock"'));
   const p40 = html.indexOf(">40 TRILLION</a>");
-  const slot = html.indexOf('id="debt-clock-slot"');
   const chart = html.indexOf('id="us-national-debt-treasury"');
-  assert.ok(p40 > 0 && slot > p40 && chart > slot);
-  assert.ok(html.slice(slot, chart).includes('data-s1w="debt-clock"'));
+  assert.ok(p40 > firstSection && chart > p40);
   const w = html.slice(html.indexOf('id="wages-jobs-data-slot"'), html.indexOf('id="ai-jobs-and-the-bunkers"'));
   const order = ["foreign-holders", "jobs-manufacturing", "jobs-trades", "h1b-callout", "jobs-unions", "jobs-squeeze"].map((n) => w.indexOf(`data-s1w="${n}"`));
   assert.ok(order.every((v, i) => v > 0 && (i === 0 || v > order[i - 1])), String(order));
@@ -156,28 +162,106 @@ test("debt clock sits in #debt-clock-slot right after 40 TRILLION; econ widgets 
   assert.ok(!pkg.scripts["build:do"].includes("econ"), "econ:refresh stays out of build:do");
 });
 
-test("faq lead: AI Building Systems hero is the first content element in <main>, links the page, responsive, LCP priority, no marketing copy", () => {
+// The 50/50 hero (live debt clock + Br0k3n S0ft loop) on both pages.
+const BASE = "/images/ai-building-systems/br0k3n-s0ft-ai-building-systems-hero-loop-";
+const heroCss = readFileSync(new URL("ai-building-systems/hero-split.css", root), "utf8");
+const pageCss = readFileSync(new URL("ai-building-systems/ai-building-systems.css", root), "utf8");
+const widgetsCss = readFileSync(new URL("ai-building-systems/econ/econ-widgets.css", root), "utf8");
+function heroLoop(src) {
+  const lines = src.split("\n").filter((l) => l.includes('class="abs-hero-loop"'));
+  assert.equal(lines.length, 1, "the loop markup is a single line (one-line swap A -> B)");
+  return lines[0];
+}
+
+test("hero loop: autoplay muted loop playsinline video, WebM + MP4 + poster, alt/aria, fetchpriority poster; loop A by default, B is a one-line swap", () => {
+  for (const src of [html, faq]) {
+    const line = heroLoop(src);
+    const v = line.match(/<video\b[^>]*>/)[0];
+    for (const a of ["autoplay", "muted", "loop", "playsinline"]) assert.match(v, new RegExp(`\\b${a}\\b`), a);
+    assert.match(v, /preload="metadata"/);
+    assert.match(v, /width="720" height="720"/);
+    assert.ok(v.includes(`poster="${BASE}lightning-embers-poster.jpg"`));
+    assert.match(v, /aria-label="Br0k3n S0ft, a hooded figure with a cracked faceted stone face[^"]+"/);
+    assert.ok(line.includes(`<source src="${BASE}lightning-embers.webm" type="video/webm" />`));
+    assert.ok(line.includes(`<source src="${BASE}lightning-embers.mp4" type="video/mp4" />`));
+    assert.ok(line.indexOf(".webm") < line.indexOf(".mp4"), "WebM first");
+    const still = line.match(/<img class="abs-hero-loop-still"[^>]*>/)[0];
+    assert.ok(still.includes(`src="${BASE}lightning-embers-poster.jpg"`));
+    assert.match(still, /fetchpriority="high"/);
+    assert.match(still, /alt="Br0k3n S0ft[^"]+"/);
+    assert.doesNotMatch(still, /loading="lazy"/);
+    // Swapping to loop B only changes this line: every file it names exists for both loops.
+    for (const variant of ["lightning-embers", "eye-glow"]) {
+      const swapped = line.replaceAll("lightning-embers", variant);
+      for (const m of swapped.matchAll(/(?:src|poster)="(\/images\/[^"]+)"/g)) assert.ok(existsSync(new URL(m[1].slice(1), root)), m[1]);
+    }
+    assert.equal(src.split("\n").filter((l) => l.includes("lightning-embers")).length, 2, "loop name only on the swap note + loop line");
+    assert.match(src, /<script src="\/ai-building-systems\/hero-loop\.js" defer><\/script>/);
+    assert.match(src, /<script src="\/ai-building-systems\/econ\/debt-clock\.js" defer><\/script>/);
+    assert.match(src, /<link rel="stylesheet" href="\/ai-building-systems\/hero-split\.css" \/>/);
+    assert.match(src, /<link rel="stylesheet" href="\/ai-building-systems\/econ\/econ-widgets\.css" \/>/);
+  }
+  // CLS: fixed square box; reduced motion: poster only.
+  assert.match(heroCss, /\.abs-hero-loop \{[^}]*aspect-ratio: 1 \/ 1;/);
+  assert.match(heroCss, /@media \(prefers-reduced-motion: reduce\) \{\s*\.abs-hero-loop-video \{ display: none; \}\s*\.abs-hero-loop-still \{ display: block; \}/);
+  assert.match(heroCss, /grid-template-columns: minmax\(0, 1fr\) minmax\(0, 1fr\)/, "50/50 on desktop");
+  const js = readFileSync(new URL("ai-building-systems/hero-loop.js", root), "utf8");
+  assert.ok(js.includes("prefers-reduced-motion"));
+  assert.ok(!/\beval\(|new Function|innerHTML|\.style\.[a-z]+\s*=|setAttribute\(\s*["']style/.test(js), "CSP-friendly");
+});
+
+test("page hero: H1, then the 50/50 split with the clock first (left / first when stacked) and the loop second", () => {
+  const h1 = html.indexOf('<h1 id="abs-h1">');
+  const split = html.indexOf('<div class="abs-hero-split" id="abs-hero-split">');
+  const clock = html.indexOf('class="abs-hero-clock"', split);
+  const loop = html.indexOf('class="abs-hero-loop"', split);
+  assert.ok(h1 > 0 && split > h1 && clock > split && loop > clock);
+  for (const src of [html, faq]) {
+    const body = src.slice(src.indexOf("<body"));
+    assert.doesNotMatch(body, /cracked-faceted-face-hero/, "static hero placeholder dropped from the page body");
+  }
+  assert.match(html, /<meta property="og:image" content="https:\/\/s1r1us\.ai\/images\/ai-building-systems\/ai-building-systems-br0k3n-s0ft-og\.jpg" \/>/, "OG file name kept");
+});
+
+test("theme v2: page shell uses the shared front-door theme only; econ widgets keep their own palette", () => {
+  for (const href of ["/css/theme.css", "/terms/terms.css", "/ai-building-systems/ai-building-systems.css"]) assert.ok(html.includes(`<link rel="stylesheet" href="${href}" />`), href);
+  assert.ok(html.indexOf('href="/css/theme.css"') < html.indexOf('href="/ai-building-systems/ai-building-systems.css"'));
+  for (const css of [pageCss, heroCss]) {
+    assert.doesNotMatch(css, /#3dff1a|61,\s*255,\s*26|--abs-green|--abs-gold|--abs-teal/i, "no page-specific matrix green / private tokens");
+    assert.doesNotMatch(css, /linear-gradient\(135deg, #c9a227 0%, #121619 45%/, "no v1 gradient frame");
+  }
+  for (const t of ["var(--gold)", "var(--teal)", "var(--text)", "var(--line)"]) assert.ok(pageCss.includes(t) || heroCss.includes(t), t);
+  assert.ok(html.includes('class="site-header"') && html.includes('class="site-footer"') && html.includes('class="nav"'));
+  assert.doesNotMatch(html.slice(html.indexOf("<body")), /\sstyle="/, "no inline styles on the page");
+  assert.match(html, /<a class="btn btn-primary" href="https:\/\/br0k3ns0ft\.substack\.com\/subscribe"/);
+  // Widgets untouched: approved palette tokens still in econ-widgets.css.
+  for (const t of ["--s1w-green: #3dff1a;", "--s1w-panel: #181c20;", "--s1w-warn: #ffcf3d;"]) assert.ok(widgetsCss.includes(t), t);
+});
+
+test("Opinion labels are separated from their heading text", () => {
+  assert.doesNotMatch(html, /Opinion<\/span>\S/);
+  assert.ok(text.includes("Opinion A financial war and an information war"));
+  assert.ok(text.includes("Opinion AI, jobs and the bunkers"));
+});
+
+test("faq lead: the 50/50 AI Building Systems hero is the first content element in <main>, links the page + FAQ entry, no marketing copy", () => {
   const main = faq.slice(faq.indexOf("<main>") + "<main>".length);
   const first = main.match(/^\s*<([a-z0-9]+)[^>]*>/i);
   assert.ok(first, "main has content");
-  assert.equal(first[1], "figure", "first element in <main> is the lead figure");
-  assert.match(first[0], /class="faq-lead-hero"/);
-  const fig = main.match(/^\s*<figure class="faq-lead-hero"[\s\S]*?<\/figure>/)[0];
+  assert.equal(first[1], "section", "first element in <main> is the lead hero");
+  assert.match(first[0], /class="faq-lead-hero abs-hero-split" id="faq-lead-ai-building-systems"/);
+  const end = main.indexOf('<section class="faq-item"');
+  const hero = main.slice(0, end);
   for (const tag of ["<h1", "<h2", "faq-header-logo", "faq-top5", "what-is-dmt-plant-medicine"]) {
-    assert.ok(main.indexOf(tag) > fig.length - 10, `${tag} comes after the lead hero`);
+    assert.ok(main.indexOf(tag) >= end, `${tag} comes after the lead hero`);
   }
-  const base = "/images/ai-building-systems/ai-building-systems-br0k3n-s0ft-cracked-faceted-face-hero";
-  assert.match(fig, /^\s*<figure[^>]*>\s*<a href="\/ai-building-systems\/"[^>]*><img /);
-  assert.ok(fig.includes(`src="${base}.webp"`));
-  assert.ok(fig.includes(`srcset="${base}-960w.webp 960w, ${base}.webp 1600w"`));
-  assert.match(fig, /width="1600" height="900"/);
-  assert.match(fig, /fetchpriority="high"/);
-  assert.doesNotMatch(fig, /loading="lazy"/);
-  assert.match(fig, /alt="Br0k3n S0ft avatar, a hooded figure with a cracked faceted stone face[^"]+"/);
-  for (const f of [`${base}.webp`, `${base}-960w.webp`]) assert.ok(existsSync(new URL(f.slice(1), root)), `${f} exists`);
-  const cap = fig.match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/)[1];
+  assert.ok(hero.indexOf('data-s1w="debt-clock"') > 0 && hero.indexOf('data-s1w="debt-clock"') < hero.indexOf('class="abs-hero-loop"'), "clock first, then loop");
+  assert.equal((faq.match(/data-s1w="debt-clock"/g) || []).length, 1);
+  assert.doesNotMatch(faq, /econ-widgets\.js/, "FAQ loads only debt-clock.js");
+  const cap = hero.match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/)[1];
   assert.ok(cap.includes('href="/ai-building-systems/"') && cap.includes('href="#building-with-grok"'));
   const capText = cap.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
   assert.equal(capText, "AI Building Systems · What is it like building with Grok? · AI artwork © SAI Citizens United LTD");
-  assert.equal((main.match(/fetchpriority="high"/g) || []).length, 1, "only the lead hero is high priority in the FAQ");
+  assert.equal((main.match(/fetchpriority="high"/g) || []).length, 1, "only the lead hero poster is high priority in the FAQ");
+  assert.doesNotMatch(hero, /\sstyle="/);
 });

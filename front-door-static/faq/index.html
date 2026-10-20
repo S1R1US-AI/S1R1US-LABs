@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700;800&amp;display=swap" />
   <link rel="stylesheet" href="/css/theme.css" />
   <link rel="stylesheet" href="/faq/faq.css" />
+  <link rel="stylesheet" href="/ai-building-systems/econ/econ-widgets.css" />
+  <link rel="stylesheet" href="/ai-building-systems/hero-split.css" />
   <!-- FAQ JSON-LD: generated from the visible FAQ entries below; keep in sync (checked by scripts/faq-static-schema.test.mjs). -->
   <script type="application/ld+json">
 {
@@ -859,10 +861,18 @@
 
     <main>
 
-      <figure class="faq-lead-hero" id="faq-lead-ai-building-systems" style="margin:0 0 1.25rem;width:100%;max-width:none">
-        <a href="/ai-building-systems/" aria-label="AI Building Systems page"><img src="/images/ai-building-systems/ai-building-systems-br0k3n-s0ft-cracked-faceted-face-hero.webp" srcset="/images/ai-building-systems/ai-building-systems-br0k3n-s0ft-cracked-faceted-face-hero-960w.webp 960w, /images/ai-building-systems/ai-building-systems-br0k3n-s0ft-cracked-faceted-face-hero.webp 1600w" sizes="100vw" width="1600" height="900" alt="Br0k3n S0ft avatar, a hooded figure with a cracked faceted stone face, glowing green eyes and green energy running through the cracks, at a dark desk facing screens of green code with small robot helpers beside him" title="ai-building-systems-br0k3n-s0ft-cracked-faceted-face-hero" fetchpriority="high" loading="eager" decoding="async" style="display:block;width:100%;height:auto;border:1px solid rgba(61,255,26,0.35);border-radius:8px;background:#121619" /></a>
-        <figcaption class="pg-note faq-lead-hero-cap" style="font-size:0.8rem;text-align:center;margin-top:0.4rem"><a href="/ai-building-systems/">AI Building Systems</a> · <a href="#building-with-grok">What is it like building with Grok?</a> · AI artwork © SAI Citizens United LTD</figcaption>
-      </figure>
+      <section class="faq-lead-hero abs-hero-split" id="faq-lead-ai-building-systems" aria-label="AI Building Systems: live debt clock and Br0k3n S0ft">
+        <div class="abs-hero-clock" id="faq-debt-clock">
+          <section class="s1w s1w-debt" id="s1w-debt-faq" data-s1w="debt-clock" data-snapshot="/ai-building-systems/econ/data/snapshot.json" data-live="1" aria-label="Live U.S. national debt estimate">
+            <noscript><p>U.S. national debt (official Treasury total): see <a href="https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/">fiscaldata.treasury.gov</a>.</p></noscript>
+          </section>
+        </div>
+        <figure class="abs-hero-loop-fig">
+          <!-- Hero loop: to use loop B, replace every "lightning-embers" with "eye-glow" on the next line (both file sets ship side by side). -->
+          <div class="abs-hero-loop" data-hero-loop="lightning-embers"><video class="abs-hero-loop-video" autoplay muted loop playsinline preload="metadata" poster="/images/ai-building-systems/br0k3n-s0ft-ai-building-systems-hero-loop-lightning-embers-poster.jpg" width="720" height="720" aria-label="Br0k3n S0ft, a hooded figure with a cracked faceted stone face and glowing green eyes, in a looping animation with green lightning running down the face and embers drifting upward, AI Building Systems" title="br0k3n-s0ft-ai-building-systems-hero-loop"><source src="/images/ai-building-systems/br0k3n-s0ft-ai-building-systems-hero-loop-lightning-embers.webm" type="video/webm" /><source src="/images/ai-building-systems/br0k3n-s0ft-ai-building-systems-hero-loop-lightning-embers.mp4" type="video/mp4" /></video><img class="abs-hero-loop-still" src="/images/ai-building-systems/br0k3n-s0ft-ai-building-systems-hero-loop-lightning-embers-poster.jpg" width="720" height="720" alt="Br0k3n S0ft, a hooded figure with a cracked faceted stone face and glowing green eyes, in a looping animation with green lightning running down the face and embers drifting upward, AI Building Systems" title="br0k3n-s0ft-ai-building-systems-hero-loop-poster" fetchpriority="high" decoding="async" /></div>
+          <figcaption class="faq-lead-hero-cap"><a href="/ai-building-systems/">AI Building Systems</a> · <a href="#building-with-grok">What is it like building with Grok?</a> · AI artwork © SAI Citizens United LTD</figcaption>
+        </figure>
+      </section>
 
       <section class="faq-item" id="what-is-dmt-plant-medicine" data-featured="dmt-top" aria-labelledby="faq-what-is-dmt-plant-medicine-h">
         <h2 id="faq-what-is-dmt-plant-medicine-h"><span id="dmt" class="faq-anchor-alias" aria-hidden="true"></span>What exactly is DMT and plant Medicine?</h2>
@@ -1521,5 +1531,8 @@
   <script src="/js/screensavers.js" defer></script>
   <!-- Avatar loops: lazy play/pause; poster only for reduced motion or no JS. -->
   <script src="/js/avatar-loops.js" defer></script>
+  <!-- AI Building Systems hero (top of FAQ): debt clock + Br0k3n S0ft loop. -->
+  <script src="/ai-building-systems/econ/debt-clock.js" defer></script>
+  <script src="/ai-building-systems/hero-loop.js" defer></script>
 </body>
 </html>
