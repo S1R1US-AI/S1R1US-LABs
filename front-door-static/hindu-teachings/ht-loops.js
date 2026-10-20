@@ -1,7 +1,7 @@
 /*!
  * /hindu-teachings/ approved loops (2026-10-19). External file (no inline script).
  * Markup: <video data-ht-loop autoplay muted loop playsinline preload="metadata" poster tabindex="0"
- *          disablepictureinpicture> (no controls attribute, no visible button: j's call).
+ *          disablepictureinpicture> (no controls attribute, no visible button: system admin's call).
  * - Autoplays muted + inline, loops seamlessly. Off screen / hidden tab: pauses quietly, resumes on return.
  * - WCAG 2.2.2 (pause looping motion > 5 s) without visible UI: click/tap the video toggles pause/play;
  *   keyboard: focus the video (tabindex=0) and press Enter or Space. A user pause sticks.
