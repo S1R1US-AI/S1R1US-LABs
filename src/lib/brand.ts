@@ -494,7 +494,7 @@ export const SITE_IMAGES = [
     src: "/AI-Bitcoin-Trading-Bot.gif",
     name: seoImgAlt("AI Bitcoin Trading Bot"),
     caption: seoImgAlt("AI Bitcoin Trading Bot = G M0D3 AUTO"),
-    pages: ["/", "/gm", "/h1v3", "/board", "/faq", "/media", "/search", "/roadmap", "/gm#auto", "/l0ck"],
+    pages: ["/", "/gm", "/h1v3", "/board", "/faq", "/media", "/search", "/roadmap", "/roadmap/", "/gm#auto", "/l0ck"],
   },
   {
     src: "/h1v3-swarm-banner.jpg",
@@ -536,7 +536,7 @@ export const SITE_IMAGES = [
     src: "/AI-Agent-Lock-System-for-AI-Agent-BTC-Trading-Bot.gif",
     name: seoImgAlt("AI Agent Lock System for AI Agent BTC Trading Bot"),
     caption: seoImgAlt("AI Agent Lock System for AI Agent BTC Trading Bot"),
-    pages: ["/l0ck", "/faq", "/gm", "/search", "/roadmap", "/agent", "/h1v3", "/gm#auto", "/gm#manual", "/agent#live", "/#bot7"],
+    pages: ["/l0ck", "/faq", "/gm", "/search", "/roadmap", "/roadmap/", "/agent", "/h1v3", "/gm#auto", "/gm#manual", "/agent#live", "/#bot7"],
   },
   {
     src: "/gzilla-mrkt.png",
@@ -548,7 +548,7 @@ export const SITE_IMAGES = [
     src: "/Bitcoin-Miner-for-Accumulation-System.gif",
     name: seoImgAlt("Bitcoin Miner for accumulation system"),
     caption: seoImgAlt("Bitcoin Miner for accumulation system — BTC M1N3Rz (BTC Miners View) solo CKPool desk"),
-    pages: ["/Bitcoin-Miners", "/faq", "/search", "/roadmap"],
+    pages: ["/Bitcoin-Miners", "/faq", "/search", "/roadmap", "/roadmap/"],
   },
   {
     src: "/Connect-Bitcoin-Miners-to-AI-Hive-Swarm.gif",

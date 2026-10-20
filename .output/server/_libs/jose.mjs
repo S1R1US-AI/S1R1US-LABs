@@ -1,5 +1,5 @@
 import { $ as isJWECEKTransport, At as JOSENotSupported, Bt as digest, Ct as serializeJoseHeader, Dt as validateCritDuplicates, Et as validateCrit, Ft as JWTClaimValidationFailed, Ht as encoder, J as jwtClaim, Lt as JWTInvalid, Mt as JWEInvalid, Nt as JWKInvalid, Ot as encode$1, Pt as JWSInvalid, Q as JWE, Rt as concat, St as parseJoseHeader, Tt as validateB64, Ut as uint32be, Vt as encode, Wt as uint64be, X as validateClaimsSet, Y as jwtData, Z as jwsAlgorithm, _t as assertUint8Array, at as checkUsage, bt as isDisjoint, ct as isKeyLike, dt as prepareKey, et as jweAlgorithm, ft as rawKey, gt as assertNotSet, ht as JWS_RECOGNIZED, it as checkModulusLength, jt as JWEDecryptionFailed, kt as JOSEAlgNotAllowed, lt as isKeyObject, mt as JWE_RECOGNIZED, nt as assertCryptoKey, ot as invalidKeyInput, pt as snapshotJwk, q as JWTClaimsBuilder, rt as checkCryptoKey, st as isCryptoKey, tt as jweEncryption, ut as jwkToKey, vt as decodeBase64url, wt as validateAlgorithms, xt as isObject, yt as encodeBase64url, zt as decoder } from "./@better-auth/core+[...].mjs";
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/lib/content_encryption.js
+//#region node_modules/jose/dist/webapi/lib/content_encryption.js
 var generateCek = (enc) => crypto.getRandomValues(new Uint8Array(enc.cekBits >> 3));
 function checkCekLength(cek, expected) {
 	const actual = cek.byteLength << 3;
@@ -86,7 +86,7 @@ async function decrypt(enc, cek, ciphertext, iv, tag, aad) {
 	}
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/lib/key_management.js
+//#region node_modules/jose/dist/webapi/lib/key_management.js
 function checkEcdhCryptoKey(key, usage) {
 	if (key.algorithm.name !== "ECDH" && key.algorithm.name !== "X25519") throw new TypeError("CryptoKey does not support this operation, its algorithm.name must be ECDH or X25519");
 	checkUsage(key, usage);
@@ -281,7 +281,7 @@ async function encryptKeyManagement(entry, enc, inputKey, joseHeader, providedCe
 	];
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/lib/deflate.js
+//#region node_modules/jose/dist/webapi/lib/deflate.js
 function validateZip(joseHeader, protectedHeader) {
 	if (joseHeader.zip !== void 0 && joseHeader.zip !== "DEF") throw new JOSENotSupported("Unsupported JWE \"zip\" (Compression Algorithm) Header Parameter value.");
 	if (joseHeader.zip !== void 0 && !protectedHeader?.zip) throw new JWEInvalid("JWE \"zip\" (Compression Algorithm) Header Parameter MUST be in a protected header.");
@@ -309,7 +309,7 @@ async function decompress(input, maxLength) {
 	return supported("DecompressionStream"), transform(new DecompressionStream("deflate-raw"), input, maxLength);
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/lib/jwe_decrypt.js
+//#region node_modules/jose/dist/webapi/lib/jwe_decrypt.js
 function shareJWE(jwe) {
 	const { protected: encodedProtected, ciphertext, iv, tag, aad } = jwe;
 	let parsedProt;
@@ -414,7 +414,7 @@ async function decryptCompact(jwe, shared, key) {
 	}, shared, key);
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/lib/jwe_encrypt.js
+//#region node_modules/jose/dist/webapi/lib/jwe_encrypt.js
 function checkDisjoint(protectedHeader, unprotectedHeader, sharedUnprotectedHeader) {
 	if (!isDisjoint(protectedHeader, unprotectedHeader, sharedUnprotectedHeader)) throw new JWEInvalid("JWE Protected, JWE Shared Unprotected and JWE Per-Recipient Header Parameter names must be disjoint");
 }
@@ -485,7 +485,7 @@ function compactJWE(jwe) {
 	].join(".");
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/jwt/decrypt.js
+//#region node_modules/jose/dist/webapi/jwt/decrypt.js
 async function jwtDecrypt(jwt, key, options) {
 	const { plaintext, ...result } = await decryptCompact(jwt, prepareDecrypt(options), key), { protectedHeader } = result, payload = validateClaimsSet(protectedHeader, plaintext, options);
 	for (const claim of [
@@ -499,7 +499,7 @@ async function jwtDecrypt(jwt, key, options) {
 	};
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/lib/jws_sign.js
+//#region node_modules/jose/dist/webapi/lib/jws_sign.js
 async function createSignature(input, key, rejectUnencoded) {
 	let [payload, protectedHeader, unprotectedHeader, crit] = input, protectedHeaderString = "";
 	if (protectedHeader !== void 0) {
@@ -542,7 +542,7 @@ async function createCompactSignature(payload, protectedHeader, crit, key, rejec
 	return `${jws.protected}.${jws.payload}.${jws.signature}`;
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/jwt/sign.js
+//#region node_modules/jose/dist/webapi/jwt/sign.js
 var SignJWT_base = JWTClaimsBuilder;
 var SignJWT = class extends SignJWT_base {
 	#protectedHeader;
@@ -556,7 +556,7 @@ var SignJWT = class extends SignJWT_base {
 	}
 };
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/jwt/encrypt.js
+//#region node_modules/jose/dist/webapi/jwt/encrypt.js
 var EncryptJWT_base = JWTClaimsBuilder;
 var EncryptJWT = class extends EncryptJWT_base {
 	#input = [void 0];
@@ -597,7 +597,7 @@ var EncryptJWT = class extends EncryptJWT_base {
 	}
 };
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/key/export.js
+//#region node_modules/jose/dist/webapi/key/export.js
 async function exportJWK(key) {
 	if (isKeyObject(key)) if (key.type === "secret") key = key.export();
 	else return key.export({ format: "jwk" });
@@ -613,7 +613,7 @@ async function exportJWK(key) {
 	return jwk;
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/jose/dist/webapi/jwk/thumbprint.js
+//#region node_modules/jose/dist/webapi/jwk/thumbprint.js
 var check = (value, description) => {
 	if (typeof value != "string" || !value) throw new JWKInvalid(`${description} missing or invalid`);
 };

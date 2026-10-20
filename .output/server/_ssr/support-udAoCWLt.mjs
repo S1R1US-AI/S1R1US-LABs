@@ -1,4 +1,4 @@
-//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/support-udAoCWLt.js
+//#region node_modules/.nitro/vite/services/ssr/assets/support-udAoCWLt.js
 /** Public operating-cost donations only — not the trading book. */
 var SUPPORT_BTC = "33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8";
 var SUPPORT_USDC = "0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf";

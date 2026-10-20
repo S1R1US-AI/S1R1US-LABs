@@ -86,4 +86,13 @@ describe("OSS Roadmap", { concurrency: false }, () => {
     assert.match(legal, /OSS Roadmap/);
     assert.match(ping, /\/api\/agent\/roadmap/);
   });
+
+  it("keeps roadmap image associations for the /roadmap/ sitemap loc", () => {
+    const brand = readFileSync(new URL("../brand.ts", import.meta.url), "utf8");
+    assert.match(faq, /\[`\$\{origin\}\/roadmap\/`\]/);
+    const pageLists = [...brand.matchAll(/pages: \[([^\]]*)\]/g)].map((m) => m[1]);
+    const withRoadmap = pageLists.filter((l) => l.includes('"/roadmap"'));
+    assert.ok(withRoadmap.length >= 5);
+    for (const l of withRoadmap) assert.ok(l.includes('"/roadmap/"'), `missing "/roadmap/" in pages: [${l}]`);
+  });
 });
