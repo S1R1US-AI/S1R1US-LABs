@@ -484,19 +484,15 @@ export const fetchAdminPaper = createServerFn({ method: "POST" })
     };
   });
 
-/** After admin sign-in: let this browser load admin page code. Checked on the server. */
+/** After admin sign-in: let this browser load admin page code. Checked on the server; a denied call also drops the cookie. */
 export const grantAdminAssets = createServerFn({ method: "POST" })
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
-    const { requireAdminData, setAdminAssetCookie } = await import("./admin-gate.server");
-    if (!(await requireAdminData(data.token))) return { ok: false as const };
+    const { requireAdminData, setAdminAssetCookie, clearAdminAssetCookie } = await import("./admin-gate.server");
+    if (!(await requireAdminData(data.token))) {
+      await clearAdminAssetCookie();
+      return { ok: false as const };
+    }
     await setAdminAssetCookie(data.token);
     return { ok: true as const };
   });
-
-/** On sign-out: drop the admin page-code cookie. */
-export const revokeAdminAssets = createServerFn({ method: "POST" }).handler(async () => {
-  const { clearAdminAssetCookie } = await import("./admin-gate.server");
-  await clearAdminAssetCookie();
-  return { ok: true as const };
-});

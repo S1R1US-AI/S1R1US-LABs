@@ -4,7 +4,7 @@ import { C as require_jsx_runtime, X as require_react, y as Link } from "../_lib
 import { _ as Panel } from "./shell-DgyLi1mx.mjs";
 import { t as AskGrokPanel } from "./ask-grok-panel-Z7cOrqKZ.mjs";
 import { c as HIVE_NO_PROFIT_SHARE, d as hiveResourcePublic, l as HIVE_RESOURCE_COPY } from "./hive-resource-DvgKV684.mjs";
-import { D as byoConnectPublic, E as BYO_CONNECT_HEADLINE, T as BYO_CONNECT_DIALOGUE, w as BYO_CONNECT_AUTO } from "./router-CA7YNDjD.mjs";
+import { D as byoConnectPublic, E as BYO_CONNECT_HEADLINE, T as BYO_CONNECT_DIALOGUE, w as BYO_CONNECT_AUTO } from "./router-ChTqzHQe.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/byo-connect-panel-CpYhfHee.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

@@ -60,7 +60,7 @@ describe("admin-only data is checked on the server", () => {
 
   it("the guard reuses verifyAccessToken and answers 401 with private, no-store", () => {
     assert.match(gate, /from "\.\/access\.server"/);
-    assert.match(gate, /verifyAccessToken\(token\)/);
+    assert.match(gate, /systemTokenOnly\(token, verifyAccessToken\)/);
     assert.match(gate, /setResponseStatus\(401\)/);
     assert.match(gate, /status: 401/);
     assert.match(gate, /private, no-store/);

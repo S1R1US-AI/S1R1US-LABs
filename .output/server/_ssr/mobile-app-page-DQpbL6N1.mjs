@@ -6,7 +6,7 @@ import { n as Button } from "./renew-password-D-NFZyZy.mjs";
 import { S as Shell, u as LeaderBoardLabel, x as SeoImage } from "./shell-DgyLi1mx.mjs";
 import { t as SeoCopy } from "./seo-copy-CPQbFC5R.mjs";
 import { t as AskGrokPanel } from "./ask-grok-panel-Z7cOrqKZ.mjs";
-import { C as resolveAppTo, S as appleIntents, _ as APP_SURFACES, b as WEBMCP_AGENT_PATH, g as APP_PATH, h as APP_GATEWAY_PATH, m as APPLE_AGENT_PATH, v as GOOGLE_AGENT_PATH, x as WEBMCP_TOOLS, y as SIRI_AGENT_PATH } from "./router-CA7YNDjD.mjs";
+import { C as resolveAppTo, S as appleIntents, _ as APP_SURFACES, b as WEBMCP_AGENT_PATH, g as APP_PATH, h as APP_GATEWAY_PATH, m as APPLE_AGENT_PATH, v as GOOGLE_AGENT_PATH, x as WEBMCP_TOOLS, y as SIRI_AGENT_PATH } from "./router-ChTqzHQe.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/mobile-app-page-DQpbL6N1.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

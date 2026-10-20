@@ -59,6 +59,7 @@ export function dropFromAssetTable(src, names) {
 }
 
 export const isClientEntry = (name) => /^index-[A-Za-z0-9_-]+\.js$/.test(name);
+export const isAdminFamily = (name) => /^(?:admin|app_\.admin|btc-miners-panel|pdf)-[\w-]+\.js$/.test(name.toLowerCase());
 export const isAdminPanelChunk = (name) => /^admin-panel-[A-Za-z0-9_-]+\.js$/.test(name);
 
 function main() {
@@ -90,7 +91,9 @@ function main() {
     }
     writeFileSync(serverEntry, out);
   }
-  writeFileSync(join(outDir, "admin-assets.json"), `${JSON.stringify({ files: gated }, null, 2)}\n`);
+  // The current build's public names in the admin families; the front door denies any other name.
+  const current = readdirSync(pubDir).filter(isAdminFamily).sort();
+  writeFileSync(join(outDir, "admin-assets.json"), `${JSON.stringify({ files: gated, public: current }, null, 2)}\n`);
   console.log(`[gate-admin-assets] moved ${gated.length} admin-only file(s) out of the public folder`);
 }
 

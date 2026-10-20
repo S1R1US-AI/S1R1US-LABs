@@ -10,7 +10,7 @@
  * Soft-launch routes (/, /hello-world, /discord, /roadmap, /r0b0ts, /h1v3, /pr3d, /faq, /compute, /gm, /f33d, /forum, /agent, /board, /labs, /owl, /app, /ios, /play, /c0ff33, /sponsor-…, /media, /b3ars, /l0ck, /bowl, /w0rld, /c0ut, /Bitcoin-Miners, /wh1t3, /s1r1us, /sitemap, /search, /terms, /privacy, /copyright-terms, /WEB-3-and-ai-future) always overlay — no env gate.
  * Does not touch Grok live preview (:8080 dev) or regenerate .output.
  */
-import { createReadStream, existsSync, realpathSync, statSync } from "node:fs";
+import { createReadStream, existsSync, readdirSync, readFileSync, realpathSync, statSync } from "node:fs";
 import { spawn } from "node:child_process";
 import http from "node:http";
 import { dirname, extname, join, relative, resolve, sep } from "node:path";
@@ -65,6 +65,64 @@ const MIME = {
   ".mp4": "video/mp4",
   ".webm": "video/webm",
 };
+
+/** Page-code families that only the current build may serve (admin and its shared panels). */
+const ADMIN_FAMILY = /^(?:admin|app_\.admin|btc-miners-panel|pdf)-[\w-]+\.js$/;
+export const RETIRED_ASSET_HEADERS = {
+  "Content-Type": "text/plain; charset=utf-8",
+  "Cache-Control": "private, no-store",
+  "X-Content-Type-Options": "nosniff",
+};
+
+/** Lower-cased names of the current build's files in those families (public and gated). */
+export function currentAdminFamily(root = ROOT) {
+  const names = new Set();
+  let list = null;
+  try {
+    list = JSON.parse(readFileSync(join(root, ".output/server/admin-assets/admin-assets.json"), "utf8"));
+  } catch {
+    /* nothing gated */
+  }
+  for (const f of list?.files ?? []) names.add(String(f).toLowerCase());
+  if (Array.isArray(list?.public)) {
+    // The build's own list wins, so a stale file left on disk is still denied.
+    for (const f of list.public) names.add(String(f).toLowerCase());
+    return names;
+  }
+  try {
+    for (const f of readdirSync(join(root, ".output/public/assets"))) if (ADMIN_FAMILY.test(f.toLowerCase())) names.add(f.toLowerCase());
+  } catch {
+    /* no build */
+  }
+  return names;
+}
+
+/**
+ * True when the path asks for admin-family page code that is not part of the current
+ * build (a name from an older deploy, or any source map). Those get a private 404.
+ */
+export function isRetiredAdminAsset(pathname, current) {
+  let p = String(pathname || "");
+  for (let i = 0; i < 3; i += 1) {
+    try {
+      const d = decodeURIComponent(p);
+      if (d === p) break;
+      p = d;
+    } catch {
+      break;
+    }
+  }
+  p = p.replace(/\\/g, "/").replace(/\/{2,}/g, "/").toLowerCase();
+  if (!p.startsWith("/assets/")) return false;
+  let name = p.slice(p.lastIndexOf("/") + 1);
+  const isMap = name.endsWith(".map");
+  if (isMap) name = name.slice(0, -4);
+  if (!ADMIN_FAMILY.test(name)) return false;
+  // Current names are served only at their plain path; any encoded or odd spelling is denied here.
+  if (!/^\/assets\/[\w.-]+$/.test(String(pathname))) return true;
+  return isMap || !current.has(name);
+}
+let adminFamilyCache = null;
 
 function safeJoin(root, urlPath) {
   let decoded;
@@ -464,6 +522,14 @@ export function startFrontDoor({ port = EXTERNAL_PORT, host = HOST, nitroPort = 
       console.log(`[s1r1us] front-door static overlay 400 ${pathname}`);
       res.writeHead(400, { "Content-Type": "text/plain; charset=utf-8" });
       res.end("Bad Request");
+      return;
+    }
+
+    // Admin-family page code: only the current build's names. Older names get a private 404.
+    adminFamilyCache ??= currentAdminFamily();
+    if (isRetiredAdminAsset(pathname, adminFamilyCache)) {
+      res.writeHead(404, RETIRED_ASSET_HEADERS);
+      res.end(req.method === "HEAD" ? undefined : "Not Found");
       return;
     }
 

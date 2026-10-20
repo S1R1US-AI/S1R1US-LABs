@@ -4,7 +4,7 @@ import { d as COMPANY_X_URL, o as COMPANY_X_HANDLE } from "./x-admin-BTG79yoD.mj
 import { s as cn } from "./renew-password-D-NFZyZy.mjs";
 import { S as Shell, _ as Panel, x as SeoImage } from "./shell-DgyLi1mx.mjs";
 import { t as SeoCopy } from "./seo-copy-CPQbFC5R.mjs";
-import { j as GITHUB_REPO_URL } from "./router-CA7YNDjD.mjs";
+import { j as GITHUB_REPO_URL } from "./router-ChTqzHQe.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/r0b0ts-TUnO5nRw.js
 var import_jsx_runtime = require_jsx_runtime();
 /** FAQ / page title: R0B0T$ + rainbow ACT1VAT3. */

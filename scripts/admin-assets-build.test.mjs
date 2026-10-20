@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { adminOnly, dropFromAssetTable, isAdminPanelChunk, refsOf } from "./gate-admin-assets.mjs";
+import { adminOnly, dropFromAssetTable, isAdminFamily, isAdminPanelChunk, refsOf } from "./gate-admin-assets.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
@@ -100,4 +100,27 @@ test("the board page code example has no endpoint path", () => {
   const board = read("front-door-static/board/index.html");
   for (const m of board.matchAll(/<pre[^>]*>([\s\S]*?)<\/pre>/g)) assert.ok(!m[1].includes("/api/agent/"), "board example names an endpoint");
   assert.ok(!board.includes("x-s1r1us-agent"));
+});
+
+test("the public miners panel does not name internal settings, source files or functions", () => {
+  const dir = join(ROOT, ".output/public/assets");
+  if (!existsSync(dir)) return;
+  const chunks = readdirSync(dir).filter((f) => /^btc-miners-panel-.*\.js$/.test(f));
+  for (const f of chunks) {
+    const text = [...readFileSync(join(dir, f), "utf8").matchAll(/`([^`$]{3,400})`/g)].map((m) => m[1]).filter((l) => /^[^{}();=]*$/.test(l) || /=(?:true|false)$/.test(l));
+    for (const l of text) {
+      assert.doesNotMatch(l, /\b[A-Z][A-Z0-9]*_[A-Z0-9_]+\b/, `${f}: setting name in text`);
+      assert.doesNotMatch(l, /\b[a-z]\w*\.[a-z]\w*=(?:true|false)\b|\b[a-z]\w*[A-Z]\w*=(?:true|false)\b/, `${f}: internal flag in text`);
+      assert.doesNotMatch(l, /\.(?:tsx?|mjs)\b|\bsrc\/|\.server\b|\b[a-z]\w*[A-Z]\w*\(\)/, `${f}: source path or function in text`);
+    }
+  }
+});
+
+test("the build lists its current admin-family names for the front door", () => {
+  const p = join(ROOT, ".output/server/admin-assets/admin-assets.json");
+  if (!existsSync(p)) return;
+  const list = JSON.parse(readFileSync(p, "utf8"));
+  assert.ok(Array.isArray(list.public) && list.public.length > 0);
+  const onDisk = readdirSync(join(ROOT, ".output/public/assets")).filter(isAdminFamily).sort();
+  assert.deepEqual(list.public, onDisk);
 });

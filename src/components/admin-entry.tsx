@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { OperatorGate } from "@/components/operator-lock";
 import { Shell } from "@/components/shell";
-import { grantAdminAssets, revokeAdminAssets } from "@/lib/desk/desk-rpc";
+import { grantAdminAssets } from "@/lib/desk/desk-rpc";
 import { useOperator } from "@/lib/desk/operator";
 import { useIsClient } from "@/lib/react/client";
 
@@ -31,7 +31,8 @@ export function AdminEntry() {
   useEffect(() => {
     if (!admin) {
       if (granted) {
-        void revokeAdminAssets()
+        // Signed out: a call without a token is denied and drops the page-code cookie.
+        void grantAdminAssets({ data: { token: "" } })
           .catch(() => undefined)
           .then(() => setGranted(null));
       }

@@ -5,15 +5,12 @@
  */
 import { ADMIN_ASSET_COOKIE, ADMIN_ASSET_COOKIE_PATH } from "./admin-assets";
 import { verifyAccessToken } from "./access.server";
+import { systemTokenOnly } from "./auth-guards";
 
 export const PRIVATE_NO_STORE = "private, no-store";
 
 export async function isAdminToken(token: string | undefined): Promise<boolean> {
-  try {
-    return await verifyAccessToken(token);
-  } catch {
-    return false;
-  }
+  return systemTokenOnly(token, verifyAccessToken);
 }
 
 /** Server function guard: true for a signed-in system admin, else sets 401. */
