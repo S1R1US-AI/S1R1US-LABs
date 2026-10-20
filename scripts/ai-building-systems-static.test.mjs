@@ -155,3 +155,29 @@ test("debt clock sits in #debt-clock-slot right after 40 TRILLION; econ widgets 
   assert.ok(pkg.scripts["econ:refresh"].includes("refresh-econ-data.mjs"));
   assert.ok(!pkg.scripts["build:do"].includes("econ"), "econ:refresh stays out of build:do");
 });
+
+test("faq lead: AI Building Systems hero is the first content element in <main>, links the page, responsive, LCP priority, no marketing copy", () => {
+  const main = faq.slice(faq.indexOf("<main>") + "<main>".length);
+  const first = main.match(/^\s*<([a-z0-9]+)[^>]*>/i);
+  assert.ok(first, "main has content");
+  assert.equal(first[1], "figure", "first element in <main> is the lead figure");
+  assert.match(first[0], /class="faq-lead-hero"/);
+  const fig = main.match(/^\s*<figure class="faq-lead-hero"[\s\S]*?<\/figure>/)[0];
+  for (const tag of ["<h1", "<h2", "faq-header-logo", "faq-top5", "what-is-dmt-plant-medicine"]) {
+    assert.ok(main.indexOf(tag) > fig.length - 10, `${tag} comes after the lead hero`);
+  }
+  const base = "/images/ai-building-systems/ai-building-systems-br0k3n-s0ft-cracked-faceted-face-hero";
+  assert.match(fig, /^\s*<figure[^>]*>\s*<a href="\/ai-building-systems\/"[^>]*><img /);
+  assert.ok(fig.includes(`src="${base}.webp"`));
+  assert.ok(fig.includes(`srcset="${base}-960w.webp 960w, ${base}.webp 1600w"`));
+  assert.match(fig, /width="1600" height="900"/);
+  assert.match(fig, /fetchpriority="high"/);
+  assert.doesNotMatch(fig, /loading="lazy"/);
+  assert.match(fig, /alt="Br0k3n S0ft avatar, a hooded figure with a cracked faceted stone face[^"]+"/);
+  for (const f of [`${base}.webp`, `${base}-960w.webp`]) assert.ok(existsSync(new URL(f.slice(1), root)), `${f} exists`);
+  const cap = fig.match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/)[1];
+  assert.ok(cap.includes('href="/ai-building-systems/"') && cap.includes('href="#building-with-grok"'));
+  const capText = cap.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  assert.equal(capText, "AI Building Systems · What is it like building with Grok? · AI artwork © SAI Citizens United LTD");
+  assert.equal((main.match(/fetchpriority="high"/g) || []).length, 1, "only the lead hero is high priority in the FAQ");
+});
