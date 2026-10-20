@@ -16,7 +16,7 @@ import { t as useGm } from "./gm-store-VkxYc4lp.mjs";
 import { c as callStanceClass, n as CallWords, s as bannerTone, t as CallInk, u as money } from "./helios-card-BWE9-FHY.mjs";
 import { t as rollBots } from "./roll-bots-CKZiIeoC.mjs";
 import { t as LiveTracks } from "./live-tracks-ua6wYJEn.mjs";
-import { H as rainGmBurst, O as usePractice, V as GM_BURST_MS } from "./router-C9IGL93Y.mjs";
+import { H as rainGmBurst, O as usePractice, V as GM_BURST_MS } from "./router-Dkkgdxdw.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/gm-C8s_p5Xf.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
