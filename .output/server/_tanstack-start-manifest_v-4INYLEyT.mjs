@@ -1,7 +1,7 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-tyIiG9TQ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-4INYLEyT.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/__root.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/__root.tsx",
 		children: [
 			"/",
 			"/Bitcoin-Miners",
@@ -102,7 +102,7 @@ var tsrStartManifest = () => ({ routes: {
 		} }]
 	},
 	"/": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/index.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/index.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -131,7 +131,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/Bitcoin-Miners": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/Bitcoin-Miners.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/Bitcoin-Miners.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -143,7 +143,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/admin": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/admin.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/admin.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -174,7 +174,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/agent": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/agent.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/agent.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -196,7 +196,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/app": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/app.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/app.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -211,7 +211,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/b3ars": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/b3ars.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/b3ars.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -223,7 +223,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/board": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/board.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/board.tsx",
 		children: ["/board/$id"],
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -239,7 +239,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/bowl": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/bowl.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/bowl.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -255,7 +255,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/c0ff33": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/c0ff33.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/c0ff33.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -268,7 +268,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/c0ut": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/c0ut.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/c0ut.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -284,12 +284,12 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/coffee": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/coffee.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/coffee.tsx",
 		children: void 0,
 		preloads: ["/assets/coffee-DJ7LAi8J.js"]
 	},
 	"/compute": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/compute.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/compute.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -309,12 +309,12 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/cup": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/cup.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/cup.tsx",
 		children: void 0,
 		preloads: ["/assets/cup-DJ7LAi8J.js"]
 	},
 	"/f33d": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/f33d.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/f33d.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -327,7 +327,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/faq": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/faq.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/faq.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -340,7 +340,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/forum": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/forum.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/forum.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -355,7 +355,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/gm": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/gm.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/gm.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -371,7 +371,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/h1v3": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/h1v3.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/h1v3.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -389,7 +389,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/ios": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/ios.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/ios.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -404,7 +404,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/l0ck": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/l0ck.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/l0ck.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -421,7 +421,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/labs": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/labs.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/labs.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -440,7 +440,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/launch": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/launch.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/launch.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -454,7 +454,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/login": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/login.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/login.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -464,7 +464,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/media": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/media.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/media.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -476,7 +476,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/owl": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/owl.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/owl.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -488,7 +488,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/play": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/play.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/play.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -503,7 +503,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/pr3d": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/pr3d.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/pr3d.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -515,7 +515,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/privacy": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/privacy.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/privacy.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -527,7 +527,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/r0b0ts": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/r0b0ts.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/r0b0ts.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -539,12 +539,12 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/renew": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/renew.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/renew.tsx",
 		children: void 0,
 		preloads: ["/assets/renew-lipNAPW0.js", "/assets/renew-password-C5jrVPE3.js"]
 	},
 	"/roadmap": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/roadmap.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/roadmap.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -561,7 +561,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/s1r1us": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/s1r1us.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/s1r1us.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -587,7 +587,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/search": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/search.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/search.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -599,12 +599,12 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/sim": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/sim.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/sim.tsx",
 		children: void 0,
 		preloads: ["/assets/sim-DJ7LAi8J.js"]
 	},
 	"/sitemap": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/sitemap.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/sitemap.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -616,17 +616,17 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/source": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/source.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/source.tsx",
 		children: void 0,
 		preloads: ["/assets/source-DJ7LAi8J.js"]
 	},
 	"/sp0ns0r": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/sp0ns0r.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/sp0ns0r.tsx",
 		children: void 0,
 		preloads: ["/assets/sp0ns0r-DJ7LAi8J.js"]
 	},
 	"/sponsor-ai-bitcoin-trading-bot": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/sponsor-ai-bitcoin-trading-bot.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/sponsor-ai-bitcoin-trading-bot.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -639,7 +639,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/terms": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/terms.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/terms.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -651,7 +651,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/theme": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/theme.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/theme.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -669,7 +669,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/w0rld": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/w0rld.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/w0rld.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -685,7 +685,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/wh1t3": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/wh1t3.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/wh1t3.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -697,12 +697,12 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/world-cup": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/world-cup.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/world-cup.tsx",
 		children: void 0,
 		preloads: ["/assets/world-cup-DJ7LAi8J.js"]
 	},
 	"/app_/admin": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/app_.admin.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/app_.admin.tsx",
 		children: void 0,
 		css: ["/assets/shell-BC8YASSy.css"],
 		preloads: [
@@ -729,7 +729,7 @@ var tsrStartManifest = () => ({ routes: {
 		]
 	},
 	"/board/$id": {
-		filePath: "/src/s1r1us-labs-cleanup/src/routes/board.$id.tsx",
+		filePath: "/src/s1r1us-labs/src/routes/board.$id.tsx",
 		children: void 0,
 		preloads: ["/assets/board._id-DRcCbSQD.js"]
 	}
