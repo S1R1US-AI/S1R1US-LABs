@@ -136,7 +136,7 @@
   .ht-figure { margin-bottom: 1.1rem; }
 }
 
-/* 2026-10-19 · approved loops (autoplay, muted, loop, no visible controls) */
+/* 2026-10-19 · animated loops (autoplay, muted, loop, no visible controls) */
 .ht-loop { display: block; width: 100%; height: auto; border-radius: var(--radius, 10px); background: #121619; cursor: pointer; }
 .ht-loop.ht-img { aspect-ratio: 16 / 9; object-fit: cover; }
 .ht-loop:focus { outline: none; }

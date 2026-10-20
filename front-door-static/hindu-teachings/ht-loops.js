@@ -1,5 +1,5 @@
 /*!
- * /hindu-teachings/ approved loops (2026-10-19). External file (no inline script).
+ * /hindu-teachings/ animated loops. External file (no inline script).
  * Markup: <video data-ht-loop autoplay muted loop playsinline preload="metadata" poster tabindex="0"
  *          disablepictureinpicture> (no controls attribute, no visible button: system admin's call).
  * - Autoplays muted + inline, loops seamlessly. Off screen / hidden tab: pauses quietly, resumes on return.
