@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { bumpDeskEpoch, changeAdminCreds, completeAdminReset, confirmWebauthn, confirmYubi, renewAdminPasswordWithX, requestAdminReset, signInDesk, unlockBoundX, webauthnBeginLogin } from "./access";
 import { signOut } from "@/lib/auth/client";
+import { OPERATOR_ROLE_KEY, OPERATOR_TOKEN_KEY, renewProofFields } from "./auth-guards";
 
 export type AuditEvent = {
   id: string;
@@ -10,8 +11,8 @@ export type AuditEvent = {
   note: string;
 };
 
-const TOKEN_KEY = "h3-op-token";
-const ROLE_KEY = "h3-op-role";
+const TOKEN_KEY = OPERATOR_TOKEN_KEY;
+const ROLE_KEY = OPERATOR_ROLE_KEY;
 const NAME_KEY = "h3-op-name";
 const IDLE_FLAG = "h3-idle-lock";
 
@@ -162,9 +163,7 @@ export const useOperator = create<OpState>()(
         return null;
       },
       renewWithX: async (next, confirm, nextName, proof) => {
-        const raw = (proof ?? "").trim();
-        const otp = /^[cbdefghijklnrtuv]{44}$/i.test(raw) ? raw.toLowerCase() : undefined;
-        const current = otp ? undefined : proof;
+        const { current, otp } = renewProofFields(proof);
         const res = await renewAdminPasswordWithX({ data: { next, confirm, nextName, current, otp } });
         if (!res.ok) {
           get().log("reject", "Password renew failed");

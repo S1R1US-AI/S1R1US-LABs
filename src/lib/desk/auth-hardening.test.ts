@@ -4,7 +4,16 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { forceRebuildAllowed, renewProofError, RENEW_PROOF_ERROR, systemTokenOnly } from "./auth-guards.ts";
+import {
+  forceRebuildAllowed,
+  forceRefreshToken,
+  OPERATOR_ROLE_KEY,
+  OPERATOR_TOKEN_KEY,
+  renewProofError,
+  renewProofFields,
+  RENEW_PROOF_ERROR,
+  systemTokenOnly,
+} from "./auth-guards.ts";
 
 const FIX_HANDLE = "aid_test_admin_x";
 const FIX_ID = "1000000000000000001";
@@ -121,6 +130,42 @@ describe("B5 credential renew", { concurrency: false }, () => {
     const d = deps({ pass: "correct-horse-battery", otp: GOOD_OTP });
     assert.equal(await renewProofError({ current: "correct-horse-battery" }, "admin", d), null);
     assert.equal(await renewProofError({ otp: GOOD_OTP.toUpperCase() }, "admin", d), null);
+  });
+
+  it("a current password that looks like a YubiKey tap is still checked as the password", async () => {
+    const tapShaped = "vvvvvvcbdefghijklnrtuvcbdefghijklnrtuvcbdefg";
+    assert.equal(tapShaped.length, 44);
+    let otpCalls = 0;
+    const d = {
+      credsMatch: async (_n: string, p: string) => p === tapShaped,
+      consumeYubiOtp: async () => {
+        otpCalls += 1;
+        return "bad otp";
+      },
+    };
+    const fields = renewProofFields(tapShaped);
+    assert.equal(fields.current, tapShaped);
+    assert.equal(fields.otp, tapShaped);
+    assert.equal(await renewProofError(fields, "admin", d), null);
+    assert.equal(otpCalls, 0, "password passes first, so no YubiKey OTP is spent");
+  });
+
+  it("a real tap still passes after the password check fails or errors", async () => {
+    const fields = renewProofFields(` ${GOOD_OTP.toUpperCase()} `);
+    assert.equal(fields.otp, GOOD_OTP);
+    assert.equal(await renewProofError(fields, "admin", deps({ pass: "correct-horse-battery", otp: GOOD_OTP })), null);
+    const flaky = { credsMatch: async () => { throw new Error("db"); }, consumeYubiOtp: async (o: string) => (o === GOOD_OTP ? null : "bad") };
+    assert.equal(await renewProofError(fields, "admin", flaky), null);
+  });
+
+  it("client proof fields: ordinary passwords are sent as the password only", () => {
+    assert.deepEqual(renewProofFields("correct-horse-battery"), { current: "correct-horse-battery" });
+    assert.deepEqual(renewProofFields(""), {});
+    assert.deepEqual(renewProofFields(undefined), {});
+    const op = read("lib/desk/operator.ts");
+    const fn = op.slice(op.indexOf("renewWithX: async"), op.indexOf("openRenew: async"));
+    assert.match(fn, /renewProofFields\(proof\)/);
+    assert.doesNotMatch(fn, /otp \? undefined/);
   });
 
   it("the renew handler checks the proof before rotating creds or minting a token", () => {
@@ -304,6 +349,31 @@ describe("B7 auth negative matrix", { concurrency: false }, () => {
   it("system-only guard fails closed when the verifier throws or returns a non-boolean", async () => {
     assert.equal(await systemTokenOnly(SYSTEM_TOKEN, async () => { throw new Error("db down"); }), false);
     assert.equal(await systemTokenOnly(SYSTEM_TOKEN, (async () => "yes") as unknown as typeof verifySystem), false);
+  });
+
+  it("forced tape refresh sends only a stored system admin token", () => {
+    const store = (m: Record<string, string>) => ({ getItem: (k: string) => m[k] ?? null });
+    assert.equal(forceRefreshToken(store({ [OPERATOR_ROLE_KEY]: "admin", [OPERATOR_TOKEN_KEY]: SYSTEM_TOKEN })), SYSTEM_TOKEN);
+    assert.equal(forceRefreshToken(store({ [OPERATOR_ROLE_KEY]: "user", [OPERATOR_TOKEN_KEY]: SYSTEM_TOKEN })), "");
+    assert.equal(forceRefreshToken(store({ [OPERATOR_ROLE_KEY]: "admin", [OPERATOR_TOKEN_KEY]: APP_TOKEN_SHAPE })), "");
+    assert.equal(forceRefreshToken(store({ [OPERATOR_ROLE_KEY]: "admin", [OPERATOR_TOKEN_KEY]: `${Date.now() + 60_000}.u.${"a".repeat(64)}` })), "");
+    assert.equal(forceRefreshToken(store({ [OPERATOR_ROLE_KEY]: "admin" })), "");
+    assert.equal(forceRefreshToken(null), "");
+    assert.equal(forceRefreshToken({ getItem: () => { throw new Error("blocked"); } }), "");
+  });
+
+  it("the tape client passes the admin token to the forced rebuild in a POST body, never in a GET", () => {
+    const tc = read("lib/desk/tape-client.ts");
+    const fn = tc.slice(tc.indexOf("export async function pullDeskTape"), tc.indexOf("const run = Promise.race"));
+    assert.match(fn, /forceRefreshToken\(/);
+    assert.match(fn, /rebuildDesk\(\{ data: \{ token: adminToken \} \}\)/);
+    assert.match(fn, /fetchDesk\(\{ data: \{\} \}\)/);
+    assert.doesNotMatch(fn, /fetchDesk\(\{ data: \{[^}]*token/);
+    assert.equal(fns.find((f) => f.name === "rebuildDesk")?.method, "POST");
+    assert.match(fns.find((f) => f.name === "rebuildDesk")!.body, /systemTokenOnly\(data\?\.token, verifyAccessToken\)/);
+    const op = read("lib/desk/operator.ts");
+    assert.match(op, /const TOKEN_KEY = OPERATOR_TOKEN_KEY;/);
+    assert.match(op, /const ROLE_KEY = OPERATOR_ROLE_KEY;/);
   });
 
   it("forced rebuild: only force:true with the system token", async () => {

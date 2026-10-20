@@ -52,11 +52,51 @@ export async function renewProofError(
 ): Promise<string | null> {
   const current = typeof input?.current === "string" ? input.current : "";
   const otp = typeof input?.otp === "string" ? input.otp.trim().toLowerCase() : "";
+  // Password first, then the YubiKey. A failure or error in one never skips the other.
   try {
     if (current && current.length <= 128 && (await deps.credsMatch(liveName, current)) === true) return null;
+  } catch {
+    /* try the YubiKey next */
+  }
+  try {
     if (otp && YUBI_OTP_SHAPE.test(otp) && (await deps.consumeYubiOtp(otp)) === null) return null;
   } catch {
     return RENEW_PROOF_ERROR;
   }
   return RENEW_PROOF_ERROR;
+}
+
+/**
+ * Client side of the renew proof. One input box can hold either the current
+ * password or a YubiKey tap. A password can look exactly like a tap, so the
+ * typed value is always sent as the password, and also as an OTP when it has
+ * the tap shape. The server tries the password first.
+ */
+export function renewProofFields(proof: string | null | undefined): { current?: string; otp?: string } {
+  const value = typeof proof === "string" ? proof : "";
+  if (!value) return {};
+  const tap = value.trim().toLowerCase();
+  return YUBI_OTP_SHAPE.test(tap) ? { current: value, otp: tap } : { current: value };
+}
+
+/** Browser session keys for the operator token (shared with the operator store). */
+export const OPERATOR_TOKEN_KEY = "h3-op-token";
+export const OPERATOR_ROLE_KEY = "h3-op-role";
+
+type ReadStorage = { getItem: (key: string) => string | null };
+
+/**
+ * The system admin token for a forced tape refresh, or "" when this browser has
+ * no system admin session. Copy-admin and desk-user tokens are never returned.
+ */
+export function forceRefreshToken(storage: ReadStorage | null | undefined): string {
+  if (!storage) return "";
+  try {
+    if (storage.getItem(OPERATOR_ROLE_KEY) !== "admin") return "";
+    const token = storage.getItem(OPERATOR_TOKEN_KEY) ?? "";
+    if (!token || token.length > MAX_TOKEN_LEN || token.includes(".u.")) return "";
+    return isSystemAdminTokenShape(token) ? token : "";
+  } catch {
+    return "";
+  }
 }

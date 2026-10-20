@@ -61,12 +61,18 @@ export const rebuildDesk = createServerFn({ method: "POST" })
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
     const { verifyAccessToken } = await import("./access.server");
+    const { systemTokenOnly } = await import("./auth-guards");
     const { loadSnapshot } = await import("./sources");
     const { isTapeFrozen } = await import("./tape-persist");
-    if (!(await verifyAccessToken(data.token)) || isTapeFrozen()) {
+    if (!(await systemTokenOnly(data?.token, verifyAccessToken)) || isTapeFrozen()) {
       return loadSnapshot(false);
     }
-    return loadSnapshot(true);
+    return Promise.race([
+      loadSnapshot(true),
+      new Promise<Awaited<ReturnType<typeof loadSnapshot>>>((_, reject) => {
+        setTimeout(() => reject(new Error("rpc deadline")), 2_600);
+      }),
+    ]).catch(() => loadSnapshot(false));
   });
 
 export const fetchDeskErrors = createServerFn({ method: "GET" }).handler(async () => {
