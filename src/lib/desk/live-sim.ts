@@ -41,8 +41,8 @@ export type LiveSimPublic = {
   lastSyncedAt: string | null;
   practiceKilled: true;
   dataPullsFollowSim: true;
-  copyAdminMayPause: true;
-  championshipPauseSystemOnly: false;
+  copyAdminMayPause: false;
+  championshipPauseSystemOnly: true;
   note: string;
 };
 

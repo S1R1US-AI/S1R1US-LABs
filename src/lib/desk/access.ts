@@ -816,13 +816,22 @@ export const completeAdminReset = createServerFn({ method: "POST" })
 
 export const renewAdminPasswordWithX = createServerFn({ method: "POST" })
   .middleware([optionalXSession, authMiddleware])
-  .validator((input: { next: string; confirm: string; nextName?: string }) => input)
+  .validator((input: { next: string; confirm: string; nextName?: string; current?: string; otp?: string }) => input)
   .handler(async ({ data, context }) => {
     const who = await assertAdminX(context.userId);
     if (who) return { ok: false as const, error: who };
     const blocked = throttle();
     if (blocked) return { ok: false as const, error: blocked };
     const liveName = await storedAdminName();
+    const { renewProofError } = await import("./auth-guards");
+    const proof = await renewProofError(data, liveName, { credsMatch, consumeYubiOtp });
+    if (proof) {
+      void import("./intrusion-log").then(({ recordIntrusion }) => {
+        recordIntrusion({ kind: "auth-fail", detail: "credential renew without second proof" });
+      });
+      handleAuthAbuse("local", "auth-fail");
+      return { ok: false as const, error: proof };
+    }
     const nextName = (data.nextName ?? "").trim() || liveName;
     if (!ADMIN_NAME_RE.test(nextName)) {
       return { ok: false as const, error: "Admin name must be 3–32 letters, numbers, or . _ $ @ ! -" };
@@ -837,12 +846,15 @@ export const renewAdminPasswordWithX = createServerFn({ method: "POST" })
     return { ok: true as const, token: await signAccessToken(), adminName: nextName };
   });
 
-/** iOS / Google copy-admin. Never mints a system /admin HMAC. */
+/** iOS / Google copy-admin. Never mints a system /admin HMAC. Needs a signed-in X session; the copy is bound to it. */
 export const claimCopyAdmin = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
   .validator((input: { kind?: string; handle?: string; label?: string; mandate?: boolean; xHandle?: string | null }) => input)
-  .handler(async ({ data }) => {
+  .handler(async ({ data, context }) => {
+    const xUserId = (context as { xUserId?: string | null }).xUserId ?? null;
+    if (!xUserId) return { ok: false as const, error: "Sign in with X first, then claim your copy Admin." };
     const { claimAppAdmin, APP_ADMIN_PUBLIC } = await import("./app-admin");
-    const res = claimAppAdmin(data);
+    const res = claimAppAdmin({ ...data, owner: xUserId });
     if (!res.ok) return res;
     return { ...res, public: APP_ADMIN_PUBLIC };
   });

@@ -88,6 +88,35 @@ export function profileLooksLikeAdminX(value: unknown) {
   return collectXIdentityStrings(value).some((cand) => looksLikeAdminX(cand));
 }
 
+export type XAccountRow = { accountId: string; providerId: string; idToken: string | null };
+
+/** Claims from a server-stored OAuth id_token. */
+export function idTokenClaimsAreAdmin(token: string | null | undefined) {
+  if (!token || token.split(".").length < 2) return false;
+  try {
+    const payload = JSON.parse(Buffer.from(token.split(".")[1]!, "base64url").toString("utf8")) as unknown;
+    if (profileLooksLikeAdminX(payload)) return true;
+    if (payload && typeof payload === "object" && !Array.isArray(payload)) {
+      const rec = payload as Record<string, unknown>;
+      const fields = [rec.sub, rec.user_id, rec.preferred_username, rec.username, rec.nickname];
+      return fields.some((v) => typeof v === "string" && looksLikeAdminX(v));
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/** Admin identity from server-stored OAuth account rows (provider accountId or id_token claims). */
+export function accountRowsAreAdminX(rows: readonly XAccountRow[]): boolean {
+  for (const a of rows) {
+    if (!isAdminXProvider(a.providerId)) continue;
+    if (looksLikeAdminX(a.accountId)) return true;
+    if (idTokenClaimsAreAdmin(a.idToken)) return true;
+  }
+  return false;
+}
+
 /** Stable accountId: operator handle/snowflake when present, else a twitter id/handle, else empty. */
 export function preferredXAccountId(value: unknown): string {
   const all = collectXIdentityStrings(value);

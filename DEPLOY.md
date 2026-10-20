@@ -122,3 +122,13 @@ Set these on DigitalOcean (Settings → web → Environment Variables, **encrypt
 |---|---|---|
 | `SYSTEM_RESET_MAILBOX` | the operator's reset mailbox | Admin password renew mail goes here. Unset = no renew mail is sent. A role mailbox on the project domain is recommended. |
 | `GROK_PREVIEW_CLIENT_SECRET` | leave **unset** on production | Sandbox preview sign-in only (`*.grok-sandbox.com`). Production never uses the preview broker. |
+
+## Server-only settings added 2026-10-20
+
+Set on DigitalOcean (Settings → web → Environment Variables, **encrypted**, run time) **before** this change deploys. Never commit the value and never use a `VITE_` prefix.
+
+| Key | Value | Notes |
+|---|---|---|
+| `S1R1US_APP_ADMIN_SECRET` | a random string, at least 32 characters | Signs phone/download copy Admin sessions. Unset or shorter = copy Admin sign-in is off (fails closed). Changing it signs out every copy Admin. |
+
+`S1R1US_ADMIN_X_ID` (above) is now **required** for system Admin: admin identity is read only from the X account id stored at sign-in.

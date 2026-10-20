@@ -90,7 +90,7 @@ type OpState = {
   unlockBound: () => Promise<string | null>;
   requestReset: () => Promise<string | null>;
   completeReset: (token: string, next: string, confirm: string) => Promise<string | null>;
-  renewWithX: (next: string, confirm: string, nextName?: string) => Promise<string | null>;
+  renewWithX: (next: string, confirm: string, nextName?: string, proof?: string) => Promise<string | null>;
   openRenew: (next: string, confirm: string) => Promise<string | null>;
   tapYubi: (otp: string) => Promise<string | null>;
   tapWebauthn: () => Promise<string | null>;
@@ -161,8 +161,11 @@ export const useOperator = create<OpState>()(
         get().log("password", "Admin password renewed from mailbox link");
         return null;
       },
-      renewWithX: async (next, confirm, nextName) => {
-        const res = await renewAdminPasswordWithX({ data: { next, confirm, nextName } });
+      renewWithX: async (next, confirm, nextName, proof) => {
+        const raw = (proof ?? "").trim();
+        const otp = /^[cbdefghijklnrtuv]{44}$/i.test(raw) ? raw.toLowerCase() : undefined;
+        const current = otp ? undefined : proof;
+        const res = await renewAdminPasswordWithX({ data: { next, confirm, nextName, current, otp } });
         if (!res.ok) {
           get().log("reject", "Password renew failed");
           return res.error;

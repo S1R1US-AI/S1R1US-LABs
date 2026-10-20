@@ -250,8 +250,8 @@ export function liveSimPublic(): LiveSimPublic {
     lastSyncedAt: s.lastSyncedAt,
     practiceKilled: true,
     dataPullsFollowSim: true,
-    copyAdminMayPause: true,
-    championshipPauseSystemOnly: false,
+    copyAdminMayPause: false,
+    championshipPauseSystemOnly: true,
     note: liveSimNote(s.status, s.checkpoint),
   };
 }
@@ -276,7 +276,7 @@ export function testLiveSimCheckpoint(): LiveSimTest {
   if (pub.trade !== false) notes.push("trade must stay false");
   if (pub.ordersCreate !== false) notes.push("ordersCreate must stay false");
   if (!pub.pauseAllowed) notes.push("pause must stay allowed");
-  if (!pub.copyAdminMayPause) notes.push("copy-admin pause missing");
+  if (pub.copyAdminMayPause) notes.push("copy-admin pause must stay system-only");
   if (!pub.practiceKilled) notes.push("stray practice still armed");
   if (pub.conflict) notes.push(`conflict ${pub.conflict} — rebased to baseline ${CHECKPOINT_BASELINE_N} LIVE`);
   if (pub.synced) notes.push(`${pub.label} synced · simulation ${pub.status} · pause allowed`);
