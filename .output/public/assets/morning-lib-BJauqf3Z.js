@@ -1,1 +1,0 @@
-var e=`S1R1U$ M0rning R3p0rt`;function t(e){return`S1R1US-Morning-Report-${e}.pdf`}function n(e){return`/morning-pdf/${e}`}export{n,t as r,e as t};
