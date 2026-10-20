@@ -21,7 +21,7 @@ import { a as PaperCard, l as isOutgoingCli, o as YubiApprove, r as ConfirmClip,
 import { t as TapeFreezeBanner } from "./tape-freeze-HY-SVmpo.mjs";
 import { t as rollBots } from "./roll-bots-CKZiIeoC.mjs";
 import { t as LiveTracks } from "./live-tracks-BysUO3HL.mjs";
-import { W as useIsClient, n as Route, q as useWindowHostname } from "./router-CnYTubGa.mjs";
+import { W as useIsClient, n as Route, q as useWindowHostname } from "./router-Uvvtm5EH.mjs";
 import { i as TROY_OZ_PER_TONNE } from "./gold-sovereign-BlGdXnIc.mjs";
 import { r as TapeChart, t as DeskWorkspace } from "./desk-workspace-BjgxFND8.mjs";
 import { n as LeverageWhaleRow, r as S1r1usSite, t as HelloWorld } from "./s1r1us-site-DbaXJNOW.mjs";

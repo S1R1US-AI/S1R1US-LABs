@@ -4116,8 +4116,8 @@ var Route$100 = createFileRoute("/")({
 	component: lazyRouteComponent($$splitComponentImporter$42, "component")
 });
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CnYTubGa.js
-var router_CnYTubGa_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+//#region node_modules/.nitro/vite/services/ssr/assets/router-Uvvtm5EH.js
+var router_Uvvtm5EH_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 function AppErrorComponent({ error }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
 		className: "flex min-h-screen flex-col items-center justify-center gap-3 px-6 text-center bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50",
@@ -8713,8 +8713,8 @@ var Route$24 = createFileRoute("/api/agent/board")({ server: { handlers: {
 			const adminHdr = request.headers.get("x-s1r1us-admin") || "";
 			if (adminHdr) {
 				const { verifyAccessToken } = await import("./access.server-ClHOd3Xr.mjs");
-				const { verifyAppAdminToken } = await import("./app-admin-Cr_9qkQQ.mjs");
-				asAdmin = Boolean(await verifyAccessToken(adminHdr) || verifyAppAdminToken(adminHdr));
+				const { systemTokenOnly } = await import("./auth-guards-DoZWhoEP.mjs");
+				asAdmin = await systemTokenOnly(adminHdr, verifyAccessToken);
 			}
 			const out = registerBoard({
 				...body,
@@ -10321,4 +10321,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { BOWL_LIBRARY_ZIP as A, videoObjectGraph as B, BYO_CONNECT_AUTO as C, PRACTICE_MS as D, byoConnectPublic as E, SITEMAP_LOCK_VIEWS as F, useSaverLock as G, rainGmBurst as H, SITEMAP_MACHINE as I, useWindowSearch as J, useWindowHash as K, VIDEO_CLIPS as L, GITHUB_REPO_URL as M, OFFICIAL_PROPERTIES as N, usePractice as O, PUBLIC_PAGES as P, VIDEO_PACKS as R, resolveAppTo as S, BYO_CONNECT_HEADLINE as T, saverLockLabel as U, GM_BURST_MS as V, useIsClient as W, GOOGLE_AGENT_PATH as _, LOCK_BANNER_ASK as a, WEBMCP_TOOLS as b, LOCK_IMG_SEO as c, lockWelcomePublic as d, Route$102 as f, APP_SURFACES as g, getRouter, APP_PATH as h, LOCK_AGENT_WELCOME as i, FAQ_ITEMS as j, BOWL_LIBRARY_NAME as k, LOCK_LIVE_VS_SIM as l, APP_GATEWAY_PATH as m, Route$100 as n, LOCK_HEADLINE as o, APPLE_AGENT_PATH as p, useWindowHostname as q, Route$101 as r, LOCK_HOW_TO_TOGGLE as s, router_CnYTubGa_exports as t, LOCK_TUTORIAL as u, SIRI_AGENT_PATH as v, BYO_CONNECT_DIALOGUE as w, appleIntents as x, WEBMCP_AGENT_PATH as y, corporateSearchGraph as z };
+export { BOWL_LIBRARY_ZIP as A, videoObjectGraph as B, BYO_CONNECT_AUTO as C, PRACTICE_MS as D, byoConnectPublic as E, SITEMAP_LOCK_VIEWS as F, useSaverLock as G, rainGmBurst as H, SITEMAP_MACHINE as I, useWindowSearch as J, useWindowHash as K, VIDEO_CLIPS as L, GITHUB_REPO_URL as M, OFFICIAL_PROPERTIES as N, usePractice as O, PUBLIC_PAGES as P, VIDEO_PACKS as R, resolveAppTo as S, BYO_CONNECT_HEADLINE as T, saverLockLabel as U, GM_BURST_MS as V, useIsClient as W, GOOGLE_AGENT_PATH as _, LOCK_BANNER_ASK as a, WEBMCP_TOOLS as b, LOCK_IMG_SEO as c, lockWelcomePublic as d, Route$102 as f, APP_SURFACES as g, getRouter, APP_PATH as h, LOCK_AGENT_WELCOME as i, FAQ_ITEMS as j, BOWL_LIBRARY_NAME as k, LOCK_LIVE_VS_SIM as l, APP_GATEWAY_PATH as m, Route$100 as n, LOCK_HEADLINE as o, APPLE_AGENT_PATH as p, useWindowHostname as q, Route$101 as r, LOCK_HOW_TO_TOGGLE as s, router_Uvvtm5EH_exports as t, LOCK_TUTORIAL as u, SIRI_AGENT_PATH as v, BYO_CONNECT_DIALOGUE as w, appleIntents as x, WEBMCP_AGENT_PATH as y, corporateSearchGraph as z };

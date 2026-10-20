@@ -3,7 +3,7 @@ import { C as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].
 import { o as COMPANY_X_HANDLE } from "./x-admin-BTG79yoD.mjs";
 import { S as Shell, _ as Panel, x as SeoImage } from "./shell-B2mKALp3.mjs";
 import { t as SeoCopy } from "./seo-copy-BbZ6MNXy.mjs";
-import { L as VIDEO_CLIPS, N as OFFICIAL_PROPERTIES, R as VIDEO_PACKS } from "./router-CnYTubGa.mjs";
+import { L as VIDEO_CLIPS, N as OFFICIAL_PROPERTIES, R as VIDEO_PACKS } from "./router-Uvvtm5EH.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/media-Cq4zdtP-.js
 var import_jsx_runtime = require_jsx_runtime();
 function MediaPage() {

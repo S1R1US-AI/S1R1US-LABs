@@ -3,7 +3,7 @@ import { fn as PAGE_TITLE_SEARCH, zt as PAGE_DESC_SEARCH } from "./brand-TY3paqh
 import { C as require_jsx_runtime, X as require_react, x as useSearch } from "../_libs/@tanstack/react-router+[...].mjs";
 import { S as Shell, _ as Panel } from "./shell-B2mKALp3.mjs";
 import { t as SeoCopy } from "./seo-copy-BbZ6MNXy.mjs";
-import { N as OFFICIAL_PROPERTIES, P as PUBLIC_PAGES } from "./router-CnYTubGa.mjs";
+import { N as OFFICIAL_PROPERTIES, P as PUBLIC_PAGES } from "./router-Uvvtm5EH.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/search-Cyw15xB4.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
