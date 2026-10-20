@@ -410,7 +410,7 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
     seo: "7-B0T HTTP key",
     path: "/agent",
     status: "LOCKED",
-    until: "2026-10-15",
+    until: "2026-11-15",
     note: "Phase 2. Hashed tokens. $9/$29 HTTP key changes poll rate only. Spec is published; keys not on yet.",
   },
   {
