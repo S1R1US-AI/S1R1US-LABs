@@ -192,7 +192,7 @@ export function runHunter(): HunterReport {
       "System admin is isolated from iOS/Play copy-admin",
       "HIGH",
       "PASS",
-      "verifyAccessToken rejects app. tokens (4-part HMAC pepper s1r1us-app-admin-v1). SYSTEM_ONLY_PATHS stay /admin. Copy-admin cannot claim the system operator or @S1R1US_AI. Path /app/admin.",
+      "verifyAccessToken rejects app. tokens (4-part HMAC, server-only env secret). SYSTEM_ONLY_PATHS stay /admin. Copy-admin cannot claim the system operator or @S1R1US_AI. Path /app/admin.",
       "Keep two token formats. Never let an app token mint a 3-part admin HMAC.",
     ),
     finding(
@@ -201,7 +201,7 @@ export function runHunter(): HunterReport {
       "Championship simulation pause is system Admin only",
       "HIGH",
       "PASS",
-      "setChampionshipSim uses verifyAccessToken or verifyAppAdminToken. Sim LIVE|PAUSED is world-cup.json, not gm-board status. Coinbase create stays locked on web and phone apps.",
+      "setChampionshipSim accepts the system admin token only. Sim LIVE|PAUSED is world-cup.json, not gm-board status. Coinbase create stays locked on web and phone apps.",
       "Never wire setSimStatus to app-admin or a board token. Do not reuse GM B0aRd LIVE/PAUSED for the cup.",
     ),
     finding(
@@ -228,7 +228,7 @@ export function runHunter(): HunterReport {
       "H1V3 SW@RM is paper — TH/s split, never escrow, never Coinbase create",
       "HIGH",
       "PASS",
-      "hivePublic returns trade:false, ordersCreate:false, escrow:false, keysOnThisHost:false. MCP hive_list is read-only. hive_pause is not an MCP tool. Pause is Admin (system or copy-admin). Board token is not admin. TEST data until go-live.",
+      "hivePublic returns trade:false, ordersCreate:false, escrow:false, keysOnThisHost:false. MCP hive_list is read-only. hive_pause is not an MCP tool. Pause is system Admin only. Board token is not admin. TEST data until go-live.",
       "Do not escrow live BTC. Do not add hive_pause to MCP. Keep split compute-weighted paper or equal if TH/s is zero.",
     ),
     finding(
@@ -264,7 +264,7 @@ export function runHunter(): HunterReport {
       "As-live simulation stays on the desk checkpoint with pause allowed",
       "HIGH",
       "PASS",
-      "G M0D3 AUTO + AI agents run as-live on S1R1US App build #113. Conflict rebases to baseline 68 LIVE with pause allowed for system and copy-admin. Championship pause stays system-only. Morning report 07:30 ET. Data pulls follow sim. Practice ticks stay killed. Coinbase create stays off.",
+      "G M0D3 AUTO + AI agents run as-live on S1R1US App build #113. Conflict rebases to baseline 68 LIVE with pause allowed for system Admin only. Championship pause stays system-only. Morning report 07:30 ET. Data pulls follow sim. Practice ticks stay killed. Coinbase create stays off.",
       "If the checkpoint number changes, retarget the simulation and retest. If anything conflicts, run baseline 68 LIVE with pause allowed.",
     ),
     finding(

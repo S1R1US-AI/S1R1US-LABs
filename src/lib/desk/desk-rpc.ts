@@ -2,11 +2,13 @@ import { createServerFn } from "@tanstack/react-start";
 import type { LockId } from "./lock-status";
 
 export const fetchDesk = createServerFn({ method: "GET" })
-  .validator((input: { force?: boolean } | undefined) => input ?? {})
+  .validator((input: { force?: boolean; token?: string } | undefined) => input ?? {})
   .handler(async ({ data }) => {
     const { loadSnapshot } = await import("./sources");
     const { isTapeFrozen } = await import("./tape-persist");
-    const force = Boolean(data?.force) && !isTapeFrozen();
+    const { forceRebuildAllowed } = await import("./auth-guards");
+    const { verifyAccessToken } = await import("./access.server");
+    const force = !isTapeFrozen() && (await forceRebuildAllowed(data, verifyAccessToken));
     return Promise.race([
       loadSnapshot(force),
       new Promise<Awaited<ReturnType<typeof loadSnapshot>>>((_, reject) => {
@@ -59,12 +61,18 @@ export const rebuildDesk = createServerFn({ method: "POST" })
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
     const { verifyAccessToken } = await import("./access.server");
+    const { systemTokenOnly } = await import("./auth-guards");
     const { loadSnapshot } = await import("./sources");
     const { isTapeFrozen } = await import("./tape-persist");
-    if (!(await verifyAccessToken(data.token)) || isTapeFrozen()) {
+    if (!(await systemTokenOnly(data?.token, verifyAccessToken)) || isTapeFrozen()) {
       return loadSnapshot(false);
     }
-    return loadSnapshot(true);
+    return Promise.race([
+      loadSnapshot(true),
+      new Promise<Awaited<ReturnType<typeof loadSnapshot>>>((_, reject) => {
+        setTimeout(() => reject(new Error("rpc deadline")), 2_600);
+      }),
+    ]).catch(() => loadSnapshot(false));
   });
 
 export const fetchDeskErrors = createServerFn({ method: "GET" }).handler(async () => {
@@ -247,6 +255,7 @@ export const setMorningReportPaused = createServerFn({ method: "POST" })
 
 export const postPracticePulse = createServerFn({ method: "POST" })
   .validator((input: {
+    token: string;
     at: string;
     paused: boolean;
     day: number;
@@ -254,8 +263,14 @@ export const postPracticePulse = createServerFn({ method: "POST" })
     gm: { fills: number; ticks: number; cash: number; btc: number; last: string };
   }) => input)
   .handler(async ({ data }) => {
+    const { systemTokenOnly } = await import("./auth-guards");
+    const { verifyAccessToken } = await import("./access.server");
+    if (!(await systemTokenOnly(data?.token, verifyAccessToken))) {
+      return { ok: false as const, error: "System admin session required" };
+    }
+    const { token: _token, ...pulse } = data;
     const { writePulse } = await import("./practice-pulse");
-    await writePulse(data);
+    await writePulse(pulse);
     return { ok: true as const };
   });
 
@@ -307,19 +322,17 @@ export const setChampionshipSim = createServerFn({ method: "POST" })
   .validator((input: { token: string; status: "LIVE" | "PAUSED" }) => input)
   .handler(async ({ data }) => {
     const { verifyAccessToken } = await import("./access.server");
-    const system = await verifyAccessToken(data.token);
-    const { verifyAppAdminToken } = await import("./app-admin");
-    const copy = verifyAppAdminToken(data.token);
-    if (!system && !copy) {
-      return { ok: false as const, error: "Admin session required", sim: null };
+    const { systemTokenOnly } = await import("./auth-guards");
+    if (!(await systemTokenOnly(data?.token, verifyAccessToken))) {
+      return { ok: false as const, error: "System admin session required", sim: null };
     }
     const next = data.status === "PAUSED" ? ("PAUSED" as const) : ("LIVE" as const);
     const { setSimStatus } = await import("./world-cup");
     return {
       ok: true as const,
       error: null as string | null,
-      sim: setSimStatus(next, system ? "system" : "app-admin"),
-      role: system ? ("system" as const) : ("app-admin" as const),
+      sim: setSimStatus(next, "system"),
+      role: "system" as const,
     };
   });
 
@@ -355,18 +368,16 @@ export const setHiveSwarmStatus = createServerFn({ method: "POST" })
   .validator((input: { token: string; status: "LIVE" | "PAUSED" }) => input)
   .handler(async ({ data }) => {
     const { verifyAccessToken } = await import("./access.server");
-    const system = await verifyAccessToken(data.token);
-    const { verifyAppAdminToken } = await import("./app-admin");
-    const copy = verifyAppAdminToken(data.token);
-    if (!system && !copy) {
-      return { ok: false as const, error: "Admin session required", hive: null };
+    const { systemTokenOnly } = await import("./auth-guards");
+    if (!(await systemTokenOnly(data?.token, verifyAccessToken))) {
+      return { ok: false as const, error: "System admin session required", hive: null };
     }
     const next = data.status === "PAUSED" ? ("PAUSED" as const) : ("LIVE" as const);
     const { setHiveStatus } = await import("./hive-swarm");
     return {
       ok: true as const,
       error: null as string | null,
-      hive: setHiveStatus(next, system ? "system" : "app-admin"),
+      hive: setHiveStatus(next, "system"),
     };
   });
 
@@ -389,11 +400,9 @@ export const setLiveSim = createServerFn({ method: "POST" })
   .validator((input: { token: string; status: "LIVE" | "PAUSED" }) => input)
   .handler(async ({ data }) => {
     const { verifyAccessToken } = await import("./access.server");
-    const system = await verifyAccessToken(data.token);
-    const { verifyAppAdminToken } = await import("./app-admin");
-    const copy = verifyAppAdminToken(data.token);
-    if (!system && !copy) {
-      return { ok: false as const, error: "Admin session required", sim: null };
+    const { systemTokenOnly } = await import("./auth-guards");
+    if (!(await systemTokenOnly(data?.token, verifyAccessToken))) {
+      return { ok: false as const, error: "System admin session required", sim: null };
     }
     const { setLiveSimStatus, ensureLiveSimScheduler } = await import("./live-sim.server");
     ensureLiveSimScheduler();
@@ -401,8 +410,8 @@ export const setLiveSim = createServerFn({ method: "POST" })
     return {
       ok: true as const,
       error: null as string | null,
-      sim: setLiveSimStatus(next, system ? "system" : "app-admin"),
-      role: system ? ("system" as const) : ("app-admin" as const),
+      sim: setLiveSimStatus(next, "system"),
+      role: "system" as const,
     };
   });
 

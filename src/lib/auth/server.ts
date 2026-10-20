@@ -11,6 +11,7 @@ import { getCookie } from "@tanstack/react-start/server";
 import { randomBytes } from "node:crypto";
 import { Pool } from "pg";
 import { ensureDbReady, getPglite } from "../db";
+import { DISABLED_AUTH_PATHS } from "./disabled-paths";
 import { emailAndPasswordEnabled } from "./email-password";
 import { GATE_PROVIDER_ID, gateIdentitySessions } from "./gate-session.server";
 import { GROK_PROVIDERS, NATIVE_X_PROVIDER_ID } from "./providers";
@@ -182,6 +183,7 @@ export const auth = betterAuth({
       }
     : {}),
   trustedOrigins,
+  disabledPaths: [...DISABLED_AUTH_PATHS],
   account: {
     encryptOAuthTokens: true,
     accountLinking: {

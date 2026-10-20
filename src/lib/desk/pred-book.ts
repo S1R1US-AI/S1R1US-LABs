@@ -203,9 +203,16 @@ export function resetPredBookForTest() {
   }
 }
 
+/** Tests point this at a private temp file so they never touch the real sim state. */
+function liveSimPaths(): string[] {
+  const testFile = process.env.NODE_TEST_CONTEXT ? process.env.S1R1US_TEST_LIVE_SIM_FILE : undefined;
+  if (testFile) return [testFile];
+  return ["/tmp/live-sim.json", "/workspace/data/live-sim.json"];
+}
+
 function adminSim(): PredSim {
   if (typeof window !== "undefined") return "LIVE";
-  for (const p of ["/tmp/live-sim.json", "/workspace/data/live-sim.json"]) {
+  for (const p of liveSimPaths()) {
     try {
       const j = JSON.parse(readFileSync(p, "utf8")) as { status?: string };
       if (j.status === "PAUSED") return "PAUSED";

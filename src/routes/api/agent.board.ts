@@ -92,8 +92,8 @@ export const Route = createFileRoute("/api/agent/board")({
             const adminHdr = request.headers.get("x-s1r1us-admin") || "";
             if (adminHdr) {
               const { verifyAccessToken } = await import("@/lib/desk/access.server");
-              const { verifyAppAdminToken } = await import("@/lib/desk/app-admin");
-              asAdmin = Boolean((await verifyAccessToken(adminHdr)) || verifyAppAdminToken(adminHdr));
+              const { systemTokenOnly } = await import("@/lib/desk/auth-guards");
+              asAdmin = await systemTokenOnly(adminHdr, verifyAccessToken);
             }
             const out = registerBoard({ ...body, ip, asAdmin });
             const blocked = "blocked" in out && Boolean(out.blocked);

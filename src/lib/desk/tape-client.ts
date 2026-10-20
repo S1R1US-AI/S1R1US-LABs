@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { DESK_POLL_MS, RELOAD_FORCE_MS } from "./poll";
-import { fetchDesk } from "./desk-rpc";
+import { fetchDesk, rebuildDesk } from "./desk-rpc";
+import { forceRefreshToken } from "./auth-guards";
 import type { DeskSnapshot } from "./types";
 
 const STORE = "s1r1us-desk-snap-v3";
@@ -166,7 +167,10 @@ export async function pullDeskTape(opts?: { force?: boolean }): Promise<DeskSnap
     const age = Date.now() - Date.parse(had.fetchedAt);
     if (Number.isFinite(age) && age >= 0 && age < DESK_POLL_MS) return had;
   }
-  const fetchP = fetchDesk({ data: { force } }).then((s) => {
+  // A forced rebuild needs the system admin token. It goes in a POST body, never a GET URL.
+  // Without one, read the cached tape.
+  const adminToken = force ? forceRefreshToken(typeof sessionStorage === "undefined" ? null : sessionStorage) : "";
+  const fetchP = (adminToken ? rebuildDesk({ data: { token: adminToken } }) : fetchDesk({ data: {} })).then((s) => {
     markPull();
     emit(s);
     if (tapeNeedsFill(s)) scheduleFillCatch();

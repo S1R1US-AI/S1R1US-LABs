@@ -26,9 +26,9 @@ export type SystemHealth = {
   liveUnlocked: false;
   trade: false;
   practiceCannotArmCoinbase: true;
-  copyAdminMayPauseHive: true;
-  copyAdminMayPauseChampionship: true;
-  copyAdminCannotPauseChampionship: false;
+  copyAdminMayPauseHive: false;
+  copyAdminMayPauseChampionship: false;
+  copyAdminCannotPauseChampionship: true;
 };
 
 function grade(n: number): SystemHealth["grade"] {
@@ -130,8 +130,8 @@ export function systemHealth(): SystemHealth {
     liveUnlocked: false,
     trade: false,
     practiceCannotArmCoinbase: true,
-    copyAdminMayPauseHive: true,
-    copyAdminMayPauseChampionship: true,
-    copyAdminCannotPauseChampionship: false,
+    copyAdminMayPauseHive: false,
+    copyAdminMayPauseChampionship: false,
+    copyAdminCannotPauseChampionship: true,
   };
 }

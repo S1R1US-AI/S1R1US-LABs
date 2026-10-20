@@ -24,8 +24,9 @@ describe("live-sim checkpoint sync", { concurrency: false }, () => {
     const h = systemHealth();
     assert.equal(h.checkpoint, "113");
     assert.equal(h.liveUnlocked, false);
-    assert.equal(h.copyAdminCannotPauseChampionship, false);
-    assert.equal(h.copyAdminMayPauseChampionship, true);
+    assert.equal(h.copyAdminCannotPauseChampionship, true);
+    assert.equal(h.copyAdminMayPauseChampionship, false);
+    assert.equal(h.copyAdminMayPauseHive, false);
   });
 
   it("paper TEST X accounts seed on the board and stay non-admin", () => {
@@ -40,13 +41,13 @@ describe("live-sim checkpoint sync", { concurrency: false }, () => {
     assert.doesNotMatch(board, /asAdmin:\s*true/);
   });
 
-  it("dual-admin pause is wired; championship pause is dual-admin", () => {
+  it("sim pause is system Admin only; championship pause is system Admin only", () => {
     assert.match(rpc, /export const setLiveSim/);
-    assert.match(rpc, /verifyAppAdminToken/);
-    assert.match(rpc, /setLiveSimStatus/);
+    assert.match(rpc, /setLiveSimStatus\(next, "system"\)/);
     assert.match(rpc, /export const setChampionshipSim/);
-    const cupBlock = rpc.slice(rpc.indexOf("export const setChampionshipSim"), rpc.indexOf("export const fetchHiveSwarm"));
-    assert.match(cupBlock, /verifyAppAdminToken/);
+    const cupBlock = rpc.slice(rpc.indexOf("export const setChampionshipSim"), rpc.indexOf("export const fetchChampionshipSim"));
+    assert.doesNotMatch(cupBlock, /verifyAppAdminToken/);
+    assert.match(cupBlock, /systemTokenOnly/);
     assert.match(admin, /LiveSimPanel/);
     assert.match(appAdmin, /LiveSimPanel/);
     assert.match(appAdmin, /MorningReportPdf/);
