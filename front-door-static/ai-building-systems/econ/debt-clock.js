@@ -1,5 +1,5 @@
 /*! S1R1US.ai live debt clock. Vanilla JS, no dependencies, CSP-safe (no eval, no inline styles injected).
- * Markup: <section class="s1w s1w-debt" data-s1w="debt-clock" data-snapshot="/ai-building-systems/econ/data/snapshot.json" data-live="1"></section>
+ * Markup: <section class="s1w s1w-debt" data-s1w="debt-clock" data-snapshot="/ai-building-systems/econ/data/snapshot.json" data-live="0"></section>
  * Shows a LIVE ESTIMATE: official Treasury total + (elapsed seconds since the record date closed) x average rate.
  */
 (function () {
@@ -21,7 +21,7 @@
       .finally(function () { clearTimeout(t); });
   }
 
-  // Same method as scripts/refresh-data.mjs computeDebtSnapshot(): OLS slope over the last 90 calendar days.
+  // Estimate the recent growth rate from the official daily totals.
   function compute(records) {
     var rows = records.map(function (r) { return { d: r.record_date, t: Date.parse(r.record_date + "T00:00:00Z") / 1000, v: Number(r.tot_pub_debt_out_amt) }; })
       .filter(function (r) { return isFinite(r.v); }).sort(function (a, b) { return a.t - b.t; });

@@ -1,7 +1,7 @@
 /* /ai-building-systems/ page-scoped layout. Colors come only from the shared front-door theme
    (/css/theme.css tokens: charcoal --bg #121619, cards --bg-card, gold --gold #c9a227 / --gold-hover #dbb43a,
    teal --teal #2ec4b6, text --text / --muted, lines --line). No page-specific green: the econ widgets
-   (econ-widgets.css, .s1w) keep their own approved dark-panel palette. Layout sizes below are unchanged
+   (econ-widgets.css, .s1w) keep their own dark-panel palette. Layout sizes below are unchanged
    from v1 so the widgets render the same. */
 .abs-hero { margin: 0.5rem auto 2.25rem; max-width: 1200px; text-align: center; }
 .abs-figure {

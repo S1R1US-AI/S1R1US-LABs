@@ -1,6 +1,6 @@
 /* AI Building Systems 50/50 hero: live debt clock (left) + Br0k3n S0ft loop (right).
    Shared by /ai-building-systems/ and the top of /faq/. Theme tokens from /css/theme.css only.
-   The clock itself is the approved .s1w-debt widget from econ-widgets.css. */
+   The clock itself is the .s1w-debt widget from econ-widgets.css. */
 .abs-hero-split {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
