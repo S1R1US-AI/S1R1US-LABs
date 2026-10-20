@@ -1,1 +1,0 @@
-import{s as e,u as t}from"./client-_6Dww5za.js";import{ua as n}from"./brand-B3j3kySo.js";var r=t(e(),1),i=r.use,a=r.useLayoutEffect;function o(e){let t=n();return r.useCallback(n=>t.navigate({...n,from:n.from??e?.from}),[e?.from,t])}function s(e){let t=n(),i=o(),s=r.useRef(null);return a(()=>{s.current!==e&&(i(e),s.current=e)},[t,e,i]),null}export{a as i,o as n,i as r,s as t};

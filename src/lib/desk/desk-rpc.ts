@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { optionalXSession } from "./x-session";
 import type { LockId } from "./lock-status";
 
 export const fetchDesk = createServerFn({ method: "GET" })
@@ -107,6 +108,7 @@ export const fetchIntrusions = createServerFn({ method: "POST" })
   });
 
 export const runHunterAudit = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
     const { requireAdminData } = await import("./admin-gate.server");
@@ -118,6 +120,7 @@ export const runHunterAudit = createServerFn({ method: "POST" })
   });
 
 export const fetchSecurityPosture = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
   .validator((input: { token: string; refreshIntel?: boolean }) => input)
   .handler(async ({ data }) => {
     const { requireAdminData } = await import("./admin-gate.server");
@@ -127,6 +130,7 @@ export const fetchSecurityPosture = createServerFn({ method: "POST" })
   });
 
 export const fetchSecurityBrief = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
     const { requireAdminData } = await import("./admin-gate.server");
@@ -461,6 +465,7 @@ export const setLockStatus = createServerFn({ method: "POST" })
 
 /** Admin-only security log rows. Checked on the server; 401 and no data otherwise. */
 export const fetchSecurityLog = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
     const { requireAdminData } = await import("./admin-gate.server");
@@ -471,6 +476,7 @@ export const fetchSecurityLog = createServerFn({ method: "POST" })
 
 /** Admin-only research paper. Checked on the server; 401 and no data otherwise. */
 export const fetchAdminPaper = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
     const { requireAdminData } = await import("./admin-gate.server");
@@ -486,13 +492,19 @@ export const fetchAdminPaper = createServerFn({ method: "POST" })
 
 /** After admin sign-in: let this browser load admin page code. Checked on the server; a denied call also drops the cookie. */
 export const grantAdminAssets = createServerFn({ method: "POST" })
+  .middleware([optionalXSession])
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
-    const { requireAdminData, setAdminAssetCookie, clearAdminAssetCookie } = await import("./admin-gate.server");
-    if (!(await requireAdminData(data.token))) {
-      await clearAdminAssetCookie();
-      return { ok: false as const };
-    }
-    await setAdminAssetCookie(data.token);
-    return { ok: true as const };
+    const { requireAdminData, setAdminAssetCookie, clearAdminAssetCookie, denyAdminData } = await import("./admin-gate.server");
+    const { grantAdminAssetCookie } = await import("./admin-grant");
+    // The operator token comes from sessionStorage; the sign-in session is forwarded by the middleware.
+    const ok = await grantAdminAssetCookie(data.token, {
+      verify: (t) => requireAdminData(t),
+      setCookie: setAdminAssetCookie,
+      clearCookie: async () => {
+        await clearAdminAssetCookie();
+        await denyAdminData();
+      },
+    });
+    return ok ? { ok: true as const } : { ok: false as const };
   });

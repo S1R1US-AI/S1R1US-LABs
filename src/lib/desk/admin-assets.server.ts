@@ -8,7 +8,8 @@ let cache: { dir: string; names: Set<string>; real: Map<string, string> } | null
 
 function gatedDir(): { dir: string; names: Set<string>; real: Map<string, string> } {
   if (cache) return cache;
-  const roots = [join(process.cwd(), ".output/server/admin-assets")];
+  // Node build: .output/server/admin-assets. Vercel function: admin-assets beside the function entry (its cwd).
+  const roots = [join(process.cwd(), ".output/server/admin-assets"), join(process.cwd(), "admin-assets")];
   if (process.argv[1]) roots.push(join(dirname(process.argv[1]), "admin-assets"));
   for (const dir of roots) {
     const list = join(dir, "admin-assets.json");

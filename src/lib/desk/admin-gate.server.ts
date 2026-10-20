@@ -26,6 +26,17 @@ export async function requireAdminData(token: string | undefined): Promise<boole
   return ok;
 }
 
+/** Mark the current server-function answer as a private 401. */
+export async function denyAdminData(): Promise<void> {
+  try {
+    const { setResponseHeader, setResponseStatus } = await import("@tanstack/react-start/server");
+    setResponseHeader("cache-control", PRIVATE_NO_STORE);
+    setResponseStatus(401);
+  } catch {
+    /* outside a request (tests) */
+  }
+}
+
 /** API route guard: null when allowed, else a 401 Response with no data. */
 export async function adminDataDenied(token: string | undefined): Promise<Response | null> {
   if (await isAdminToken(token)) return null;

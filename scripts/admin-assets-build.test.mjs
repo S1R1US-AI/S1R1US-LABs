@@ -1,9 +1,10 @@
 // Admin-only data and page code never ship in the public folder.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, statSync, utimesSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { adminOnly, dropFromAssetTable, isAdminFamily, isAdminPanelChunk, refsOf } from "./gate-admin-assets.mjs";
+import { adminOnly, beginBuild, dropFromAssetTable, isAdminFamily, isAdminPanelChunk, refsOf, staleReason, vercelRoutes } from "./gate-admin-assets.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
@@ -123,4 +124,39 @@ test("the build lists its current admin-family names for the front door", () => 
   assert.ok(Array.isArray(list.public) && list.public.length > 0);
   const onDisk = readdirSync(join(ROOT, ".output/public/assets")).filter(isAdminFamily).sort();
   assert.deepEqual(list.public, onDisk);
+});
+
+test("every build target runs the gate on its own fresh output", () => {
+  const pkg = JSON.parse(read("package.json"));
+  assert.match(pkg.scripts["build:do"], /^node scripts\/gate-admin-assets\.mjs --begin node && NITRO_PRESET=node-server [\s\S]*gate-admin-assets\.mjs node$/);
+  assert.match(pkg.scripts.build, /^node scripts\/gate-admin-assets\.mjs --begin vercel && [\s\S]*gate-admin-assets\.mjs vercel$/);
+});
+
+test("the gate refuses missing, older or wrong-preset output", () => {
+  const root = mkdtempSync(join(tmpdir(), "gate-stale-"));
+  assert.match(staleReason(root, "vercel"), /no build start recorded/);
+  beginBuild(root, "vercel");
+  assert.match(staleReason(root, "vercel"), /missing/);
+  mkdirSync(join(root, ".vercel/output/static/assets"), { recursive: true });
+  mkdirSync(join(root, ".vercel/output/functions/__server.func"), { recursive: true });
+  writeFileSync(join(root, ".vercel/output/functions/__server.func/index.mjs"), "");
+  writeFileSync(join(root, ".vercel/output/nitro.json"), JSON.stringify({ preset: "vercel" }));
+  assert.equal(staleReason(root, "vercel"), null);
+  const old = new Date(Date.now() - 3600_000);
+  utimesSync(join(root, ".vercel/output/nitro.json"), old, old);
+  assert.match(staleReason(root, "vercel"), /older than this build/);
+  writeFileSync(join(root, ".vercel/output/nitro.json"), JSON.stringify({ preset: "node-server" }));
+  assert.match(staleReason(root, "vercel"), /preset/);
+  assert.match(staleReason(root, "nope"), /unknown build target/);
+});
+
+test("vercel routes send gated names to the server privately, ahead of public caching", () => {
+  const cfg = { routes: [{ src: "/assets/(.*)", headers: { "cache-control": "public, max-age=31536000, immutable" } }, { handle: "filesystem" }, { src: "/(.*)", dest: "/__server" }] };
+  const r = vercelRoutes(cfg, ["admin-panel-A.js"]).routes;
+  assert.equal(r[0].dest, "/__server");
+  assert.equal(r[0].headers["cache-control"], "private, no-store");
+  assert.ok(new RegExp(r[0].src).test("/assets/admin-panel-A.js"));
+  const fs = r.findIndex((x) => x.handle === "filesystem");
+  assert.equal(r[fs + 1].headers["cache-control"], "private, no-store");
+  assert.equal(r.at(-1).src, "/(.*)");
 });

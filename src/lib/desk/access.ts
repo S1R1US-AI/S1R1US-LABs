@@ -1,4 +1,4 @@
-import { createServerFn, createMiddleware } from "@tanstack/react-start";
+import { createServerFn } from "@tanstack/react-start";
 import { authMiddleware } from "@/lib/auth/middleware";
 import {
   ADMIN_NAME_RE,
@@ -33,28 +33,8 @@ import {
 import { isBtcReceiveAddress, looksLikeSecret, usdcReceiveError } from "./security";
 import { handleAuthAbuse } from "./auto-defend";
 import { getAdminXHandle, getAdminXLabel } from "./x-admin.server.ts";
+import { optionalXSession } from "./x-session";
 import { clearYubi, consumeYubiOtp, maskYubiId, saveYubi, verifyYubicoOtp, yubiPublicId, yubiRows } from "./yubi.server";
-
-const optionalXSession = createMiddleware({ type: "function" })
-  .client(async ({ next }) => {
-    const { getBearerToken } = await import("@/lib/auth/client");
-    return next({ sendContext: { bearerToken: getBearerToken() ?? undefined } });
-  })
-  .server(async ({ next, context }) => {
-    const { getSessionUser } = await import("@/lib/auth/verify.server");
-    const { runWithBearer } = await import("./access.server");
-    const bearer = (context as { bearerToken?: string }).bearerToken;
-    const user = await getSessionUser(bearer);
-    return runWithBearer(bearer, () =>
-      next({
-        context: {
-          ...context,
-          bearerToken: bearer,
-          xUserId: user?.id ?? null,
-        },
-      }),
-    );
-  });
 
 const WINDOW_MS = 10 * 60_000;
 const MAX_TRIES = 8;

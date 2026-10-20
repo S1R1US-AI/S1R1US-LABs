@@ -71,8 +71,9 @@ describe("admin-only data is checked on the server", () => {
       const start = rpc.indexOf(`export const ${fn} =`);
       assert.ok(start >= 0, fn);
       const body = rpc.slice(start, rpc.indexOf("export const", start + 10) > 0 ? rpc.indexOf("export const", start + 10) : undefined);
-      const guard = body.indexOf("requireAdminData(data.token)");
+      const guard = Math.max(body.indexOf("requireAdminData(data.token)"), body.indexOf("requireAdminData(t)"));
       assert.ok(guard > 0, `${fn} has no server-side admin check`);
+      assert.match(body, /\.middleware\(\[optionalXSession\]\)/, `${fn} does not forward the signed-in session`);
       for (const mod of ["./security", "./thesis", "./guide", "./hunter", "./posture", "./morning-security.server"]) {
         const at = body.indexOf(`import("${mod}")`);
         if (at >= 0) assert.ok(at > guard, `${fn} loads ${mod} before the check`);
@@ -91,5 +92,54 @@ describe("sweep score without rows", () => {
     const one = s3cSweepScore([{ id: "a", name: "a", status: "PASS", note: "" }]);
     assert.equal(one.ready, true);
     assert.equal(one.score, 100);
+  });
+});
+
+describe("admin page-code grant", () => {
+  const sys = "s1.9999999999.abc";
+  const deps = () => {
+    const calls = { verified: [] as string[], set: [] as string[], cleared: 0 };
+    return {
+      calls,
+      make: (ok: boolean | "throw") => ({
+        verify: async (t: string | undefined) => {
+          calls.verified.push(String(t));
+          if (ok === "throw") throw new Error("down");
+          return ok;
+        },
+        setCookie: (t: string) => void calls.set.push(t),
+        clearCookie: () => void (calls.cleared += 1),
+      }),
+    };
+  };
+
+  it("sets the cookie for the system-admin token the client sends", async () => {
+    const { grantAdminAssetCookie } = await import("./admin-grant.ts");
+    const d = deps();
+    assert.equal(await grantAdminAssetCookie(sys, d.make(true)), true);
+    assert.deepEqual(d.calls.verified, [sys]);
+    assert.deepEqual(d.calls.set, [sys]);
+    assert.equal(d.calls.cleared, 0);
+  });
+
+  it("denies and clears for a missing, user, rejected or failing token", async () => {
+    const { grantAdminAssetCookie } = await import("./admin-grant.ts");
+    for (const [token, ok] of [["", true], [undefined, true], ["a.u.b", true], ["x".repeat(600), true], [sys, false], [sys, "throw"]] as const) {
+      const d = deps();
+      assert.equal(await grantAdminAssetCookie(token, d.make(ok)), false, String(token));
+      assert.equal(d.calls.set.length, 0);
+      assert.equal(d.calls.cleared, 1);
+    }
+  });
+
+  it("the grant forwards the signed-in session and uses the shared rule", () => {
+    const rpc = readFileSync(new URL("./desk-rpc.ts", import.meta.url), "utf8");
+    const at = rpc.indexOf("export const grantAdminAssets =");
+    const body = rpc.slice(at, rpc.indexOf("});", at));
+    assert.match(body, /\.middleware\(\[optionalXSession\]\)/);
+    assert.match(body, /grantAdminAssetCookie\(data\.token/);
+    const mw = readFileSync(new URL("./x-session.ts", import.meta.url), "utf8");
+    assert.match(mw, /sendContext: \{ bearerToken: getBearerToken\(\)/);
+    assert.match(mw, /runWithBearer\(bearer/);
   });
 });

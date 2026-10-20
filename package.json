@@ -11,8 +11,8 @@
   },
   "scripts": {
     "dev": "node scripts/with-app-env.mjs vite dev --host 0.0.0.0 --port 8080",
-    "build": "node scripts/with-app-env.mjs vite build && npm run db:migrate && node scripts/gate-admin-assets.mjs",
-    "build:do": "NITRO_PRESET=node-server node scripts/with-app-env.mjs vite build && npm run db:migrate && node scripts/copy-pglite.mjs && node scripts/alias-ssr-css.mjs && node scripts/gate-admin-assets.mjs",
+    "build": "node scripts/gate-admin-assets.mjs --begin vercel && node scripts/with-app-env.mjs vite build && npm run db:migrate && node scripts/gate-admin-assets.mjs vercel",
+    "build:do": "node scripts/gate-admin-assets.mjs --begin node && NITRO_PRESET=node-server node scripts/with-app-env.mjs vite build && npm run db:migrate && node scripts/copy-pglite.mjs && node scripts/alias-ssr-css.mjs && node scripts/gate-admin-assets.mjs node",
     "db:migrate": "node scripts/migrate.mjs",
     "build:dev": "node scripts/with-app-env.mjs vite build --mode development",
     "preview": "node scripts/with-app-env.mjs vite preview",
