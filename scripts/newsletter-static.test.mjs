@@ -5,11 +5,21 @@ import { readFileSync } from "node:fs";
 
 const html = readFileSync(new URL("../front-door-static/newsletter/index.html", import.meta.url), "utf8");
 const SUBSCRIBE = "https://br0k3ns0ft.substack.com/subscribe";
+const SUBSCRIBE_URL = new URL(SUBSCRIBE);
+const hrefOf = (a) => /\bhref="([^"]*)"/.exec(a)?.[1];
+const isSubscribe = (h) => {
+  try {
+    const u = new URL(h);
+    return u.protocol === "https:" && u.hostname === SUBSCRIBE_URL.hostname && u.pathname.replace(/\/$/, "") === SUBSCRIBE_URL.pathname;
+  } catch {
+    return false;
+  }
+};
 
 test("newsletter has exactly one subscribe link, new tab, rel noopener noreferrer", () => {
-  const links = [...html.matchAll(/<a\b[^>]*>/g)].map((m) => m[0]).filter((a) => a.includes(SUBSCRIBE));
+  const links = [...html.matchAll(/<a\b[^>]*>/g)].map((m) => m[0]).filter((a) => isSubscribe(hrefOf(a)));
   assert.equal(links.length, 1, `expected one subscribe link, found ${links.length}`);
-  assert.match(links[0], new RegExp(`href="${SUBSCRIBE.replace(/[./]/g, "\\$&")}"`));
+  assert.equal(hrefOf(links[0]), SUBSCRIBE);
   assert.match(links[0], /\btarget="_blank"/);
   assert.match(links[0], /\brel="noopener noreferrer"/);
   for (const a of html.matchAll(/<a [^>]*target="_blank"[^>]*>/g)) assert.match(a[0], /rel="noopener noreferrer"/);
