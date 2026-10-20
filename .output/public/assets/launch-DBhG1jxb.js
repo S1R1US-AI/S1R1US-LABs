@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-DIGv-4DC.js";var t=e;export{t as component};

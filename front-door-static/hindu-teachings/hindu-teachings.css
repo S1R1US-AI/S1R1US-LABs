@@ -136,7 +136,7 @@
   .ht-figure { margin-bottom: 1.1rem; }
 }
 
-/* 2026-10-19 · approved loops (autoplay, muted, loop, no visible controls) */
+/* 2026-10-19 · animated loops (autoplay, muted, loop, no visible controls) */
 .ht-loop { display: block; width: 100%; height: auto; border-radius: var(--radius, 10px); background: #121619; cursor: pointer; }
 .ht-loop.ht-img { aspect-ratio: 16 / 9; object-fit: cover; }
 .ht-loop:focus { outline: none; }
@@ -160,7 +160,7 @@
 }
 .ht-sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* Page note (j 2026-10-19) */
+/* Page note (2026-10-19) */
 .ht-page-note { max-width: 56rem; margin: 2rem auto 0.5rem; padding: 0.75rem 0 0; border-top: 1px solid rgba(61, 255, 26, 0.18); text-align: center; font-size: 0.8rem; line-height: 1.5; color: var(--muted, #9aa7ad); }
 .ht-page-note p { margin: 0 0 0.3rem; }
 .ht-page-note a { color: var(--ht-teal); }
