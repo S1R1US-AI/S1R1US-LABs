@@ -159,6 +159,16 @@ describe("B5 copy-admin scope", { concurrency: false }, () => {
     }
   });
 
+  it("board register admin flag uses the system-only guard and never accepts copy-admin", () => {
+    const route = read("routes/api/agent.board.ts");
+    const start = route.indexOf('if (op === "register")');
+    assert.ok(start >= 0, "register branch");
+    const blk = route.slice(start, route.indexOf("registerBoard(", start));
+    assert.doesNotMatch(blk, /verifyAppAdminToken|app-admin/);
+    assert.match(blk, /asAdmin = await systemTokenOnly\(adminHdr, verifyAccessToken\)/);
+    assert.doesNotMatch(route, /verifyAppAdminToken/);
+  });
+
   it("signing secret comes from env and fails closed when unset or short", async () => {
     const { claimAppAdmin, signAppAdminToken, verifyAppAdminToken, APP_ADMIN_SECRET_ENV } = await import("./app-admin.ts");
     assert.equal(APP_ADMIN_SECRET_ENV, "S1R1US_APP_ADMIN_SECRET");
