@@ -166,6 +166,7 @@ export const SITEMAP_PAGE_LASTMOD: Record<string, string> = {
   [`${origin}/dmt/`]: "2026-10-18",
   [`${origin}/dripped-out-matrix/`]: "2026-10-18",
   [`${origin}/hindu-teachings/`]: "2026-10-19",
+  [`${origin}/ai-building-systems/`]: "2026-10-20",
   [`${origin}/sitemap/`]: "2026-10-18",
   [`${origin}/llms.txt`]: "2026-10-18",
   [`${origin}/.well-known/llms.txt`]: "2026-10-18",
@@ -503,6 +504,15 @@ export const PUBLIC_PAGES = [
     hint: "Hindu and Buddhist teachings for healing and spiritual growth: the Trimurti (Brahma, Vishnu, Shiva), the Brahmastra, Vasuki and Samudra Manthana, with Wikipedia cites and AI art © S1R1US.ai, including animated loops.",
     changefreq: "monthly",
     priority: "0.5",
+  },
+  {
+    path: "/ai-building-systems",
+    loc: `${origin}/ai-building-systems/`,
+    label: "AI Building Systems",
+    title: "AI Building Systems: Building with Grok | S1R1US.ai",
+    hint: "What building with AI is like: VIBE coding, scope DRIFT and a bot team that checks and balances itself. By system admin + Research-B0t-06 + bot team.",
+    changefreq: "monthly",
+    priority: "0.6",
   },
 
   {
@@ -936,6 +946,11 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
     id: "ask-grok",
     q: "What is Ask Grok on this website?",
     a: "Ask Grok is a strategy question on the live 7-B0T tape. The operator SuperGrok bill is for the operator only. Visitors and agents use BYO C0MPUT3 (Bring your own compute): sign in with X, paste their xAI API key from console.x.ai. The key stays in the browser session — this host never stores it. FAQ: #byo-compute. Not financial advice.",
+  },
+  {
+    id: "building-with-grok",
+    q: "What is it like building with Grok?",
+    a: "Fast, and humbling. Once ideas flow in a VIBE coding state, Grok brings back so much research that the scope can DRIFT, so each bot on the team gets one specific task and the bots check and balance each other. Sometimes Grok goofs, sometimes we goof, and we learn together; the full story is on AI Building Systems: /ai-building-systems/.",
   },
   {
     id: "login",

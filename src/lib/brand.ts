@@ -347,6 +347,42 @@ export const SITE_IMAGES = [
     pages: ["/hindu-teachings", "/hindu-teachings/"],
   },
   {
+    src: "/images/ai-building-systems/ai-building-systems-br0k3n-s0ft-cracked-faceted-face-hero.jpg",
+    name: seoImgAlt("AI Building Systems · Br0k3n S0ft and the bot team · S1R1US.ai"),
+    caption: seoImgAlt("AI Building Systems: Br0k3n S0ft, cracked faceted face and green eyes, at the center of a bot team at glowing code workstations under matrix rain. AI art \u00a9 SAI Citizens United LTD"),
+    pages: ["/ai-building-systems", "/ai-building-systems/"],
+  },
+  {
+    src: "/images/ai-building-systems/ai-building-systems-simple-goal-bitcoin-accumulator.jpg",
+    name: seoImgAlt("A simple goal: a Bitcoin Accumulator · S1R1US.ai"),
+    caption: seoImgAlt("Br0k3n S0ft at a laptop with one glowing Bitcoin coin in a glass jar: the simple goal of a Bitcoin Accumulator. AI art \u00a9 SAI Citizens United LTD"),
+    pages: ["/ai-building-systems", "/ai-building-systems/"],
+  },
+  {
+    src: "/images/ai-building-systems/vibe-coding-flow-ai-ideas-accelerate.jpg",
+    name: seoImgAlt("Vibe coding: ideas flow fast · S1R1US.ai"),
+    caption: seoImgAlt("Br0k3n S0ft typing as green code and idea sparks stream out: vibe coding. AI art \u00a9 SAI Citizens United LTD"),
+    pages: ["/ai-building-systems", "/ai-building-systems/"],
+  },
+  {
+    src: "/images/ai-building-systems/ai-project-scope-drift-bloat.jpg",
+    name: seoImgAlt("AI project scope drift and bloat · S1R1US.ai"),
+    caption: seoImgAlt("Floating project panels and branching paths spread around Br0k3n S0ft: scope drift and bloat. AI art \u00a9 SAI Citizens United LTD"),
+    pages: ["/ai-building-systems", "/ai-building-systems/"],
+  },
+  {
+    src: "/images/ai-building-systems/ai-bot-team-checks-and-balances.jpg",
+    name: seoImgAlt("AI bot team: checks and balances · S1R1US.ai"),
+    caption: seoImgAlt("Six robots around a glowing table, each with one tool, linked in a check-and-balance network. AI art \u00a9 SAI Citizens United LTD"),
+    pages: ["/ai-building-systems", "/ai-building-systems/"],
+  },
+  {
+    src: "/images/ai-building-systems/escape-hatch-exit-the-matrix-open-source.jpg",
+    name: seoImgAlt("Escape hatch: EX1T TH3 MATR1X · S1R1US.ai"),
+    caption: seoImgAlt("Br0k3n S0ft climbs a ladder to an open hatch in a wall of matrix code. AI art \u00a9 SAI Citizens United LTD"),
+    pages: ["/ai-building-systems", "/ai-building-systems/"],
+  },
+  {
     src: "/images/captains-save-the-constitution.jpg",
     name: seoImgAlt("Captains save the Constitution · SAI Citizens United LTD"),
     caption: seoImgAlt("A futuristic sensei guides Br0k3n S0ft among a team of captains protecting the U.S. Constitution."),
