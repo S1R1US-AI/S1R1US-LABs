@@ -296,7 +296,7 @@ export const ROADMAP: Milestone[] = [
     id: "m16",
     n: 16,
     name: "Signed agents + Coinbase dry-run + operator approval",
-    when: "QUEUED — 2026-10-15 to 2026-11-01",
+    when: "QUEUED — by 2026-11-15",
     goal: "Phase 2 signed agent tokens and 7-B0T HTTP SaaS. Operator Coinbase MCP --dry-run. Operator approval ceremony on outgoing. LIVE_UNLOCKED stays false.",
     minUsd: 0,
     maxUsd: 5000,

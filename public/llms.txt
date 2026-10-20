@@ -76,7 +76,7 @@ Knowledge panel / sitelinks: GET https://s1r1us.ai/entity.json and https://s1r1u
 
 - DISCLAIMER (unified public banner, NO LEGAL FEES): https://s1r1us.ai/faq#disclaimer
 - Who uses this site: https://s1r1us.ai/faq#who-uses-this
-- Live tape / Bots 1–6 / 7-B0T: https://s1r1us.ai/faq#live-tape
+- Live tape: https://s1r1us.ai/faq#live-tape
 - BTC prediction markets (Polymarket / Kalshi, display only): https://s1r1us.ai/faq#btc-bets
 - PR3D1CT10N$ paper book (AI Agent Prediction Market, fake S1R1U$): https://s1r1us.ai/faq#pr3d
 - S1R1US Pr3d1ctions (possibility footnote only): https://s1r1us.ai/roadmap#pred-footnote
@@ -89,8 +89,8 @@ Knowledge panel / sitelinks: GET https://s1r1us.ai/entity.json and https://s1r1u
 - Go-live path + HARD DEADLINE 2026-12-01 ET: https://s1r1us.ai/faq#go-live
 - OSS Roadmap (functions, go-live status, estimated timeline): https://s1r1us.ai/faq#oss-roadmap
 - OSS Roadmap page: https://s1r1us.ai/roadmap
-- Morning report (Admin → Console, 14 days, 3 shown, PDF in browser, 07:30 ET, Alignment Score): https://s1r1us.ai/faq#morning-report
-- As-live G M0D3 AUTO + AI agents simulation (07:00 pause / 07:30 report / resume): https://s1r1us.ai/faq#live-sim
+- Morning report (daily, admin only): https://s1r1us.ai/faq#morning-report
+- As-live simulation: https://s1r1us.ai/faq#live-sim
 - Admin Security / pause / maintenance: https://s1r1us.ai/faq#admin-security
 - LoCK3D STATUS (Locked Status — how to lock and unlock, live vs simulated, proof of concept): https://s1r1us.ai/faq#lock3d-status
 - Live vs simulated data: https://s1r1us.ai/faq#live-vs-sim

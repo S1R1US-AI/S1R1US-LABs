@@ -410,7 +410,7 @@ export const LOCKED_FUNCTIONS: RoadmapFunction[] = [
     seo: "7-B0T HTTP key",
     path: "/agent",
     status: "LOCKED",
-    until: "2026-10-15",
+    until: "2026-11-15",
     note: "Phase 2. Hashed tokens. $9/$29 HTTP key changes poll rate only. Spec is published; keys not on yet.",
   },
   {
@@ -544,8 +544,8 @@ export const DATED_MILESTONES: DatedMilestone[] = [
     date: "2026-10-15",
     estimate: true,
     status: "NEXT",
-    name: "Legal review (private) + signed agent tokens",
-    detail: "Legal review is handled privately by the operator. Hashed agent tokens and 7-B0T HTTP key spec go on. Pred SaaS seat vs licensed DCM partner — only if aligned with accumulate-never-sell and gift/SaaS-only.",
+    name: "Legal review (private)",
+    detail: "Legal review is handled privately by the operator. Phase 2 (signed access for outside AI agents) is planned by 2026-11-15. Pred SaaS seat vs licensed DCM partner — only if aligned with accumulate-never-sell and gift/SaaS-only.",
   },
   {
     id: "d4",

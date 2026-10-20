@@ -76,7 +76,7 @@ Knowledge panel / sitelinks: GET https://s1r1us.ai/entity.json and https://s1r1u
 
 - DISCLAIMER (unified public banner, NO LEGAL FEES): https://s1r1us.ai/faq#disclaimer
 - Who uses this site: https://s1r1us.ai/faq#who-uses-this
-- Live tape / Bots 1–6 / 7-B0T: https://s1r1us.ai/faq#live-tape
+- Live tape: https://s1r1us.ai/faq#live-tape
 - BTC prediction markets (Polymarket / Kalshi, display only): https://s1r1us.ai/faq#btc-bets
 - PR3D1CT10N$ paper book (AI Agent Prediction Market, fake S1R1U$): https://s1r1us.ai/faq#pr3d
 - S1R1US Pr3d1ctions (possibility footnote only): https://s1r1us.ai/roadmap#pred-footnote
@@ -89,8 +89,8 @@ Knowledge panel / sitelinks: GET https://s1r1us.ai/entity.json and https://s1r1u
 - Go-live path + HARD DEADLINE 2026-12-01 ET: https://s1r1us.ai/faq#go-live
 - OSS Roadmap (functions, go-live status, estimated timeline): https://s1r1us.ai/faq#oss-roadmap
 - OSS Roadmap page: https://s1r1us.ai/roadmap
-- Morning report (Admin → Console, 14 days, 3 shown, PDF in browser, 07:30 ET, Alignment Score): https://s1r1us.ai/faq#morning-report
-- As-live G M0D3 AUTO + AI agents simulation (07:00 pause / 07:30 report / resume): https://s1r1us.ai/faq#live-sim
+- Morning report (daily, admin only): https://s1r1us.ai/faq#morning-report
+- As-live simulation: https://s1r1us.ai/faq#live-sim
 - Admin Security / pause / maintenance: https://s1r1us.ai/faq#admin-security
 - LoCK3D STATUS (Locked Status — how to lock and unlock, live vs simulated, proof of concept): https://s1r1us.ai/faq#lock3d-status
 - Live vs simulated data: https://s1r1us.ai/faq#live-vs-sim
@@ -270,12 +270,6 @@ Go-live: PoC rails STARTED (2026-09-05), Auto GM practice NEXT, Auto AI agent ac
 
 - Hindu Teachings & Meditation: https://s1r1us.ai/hindu-teachings/ — education page on Hindu and Buddhist teachings for healing and spiritual growth: the Trimurti (Brahma the Creator, Vishnu the Preserver, Shiva the Transformer), the Brahmastra, Vasuki Nagaraja and Samudra Manthana, each with a short Wikipedia quote and link. AI art © S1R1US.ai, including two silent looping animations (Brahma's lotus; Shiva working the Brahmastra). The page is apolitical and non-religious by affiliation, for AI research and education only.
 - FAQ "Did Steve Jobs study Hindu Tradition and access AKASHIC Records before developing the i-Phone?": https://s1r1us.ai/faq#steve-jobs-hindu-akashic — YES as a S1R1US research indication; documented context: India trip around 1974 seeking Neem Karoli Baba, later Zen Buddhism. Akashic Records are a S1R1US research exploration, not a historical fact and not an Apple endorsement.
-
-
-## AI Building Systems
-
-- AI Building Systems: https://s1r1us.ai/ai-building-systems/ — what building with AI is like: a simple goal on a beta version of Grok (a Bitcoin Accumulator), VIBE coding, scope DRIFT, and a bot team where each bot has a specific task and the bots check and balance each other. Includes an opinion section on fiat currency and an information war, with the official U.S. Treasury debt figure and a sourced history box on the Iran–Contra affair. Built by system admin + Research-B0t-06 + bot team. Opinion and education only. Not financial or investment advice. S1R1US.ai is paper only: no live trades. Built with Grok, an xAI product. S1R1US.ai is not affiliated with or endorsed by xAI.
-- FAQ "What is it like building with Grok?": https://s1r1us.ai/faq/#building-with-grok — Fast, and humbling. Once ideas flow in a VIBE coding state, Grok brings back so much research that the scope can DRIFT, so each bot on the team gets one specific task and the bots check and balance each other. Sometimes Grok goofs, sometimes we goof, and we learn together; the full story is on AI Building Systems.
 
 ## Do not index
 
