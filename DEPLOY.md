@@ -104,15 +104,14 @@ Do not add Google DNS. No `DATABASE_URL` required (PGLite).
 Same URL. Safari → Share → Add to Home Screen.
 
 
-## System-admin X identity (server-only)
+## System-admin settings (server-only)
 
-Set these on DigitalOcean **before** or **with** deploy of the AID nondisclosure scrub. Never use a `VITE_` prefix (browser must not see them).
+Set on DigitalOcean (encrypted, run time) before deploy:
 
-- `S1R1US_ADMIN_X_HANDLE` — core handle **without** leading `@` (a leading `@` is stripped if present)
-- `S1R1US_ADMIN_X_NAME` — display name
-- `S1R1US_ADMIN_X_ID` — X snowflake / OAuth user id
-
-Required for operator `/admin` unlock. Public FAQ/UI never names the handle.
+- `S1R1US_ADMIN_X_ID`
+- `S1R1US_ADMIN_X_HANDLE`
+- `S1R1US_ADMIN_X_NAME`
+- `S1R1US_APP_ADMIN_SECRET`
 
 ## Server-only settings added 2026-10-08
 
@@ -122,13 +121,3 @@ Set these on DigitalOcean (Settings → web → Environment Variables, **encrypt
 |---|---|---|
 | `SYSTEM_RESET_MAILBOX` | the operator's reset mailbox | Admin password renew mail goes here. Unset = no renew mail is sent. A role mailbox on the project domain is recommended. |
 | `GROK_PREVIEW_CLIENT_SECRET` | leave **unset** on production | Sandbox preview sign-in only (`*.grok-sandbox.com`). Production never uses the preview broker. |
-
-## Server-only settings added 2026-10-20
-
-Set on DigitalOcean (Settings → web → Environment Variables, **encrypted**, run time) **before** this change deploys. Never commit the value and never use a `VITE_` prefix.
-
-| Key | Value | Notes |
-|---|---|---|
-| `S1R1US_APP_ADMIN_SECRET` | a random string, at least 32 characters | Signs phone/download copy Admin sessions. Unset or shorter = copy Admin sign-in is off (fails closed). Changing it signs out every copy Admin. |
-
-System Admin identity comes only from the X account stored by the server at sign-in. That account passes when its stored account id matches `S1R1US_ADMIN_X_ID`, when its stored account id equals the handle in `S1R1US_ADMIN_X_HANDLE`, or when the OAuth token claims stored with it carry that id or handle. Profile fields a user can edit (display name, email, or any part of an email address) never count. With neither variable set, nobody passes (fails closed). Set `S1R1US_ADMIN_X_ID` before deploy: the id cannot be changed by the account owner, while a handle can be renamed or reused.
