@@ -1,0 +1,382 @@
+{
+ "title": "H-1B and H-2B visa programs: documented cases",
+ "label": "Documented cases and program weaknesses. Correlation, not proof of cause.",
+ "h1b_approvals": {
+  "units": "H-1B petitions approved by USCIS per fiscal year (regardless of when filed)",
+  "note": "Approved petitions, not people: one worker can have several petitions. 'Initial' = new H-1B employment with an employer (only some count against the cap); 'continuing' = extensions, amendments, employer changes. FY2001 is not shown because the official FY2001 report could not be retrieved for verification. FY2020+ figures use USCIS's revised (first-decision) method, so they are not perfectly comparable with earlier years. FY2025 is a total only, from a different USCIS report table.",
+  "data": [
+   {
+    "fy": 2000,
+    "initial": 136787,
+    "continuing": 120853,
+    "src": 0
+   },
+   {
+    "fy": 2002,
+    "initial": 103584,
+    "continuing": 93953,
+    "src": 1
+   },
+   {
+    "fy": 2003,
+    "initial": 105314,
+    "continuing": 112026,
+    "src": 1
+   },
+   {
+    "fy": 2004,
+    "initial": 130497,
+    "continuing": 156921,
+    "src": 1
+   },
+   {
+    "fy": 2005,
+    "initial": 116927,
+    "continuing": 150204,
+    "src": 1
+   },
+   {
+    "fy": 2006,
+    "initial": 109614,
+    "continuing": 161367,
+    "src": 2
+   },
+   {
+    "fy": 2007,
+    "initial": 120031,
+    "continuing": 161413,
+    "src": 2
+   },
+   {
+    "fy": 2008,
+    "initial": 109335,
+    "continuing": 166917,
+    "src": 3
+   },
+   {
+    "fy": 2009,
+    "initial": 86300,
+    "continuing": 127971,
+    "src": 3
+   },
+   {
+    "fy": 2010,
+    "initial": 76627,
+    "continuing": 116363,
+    "src": 3
+   },
+   {
+    "fy": 2011,
+    "initial": 106445,
+    "continuing": 163208,
+    "src": 3
+   },
+   {
+    "fy": 2012,
+    "initial": 136890,
+    "continuing": 125679,
+    "src": 4
+   },
+   {
+    "fy": 2013,
+    "initial": 128291,
+    "continuing": 158482,
+    "src": 5
+   },
+   {
+    "fy": 2014,
+    "initial": 124326,
+    "continuing": 191531,
+    "src": 5
+   },
+   {
+    "fy": 2015,
+    "initial": 113603,
+    "continuing": 161714,
+    "src": 5
+   },
+   {
+    "fy": 2016,
+    "initial": 114503,
+    "continuing": 230759,
+    "src": 5
+   },
+   {
+    "fy": 2017,
+    "initial": 108101,
+    "continuing": 257581,
+    "src": 6
+   },
+   {
+    "fy": 2018,
+    "initial": 93615,
+    "continuing": 238743,
+    "src": 6
+   },
+   {
+    "fy": 2019,
+    "initial": 138927,
+    "continuing": 249476,
+    "src": 6
+   },
+   {
+    "fy": 2020,
+    "initial": 122886,
+    "continuing": 303824,
+    "src": 7
+   },
+   {
+    "fy": 2021,
+    "initial": 123414,
+    "continuing": 283657,
+    "src": 7
+   },
+   {
+    "fy": 2022,
+    "initial": 132429,
+    "continuing": 309614,
+    "src": 7
+   },
+   {
+    "fy": 2023,
+    "initial": 118948,
+    "continuing": 267370,
+    "src": 7
+   },
+   {
+    "fy": 2024,
+    "initial": 141205,
+    "continuing": 258190,
+    "src": 7
+   },
+   {
+    "fy": 2025,
+    "total": 328185,
+    "src": 8
+   }
+  ],
+  "sources": [
+   {
+    "label": "INS, Report on Characteristics of Specialty Occupation Workers (H-1B): FY2000, Table 1 (copy retrieved from a mirror; INS original no longer online)",
+    "url": "https://hooyou.com/news/081302h1b.pdf"
+   },
+   {
+    "label": "USCIS, Characteristics of H-1B Specialty Occupation Workers, FY2005, Table 1",
+    "url": "https://www.uscis.gov/sites/default/files/document/reports/h1b_fy05_characteristics.pdf"
+   },
+   {
+    "label": "USCIS, Characteristics of H-1B Specialty Occupation Workers, FY2009, Table 1",
+    "url": "https://www.uscis.gov/sites/default/files/document/reports/h1b-fy-09-characteristics.pdf"
+   },
+   {
+    "label": "USCIS, Characteristics of H-1B Specialty Occupation Workers, FY2011, Table 1",
+    "url": "https://www.uscis.gov/sites/default/files/document/reports/h1b-fy-11-characteristics.pdf"
+   },
+   {
+    "label": "USCIS, Characteristics of H-1B Specialty Occupation Workers, FY2014, Table 1",
+    "url": "https://www.uscis.gov/sites/default/files/document/reports/h-1B-characteristics-report-14.pdf"
+   },
+   {
+    "label": "USCIS, Characteristics of H-1B Specialty Occupation Workers, FY2016, Table 1",
+    "url": "https://www.uscis.gov/sites/default/files/document/data/characteristics-of-h-1B-fy-2016.pdf"
+   },
+   {
+    "label": "USCIS, Characteristics of H-1B Specialty Occupation Workers, FY2019, Table 1",
+    "url": "https://www.uscis.gov/sites/default/files/document/reports/Characteristics_of_Specialty_Occupation_Workers_H-1B_Fiscal_Year_2019.pdf"
+   },
+   {
+    "label": "USCIS, Characteristics of H-1B Specialty Occupation Workers, FY2024, Table 1b",
+    "url": "https://www.uscis.gov/sites/default/files/document/reports/ola_signed_h1b_characteristics_congressional_report_FY24.pdf"
+   },
+   {
+    "label": "USCIS, Fiscal Year 2025: H-1B Petitions, Annual Report to Congress, Table 1",
+    "url": "https://www.uscis.gov/sites/default/files/document/legal-docs/fy25_h1b_petitions_021126_v1.0.pdf"
+   }
+  ]
+ },
+ "cap": {
+  "text": "Annual cap: 65,000 regular H-1B visas plus 20,000 for holders of U.S. master's or higher degrees (85,000 total). Universities, affiliated nonprofits and government research organizations are exempt, and the cap does not apply to continuing-employment petitions. The cap was temporarily higher in FY1999-2000 (115,000) and FY2001-2003 (195,000).",
+  "sources": [
+   {
+    "label": "USCIS, H-1B Specialty Occupations (cap and exemptions)",
+    "url": "https://www.uscis.gov/working-in-the-united-states/h-1b-specialty-occupations"
+   },
+   {
+    "label": "GAO-11-26 (cap history 1990-2009)",
+    "url": "https://www.gao.gov/products/gao-11-26"
+   }
+  ]
+ },
+ "top_employers": {
+  "title": "Top H-1B employers by initial-employment approvals, FY2025",
+  "note": "IT-services / outsourcing firms marked. Their FY2025 approvals are well below their FY2023-2024 levels (e.g. Cognizant 2,873 in FY2024; TCS 1,452 in FY2024).",
+  "data": [
+   [
+    "Amazon",
+    4644,
+    false
+   ],
+   [
+    "Meta Platforms",
+    1555,
+    false
+   ],
+   [
+    "Microsoft",
+    1394,
+    false
+   ],
+   [
+    "Google",
+    1050,
+    false
+   ],
+   [
+    "Tata Consultancy Services (TCS)",
+    846,
+    true
+   ],
+   [
+    "Apple",
+    823,
+    false
+   ],
+   [
+    "Goldman Sachs",
+    746,
+    false
+   ],
+   [
+    "Cognizant",
+    743,
+    true
+   ],
+   [
+    "Ernst & Young",
+    718,
+    false
+   ],
+   [
+    "Intel",
+    635,
+    false
+   ]
+  ],
+  "source": {
+   "label": "NFAP analysis of USCIS H-1B Employer Data Hub, 'H-1B Petitions and Denial Rates in FY 2025', Table 1 (NFAP is a pro-immigration policy group; figures are USCIS data)",
+   "url": "https://nfap.com/wp-content/uploads/2025/11/H-1B-Petitions-and-Denial-Rates-For-FY-2025.NFAP-Policy-Brief.2025.pdf"
+  },
+  "primary": {
+   "label": "USCIS H-1B Employer Data Hub (primary data)",
+   "url": "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub"
+  }
+ },
+ "china_shock": {
+  "text": "Autor, Dorn & Hanson (2016) report that import growth from China between 1999 and 2011 led to an employment reduction of 2.4 million U.S. workers (including local demand and reallocation effects), versus a 2.0 million job-loss estimate for national industries and 985 thousand within manufacturing (direct plus input-output exposure). These estimates come from Acemoglu, Autor, Dorn, Hanson & Price (2016), summarized in the review. Economists debate the overall size and net effect.",
+  "sources": [
+   {
+    "label": "Autor, Dorn & Hanson, 'The China Shock: Learning from Labor-Market Adjustment to Large Changes in Trade', Annual Review of Economics 8 (2016); NBER WP 21906",
+    "url": "https://doi.org/10.1146/annurev-economics-080315-015041"
+   },
+   {
+    "label": "Acemoglu, Autor, Dorn, Hanson & Price, 'Import Competition and the Great US Employment Sag of the 2000s', Journal of Labor Economics 34(S1) (2016)",
+    "url": "https://doi.org/10.1086/682384"
+   }
+  ]
+ },
+ "cases": [
+  {
+   "kind": "Program weakness",
+   "date": "2011-01-14",
+   "title": "GAO-11-26: H-1B Visa Program: Reforms Are Needed to Minimize the Risks and Costs of Current Program",
+   "text": "GAO found program oversight 'fragmented and restricted', no legal provision holding employers accountable when they obtain H-1B workers through a staffing company, and statutory changes that 'increased the pool of H-1B workers beyond the cap and lowered the bar for eligibility'. Fewer than 1% of employers garnered over one-quarter of all H-1B approvals (FY2000-2009).",
+   "url": "https://www.gao.gov/products/gao-11-26"
+  },
+  {
+   "kind": "Program weakness",
+   "date": "2020-09-30",
+   "title": "DOL Office of Inspector General, Report 06-20-001-03-321",
+   "text": "OIG found the Wage and Hour Division 'cannot initiate investigations unless it receives a complaint from an aggrieved party or a credible source', and the Secretary's authority to initiate H-1B investigations had never been used, which 'can prevent DOL from holding H-1B program violators accountable'.",
+   "url": "https://www.oig.dol.gov/public/reports/oa/2020/06-20-001-03-321.pdf"
+  },
+  {
+   "kind": "Settlement (no admission of liability)",
+   "date": "2021-10-19",
+   "title": "DOJ & DOL settlements with Facebook: up to $14.25 million",
+   "text": "DOJ's Civil Rights Division alleged Facebook preferred temporary visa holders over qualified U.S. workers for PERM-related (green-card) positions, Jan 2018-Sep 2019. Facebook agreed to a $4.75 million civil penalty and up to $9.5 million for eligible workers. Facebook denied the allegations.",
+   "url": "https://www.dol.gov/newsroom/releases/eta/eta20211019"
+  },
+  {
+   "kind": "Settlement (no admission of liability)",
+   "date": "2023-11-08",
+   "title": "DOJ settlement with Apple: up to $25 million",
+   "text": "DOJ's Immigrant and Employee Rights Section found Apple did not advertise PERM positions on its external job site and required mailed paper applications, deterring U.S. applicants (2018-2019). Apple agreed to $6.75 million in civil penalties and an $18.25 million back-pay fund. Apple disputed the findings.",
+   "url": "https://www.justice.gov/crt/settlements-and-lawsuits"
+  },
+  {
+   "kind": "Reported case (press)",
+   "date": "2015-02-04",
+   "title": "Southern California Edison IT outsourcing",
+   "text": "Computerworld and the Los Angeles Times reported about 500 SCE IT jobs cut (about 400 layoffs plus about 100 voluntary departures) as work moved to Infosys and Tata Consultancy Services; workers said they trained their H-1B replacements. SCE said it complied with the law; DOL later closed its Infosys inquiry with no violation found (Reuters, Sep 8 2015).",
+   "url": "https://www.computerworld.com/article/1628728/southern-california-edison-it-workers-beyond-furious-over-h-1b-replacements-2.html",
+   "extra": [
+    {
+     "label": "Los Angeles Times, Feb 11 2015",
+     "url": "https://www.latimes.com/business/la-fi-edison-layoffs-20150211-story.html"
+    },
+    {
+     "label": "Reuters, Sep 8 2015",
+     "url": "https://www.reuters.com/article/2015/09/08/infosys-h1b-probes-idUSL1N11A0TQ20150908/"
+    }
+   ]
+  },
+  {
+   "kind": "Reported case (press)",
+   "date": "2015-06-03",
+   "title": "Walt Disney World IT layoffs",
+   "text": "The New York Times reported that about 250 Disney IT workers in Orlando were laid off in 2015 and that many were required to train foreign replacements on H-1B visas brought in by an outsourcing firm. Reuters reported the firm was HCL Technologies and that DOL was reviewing complaints (Sep 8 2015).",
+   "url": "https://www.nytimes.com/2015/06/04/us/last-task-after-layoff-at-disney-train-foreign-replacements.html",
+   "extra": [
+    {
+     "label": "Reuters, Sep 8 2015",
+     "url": "https://www.reuters.com/article/2015/09/08/infosys-h1b-probes-idUSL1N11A0TQ20150908/"
+    }
+   ]
+  }
+ ],
+ "debate": {
+  "text": "Economists disagree about H-1B's overall effect on U.S. wages.",
+  "sides": [
+   {
+    "label": "EPI (Costa & Hira, May 4 2020)",
+    "text": "60% of H-1B positions certified by DOL in FY2019 were at the two lowest prevailing-wage levels (Level 1 = 17th percentile, Level 2 = 34th percentile), below the local median wage.",
+    "url": "https://www.epi.org/publication/h-1b-visas-and-prevailing-wage-levels/"
+   },
+   {
+    "label": "Peri, Shih & Sparber (Journal of Labor Economics, 2015)",
+    "text": "Across 219 U.S. cities (1990-2010), H-1B-driven growth in foreign STEM workers was associated with faster wage growth for college-educated native workers and no significant effect on native employment.",
+    "url": "https://doi.org/10.1086/679061"
+   }
+  ]
+ },
+ "h2b": {
+  "title": "H-2B (non-farm seasonal work, incl. landscaping and construction)",
+  "text": "H-2B lets employers hire foreign workers for temporary non-agricultural jobs (66,000 per fiscal year by statute, plus supplemental visas some years). The documented H-2B abuses below are mostly employers underpaying and intimidating the H-2B workers themselves, which also undercuts the wage floor for U.S. workers in the same jobs. Annual H-2B visa counts since 2000 (State Department) are not charted yet: the State Department statistics site blocked automated download from our build box, so we show no number rather than an unverified one.",
+  "cases": [
+   {
+    "kind": "DOL enforcement",
+    "date": "2024-02-21",
+    "title": "DOL: New York landscaping company to pay $1.1M after overtime, H-2B program violations",
+    "text": "DOL's Wage and Hour Division found Dario's Landscaping (Southampton, NY) failed to pay overtime, gave investigators false records, failed to pay H-2B workers the correct rate (Oct 2018-Oct 2021), threatened workers who cooperated and coached false testimony. Total $1.1 million for 54 workers plus civil penalties; debarred from H-2B for one year.",
+    "url": "https://www.dol.gov/newsroom/releases/whd/whd20240221"
+   },
+   {
+    "kind": "DOL enforcement",
+    "date": "2023-06-27",
+    "title": "DOL: Haverhill, MA company violated temporary visa worker program; $832K for 47 landscaping workers",
+    "text": "DOL's Wage and Hour Division recovered $832,000 in back wages and damages for 47 landscaping workers (per DOL news release).",
+    "url": "https://www.dol.gov/newsroom/releases/WHD/WHD20230627"
+   }
+  ]
+ }
+}

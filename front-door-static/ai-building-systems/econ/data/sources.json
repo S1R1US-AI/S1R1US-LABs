@@ -1,0 +1,266 @@
+{
+ "_note": "Curated citations. 'gov' = official data/primary source. 'news' = major outlet that reported the specific fact; verified 2026-10-20 (see FACT-CHECK.md). Not refreshed by the build script.",
+ "debt": [
+  {
+   "k": "gov",
+   "label": "U.S. Treasury, Fiscal Data: Debt to the Penny",
+   "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/"
+  },
+  {
+   "k": "news",
+   "label": "AP News, 'US hits $38 trillion in debt, after the fastest accumulation of $1 trillion outside of the pandemic' (Oct 22 2025)",
+   "url": "https://apnews.com/article/trump-treasury-debt-ceiling-bessent-09575f13ca95c2f1beb38234b2cbe85b"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'Partisan shutdown standoff ignores key risk to US stability: rising national debt' (Oct 12 2025)",
+   "url": "https://www.reuters.com/world/us/partisan-shutdown-standoff-ignores-key-risk-us-stability-rising-national-debt-2025-10-12/"
+  }
+ ],
+ "holders": [
+  {
+   "k": "gov",
+   "label": "U.S. Treasury, TIC Table 5: Major Foreign Holders of Treasury Securities",
+   "url": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.html"
+  },
+  {
+   "k": "gov",
+   "label": "U.S. Treasury, TIC historical MFH file (mfhhis01.txt)",
+   "url": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/mfhhis01.txt"
+  },
+  {
+   "k": "gov",
+   "label": "FRED FDHBFIN, Federal Debt Held by Foreign and International Investors",
+   "url": "https://fred.stlouisfed.org/series/FDHBFIN"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'Foreign holdings of US Treasuries fall in June, led by Japan, UK, China, data shows' (Aug 17 2026)",
+   "url": "https://www.reuters.com/world/china/foreign-holdings-us-treasuries-fall-june-led-by-japan-uk-china-data-shows-2026-08-17/"
+  }
+ ],
+ "manufacturing": [
+  {
+   "k": "gov",
+   "label": "BLS CES via FRED: MANEMP, All employees, manufacturing",
+   "url": "https://fred.stlouisfed.org/series/MANEMP"
+  },
+  {
+   "k": "gov",
+   "label": "WTO: China accession, member since 11 Dec 2001",
+   "url": "https://www.wto.org/english/thewto_e/acc_e/a1_chine_e.htm"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'US employment boom leaves factory workers behind' (Apr 4 2024)",
+   "url": "https://www.reuters.com/markets/us/us-employment-boom-leaves-factory-workers-behind-2024-04-04/"
+  },
+  {
+   "k": "news",
+   "label": "BBC News, 'China joins the WTO - at last' (Dec 2001)",
+   "url": "http://news.bbc.co.uk/2/hi/business/1702241.stm"
+  }
+ ],
+ "autos": [
+  {
+   "k": "gov",
+   "label": "BLS CES via FRED: CES3133600101, All employees, motor vehicles and parts",
+   "url": "https://fred.stlouisfed.org/series/CES3133600101"
+  },
+  {
+   "k": "gov",
+   "label": "White House archive, Fact Sheet: Financing Assistance ... Auto Manufacturers (Dec 19 2008)",
+   "url": "https://georgewbush-whitehouse.archives.gov/news/releases/2008/12/20081219-6.html"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'Bush throws lifeline to auto industry' (Dec 19 2008)",
+   "url": "https://www.reuters.com/article/newsOne/idUSTRE4BI34F20081219/"
+  }
+ ],
+ "china_trade": [
+  {
+   "k": "gov",
+   "label": "U.S. Census Bureau, Trade in Goods with China",
+   "url": "https://www.census.gov/foreign-trade/balance/c5700.html"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'As Trump wages trade war, U.S. goods deficit hits record high in 2018' (Mar 6 2019)",
+   "url": "https://www.reuters.com/article/economy/as-trump-wages-trade-war-u-s-goods-deficit-hits-record-high-in-2018-idUSKCN1QN1R0/"
+  }
+ ],
+ "china_shock": [
+  {
+   "k": "gov",
+   "label": "Autor, Dorn & Hanson, 'The China Shock', Annual Review of Economics (2016)",
+   "url": "https://doi.org/10.1146/annurev-economics-080315-015041"
+  },
+  {
+   "k": "gov",
+   "label": "Acemoglu, Autor, Dorn, Hanson & Price, Journal of Labor Economics (2016)",
+   "url": "https://doi.org/10.1086/682384"
+  },
+  {
+   "k": "news",
+   "label": "NPR Planet Money, 'Why economists got free trade with China so wrong' (Feb 11 2025)",
+   "url": "https://www.npr.org/2025/02/11/g-s1-47352/why-economists-got-free-trade-with-china-so-wrong"
+  },
+  {
+   "k": "news",
+   "label": "NPR, 'China Killed 1 Million U.S. Jobs, But Don't Blame Trade Deals' (Apr 18 2016)",
+   "url": "https://www.npr.org/2016/04/18/474393701/china-killed-1-million-u-s-jobs-but-don-t-blame-trade-deals"
+  }
+ ],
+ "foreign_born": [
+  {
+   "k": "gov",
+   "label": "BLS, Labor Force Characteristics of Foreign-born Workers (CPS); series LNU02073395, LNU02073413, LNU02073567, LNU02073654, LNU02073576, LNU02073663",
+   "url": "https://www.bls.gov/news.release/forbrn.toc.htm"
+  },
+  {
+   "k": "news",
+   "label": "AP News, 'US labor force lost 1.2 million immigrants, preliminary data shows' (2025)",
+   "url": "https://apnews.com/article/labor-day-immigration-trump-9a40f9e371209cc1d145e4a7f157a499"
+  }
+ ],
+ "construction_wages": [
+  {
+   "k": "gov",
+   "label": "BLS CES via FRED: CES2000000003, Average hourly earnings, construction (starts Mar 2006)",
+   "url": "https://fred.stlouisfed.org/series/CES2000000003"
+  },
+  {
+   "k": "gov",
+   "label": "BLS CPI-U via FRED: CPIAUCSL",
+   "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
+  }
+ ],
+ "electricians": [
+  {
+   "k": "gov",
+   "label": "BLS OES national estimates, Nov 2000 (oes00nat.zip)",
+   "url": "https://www.bls.gov/oes/special-requests/oes00nat.zip"
+  },
+  {
+   "k": "gov",
+   "label": "BLS OEWS, Electricians 47-2111 (latest)",
+   "url": "https://www.bls.gov/oes/current/oes472111.htm"
+  },
+  {
+   "k": "news",
+   "label": "CNBC, 'America's demand for skilled electricians is entering a boom' (Jul 27 2024)",
+   "url": "https://www.cnbc.com/2024/07/27/americas-demand-skilled-electricians-boom.html"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'Google funding electrician training as AI power crunch intensifies' (Apr 30 2025)",
+   "url": "https://www.reuters.com/sustainability/boards-policy-regulation/google-funding-electrician-training-ai-power-crunch-intensifies-2025-04-30/"
+  }
+ ],
+ "immigration_wages": [
+  {
+   "k": "gov",
+   "label": "National Academies of Sciences, Engineering, and Medicine, 'The Economic and Fiscal Consequences of Immigration' (2017)",
+   "url": "https://nap.nationalacademies.org/catalog/23550/the-economic-and-fiscal-consequences-of-immigration"
+  },
+  {
+   "k": "gov",
+   "label": "Card, 'The Impact of the Mariel Boatlift on the Miami Labor Market', ILR Review 43(2), 1990",
+   "url": "https://doi.org/10.1177/001979399004300205"
+  },
+  {
+   "k": "gov",
+   "label": "Borjas, 'The Wage Impact of the Marielitos: A Reappraisal', ILR Review 70(5), 2017",
+   "url": "https://doi.org/10.1177/0019793917692945"
+  },
+  {
+   "k": "news",
+   "label": "New York Times, 'Immigrants Aren't Taking Americans' Jobs, New Study Finds' (Sep 22 2016)",
+   "url": "https://www.nytimes.com/2016/09/22/us/immigrants-arent-taking-americans-jobs-new-study-finds.html"
+  }
+ ],
+ "h1b": [
+  {
+   "k": "gov",
+   "label": "USCIS H-1B Characteristics reports (see table) and H-1B Employer Data Hub",
+   "url": "https://www.uscis.gov/tools/reports-and-studies/h-1b-employer-data-hub"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'Facebook to pay up to $14.25 mln to settle U.S. employment discrimination claims' (Oct 19 2021)",
+   "url": "https://www.reuters.com/legal/litigation/facebook-pay-up-1425-mln-settle-us-employment-discrimination-claims-2021-10-19/"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'Apple agrees to $25 million settlement with US over hiring of immigrants' (Nov 9 2023)",
+   "url": "https://www.reuters.com/technology/apple-agrees-25-million-settlement-with-us-over-hiring-immigrants-2023-11-09/"
+  },
+  {
+   "k": "news",
+   "label": "New York Times, 'Pink Slips at Disney. But First, Training Foreign Replacements.' (Jun 3 2015)",
+   "url": "https://www.nytimes.com/2015/06/04/us/last-task-after-layoff-at-disney-train-foreign-replacements.html"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'Infosys says cleared in U.S. visa probe by Labor Department' (Sep 8 2015)",
+   "url": "https://www.reuters.com/article/2015/09/08/infosys-h1b-probes-idUSL1N11A0TQ20150908/"
+  }
+ ],
+ "h2b": [
+  {
+   "k": "gov",
+   "label": "U.S. DOL Wage and Hour Division news release (Feb 21 2024): Dario's Landscaping, $1.1M, H-2B violations",
+   "url": "https://www.dol.gov/newsroom/releases/whd/whd20240221"
+  },
+  {
+   "k": "gov",
+   "label": "U.S. DOL WHD news release (Jun 27 2023): Haverhill, MA landscaping company, $832K for 47 workers",
+   "url": "https://www.dol.gov/newsroom/releases/WHD/WHD20230627"
+  },
+  {
+   "k": "gov",
+   "label": "U.S. State Department, Nonimmigrant Visa Statistics (H-2B issuances by fiscal year)",
+   "url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-statistics/nonimmigrant-visa-statistics.html"
+  }
+ ],
+ "unions": [
+  {
+   "k": "gov",
+   "label": "BLS, Union Members (annual CPS); series LUU0204899600, LUU0204906600, LUU0204910500, LUU0204910600, LUU0204909800",
+   "url": "https://www.bls.gov/news.release/union2.toc.htm"
+  },
+  {
+   "k": "news",
+   "label": "Reuters, 'US labor union membership slips in 2024 to record low' (Jan 28 2025)",
+   "url": "https://www.reuters.com/world/us/us-labor-union-membership-little-changed-2024-government-says-2025-01-28/"
+  },
+  {
+   "k": "news",
+   "label": "AP News, 'US unions flexed their muscles last year, but membership rates fall to all-time low' (Jan 2024)",
+   "url": "https://apnews.com/article/unions-membership-rates-uaw-government-a3fc7bc50dd59a89f414230e8837d7e6"
+  }
+ ],
+ "squeeze": [
+  {
+   "k": "gov",
+   "label": "FRED: CPIAUCSL, AHETPI, CES0500000003, LES1252881600Q, GFDEBTN, GFDEGDQ188S, PRS85006173, MSPUS, MEHOINUSA646N, CSUSHPINSA, POPTHM",
+   "url": "https://fred.stlouisfed.org/"
+  },
+  {
+   "k": "gov",
+   "label": "BLS, Real Earnings news release",
+   "url": "https://www.bls.gov/news.release/realer.toc.htm"
+  },
+  {
+   "k": "news",
+   "label": "AP News, 'US home sales fade in June as national median sales price hits an all-time high of $435,300' (Jul 2025)",
+   "url": "https://apnews.com/article/housing-home-sales-real-estate-home-prices-64769d50ce9c16dee9ffb90c01735071"
+  },
+  {
+   "k": "news",
+   "label": "AP News, 'Homeownership further out of reach as rising prices, high mortgage rates widen affordability gap'",
+   "url": "https://apnews.com/article/housing-affordability-home-prices-real-estate-f17aa54776a04e4622d0c5afa9f09ff8"
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "total": 40387508795231.67,
+ "record_date": "2026-10-16",
+ "anchor_utc": "2026-10-17T00:00:00.000Z",
+ "rate_per_second": 79040.49,
+ "rate_method": "OLS linear fit of tot_pub_debt_out_amt vs time over the 63 daily records from 2026-07-20 to 2026-10-16 (last 90 calendar days)",
+ "rate_window": {
+  "from": "2026-07-20",
+  "to": "2026-10-16",
+  "records": 63,
+  "days": 90
+ },
+ "rate_endpoint_per_second": 105122.34,
+ "source": "U.S. Department of the Treasury, Fiscal Data, Debt to the Penny (public domain)",
+ "source_url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/",
+ "api_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny",
+ "generated_utc": "2026-10-20T14:32:00.305Z"
+}

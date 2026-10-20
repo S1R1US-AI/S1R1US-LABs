@@ -1,0 +1,1 @@
+import{n as e}from"./launch-desk-CSuPF_nS.js";var t=e;export{t as component};

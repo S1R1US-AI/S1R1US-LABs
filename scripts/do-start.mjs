@@ -126,7 +126,7 @@ function resolveStatic(pathname) {
   }
 
   // Prefix routes: hello-world, discord, roadmap, 7 desk overlays, css, js, images
-  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/sense1-engineering", "/sai-citizens-united", "/manifesto", "/oss-marketing", "/newsletter", "/escape-the-matrix", "/global-uprisings", "/future", "/cosmic-c0d3", "/blast-off", "/book-dj-mo-funky", "/dmt", "/dripped-out-matrix", "/hindu-teachings", "/css", "/js", "/images"];
+  const prefixes = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/sense1-engineering", "/sai-citizens-united", "/manifesto", "/oss-marketing", "/newsletter", "/escape-the-matrix", "/global-uprisings", "/future", "/cosmic-c0d3", "/blast-off", "/book-dj-mo-funky", "/dmt", "/dripped-out-matrix", "/hindu-teachings", "/ai-building-systems", "/css", "/js", "/images"];
   const hit = prefixes.find(
     (p) => pathname === p || pathname.startsWith(p + "/"),
   );
@@ -439,6 +439,7 @@ export function startFrontDoor({ port = EXTERNAL_PORT, host = HOST, nitroPort = 
       "/dmt",
       "/dripped-out-matrix",
       "/hindu-teachings",
+      "/ai-building-systems",
     ];
     if (dirExact.includes(pathname)) {
       const q = (url.includes("?") ? url.slice(url.indexOf("?")) : "");
@@ -483,8 +484,8 @@ export function startFrontDoor({ port = EXTERNAL_PORT, host = HOST, nitroPort = 
     }
 
     // Prefix claimed but file missing under front-door-static → 404 (do not fall through to Nitro for css/js/images ship paths that 404 today)
-    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/", "/r0b0ts/", "/h1v3/", "/pr3d/", "/faq/", "/compute/", "/gm/", "/f33d/", "/forum/", "/agent/", "/board/", "/labs/", "/owl/", "/app/", "/ios/", "/play/", "/c0ff33/", "/sponsor-ai-bitcoin-trading-bot/", "/media/", "/b3ars/", "/l0ck/", "/bowl/", "/w0rld/", "/c0ut/", "/Bitcoin-Miners/", "/wh1t3/", "/s1r1us/", "/sitemap/", "/search/", "/terms/", "/privacy/", "/copyright-terms/", "/WEB-3-and-ai-future/", "/sense1-engineering/", "/sai-citizens-united/", "/manifesto/", "/oss-marketing/", "/newsletter/", "/escape-the-matrix/", "/global-uprisings/", "/future/", "/cosmic-c0d3/", "/blast-off/", "/book-dj-mo-funky/", "/dmt/", "/dripped-out-matrix/", "/hindu-teachings/"];
-    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/sense1-engineering", "/sai-citizens-united", "/manifesto", "/oss-marketing", "/newsletter", "/escape-the-matrix", "/global-uprisings", "/future", "/cosmic-c0d3", "/blast-off", "/book-dj-mo-funky", "/dmt", "/dripped-out-matrix", "/hindu-teachings", "/css", "/js", "/images"];
+    const staticOnlyPrefixes = ["/css/", "/js/", "/images/", "/hello-world/", "/discord/", "/roadmap/", "/r0b0ts/", "/h1v3/", "/pr3d/", "/faq/", "/compute/", "/gm/", "/f33d/", "/forum/", "/agent/", "/board/", "/labs/", "/owl/", "/app/", "/ios/", "/play/", "/c0ff33/", "/sponsor-ai-bitcoin-trading-bot/", "/media/", "/b3ars/", "/l0ck/", "/bowl/", "/w0rld/", "/c0ut/", "/Bitcoin-Miners/", "/wh1t3/", "/s1r1us/", "/sitemap/", "/search/", "/terms/", "/privacy/", "/copyright-terms/", "/WEB-3-and-ai-future/", "/sense1-engineering/", "/sai-citizens-united/", "/manifesto/", "/oss-marketing/", "/newsletter/", "/escape-the-matrix/", "/global-uprisings/", "/future/", "/cosmic-c0d3/", "/blast-off/", "/book-dj-mo-funky/", "/dmt/", "/dripped-out-matrix/", "/hindu-teachings/", "/ai-building-systems/"];
+    const staticOnlyExact = ["/hello-world", "/discord", "/roadmap", "/r0b0ts", "/h1v3", "/pr3d", "/faq", "/compute", "/gm", "/f33d", "/forum", "/agent", "/board", "/labs", "/owl", "/app", "/ios", "/play", "/c0ff33", "/sponsor-ai-bitcoin-trading-bot", "/media", "/b3ars", "/l0ck", "/bowl", "/w0rld", "/c0ut", "/Bitcoin-Miners", "/wh1t3", "/s1r1us", "/sitemap", "/search", "/terms", "/privacy", "/copyright-terms", "/WEB-3-and-ai-future", "/sense1-engineering", "/sai-citizens-united", "/manifesto", "/oss-marketing", "/newsletter", "/escape-the-matrix", "/global-uprisings", "/future", "/cosmic-c0d3", "/blast-off", "/book-dj-mo-funky", "/dmt", "/dripped-out-matrix", "/hindu-teachings", "/ai-building-systems", "/css", "/js", "/images"];
     const claimed =
       staticOnlyExact.includes(pathname) ||
       staticOnlyPrefixes.some((p) => pathname.startsWith(p)) ||
@@ -543,6 +544,7 @@ export function startFrontDoor({ port = EXTERNAL_PORT, host = HOST, nitroPort = 
         pathname === "/dmt" || pathname.startsWith("/dmt/") ||
         pathname === "/dripped-out-matrix" || pathname.startsWith("/dripped-out-matrix/") ||
         pathname === "/hindu-teachings" || pathname.startsWith("/hindu-teachings/") ||
+        pathname === "/ai-building-systems" || pathname.startsWith("/ai-building-systems/") ||
         pathname.startsWith("/compute") ||
         pathname.startsWith("/gm") ||
         pathname.startsWith("/f33d")

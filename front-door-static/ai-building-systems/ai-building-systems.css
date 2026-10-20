@@ -1,0 +1,89 @@
+/* /ai-building-systems/ page-scoped layout. Colors come only from the shared front-door theme
+   (/css/theme.css tokens: charcoal --bg #121619, cards --bg-card, gold --gold #c9a227 / --gold-hover #dbb43a,
+   teal --teal #2ec4b6, text --text / --muted, lines --line). No page-specific green: the econ widgets
+   (econ-widgets.css, .s1w) keep their own dark-panel palette. Layout sizes below are unchanged
+   from v1 so the widgets render the same. */
+.abs-hero { margin: 0.5rem auto 2.25rem; max-width: 1200px; text-align: center; }
+.abs-figure {
+  margin: 0 0 1.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  overflow: hidden;
+}
+.abs-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--bg);
+}
+.abs-figure figcaption {
+  padding: 0.6rem 0.8rem 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+.abs-hero-copy { max-width: 48rem; margin: 0 auto; }
+.abs-hero-copy h1 {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: clamp(1.7rem, 4.2vw, 2.85rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 0 0 0.6rem;
+}
+.abs-accent { color: var(--gold); }
+.abs-section { max-width: 56rem; margin-left: auto; margin-right: auto; }
+.abs-section h2 { margin-bottom: 1rem; color: var(--text); }
+.abs-section h3 { color: var(--teal); margin: 1.2rem 0 0.5rem; font-size: 1.05rem; }
+.abs-lede { font-size: 1.08rem; line-height: 1.65; color: var(--text); }
+.abs-cta-box { margin: 1.6rem auto; text-align: center; }
+.abs-cta-box h2 { margin-top: 0; }
+.abs-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 1rem 0 0.4rem;
+}
+.abs-soft {
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--muted-2);
+  line-height: 1.5;
+}
+@media (max-width: 640px) {
+  .abs-hero { margin-bottom: 1.6rem; }
+  .abs-figure { margin-bottom: 1.1rem; }
+}
+
+/* Page note */
+.abs-page-note { max-width: 56rem; margin: 2rem auto 0.5rem; padding: 0.75rem 0 0; border-top: 1px solid var(--line-soft); text-align: center; font-size: 0.8rem; line-height: 1.5; color: var(--muted-2); }
+.abs-page-note p { margin: 0 0 0.3rem; }
+
+/* Medium figures, opinion label, sourced context boxes, debt figure */
+.abs-figure-md .abs-img { aspect-ratio: 3 / 2; }
+.abs-figure-chart .abs-img { aspect-ratio: 3 / 2; object-fit: contain; }
+.abs-figure-photo .abs-img { aspect-ratio: auto; object-fit: contain; }
+.abs-subline { font-size: 0.95rem; color: var(--muted); }
+.abs-copy p { line-height: 1.7; }
+.abs-opinion-tag { display: inline-block; margin-right: 0.4rem; padding: 0.05rem 0.45rem; font-size: 0.8em; border: 1px solid rgba(201, 162, 39, 0.45); border-radius: 999px; background: var(--gold-dim); color: var(--gold); vertical-align: middle; }
+.abs-debt-sub { font-size: 0.82rem; color: var(--muted-2); }
+.abs-context { margin: 1.2rem 0 1.6rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-elev); }
+.abs-context > summary { cursor: pointer; padding: 0.85rem 1.1rem; font-weight: 700; color: var(--gold); list-style-position: inside; }
+.abs-context > summary:hover { color: var(--gold-hover); }
+.abs-context > summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.abs-context-body { padding: 0 1.1rem 1rem; }
+.abs-context-aside .abs-context-body { padding-top: 0.85rem; }
+.abs-context-body h3 { margin-top: 0; }
+.abs-context-body p { margin: 0 0 0.7rem; line-height: 1.6; }
+.abs-context-body .abs-figure { margin: 0.4rem 0 1rem; }
+.abs-context-cites { font-size: 0.82rem; color: var(--muted-2); }
+.abs-related { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; padding: 0; list-style: none; }
+.abs-related li { margin: 0; }
+/* Subscribe buttons use the theme .btn classes; keep their own text color inside .pg-section. */
+.abs-cta-row .btn-primary, .abs-cta-row .btn-primary:hover { color: #121619; text-decoration: none; }
+.abs-cta-row .btn-secondary, .abs-cta-row .btn-secondary:hover { color: var(--text); text-decoration: none; }

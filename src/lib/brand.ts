@@ -347,6 +347,24 @@ export const SITE_IMAGES = [
     pages: ["/hindu-teachings", "/hindu-teachings/"],
   },
   {
+    src: "/images/ai-building-systems/br0k3n-s0ft-ai-building-systems-hero-loop-lightning-embers-poster.jpg",
+    name: seoImgAlt("Br0k3n S0ft · AI Building Systems hero loop poster · S1R1US.ai"),
+    caption: seoImgAlt("Br0k3n S0ft, a hooded figure in a cap with a cracked faceted stone face, glowing green eyes and a green lightning crack running down the face. AI art \u00a9 SAI Citizens United LTD"),
+    pages: ["/ai-building-systems", "/ai-building-systems/", "/faq", "/faq/"],
+  },
+  {
+    src: "/images/ai-building-systems/us-national-debt-treasury-debt-to-the-penny-chart-2026-10-16.jpg",
+    name: seoImgAlt("U.S. national debt · Treasury Debt to the Penny chart · S1R1US.ai"),
+    caption: seoImgAlt("Line chart of total U.S. public debt outstanding from April 1993 to October 16, 2026, rising from about 4.2 trillion dollars to about 40.39 trillion dollars. Data: U.S. Treasury Fiscal Data (public domain). Chart: S1R1US.ai"),
+    pages: ["/ai-building-systems", "/ai-building-systems/"],
+  },
+  {
+    src: "/images/ai-building-systems/iran-contra-affair-reagan-tower-commission-report-1987.jpg",
+    name: seoImgAlt("Iran–Contra affair · Tower Commission report, 1987"),
+    caption: seoImgAlt("President Ronald Reagan in the White House Cabinet Room receiving the Tower Commission report on the Iran–Contra affair from commission members, February 26, 1987. Public domain (U.S. government work), U.S. National Archives"),
+    pages: ["/ai-building-systems", "/ai-building-systems/"],
+  },
+  {
     src: "/images/captains-save-the-constitution.jpg",
     name: seoImgAlt("Captains save the Constitution · SAI Citizens United LTD"),
     caption: seoImgAlt("A futuristic sensei guides Br0k3n S0ft among a team of captains protecting the U.S. Constitution."),
