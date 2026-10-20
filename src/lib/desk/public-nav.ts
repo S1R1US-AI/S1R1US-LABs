@@ -490,7 +490,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/hindu-teachings/`,
     label: "Hindu Teachings",
     title: "Hindu Teachings: Shiva, Trimurti & Meditation | S1R1US.ai",
-    hint: "Hindu and Buddhist teachings for healing and spiritual growth: the Trimurti (Brahma, Vishnu, Shiva), the Brahmastra, Vasuki and Samudra Manthana, with Wikipedia cites and AI art © S1R1US.ai, including animated loops.",
+    hint: "Hindu and Buddhist teachings for reflection and growth (AI research and education): the Trimurti (Brahma, Vishnu, Shiva), the Brahmastra, Vasuki and Samudra Manthana, with Wikipedia cites and AI art © S1R1US.ai, including animated loops.",
     changefreq: "monthly",
     priority: "0.5",
   },
