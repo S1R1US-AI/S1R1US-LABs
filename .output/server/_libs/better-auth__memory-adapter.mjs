@@ -1,6 +1,6 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { Gt as createAdapterFactory, hn as logger } from "./@better-auth/core+[...].mjs";
-//#region ../fresh-2026-10-19/node_modules/@better-auth/memory-adapter/dist/index.mjs
+//#region node_modules/@better-auth/memory-adapter/dist/index.mjs
 var dist_exports = /* @__PURE__ */ __exportAll({ memoryAdapter: () => memoryAdapter });
 /**
 * Case-insensitive in-memory comparison helpers.

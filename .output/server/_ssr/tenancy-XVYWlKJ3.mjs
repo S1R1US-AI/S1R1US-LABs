@@ -1,7 +1,7 @@
 import { r as __exportAll } from "../_runtime.mjs";
 import { t as __exportAll$1 } from "./agent-ping-BXZGzZ_N.mjs";
 import { f as collectXIdentityStrings, g as normalizeXIdentity, m as isDeadCompanyHandle } from "./x-admin--2RwSK6Q.mjs";
-//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/x-admin.server-BTs_6yjg.js
+//#region node_modules/.nitro/vite/services/ssr/assets/x-admin.server-BTs_6yjg.js
 /**
 * Server-only admin X identity (AUTH_PRESERVE).
 * NEVER import from client components or any module the browser bundles.
@@ -80,7 +80,7 @@ function preferredXAccountId(value) {
 	return all.map(normalizeXIdentity).find((c) => c.length >= 2 && c.length <= 15 && /[a-z]/i.test(c)) || "";
 }
 //#endregion
-//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/tenancy-XVYWlKJ3.js
+//#region node_modules/.nitro/vite/services/ssr/assets/tenancy-XVYWlKJ3.js
 var tenancy_XVYWlKJ3_exports = /* @__PURE__ */ __exportAll({
 	a: () => isAppAdminKind,
 	i: () => combineCompute,

@@ -1,4 +1,4 @@
-//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/go-live-BoZqVUs7.js
+//#region node_modules/.nitro/vite/services/ssr/assets/go-live-BoZqVUs7.js
 /** Go-live path — began 2026-09-05. Hard deadline 2026-12-01 ET. Live Coinbase create stays locked until operator unlock. */
 var GO_LIVE_START = "2026-09-05";
 /** Definite deadline: live G M0D3 AUTO + MANUAL + SUP3R B0WL participation for users. America/New_York. */

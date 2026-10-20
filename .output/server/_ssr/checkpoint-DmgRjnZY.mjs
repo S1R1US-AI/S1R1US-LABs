@@ -1,4 +1,4 @@
-//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/checkpoint-DmgRjnZY.js
+//#region node_modules/.nitro/vite/services/ssr/assets/checkpoint-DmgRjnZY.js
 /** Public label for the current release. Internal build numbers stay out of visitor copy. */
 var CHECKPOINT_NAME = "S1R1US live sim launch";
 var CHECKPOINT_SHORT = "S1R1US current release";

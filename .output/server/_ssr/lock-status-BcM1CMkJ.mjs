@@ -1,4 +1,4 @@
-//#region ../fresh-2026-10-19/node_modules/.nitro/vite/services/ssr/assets/lock-status-BcM1CMkJ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/lock-status-BcM1CMkJ.js
 /** LoCK3D STATUS — functional desk locks. Client-safe public snapshot. Server writes via lock-status.server.ts. */
 var TAB_LOCK3D = "LoCK3D STATUS";
 var SEO_TAB_LOCK3D = "Locked Status";
