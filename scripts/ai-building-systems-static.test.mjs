@@ -169,11 +169,11 @@ const pageCss = readFileSync(new URL("ai-building-systems/ai-building-systems.cs
 const widgetsCss = readFileSync(new URL("ai-building-systems/econ/econ-widgets.css", root), "utf8");
 function heroLoop(src) {
   const lines = src.split("\n").filter((l) => l.includes('class="abs-hero-loop"'));
-  assert.equal(lines.length, 1, "the loop markup is a single line (one-line swap A -> B)");
+  assert.equal(lines.length, 1, "the loop markup is a single line");
   return lines[0];
 }
 
-test("hero loop: autoplay muted loop playsinline video, WebM + MP4 + poster, alt/aria, fetchpriority poster; loop A by default, B is a one-line swap", () => {
+test("hero loop: autoplay muted loop playsinline video, WebM + MP4 + poster, alt/aria, fetchpriority poster; one loop set ships", () => {
   for (const src of [html, faq]) {
     const line = heroLoop(src);
     const v = line.match(/<video\b[^>]*>/)[0];
@@ -181,7 +181,7 @@ test("hero loop: autoplay muted loop playsinline video, WebM + MP4 + poster, alt
     assert.match(v, /preload="metadata"/);
     assert.match(v, /width="720" height="720"/);
     assert.ok(v.includes(`poster="${BASE}lightning-embers-poster.jpg"`));
-    assert.match(v, /aria-label="Br0k3n S0ft, a hooded figure with a cracked faceted stone face[^"]+"/);
+    assert.match(v, /aria-label="Animated loop of Br0k3n S0ft, a hooded figure in a cap with a cracked faceted stone face[^"]+"/);
     assert.ok(line.includes(`<source src="${BASE}lightning-embers.webm" type="video/webm" />`));
     assert.ok(line.includes(`<source src="${BASE}lightning-embers.mp4" type="video/mp4" />`));
     assert.ok(line.indexOf(".webm") < line.indexOf(".mp4"), "WebM first");
@@ -190,12 +190,9 @@ test("hero loop: autoplay muted loop playsinline video, WebM + MP4 + poster, alt
     assert.match(still, /fetchpriority="high"/);
     assert.match(still, /alt="Br0k3n S0ft[^"]+"/);
     assert.doesNotMatch(still, /loading="lazy"/);
-    // Swapping to loop B only changes this line: every file it names exists for both loops.
-    for (const variant of ["lightning-embers", "eye-glow"]) {
-      const swapped = line.replaceAll("lightning-embers", variant);
-      for (const m of swapped.matchAll(/(?:src|poster)="(\/images\/[^"]+)"/g)) assert.ok(existsSync(new URL(m[1].slice(1), root)), m[1]);
-    }
-    assert.equal(src.split("\n").filter((l) => l.includes("lightning-embers")).length, 2, "loop name only on the swap note + loop line");
+    for (const m of line.matchAll(/(?:src|poster)="(\/images\/[^"]+)"/g)) assert.ok(existsSync(new URL(m[1].slice(1), root)), m[1]);
+    assert.equal(src.slice(src.indexOf("<body")).split("\n").filter((l) => l.includes("lightning-embers")).length, 1, "in the page body the loop name is only on the loop line");
+    assert.doesNotMatch(src, /eye-glow|<!-- Hero loop/, "one loop set, no developer note in the page");
     assert.match(src, /<script src="\/ai-building-systems\/hero-loop\.js" defer><\/script>/);
     assert.match(src, /<script src="\/ai-building-systems\/econ\/debt-clock\.js" defer><\/script>/);
     assert.match(src, /<link rel="stylesheet" href="\/ai-building-systems\/hero-split\.css" \/>/);
@@ -263,5 +260,6 @@ test("faq lead: the 50/50 AI Building Systems hero is the first content element 
   const capText = cap.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
   assert.equal(capText, "AI Building Systems · What is it like building with Grok? · AI artwork © SAI Citizens United LTD");
   assert.equal((main.match(/fetchpriority="high"/g) || []).length, 1, "only the lead hero poster is high priority in the FAQ");
+  assert.match(heroCss, /@media \(max-width: 859px\) \{ \.faq-lead-hero \.abs-hero-loop-fig \{ order: -1; \} \}/, "stacked FAQ lead: the image comes first");
   assert.doesNotMatch(hero, /\sstyle="/);
 });

@@ -52,3 +52,6 @@
 .abs-hero-loop-fig figcaption { margin-top: 0.45rem; font-size: 0.8rem; color: var(--muted); text-align: center; }
 /* At the top of /faq/: same hero, spaced like the FAQ cards below it. */
 .faq-lead-hero.abs-hero-split { margin: 0.5rem auto 1.5rem; }
+/* At the top of /faq/, stacked (mobile): the Br0k3n S0ft image leads and the clock follows,
+   so one large image sits above everything else in the FAQ. Desktop keeps clock left, loop right. */
+@media (max-width: 859px) { .faq-lead-hero .abs-hero-loop-fig { order: -1; } }

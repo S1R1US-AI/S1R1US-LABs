@@ -499,7 +499,7 @@ export const PUBLIC_PAGES = [
     loc: `${origin}/ai-building-systems/`,
     label: "AI Building Systems",
     title: "AI Building Systems: Building with Grok | S1R1US.ai",
-    hint: "What building with AI is like: VIBE coding, scope DRIFT and a bot team that checks and balances itself. By system admin + Research-B0t-06 + bot team.",
+    hint: "Building with Grok: VIBE coding, scope DRIFT, a live U.S. debt clock and wage data since 2000. By system admin + Research-B0t-06 + bot team.",
     changefreq: "monthly",
     priority: "0.6",
   },
@@ -735,12 +735,12 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "meet-the-humans",
     q: "Who are the humans behind S1R1US.ai? (Meet the HUmAns)",
-    a: "Two humans fly with the S1R1US.ai bot crew. Br0k3n S0ft is the system admin; read his writing on Substack. DJ i-B Mo FuNky (Mo FuNky) is the system DJ and graphic artist; listen on Bandcamp. Details: Meet the HUmAns on the Blast Off page.",
+    a: "Two humans fly with the S1R1US.ai bot crew. Br0k3n S0ft is the system admin; read his writing on Substack. DJ Mo FuNky is the system DJ and graphic artist; listen on Bandcamp. Details: Meet the HUmAns on the Blast Off page.",
   },
   {
     id: "book-dj-mo-funky",
     q: "BOOK > DJ Mo FuNky for a show today",
-    a: "DJ i-B Mo FuNky (Mo FuNky) is the S1R1US.ai system DJ and graphic artist. To book Mo FuNky for a show, start on the BOOK > DJ Mo FuNky page. A direct booking contact is coming soon; until then, listen and follow on Bandcamp and get the S1R1US.ai newsletter for new music releases and DJ i-B Mo FuNky show updates. Book now: BOOK > DJ Mo FuNky for a show today",
+    a: "DJ Mo FuNky is the S1R1US.ai system DJ and graphic artist. To book DJ Mo FuNky for a show, start on the BOOK > DJ Mo FuNky page. A direct booking contact is coming soon; until then, listen and follow on Bandcamp and get the S1R1US.ai newsletter for new music releases and DJ Mo FuNky show updates. Book now: BOOK > DJ Mo FuNky for a show today",
   },
   {
     id: "future",
@@ -750,7 +750,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "copyright-policy",
     q: "What is the S1R1US.ai Copyright @ Policy?",
-    a: "COPYRIGHT means S1R1US.ai's own declared works — source code, logos, names, and marked originals. Marked copies carry © S1R1US.ai in the lower right. The SAI Citizens United LTD logo is excluded from that mark. OUTSIDE-COPYRIGHT means borrowed or mixed art and/or music that is a work in progress toward full legal compliance. When such a work is used, the original source's copyright is shown in the lower right (or equivalent credit for audio) on the website, OSS, Discord, GitHub, Substack, social media, e-book, song, music video, instruction video, and similar public channels. We encourage fair use only. We respond to and respect any VALID copyright request asking S1R1US.ai to stop using a copyrighted work. Use the prominent Copyright stop-use request form on the Copyright page. S1R1US.ai protects its original designs under the Ownership & No-Tamper Notice. System AI logos and names are enforced via the GitHub README. OSS and White-Label policies sync for forks; verification is automatic. Any violation of Our Terms Agreement or README requirements results in AUTO BLOCK. If you were blocked and need re-verification, use the REVIEW form on the Copyright page. Please do not discuss an open request on other social channels until it is resolved. We undergo Legal Review of copyright compliance frequently. We protect and enforce copyright of system source code, logos, and names. Application of Our Terms is non-negotiable. Graphic artist and DJ for S1R1US.ai marketing: DJ i-B Mo FuNky (aka Mo FuNky). Full policy and forms: Copyright · also Terms · Privacy · see Our Terms Agreement · Substack https://br0k3ns0ft.substack.com/about.",
+    a: "COPYRIGHT means S1R1US.ai's own declared works — source code, logos, names, and marked originals. Marked copies carry © S1R1US.ai in the lower right. The SAI Citizens United LTD logo is excluded from that mark. OUTSIDE-COPYRIGHT means borrowed or mixed art and/or music that is a work in progress toward full legal compliance. When such a work is used, the original source's copyright is shown in the lower right (or equivalent credit for audio) on the website, OSS, Discord, GitHub, Substack, social media, e-book, song, music video, instruction video, and similar public channels. We encourage fair use only. We respond to and respect any VALID copyright request asking S1R1US.ai to stop using a copyrighted work. Use the prominent Copyright stop-use request form on the Copyright page. S1R1US.ai protects its original designs under the Ownership & No-Tamper Notice. System AI logos and names are enforced via the GitHub README. OSS and White-Label policies sync for forks; verification is automatic. Any violation of Our Terms Agreement or README requirements results in AUTO BLOCK. If you were blocked and need re-verification, use the REVIEW form on the Copyright page. Please do not discuss an open request on other social channels until it is resolved. We undergo Legal Review of copyright compliance frequently. We protect and enforce copyright of system source code, logos, and names. Application of Our Terms is non-negotiable. Graphic artist and DJ for S1R1US.ai marketing: DJ Mo FuNky. Full policy and forms: Copyright · also Terms · Privacy · see Our Terms Agreement · Substack https://br0k3ns0ft.substack.com/about.",
   },
   {
     id: "look-who-is-woke-now",
@@ -760,7 +760,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "steve-jobs-hindu-akashic",
     q: "Did Steve Jobs study Hindu Tradition and access AKASHIC Records before developing the i-Phone?",
-    a: "YES — per S1R1US research indication (our exploration of Hindu / ancient Asian metaphysical roadmaps and signal). That YES is a research claim from S1R1US, not a Wikipedia historical fact, and not an endorsement by Apple or any product brand. Documented context (secondary sources): Around 1974, Steve Jobs traveled to India seeking Neem Karoli Baba and Eastern spirituality (inspired in part by Ram Dass’s Be Here Now), with friend Daniel Kottke. He reached the Kainchi ashram after Baba had already left the body; the trip is widely covered in reporting and in Walter Isaacson’s biography themes of intuition and experiential wisdom. Jobs later drew on Zen Buddhism and framed simplicity and intuition as central to his work. See, for example: ABC Radio National ↗, India Today ↗, and Economic Times / Isaacson reporting on intuition after India. Akashic Records: We present this as a S1R1US research exploration — tapping ancient Asian / Hindu metaphysical maps and “signal” language — not as a proven historical claim that Jobs accessed a literal Akashic archive before shipping a phone. Educational and spiritual commentary only. Trademark note: No Apple trademarks are used here as product endorsement. No Jobs likeness or Apple product photography appears on this answer; art is our AI-generated hindu-teaching-meditation only. Go deeper: Hindu Teachings & Meditation · subscribe Br0k3n S0ft on Substack ↗ · Newsletter · @S1R1US_AI ↗.",
+    a: "In our view, yes. This is the S1R1US.ai view, drawn from our study of Hindu and ancient Asian teachings. It is our opinion, not an established historical fact, and not an endorsement by Apple or any product brand. Documented context (secondary sources): Around 1974, Steve Jobs traveled to India seeking Neem Karoli Baba and Eastern spirituality (inspired in part by Ram Dass’s Be Here Now), with friend Daniel Kottke. He reached the Kainchi ashram after Baba had already left the body; the trip is widely covered in reporting and in Walter Isaacson’s biography themes of intuition and experiential wisdom. Jobs later drew on Zen Buddhism and framed simplicity and intuition as central to his work. See, for example: ABC Radio National ↗, India Today ↗, and Economic Times / Isaacson reporting on intuition after India. Akashic Records: We present this as a S1R1US research exploration — tapping ancient Asian / Hindu metaphysical maps and “signal” language — not as a proven historical claim that Jobs accessed a literal Akashic archive before shipping a phone. Educational and spiritual commentary only. Trademark note: No Apple trademarks are used here as product endorsement. No Jobs likeness or Apple product photography appears on this answer; art is our AI-generated hindu-teaching-meditation only. Go deeper: Hindu Teachings & Meditation · subscribe Br0k3n S0ft on Substack ↗ · Newsletter · @S1R1US_AI ↗.",
   },
   {
     id: "cosmic-c0d3",
@@ -859,7 +859,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "hedge-fund",
     q: "What is S1R1US.ai and the 9-B0T Hedge Fund?",
-    a: "S1R1US.ai is a software studio and a public practice desk for bitcoin. The 9-B0T Hedge Fund (also written 9-BOT Hedge Fund) is the name of the team of bots on that desk. Together they make an educational research experiment on bitcoin trading. It is a proof of concept today, and we hope to go live by 2027. It is paper only: it never sells and never shorts, and live and automatic trading stay locked. The live price feed is free. It is not an investment. Education only. Not financial advice. Our only official X account is @S1R1US_AI. Meet the bots: Who are the bots?",
+    a: "S1R1US.ai is a software studio and a public practice desk for bitcoin. The 9-B0T Hedge Fund (also written 9-BOT Hedge Fund) is the name of the team of bots on that desk. Together they make an educational research experiment on bitcoin trading. It is a proof of concept today. It is paper only: it never sells and never shorts, and live and automatic trading stay locked. The live price feed is free. It is not an investment. Education only. Not financial advice. Our only official X account is @S1R1US_AI. Meet the bots: Who are the bots?",
   },
   {
     id: "who-are-the-bots",
@@ -971,7 +971,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "building-with-grok",
     q: "What is it like building with Grok?",
-    a: "Fast, and humbling. Once ideas flow in a VIBE coding state, Grok brings back so much research that the scope can DRIFT, so each bot on the team gets one specific task and the bots check and balance each other. Sometimes Grok goofs, sometimes we goof, and we learn together; the full story is on AI Building Systems: /ai-building-systems/.",
+    a: "Fast, and humbling. When ideas flow in vibe coding, Grok brings back so much research that the project can drift off course. So each bot on the team gets one job, and the bots check each other's work. Sometimes Grok goofs, sometimes we goof, and we learn together. The full story is on AI Building Systems.",
   },
   {
     id: "login",

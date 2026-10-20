@@ -43,7 +43,7 @@
     root.setAttribute("aria-labelledby", (root.id || "s1w-debt") + "-h");
     var h = el("h3", null, "U.S. national debt: live estimate");
     h.id = (root.id || "s1w-debt") + "-h";
-    root.appendChild(el("div", "s1w-debt-kicker", "Ghost-matrix debt clock"));
+    root.appendChild(el("div", "s1w-debt-kicker", "U.S. debt clock"));
     root.appendChild(h);
     var num = el("span", "s1w-debt-num");
     num.setAttribute("aria-hidden", "true"); // ticking digits are decorative; static text below is announced
@@ -52,8 +52,8 @@
     root.appendChild(sr);
     var lines = el("div", "s1w-debt-lines");
     lines.appendChild(el("div", null, "Official Treasury total: " + fmtUSD2.format(snap.total) + " as of " + longDate(snap.record_date)));
-    lines.appendChild(el("div", null, "Growing about " + fmtUSD0.format(snap.rate_per_second) + " per second (avg of last " + snap.rate_window.days + " days: " + snap.rate_window.records + " daily Treasury records, " + snap.rate_window.from + " to " + snap.rate_window.to + ")"));
-    lines.appendChild(el("div", "s1w-muted", origin === "live" ? "Data: fetched live from the Treasury Fiscal Data API." : "Data: build-time snapshot of the Treasury Fiscal Data API" + (snap.generated_utc ? " (" + snap.generated_utc.slice(0, 10) + ")" : "") + "."));
+    lines.appendChild(el("div", null, "Growing about " + fmtUSD0.format(snap.rate_per_second) + " per second, based on recent official daily totals (" + longDate(snap.rate_window.from) + " to " + longDate(snap.rate_window.to) + ")"));
+    lines.appendChild(el("div", "s1w-muted", origin === "live" ? "Data: official U.S. Treasury figures, loaded live." : "Data: a saved copy of official U.S. Treasury figures" + (snap.generated_utc ? " (" + longDate(snap.generated_utc.slice(0, 10)) + ")" : "") + "."));
     root.appendChild(lines);
     root.appendChild(el("p", "s1w-debt-label", "Live estimate by S1R1US.ai based on official U.S. Treasury data. Not an official count."));
     var src = el("p", "s1w-src");
