@@ -31,7 +31,7 @@ import {
 
 import { askHelios } from "@/lib/desk/grok";
 import { useOperator } from "@/lib/desk/operator";
-import { looksLikeSecret } from "@/lib/desk/security";
+import { looksLikeSecret } from "@/lib/desk/secret-check";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { useDeskTape } from "@/lib/desk/tape-client";
 import { rollBots, DESK_POLL_MS } from "@/lib/desk/roll-bots";

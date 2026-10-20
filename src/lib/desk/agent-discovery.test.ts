@@ -58,7 +58,7 @@ describe("agent discovery + instructions module", { concurrency: false }, () => 
     assert.match(llms, /Instructions module \+ agent discovery/);
     assert.match(llms, /Agentic Resource Discovery/);
     assert.match(llms, /faq#instructions/);
-    assert.match(llms, /As-live G M0D3 AUTO/);
+    assert.match(llms, /As-live G0Dz1LLa M0D3 AUTO/);
     assert.match(robots, /Disallow: \/guide/);
     assert.match(robots, /Allow: \/llms\.txt/);
     assert.match(robots, /Allow: \/ai-catalog\.json/);

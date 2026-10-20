@@ -692,7 +692,7 @@ export function GmBoardPage() {
                 <span className={view.wager.live ? "font-semibold text-high" : "font-semibold text-medium"}>
                   {view.wager.status ?? (view.wager.live ? "PAPER LIVE" : "PAUSED")}
                 </span>
-                {" · as-live paper until GO-LIVE · Coinbase create LOCKED · never escrow"}
+                {" · as-live paper until GO-LIVE · no exchange orders can be created · never escrow"}
                 {view.wager.demoTape ? " · SIM tape + live picks" : ""}
               </p>
               <CollapseSummary className="mt-2" label="invite">

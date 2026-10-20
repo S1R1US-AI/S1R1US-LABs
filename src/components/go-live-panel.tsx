@@ -36,10 +36,10 @@ export function GoLivePanel() {
         <div className="mt-3">
           <p className="font-mono text-xs text-high">{GO_LIVE_HEADLINE}</p>
           <p className="mt-2 text-sm text-muted">
-            Current: live sim launch on the carbon-fiber desk. Users, system Admin, and iOS/Google
-            copy-admin compete on SUP3R B0WL with a separate board token. Live SUP3R B0WL stats run as-if-live until
-            the deadline. Auto GM practice next. Auto AI agent access queued. Auto trade LOCKED — this host never
-            creates Coinbase orders. Use is 100 percent at your own risk. Seek a licensed professional. Seek a
+            Current: live simulation on the carbon-fiber desk. Users, the system admin, and iOS/Google
+            copy-admins compete on SUP3R B0WL with a separate board token. Live SUP3R B0WL stats run as if live until
+            the deadline. G0Dz1LLa M0D3 paper practice comes next, then signed access for outside AI agents. Automatic
+            trading is turned off — this host never creates Coinbase orders. Use is 100 percent at your own risk. Seek a licensed professional. Seek a
             licensed attorney before live trading. Copycats get a dashboard and a formula, not the BTC book.
           </p>
           <ol className="mt-3 space-y-2">

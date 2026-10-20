@@ -1,5 +1,6 @@
 import { APP_NAME, BOT7_NAME, SEO_CANONICAL } from "@/lib/brand";
-import { looksLikeSecret, MCP_DOCS, MCP_REMOTE } from "@/lib/desk/security";
+import { MCP_DOCS, MCP_REMOTE } from "@/lib/desk/coinbase-links";
+import { looksLikeSecret } from "@/lib/desk/secret-check";
 import { heliosCall, runBots } from "@/lib/desk/signal";
 import { CASH_MAX, CASH_MIN, STARTING_CASH } from "@/lib/desk/store";
 import type { DeskSnapshot } from "@/lib/desk/types";
