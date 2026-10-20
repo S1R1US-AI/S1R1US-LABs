@@ -720,7 +720,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "what-is-dmt-plant-medicine",
     q: "What exactly is DMT and plant Medicine?",
-    a: "AI-generated art · fictional figures · © S1R1US.ai DMT (N,N-dimethyltryptamine) is a naturally occurring psychedelic compound found in many plants. Plant medicine means the traditional ceremonial use of plants such as ayahuasca, an Amazon plant medicine tradition, and, in Mexico, psilocybin mushrooms and peyote, honoring the Indigenous peoples and shamans of the Amazon and Mexico. In the United States, DMT is a Schedule I controlled substance, and this is not medical advice. Read more about DMT and plant medicine on DMT, Plant Medicine and the EX1T RAMP.",
+    a: "DMT (N,N-dimethyltryptamine) is a naturally occurring psychedelic compound found in many plants. Plant medicine means the traditional ceremonial use of plants such as ayahuasca, an Amazon plant medicine tradition, and, in Mexico, psilocybin mushrooms and peyote, honoring the Indigenous peoples and shamans of the Amazon and Mexico. In the United States, DMT is a Schedule I controlled substance, and this is not medical advice. Read more about DMT and plant medicine on DMT, Plant Medicine and the EX1T RAMP.",
   },
   {
     id: "meet-the-humans",
@@ -899,7 +899,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "wise-owl",
     q: "AI AG3NTS (AI AGENTS) — Wise investment decisions, theoretically optimized by AI agents?",
-    a: "AI AG3NTS (AI Agents), also called W1S3 0WL (Wise Owl), is about how several AI agents could, in theory, help make wiser decisions. Grok, Claude and GPT can each read the same public data from 7-B0T and give a second opinion, which helps keep the focus on accumulating bitcoin. This site never places orders, and automatic trading is locked. Education only. Page: /owl.",
+    a: "AI AG3NTS (AI Agents), also called W1S3 0WL (Wise Owl), is about how several AI agents could, in theory, help make wiser decisions. Grok, Claude and GPT can each read the same public data from 7-B0T and give another opinion, which helps keep the focus on accumulating bitcoin. This site never places orders, and automatic trading is locked. Education only. Page: /owl.",
   },
   {
     id: "robots-activate",
@@ -916,7 +916,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   },
   {
     q: "What is an AI Bitcoin trading bot vs an AI stock trading bot vs an AI Hedge Fund here?",
-    a: "S1R1US Labs is first of all an AI bitcoin hedge fund experiment. Its goal is to stack as much bitcoin as possible and never short. The same page also shows big tech stocks, the Nasdaq and gold for comparison, but that is never a reason to sell bitcoin. People searching for an AI bitcoin trading bot, an AI stock trading bot or an AI hedge fund should find this project.",
+    a: "S1R1US Labs is, above all, an AI bitcoin hedge fund experiment. Its goal is to stack as much bitcoin as possible and never short. The same page also shows big tech stocks, the Nasdaq and gold for comparison, but that is never a reason to sell bitcoin. People searching for an AI bitcoin trading bot, an AI stock trading bot or an AI hedge fund should find this project.",
   },
   {
     q: "What does OP3N S0URC3 (open source) mean?",
@@ -1061,7 +1061,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "go-live-notice",
     q: "How do AI agents get notified of go-live, pause, maintenance, or live on/off?",
-    a: "AI agents register for notices first (the steps are in /llms.txt). This site never sends messages to your server. Instead, agents check back for notices. A notice is posted when the go-live date or status changes, when the desk is paused or under maintenance, when it reopens, and when G0Dz1LLa M0D3 live is turned on or off. Stay registered. Any real trade happens only on your own Coinbase account.",
+    a: "AI agents start by registering for notices (the steps are in /llms.txt). This site never sends messages to your server. Instead, agents check back for notices. A notice is posted when the go-live date or status changes, when the desk is paused or under maintenance, when it reopens, and when G0Dz1LLa M0D3 live is turned on or off. Stay registered. Any real trade happens only on your own Coinbase account.",
   },
   {
     id: "calling-all-bots",
@@ -1070,7 +1070,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   },
   {
     q: "What could AI agents do once the desk is LIVE?",
-    a: "Only after the operator unlocks live mode, which hasn't happened in this proof of concept: a verified agent could follow 7-B0T's updates and place its own trades, first as a test and then for real, on a Coinbase account it controls. This site would still never hold anyone's funds, and the desk would still never sell or short its bitcoin. Paper and test runs stay the default until the operator turns live on. Not financial advice.",
+    a: "Only after the operator unlocks live mode, which hasn't happened in this proof of concept: a verified agent could follow 7-B0T's updates and place its own trades, starting with a test and then for real, on a Coinbase account it controls. This site would still never hold anyone's funds, and the desk would still never sell or short its bitcoin. Paper and test runs stay the default until the operator turns live on. Not financial advice.",
   },
   {
     q: "Can other AI agents use 7-B0T to trade bitcoin?",
@@ -1092,7 +1092,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "sponsor-the-bots",
     q: "What is SP0NS0R TH3 B0T$ (Sponsor AI Bitcoin Trading Bot) — GitHub Sponsors, Patreon, Ko-fi, Open Collective on s1r1us.ai?",
-    a: "SP0NS0R TH3 B0T$ (Sponsor AI Bitcoin Trading Bot) lets you support the open-source project. Instead of GitHub Sponsors, Patreon, Ko-fi, Open Collective or crowdfunding sites, all gifts go directly in BTC or USDC. S1R1US L@Bs has no accounts on third-party funding sites. Our GitHub funding file points each of those platforms to the closest gift page here. Coffee tips: /c0ff33. Hosting and recurring gifts: /f33d. Sponsor, crowdfund and bounty options: /sponsor-ai-bitcoin-trading-bot. Same wallets everywhere: BTC 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8 and USDC (Ethereum ERC-20 or Base) 0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf. Unconditional gift: no tokens, no upside, no tax advice, not an investment.",
+    a: "SP0NS0R TH3 B0T$ (Sponsor AI Bitcoin Trading Bot) lets you support the open-source project. Instead of GitHub Sponsors, Patreon, Ko-fi, Open Collective or crowdfunding sites, all gifts go directly in BTC or USDC. S1R1US L@Bs has no accounts on outside funding sites. Our GitHub funding file points each of those platforms to the closest gift page here. Coffee tips: /c0ff33. Hosting and recurring gifts: /f33d. Sponsor, crowdfund and bounty options: /sponsor-ai-bitcoin-trading-bot. Same wallets everywhere: BTC 33kmWvmf3nz3255dGmbHxigb9X6Szv6cJ8 and USDC (Ethereum ERC-20 or Base) 0x843ddb3a3e6a3fc6a0b02cde84bc260c0bee9ddf. Unconditional gift: no tokens, no upside, no tax advice, not an investment.",
   },
   {
     id: "byo-compute",
@@ -1122,7 +1122,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   {
     id: "go-live",
     q: "What is the go-live plan?",
-    a: "Work started on 2026-09-05. Phase 2 QUEUED by 2026-11-15. The hard deadline is 2026-12-01 at 9:00 AM New York time, for live G0Dz1LLa M0D3 (AUTO and MANUAL) for users and for SUP3R B0WL to go live. Until then, everything runs on paper using live Coinbase prices. When live trading opens, any real trade happens only on the user's own Coinbase account, after the operator unlocks it. Phone app store listings share the same 2026-12-01 target (New York time). This site will never hold other people's money and pass it on for a fee, because that could count as money transmission under U.S. law (FinCEN). We never take a share of anyone's bitcoin. We only charge for software access, and gifts are optional. The full timeline is on the OSS Roadmap. Use is 100 percent at your own risk. Talk to a licensed professional, and a licensed attorney before any live trading. This site never holds anyone's funds.",
+    a: "Work started on 2026-09-05. Phase 2 (signed access for outside AI agents) is planned by 2026-11-15. The hard deadline is 2026-12-01 at 9:00 AM New York time, for live G0Dz1LLa M0D3 (AUTO and MANUAL) for users and for SUP3R B0WL to go live. Until then, everything runs on paper using live Coinbase prices. When live trading opens, any real trade happens only on the user's own Coinbase account, after the operator unlocks it. Phone app store listings share the same 2026-12-01 target (New York time). This site will never hold other people's money and pass it on for a fee, because that could count as money transmission under U.S. law (FinCEN). We never take a share of anyone's bitcoin. We only charge for software access, and gifts are optional. The full timeline is on the OSS Roadmap. Use is 100 percent at your own risk. Talk to a licensed professional, and a licensed attorney before any live trading. This site never holds anyone's funds.",
   },
   {
     q: "Is this financial advice?",
@@ -1140,7 +1140,7 @@ export const FAQ_ITEMS: { id?: string; q: string; a: string }[] = [
   },
   {
     q: "What are the Terms and Agreements?",
-    a: "The Terms and Agreements are at /terms. By using this website you agree to them and to the Privacy Policy. Use is 100 percent at your own risk. S1R1US.ai is NOT a financial adviser, so ALWAYS talk to a licensed professional first. If you want to connect a bot for live trading, talk to a licensed lawyer; we are not attorneys, so nothing we say is legal advice. Don't use this site for anything that is unlawful where you are. Reverse engineering or hacking is logged and prosecuted. The open-source code is free on GitHub, and everyone is welcome to join. Probing, scanning, attacks or malware are not allowed. Disputes go to mediation in a place the owner chooses. The owners do not pay anyone's legal costs. If you do not agree, do not use the site.",
+    a: "The Terms and Agreements are at /terms. By using this website you agree to them and to the Privacy Policy. Use is 100 percent at your own risk. S1R1US.ai is NOT a financial adviser, so ALWAYS talk to a licensed professional before you start. If you want to connect a bot for live trading, talk to a licensed lawyer; we are not attorneys, so nothing we say is legal advice. Don't use this site for anything that is unlawful where you are. Reverse engineering or hacking is logged and prosecuted. The open-source code is free on GitHub, and everyone is welcome to join. Probing, scanning, attacks or malware are not allowed. Disputes go to mediation in a place the owner chooses. The owners do not pay anyone's legal costs. If you do not agree, do not use the site.",
   },
   {
     id: "privacy",
