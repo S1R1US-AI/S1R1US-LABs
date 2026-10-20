@@ -1,13 +1,14 @@
 import { Shield } from "lucide-react";
 import { Panel } from "@/components/shell";
-import { CDP_KEYS, CDP_REVOKE, MCP_DOCS, MCP_REMOTE, SPARROW_SITE, ANALYSIS_AS_OF, protocolRows, vulnRows } from "@/lib/desk/security";
+import { CDP_KEYS, CDP_REVOKE, MCP_DOCS, MCP_REMOTE, SPARROW_SITE, ANALYSIS_AS_OF } from "@/lib/desk/security";
+import { useSecurityLog } from "@/lib/desk/use-security-log";
 import { useOperator } from "@/lib/desk/operator";
 import { cn } from "@/lib/utils";
 import { APP_NAME } from "@/lib/brand";
 
 /** Admin-only Coinbase MCP / protocol / vuln review. Not on the public desk. */
 export function AccessDesk() {
-  const rows = protocolRows();
+  const { protocol: rows, vulns } = useSecurityLog();
   const audit = useOperator((s) => s.audit);
 
   return (
@@ -81,7 +82,7 @@ export function AccessDesk() {
           is optional worst-case backup. This web host never holds a seed or CDP secret.
         </p>
         <ul className="divide-y divide-rule">
-          {vulnRows().map((v) => (
+          {vulns.map((v) => (
             <li key={v.id} className="flex flex-col gap-1 py-3 sm:flex-row sm:gap-6">
               <span
                 className={cn(

@@ -9,6 +9,7 @@ import { headerPosture } from "./sec-headers";
 import { owaspRows, pciRows, pluginInventory } from "./control-map";
 import { protocolRows, vulnRows } from "./security";
 import { runHunter } from "./hunter";
+import { s3cSweepRows } from "./s3c-sweep";
 import { listIntrusions, intrusionSummary, ingestPersisted } from "./intrusion-log";
 import { agentSecurityStats, asiRows, llmAgentRows } from "./agent-security";
 
@@ -110,6 +111,7 @@ export async function securityPosture(opts?: { refreshIntel?: boolean }) {
     hunter,
     protocol: protocolRows(),
     vulns: vulnRows(),
+    s3c: s3cSweepRows(),
     intrusions: { rows: listIntrusions(), summary: intrusionSummary() },
     agentGate,
     waitlist,

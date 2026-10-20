@@ -136,7 +136,7 @@ export const LIVE_FUNCTIONS: RoadmapFunction[] = [
     path: "/api/agent/call",
     status: "LIVE",
     since: "2026-09-05",
-    note: "Read-only accumulation call. MCP bot7_call. Rate-limited 300s. This host never places orders.",
+    note: "Read-only accumulation call. This host never places orders.",
   },
   {
     id: "gm-paper",

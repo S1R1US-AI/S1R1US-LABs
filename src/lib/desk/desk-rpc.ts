@@ -101,8 +101,8 @@ export const fetchIntrusions = createServerFn({ method: "POST" })
 export const runHunterAudit = createServerFn({ method: "POST" })
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
-    const { verifyAccessToken } = await import("./access.server");
-    if (!(await verifyAccessToken(data.token))) return { ok: false as const, report: null };
+    const { requireAdminData } = await import("./admin-gate.server");
+    if (!(await requireAdminData(data.token))) return { ok: false as const, report: null };
     const { hydrateSecurityDisk } = await import("./posture");
     hydrateSecurityDisk();
     const { runHunter } = await import("./hunter");
@@ -112,8 +112,8 @@ export const runHunterAudit = createServerFn({ method: "POST" })
 export const fetchSecurityPosture = createServerFn({ method: "POST" })
   .validator((input: { token: string; refreshIntel?: boolean }) => input)
   .handler(async ({ data }) => {
-    const { verifyAccessToken } = await import("./access.server");
-    if (!(await verifyAccessToken(data.token))) return { ok: false as const, posture: null };
+    const { requireAdminData } = await import("./admin-gate.server");
+    if (!(await requireAdminData(data.token))) return { ok: false as const, posture: null };
     const { securityPosture } = await import("./posture");
     return { ok: true as const, posture: await securityPosture({ refreshIntel: Boolean(data.refreshIntel) }) };
   });
@@ -121,8 +121,8 @@ export const fetchSecurityPosture = createServerFn({ method: "POST" })
 export const fetchSecurityBrief = createServerFn({ method: "POST" })
   .validator((input: { token: string }) => input)
   .handler(async ({ data }) => {
-    const { verifyAccessToken } = await import("./access.server");
-    if (!(await verifyAccessToken(data.token))) return { ok: false as const, brief: null, badBots: null, health: null, alignment: null };
+    const { requireAdminData } = await import("./admin-gate.server");
+    if (!(await requireAdminData(data.token))) return { ok: false as const, brief: null, badBots: null, health: null, alignment: null };
     try {
       const fs = await import("node:fs");
       const { ingestPersisted } = await import("./intrusion-log");
@@ -130,7 +130,8 @@ export const fetchSecurityBrief = createServerFn({ method: "POST" })
     } catch {
       /* missing */
     }
-    const { morningSecurity, morningBadBots } = await import("./morning-ops");
+    const { morningBadBots } = await import("./morning-ops");
+    const { morningSecurity } = await import("./morning-security.server");
     const { systemHealth } = await import("./system-health");
     const { alignmentScore } = await import("./alignment");
     const { listAgentBars } = await import("./agent-bar");
@@ -448,3 +449,45 @@ export const setLockStatus = createServerFn({ method: "POST" })
     }
     return { ok: true as const, error: null as string | null, lock: lockStatusPublic(), role: by };
   });
+
+/** Admin-only security log rows. Checked on the server; 401 and no data otherwise. */
+export const fetchSecurityLog = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { requireAdminData } = await import("./admin-gate.server");
+    if (!(await requireAdminData(data.token))) return { ok: false as const, protocol: null, vulns: null };
+    const { protocolRows, vulnRows } = await import("./security");
+    return { ok: true as const, protocol: protocolRows(), vulns: vulnRows() };
+  });
+
+/** Admin-only research paper. Checked on the server; 401 and no data otherwise. */
+export const fetchAdminPaper = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { requireAdminData } = await import("./admin-gate.server");
+    if (!(await requireAdminData(data.token))) return { ok: false as const, paper: null, guide: null };
+    const { THESIS, THESIS_MARKDOWN, THESIS_META } = await import("./thesis");
+    const { GUIDE, GUIDE_MARKDOWN, GUIDE_META } = await import("./guide");
+    return {
+      ok: true as const,
+      paper: { meta: THESIS_META, sections: THESIS, markdown: THESIS_MARKDOWN },
+      guide: { meta: GUIDE_META, sections: GUIDE, markdown: GUIDE_MARKDOWN },
+    };
+  });
+
+/** After admin sign-in: let this browser load admin page code. Checked on the server. */
+export const grantAdminAssets = createServerFn({ method: "POST" })
+  .validator((input: { token: string }) => input)
+  .handler(async ({ data }) => {
+    const { requireAdminData, setAdminAssetCookie } = await import("./admin-gate.server");
+    if (!(await requireAdminData(data.token))) return { ok: false as const };
+    await setAdminAssetCookie(data.token);
+    return { ok: true as const };
+  });
+
+/** On sign-out: drop the admin page-code cookie. */
+export const revokeAdminAssets = createServerFn({ method: "POST" }).handler(async () => {
+  const { clearAdminAssetCookie } = await import("./admin-gate.server");
+  await clearAdminAssetCookie();
+  return { ok: true as const };
+});

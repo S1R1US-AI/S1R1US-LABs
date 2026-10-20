@@ -9,7 +9,8 @@ import { MORNING_PDF_BASE64, MORNING_PDF_NAME, MORNING_PDF_PAGES } from "@/lib/d
 import { MORNING_KEEP, MORNING_TITLE, MORNING_VISIBLE, morningInlineHref, morningPdfName } from "@/lib/desk/morning-lib";
 import { useOperator } from "@/lib/desk/operator";
 import { useDeskTape } from "@/lib/desk/tape-client";
-import { morningAgent, morningBadBots, morningFeeds, morningHtmlLinks, morningPred, morningProblems, morningSecurity } from "@/lib/desk/morning-ops";
+import { morningAgent, morningBadBots, morningFeeds, morningHtmlLinks, morningPred, morningProblems } from "@/lib/desk/morning-ops";
+import type { MorningSecurity } from "@/lib/desk/morning-security.server";
 import { systemHealth, type SystemHealth } from "@/lib/desk/system-health";
 import { alignmentScore, type AlignmentScore } from "@/lib/desk/alignment";
 import { GoLivePanel } from "@/components/go-live-panel";
@@ -531,12 +532,12 @@ function BoardMorningSection() {
 
 function SecurityMorningSection() {
   const token = useOperator((s) => s.token);
-  const [brief, setBrief] = useState<ReturnType<typeof morningSecurity> | null>(() => morningSecurity());
+  const [brief, setBrief] = useState<MorningSecurity | null>(null);
   useEffect(() => {
     if (!token) return;
     void fetchSecurityBrief({ data: { token } }).then((res) => {
       if (res.ok && res.brief) setBrief(res.brief);
-      else setBrief(morningSecurity());
+      else setBrief(null);
     });
   }, [token]);
   if (!brief) {

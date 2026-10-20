@@ -89,7 +89,7 @@ export function MobileAppPage() {
   const [busy, setBusy] = useState(false);
   const [action, setAction] = useState("ACCUMULATE");
   const [call, setCall] = useState<string | null>(null);
-  const [tool, setTool] = useState("bot7_call");
+  const [tool, setTool] = useState("call");
   const [target, setTarget] = useState("");
   const [forumBody, setForumBody] = useState("");
   const [out, setOut] = useState<string | null>(null);
@@ -121,7 +121,7 @@ export function MobileAppPage() {
 
   useEffect(() => {
     let gone = false;
-    void runAppTool("bot7_call")
+    void runAppTool("call")
       .then((j) => {
         if (gone) return;
         const rec = j && typeof j === "object" ? j : {};
@@ -445,7 +445,7 @@ POST ${ORIGIN}${APP_GATEWAY_PATH}
 mcp_server url=${ORIGIN}/api/agent/mcp
 # Unified tools
 POST ${ORIGIN}${APP_GATEWAY_PATH}
-  {"tool":"bot7_call"}
+  {"tool":"call"}
 # A2A
 ${ORIGIN}/.well-known/agent-card.json
 # Play TWA

@@ -57,7 +57,6 @@ export const Route = createRootRoute({
       { rel: "alternate", type: "application/json", href: "/.well-known/ai-catalog.json", title: "ARD catalog" },
       { rel: "alternate", type: "application/json", href: "/.well-known/mcp.json", title: "MCP server card" },
       { rel: "alternate", type: "application/json", href: "/.well-known/agent-card.json", title: "A2A agent card" },
-      { rel: "alternate", type: "application/json", href: "/api/agent/call", title: "7-B0T agent feed" },
       { rel: "author", href: "/humans.txt" },
       ...liveMeLinks().map((href) => ({ rel: "me" as const, href })),
       { rel: "preconnect", href: "https://fonts.bunny.net", crossOrigin: "anonymous" },

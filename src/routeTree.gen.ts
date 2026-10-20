@@ -80,6 +80,7 @@ import { Route as DotwellKnownMcpServerDotjsonRouteImport } from './routes/[.]we
 import { Route as DotwellKnownMcpDotjsonRouteImport } from './routes/[.]well-known/mcp[.]json'
 import { Route as ApiAgentRouteImport } from './routes/api.agent'
 import { Route as AppAdminRouteImport } from './routes/app_.admin'
+import { Route as AssetsSplatRouteImport } from './routes/assets.$'
 import { Route as BoardIdRouteImport } from './routes/board.$id'
 import { Route as MorningPdfIdRouteImport } from './routes/morning-pdf.$id'
 import { Route as DotwellKnownMcpServerCardDotjsonRouteImport } from './routes/[.]well-known/mcp/server-card[.]json'
@@ -475,6 +476,11 @@ const AppAdminRoute = AppAdminRouteImport.update({
   path: '/app/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssetsSplatRoute = AssetsSplatRouteImport.update({
+  id: '/assets/$',
+  path: '/assets/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BoardIdRoute = BoardIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -704,6 +710,7 @@ export interface FileRoutesByFullPath {
   '/.well-known/mcp.json': typeof DotwellKnownMcpDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
   '/app/admin': typeof AppAdminRoute
+  '/assets/$': typeof AssetsSplatRoute
   '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/.well-known/mcp/server-card.json': typeof DotwellKnownMcpServerCardDotjsonRoute
@@ -808,6 +815,7 @@ export interface FileRoutesByTo {
   '/.well-known/mcp.json': typeof DotwellKnownMcpDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
   '/app/admin': typeof AppAdminRoute
+  '/assets/$': typeof AssetsSplatRoute
   '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/.well-known/mcp/server-card.json': typeof DotwellKnownMcpServerCardDotjsonRoute
@@ -913,6 +921,7 @@ export interface FileRoutesById {
   '/.well-known/mcp.json': typeof DotwellKnownMcpDotjsonRoute
   '/api/agent': typeof ApiAgentRouteWithChildren
   '/app_/admin': typeof AppAdminRoute
+  '/assets/$': typeof AssetsSplatRoute
   '/board/$id': typeof BoardIdRoute
   '/morning-pdf/$id': typeof MorningPdfIdRoute
   '/.well-known/mcp/server-card.json': typeof DotwellKnownMcpServerCardDotjsonRoute
@@ -1019,6 +1028,7 @@ export interface FileRouteTypes {
     | '/.well-known/mcp.json'
     | '/api/agent'
     | '/app/admin'
+    | '/assets/$'
     | '/board/$id'
     | '/morning-pdf/$id'
     | '/.well-known/mcp/server-card.json'
@@ -1123,6 +1133,7 @@ export interface FileRouteTypes {
     | '/.well-known/mcp.json'
     | '/api/agent'
     | '/app/admin'
+    | '/assets/$'
     | '/board/$id'
     | '/morning-pdf/$id'
     | '/.well-known/mcp/server-card.json'
@@ -1227,6 +1238,7 @@ export interface FileRouteTypes {
     | '/.well-known/mcp.json'
     | '/api/agent'
     | '/app_/admin'
+    | '/assets/$'
     | '/board/$id'
     | '/morning-pdf/$id'
     | '/.well-known/mcp/server-card.json'
@@ -1332,6 +1344,7 @@ export interface RootRouteChildren {
   DotwellKnownMcpDotjsonRoute: typeof DotwellKnownMcpDotjsonRoute
   ApiAgentRoute: typeof ApiAgentRouteWithChildren
   AppAdminRoute: typeof AppAdminRoute
+  AssetsSplatRoute: typeof AssetsSplatRoute
   MorningPdfIdRoute: typeof MorningPdfIdRoute
   DotwellKnownMcpServerCardDotjsonRoute: typeof DotwellKnownMcpServerCardDotjsonRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
@@ -1836,6 +1849,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assets/$': {
+      id: '/assets/$'
+      path: '/assets/$'
+      fullPath: '/assets/$'
+      preLoaderRoute: typeof AssetsSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/board/$id': {
       id: '/board/$id'
       path: '/$id'
@@ -2213,6 +2233,7 @@ const rootRouteChildren: RootRouteChildren = {
   DotwellKnownMcpDotjsonRoute: DotwellKnownMcpDotjsonRoute,
   ApiAgentRoute: ApiAgentRouteWithChildren,
   AppAdminRoute: AppAdminRoute,
+  AssetsSplatRoute: AssetsSplatRoute,
   MorningPdfIdRoute: MorningPdfIdRoute,
   DotwellKnownMcpServerCardDotjsonRoute: DotwellKnownMcpServerCardDotjsonRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
