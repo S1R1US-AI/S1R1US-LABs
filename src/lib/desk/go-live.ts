@@ -91,7 +91,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
     when: "2026-09-05",
     status: "DONE",
     owner: "host",
-    need: "Carbon-fiber desk, 7-B0T feed, Forum, Leader Board, SUP3R B0WL page, waitlist, separate system admin and phone-app admin areas, LoCK3D STATUS public tutorial + Admin lock board.",
+    need: "Carbon-fiber desk, 7-B0T feed, Forum, Leader Board, SUP3R B0WL page, waitlist, separate system admin and phone-app admin areas, LoCK3D STATUS public tutorial.",
   },
   {
     id: "s1",
