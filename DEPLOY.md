@@ -131,4 +131,4 @@ Set on DigitalOcean (Settings → web → Environment Variables, **encrypted**, 
 |---|---|---|
 | `S1R1US_APP_ADMIN_SECRET` | a random string, at least 32 characters | Signs phone/download copy Admin sessions. Unset or shorter = copy Admin sign-in is off (fails closed). Changing it signs out every copy Admin. |
 
-`S1R1US_ADMIN_X_ID` (above) is now **required** for system Admin: admin identity is read only from the X account id stored at sign-in.
+System Admin identity comes only from the X account stored by the server at sign-in. That account passes when its stored account id matches `S1R1US_ADMIN_X_ID`, when its stored account id equals the handle in `S1R1US_ADMIN_X_HANDLE`, or when the OAuth token claims stored with it carry that id or handle. Profile fields a user can edit (display name, email, or any part of an email address) never count. With neither variable set, nobody passes (fails closed). Set `S1R1US_ADMIN_X_ID` before deploy: the id cannot be changed by the account owner, while a handle can be renamed or reused.
