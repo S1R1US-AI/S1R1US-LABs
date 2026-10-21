@@ -4,7 +4,7 @@ import { AsyncLocalStorage } from "node:async_hooks";
 import { argon2id } from "@noble/hashes/argon2.js";
 import { getSql } from "@/lib/db";
 import { ADMIN_LOGIN_NAME } from "./admin-name";
-import { isAdminXProvider, looksLikeAdminX, profileLooksLikeAdminX } from "./x-admin.server.ts";
+import { accountRowsAreAdminX, type XAccountRow } from "./x-admin.server.ts";
 import { looksLikeSecret } from "./security";
 
 export const DEFAULT_ADMIN = ADMIN_LOGIN_NAME;
@@ -479,44 +479,11 @@ export async function sessionIsAdminX(userId: string): Promise<boolean> {
   if (!userId) return false;
   try {
     const sql = await getSql();
-    const accounts = await sql<{ accountId: string; providerId: string; idToken: string | null }>`
+    const accounts = await sql<XAccountRow>`
       select "accountId" as "accountId", "providerId" as "providerId", "idToken" as "idToken"
       from "account" where "userId" = ${userId}
     `;
-    let grokX = false;
-    for (const a of accounts) {
-      if (!isAdminXProvider(a.providerId)) continue;
-      grokX = true;
-      if (looksLikeAdminX(a.accountId) || profileLooksLikeAdminX(a.accountId)) return true;
-      if (idTokenClaimsAreAdmin(a.idToken)) return true;
-    }
-    if (!grokX) return false;
-    const users = await sql<{ name: string | null; email: string | null }>`
-      select name, email from "user" where id = ${userId} limit 1
-    `;
-    const u = users[0];
-    if (u && profileLooksLikeAdminX({ name: u.name, email: u.email, preferred_username: u.name })) {
-      return true;
-    }
-    return false;
-  } catch {
-    return false;
-  }
-}
-
-function idTokenClaimsAreAdmin(token: string | null | undefined) {
-  if (!token || token.split(".").length < 2) return false;
-  try {
-    const payload = JSON.parse(
-      Buffer.from(token.split(".")[1]!, "base64url").toString("utf8"),
-    ) as unknown;
-    if (profileLooksLikeAdminX(payload)) return true;
-    if (payload && typeof payload === "object" && !Array.isArray(payload)) {
-      const rec = payload as Record<string, unknown>;
-      const fields = [rec.sub, rec.user_id, rec.preferred_username, rec.username, rec.nickname];
-      return fields.some((v) => typeof v === "string" && looksLikeAdminX(v));
-    }
-    return false;
+    return accountRowsAreAdminX(accounts);
   } catch {
     return false;
   }

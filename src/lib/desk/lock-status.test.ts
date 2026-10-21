@@ -73,7 +73,7 @@ describe("LoCK3D STATUS", () => {
     assert.match(rpc, /setLockStatus/);
     assert.match(rpc, /verifyAppAdminToken/);
     assert.match(rpc, /setHiveSwarmStatus/);
-    assert.match(rpc, /setHiveStatus\(next, system \? "system" : "app-admin"\)/);
+    assert.match(rpc, /setHiveStatus\(next, "system"\)/);
     assert.match(ui, /LockGif/);
     assert.match(ui, /LOCK_GIF_CLOSED/);
     assert.match(ui, /LOCK_GIF_OPEN/);

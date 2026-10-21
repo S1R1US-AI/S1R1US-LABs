@@ -1,6 +1,8 @@
-import { describe, it, beforeEach } from "node:test";
+import { describe, it, before, after, beforeEach } from "node:test";
 import assert from "node:assert/strict";
-import { writeFileSync, mkdirSync } from "node:fs";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   PRED_GRANT,
   PRED_NAME,
@@ -11,6 +13,19 @@ import {
 } from "./pred-book.ts";
 
 describe("PR3D1CT10N$ paper book", { concurrency: false }, () => {
+  let dir = "";
+  let simFile = "";
+  const prevSimFile = process.env.S1R1US_TEST_LIVE_SIM_FILE;
+  before(() => {
+    dir = mkdtempSync(join(tmpdir(), "pred-book-"));
+    simFile = join(dir, "live-sim.json");
+    process.env.S1R1US_TEST_LIVE_SIM_FILE = simFile;
+  });
+  after(() => {
+    if (prevSimFile === undefined) delete process.env.S1R1US_TEST_LIVE_SIM_FILE;
+    else process.env.S1R1US_TEST_LIVE_SIM_FILE = prevSimFile;
+    rmSync(dir, { recursive: true, force: true });
+  });
   beforeEach(() => {
     process.env.NODE_TEST_CONTEXT = "1";
     resetPredBookForTest();
@@ -32,19 +47,17 @@ describe("PR3D1CT10N$ paper book", { concurrency: false }, () => {
   });
 
   it("ticks paper play on LIVE Coinbase last and freezes when admin sim is PAUSED", () => {
-    mkdirSync("/workspace/data", { recursive: true });
-    writeFileSync("/tmp/live-sim.json", JSON.stringify({ status: "LIVE", practiceKilled: true, checkpoint: 68 }));
+    writeFileSync(simFile, JSON.stringify({ status: "LIVE", practiceKilled: true, checkpoint: 68 }));
     resetPredBookForTest();
     const a = predBookPublic({ px: 108_000 });
     assert.equal(a.sim.live, true);
     assert.ok(a.sim.ticks >= 1);
     assert.ok(a.fills.length >= 1);
     const fills = a.fills.length;
-    writeFileSync("/tmp/live-sim.json", JSON.stringify({ status: "PAUSED", practiceKilled: true, checkpoint: 68 }));
+    writeFileSync(simFile, JSON.stringify({ status: "PAUSED", practiceKilled: true, checkpoint: 68 }));
     const b = predBookPublic({ px: 130_000 });
     assert.equal(b.sim.live, false);
     assert.equal(b.fills.length, fills);
-    writeFileSync("/tmp/live-sim.json", JSON.stringify({ status: "LIVE", practiceKilled: true, checkpoint: 68 }));
   });
 
   it("marks YES higher as BTC rises on the ATH paper market", () => {

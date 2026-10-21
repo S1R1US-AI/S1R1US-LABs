@@ -297,7 +297,7 @@ export const ROADMAP: Milestone[] = [
     n: 16,
     name: "Signed agents + Coinbase dry-run + operator approval",
     when: "QUEUED — by 2026-11-15",
-    goal: "Phase 2 signed agent tokens and 7-B0T HTTP SaaS. Operator Coinbase MCP --dry-run. Operator approval ceremony on outgoing. LIVE_UNLOCKED stays false.",
+    goal: "Phase 2 signed agent tokens and 7-B0T HTTP SaaS. Operator Coinbase MCP --dry-run. Operator approval ceremony on outgoing. Live trading stays off.",
     minUsd: 0,
     maxUsd: 5000,
     publicAfterMint: true,
@@ -378,7 +378,7 @@ export const OSS_NEEDS = [
   { id: "readme-pdf", need: "GitHub README.pdf on the roadmap timeline (public/S1R1US-GitHub-README.pdf).", minUsd: 0, maxUsd: 0, done: true },
   { id: "license", need: "Apache-2.0 LICENSE in the repo root.", minUsd: 0, maxUsd: 0, done: true },
   { id: "security-md", need: "SECURITY.md: report vulns privately. No CDP/Yubi/vault in issues.", minUsd: 0, maxUsd: 0, done: true },
-  { id: "no-secrets", need: "Strip factory passwords, live Argon2 hashes, Yubi public ids, portfolio UUIDs. Env-only.", minUsd: 0, maxUsd: 0 },
+  { id: "no-secrets", need: "Keep credentials and account ids out of source. Env-only.", minUsd: 0, maxUsd: 0 },
   { id: "stealth-readme", need: "README is the desk brand + how to run. No pump.fun create steps until mint tx.", minUsd: 0, maxUsd: 0, done: true },
   { id: "faq-sitemap", need: "Public FAQ + HTML sitemap + sitemap.xml + sitemap-index.xml + video-sitemap.xml. Footer Sitemap | FAQ | OP3N S0URC3. robots Allow /gm /labs /faq /sitemap /forum /media /search. Disallow admin/login/launch/renew/source/guide.", minUsd: 0, maxUsd: 0, done: true },
   { id: "config", need: "Operator config (X admin id, profit address, GitHub) via env, not hardcoded spend keys.", minUsd: 0, maxUsd: 400 },
@@ -654,7 +654,7 @@ export const COMPANY_X_STEPS = [
 
 export const DNS_STEPS = [
   "Nameservers stay on GoDaddy. Do not transfer them to DigitalOcean.",
-  "Apex and www A records: 162.159.140.98 and 172.66.0.96 (both). TTL ½ hour is fine.",
+  "Apex and www A records: both DigitalOcean ingress addresses from App Platform → Domains. TTL ½ hour is fine.",
   "Delete any leftover Vercel A (76.76.21.21) or cname.vercel-dns.com.",
   "DigitalOcean app: Settings → Domains → add s1r1us.ai (and www). TLS issues only after a green deploy + domain attach.",
   `Never put Wallet, seeds, Yubi, or Coinbase keys on the public hostname. s1r1us.ai is the public tape. ${TAB_DESK} and ${TAB_LAB} stay gated.`,

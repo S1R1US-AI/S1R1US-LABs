@@ -50,6 +50,7 @@ export function XRenewBlock({
   const [nextNameOverride, setNextNameOverride] = useState<string | null>(null);
   const nextName = nextNameOverride ?? adminName;
   const setNextName = setNextNameOverride;
+  const [proof, setProof] = useState("");
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
   const [err, setErr] = useState<string | null>(null);
@@ -73,8 +74,9 @@ export function XRenewBlock({
     }
     setBusy(true);
     setErr(null);
-    const fail = await renewWithX(next, confirm, nextName.trim() || undefined);
+    const fail = await renewWithX(next, confirm, nextName.trim() || undefined, proof);
     setBusy(false);
+    setProof("");
     if (fail) {
       setErr(fail);
       setNext("");
@@ -105,6 +107,20 @@ export function XRenewBlock({
             className="h-11 w-full rounded-md border border-rule bg-surface px-3 text-sm text-fg"
             minLength={3}
             maxLength={32}
+            required
+          />
+          <label className="block text-sm" htmlFor="renew-proof">
+            Current admin password or YubiKey tap
+          </label>
+          <input
+            id="renew-proof"
+            type="password"
+            autoComplete="current-password"
+            value={proof}
+            onChange={(e) => setProof(e.target.value)}
+            onPaste={guardPaste}
+            className="h-11 w-full rounded-md border border-rule bg-surface px-3 text-sm text-fg"
+            maxLength={128}
             required
           />
           <label className="block text-sm" htmlFor="renew-next">

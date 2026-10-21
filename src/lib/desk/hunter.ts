@@ -16,40 +16,8 @@ import { MCP_TOOLS, agentSecurityStats } from "./agent-security";
 import { TERMS_SECTIONS, PRIVACY_SECTIONS } from "@/lib/legal";
 import { LEGAL_DISCLAIMER } from "@/lib/desk/disclaimer";
 
-export type HunterSev = "CRITICAL" | "HIGH" | "MED" | "LOW" | "INFO";
-export type HunterStatus = "PASS" | "OPEN" | "OPERATOR";
-
-export type HunterFinding = {
-  id: string;
-  wp: string;
-  title: string;
-  severity: HunterSev;
-  status: HunterStatus;
-  proof: string;
-  improve: string;
-};
-
-export type HunterAutomation = {
-  id: string;
-  trigger: string;
-  action: string;
-  armed: boolean;
-};
-
-export type HunterReport = {
-  asOf: string;
-  name: "S1R1US Hunter";
-  principle: "PoC || GTFO — only report what this desk can prove from its own controls.";
-  inspiredBy: ["Hacktron AI (@HacktronAI)", "Electrovolt Security (@ElectrovoltSec)", "Cure53 (partner)"];
-  cadenceMin: number;
-  pass: number;
-  open: number;
-  operator: number;
-  effectiveness: string;
-  patchQueue: string[];
-  automations: HunterAutomation[];
-  findings: HunterFinding[];
-};
+import type { HunterSev, HunterStatus, HunterFinding, HunterAutomation, HunterReport } from "./hunter-wps";
+export type { HunterSev, HunterStatus, HunterFinding, HunterAutomation, HunterReport };
 
 function finding(
   id: string,
@@ -224,7 +192,7 @@ export function runHunter(): HunterReport {
       "System admin is isolated from iOS/Play copy-admin",
       "HIGH",
       "PASS",
-      "verifyAccessToken rejects app. tokens (4-part HMAC pepper s1r1us-app-admin-v1). SYSTEM_ONLY_PATHS stay /admin. Copy-admin cannot claim the system operator or @S1R1US_AI. Path /app/admin.",
+      "verifyAccessToken rejects app. tokens (4-part HMAC, server-only env secret). SYSTEM_ONLY_PATHS stay /admin. Copy-admin cannot claim the system operator or @S1R1US_AI. Path /app/admin.",
       "Keep two token formats. Never let an app token mint a 3-part admin HMAC.",
     ),
     finding(
@@ -233,7 +201,7 @@ export function runHunter(): HunterReport {
       "Championship simulation pause is system Admin only",
       "HIGH",
       "PASS",
-      "setChampionshipSim uses verifyAccessToken or verifyAppAdminToken. Sim LIVE|PAUSED is world-cup.json, not gm-board status. Coinbase create stays locked on web and phone apps.",
+      "setChampionshipSim accepts the system admin token only. Sim LIVE|PAUSED is world-cup.json, not gm-board status. Coinbase create stays locked on web and phone apps.",
       "Never wire setSimStatus to app-admin or a board token. Do not reuse GM B0aRd LIVE/PAUSED for the cup.",
     ),
     finding(
@@ -260,7 +228,7 @@ export function runHunter(): HunterReport {
       "H1V3 SW@RM is paper — TH/s split, never escrow, never Coinbase create",
       "HIGH",
       "PASS",
-      "hivePublic returns trade:false, ordersCreate:false, escrow:false, keysOnThisHost:false. MCP hive_list is read-only. hive_pause is not an MCP tool. Pause is Admin (system or copy-admin). Board token is not admin. TEST data until go-live.",
+      "hivePublic returns trade:false, ordersCreate:false, escrow:false, keysOnThisHost:false. MCP hive_list is read-only. hive_pause is not an MCP tool. Pause is system Admin only. Board token is not admin. TEST data until go-live.",
       "Do not escrow live BTC. Do not add hive_pause to MCP. Keep split compute-weighted paper or equal if TH/s is zero.",
     ),
     finding(
@@ -296,7 +264,7 @@ export function runHunter(): HunterReport {
       "As-live simulation stays on the desk checkpoint with pause allowed",
       "HIGH",
       "PASS",
-      "G M0D3 AUTO + AI agents run as-live on S1R1US App build #113. Conflict rebases to baseline 68 LIVE with pause allowed for system and copy-admin. Championship pause stays system-only. Morning report 07:30 ET. Data pulls follow sim. Practice ticks stay killed. Coinbase create stays off.",
+      "G M0D3 AUTO + AI agents run as-live on S1R1US App build #111. Conflict rebases to baseline 68 LIVE with pause allowed for system Admin only. Championship pause stays system-only. Morning report 07:30 ET. Data pulls follow sim. Practice ticks stay killed. Coinbase create stays off.",
       "If the checkpoint number changes, retarget the simulation and retest. If anything conflicts, run baseline 68 LIVE with pause allowed.",
     ),
     finding(
@@ -512,12 +480,4 @@ export function cachedHunter(): HunterReport {
   return last;
 }
 
-export const HUNTER_WPS = [
-  { id: "WP0", title: "Posture", focus: "Firewall layers, protocol FAIL, IDS armed." },
-  { id: "WP1", title: "Web (Electrovolt)", focus: "XSS, SSRF, JSON-LD, headers, CRS WAF. White-box." },
-  { id: "WP2", title: "Auth", focus: "AND lock, session store, idle, throttle, IP strikes." },
-  { id: "WP3", title: "Secrets", focus: "No CDP/seed, paste filters, vault addresses only." },
-  { id: "WP4", title: "Agents", focus: "Read-only feed, 429, no webhooks, source deny." },
-  { id: "WP5", title: "Execution", focus: "Live create locked. Path A off the public tape." },
-  { id: "WP6", title: "Intel", focus: "CISA KEV + OSV.dev stack filter and virtual patches." },
-] as const;
+export { HUNTER_WPS } from "./hunter-wps";

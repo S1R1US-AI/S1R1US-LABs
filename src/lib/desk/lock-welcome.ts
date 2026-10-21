@@ -30,7 +30,7 @@ export const LOCK_LIVE_VS_SIM = {
   games:
     "Championships (L3AD3R B0ARD, SUP3R B0WL, W0rLd CUP of AI Quant Trading BTC, C@LL 0UT, H1V3 SW@RM, W1S3 0WL$, 7-B0T, bots 1–6, G M0D3 AUTO) tick paper books against live Coinbase last until an Admin pauses them. This is proof of concept. Hard deadline for go-live: 2026-12-01 ET.",
   practice:
-    "Practice and paper fills never arm Coinbase. Stray practice runs cannot create live orders. LIVE_UNLOCKED stays false until operator unlock.",
+    "Practice and paper fills never arm Coinbase. Stray practice runs cannot create live orders. Live trading stays off until operator unlock.",
 };
 
 export const LOCK_HOW_TO_TOGGLE = [
@@ -99,7 +99,7 @@ export const LOCK_TUTORIAL = [
   {
     id: "admin",
     title: "5. Admins turn locks on or off",
-    body: "Click the padlock GIF. Include checkboxes pick the master set. SIM / LIVE is desk mode, not Coinbase create. Championship pause is system Admin → Security. Hive pause is system or copy-admin. This host never takes custody of visitor funds and never escrows.",
+    body: "Click the padlock GIF. Include checkboxes pick the master set. SIM / LIVE is desk mode, not Coinbase create. Championship pause is system Admin → Security. Hive pause is system Admin only. This host never takes custody of visitor funds and never escrows.",
   },
   {
     id: "go-live",

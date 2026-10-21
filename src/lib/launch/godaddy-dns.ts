@@ -1,32 +1,31 @@
 /** GoDaddy DNS for s1r1us.ai → DigitalOcean App Platform ingress. Leave nameservers on GoDaddy. */
-export const DO_INGRESS_A = ["162.159.140.98", "172.66.0.96"] as const;
 
 export const GODADDY_DNS_ROWS = [
   {
     type: "A",
     name: "@",
-    value: "162.159.140.98",
+    value: "DigitalOcean ingress A #1 (App Platform → Domains)",
     ttl: "½ hour",
     why: "s1r1us.ai apex — DigitalOcean shared ingress (first of two).",
   },
   {
     type: "A",
     name: "@",
-    value: "172.66.0.96",
+    value: "DigitalOcean ingress A #2 (App Platform → Domains)",
     ttl: "½ hour",
     why: "s1r1us.ai apex — DigitalOcean shared ingress (second of two).",
   },
   {
     type: "A",
     name: "www",
-    value: "162.159.140.98",
+    value: "DigitalOcean ingress A #1 (App Platform → Domains)",
     ttl: "½ hour",
     why: "www.s1r1us.ai — same ingress. Do not CNAME www to Vercel.",
   },
   {
     type: "A",
     name: "www",
-    value: "172.66.0.96",
+    value: "DigitalOcean ingress A #2 (App Platform → Domains)",
     ttl: "½ hour",
     why: "www.s1r1us.ai — second address.",
   },

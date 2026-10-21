@@ -37,7 +37,7 @@ export function feedPlansPublic() {
     extraConviction: false,
     btcShare: false,
     thisHostTrades: false,
-    note: "Pay for HTTP. Same 7-B0T call. Operator hashes keys in BOT7_FEED_KEY_HASHES. Gifts (F33D / C0FF33) remain optional and unlock nothing extra.",
+    note: "Pay for HTTP. Same 7-B0T call. Keys are stored hashed on the server. Gifts (F33D / C0FF33) remain optional and unlock nothing extra.",
     header: `${FEED_KEY_HEADER}: ${FEED_KEY_PREFIX}…`,
     plans: FEED_PLANS,
   };

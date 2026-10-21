@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AdminPanel } from "@/components/admin-panel";
+import { AdminEntry } from "@/components/admin-entry";
 import { APP_NAME } from "@/lib/brand";
 
 export const Route = createFileRoute("/admin")({
-  component: AdminPanel,
+  component: AdminEntry,
   head: () => ({
     meta: [
       { title: `Admin · ${APP_NAME}` },

@@ -14,18 +14,19 @@ const morning = readFileSync(new URL("../../components/morning-report-pdf.tsx", 
 const server = readFileSync(new URL("./live-sim.server.ts", import.meta.url), "utf8");
 
 describe("live-sim checkpoint sync", { concurrency: false }, () => {
-  it("baseline stays 68 and current checkpoint is 113 live-sim launch", () => {
+  it("baseline stays 68 and current checkpoint is 111 live-sim launch", () => {
     assert.equal(CHECKPOINT_BASELINE_N, 68);
-    assert.equal(CHECKPOINT_BUILD_N, 113);
-    assert.equal(checkpointId(), "113");
+    assert.equal(CHECKPOINT_BUILD_N, 111);
+    assert.equal(checkpointId(), "111");
     assert.equal(checkpointLabel(), "S1R1US current release");
     assert.match(CHECKPOINT_FOLD, /^2026-09-12/);
     assert.match(liveSimNote("LIVE"), /S1R1US current release/);
     const h = systemHealth();
-    assert.equal(h.checkpoint, "113");
+    assert.equal(h.checkpoint, "111");
     assert.equal(h.liveUnlocked, false);
-    assert.equal(h.copyAdminCannotPauseChampionship, false);
-    assert.equal(h.copyAdminMayPauseChampionship, true);
+    assert.equal(h.copyAdminCannotPauseChampionship, true);
+    assert.equal(h.copyAdminMayPauseChampionship, false);
+    assert.equal(h.copyAdminMayPauseHive, false);
   });
 
   it("paper TEST X accounts seed on the board and stay non-admin", () => {
@@ -40,13 +41,13 @@ describe("live-sim checkpoint sync", { concurrency: false }, () => {
     assert.doesNotMatch(board, /asAdmin:\s*true/);
   });
 
-  it("dual-admin pause is wired; championship pause is dual-admin", () => {
+  it("sim pause is system Admin only; championship pause is system Admin only", () => {
     assert.match(rpc, /export const setLiveSim/);
-    assert.match(rpc, /verifyAppAdminToken/);
-    assert.match(rpc, /setLiveSimStatus/);
+    assert.match(rpc, /setLiveSimStatus\(next, "system"\)/);
     assert.match(rpc, /export const setChampionshipSim/);
-    const cupBlock = rpc.slice(rpc.indexOf("export const setChampionshipSim"), rpc.indexOf("export const fetchHiveSwarm"));
-    assert.match(cupBlock, /verifyAppAdminToken/);
+    const cupBlock = rpc.slice(rpc.indexOf("export const setChampionshipSim"), rpc.indexOf("export const fetchChampionshipSim"));
+    assert.doesNotMatch(cupBlock, /verifyAppAdminToken/);
+    assert.match(cupBlock, /systemTokenOnly/);
     assert.match(admin, /LiveSimPanel/);
     assert.match(appAdmin, /LiveSimPanel/);
     assert.match(appAdmin, /MorningReportPdf/);

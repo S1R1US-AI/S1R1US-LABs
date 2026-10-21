@@ -107,8 +107,7 @@ done`}
           <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">7-B0T HTTP SaaS</p>
           <h2 className="mt-1 text-base font-semibold text-fg">Pay for JSON — not conviction</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            Public GET /api/agent/call is free and rate-limited (poll 300s). A hashed key in BOT7_FEED_KEY_HASHES
-            raises the cap. Same 7-B0T call. No extra HIGH. No BTC share. No token. Spec:{" "}
+            Public reads are free. A paid key raises the limit. Same 7-B0T call. No extra HIGH. No BTC share. No token. Spec:{" "}
             <a href="/api/agent/keys" className="text-tab hover:underline">
               /api/agent/keys
             </a>

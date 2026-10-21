@@ -45,8 +45,8 @@ describe("BYO connect + health", { concurrency: false }, () => {
     assert.equal(h.liveUnlocked, false);
     assert.equal(h.trade, false);
     assert.equal(h.practiceCannotArmCoinbase, true);
-    assert.equal(h.copyAdminMayPauseHive, true);
-    assert.equal(h.copyAdminCannotPauseChampionship, false);
+    assert.equal(h.copyAdminMayPauseHive, false);
+    assert.equal(h.copyAdminCannotPauseChampionship, true);
     assert.ok(h.overall >= 85);
     assert.ok(h.security.score >= 90);
     assert.ok(h.function.score >= 80);
