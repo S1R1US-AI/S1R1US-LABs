@@ -73,3 +73,12 @@ export function cookieValue(header: string | null | undefined, name: string): st
   }
   return undefined;
 }
+
+/**
+ * Secure flag for the page-code cookie: always on in production, whatever proxy headers say.
+ * Local development over plain http keeps working (browsers also accept Secure on localhost).
+ */
+export function assetCookieSecure(nodeEnv: string | undefined, forwardedProto: string | null | undefined): boolean {
+  if (nodeEnv === "production") return true;
+  return String(forwardedProto ?? "").split(",")[0]?.trim().toLowerCase() === "https";
+}

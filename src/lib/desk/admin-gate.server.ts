@@ -3,7 +3,7 @@
  * same check every admin server function uses). On failure the response is
  * 401 with no data; every answer is marked private, no-store.
  */
-import { ADMIN_ASSET_COOKIE, ADMIN_ASSET_COOKIE_PATH } from "./admin-assets";
+import { ADMIN_ASSET_COOKIE, ADMIN_ASSET_COOKIE_PATH, assetCookieSecure } from "./admin-assets";
 import { verifyAccessToken } from "./access.server";
 import { systemTokenOnly } from "./auth-guards";
 
@@ -57,8 +57,8 @@ export async function setAdminAssetCookie(token: string) {
   const { getRequestHeader, setCookie } = await import("@tanstack/react-start/server");
   const exp = Number(token.split(".")[0]);
   const maxAge = Number.isFinite(exp) ? Math.max(60, Math.floor((exp - Date.now()) / 1000)) : 3600;
-  const https = (getRequestHeader("x-forwarded-proto") ?? "").split(",")[0]?.trim() === "https";
-  setCookie(ADMIN_ASSET_COOKIE, token, { httpOnly: true, sameSite: "strict", secure: https, path: ADMIN_ASSET_COOKIE_PATH, maxAge });
+  const secure = assetCookieSecure(process.env.NODE_ENV, getRequestHeader("x-forwarded-proto"));
+  setCookie(ADMIN_ASSET_COOKIE, token, { httpOnly: true, sameSite: "strict", secure, path: ADMIN_ASSET_COOKIE_PATH, maxAge });
 }
 
 export async function clearAdminAssetCookie() {

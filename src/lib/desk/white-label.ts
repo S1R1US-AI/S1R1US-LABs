@@ -37,9 +37,12 @@ export const SYSTEM_ADMIN_OVERRIDE_LABEL = "system operator";
 /** @deprecated Use SYSTEM_ADMIN_OVERRIDE_LABEL in UI. Value is never the real X handle. */
 export const SYSTEM_ADMIN_OVERRIDE = SYSTEM_ADMIN_OVERRIDE_LABEL;
 
-/** Server-oriented override handle from env (`S1R1US_ADMIN_X_HANDLE`, with `@`). Empty when unset. */
+/** Server-only override handle from the admin handle env (with `@`). Empty when unset or in the browser. */
 export function systemAdminOverrideHandle(): string {
   try {
+    // The browser build sets import.meta.env.SSR to false and drops the env read below,
+    // so the env name never ships to the client. Node (tests) and the server read it.
+    if (import.meta.env?.SSR === false) return "";
     const raw = String(process.env.S1R1US_ADMIN_X_HANDLE ?? "").trim();
     if (!raw) return "";
     return raw.startsWith("@") ? raw : `@${raw}`;

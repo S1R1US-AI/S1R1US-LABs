@@ -1,7 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { ADMIN_ASSET_COOKIE_PATH, ADMIN_ASSET_HEADERS, adminAssetDecision, assetNameOf, cookieValue } from "./admin-assets.ts";
+import { ADMIN_ASSET_COOKIE_PATH, ADMIN_ASSET_HEADERS, adminAssetDecision, assetCookieSecure, assetNameOf, cookieValue } from "./admin-assets.ts";
 
 const gated = new Set(["admin-panel-abc123.js"]);
 const read = (p: string) => readFileSync(new URL(p, import.meta.url), "utf8");
@@ -141,5 +141,22 @@ describe("admin page-code grant", () => {
     const mw = readFileSync(new URL("./x-session.ts", import.meta.url), "utf8");
     assert.match(mw, /sendContext: \{ bearerToken: getBearerToken\(\)/);
     assert.match(mw, /runWithBearer\(bearer/);
+  });
+});
+
+describe("page-code cookie Secure flag", () => {
+  it("is always on in production, even without a forwarded https header", () => {
+    for (const proto of [undefined, null, "", "http", "https", "http,https"]) assert.equal(assetCookieSecure("production", proto), true, String(proto));
+  });
+  it("follows the request scheme in local development", () => {
+    assert.equal(assetCookieSecure("development", "http"), false);
+    assert.equal(assetCookieSecure(undefined, undefined), false);
+    assert.equal(assetCookieSecure("development", "https"), true);
+    assert.equal(assetCookieSecure("test", "HTTPS, http"), true);
+  });
+  it("the server uses the rule when it sets the cookie", () => {
+    const gate = readFileSync(new URL("./admin-gate.server.ts", import.meta.url), "utf8");
+    assert.match(gate, /assetCookieSecure\(process\.env\.NODE_ENV, getRequestHeader\("x-forwarded-proto"\)\)/);
+    assert.match(gate, /httpOnly: true, sameSite: "strict", secure,/);
   });
 });

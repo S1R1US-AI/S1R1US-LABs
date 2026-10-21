@@ -160,3 +160,10 @@ test("vercel routes send gated names to the server privately, ahead of public ca
   assert.equal(r[fs + 1].headers["cache-control"], "private, no-store");
   assert.equal(r.at(-1).src, "/(.*)");
 });
+
+test("server-only env names stay out of the public build", () => {
+  for (const name of ["BOT7_FEED_KEY_HASHES", "S1R1US_ADMIN_X_HANDLE"]) {
+    const hits = publicFiles.filter((body) => body.includes(name)).length;
+    assert.equal(hits, 0, `${name} found in ${hits} public file(s)`);
+  }
+});
