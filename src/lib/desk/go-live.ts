@@ -1,7 +1,7 @@
-/** Go-live path — began 2026-09-05. Hard deadline 2026-12-01 ET. Live no exchange orders can be created until live trading is turned on. */
+/** Go-live path — began 2026-09-05. Hard deadline 2026-12-01 ET. No exchange orders can be created until live trading is turned on. */
 
 export const GO_LIVE_START = "2026-09-05";
-/** Definite deadline: live G M0D3 AUTO + MANUAL + SUP3R B0WL participation for users. America/New_York. */
+/** Definite deadline: live G0Dz1LLa M0D3 AUTO + MANUAL + SUP3R B0WL participation for users. America/New_York. */
 export const GO_LIVE_DEADLINE = "2026-12-01";
 export const GO_LIVE_DEADLINE_TZ = "America/New_York";
 export const GO_LIVE_DEADLINE_LABEL = `${GO_LIVE_DEADLINE} 09:00 ${GO_LIVE_DEADLINE_TZ}`;
@@ -91,7 +91,7 @@ export const GO_LIVE_STEPS: GoLiveStep[] = [
     when: "2026-09-05",
     status: "DONE",
     owner: "host",
-    need: "Carbon-fiber desk, 7-B0T feed, Forum, Leader Board, SUP3R B0WL page, waitlist, separate system admin and phone-app admin areas, LoCK3D STATUS public tutorial.",
+    need: "Carbon-fiber desk, 7-B0T feed, Forum, Leader Board, SUP3R B0WL page, waitlist, separate system admin and phone-app admin areas, LoCK3D STATUS public tutorial + lock status page.",
   },
   {
     id: "s1",

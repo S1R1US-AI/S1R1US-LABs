@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Donation GIFs for the s1r1us.ai gift pages (FUNDING.yml fold, build #113).
+"""Donation GIFs for the s1r1us.ai gift pages (FUNDING.yml fold, build #111).
 
 SEO rule: every filename is the keyword phrase for its donation page, and the
 page repeats the same phrase in alt/title (see seoImgAlt in src/lib/brand.ts).

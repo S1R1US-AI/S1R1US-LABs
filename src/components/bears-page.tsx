@@ -163,7 +163,7 @@ export function BearsPage() {
             dry-run CLI can react on the next poll — not after a stand-up, not after a tweet thread.
             Today the poll is 300 seconds on purpose (PoC, rate-limit, no stampede). When the operator
             unlocks auto AI agent access, signed bots still trade on their own venue. Auto trade on
-            <em> this</em> host stays LOCKED. Copycats get a dashboard and a formula, not the BTC book.
+            <em> this</em> host stays LOCKED. Copies get a dashboard and a formula, not the BTC book.
           </p>
         </Panel>
 

@@ -100,7 +100,7 @@
       theme: isGm ? 'gm' : 'classic',
       burst: !!opts.burst || theme === 'gm-intro',
       label: isGm
-        ? 'G0DZ1LLa M0D3 · Godzilla Mode'
+        ? 'G0Dz1LLa M0D3 · Godzilla MODE'
         : '[ S1R1U$ <<L@B$>> ] · Matrix Classic',
     });
   }

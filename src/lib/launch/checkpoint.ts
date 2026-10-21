@@ -1,6 +1,6 @@
 /** Single source for desk checkpoint build number. No @/ imports. Client-safe. */
 export const CHECKPOINT_BASELINE_N = 68;
-export const CHECKPOINT_BUILD_N = 113;
+export const CHECKPOINT_BUILD_N = 111;
 export const CHECKPOINT_FOLD = "2026-09-12T00:20:00.000Z";
 export const CHECKPOINT_LAST_EDIT = "2026-09-12T02:10:00.000Z";
 /** Public label for the current release. Internal build numbers stay out of visitor copy. */
