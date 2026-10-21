@@ -299,15 +299,7 @@ export function corporateSearchGraph() {
       isAccessibleForFree: true,
       description:
         "Read-only MCP for 7-B0T, L3AD3R B0ARD, H1V3 SW@RM, LoCK3D STATUS, and go-live notices. Polymarket/Kalshi odds stay a 7-B0T overlay. This host never places Coinbase orders. Never lock_set or hive_withdraw.",
-      featureList: [
-        "bot7_call",
-        "lock_status",
-        "byo_connect",
-        "board_list",
-        "hive_list",
-        "cup_list",
-        "go_live_notice",
-      ],
+      featureList: ["7-B0T call", "Lock status", "BYO connect", "Board list", "Hive list", "Cup list", "Go-live notice"],
       publisher: { "@id": orgId },
     },
     {

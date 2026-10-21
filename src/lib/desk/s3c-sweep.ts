@@ -1,15 +1,9 @@
-/** S3C Sweep — full system security sweep and audit. Top 28 checks, PASS/WARN/FAIL. Client-safe. */
+/** S3C Sweep — full system security sweep and audit. Top 28 checks, PASS/WARN/FAIL. Server-only (reads the admin security log). */
 import { protocolRows, vulnRows } from "./security";
 import { cachedHunter } from "./hunter";
 
-export type S3cStatus = "PASS" | "WARN" | "FAIL";
-
-export type S3cRow = {
-  id: string;
-  name: string;
-  status: S3cStatus;
-  note: string;
-};
+import { s3cSweepScore, type S3cRow, type S3cStatus } from "./s3c-score";
+export { s3cSweepScore, type S3cRow, type S3cStatus };
 
 /** Static posture checks — the top 28 most important sweep items on this build. */
 const STATIC_ROWS: Omit<S3cRow, "status">[] = [
@@ -56,16 +50,4 @@ export function s3cSweepRows(): S3cRow[] {
     if (r.id === "probe-monitor" && hunter.open > 0) status = "WARN";
     return { ...r, status };
   }).slice(0, 28);
-}
-
-export function s3cSweepScore(rows = s3cSweepRows()): { score: number; headline: string; pass: number; warn: number; fail: number } {
-  const pass = rows.filter((r) => r.status === "PASS").length;
-  const warn = rows.filter((r) => r.status === "WARN").length;
-  const fail = rows.filter((r) => r.status === "FAIL").length;
-  const score = Math.max(1, Math.min(100, Math.round(100 - fail * 12 - warn * 4)));
-  const headline =
-    fail === 0
-      ? `S3C SWEEP ${score}/100 — ${pass} PASS · ${warn} WARN · 0 FAIL`
-      : `S3C SWEEP ${score}/100 — ${fail} FAIL · ${warn} WARN · ${pass} PASS`;
-  return { score, headline, pass, warn, fail };
 }

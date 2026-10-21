@@ -29,7 +29,8 @@ import { addDeskAccount, connectXAdmin, deleteDeskAccount, disconnectXAdmin, enr
 import { adminStatus } from "@/lib/desk/grok";
 import { useOperator } from "@/lib/desk/operator";
 import { BOT_ROSTER, CYCLE_ARCH, DATA_FEEDS, RISK_RULES, SYSTEM_REVIEWED } from "@/lib/desk/policy";
-import { ANALYSIS_AS_OF, CDP_KEYS, CDP_REVOKE, MCP_DOCS, MCP_REMOTE, isEvmAddress, looksLikeSecret, protocolRows, usdcReceiveError, vulnRows } from "@/lib/desk/security";
+import { ANALYSIS_AS_OF, CDP_KEYS, CDP_REVOKE, MCP_DOCS, MCP_REMOTE, isEvmAddress, looksLikeSecret, usdcReceiveError } from "@/lib/desk/security";
+import { useSecurityLog } from "@/lib/desk/use-security-log";
 import { buyBtcPreview, isPortfolioUuid, PROFIT_BTC_EXPLORER, PROFIT_BTC_RECEIVE, takeProfitPreviewUsd, transferPreview } from "@/lib/desk/treasury";
 import { peekDeskTape, useDeskTape } from "@/lib/desk/tape-client";
 import { DESK_POLL_MS } from "@/lib/desk/poll";
@@ -53,6 +54,7 @@ export function AdminPanel() {
   const reset = usePaper((s) => s.reset);
 
   const { snap, refresh: refreshTape } = useDeskTape();
+  const securityLog = useSecurityLog();
   const [status, setStatus] = useState<{
     grok: { used: number; max: number; windowMin: number };
     grokReady: boolean;
@@ -116,7 +118,6 @@ export function AdminPanel() {
 
   const px = snap?.btc.price ?? 0;
   const nav = cash + (btc + (profitBtc ?? 0)) * px;
-  const rows = protocolRows();
 
   return (
     <Shell
@@ -481,7 +482,7 @@ export function AdminPanel() {
               </a>
             </div>
             <ul className="mt-4 divide-y divide-rule">
-              {rows.map((r) => (
+              {securityLog.protocol.map((r) => (
                 <li key={r.id} className="flex gap-3 py-2">
                   <span
                     className={cn(
@@ -499,7 +500,7 @@ export function AdminPanel() {
 
           <Panel className="mt-4" kicker="Analysis" title={`Vulnerability review · ${ANALYSIS_AS_OF}`}>
             <ul className="divide-y divide-rule">
-              {vulnRows().map((v) => (
+              {securityLog.vulns.map((v) => (
                 <li key={v.id} className="flex gap-3 py-3">
                   <span
                     className={cn(

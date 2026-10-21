@@ -96,7 +96,7 @@ export function PracticeDesk() {
               Live Coinbase orders stay off. The book below is the real Coinbase L2. The purchase
               ledger is empty until Live is unlocked. No CDP secret on this host.
             </p>
-            <p className="mt-3 font-mono text-sm text-muted">LIVE_UNLOCKED = {LIVE_UNLOCKED ? "true" : "false"}</p>
+            <p className="mt-3 font-mono text-sm text-muted">Live trading: {LIVE_UNLOCKED ? "on" : "off"}</p>
           </div>
           {last ? (
             <div className="mt-4 rounded-md border border-rule bg-bg p-4">

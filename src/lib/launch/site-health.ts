@@ -1,7 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { verifyAccessToken } from "@/lib/desk/access.server";
 import { cloudflareDns, guardedFetch } from "@/lib/desk/net-guard";
-import { DO_INGRESS_A } from "./godaddy-dns";
 import { COIN_DOMAIN } from "./model";
 
 const hits: number[] = [];
@@ -29,7 +28,8 @@ async function dnsJson(name: string, type: "A" | "NS" | "CNAME") {
   return (j.Answer ?? []).map((a) => String(a.data ?? "").replace(/\.$/, ""));
 }
 
-function pointsAtDo(addrs: string[]) {
+async function pointsAtDo(addrs: string[]) {
+  const { DO_INGRESS_A } = await import("./godaddy-dns.server");
   return DO_INGRESS_A.some((ip) => addrs.includes(ip));
 }
 
@@ -80,7 +80,7 @@ export const probeSiteHealth = createServerFn({ method: "POST" })
     tls = e instanceof Error ? e.message : "TLS failed";
   }
 
-  const onDo = pointsAtDo(apexA);
+  const onDo = await pointsAtDo(apexA);
   const onVercel = apexA.includes("76.76.21.21");
   const handshakeFail = /handshake|sslv3|certificate|tls/i.test(tls + http.body);
   const verdict = tls.startsWith("HTTPS 2")
@@ -90,7 +90,7 @@ export const probeSiteHealth = createServerFn({ method: "POST" })
     : onDo
       ? "Apex is on DigitalOcean. If the page is down, the container is not green — check App Platform deploy logs."
     : onVercel
-      ? "Apex is still on Vercel. Replace A records with DigitalOcean 162.159.140.98 and 172.66.0.96."
+      ? "Apex is still on Vercel. Replace A records with the two DigitalOcean ingress addresses from App Platform → Domains."
       : "Apex A is not DigitalOcean ingress. Keep nameservers on GoDaddy; set @ and www A to both ingress IPs.";
 
   return {

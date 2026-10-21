@@ -2,21 +2,20 @@ import { useEffect, useMemo, useState } from "react";
 import { Pause, Play, Shield, Bot, BotOff } from "lucide-react";
 import { Panel } from "@/components/shell";
 import { Button } from "@/components/ui/button";
-import { ANALYSIS_AS_OF, protocolRows, vulnRows } from "@/lib/desk/security";
+import { ANALYSIS_AS_OF } from "@/lib/desk/security";
 import { firewallLayers, firewallSummary } from "@/lib/desk/firewall";
-import { runHunter, HUNTER_WPS, type HunterReport } from "@/lib/desk/hunter";
+import { EMPTY_HUNTER, HUNTER_WPS, type HunterReport } from "@/lib/desk/hunter-wps";
 import { fetchIntrusions, fetchSecurityPosture, runHunterAudit, fetchAgentGate, setAgentGate, fetchTapeMeta, unbarAgent, fetchGmBoard, setGmBoardStatus, setGmWagerStatus, setChampionshipSim } from "@/lib/desk/desk-rpc";
 import { INTRUSION_KIND_LABEL, BAD_BOT_KINDS, type IntrusionKind, type IntrusionRow } from "@/lib/desk/intrusion-log";
 import { useOperator } from "@/lib/desk/operator";
 import { COMPANY_X_HANDLE } from "@/lib/desk/x-admin";
 import { wafStats } from "@/lib/desk/waf";
 import { headerPosture } from "@/lib/desk/sec-headers";
-import { owaspRows, pciRows, pluginInventory } from "@/lib/desk/control-map";
 import { listBans } from "@/lib/desk/ban-list";
 import { listActions } from "@/lib/desk/auto-defend";
 import { TapeFreezePanel } from "@/components/tape-freeze";
 import { HiveAdminPanel } from "@/components/hive-admin-panel";
-import { s3cSweepRows, s3cSweepScore } from "@/lib/desk/s3c-sweep";
+import { s3cSweepScore } from "@/lib/desk/s3c-score";
 import { useSaverLock, saverLockLabel } from "@/lib/desk/saver-lock";
 import { WHITE_LABEL_NAME, WHITE_LABEL_PATH, WHITE_LABEL_WATCH } from "@/lib/desk/white-label";
 import { BACKUP_LINKS, BACKUP_SHOW_DAYS, RESTORE_STEPS, backupEntries } from "@/lib/desk/backup-plan";
@@ -51,7 +50,7 @@ export function SecurityDesk() {
     lastAt: string | null;
     byKind: Record<string, number>;
   } | null>(null);
-  const [hunter, setHunter] = useState<HunterReport>(() => runHunter());
+  const [hunter, setHunter] = useState<HunterReport>(EMPTY_HUNTER);
   const [posture, setPosture] = useState<SecurityPosture | null>(null);
   const [busy, setBusy] = useState(false);
   const [gateBusy, setGateBusy] = useState(false);
@@ -63,15 +62,15 @@ export function SecurityDesk() {
   const [boardBusy, setBoardBusy] = useState(false);
   const [boardErr, setBoardErr] = useState<string | null>(null);
   const [pullPaused, setPullPaused] = useState(false);
-  const proto = posture?.protocol ?? protocolRows();
-  const vulns = posture?.vulns ?? vulnRows();
+  const proto = posture?.protocol ?? [];
+  const vulns = posture?.vulns ?? [];
   const layers = posture?.firewall.layers ?? firewallLayers();
   const fw = posture?.firewall.summary ?? firewallSummary(layers);
   const waf = posture?.waf ?? wafStats();
   const headers = posture?.headers ?? headerPosture();
-  const owasp = posture?.owasp ?? owaspRows();
-  const pci = posture?.pci ?? pciRows();
-  const plugins = posture?.plugins ?? pluginInventory();
+  const owasp = posture?.owasp ?? [];
+  const pci = posture?.pci ?? [];
+  const plugins = posture?.plugins ?? [];
   const bans = posture?.bans ?? listBans();
   const actions = posture?.actions ?? listActions();
   const intel = posture?.intel;
@@ -94,7 +93,7 @@ export function SecurityDesk() {
     setBusy(true);
     try {
       if (!token) {
-        setHunter(runHunter());
+        setHunter(EMPTY_HUNTER);
         return;
       }
       const res = await fetchSecurityPosture({ data: { token, refreshIntel } });
@@ -123,7 +122,7 @@ export function SecurityDesk() {
       } else {
         const hunt = await runHunterAudit({ data: { token } });
         if (hunt.ok && hunt.report) setHunter(hunt.report);
-        else setHunter(runHunter());
+        else setHunter(EMPTY_HUNTER);
         await loadIntrusions();
       }
     } finally {
@@ -1040,7 +1039,7 @@ export function SecurityDesk() {
           <Panel className="mt-4" kicker="OWASP 2026" title="Agentic ASI01–10" kickerClass="text-tab">
             <p className="text-sm leading-relaxed text-muted">
               {posture?.agentic?.stats.inspiredBy.join(" · ") ?? "OWASP Agentic + LLM Top 10 2026"}. Least agency: this
-              host never trades. Tools {posture?.agentic?.stats.tools.join(", ") ?? "bot7_call"}. Body max{" "}
+              host never trades. Tools {posture?.agentic?.stats.tools.join(", ") ?? "read-only tools"}. Body max{" "}
               {posture?.agentic?.stats.jsonMax ?? 32768} B · batch {posture?.agentic?.stats.batchMax ?? 8}.
             </p>
             <ul className="mt-3 divide-y divide-rule">
@@ -1236,7 +1235,7 @@ export function SecurityDesk() {
 
       {sub === "s3c" ? (
         (() => {
-          const sweepRows = s3cSweepRows();
+          const sweepRows = posture?.s3c ?? [];
           const sweep = s3cSweepScore(sweepRows);
           return (
             <>
@@ -1245,7 +1244,7 @@ export function SecurityDesk() {
                   Top 28 most important checks from the most recent S3C Sweep run. PASS / WARN / FAIL indicators.
                   Score and summary also land on the 07:30 ET morning report.
                 </p>
-                <p className={cn("mt-2 font-mono text-sm", sweep.fail === 0 ? "text-high" : "text-sell")}>{sweep.headline}</p>
+                <p className={cn("mt-2 font-mono text-sm", !sweep.ready ? "text-muted" : sweep.fail === 0 ? "text-high" : "text-sell")}>{sweep.headline}</p>
               </Panel>
               <Panel className="mt-4" kicker="Top 28" title="Recent sweep — pass / fail indicators">
                 <ul className="mt-1 divide-y divide-rule">
